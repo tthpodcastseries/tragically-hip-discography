@@ -1316,9 +1316,9 @@ async function generateCodeChallenge(verifier) {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
   if (!code) return;
-  const verifier = sessionStorage.getItem('spotify_code_verifier');
-  if (!verifier) return;
-  sessionStorage.removeItem('spotify_code_verifier');
+  const verifier = localStorage.getItem('spotify_code_verifier');
+  if (!verifier) { console.error('Spotify callback: no code verifier found'); return; }
+  localStorage.removeItem('spotify_code_verifier');
   // Exchange code for token
   try {
     const res = await fetch('https://accounts.spotify.com/api/token', {
@@ -1335,7 +1335,7 @@ async function generateCodeChallenge(verifier) {
     const data = await res.json();
     if (data.access_token) {
       spotifyToken = data.access_token;
-      sessionStorage.setItem('spotify_token', spotifyToken);
+      localStorage.setItem('spotify_token', spotifyToken);
       // Clean up URL
       history.replaceState(null, '', window.location.pathname);
       // Init SDK if ready
@@ -1346,7 +1346,7 @@ async function generateCodeChallenge(verifier) {
 
 // Restore token from session
 if (!spotifyToken) {
-  spotifyToken = sessionStorage.getItem('spotify_token');
+  spotifyToken = localStorage.getItem('spotify_token');
 }
 
 // Initialize Spotify Web Playback SDK when ready
@@ -1364,7 +1364,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   spotifyPlayer.addListener('authentication_error', () => {
     spotifyToken = null;
     spotifyDeviceId = null;
-    sessionStorage.removeItem('spotify_token');
+    localStorage.removeItem('spotify_token');
     updateSpotifyBtn(false);
   });
   spotifyPlayer.connect();
@@ -1375,7 +1375,7 @@ if (spotifyToken && window.Spotify) window.onSpotifyWebPlaybackSDKReady();
 
 async function connectSpotify() {
   const verifier = generateRandomString(128);
-  sessionStorage.setItem('spotify_code_verifier', verifier);
+  localStorage.setItem('spotify_code_verifier', verifier);
   const challenge = await generateCodeChallenge(verifier);
   const authUrl = 'https://accounts.spotify.com/authorize' +
     `?client_id=${SPOTIFY_CLIENT_ID}` +
