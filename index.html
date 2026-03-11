@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tragically Hip — Discography</title>
+  <meta name="description" content="The Tragically Hip — complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --bg2: #141414;
+      --bg3: #1C1C1C;
+      --border: #282828;
+      --red: #C8102E;
+      --red-dim: rgba(200,16,46,0.15);
+      --gold: #D4A017;
+      --text: #ffffff;
+      --muted: #d0d0d0;
+      --muted2: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+      scrollbar-width: thin;
+      scrollbar-color: #333 transparent;
+    }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      background: var(--red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      z-index: 999;
+      text-decoration: none;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+    }
+    .skip-link:focus {
+      clip: auto;
+      clip-path: none;
+      width: auto;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .maple { font-size: 2rem; margin-bottom: 16px; display: block; }
+    h1 {
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #fff;
+    }
+    .tagline {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--red); line-height: 1; }
+    .stat-lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 4px; }
+
+    /* ─── CATEGORY NAV ─── */
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .category-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+    .category-btn:hover {
+      border-color: var(--red);
+      color: var(--text);
+    }
+    .category-btn:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+    .category-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    /* ─── RANDOM SONG ─── */
+    .random-song-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .random-song-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: #FF2600;
+      color: #ffffff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: 0.02em;
+    }
+    .random-song-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 24px rgba(255,38,0,0.4);
+    }
+    .random-song-btn:active {
+      transform: scale(0.97);
+    }
+    .random-song-btn:focus-visible {
+      outline: 2px solid #FF2600;
+      outline-offset: 3px;
+    }
+    .random-song-result {
+      display: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: #d0d0d0;
+      background: #0f0f0f;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      line-height: 1.6;
+    }
+    .random-song-result.visible { display: block; }
+    .random-song-result a {
+      color: #ffffff;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+    .random-song-result a:hover { color: #FF2600; }
+    .random-song-result a:focus-visible {
+      outline: 2px solid #FF2600;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .random-song-result .album-ref {
+      color: #d0d0d0;
+      font-style: italic;
+    }
+    .spotify-connect-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      background: transparent;
+      color: #1DB954;
+      border: 1.5px solid #1DB954;
+      padding: 6px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .spotify-connect-btn:hover {
+      background: #1DB954;
+      color: #000;
+      transform: scale(1.04);
+    }
+    .spotify-connect-btn.connected {
+      background: transparent;
+      color: #1DB954;
+      border-color: #1DB954;
+      cursor: default;
+      font-size: 0.68rem;
+      opacity: 0.8;
+    }
+    .spotify-connect-btn.connected:hover {
+      transform: none;
+      background: transparent;
+      color: #1DB954;
+    }
+
+    /* ─── MAIN ─── */
+    main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+      line-height: inherit;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-note {
+      font-size: 0.68rem;
+      color: var(--muted2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── ALBUMS GRID ─── */
+    .albums-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+
+    .album-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      position: relative;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .album-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--red);
+      box-shadow: 0 12px 40px rgba(200,16,46,0.22);
+    }
+    .album-card:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    .album-art {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .album-art::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.72));
+    }
+    .album-art-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .album-art-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      z-index: 1;
+    }
+    .album-art-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      z-index: 1;
+      margin-top: 6px;
+    }
+
+    .best-rank-badge {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: var(--gold);
+      color: #000;
+      font-size: 0.6rem;
+      font-weight: 900;
+      padding: 3px 7px;
+      border-radius: 20px;
+      z-index: 2;
+      letter-spacing: 0.05em;
+    }
+
+    .album-info {
+      padding: 14px 16px;
+      background: #222226;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      transition: background 0.15s;
+    }
+    .album-card:hover .album-info { background: #28282d; }
+    .album-info-hint {
+      position: absolute;
+      top: -1px; right: 12px;
+      transform: translateY(-50%);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: #222226;
+      padding: 2px 8px;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+    .album-card:hover .album-info-hint { color: rgba(255,255,255,0.55); background: #28282d; }
+    .spotify-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.55);
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .spotify-overlay svg { width: 36px; height: 36px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+    .album-art.spotify-clickable:hover .spotify-overlay { opacity: 1; }
+    .album-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 5px; color: #ffffff; }
+    .album-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .type-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(200,16,46,0.25);
+      color: #F07080;
+    }
+    .chart-badge {
+      font-size: 0.7rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .juno-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(212,160,23,0.15);
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    /* ─── TOP 40 SONGS ─── */
+    .top40-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+      margin-bottom: 72px;
+    }
+    .song-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 15px;
+      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .song-row:hover {
+      border-color: #1DB954;
+      background: rgba(29,185,84,0.06);
+      transform: translateY(-1px);
+    }
+    .song-row:focus-visible {
+      outline: 2px solid #1DB954;
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+    .song-row:active { transform: scale(0.99); }
+    .song-rank {
+      font-size: 0.8rem;
+      font-weight: 800;
+      min-width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .song-rank.top10 { color: var(--gold); }
+    .song-rank.top40 { color: var(--gold); }
+    .song-info { min-width: 0; flex: 1; }
+    .song-title { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .song-meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .song-spotify-icon { flex-shrink: 0; opacity: 0.3; transition: opacity 0.15s; width: 18px; height: 18px; }
+    .song-row:hover .song-spotify-icon { opacity: 0.8; }
+
+    /* ─── MODAL ─── */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 660px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      transform: scale(0.96) translateY(8px);
+      transition: transform 0.22s ease;
+    }
+    .overlay.open .modal { transform: scale(1) translateY(0); }
+
+    .modal-top {
+      display: flex;
+      gap: 20px;
+      padding: 26px 26px 22px;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0;
+      background: #111;
+      z-index: 1;
+    }
+    .modal-art {
+      width: 96px;
+      height: 96px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: block;
+      overflow: hidden;
+    }
+    .modal-meta-block { flex: 1; min-width: 0; }
+    .modal-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+    .modal-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+    .modal-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .modal-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+    .modal-tag.red { background: var(--red-dim); color: var(--red); }
+    .modal-tag.gold { background: rgba(212,160,23,0.15); color: var(--gold); }
+    .modal-tag.dim { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.4rem; line-height: 1;
+      min-width: 44px; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      align-self: flex-start; margin-left: auto;
+      transition: color 0.15s; flex-shrink: 0;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-close:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+      border-radius: 4px;
+      color: var(--text);
+    }
+
+    .modal-body { padding: 22px 26px 28px; }
+
+    .modal-desc {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-fact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+      margin-bottom: 24px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-fact { display: flex; flex-direction: column; }
+    .fact-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+    .fact-val { font-size: 0.85rem; font-weight: 600; margin-top: 3px; }
+
+    .modal-section-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .singles-list { list-style: none; margin-bottom: 24px; }
+    .single-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .single-item:last-child { border-bottom: none; }
+    .single-rank {
+      font-size: 0.72rem;
+      font-weight: 800;
+      min-width: 72px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .single-rank.t10 { background: rgba(212,160,23,0.18); color: var(--gold); }
+    .single-rank.t40 { background: rgba(212,160,23,0.18); color: var(--gold); }
+    .single-rank.road { background: rgba(200,16,46,0.15); color: var(--red); font-size: 0.58rem; }
+    .single-rank.unranked { background: rgba(255,255,255,0.04); color: var(--muted2); }
+    .single-name { font-size: 0.85rem; font-weight: 500; }
+    .single-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .single-link:hover { color: var(--gold); text-decoration: underline; }
+    .spotify-clickable { cursor: pointer; }
+    .spotify-clickable:hover { opacity: 0.85; }
+    .modal-title.spotify-clickable:hover { color: var(--gold); cursor: pointer; }
+    .modal-art.spotify-clickable img:hover { opacity: 0.85; }
+
+    .tracks-list { list-style: none; }
+    .track-item {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: center;
+    }
+    .track-item:last-child { border-bottom: none; }
+    .track-num { font-size: 0.75rem; color: var(--muted2); min-width: 22px; text-align: right; }
+    .track-name { font-size: 0.86rem; }
+    .track-single-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-right: 4px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted2);
+      line-height: 1.8;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    footer a:focus-visible, .single-link:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+      .overlay .modal { transform: none; }
+    }
+
+    @media (max-width: 500px) {
+      .modal-top { flex-direction: column; position: relative; }
+      .modal-close { position: absolute; top: 12px; right: 12px; }
+      .modal-art { width: 72px; height: 72px; }
+      .modal-fact-grid { grid-template-columns: 1fr; }
+      .category-nav { gap: 8px; }
+      .category-btn { padding: 7px 16px; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <span class="maple">🍁</span>
+  <h1><span style="color: var(--red); font-style: normal;">The</span> Tragically <span style="color: var(--red); font-style: normal;">Hip</span></h1>
+  <p class="tagline">Kingston, Ontario · 1984 – 2016 · Canada's Band</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="statNum1"></div><div class="stat-lbl" id="statLbl1"></div></div>
+    <div class="stat"><div class="stat-num" id="statNum2"></div><div class="stat-lbl" id="statLbl2"></div></div>
+    <div class="stat"><div class="stat-num" id="statNum3"></div><div class="stat-lbl" id="statLbl3"></div></div>
+    <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
+  </div>
+  <div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
+    <button class="category-btn active" data-category="studio" role="tab" aria-selected="true">Studio</button>
+    <button class="category-btn" data-category="live" role="tab" aria-selected="false">Live</button>
+    <button class="category-btn" data-category="compilations" role="tab" aria-selected="false">Compilations</button>
+    <button class="category-btn" data-category="boxsets" role="tab" aria-selected="false">Box Sets</button>
+    <button class="category-btn" data-category="eps" role="tab" aria-selected="false">EPs</button>
+    <button class="category-btn" data-category="video" role="tab" aria-selected="false">Video</button>
+    <button class="category-btn" data-category="top40" role="tab" aria-selected="false">TTH Top 40</button>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="section-header">
+    <h2 class="section-label">Discography</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="random-song-wrap">
+    <button class="random-song-btn" id="randomSongBtn">Random Hip Song</button>
+    <button class="spotify-connect-btn" id="spotifyConnectBtn" onclick="connectSpotify()">Connect Spotify</button>
+    <div class="random-song-result" id="randomSongResult"></div>
+  </div>
+  <div class="albums-grid" id="albumsGrid" role="tabpanel" aria-label="Album grid"></div>
+
+  <div id="top40Section">
+    <div class="section-header">
+      <h2 class="section-label">TTHTop40 — Fan-Ranked Top Songs</h2>
+      <p class="section-note">Complete rankings sourced from the 2024–25 fan countdown</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="top40-grid" id="songsGrid"></div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal" id="modal">
+    <div class="modal-top">
+      <div class="modal-art" id="mArt"></div>
+      <div class="modal-meta-block">
+        <div class="modal-title" id="mTitle"></div>
+        <div class="modal-sub" id="mSub"></div>
+        <div class="modal-tags" id="mTags"></div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<footer>
+  <strong style="color:#aaa">The Tragically Hip</strong> — Gord Downie (1964–2017)<br>
+  Discography data sourced from the
+  <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series · Complete Discography v4.0</a> ·
+  TTHTop40 rankings from the 2024–25 fan countdown<br>
+  <span style="color: var(--muted2)">• red dot on tracks = released as single •</span>
+</footer>
+
+<script>
+const studioAlbums = [
+  {
+    num: '01', title: 'Up to Here', year: '1989', type: 'Studio', img: 'Up to Here.jpg',
+    label: 'MCA Records', producer: 'Don Smith',
+    chart: '#1', units: '1M+ (Diamond, Canada)',
+    junoAwards: ['Most Promising Group (1990)'],
+    desc: 'Debut full-length, recorded in Memphis. Certified Diamond in Canada. Introduced the band to a national audience and launched four consecutive Canadian radio singles.',
+    gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
+    bestRank: 3,
+    singles: [
+      { title: 'Blow at High Dough', rank: 'Top 40 #6' },
+      { title: 'New Orleans Is Sinking', rank: 'Top 40 #11' },
+      { title: 'Boots or Hearts', rank: 'Top 40 #25' },
+      { title: '38 Years Old', rank: 'Top 40 #3' },
+    ],
+    tracks: ['Blow at High Dough', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight)', 'New Orleans Is Sinking', '38 Years Old', 'She Didn\'t Know', 'I\'m a Werewolf, Baby', 'Boots or Hearts', 'Trickle Down', 'Everytime You Go', 'When the Weight Comes Down', 'Highway Girl'],
+  },
+  {
+    num: '02', title: 'Road Apples', year: '1991', type: 'Studio', img: 'Road Apples.jpg',
+    label: 'MCA Records', producer: 'Don Smith',
+    chart: '#1', units: '1M+ (Diamond, Canada)',
+    desc: 'First #1 album in Canada. Certified Diamond. First album with all lyrics by Gord Downie. Recorded in New Orleans at Kingsway Studio.',
+    gradient: 'linear-gradient(145deg, #0D2200 0%, #235E00 50%, #091500 100%)',
+    bestRank: 5,
+    singles: [
+      { title: 'Little Bones', rank: 'Top 40 #5' },
+      { title: 'Three Pistols', rank: 'Top 40 #21' },
+      { title: 'Twist My Arm', rank: 'Road #45' },
+    ],
+    tracks: ['Little Bones', 'Twist My Arm', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Bring It All Back', 'Three Pistols', 'Fight', 'On the Verge', 'Fiddler\'s Green', 'The Last of the Unplucked Gems'],
+  },
+  {
+    num: '03', title: 'Fully Completely', year: '1992', type: 'Studio', img: 'Fully Completely.jpg',
+    label: 'MCA Records', producer: 'Chris Tsangarides',
+    chart: '#1', units: '1M+ (Diamond, Canada)',
+    desc: 'Certified Diamond in Canada. Six Canadian singles. Widely considered a landmark Canadian rock record. 300,000 copies sold in its first year.',
+    gradient: 'linear-gradient(145deg, #2A1A00 0%, #5C3A00 50%, #1A0E00 100%)',
+    bestRank: 8,
+    singles: [
+      { title: 'Locked in the Trunk of a Car', rank: 'Top 40 #8' },
+      { title: 'Fifty-Mission Cap', rank: 'Top 40 #20' },
+      { title: 'Courage (for Hugh MacLennan)', rank: 'Top 40 #10' },
+      { title: 'At the Hundredth Meridian', rank: 'Top 40 #16' },
+      { title: 'Wheat Kings', rank: 'Top 40 #17' },
+      { title: 'The Wherewithal', rank: 'Road #139' },
+    ],
+    tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go, Too', 'Fully Completely', 'Wheat Kings', 'Fifty-Mission Cap', 'The Wherewithal', 'Eldorado'],
+  },
+  {
+    num: '04', title: 'Day for Night', year: '1994', type: 'Studio', img: 'Day for Night.jpg',
+    label: 'MCA Records', producer: 'Mark Howard & The Tragically Hip',
+    chart: '#1', units: '300,000 in first 4 days',
+    desc: 'Murky, experimental record. Recorded in New Orleans. Debuted at #1 with 300,000 copies sold in the first four days — still a Canadian record at the time. Features Grace, Too, the #1 ranked song in the TTHTop40 Countdown.',
+    gradient: 'linear-gradient(145deg, #060612 0%, #10104A 50%, #030308 100%)',
+    bestRank: 1,
+    singles: [
+      { title: 'Grace, Too', rank: 'Top 40 #1' },
+      { title: 'Nautical Disaster', rank: 'Top 40 #7' },
+      { title: 'So Hard Done By', rank: 'Road #43' },
+      { title: 'Thugs', rank: 'Road #47' },
+      { title: 'Inevitability of Death', rank: 'Road #64' },
+      { title: 'Titanic Terrarium', rank: 'Road #133' },
+    ],
+    tracks: ['Grace, Too', 'Daredevil', 'Greasy Jungle', 'Yawning or Snarling', 'Fire in the Hole', 'So Hard Done By', 'Nautical Disaster', 'Thugs', 'Inevitability of Death', 'Scared', 'An Inch an Hour', 'Emergency', 'Titanic Terrarium', 'Impossibilium'],
+  },
+  {
+    num: '05', title: 'Trouble at the Henhouse', year: '1996', type: 'Studio', img: 'Trouble at the Henhouse.jpg',
+    label: 'MCA Records', producer: 'The Tragically Hip & Mark Vreeken',
+    chart: '#1 (4 consecutive weeks)', units: '—',
+    desc: 'First simultaneous Canada/US release. Won the 1997 Juno Award for Album of the Year. Features Ahead by a Century — TTHTop40 #2.',
+    gradient: 'linear-gradient(145deg, #2E0A00 0%, #6B2500 50%, #1C0500 100%)',
+    junoAwards: ['Album of the Year (1997)', 'Rock Album of the Year (1997)'],
+    bestRank: 2,
+    singles: [
+      { title: 'Ahead by a Century', rank: 'Top 40 #2' },
+      { title: 'Springtime in Vienna', rank: 'Top 40 #38' },
+      { title: 'Don\'t Wake Daddy', rank: 'Road #41' },
+    ],
+    tracks: ['Gift Shop', 'Springtime in Vienna', 'Ahead by a Century', 'Don\'t Wake Daddy', 'Flamenco', '700 Ft. Ceiling', 'Butts Wigglin\'', 'Apartment Song', 'Coconut Cream', 'Let\'s Stay Engaged', 'Sherpa', 'Put It Off'],
+  },
+  {
+    num: '06', title: 'Phantom Power', year: '1998', type: 'Studio', img: 'Phantom Power.jpg',
+    label: 'Universal Music Canada / Sire Records (US)', producer: 'Steve Berlin, Mark Vreeken & The Tragically Hip',
+    chart: '#1', units: '108,000 (first week)',
+    desc: 'Produced with Steve Berlin of Los Lobos. Bobcaygeon — TTHTop40 #4 — became one of the band\'s most enduring songs. Recorded at The Bathouse in Bath, Ontario.',
+    gradient: 'linear-gradient(145deg, #1A001A 0%, #4A0050 50%, #0E000E 100%)',
+    junoAwards: ['Best Rock Album (1999)', 'Best Album Design (1999)', 'Single of the Year (2000)'],
+    bestRank: 4,
+    singles: [
+      { title: 'Poets', rank: 'Top 40 #23' },
+      { title: 'Bobcaygeon', rank: 'Top 40 #4' },
+      { title: 'Fireworks', rank: 'Top 40 #15' },
+      { title: 'Tiger the Lion', rank: 'Road #65' },
+      { title: 'Membership', rank: 'Road #97' },
+    ],
+    tracks: ['Poets', 'Something On', 'Save the Planet', 'Bobcaygeon', 'Thompson Girl', 'Membership', 'Fireworks', 'Vapour Trails', 'The Rules', 'Chagrin Falls', 'Escape Is at Hand for the Travellin\' Man', 'Emperor Penguin'],
+  },
+  {
+    num: '07', title: 'Music @ Work', year: '2000', type: 'Studio', img: 'Music @ Work.jpg',
+    label: 'Universal Music Canada', producer: 'Steve Berlin, Mark Vreeken & The Tragically Hip',
+    chart: '—', units: '—',
+    desc: 'Won the 2001 Juno Award for Best Rock Album. Nominated for Album of the Year. Produced with the same team as Phantom Power at The Bathouse.',
+    gradient: 'linear-gradient(145deg, #001A1A 0%, #003D3D 50%, #000F0F 100%)',
+    junoAwards: ['Best Rock Album (2001)'],
+    bestRank: 24,
+    singles: [
+      { title: 'My Music at Work', rank: 'Top 40 #26' },
+      { title: 'Lake Fever', rank: 'Top 40 #24' },
+      { title: 'Freak Turbulence', rank: 'Road #124' },
+    ],
+    tracks: ['My Music at Work', 'Tiger the Lion', 'Lake Fever', 'Putting Down', 'Stay', 'The Bastard', 'The Completists', 'Freak Turbulence', 'Sharks', 'Toronto #4', 'Wild Mountain Honey', 'Train Overnight', 'The Bear', 'As I Wind Down the Pines'],
+  },
+  {
+    num: '08', title: 'In Violet Light', year: '2002', type: 'Studio', img: 'In Violet Light.jpg',
+    label: 'Universal Music Canada', producer: 'Hugh Padgham & Terry Manning',
+    chart: '#1', units: 'Platinum (Canada)',
+    desc: 'Recorded at Compass Point Studios, Bahamas — same studio as AC/DC, Grace Jones, and the Rolling Stones. Hugh Padgham\'s atmospheric production gives the album a distinctly dreamy quality.',
+    gradient: 'linear-gradient(145deg, #100028 0%, #2E006B 50%, #090014 100%)',
+    bestRank: 18,
+    singles: [
+      { title: 'It\'s a Good Life If You Don\'t Weaken', rank: 'Top 40 #18' },
+      { title: 'The Dark Canuck', rank: 'Road #49' },
+      { title: 'Silver Jet', rank: 'Road #83' },
+    ],
+    tracks: ['Are You Ready', 'Use It Up', 'The Darkest One', 'It\'s a Good Life If You Don\'t Weaken', 'Silver Jet', 'Throwing Off Glass', 'All Tore Up', 'Leave', 'A Beautiful Thing', 'The Dire Wolf', 'The Dark Canuck'],
+  },
+  {
+    num: '09', title: 'In Between Evolution', year: '2004', type: 'Studio', img: 'In Between Evolution.jpg',
+    label: 'Universal Music Canada', producer: 'Adam Kasper',
+    chart: '#1', units: '22,500 (first week)',
+    desc: 'Produced by Adam Kasper (Foo Fighters, Queens of the Stone Age, Pearl Jam). A harder-edged return. Recorded at The Bathouse and The Warehouse Studio, Vancouver.',
+    gradient: 'linear-gradient(145deg, #1A0800 0%, #4A2200 50%, #0F0400 100%)',
+    bestRank: 31,
+    singles: [
+      { title: 'Vaccination Scar', rank: 'Road #66' },
+      { title: 'Summer\'s Killing Us', rank: 'Road #120' },
+      { title: 'Gus: The Polar Bear from Central Park', rank: 'Top 40 #31' },
+    ],
+    tracks: ['Heaven Is a Better Place Today', 'Summer\'s Killing Us', 'Gus: The Polar Bear from Central Park', 'Vaccination Scar', 'It Can\'t Be Nashville Every Night', 'If New Orleans Is Beat', 'You\'re Everywhere', 'As Makeshift As We Are', 'Mean Streak', 'The Heart of the Melt', 'One Night in Copenhagen', 'Are We Family', 'Goodnight Josephine'],
+  },
+  {
+    num: '10', title: 'World Container', year: '2006', type: 'Studio', img: 'World Container.jpg',
+    label: 'Universal Music Canada', producer: 'Bob Rock',
+    chart: '#2', units: 'Platinum (Canada)',
+    desc: 'Produced by Bob Rock (Metallica, Aerosmith). Recorded in Toronto, Vancouver, and Maui. First album of a two-record partnership with Rock.',
+    gradient: 'linear-gradient(145deg, #001530 0%, #003580 50%, #000C1A 100%)',
+    bestRank: 39,
+    singles: [
+      { title: 'Yer Not the Ocean', rank: 'Top 40 #39' },
+      { title: 'In View', rank: 'Road #46' },
+      { title: 'The Lonely End of the Rink', rank: 'Road #75' },
+    ],
+    tracks: ['Yer Not the Ocean', 'The Lonely End of the Rink', 'In View', 'Fly', 'Luv (sic)', 'The Kids Don\'t Get It', 'Pretend', 'Last Night I Dreamed You Didn\'t Love Me', 'The Drop-Off', 'Family Band', 'World Container'],
+  },
+  {
+    num: '11', title: 'We Are the Same', year: '2009', type: 'Studio', img: 'We are the Same.jpg',
+    label: 'Universal Music Canada / Zoë Records (US)', producer: 'Bob Rock',
+    chart: '#1 (8th Canadian #1)', units: '—',
+    desc: 'Their eighth Canadian #1 album — more than any other Canadian rock band at the time. Second collaboration with Bob Rock. A warmer, more reflective record.',
+    gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1D4D1D 50%, #050F05 100%)',
+    bestRank: 34,
+    singles: [
+      { title: 'Love Is a First', rank: 'Road #145' },
+      { title: 'Coffee Girl', rank: 'Road #53' },
+      { title: 'Frozen in My Tracks', rank: 'Road #167' },
+    ],
+    tracks: ['Morning Moon', 'Honey Please', 'The Last Recluse', 'Coffee Girl', 'Now the Struggle Has a Name', 'The Depression Suite', 'The Exact Feeling', 'Queen of the Furrows', 'Speed River', 'Frozen in My Tracks', 'Love Is a First', 'Country Day'],
+  },
+  {
+    num: '12', title: 'Now for Plan A', year: '2012', type: 'Studio', img: 'Now for Plan A.jpg',
+    label: 'Universal Music Canada / Concord Records (US)', producer: 'Gavin Brown',
+    chart: '#3', units: '—',
+    desc: 'Produced by Gavin Brown. Features a duet with Sarah Harmer on The Lookahead. Highest US chart position of any Hip album: #129 on the Billboard 200.',
+    gradient: 'linear-gradient(145deg, #1A1A00 0%, #404000 50%, #0D0D00 100%)',
+    bestRank: 33,
+    singles: [
+      { title: 'At Transformation', rank: 'Top 40 #33' },
+      { title: 'Streets Ahead', rank: 'Unranked' },
+      { title: 'The Lookahead', rank: 'Road #113' },
+    ],
+    tracks: ['At Transformation', 'Man Machine Poem', 'The Lookahead', 'We Want to Be It', 'Streets Ahead', 'Now for Plan A', 'The Modern Spirit', 'About This Map', 'Take Forever', 'Done and Done', 'Goodnight Attawapiskat'],
+  },
+  {
+    num: '13', title: 'Man Machine Poem', year: '2016', type: 'Studio', img: 'Man Machine Poem.jpg',
+    label: 'Universal Music Canada', producer: 'Kevin Drew & Dave Hamelin',
+    chart: '#1', units: '20,000 (first week)',
+    desc: 'Final studio album. Recorded following Gord Downie\'s terminal brain cancer diagnosis. The final concert took place August 20, 2016 at K-Rock Centre in Kingston, Ontario — broadcast live on CBC to 11.7 million Canadians.',
+    gradient: 'linear-gradient(145deg, #08001F 0%, #1A0055 50%, #040010 100%)',
+    junoAwards: ['Group of the Year (2017)', 'Rock Album of the Year (2017)'],
+    bestRank: 37,
+    singles: [
+      { title: 'In a World Possessed by the Human Mind', rank: 'Top 40 #37' },
+      { title: 'Tired as Fuck', rank: 'Road #58' },
+    ],
+    tracks: ['Man', 'In a World Possessed by the Human Mind', 'What Blue', 'In Sarnia', 'Here, in the Dark', 'Great Soul', 'Tired as Fuck', 'Hot Mic', 'Ocean Next', 'Machine'],
+  },
+];
+
+// Songs confirmed in TTHTop40 countdown (sourced from PDF)
+const top40Songs = [
+  { rank: 1,  title: 'Grace, Too',                              album: 'Day for Night',              year: 1994 },
+  { rank: 2,  title: 'Ahead by a Century',                      album: 'Trouble at the Henhouse',    year: 1996 },
+  { rank: 3,  title: '38 Years Old',                            album: 'Up to Here',                 year: 1989 },
+  { rank: 4,  title: 'Bobcaygeon',                              album: 'Phantom Power',              year: 1998 },
+  { rank: 5,  title: 'Little Bones',                            album: 'Road Apples',                year: 1991 },
+  { rank: 6,  title: 'Blow at High Dough',                      album: 'Up to Here',                 year: 1989 },
+  { rank: 7,  title: 'Nautical Disaster',                       album: 'Day for Night',              year: 1994 },
+  { rank: 8,  title: 'Locked in the Trunk of a Car',            album: 'Fully Completely',           year: 1992 },
+  { rank: 9,  title: 'Fiddler\'s Green',                        album: 'Road Apples',                year: 1991 },
+  { rank: 10, title: 'Courage (for Hugh MacLennan)',            album: 'Fully Completely',           year: 1992 },
+  { rank: 11, title: 'New Orleans Is Sinking',                  album: 'Up to Here',                 year: 1989 },
+  { rank: 12, title: 'Gift Shop',                               album: 'Trouble at the Henhouse',    year: 1996 },
+  { rank: 13, title: 'Fully Completely',                        album: 'Fully Completely',           year: 1992 },
+  { rank: 14, title: 'Escape Is at Hand for the Travellin\' Man', album: 'Phantom Power',            year: 1998 },
+  { rank: 15, title: 'Fireworks',                               album: 'Phantom Power',              year: 1998 },
+  { rank: 16, title: 'At the Hundredth Meridian',               album: 'Fully Completely',           year: 1992 },
+  { rank: 17, title: 'Wheat Kings',                             album: 'Fully Completely',           year: 1992 },
+  { rank: 18, title: 'It\'s a Good Life If You Don\'t Weaken',  album: 'In Violet Light',            year: 2002 },
+  { rank: 19, title: 'Cordelia',                                album: 'Road Apples',                year: 1991 },
+  { rank: 20, title: 'Fifty-Mission Cap',                       album: 'Fully Completely',           year: 1992 },
+  { rank: 21, title: 'Three Pistols',                           album: 'Road Apples',                year: 1991 },
+  { rank: 22, title: 'Long Time Running',                       album: 'Road Apples',                year: 1991 },
+  { rank: 23, title: 'Poets',                                   album: 'Phantom Power',              year: 1998 },
+  { rank: 24, title: 'Lake Fever',                              album: 'Music @ Work',               year: 2000 },
+  { rank: 25, title: 'Boots or Hearts',                         album: 'Up to Here',                 year: 1989 },
+  { rank: 26, title: 'My Music at Work',                        album: 'Music @ Work',               year: 2000 },
+  { rank: 27, title: 'Flamenco',                                album: 'Trouble at the Henhouse',    year: 1996 },
+  { rank: 28, title: 'Scared',                                  album: 'Day for Night',              year: 1994 },
+  { rank: 29, title: 'Pigeon Camera',                           album: 'Fully Completely',           year: 1992 },
+  { rank: 30, title: 'The Darkest One',                         album: 'In Violet Light',            year: 2002 },
+  { rank: 31, title: 'Gus: The Polar Bear from Central Park',   album: 'In Between Evolution',       year: 2004 },
+  { rank: 32, title: 'Emperor Penguin',                         album: 'Phantom Power',              year: 1998 },
+  { rank: 33, title: 'At Transformation',                       album: 'Now for Plan A',             year: 2012 },
+  { rank: 34, title: 'The Depression Suite',                    album: 'We Are the Same',            year: 2009 },
+  { rank: 35, title: 'Looking for a Place to Happen',           album: 'Fully Completely',           year: 1992 },
+  { rank: 36, title: 'Greasy Jungle',                           album: 'Day for Night',              year: 1994 },
+  { rank: 37, title: 'In a World Possessed by the Human Mind',  album: 'Man Machine Poem',           year: 2016 },
+  { rank: 38, title: 'Springtime in Vienna',                    album: 'Trouble at the Henhouse',    year: 1996 },
+  { rank: 39, title: 'Yer Not the Ocean',                       album: 'World Container',            year: 2006 },
+  { rank: 40, title: 'We Want to Be It',                        album: 'Now for Plan A',             year: 2012 },
+];
+
+const liveAlbums = [
+  { num: '01', title: 'Live Between Us', year: '1997', type: 'Live', img: 'live Between Us.jpg',
+    gradient: 'linear-gradient(145deg, #1A0A00 0%, #4A2800 50%, #0F0500 100%)',
+    desc: 'Recorded live at Cobo Arena in Detroit, Michigan on November 23, 1996 during the Trouble at the Henhouse tour. Debuted at #1 in Canada, selling 35,000 copies in its first two days. Certified 6x Platinum.',
+    label: 'Universal Music Canada', producer: '—', chart: '#1', units: '6x Platinum (Canada)', bestRank: null, singles: [],
+    tracks: ['Grace, Too', 'Fully Completely', 'Springtime in Vienna', 'Twist My Arm', 'Gift Shop', 'Ahead by a Century', 'The Luxury', 'Courage', 'New Orleans Is Sinking', 'Don\'t Wake Daddy', 'Scared', 'Blow at High Dough', 'Nautical Disaster', 'The Wherewithal'] },
+  { num: '02', title: 'Live From The Vault: Volume 1', year: '2008', type: 'Live', img: 'Live From the Vault volume 1.jpeg',
+    gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+    desc: 'Metro Centre, Halifax, Nova Scotia — February 2, 1995. Day for Night tour. First installment in the Live From The Vault archival series featuring full soundboard recordings.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Grace, Too', 'Fully Completely', 'Inevitability of Death', 'Courage (for Hugh MacLennan)', 'Greasy Jungle', 'The Last of the Unplucked Gems', 'Thugs', 'New Orleans Is Sinking', 'Lionized', 'Scared', 'Opiated', 'Nautical Disaster', 'Fifty-Mission Cap', 'Titanic Terrarium', 'At the Hundredth Meridian', 'Locked in the Trunk of a Car', 'Fire in the Hole', 'We\'ll Go Too', 'Daredevil', 'Little Bones'] },
+  { num: '03', title: 'Live From The Vault: Volume 2', year: '2008', type: 'Live', img: 'Live from the vault volume 2.jpeg',
+    gradient: 'linear-gradient(145deg, #0D1A1A 0%, #1A3D3D 50%, #060F0F 100%)',
+    desc: 'Stubb\'s BBQ, Austin, Texas — October 26, 2002. In Violet Light tour. Features at least one song from every full-length album released to that date.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Use It Up', 'My Music at Work', 'New Orleans Is Sinking', 'Grace, Too', 'Fireworks', 'Bobcaygeon', 'Silver Jet', 'Courage (for Hugh MacLennan)', 'Inevitability of Death', 'It\'s a Good Life If You Don\'t Weaken', 'At the Hundredth Meridian', 'Springtime in Vienna', 'So Hard Done By', 'Poets', 'Ahead by a Century', 'Little Bones', 'Chagrin Falls', 'All Tore Up', 'Blow at High Dough'] },
+  { num: '04', title: 'Live From The Vault: Volume 3', year: '2009', type: 'Live', img: 'From The vault volume 3 - 2008.jpg',
+    gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)',
+    desc: 'Copps Coliseum, Hamilton, Ontario — February 6, 2007. World Container tour. Features six World Container tracks alongside classics like Boots or Hearts, Three Pistols, Fiddler\'s Green and Wheat Kings.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['The Lonely End of the Rink', 'New Orleans Is Sinking', 'Fully Completely', 'Boots or Hearts', 'Yer Not the Ocean', 'Ahead by a Century', 'In View', 'Courage (for Hugh MacLennan)', 'Fiddler\'s Green', 'World Container', 'Springtime in Vienna', 'At the Hundredth Meridian', 'It\'s a Good Life If You Don\'t Weaken', 'The Kids Don\'t Get It', 'Three Pistols', 'Wheat Kings', 'Family Band', 'My Music at Work', 'Blow at High Dough', 'Picture My Face', 'Grace, Too', 'Fire in the Hole'] },
+  { num: '05', title: 'Live From The Vault: Volume 4', year: '2009', type: 'Live', img: 'From the vault volume 4 2009.jpg',
+    gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)',
+    desc: 'La Luna, Brussels, Belgium — December 5, 1994. Day for Night world tour. The oldest show in the Vault series — a tight, well-played set from the European leg of the tour.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Grace, Too', 'Fully Completely', 'Courage', 'Greasy Jungle', 'The Last of the Unplucked Gems', 'New Orleans Is Sinking', 'Inevitability of Death', 'Locked in the Trunk of a Car', 'Fire in the Hole', 'Titanic Terrarium', 'At the Hundredth Meridian', 'Nautical Disaster', 'The Wherewithal', 'Yawning or Snarling', 'Little Bones'] },
+  { num: '06', title: 'Live From The Vault: Volume 5', year: '2009', type: 'Live', img: 'From the Vault volume 5 2009.jpg',
+    gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
+    desc: 'Avalon, Los Angeles, California — October 6, 2004. In Between Evolution world tour. Features rarities like Mean Streak and You\'re Everywhere that have rarely surfaced since.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Vaccination Scar', 'Grace, Too', 'Twist My Arm', 'It\'s a Good Life If You Don\'t Weaken', 'Summer\'s Killing Us', 'Fully Completely', 'You\'re Everywhere', 'Courage (for Hugh MacLennan)', 'Bobcaygeon', 'Poets', 'Gus: The Polar Bear from Central Park', 'At the Hundredth Meridian', 'As Makeshift as We Are', 'My Music @ Work', 'Mean Streak', 'New Orleans Is Sinking', 'It Can\'t Be Nashville Every Night', 'Little Bones', 'Heaven Is a Better Place Today', 'Ahead by a Century', 'Fire in the Hole', 'Wheat Kings', 'Blow at High Dough'] },
+  { num: '07', title: 'Live From The Vault: Volume 6', year: '2009', type: 'Live', img: 'From the Vault volume 6 2009.jpg',
+    gradient: 'linear-gradient(145deg, #1A0D0D 0%, #3D1A1A 50%, #0F0606 100%)',
+    desc: 'Odeon, Cleveland, Ohio — August 17, 1996. Trouble at the Henhouse tour. The first Vault release from the Henhouse era, with all five albums released to date represented in the setlist.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Springtime in Vienna', 'Fully Completely', 'Gift Shop', 'Grace, Too', 'Butts Wigglin\'', 'Opiated', '700 Ft. Ceiling', 'Flamenco', 'At the Hundredth Meridian', 'Don\'t Wake Daddy', 'Courage (for Hugh MacLennan)', 'Ahead by a Century', 'New Orleans Is Sinking', 'Locked in the Trunk of a Car', 'The Wherewithal', 'Put It Off', 'Nautical Disaster', 'Little Bones'] },
+  { num: '08', title: 'Live at the Roxy', year: '2022', type: 'Live', img: 'Live at the Roxy.jpg',
+    gradient: 'linear-gradient(145deg, #200A0A 0%, #501A1A 50%, #100505 100%)',
+    desc: 'Recorded May 3, 1991 at the Roxy Theatre in Hollywood, California. Originally a radio broadcast, remastered by Ted Jensen at Sterling Sound. Features the legendary "Killer Whale Tank" version of New Orleans Is Sinking.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Little Bones', 'She Didn\'t Know', 'Twist My Arm', 'Highway Girl', 'Cordelia', 'Trickle Down', 'The Luxury', 'Three Pistols', 'Fight', 'I Believe in You (Or I\'ll Be Leaving You Tonight)', 'New Orleans Is Sinking', 'On the Verge', 'Long Time Running', 'Blow at High Dough', 'All Canadian Surf Club'] },
+];
+
+const compilationAlbums = [
+  { num: '01', title: 'Yer Favourites', year: '2005', type: 'Compilation', img: 'Yer Favourites.jpg',
+    gradient: 'linear-gradient(145deg, #200010 0%, #500028 50%, #100008 100%)',
+    desc: 'Fan-voted greatest hits collection. 35 remastered classics plus 2 new songs, selected by over 150,000 fans through the band\'s website. Debuted at #8 on the Canadian Albums Chart.',
+    label: 'Universal Music Canada', producer: '—', chart: '#8', units: '—', bestRank: null, singles: [],
+    tracks: ['No Threat', 'Grace, Too', 'My Music at Work', '38 Years Old', 'Gift Shop', 'Ahead by a Century', 'Vaccination Scar', 'Three Pistols', 'So Hard Done By', 'Fiddler\'s Green', 'Looking for a Place to Happen', 'Cordelia', 'It\'s a Good Life If You Don\'t Weaken', 'Blow at High Dough', 'Wheat Kings', 'Fifty-Mission Cap', 'New Orleans Is Sinking', 'Escape Is at Hand for the Travellin\' Man', 'Fully Completely', 'Twist My Arm', 'Courage (for Hugh MacLennan)', 'Lake Fever', 'Poets', 'Fireworks', 'Boots or Hearts', 'Bobcaygeon', 'Nautical Disaster', 'Highway Girl', 'Gus: The Polar Bear from Central Park', 'Scared', 'Something On', 'At the Hundredth Meridian', 'Long Time Running', 'The Darkest One', 'Locked in the Trunk of a Car', 'Little Bones', 'The New Maybe'] },
+];
+
+const boxSetAlbums = [
+  { num: '01', title: 'Hipeponymous', year: '2005', type: 'Box Set', img: 'Hipeponymous.jpg',
+    gradient: 'linear-gradient(145deg, #1A0020 0%, #3D0048 50%, #0F0012 100%)',
+    desc: 'Limited-edition box set featuring the Yer Favourites 2-CD compilation, a live concert DVD from the Air Canada Centre (Nov 26, 2004), a complete music video collection, and the Macroscopic backstage documentary. Certified Platinum in Canada.',
+    junoAwards: ['Best Album Design (2006)'],
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: 'Platinum (Canada)', bestRank: null, singles: [],
+    tracks: ['No Threat', 'Grace, Too', 'My Music at Work', '38 Years Old', 'Gift Shop', 'Ahead by a Century', 'Vaccination Scar', 'Three Pistols', 'So Hard Done By', 'Fiddler\'s Green', 'Looking for a Place to Happen', 'Cordelia', 'It\'s a Good Life If You Don\'t Weaken', 'Blow at High Dough', 'Wheat Kings', 'Fifty-Mission Cap', 'New Orleans Is Sinking', 'Escape Is at Hand for the Travellin\' Man', 'Fully Completely', 'Twist My Arm', 'Courage (for Hugh MacLennan)', 'Lake Fever', 'Poets', 'Fireworks', 'Boots or Hearts', 'Bobcaygeon', 'Nautical Disaster', 'Highway Girl', 'Gus: The Polar Bear from Central Park', 'Scared', 'Something On', 'At the Hundredth Meridian', 'Long Time Running', 'The Darkest One', 'Locked in the Trunk of a Car', 'Little Bones', 'The New Maybe'] },
+  { num: '02', title: 'Fully Completely Box Set', year: '2014', type: 'Box Set', img: 'Fully Completely Box Set.jpg',
+    gradient: 'linear-gradient(145deg, #2A1A00 0%, #5C3A00 50%, #1A0E00 100%)',
+    desc: 'Deluxe anniversary reissue of Fully Completely, featuring remastered audio, bonus tracks, live recordings, and expanded packaging.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go Too', 'Fully Completely', 'Fifty-Mission Cap', 'Wheat Kings', 'The Wherewithal', 'Eldorado', 'Radio Show', 'So Hard Done By', 'Courage (Live)', 'Looking for a Place to Happen (Live)', 'At the Hundredth Meridian (Live)', 'Pigeon Camera (Live)', 'Lionized (Live)', 'Locked in the Trunk of a Car (Live)', 'Fully Completely (Live)', 'Fifty-Mission Cap (Live)', 'Wheat Kings (Live)', 'The Wherewithal (Live)', 'Eldorado (Live)', 'Highway Girl (Live)', 'New Orleans Is Sinking (Live)'] },
+  { num: '03', title: 'Road Apples Box Set', year: '2019', type: 'Box Set', img: 'Road Apples Box Set.jpg',
+    gradient: 'linear-gradient(145deg, #0D2200 0%, #235E00 50%, #091500 100%)',
+    desc: 'Deluxe anniversary reissue of Road Apples, featuring remastered audio, bonus tracks, live recordings, and expanded packaging.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Little Bones', 'Here in the House', 'Bring It All Back', 'Road Apples', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Three Pistols', 'Fight', 'Last of the Unplucked Gems', 'Fiddler\'s Green', 'Ouch', 'Not Necessary', 'Montreal (Live)', 'Crack My Spine Like a Whip', 'Just as Well', 'Reformed Baptist Blues', 'She Didn\'t Know (Live)', 'Three Pistols (Live)', 'Bring It All Back (Live)', 'Long Time Running (Live)', 'Born in the Water (Live)', 'Road Apples (Live)', 'Last of the Unplucked Gems (Live)', 'New Orleans Is Sinking (Live)', 'Highway Girl (Live)', 'Cordelia (Live)', 'Fight (Live)', 'Little Bones (Live)', 'The Luxury (Live)', 'Fiddler\'s Green (Live)', 'Killer Whale', 'Montreal', 'Frozen in the Middle', 'Baby Blue', 'Rock and Roll Will Never Die', 'The Land Between', 'Get Back Again', 'Hurry Up and Wait', 'This Is Nowhere'] },
+  { num: '04', title: 'Phantom Power Box Set', year: '2023', type: 'Box Set', img: 'Phantom Power Box Set.jpg',
+    gradient: 'linear-gradient(145deg, #1A001A 0%, #4A0050 50%, #0E000E 100%)',
+    desc: 'Deluxe 25th anniversary reissue of Phantom Power, featuring remastered audio, bonus material, and expanded packaging.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['Filtration Kiss', 'Bobcaygeon', 'The Rules', 'Membership', 'Thompson Girl', 'Fireworks', 'Something On', 'Vapour Trails', 'Save the Planet', 'Emperor Penguin', 'Escape Is at Hand for the Travellin\' Man', 'Phantom Power', 'Bumblebee', 'Insomniacs of the World, Goodnight', 'Songwriters Cabal', 'Vegas Strip', 'Mystery', 'Filtration Kiss (Live)', 'Bobcaygeon (Live)', 'The Rules (Live)', 'Membership (Live)', 'Thompson Girl (Live)', 'Fireworks (Live)', 'Something On (Live)', 'Vapour Trails (Live)', 'Save the Planet (Live)', 'Emperor Penguin (Live)', 'Escape Is at Hand for the Travellin\' Man (Live)', 'Phantom Power (Live)', 'Ahead by a Century (Live)', 'Locked in the Trunk of a Car (Alternate Version)', 'Bobcaygeon (Alternate Version)', 'The Rules (Alternate Version)', 'Thompson Girl (Alternate Version)', 'Fireworks (Alternate Version)', 'Something On (Alternate Version)', 'Emperor Penguin (Alternate Version)'] },
+  { num: '05', title: 'Up To Here Box Set', year: '2024', type: 'Box Set', img: 'Up to Here Box Set.jpg',
+    gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
+    desc: 'Deluxe 35th anniversary reissue of Up to Here, featuring remastered audio, bonus material, and expanded packaging.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '—', bestRank: null, singles: [],
+    tracks: ['New Orleans Is Sinking', 'Blow at High Dough', 'Boots or Hearts', 'When the Weight Comes Down', 'She Didn\'t Know', 'Trickle Down', 'Highway Girl', 'Another Midnight', 'Opiated', '38 Years Old', 'Take Forever', 'Everytime You Go', 'The Darkest One', 'Twist My Arm', 'New Orleans Is Sinking (Live)', 'Blow at High Dough (Live)', 'When the Weight Comes Down (Live)', 'Trickle Down (Live)', 'Highway Girl (Live)', 'Opiated (Live)', '38 Years Old (Live)', 'Take Forever (Live)', 'Everytime You Go (Live)', 'She Didn\'t Know (Live)', 'Another Midnight (Live)', 'Boots or Hearts (Live)', 'I\'m a Werewolf, Baby (Live)', 'Last American Exit (Live)', 'Killer Whale', 'Montreal', 'All-Night Liquor Store', 'Rock and Roll Will Never Die', 'Up to Here (Demo)', 'Blow at High Dough (Demo)', 'New Orleans Is Sinking (Demo)', 'I\'m a Werewolf, Baby (Demo)', '38 Years Old (Demo)', 'Highway Girl (Demo)', 'Last American Exit (Demo)', 'Evelyn (Demo)'] },
+];
+
+const epAlbums = [
+  { num: '01', title: 'The Tragically Hip', year: '1987', type: 'EP', img: 'The EP.jpg',
+    gradient: 'linear-gradient(145deg, #3D0000 0%, #720000 50%, #2A0000 100%)',
+    desc: 'Self-titled debut EP — seven tracks on cassette, eight on CD. First national release January 1988. Produced by Red Rider guitarist Ken Greer for $5,000.',
+    label: 'MCA Records', producer: 'Ken Greer (Red Rider)', chart: '—', units: '—', bestRank: null,
+    singles: [
+      { title: 'Small Town Bringdown', rank: 'Road #90' },
+      { title: 'Highway Girl', rank: 'Road #60' },
+    ],
+    tracks: ['Small Town Bringdown', 'Last American Exit', 'Killing Time', 'Evelyn', 'Cemetery Sideroad', 'I\'m a Werewolf, Baby', 'Highway Girl', 'All Canadian Surf Club'] },
+  { num: '02', title: 'Saskadelphia', year: '2021', type: 'EP', img: 'Saskadelphia.jpg',
+    gradient: 'linear-gradient(145deg, #2A1500 0%, #5C3200 50%, #1A0D00 100%)',
+    desc: 'Six previously unreleased tracks from the 1990 Road Apples recording sessions at Barris Studios in New Orleans. First release since Gord Downie\'s passing in 2017. Originally the working title of Road Apples before the label rejected it. Debuted at #2 in Canada and #66 in the U.S.',
+    label: 'Universal Music Canada', producer: 'Don Smith', chart: '#2', units: '—', bestRank: null, singles: [],
+    tracks: ['Ouch', 'Not Necessary', 'Montreal (Live)', 'Crack My Spine Like a Whip', 'Just as Well', 'Reformed Baptist Blues'] },
+];
+
+const videoAlbums = [
+  { num: '01', title: 'Heksenketel', year: '1993', type: 'Video', img: 'Heksenketel.jpg',
+    gradient: 'linear-gradient(145deg, #1A1A0A 0%, #3D3D1A 50%, #0F0F05 100%)',
+    desc: 'Tour documentary following the band across Canada during the 1993 Another Roadside Attraction tour. The name is Dutch for "witch\'s cauldron" — the original working title for the tour. Primarily backstage and tour bus footage. Reissued on DVD/Blu-ray in the 2014 Fully Completely Super Deluxe Box Set.',
+    label: 'MCA Records', producer: '—', chart: '—', units: 'Gold (Canada)', bestRank: null, singles: [], tracks: [] },
+  { num: '02', title: 'That Night in Toronto', year: '2005', type: 'Video', img: 'That night In Toronto.jpg',
+    gradient: 'linear-gradient(145deg, #0A0A2A 0%, #1A1A5A 50%, #050518 100%)',
+    desc: 'Full unedited concert film from the Air Canada Centre on November 26, 2004 during the In Between Evolution tour. Directed by Pierre and Francois Lamoureux. Filmed in HD with 5.1 surround. 18,000 in attendance, three encores. Also released as part of the Hipeponymous box set.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: '5x Platinum (Canada)', bestRank: null, singles: [],
+    tracks: ['Vaccination Scar', 'Fully Completely', 'Grace, Too', 'Summer\'s Killing Us', 'Ahead by a Century', 'Silver Jet', 'As Makeshift as We Are', 'Courage (for Hugh MacLennan)', 'Bobcaygeon', 'Nautical Disaster', 'Gus: The Polar Bear from Central Park', 'Poets', 'At the Hundredth Meridian', 'It Can\'t Be Nashville Every Night', 'My Music at Work', 'New Orleans Is Sinking', 'Heaven Is a Better Place Today', 'It\'s a Good Life If You Don\'t Weaken', 'Little Bones', 'Gift Shop', 'Springtime in Vienna', 'Three Pistols', 'Boots or Hearts', 'Blow at High Dough'] },
+  { num: '03', title: 'Bobcaygeon', year: '2012', type: 'Video', img: 'bobcaygeon.png',
+    gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1A3D1A 50%, #050F05 100%)',
+    desc: 'Documentary film directed by Andy Keen chronicling the band\'s headline set at Big Music Fest in Bobcaygeon, Ontario on June 25, 2011 — 25,000 fans pilgrimed to the small town (pop. 2,500) that inspired one of their most beloved songs. The band doesn\'t take the stage until 49 minutes in.',
+    junoAwards: ['Music DVD of the Year (2013)'],
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: 'Gold (Canada)', bestRank: null, singles: [], tracks: [] },
+  { num: '04', title: 'Long Time Running', year: '2017', type: 'Video', img: 'Long_Time_Running.png',
+    gradient: 'linear-gradient(145deg, #1A0D00 0%, #3D2200 50%, #0F0700 100%)',
+    desc: 'Feature documentary by Jennifer Baichwal and Nicholas de Pencier following the band during their final 2016 Man Machine Poem Tour after Gord Downie\'s terminal brain cancer diagnosis. Premiered at TIFF 2017, named First Runner-Up for the People\'s Choice Documentary Award. Originally aired on CTV; moved up after Downie\'s passing.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: 'Platinum (Canada)', bestRank: null, singles: [], tracks: [] },
+  { num: '05', title: 'A National Celebration', year: '2017', type: 'Video', img: 'A National Celebration.jpg',
+    gradient: 'linear-gradient(145deg, #2A0000 0%, #5A0A0A 50%, #1A0000 100%)',
+    desc: 'The complete final concert — August 20, 2016, Rogers K-Rock Centre, Kingston, Ontario. Originally broadcast live by CBC to an estimated 11.7 million Canadians, roughly one-third of the country. All 30 songs presented with no overdubs or corrections. Directed by Dave Russell. Audio mixed by Rich Chycki, mastered by Bob Ludwig.',
+    label: 'Universal Music Canada', producer: '—', chart: '—', units: 'Platinum (Canada)', bestRank: null, singles: [],
+    tracks: ['Fifty-Mission Cap', 'Courage (for Hugh MacLennan)', 'Wheat Kings', 'At the Hundredth Meridian', 'In a World Possessed by the Human Mind', 'What Blue', 'Tired as Fuck', 'Machine', 'Music at Work', 'Lake Fever', 'Toronto #4', 'Putting Down', 'Twist My Arm', 'Three Pistols', 'Fiddler\'s Green', 'Little Bones', 'Last of the Unplucked Gems', 'Something On', 'Poets', 'Bobcaygeon', 'Fireworks', 'New Orleans Is Sinking', 'Boots or Hearts', 'Blow at High Dough', 'Nautical Disaster', 'Scared', 'Grace, Too', 'Locked in the Trunk of a Car', 'Gift Shop', 'Ahead by a Century'] },
+  { num: '06', title: 'No Dress Rehearsal', year: '2024', type: 'Video', img: 'No Dress Rehearsal.jpeg',
+    gradient: 'linear-gradient(145deg, #0A0A1A 0%, #1A1A3D 50%, #05050F 100%)',
+    desc: 'Four-part documentary series directed by Mike Downie, Gord\'s brother. Premiered at TIFF 2024 and streamed on Prime Video, becoming the most-watched Canadian documentary series on the platform. Features never-before-seen performances, unreleased music, and unprecedented access spanning 40 years of the band. IMDB rating: 9.3/10.',
+    label: 'Amazon MGM Studios / Banger Films', producer: 'Mike Downie, Sam Coyle, Scot McFadyen', chart: '—', units: '—', bestRank: null, singles: [], tracks: [] },
+];
+
+// Category configuration
+const categoryData = {
+  studio: studioAlbums,
+  live: liveAlbums,
+  compilations: compilationAlbums,
+  boxsets: boxSetAlbums,
+  eps: epAlbums,
+  video: videoAlbums,
+  top40: [],
+};
+
+const categoryStats = {
+  studio: [
+    { num: '13', lbl: 'Studio Albums' },
+    { num: '8', lbl: 'Canadian #1s' },
+    { num: '1989', lbl: 'First Release' },
+    { num: '2016', lbl: 'Final Album' },
+  ],
+  live: [
+    { num: '8', lbl: 'Live Albums' },
+    { num: '1997', lbl: 'First Release' },
+    { num: '2009', lbl: 'Latest Release' },
+    { num: '6', lbl: 'Vault Series' },
+  ],
+  compilations: [
+    { num: '1', lbl: 'Compilation' },
+    { num: '37', lbl: 'Tracks' },
+    { num: '2005', lbl: 'Released' },
+    { num: '150K', lbl: 'Fan Votes' },
+  ],
+  boxsets: [
+    { num: '5', lbl: 'Box Sets' },
+    { num: '2005', lbl: 'First Release' },
+    { num: '2024', lbl: 'Latest Release' },
+    { num: '4', lbl: 'Albums Revisited' },
+  ],
+  eps: [
+    { num: '2', lbl: 'EPs' },
+    { num: '1987', lbl: 'First Release' },
+    { num: '2021', lbl: 'Latest Release' },
+    { num: '14', lbl: 'Total Tracks' },
+  ],
+  video: [
+    { num: '6', lbl: 'Video Releases' },
+    { num: '1993', lbl: 'First Release' },
+    { num: '2024', lbl: 'Latest Release' },
+    { num: '11.7M', lbl: 'Final Broadcast' },
+  ],
+  top40: [
+    { num: '40', lbl: 'Songs Ranked' },
+    { num: '2024', lbl: 'Countdown Year' },
+    { num: '13', lbl: 'Albums Featured' },
+    { num: '#1', lbl: 'Grace, Too' },
+  ],
+};
+
+// ─── Spotify URL Mapping ───
+const spotifyAlbumURLs = {
+  'Up to Here': 'https://open.spotify.com/album/4gmKiB0dtmPWjzbDM5N7Jv',
+  'Road Apples': 'https://open.spotify.com/album/2QNTZHxK2b7QAHiKbZZHzz',
+  'Fully Completely': 'https://open.spotify.com/album/60peDyBYVk0DWanN2GPxhO',
+  'Day for Night': 'https://open.spotify.com/album/3qtWDY2yl7NGrpCYqxrUt6',
+  'Trouble at the Henhouse': 'https://open.spotify.com/album/5mMBYPBUI6jHW40ASk1ekn',
+  'Phantom Power': 'https://open.spotify.com/album/3HWQXn3dGZPSnIhVkvHIOz',
+  'Music @ Work': 'https://open.spotify.com/album/33aItQcQU8wZdqj25tfnwP',
+  'In Violet Light': 'https://open.spotify.com/album/6ELgeslYai1AYmzrehK2vn',
+  'In Between Evolution': 'https://open.spotify.com/album/4gasnW501ssEcS9bX3UVel',
+  'World Container': 'https://open.spotify.com/album/4EMDD5Pi0mPIHQB3sGPUW0',
+  'We Are the Same': 'https://open.spotify.com/album/7mMiw4UfyLUXO500JB31ye',
+  'Now for Plan A': 'https://open.spotify.com/album/58DjhjESh15Ms8pJu2yjUB',
+  'Man Machine Poem': 'https://open.spotify.com/album/7n8zDZnmmoo7OZv3OkdR7u',
+  'Live Between Us': 'https://open.spotify.com/album/4TDw74VAtcfQgE7Db59sqt',
+  'Live at the Roxy': 'https://open.spotify.com/album/3FSeD7FOkS9u8tgy1xk8tB',
+  'Live From The Vault: Volume 1': 'https://open.spotify.com/album/5W2ractcP5gBYBFF4XjUuu',
+  'Live From The Vault: Volume 2': 'https://open.spotify.com/album/1cuAGadCZ7eiygNMbOAUdl',
+  'Live From The Vault: Volume 3': 'https://open.spotify.com/album/1OvgkveMKDrtitpJLscIxs',
+  'Live From The Vault: Volume 4': 'https://open.spotify.com/album/2Ckj5o0evvJE0oimf3Tvj4',
+  'Live From The Vault: Volume 5': 'https://open.spotify.com/album/0Ef5LyxsEYepSROsnutNLz',
+  'Live From The Vault: Volume 6': 'https://open.spotify.com/album/2jfMAO4b28AFjEQJaRMvYy',
+  'Yer Favourites': 'https://open.spotify.com/album/6tcv9H1TNubc9o0gy2eIAG',
+  'Fully Completely Box Set': 'https://open.spotify.com/album/6dWzo61hYvRtiKDblfwU4C',
+  'Road Apples Box Set': 'https://open.spotify.com/album/6DZzcs4OnSsyUWIWb3TnSA',
+  'Phantom Power Box Set': 'https://open.spotify.com/album/1HSX49MRRoXiT8DCN2xTet',
+  'Up To Here Box Set': 'https://open.spotify.com/album/5548ROx9ZxjJ2iXCq9DLI6',
+  'The Tragically Hip': 'https://open.spotify.com/album/40agYF5r1Q9nra0qu8qPSs',
+  'Saskadelphia': 'https://open.spotify.com/album/4K4TmKxqAJLQfsIuwb7per',
+};
+
+const spotifyTrackURLs = {
+  'Blow at High Dough': 'https://open.spotify.com/track/08zO0p5o1AGXMk5E8cvzyS',
+  'New Orleans Is Sinking': 'https://open.spotify.com/track/6v4pemwpkW7msCbBtSJf15',
+  'Boots or Hearts': 'https://open.spotify.com/track/2vqyUC74BKI9gmA4NjQRa8',
+  '38 Years Old': 'https://open.spotify.com/track/3LCJpRE769W1sWmrk2Ou5r',
+  'Little Bones': 'https://open.spotify.com/track/2qK6fxHA2V8mCK9pHry3wa',
+  'Three Pistols': 'https://open.spotify.com/track/41zSUQDwEsTjOvOChgVccy',
+  'Twist My Arm': 'https://open.spotify.com/track/3D0uFvzbcAfSIjNvFPSfdN',
+  'Locked in the Trunk of a Car': 'https://open.spotify.com/track/1Ptd8aU3TI2L3PY7HZR2i8',
+  'Fifty-Mission Cap': 'https://open.spotify.com/track/4mYQqRAN5xTubTvZybrWFm',
+  'Courage (for Hugh MacLennan)': 'https://open.spotify.com/track/1ffzAzDFSOvEbWTbC7aPLw',
+  'At the Hundredth Meridian': 'https://open.spotify.com/track/7EZnlIl6ZqxX99VnryKo49',
+  'Wheat Kings': 'https://open.spotify.com/track/53o05J0uSWOedPwN4Z0oyo',
+  'The Wherewithal': 'https://open.spotify.com/track/41F5feawvwrQOcShqgcstl',
+  'Grace, Too': 'https://open.spotify.com/track/0qC02cAOQmm4eJR4Kn9pcY',
+  'Nautical Disaster': 'https://open.spotify.com/track/58Gi98Nvrjo7qVI1dHOqFD',
+  'So Hard Done By': 'https://open.spotify.com/track/1sGaMnUDYtJ9NMeN7NGfoY',
+  'Thugs': 'https://open.spotify.com/track/4QYenKdpsnMVJmngTPDptz',
+  'Inevitability of Death': 'https://open.spotify.com/track/6AQ1Ym0wbcHrGjKAmTbTCJ',
+  'Titanic Terrarium': 'https://open.spotify.com/track/5AdbdK5R4xHslewUMsnErS',
+  'Ahead by a Century': 'https://open.spotify.com/track/2SVEOxPGB8Z8WikO4DppNA',
+  'Springtime in Vienna': 'https://open.spotify.com/track/64A5u1BRzSGrw989vca6jQ',
+  "Don't Wake Daddy": 'https://open.spotify.com/track/63FF86qMyWRqkXKoo5Amxy',
+  'Poets': 'https://open.spotify.com/track/5NiRlNvtVHook7khw6QVDc',
+  'Bobcaygeon': 'https://open.spotify.com/track/2oPzisApHGH3hbcu4C9UJS',
+  'Fireworks': 'https://open.spotify.com/track/678vd8gSx8P7SCpV5cdnYq',
+  'Tiger the Lion': 'https://open.spotify.com/track/2R8akKYXfsU21dpVXAv1Cl',
+  'Membership': 'https://open.spotify.com/track/63W7SFkwGC1Y087M7dGCbt',
+  'My Music at Work': 'https://open.spotify.com/track/1KId06mi7KWFeUkkfqXQ2N',
+  'Lake Fever': 'https://open.spotify.com/track/5Isrc180mEzqfEGaank2zb',
+  'Freak Turbulence': 'https://open.spotify.com/track/1o6iR0kF0dZ64DLQXwLGuZ',
+  "It's a Good Life If You Don't Weaken": 'https://open.spotify.com/track/2rq1xsGCFXjdwJ85jdrfCW',
+  'The Dark Canuck': 'https://open.spotify.com/track/0BgHJ2Ii2p0qeWsT9dxXa6',
+  'Silver Jet': 'https://open.spotify.com/track/06vZUnfggFbZSVGJABrulr',
+  'Vaccination Scar': 'https://open.spotify.com/track/0P3Slenp8BboMM0HjY5LiR',
+  "Summer's Killing Us": 'https://open.spotify.com/track/2HVRcMwybV1VfTIbZj6g1K',
+  'Gus: The Polar Bear from Central Park': 'https://open.spotify.com/track/5c3EnUqMBsMrDdTL6hlokU',
+  'Yer Not the Ocean': 'https://open.spotify.com/track/3bwvCWEy9kalCrfrjrNJ7R',
+  'In View': 'https://open.spotify.com/track/4CHDATvlEJBVLpbSVzdL7s',
+  'The Lonely End of the Rink': 'https://open.spotify.com/track/6PMvUUYuE3rqOwx5RAB71x',
+  'Love Is a First': 'https://open.spotify.com/track/0Vm9DRvfh0noVDbCm00AV4',
+  'Coffee Girl': 'https://open.spotify.com/track/6kNbu9wrCEL3GEmlvG0nrs',
+  'Frozen in My Tracks': 'https://open.spotify.com/track/38ucP6ALP5SUZwtahwm2c3',
+  'At Transformation': 'https://open.spotify.com/track/1jd5VHZVF28bSW2zQ22teW',
+  'Streets Ahead': 'https://open.spotify.com/track/6WaLpgvWv8Yt9PUmo7Schz',
+  'The Lookahead': 'https://open.spotify.com/track/0MPRsNEJZtFLLiWJGCNuIP',
+  'In a World Possessed by the Human Mind': 'https://open.spotify.com/track/45erEOdEX0ks9c1sNccFz1',
+  'Tired as Fuck': 'https://open.spotify.com/track/4bdP1dEFVaxTnA07I5B7Os',
+  'Small Town Bringdown': 'https://open.spotify.com/track/6WqlIL63V8PWihyfOhvZm1',
+  'Highway Girl': 'https://open.spotify.com/track/5C3NwXV0A9O7xbyfjoPgA6',
+  'Trickle Down': 'https://open.spotify.com/track/1heYgSEea12fGeXNFYuWXc',
+  'Fiddler\'s Green': 'https://open.spotify.com/track/42HlPwjfrQxkmOGVkLDac9',
+  'Gift Shop': 'https://open.spotify.com/track/4HoLiH7QU0jL1CkXaVwk5v',
+  'Fully Completely': 'https://open.spotify.com/track/2BAz0bJiIG7iD6TngwtvbI',
+  'Escape Is at Hand for the Travellin\' Man': 'https://open.spotify.com/track/69z3gqoQPKRuqQ7WiLtC3p',
+  'Cordelia': 'https://open.spotify.com/track/4NdrEZXts7Nq4onexSarPD',
+  'Long Time Running': 'https://open.spotify.com/track/7C6QeMxWgaPK68MFmlgO0X',
+  'Flamenco': 'https://open.spotify.com/track/2au58er4qd6wO42lZVdRov',
+  'Scared': 'https://open.spotify.com/track/3GuGAaOn1SQbggjKDtF7C4',
+  'Pigeon Camera': 'https://open.spotify.com/track/1ctwf9EMDUseU7pyYcgDaR',
+  'The Darkest One': 'https://open.spotify.com/track/5OCUz5Jsq27nGnj3rZAhIs',
+  'Emperor Penguin': 'https://open.spotify.com/track/52PyLDWZmgeP1H06ltxgdK',
+  'The Depression Suite': 'https://open.spotify.com/track/4pGgSf7Ym2UNN3dwlJYz3Q',
+  'Looking for a Place to Happen': 'https://open.spotify.com/track/3Ff2LvxsYjB9Iga0FlU1Qs',
+  'Greasy Jungle': 'https://open.spotify.com/track/09uQgQGFxvlBH0P2qKIYNp',
+  'We Want to Be It': 'https://open.spotify.com/track/2zvv6IlyHsNNYpaDRWEaZU',
+};
+
+// Inject Spotify URLs into all album and single objects
+Object.values(categoryData).flat().forEach(album => {
+  album.spotifyAlbumURL = spotifyAlbumURLs[album.title] || null;
+  if (album.singles) {
+    album.singles.forEach(single => {
+      single.spotifyTrackURL = spotifyTrackURLs[single.title] || null;
+    });
+  }
+});
+
+let currentCategory = 'studio';
+let currentAlbums = studioAlbums;
+
+// Build hipTracks array from all studio album tracks
+const hipTracks = [];
+studioAlbums.forEach(album => {
+  if (!album.tracks) return;
+  album.tracks.forEach(trackTitle => {
+    hipTracks.push({
+      title: trackTitle,
+      album: album.title,
+      spotifyTrackURL: spotifyTrackURLs[trackTitle] || null
+    });
+  });
+});
+
+// ─── Spotify Playback Integration (PKCE Auth Flow) ───
+const SPOTIFY_CLIENT_ID = '4510e47736264ad79f30ac3966a6d825';
+const SPOTIFY_REDIRECT_URI = 'https://localhost:8765/';
+const SPOTIFY_SCOPES = 'streaming user-read-email user-read-private user-modify-playback-state';
+
+let spotifyToken = null;
+let spotifyPlayer = null;
+let spotifyDeviceId = null;
+
+// PKCE helpers
+function generateRandomString(length) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const arr = new Uint8Array(length);
+  crypto.getRandomValues(arr);
+  return Array.from(arr, b => chars[b % chars.length]).join('');
+}
+
+async function generateCodeChallenge(verifier) {
+  const data = new TextEncoder().encode(verifier);
+  const digest = await crypto.subtle.digest('SHA-256', data);
+  return btoa(String.fromCharCode(...new Uint8Array(digest)))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+// Check for auth code in URL (PKCE callback)
+(async function checkSpotifyCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  if (!code) return;
+  const verifier = sessionStorage.getItem('spotify_code_verifier');
+  if (!verifier) return;
+  sessionStorage.removeItem('spotify_code_verifier');
+  // Exchange code for token
+  try {
+    const res = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: SPOTIFY_CLIENT_ID,
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: SPOTIFY_REDIRECT_URI,
+        code_verifier: verifier
+      })
+    });
+    const data = await res.json();
+    if (data.access_token) {
+      spotifyToken = data.access_token;
+      sessionStorage.setItem('spotify_token', spotifyToken);
+      // Clean up URL
+      history.replaceState(null, '', window.location.pathname);
+      // Init SDK if ready
+      if (window.Spotify) window.onSpotifyWebPlaybackSDKReady();
+    }
+  } catch (e) { console.error('Spotify token exchange failed', e); }
+})();
+
+// Restore token from session
+if (!spotifyToken) {
+  spotifyToken = sessionStorage.getItem('spotify_token');
+}
+
+// Initialize Spotify Web Playback SDK when ready
+window.onSpotifyWebPlaybackSDKReady = () => {
+  if (!spotifyToken) return;
+  spotifyPlayer = new Spotify.Player({
+    name: 'Tragically Hip Discography',
+    getOAuthToken: cb => cb(spotifyToken),
+    volume: 0.8
+  });
+  spotifyPlayer.addListener('ready', ({ device_id }) => {
+    spotifyDeviceId = device_id;
+    updateSpotifyBtn(true);
+  });
+  spotifyPlayer.addListener('authentication_error', () => {
+    spotifyToken = null;
+    spotifyDeviceId = null;
+    sessionStorage.removeItem('spotify_token');
+    updateSpotifyBtn(false);
+  });
+  spotifyPlayer.connect();
+};
+
+// If SDK already loaded and we have a token, init now
+if (spotifyToken && window.Spotify) window.onSpotifyWebPlaybackSDKReady();
+
+async function connectSpotify() {
+  const verifier = generateRandomString(128);
+  sessionStorage.setItem('spotify_code_verifier', verifier);
+  const challenge = await generateCodeChallenge(verifier);
+  const authUrl = 'https://accounts.spotify.com/authorize' +
+    `?client_id=${SPOTIFY_CLIENT_ID}` +
+    `&response_type=code` +
+    `&redirect_uri=${encodeURIComponent(SPOTIFY_REDIRECT_URI)}` +
+    `&scope=${encodeURIComponent(SPOTIFY_SCOPES)}` +
+    `&code_challenge_method=S256` +
+    `&code_challenge=${challenge}` +
+    `&show_dialog=false`;
+  window.location.href = authUrl;
+}
+
+function updateSpotifyBtn(connected) {
+  const btn = document.getElementById('spotifyConnectBtn');
+  if (!btn) return;
+  if (connected) {
+    btn.textContent = '● Spotify Connected';
+    btn.classList.add('connected');
+    btn.onclick = null;
+  } else {
+    btn.textContent = 'Connect Spotify';
+    btn.classList.remove('connected');
+    btn.onclick = connectSpotify;
+  }
+}
+
+function extractSpotifyTrackId(url) {
+  if (!url) return null;
+  const m = url.match(/track\/([a-zA-Z0-9]+)/);
+  return m ? m[1] : null;
+}
+
+async function playSpotifyTrack(trackId) {
+  if (!spotifyToken || !spotifyDeviceId) return false;
+  try {
+    const res = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`, {
+      method: 'PUT',
+      headers: { 'Authorization': `Bearer ${spotifyToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ uris: [`spotify:track:${trackId}`] })
+    });
+    return res.ok;
+  } catch { return false; }
+}
+
+// Random Hip Song click handler
+document.getElementById('randomSongBtn').addEventListener('click', async () => {
+  const track = hipTracks[Math.floor(Math.random() * hipTracks.length)];
+  const resultEl = document.getElementById('randomSongResult');
+  const titleHtml = track.spotifyTrackURL
+    ? `<a href="${track.spotifyTrackURL}" target="_blank" rel="noopener noreferrer">${track.title}</a>`
+    : `<span style="color:#fff;font-weight:600">${track.title}</span>`;
+  resultEl.innerHTML = `${titleHtml} from <span class="album-ref">${track.album}</span>`;
+  resultEl.classList.add('visible');
+
+  // Trigger Spotify playback
+  const trackId = extractSpotifyTrackId(track.spotifyTrackURL);
+  if (!trackId) return;
+  if (spotifyDeviceId && spotifyToken) {
+    const ok = await playSpotifyTrack(trackId);
+    if (!ok) window.open(`spotify:track:${trackId}`, '_self');
+  } else {
+    window.open(`spotify:track:${trackId}`, '_self');
+  }
+});
+
+// Build sets of single titles per album for dot markers
+function getSingleTitles(album) {
+  if (!album.singles || !album.singles.length) return new Set();
+  return new Set(album.singles.map(s => s.title));
+}
+
+function rankClass(rankStr) {
+  if (rankStr === 'Unranked') return 'unranked';
+  if (rankStr.startsWith('Road')) return 'road';
+  const n = parseInt(rankStr.replace('Top 40 #',''));
+  if (n <= 10) return 't10';
+  return 't40';
+}
+
+// Render category
+function renderCategory(category) {
+  currentCategory = category;
+  currentAlbums = categoryData[category];
+
+  // Update active button + roving tabindex
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    const isActive = btn.dataset.category === category;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    btn.setAttribute('tabindex', isActive ? '0' : '-1');
+  });
+
+  // Update stats row
+  const stats = categoryStats[category];
+  for (let i = 0; i < 4; i++) {
+    document.getElementById('statNum' + (i + 1)).textContent = stats[i].num;
+    document.getElementById('statLbl' + (i + 1)).textContent = stats[i].lbl;
+    document.getElementById('statNum' + (i + 1)).parentElement.setAttribute('aria-label', stats[i].num + ' ' + stats[i].lbl);
+  }
+
+  // Show/hide Top 40 section
+  document.getElementById('top40Section').style.display = category === 'top40' ? '' : 'none';
+
+  // Re-render album grid
+  const grid = document.getElementById('albumsGrid');
+  grid.innerHTML = '';
+  currentAlbums.forEach((a, i) => {
+    const hasBest = a.bestRank !== null;
+    const isTop10 = hasBest && a.bestRank <= 10;
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'album-card';
+    card.setAttribute('aria-label', `${a.title} (${a.year})`);
+    card.innerHTML = `
+      <div class="album-art${a.spotifyAlbumURL ? ' spotify-clickable' : ''}"${a.img ? '' : ` style="background:${a.gradient}"`}${a.spotifyAlbumURL ? ` role="link" aria-label="Open ${a.title} on Spotify"` : ''}>
+        ${a.img ? `<img src="${a.img}" alt="${a.title}" class="album-art-img" onerror="this.style.display='none'; this.parentElement.style.background='${a.gradient}'">` : ''}
+        ${a.spotifyAlbumURL ? `<div class="spotify-overlay"><svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></div>` : ''}
+      </div>
+      <div class="album-info">
+        <span class="album-info-hint">Details</span>
+        <div class="album-name">${a.title}</div>
+        <div class="album-bottom">
+          <span>${a.year}</span>
+          <span class="type-badge">${a.type}</span>
+          ${a.chart && a.chart !== '—' ? `<span class="chart-badge">${/^#1[^0-9]|^#1$/.test(a.chart) ? '🇨🇦 #1' : a.chart}</span>` : ''}
+        </div>
+        ${a.junoAwards ? `<div class="juno-badge">🏅 Juno Award Winner</div>` : ''}
+      </div>
+    `;
+    // Spotify click handler for album art
+    if (a.spotifyAlbumURL) {
+      const artEl = card.querySelector('.album-art');
+      artEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.open(a.spotifyAlbumURL, '_blank', 'noopener,noreferrer');
+      });
+    }
+    card.addEventListener('click', () => openModal(i));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); } });
+    grid.appendChild(card);
+  });
+}
+
+// Category button click handlers + roving tabindex
+const catBtns = Array.from(document.querySelectorAll('.category-btn'));
+catBtns.forEach((btn, idx) => {
+  btn.setAttribute('tabindex', idx === 0 ? '0' : '-1');
+  btn.addEventListener('click', () => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    renderCategory(btn.dataset.category);
+    catBtns.forEach((b, j) => b.setAttribute('tabindex', b === btn ? '0' : '-1'));
+    window.scrollTo({ top: document.getElementById('albumsGrid').offsetTop - 100, behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
+  btn.addEventListener('keydown', e => {
+    let next;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      next = catBtns[(idx + 1) % catBtns.length];
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      next = catBtns[(idx - 1 + catBtns.length) % catBtns.length];
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      next = catBtns[0];
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      next = catBtns[catBtns.length - 1];
+    }
+    if (next) {
+      catBtns.forEach(b => b.setAttribute('tabindex', '-1'));
+      next.setAttribute('tabindex', '0');
+      next.focus();
+    }
+  });
+});
+
+// Initial render
+renderCategory('studio');
+
+// Render top 40 songs
+const songsGrid = document.getElementById('songsGrid');
+top40Songs.forEach(s => {
+  const isTop10 = s.rank <= 10;
+  const url = spotifyTrackURLs[s.title] || null;
+  const el = document.createElement(url ? 'a' : 'div');
+  el.className = 'song-row';
+  if (url) {
+    el.href = url;
+    el.target = '_blank';
+    el.rel = 'noopener noreferrer';
+    el.setAttribute('aria-label', `${s.title} — play on Spotify`);
+  }
+  el.innerHTML = `
+    <div class="song-rank ${isTop10 ? 'top10' : 'top40'}">#${s.rank}</div>
+    <div class="song-info">
+      <div class="song-title">${s.title}</div>
+      <div class="song-meta">${s.album} · ${s.year}</div>
+    </div>
+    ${url ? '<svg class="song-spotify-icon" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>' : ''}
+  `;
+  songsGrid.appendChild(el);
+});
+
+// Modal
+const overlay = document.getElementById('overlay');
+const modalClose = document.getElementById('modalClose');
+let lastFocusedCard = null;
+
+function openModal(i) {
+  lastFocusedCard = document.activeElement;
+  const a = currentAlbums[i];
+  const singleTitles = getSingleTitles(a);
+
+  const mArt = document.getElementById('mArt');
+  if (a.img) {
+    mArt.style.background = '';
+    if (a.spotifyAlbumURL) {
+      mArt.innerHTML = `<img src="${a.img}" alt="Open ${a.title} on Spotify" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;cursor:pointer;" onclick="window.open('${a.spotifyAlbumURL}','_blank','noopener,noreferrer')" onerror="this.style.display='none'; this.parentElement.style.background='${a.gradient}'">`;
+      mArt.classList.add('spotify-clickable');
+    } else {
+      mArt.innerHTML = `<img src="${a.img}" alt="${a.title}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" onerror="this.style.display='none'; this.parentElement.style.background='${a.gradient}'">`;
+      mArt.classList.remove('spotify-clickable');
+    }
+  } else {
+    mArt.style.background = a.gradient;
+    mArt.innerHTML = '';
+    mArt.classList.remove('spotify-clickable');
+  }
+  const mTitleEl = document.getElementById('mTitle');
+  mTitleEl.textContent = a.title;
+  if (a.spotifyAlbumURL) {
+    mTitleEl.classList.add('spotify-clickable');
+    mTitleEl.style.cursor = 'pointer';
+    mTitleEl.onclick = () => window.open(a.spotifyAlbumURL, '_blank', 'noopener,noreferrer');
+  } else {
+    mTitleEl.classList.remove('spotify-clickable');
+    mTitleEl.style.cursor = '';
+    mTitleEl.onclick = null;
+  }
+  document.getElementById('mSub').textContent = `${a.year} · ${a.num} of ${currentAlbums.length}`;
+
+  const tagsEl = document.getElementById('mTags');
+  tagsEl.innerHTML = `<span class="modal-tag red">${a.type}</span>`;
+  if (a.chart !== '—') {
+    const isOne = /^#1[^0-9]|^#1$/.test(a.chart);
+    tagsEl.innerHTML += `<span class="modal-tag ${isOne ? 'gold' : 'dim'}">${isOne ? '🇨🇦 ' : ''}${a.chart}</span>`;
+  }
+  if (a.units !== '—') tagsEl.innerHTML += `<span class="modal-tag dim">${a.units}</span>`;
+  if (a.junoAwards) tagsEl.innerHTML += `<span class="modal-tag gold">🏅 Juno Winner</span>`;
+
+  const junoHtml = a.junoAwards ? `
+    <div class="modal-section-title">Juno Awards</div>
+    <ul class="singles-list" style="margin-bottom:24px">
+      ${a.junoAwards.map(j => `
+        <li class="single-item">
+          <span class="single-rank t10">🏅</span>
+          <span class="single-name">${j}</span>
+        </li>
+      `).join('')}
+    </ul>
+  ` : '';
+
+  const factGrid = (a.label && a.label !== '—') || (a.producer && a.producer !== '—') ? `
+    <div class="modal-fact-grid">
+      ${a.label && a.label !== '—' ? `<div class="modal-fact"><span class="fact-lbl">Label</span><span class="fact-val">${a.label}</span></div>` : ''}
+      ${a.producer && a.producer !== '—' ? `<div class="modal-fact"><span class="fact-lbl">Producer</span><span class="fact-val">${a.producer}</span></div>` : ''}
+    </div>
+  ` : '';
+
+  const singlesHtml = a.singles && a.singles.length ? `
+    <div class="modal-section-title">Singles</div>
+    <ul class="singles-list">
+      ${a.singles.map(s => `
+        <li class="single-item">
+          <span class="single-rank ${rankClass(s.rank)}">${s.rank.startsWith('Road') ? 'Outside Top 40' : s.rank}</span>
+          ${s.spotifyTrackURL
+            ? `<a href="${s.spotifyTrackURL}" target="_blank" rel="noopener noreferrer" class="single-name single-link" aria-label="${s.title} — play on Spotify">${s.title}</a>`
+            : `<span class="single-name">${s.title}</span>`
+          }
+        </li>
+      `).join('')}
+    </ul>
+  ` : '';
+
+  const tracksHtml = a.tracks && a.tracks.length ? `
+    <div class="modal-section-title">Tracks</div>
+    <ul class="tracks-list">
+      ${a.tracks.map((t, idx) => `
+        <li class="track-item">
+          <span class="track-num">${idx + 1}</span>
+          <span class="track-name">${t}</span>
+          ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
+        </li>
+      `).join('')}
+    </ul>
+  ` : '';
+
+  const descHtml = a.desc ? `<p class="modal-desc">${a.desc}</p>` : '';
+
+  document.getElementById('mBody').innerHTML = `
+    ${descHtml}
+    ${factGrid}
+    ${junoHtml}
+    ${singlesHtml}
+    ${tracksHtml}
+  `;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('header').inert = true;
+  document.querySelector('main').inert = true;
+  document.querySelector('footer').inert = true;
+  modalClose.focus();
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelector('header').inert = false;
+  document.querySelector('main').inert = false;
+  document.querySelector('footer').inert = false;
+  if (lastFocusedCard && lastFocusedCard.isConnected) {
+    lastFocusedCard.focus();
+  }
+  lastFocusedCard = null;
+}
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
