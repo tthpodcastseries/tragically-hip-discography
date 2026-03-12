@@ -618,14 +618,7 @@
     .track-item:last-child { border-bottom: none; }
     .track-num { font-size: 0.75rem; color: var(--muted2); min-width: 22px; text-align: right; }
     .track-name { font-size: 0.86rem; }
-    .track-single-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--red);
-      flex-shrink: 0;
-      margin-left: auto;
-      margin-right: 4px;
-    }
+    .track-single-dot { display: none; }
 
     /* ─── FOOTER ─── */
     footer {
@@ -732,7 +725,7 @@
   Discography data sourced from the
   <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series · Complete Discography v4.0</a> ·
   TTHTop40 rankings from the 2024–25 fan countdown<br>
-  <span style="color: var(--muted2)">• red dot on tracks = released as single •</span>
+  <span style="color: var(--muted2)"></span>
 </footer>
 
 <script>
