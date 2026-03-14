@@ -462,6 +462,38 @@
     .song-info { min-width: 0; flex: 1; }
     .song-title { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .song-meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .song-rank.beyond { color: var(--muted); }
+
+    /* ─── BEYOND TOP 40 ─── */
+    .beyond-toggle {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 14px; margin: 24px 0 16px;
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: border-color 0.15s, color 0.15s;
+    }
+    .beyond-toggle:hover { border-color: var(--gold); color: #fff; }
+    .beyond-toggle .arrow { transition: transform 0.3s; }
+    .beyond-toggle.open .arrow { transform: rotate(180deg); }
+    .beyond-content { display: none; }
+    .beyond-content.open { display: block; }
+
+    /* ─── ALBUM VOTE BREAKDOWN ─── */
+    .album-breakdown { margin: 32px 0 24px; }
+    .breakdown-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .breakdown-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 16px; transition: border-color 0.15s;
+    }
+    .breakdown-card:hover { border-color: var(--gold); }
+    .breakdown-album-name { font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .breakdown-stats { font-size: 0.7rem; color: var(--muted); margin-bottom: 8px; }
+    .breakdown-bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; margin-bottom: 8px; }
+    .breakdown-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 0.4s ease; }
+    .breakdown-tracks { font-size: 0.68rem; color: var(--muted2); line-height: 1.5; }
+    .breakdown-tracks .voted { color: var(--gold); }
+    .breakdown-tracks .unvoted { color: var(--muted2); opacity: 0.5; }
     .song-spotify-icon { flex-shrink: 0; opacity: 0.3; transition: opacity 0.15s; width: 18px; height: 18px; }
     .song-row:hover .song-spotify-icon { opacity: 0.8; }
 
@@ -714,6 +746,15 @@
       <div class="section-line"></div>
     </div>
     <div class="top40-grid" id="songsGrid"></div>
+
+    <button class="beyond-toggle" id="beyondToggle" aria-expanded="false" aria-controls="beyondContent">
+      <span>The Full 169 — All Songs That Received Votes</span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="beyond-content" id="beyondContent">
+      <div class="album-breakdown" id="albumBreakdown"></div>
+      <div class="top40-grid" id="beyondGrid"></div>
+    </div>
   </div>
 </main>
 
@@ -735,7 +776,7 @@
 <footer>
   <strong style="color:#aaa">The Tragically Hip</strong> — Gord Downie (1964–2017)<br>
   Discography data sourced from the
-  <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series · Complete Discography v4.0</a> ·
+  <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series · Complete Discography v5.6</a> ·
   TTHTop40 rankings from the 2024–25 fan countdown<br>
   <span style="color: var(--muted2)"></span>
 </footer>
@@ -1473,9 +1514,143 @@ document.getElementById('randomSongBtn').addEventListener('click', async () => {
   }
 });
 
-// Build TTH Top 40 lookup map: track title → rank
+// Songs #41-#169 from the TTHTop40 countdown (all songs that received votes)
+const beyondTop40 = [
+  { rank: 41, title: "Don't Wake Daddy", album: 'Trouble at the Henhouse', points: 265 },
+  { rank: 42, title: 'The Dire Wolf', album: 'In Violet Light', points: 260 },
+  { rank: 43, title: 'So Hard Done By', album: 'Day for Night', points: 255 },
+  { rank: 44, title: 'Eldorado', album: 'Fully Completely', points: 249 },
+  { rank: 45, title: 'Twist My Arm', album: 'Road Apples', points: 245 },
+  { rank: 46, title: 'In View', album: 'World Container', points: 241 },
+  { rank: 47, title: 'Thugs', album: 'Day for Night', points: 237 },
+  { rank: 48, title: 'Opiated', album: 'Up to Here', points: 236 },
+  { rank: 49, title: 'The Dark Canuck', album: 'In Violet Light', points: 226 },
+  { rank: 50, title: 'As I Wind Down the Pines', album: 'In Between Evolution', points: 226 },
+  { rank: 51, title: 'Another Midnight', album: 'Up to Here', points: 225 },
+  { rank: 52, title: "It Can't Be Nashville Every Night", album: 'In Between Evolution', points: 222 },
+  { rank: 53, title: 'Coffee Girl', album: 'We Are the Same', points: 220 },
+  { rank: 54, title: 'Chagrin Falls', album: 'Phantom Power', points: 217 },
+  { rank: 55, title: 'Yawning or Snarling', album: 'Day for Night', points: 212 },
+  { rank: 56, title: 'Now for Plan A', album: 'Now for Plan A', points: 212 },
+  { rank: 57, title: 'An Inch an Hour', album: 'Day for Night', points: 202 },
+  { rank: 58, title: 'Tired as Fuck', album: 'Man Machine Poem', points: 201 },
+  { rank: 59, title: 'Everytime You Go', album: 'Up to Here', points: 200 },
+  { rank: 60, title: 'Highway Girl', album: 'The Tragically Hip', points: 197 },
+  { rank: 61, title: 'Something On', album: 'Phantom Power', points: 190 },
+  { rank: 62, title: 'A Beautiful Thing', album: 'In Violet Light', points: 189 },
+  { rank: 63, title: 'Stay', album: 'Music @ Work', points: 184 },
+  { rank: 64, title: 'Inevitability of Death', album: 'Day for Night', points: 179 },
+  { rank: 65, title: 'Tiger the Lion', album: 'Music @ Work', points: 175 },
+  { rank: 66, title: 'Vaccination Scar', album: 'In Between Evolution', points: 169 },
+  { rank: 67, title: 'The Luxury', album: 'Road Apples', points: 169 },
+  { rank: 68, title: 'Fight', album: 'Road Apples', points: 166 },
+  { rank: 69, title: 'The Last of the Unplucked Gems', album: 'Road Apples', points: 163 },
+  { rank: 70, title: "I'll Believe in You (Or I'll Be Leaving You Tonight)", album: 'Up to Here', points: 162 },
+  { rank: 71, title: 'About This Map', album: 'Now for Plan A', points: 153 },
+  { rank: 72, title: 'Vapour Trails', album: 'Phantom Power', points: 151 },
+  { rank: 73, title: 'Morning Moon', album: 'We Are the Same', points: 151 },
+  { rank: 74, title: 'Last American Exit', album: 'The Tragically Hip', points: 151 },
+  { rank: 75, title: 'The Lonely End of the Rink', album: 'World Container', points: 150 },
+  { rank: 76, title: '700 Ft. Ceiling', album: 'Trouble at the Henhouse', points: 140 },
+  { rank: 77, title: 'Leave', album: 'In Violet Light', points: 136 },
+  { rank: 78, title: 'Fire in the Hole', album: 'Day for Night', points: 135 },
+  { rank: 79, title: 'Thompson Girl', album: 'Phantom Power', points: 134 },
+  { rank: 80, title: 'Machine', album: 'Man Machine Poem', points: 134 },
+  { rank: 81, title: 'Bring It All Back', album: 'Road Apples', points: 132 },
+  { rank: 82, title: 'Apartment Song', album: 'Trouble at the Henhouse', points: 130 },
+  { rank: 83, title: 'Silver Jet', album: 'In Violet Light', points: 126 },
+  { rank: 84, title: 'Coconut Cream', album: 'Trouble at the Henhouse', points: 125 },
+  { rank: 85, title: 'No Threat', album: 'Yer Favourites', points: 121 },
+  { rank: 86, title: 'Daredevil', album: 'Day for Night', points: 121 },
+  { rank: 87, title: 'Throwing Off Glass', album: 'In Violet Light', points: 120 },
+  { rank: 88, title: 'Goodnight Attawapiskat', album: 'Now for Plan A', points: 120 },
+  { rank: 89, title: 'World Container', album: 'World Container', points: 119 },
+  { rank: 90, title: 'Small Town Bringdown', album: 'The Tragically Hip', points: 119 },
+  { rank: 91, title: 'On the Verge', album: 'Road Apples', points: 119 },
+  { rank: 92, title: 'Lionized', album: 'Fully Completely', points: 118 },
+  { rank: 93, title: 'When the Weight Comes Down', album: 'Up to Here', points: 116 },
+  { rank: 94, title: 'Take Forever', album: 'Up to Here', points: 116 },
+  { rank: 95, title: 'Heaven Is a Better Place Today', album: 'In Between Evolution', points: 106 },
+  { rank: 96, title: 'All Canadian Surf Club', album: 'The Tragically Hip', points: 97 },
+  { rank: 97, title: 'Membership', album: 'Phantom Power', points: 96 },
+  { rank: 98, title: 'Born in the Water', album: 'Road Apples', points: 96 },
+  { rank: 99, title: 'Toronto #4', album: 'Music @ Work', points: 94 },
+  { rank: 100, title: 'The Last Recluse', album: 'We Are the Same', points: 93 },
+  { rank: 101, title: 'The Bear', album: 'Music @ Work', points: 93 },
+  { rank: 102, title: 'In Sarnia', album: 'Man Machine Poem', points: 93 },
+  { rank: 103, title: 'Family Band', album: 'World Container', points: 93 },
+  { rank: 104, title: 'As Makeshift As We Are', album: 'In Between Evolution', points: 92 },
+  { rank: 105, title: "She Didn't Know", album: 'Up to Here', points: 91 },
+  { rank: 106, title: 'Man Machine Poem', album: 'Now for Plan A', points: 90 },
+  { rank: 107, title: "Butts Wigglin'", album: 'Trouble at the Henhouse', points: 89 },
+  { rank: 108, title: 'Country Day', album: 'We Are the Same', points: 84 },
+  { rank: 109, title: 'If New Orleans Is Beat', album: 'In Between Evolution', points: 82 },
+  { rank: 110, title: "You're Everywhere", album: 'In Between Evolution', points: 82 },
+  { rank: 111, title: "The Kids Don't Get It", album: 'World Container', points: 80 },
+  { rank: 112, title: 'Cemetery Sideroad', album: 'The Tragically Hip', points: 79 },
+  { rank: 113, title: 'The Lookahead', album: 'Now for Plan A', points: 77 },
+  { rank: 114, title: 'Streets Ahead', album: 'Now for Plan A', points: 71 },
+  { rank: 115, title: 'Shy', album: 'World Container', points: 71 },
+  { rank: 116, title: 'The Completists', album: 'Music @ Work', points: 66 },
+  { rank: 117, title: 'Are You Ready', album: 'In Violet Light', points: 64 },
+  { rank: 118, title: 'All Tore Up', album: 'In Violet Light', points: 63 },
+  { rank: 119, title: 'The Bastard', album: 'Music @ Work', points: 62 },
+  { rank: 120, title: "Summer's Killing Us", album: 'In Between Evolution', points: 60 },
+  { rank: 121, title: 'Now the Struggle Has a Name', album: 'We Are the Same', points: 60 },
+  { rank: 122, title: 'The New Maybe', album: 'Yer Favourites', points: 59 },
+  { rank: 123, title: 'Radio Show', album: 'Fully Completely', points: 54 },
+  { rank: 124, title: 'Freak Turbulence', album: 'Music @ Work', points: 54 },
+  { rank: 125, title: 'Use It Up', album: 'In Violet Light', points: 53 },
+  { rank: 126, title: 'The Rules', album: 'Phantom Power', points: 53 },
+  { rank: 127, title: 'Done and Done', album: 'Now for Plan A', points: 53 },
+  { rank: 128, title: 'Sharks', album: 'Music @ Work', points: 52 },
+  { rank: 129, title: 'Put It Off', album: 'Trouble at the Henhouse', points: 52 },
+  { rank: 130, title: 'Trickle Down', album: 'Up to Here', points: 50 },
+  { rank: 131, title: 'Songwriters Cabal', album: 'Phantom Power', points: 50 },
+  { rank: 132, title: 'Ocean Next', album: 'Man Machine Poem', points: 49 },
+  { rank: 133, title: 'Titanic Terrarium', album: 'Day for Night', points: 48 },
+  { rank: 134, title: 'Pretend', album: 'World Container', points: 46 },
+  { rank: 135, title: 'What Blue', album: 'Man Machine Poem', points: 45 },
+  { rank: 136, title: 'Save the Planet', album: 'Phantom Power', points: 45 },
+  { rank: 137, title: 'Emergency', album: 'Day for Night', points: 45 },
+  { rank: 138, title: 'Bumblebee', album: 'Phantom Power', points: 44 },
+  { rank: 139, title: 'The Wherewithal', album: 'Fully Completely', points: 43 },
+  { rank: 140, title: "I'm a Werewolf, Baby", album: 'The Tragically Hip', points: 43 },
+  { rank: 141, title: 'Evelyn', album: 'The Tragically Hip', points: 43 },
+  { rank: 142, title: "Let's Stay Engaged", album: 'Trouble at the Henhouse', points: 39 },
+  { rank: 143, title: 'Putting Down', album: 'Music @ Work', points: 38 },
+  { rank: 144, title: "Last Night I Dreamed You Didn't Love Me", album: 'World Container', points: 36 },
+  { rank: 145, title: 'Love Is a First', album: 'We Are the Same', points: 34 },
+  { rank: 146, title: 'Queen of the Furrows', album: 'We Are the Same', points: 33 },
+  { rank: 147, title: 'Insomniacs', album: 'Phantom Power', points: 31 },
+  { rank: 148, title: 'Here, in the Dark', album: 'Man Machine Poem', points: 31 },
+  { rank: 149, title: 'Killing Time', album: 'The Tragically Hip', points: 30 },
+  { rank: 150, title: 'Release', album: 'World Container', points: 29 },
+  { rank: 151, title: "You're Everywhere", album: 'In Between Evolution', points: 28 },
+  { rank: 152, title: 'The Modern Spirit', album: 'Now for Plan A', points: 27 },
+  { rank: 153, title: 'Mean Streak', album: 'In Between Evolution', points: 26 },
+  { rank: 154, title: "We'll Go, Too", album: 'Fully Completely', points: 23 },
+  { rank: 155, title: 'The Drop-Off', album: 'In Between Evolution', points: 23 },
+  { rank: 156, title: 'Impossibilium', album: 'Day for Night', points: 20 },
+  { rank: 157, title: 'Skeleton Park', album: 'We Are the Same', points: 19 },
+  { rank: 158, title: 'Man', album: 'Man Machine Poem', points: 19 },
+  { rank: 159, title: 'The Heart of the Melt', album: 'In Between Evolution', points: 17 },
+  { rank: 160, title: 'Hot Mic', album: 'Man Machine Poem', points: 17 },
+  { rank: 161, title: 'Speed River', album: 'We Are the Same', points: 16 },
+  { rank: 162, title: 'Honey Please', album: 'We Are the Same', points: 16 },
+  { rank: 163, title: 'Mystery', album: 'Phantom Power', points: 14 },
+  { rank: 164, title: 'Wild Mountain Honey', album: 'Music @ Work', points: 12 },
+  { rank: 165, title: 'The Exact Feeling', album: 'We Are the Same', points: 9 },
+  { rank: 166, title: 'One Night in Copenhagen', album: 'In Between Evolution', points: 8 },
+  { rank: 167, title: 'Frozen in My Tracks', album: 'We Are the Same', points: 6 },
+  { rank: 168, title: 'Vegas Strip', album: 'Phantom Power', points: 4 },
+  { rank: 169, title: 'Vapour Trails', album: 'Phantom Power', points: 4 },
+];
+
+// Build TTH Top 40 lookup map: track title → rank (includes ALL 169 voted songs)
+const allVotedSongs = [...top40Songs, ...beyondTop40];
 const top40Ranks = new Map();
-top40Songs.forEach(s => top40Ranks.set(s.title, s.rank));
+allVotedSongs.forEach(s => top40Ranks.set(s.title, s.rank));
 
 // Build sets of single titles per album for dot markers
 function getSingleTitles(album) {
@@ -1615,6 +1790,72 @@ top40Songs.forEach(s => {
   songsGrid.appendChild(el);
 });
 
+// Render beyond-top-40 songs (#41-#169)
+const beyondGrid = document.getElementById('beyondGrid');
+beyondTop40.forEach(s => {
+  const url = spotifyTrackURLs[s.title] || null;
+  const el = document.createElement(url ? 'a' : 'div');
+  el.className = 'song-row';
+  if (url) {
+    el.href = url;
+    el.target = '_blank';
+    el.rel = 'noopener noreferrer';
+    el.setAttribute('aria-label', `${s.title} — play on Spotify`);
+  }
+  el.innerHTML = `
+    <div class="song-rank beyond">#${s.rank}</div>
+    <div class="song-info">
+      <div class="song-title">${s.title}</div>
+      <div class="song-meta">${s.album} · ${s.points} pts</div>
+    </div>
+    ${url ? '<svg class="song-spotify-icon" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>' : ''}
+  `;
+  beyondGrid.appendChild(el);
+});
+
+// Beyond toggle
+document.getElementById('beyondToggle').addEventListener('click', function() {
+  const content = document.getElementById('beyondContent');
+  const isOpen = content.classList.toggle('open');
+  this.classList.toggle('open', isOpen);
+  this.setAttribute('aria-expanded', isOpen);
+});
+
+// Album vote breakdown
+(function renderAlbumBreakdown() {
+  const container = document.getElementById('albumBreakdown');
+  const albumOrder = ['Up to Here','Road Apples','Fully Completely','Day for Night','Trouble at the Henhouse','Phantom Power','Music @ Work','In Violet Light','In Between Evolution','World Container','We Are the Same','Now for Plan A','Man Machine Poem','The Tragically Hip'];
+  const albumTracks = {};
+  studioAlbums.forEach(a => { albumTracks[a.title] = a.tracks || []; });
+  epAlbums.forEach(a => { albumTracks[a.title] = a.tracks || []; });
+
+  const cards = albumOrder.map(albumName => {
+    const tracks = albumTracks[albumName] || [];
+    if (!tracks.length) return '';
+    const voted = tracks.filter(t => top40Ranks.has(t));
+    const unvoted = tracks.filter(t => !top40Ranks.has(t));
+    const pct = Math.round((voted.length / tracks.length) * 100);
+
+    const votedHtml = voted
+      .sort((a, b) => top40Ranks.get(a) - top40Ranks.get(b))
+      .map(t => `<span class="voted">#${top40Ranks.get(t)} ${t}</span>`)
+      .join(' · ');
+    const unvotedHtml = unvoted.map(t => `<span class="unvoted">${t}</span>`).join(' · ');
+
+    return `<div class="breakdown-card">
+      <div class="breakdown-album-name">${albumName}</div>
+      <div class="breakdown-stats">${voted.length} of ${tracks.length} tracks voted (${pct}%)</div>
+      <div class="breakdown-bar"><div class="breakdown-fill" style="width:${pct}%"></div></div>
+      <div class="breakdown-tracks">${votedHtml}${unvotedHtml ? ' · ' + unvotedHtml : ''}</div>
+    </div>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="breakdown-title">Album Vote Breakdown — Which Albums Got The Most Love?</div>
+    <div class="breakdown-grid">${cards}</div>
+  `;
+})();
+
 // Modal
 const overlay = document.getElementById('overlay');
 const modalClose = document.getElementById('modalClose');
@@ -1712,7 +1953,7 @@ function openModal(i) {
 
   const descHtml = a.desc ? `<p class="modal-desc">${a.desc}</p>` : '';
 
-  const streamLinks = (a.appleMusicURL || a.spotifyAlbumURL) ? `
+  const streamLinks = `
     <div style="display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 16px;">
       ${a.appleMusicURL ? `<a href="${a.appleMusicURL}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;color:#fa586a;border:1.5px solid #fa586a;padding:6px 14px;border-radius:20px;text-decoration:none;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='#fa586a';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#fa586a'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.997 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v11.81c.01.14.017.28.026.42.05.776.137 1.546.44 2.275.54 1.297 1.478 2.215 2.78 2.763.46.19.94.3 1.44.37.37.05.74.08 1.11.1h12.96c.39-.02.78-.05 1.17-.1.72-.1 1.41-.3 2.04-.63 1.15-.6 1.97-1.5 2.46-2.71.2-.5.32-1.01.39-1.54.05-.37.08-.74.09-1.12V6.125zm-3.15 8.076c-.02.37-.13.73-.33 1.06-.37.6-.92.97-1.59 1.14-.39.1-.79.14-1.19.13-.39-.01-.78-.06-1.16-.14-.5-.1-.98-.26-1.45-.44-.96-.37-1.87-.84-2.72-1.42-.56-.38-1.09-.8-1.58-1.26-.65-.62-1.24-1.3-1.73-2.06-.41-.62-.76-1.28-1.02-1.98-.2-.55-.35-1.12-.41-1.71-.05-.48-.03-.95.1-1.41.22-.79.69-1.37 1.41-1.71.33-.15.68-.22 1.04-.23.23-.01.45.03.67.1.32.11.59.31.84.53.19.18.37.37.55.56l.29.32c.23.27.34.59.35.94 0 .35-.09.67-.29.96-.16.23-.35.44-.55.64-.14.14-.29.28-.43.42-.21.2-.21.2-.14.48.13.48.37.91.65 1.31.49.7 1.08 1.3 1.78 1.78.2.14.42.26.65.35.14.06.28.08.43.03.1-.03.18-.1.26-.17.23-.22.46-.44.68-.67.32-.33.7-.49 1.15-.44.33.03.62.16.87.38.28.24.55.49.82.74.26.24.52.48.77.73.27.27.42.6.43.99z"/></svg>
@@ -1720,8 +1961,11 @@ function openModal(i) {
       ${a.spotifyAlbumURL ? `<a href="${a.spotifyAlbumURL}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;color:#1DB954;border:1.5px solid #1DB954;padding:6px 14px;border-radius:20px;text-decoration:none;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='#1DB954';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#1DB954'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         Spotify</a>` : ''}
+      <a href="https://thehip.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;color:#aaa;border:1.5px solid #aaa;padding:6px 14px;border-radius:20px;text-decoration:none;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='#aaa';this.style.color='#000'" onmouseout="this.style.background='transparent';this.style.color='#aaa'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        Buy at TheHip.com</a>
     </div>
-  ` : '';
+  `;
 
   document.getElementById('mBody').innerHTML = `
     ${descHtml}
