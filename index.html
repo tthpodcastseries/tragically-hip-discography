@@ -662,6 +662,10 @@
       white-space: nowrap;
       letter-spacing: 0.02em;
     }
+    .track-top40-badge.beyond {
+      color: var(--red);
+      background: rgba(200,16,46,0.12);
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -786,7 +790,7 @@ const studioAlbums = [
   {
     num: '01', title: 'Up to Here', year: '1989', type: 'Studio', img: 'Up to Here.jpg',
     label: 'MCA Records', producer: 'Don Smith',
-    chart: '#1', units: '1M+ (Diamond, Canada)',
+    chart: '#13', units: '1M+ (Diamond, Canada)',
     junoAwards: ['Most Promising Group (1990)'],
     desc: 'Debut full-length, recorded in Memphis. Certified Diamond in Canada. Introduced the band to a national audience and launched four consecutive Canadian radio singles.',
     gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
@@ -882,7 +886,7 @@ const studioAlbums = [
   {
     num: '07', title: 'Music @ Work', year: '2000', type: 'Studio', img: 'Music @ Work.jpg',
     label: 'Universal Music Canada', producer: 'Steve Berlin, Mark Vreeken & The Tragically Hip',
-    chart: '—', units: '—',
+    chart: '#1', units: '2x Platinum (Canada)',
     desc: 'Won the 2001 Juno Award for Best Rock Album. Nominated for Album of the Year. Produced with the same team as Phantom Power at The Bathouse.',
     gradient: 'linear-gradient(145deg, #001A1A 0%, #003D3D 50%, #000F0F 100%)',
     junoAwards: ['Best Rock Album (2001)'],
@@ -897,7 +901,7 @@ const studioAlbums = [
   {
     num: '08', title: 'In Violet Light', year: '2002', type: 'Studio', img: 'In Violet Light.jpg',
     label: 'Universal Music Canada', producer: 'Hugh Padgham & Terry Manning',
-    chart: '#1', units: 'Platinum (Canada)',
+    chart: '#2', units: 'Platinum (Canada)',
     desc: 'Recorded at Compass Point Studios, Bahamas — same studio as AC/DC, Grace Jones, and the Rolling Stones. Hugh Padgham\'s atmospheric production gives the album a distinctly dreamy quality.',
     gradient: 'linear-gradient(145deg, #100028 0%, #2E006B 50%, #090014 100%)',
     bestRank: 18,
@@ -1945,7 +1949,7 @@ function openModal(i) {
           <span class="track-num">${idx + 1}</span>
           <span class="track-name">${t}</span>
           ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
-          ${top40Ranks.has(t) ? `<span class="track-top40-badge" title="TTH Top 40">#${top40Ranks.get(t)}</span>` : ''}
+          ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="TTH Top 40 — #${top40Ranks.get(t)}">#${top40Ranks.get(t)}</span>` : ''}
         </li>
       `).join('')}
     </ul>
