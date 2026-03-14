@@ -619,6 +619,17 @@
     .track-num { font-size: 0.75rem; color: var(--muted2); min-width: 22px; text-align: right; }
     .track-name { font-size: 0.86rem; }
     .track-single-dot { display: none; }
+    .track-top40-badge {
+      margin-left: auto;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(218,165,32,0.12);
+      padding: 2px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -1462,6 +1473,10 @@ document.getElementById('randomSongBtn').addEventListener('click', async () => {
   }
 });
 
+// Build TTH Top 40 lookup map: track title → rank
+const top40Ranks = new Map();
+top40Songs.forEach(s => top40Ranks.set(s.title, s.rank));
+
 // Build sets of single titles per album for dot markers
 function getSingleTitles(album) {
   if (!album.singles || !album.singles.length) return new Set();
@@ -1689,6 +1704,7 @@ function openModal(i) {
           <span class="track-num">${idx + 1}</span>
           <span class="track-name">${t}</span>
           ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
+          ${top40Ranks.has(t) ? `<span class="track-top40-badge" title="TTH Top 40">#${top40Ranks.get(t)}</span>` : ''}
         </li>
       `).join('')}
     </ul>
