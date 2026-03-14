@@ -490,9 +490,10 @@
     .breakdown-album-name { font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
     .breakdown-stats { font-size: 0.7rem; color: var(--muted); margin-bottom: 8px; }
     .breakdown-bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; margin-bottom: 8px; }
-    .breakdown-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 0.4s ease; }
+    .breakdown-fill { height: 100%; border-radius: 3px; background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 8px, var(--red) 8px, var(--red) 16px); transition: width 0.4s ease; }
     .breakdown-tracks { font-size: 0.68rem; color: var(--muted2); line-height: 1.5; }
     .breakdown-tracks .voted { color: var(--gold); }
+    .breakdown-tracks .voted.alt { color: var(--red); }
     .breakdown-tracks .unvoted { color: var(--muted2); opacity: 0.5; }
     .song-spotify-icon { flex-shrink: 0; opacity: 0.3; transition: opacity 0.15s; width: 18px; height: 18px; }
     .song-row:hover .song-spotify-icon { opacity: 0.8; }
@@ -1842,7 +1843,7 @@ document.getElementById('beyondToggle').addEventListener('click', function() {
 
     const votedHtml = voted
       .sort((a, b) => top40Ranks.get(a) - top40Ranks.get(b))
-      .map(t => `<span class="voted">#${top40Ranks.get(t)} ${t}</span>`)
+      .map((t, i) => `<span class="voted${i % 2 ? ' alt' : ''}">#${top40Ranks.get(t)} ${t}</span>`)
       .join(' · ');
     const unvotedHtml = unvoted.map(t => `<span class="unvoted">${t}</span>`).join(' · ');
 
