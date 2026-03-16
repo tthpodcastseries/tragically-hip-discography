@@ -1,0 +1,60 @@
+Organization log - 2026-03-15T20:32:30.063106
+
+A National Celebration.jpg -> assets/video-albums/A National Celebration.jpg
+Battle_of_the_Nudes_(album).jpg -> assets/solo-projects/Battle_of_the_Nudes_(album).jpg
+bobcaygeon.png -> assets/video-albums/bobcaygeon.png
+brand-guide.pdf -> docs/brand-guide.pdf
+CHANGELOG.md -> docs/CHANGELOG.md
+Coke-machine-glow.jpg -> assets/solo-projects/Coke-machine-glow.jpg
+Day for Night.jpg -> assets/studio-albums/Day for Night.jpg
+Fix This Head.jpg -> assets/solo-projects/Fix This Head.jpg
+From The vault volume 3 - 2008.jpg -> assets/live-albums/From The vault volume 3 - 2008.jpg
+From the vault volume 4 2009.jpg -> assets/live-albums/From the vault volume 4 2009.jpg
+From the Vault volume 5 2009.jpg -> assets/live-albums/From the Vault volume 5 2009.jpg
+From the Vault volume 6 2009.jpg -> assets/live-albums/From the Vault volume 6 2009.jpg
+Fully Completely Box Set.jpg -> assets/box-sets/Fully Completely Box Set.jpg
+Fully Completely.jpg -> assets/studio-albums/Fully Completely.jpg
+Gord Downie - Live at SIx.jpg -> assets/solo-projects/Gord Downie - Live at SIx.jpg
+Gord_Downie_-_Away_Is_Mine.png -> assets/solo-projects/Gord_Downie_-_Away_Is_Mine.png
+Gord_Downie_and_Bob_Rock_-_Lustre_Parfait.png -> assets/solo-projects/Gord_Downie_and_Bob_Rock_-_Lustre_Parfait.png
+Gord_Downie_and_the_Country_of_Miracles_-_The_Grand_Bounce.png -> assets/solo-projects/Gord_Downie_and_the_Country_of_Miracles_-_The_Grand_Bounce.png
+Gord_Downie_and_the_Sadies_-_And_the_Conquering_Sun.png -> assets/solo-projects/Gord_Downie_and_the_Sadies_-_And_the_Conquering_Sun.png
+Gord_Downie_–_Introduce_Yerself.png -> assets/solo-projects/Gord_Downie_–_Introduce_Yerself.png
+Guess What.jpg -> assets/solo-projects/Guess What.jpg
+Heksenketel.jpg -> assets/video-albums/Heksenketel.jpg
+Hipeponymous.jpg -> assets/compilations/Hipeponymous.jpg
+In Between Evolution.jpg -> assets/studio-albums/In Between Evolution.jpg
+In Violet Light.jpg -> assets/studio-albums/In Violet Light.jpg
+Live at the Roxy.jpg -> assets/live-albums/Live at the Roxy.jpg
+live Between Us.jpg -> assets/live-albums/live Between Us.jpg
+Live From the Vault volume 1.jpeg -> assets/live-albums/Live From the Vault volume 1.jpeg
+Live from the vault volume 2.jpeg -> assets/live-albums/Live from the vault volume 2.jpeg
+Local 518.jpg -> assets/solo-projects/Local 518.jpg
+Long_Time_Running.png -> assets/video-albums/Long_Time_Running.png
+Man Machine Poem.jpg -> assets/studio-albums/Man Machine Poem.jpg
+Mercury Sea.jpg -> assets/solo-projects/Mercury Sea.jpg
+Music @ Work.jpg -> assets/studio-albums/Music @ Work.jpg
+No Dress Rehearsal.jpeg -> assets/video-albums/No Dress Rehearsal.jpeg
+Not Guilty.jpg -> assets/solo-projects/Not Guilty.jpg
+Now for Plan A.jpg -> assets/studio-albums/Now for Plan A.jpg
+Phantom Power Box Set.jpg -> assets/box-sets/Phantom Power Box Set.jpg
+Phantom Power.jpg -> assets/studio-albums/Phantom Power.jpg
+Road Apples Box Set.jpg -> assets/box-sets/Road Apples Box Set.jpg
+Road Apples.jpg -> assets/studio-albums/Road Apples.jpg
+Saskadelphia.jpg -> assets/eps/Saskadelphia.jpg
+Secret_Path_cover_art.jpg -> assets/solo-projects/Secret_Path_cover_art.jpg
+Smooth Rock Falls.jpg -> assets/solo-projects/Smooth Rock Falls.jpg
+Taxi Dancers.jpg -> assets/solo-projects/Taxi Dancers.jpg
+That night In Toronto.jpg -> assets/live-albums/That night In Toronto.jpg
+That_Night_in_Toronto.jpg -> assets/live-albums/That_Night_in_Toronto.jpg
+The Deuce.jpg -> assets/solo-projects/The Deuce.jpg
+The EP.jpg -> assets/eps/The EP.jpg
+The Undertaking.jpg -> assets/solo-projects/The Undertaking.jpg
+Trouble at the Henhouse.jpg -> assets/studio-albums/Trouble at the Henhouse.jpg
+TTH Podcast Series - Complete Discography 4.0.pdf -> docs/TTH Podcast Series - Complete Discography 4.0.pdf
+Up to Here Box Set.jpg -> assets/box-sets/Up to Here Box Set.jpg
+Up to Here.jpg -> assets/studio-albums/Up to Here.jpg
+We are the Same.jpg -> assets/studio-albums/We are the Same.jpg
+Web_App_Project_Plan_v2.5_Updated.pdf -> docs/Web_App_Project_Plan_v2.5_Updated.pdf
+World Container.jpg -> assets/studio-albums/World Container.jpg
+Yer Favourites.jpg -> assets/compilations/Yer Favourites.jpg

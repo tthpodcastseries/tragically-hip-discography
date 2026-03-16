@@ -1,5 +1,35 @@
 # Changelog
 
+## v2.7.0
+**Solo Records & Side Projects - New Sections + Full Cover Art**
+
+### New Content
+- Added **Solo Records** section featuring 15 releases spanning all five members of The Tragically Hip:
+  - **Gord Downie** (9 albums): Coke Machine Glow (2001), Battle of the Nudes (2003), The Grand Bounce (2010), And the Conquering Sun (2014), Secret Path (2016), Introduce Yerself (2017), Away Is Mine (2020), Lustre Parfait (2023), Live at 6 O'Clock (2026)
+  - **Paul Langlois** (3 albums): Fix This Head (2010), Not Guilty (2013), Smooth Rock Falls (2026)
+  - **Gord Sinclair** (2 albums): Taxi Dancers (2020), In Continental Drift (2023)
+  - **Johnny Fay** (1 EP): Mercury Sea (2025)
+- Added **Side Projects** section featuring 4 releases:
+  - **Stripper's Union / Rob Baker** (3 albums): Stripper's Union Local 518 (2006), The Deuce (2011), The Undertaking (2021)
+  - **Paul Langlois Band** (1 album): Guess What (2023)
+- Each entry includes year, label, producer (where known), artist credit, and a custom description
+- Solo and Side Project sections accessible via new nav tabs alongside existing categories
+
+### Cover Art
+- Added actual album cover art for 18 of 19 solo and side project entries, replacing gradient placeholders:
+  - Coke Machine Glow, Battle of the Nudes, The Grand Bounce, And the Conquering Sun, Secret Path, Introduce Yerself, Away Is Mine, Lustre Parfait, Live at 6 O'Clock, Fix This Head, Not Guilty, Taxi Dancers, Smooth Rock Falls, Mercury Sea, Local 518, The Deuce, The Undertaking, Guess What
+- In Continental Drift retains gradient fallback (cover art pending)
+- All images stored in `assets/solo-projects/`
+
+### Data Source
+- Discography dataset updated to match TTH Podcast Series Complete Discography v6.0 (appendix: Solo Records & Side Projects)
+
+### File Structure
+- New folder: `assets/solo-projects/` containing 18 cover art images
+- Reorganized existing cover art into subfolders: `assets/studio-albums/`, `assets/live-albums/`, `assets/compilations/`, `assets/box-sets/`, `assets/eps/`, `assets/video-albums/`
+
+---
+
 ## v2.6.3
 **UI Polish**
 - Album vote breakdown now alternates gold and red text for voted songs, improving readability across cards
