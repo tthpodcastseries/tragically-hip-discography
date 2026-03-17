@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tragically Hip - Discography v2.8</title>
+  <title>The Tragically Hip - Discography v2.8.1</title>
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -570,12 +570,12 @@
       cursor: pointer;
     }
     .song-row:hover {
-      border-color: #1DB954;
-      background: rgba(29,185,84,0.06);
+      border-color: var(--red);
+      background: rgba(200,16,46,0.06);
       transform: translateY(-1px);
     }
     .song-row:focus-visible {
-      outline: 2px solid #1DB954;
+      outline: 2px solid var(--red);
       outline-offset: 2px;
       border-radius: 8px;
     }
@@ -625,8 +625,15 @@
     .breakdown-tracks .voted { color: var(--gold); }
     .breakdown-tracks .voted.alt { color: var(--red); }
     .breakdown-tracks .unvoted { color: var(--muted2); opacity: 0.5; }
-    .song-spotify-icon { flex-shrink: 0; opacity: 0.3; transition: opacity 0.15s; width: 18px; height: 18px; }
-    .song-row:hover .song-spotify-icon { opacity: 0.8; }
+    .song-podcast-icon { flex-shrink: 0; opacity: 0.3; transition: opacity 0.15s; width: 18px; height: 18px; }
+    .song-row:hover .song-podcast-icon { opacity: 0.8; }
+
+    .song-stream-panel { display: none; padding: 10px 0 4px; }
+    .song-stream-panel.open { display: flex; flex-wrap: wrap; gap: 8px; }
+    .song-row.expandable { cursor: pointer; }
+    .song-row.expandable:hover { border-color: var(--muted2); background: rgba(255,255,255,0.03); }
+    .song-expand-icon { flex-shrink: 0; opacity: 0.25; transition: opacity 0.15s; width: 16px; height: 16px; }
+    .song-row.expandable:hover .song-expand-icon { opacity: 0.6; }
 
     /* ─── MODAL ─── */
     .overlay {
@@ -910,8 +917,8 @@
       <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
     </button>
     <div class="beyond-content" id="beyondContent">
-      <div class="album-breakdown" id="albumBreakdown"></div>
       <div class="top40-grid" id="beyondGrid"></div>
+      <div class="album-breakdown" id="albumBreakdown"></div>
     </div>
   </div>
 
@@ -973,7 +980,7 @@
   Discography data sourced from the
   <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series - Complete Discography v6.0</a> -
   TTHTop40 rankings from the 2024-25 fan countdown<br>
-  Built by the <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">TTH Podcast Series</a>
+  Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded with Claude
   <div style="margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
     <a href="mailto:jd@tthpods.com" style="color:var(--muted2);font-size:0.8rem;text-decoration:none;">Email jD</a>
     <a href="https://mailchi.mp/85b59bbbf1f5/tthpodscommunity" target="_blank" rel="noopener noreferrer" class="yer-letter-btn">Sign up For Yer Letter - The TTH Community Newsletter</a>
@@ -2123,18 +2130,31 @@ document.getElementById('soloBackBtn').addEventListener('click', () => {
   window.scrollTo({ top: document.getElementById('soloSection').offsetTop - 100, behavior: 'smooth' });
 });
 
+// Kitelink podcast episode URLs for TTHTop40 Countdown
+const top40PodcastURLs = {
+  1: 'song1', 2: 'song2', 3: 'song3', 4: 'song4', 5: 'song5',
+  6: 'song6', 7: 'song7', 8: 'song8', 9: 'song9', 10: 'song10',
+  11: 'song11', 12: 'Song12', 13: 'song13', 14: 'Song14', 15: 'Song15',
+  16: 'Song16', 17: 'song17', 18: 'Song18', 19: 'Song19', 20: 'Song20',
+  21: 'Song21', 22: 'song22', 23: 'song23', 24: 'Song24', 25: 'Song25',
+  26: 'Song26', 27: 'Song27', 28: 'Song-28', 29: 'Song29', 30: 'Song30',
+  31: 'Song31', 32: 'Song32', 33: 'Song33', 34: 'Song34', 35: 'Song35',
+  36: 'Song36', 37: 'Song37', 38: 'Song38', 39: 'Song39', 40: 'Song40'
+};
+
 // Render top 40 songs
 const songsGrid = document.getElementById('songsGrid');
 top40Songs.forEach(s => {
   const isTop10 = s.rank <= 10;
-  const url = spotifyTrackURLs[s.title] || null;
+  const suffix = top40PodcastURLs[s.rank];
+  const url = suffix ? `https://kite.link/${suffix}` : null;
   const el = document.createElement(url ? 'a' : 'div');
   el.className = 'song-row';
   if (url) {
     el.href = url;
     el.target = '_blank';
     el.rel = 'noopener noreferrer';
-    el.setAttribute('aria-label', `${s.title} - play on Spotify`);
+    el.setAttribute('aria-label', `${s.title} - listen to TTHTop40 Countdown episode`);
   }
   el.innerHTML = `
     <div class="song-rank ${isTop10 ? 'top10' : 'top40'}">#${s.rank}</div>
@@ -2142,7 +2162,7 @@ top40Songs.forEach(s => {
       <div class="song-title">'${s.title}'</div>
       <div class="song-meta">"${s.album}" · ${s.year}</div>
     </div>
-    ${url ? '<svg class="song-spotify-icon" viewBox="0 0 24 24" fill="#1DB954"><use href="#spotify-icon"/></svg>' : ''}
+    ${url ? '<svg class="song-podcast-icon" viewBox="0 0 24 24" fill="var(--red)"><path d="M12 1a9 9 0 00-9 9v7a3 3 0 003 3h1a2 2 0 002-2v-4a2 2 0 00-2-2H5v-2a7 7 0 0114 0v2h-2a2 2 0 00-2 2v4a2 2 0 002 2h1a3 3 0 003-3v-7a9 9 0 00-9-9z"/></svg>' : ''}
   `;
   songsGrid.appendChild(el);
 });
@@ -2150,24 +2170,30 @@ top40Songs.forEach(s => {
 // Render beyond-top-40 songs (#41-#169)
 const beyondGrid = document.getElementById('beyondGrid');
 beyondTop40.forEach(s => {
-  const url = spotifyTrackURLs[s.title] || null;
-  const el = document.createElement(url ? 'a' : 'div');
-  el.className = 'song-row';
-  if (url) {
-    el.href = url;
-    el.target = '_blank';
-    el.rel = 'noopener noreferrer';
-    el.setAttribute('aria-label', `${s.title} - play on Spotify`);
-  }
-  el.innerHTML = `
-    <div class="song-rank beyond">#${s.rank}</div>
-    <div class="song-info">
-      <div class="song-title">'${s.title}'</div>
-      <div class="song-meta">"${s.album}" · ${s.points} pts</div>
+  const wrapper = document.createElement('div');
+  const searchQ = encodeURIComponent(s.title + ' The Tragically Hip');
+  wrapper.innerHTML = `
+    <div class="song-row expandable" role="button" tabindex="0" aria-label="${s.title} - tap to see streaming links">
+      <div class="song-rank beyond">#${s.rank}</div>
+      <div class="song-info">
+        <div class="song-title">'${s.title}'</div>
+        <div class="song-meta">"${s.album}"</div>
+      </div>
+      <svg class="song-expand-icon" viewBox="0 0 24 24" fill="var(--muted2)"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
-    ${url ? '<svg class="song-spotify-icon" viewBox="0 0 24 24" fill="#1DB954"><use href="#spotify-icon"/></svg>' : ''}
+    <div class="song-stream-panel">
+      <a href="https://music.apple.com/us/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
+      <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
+      <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
+      <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
+      <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
+    </div>
   `;
-  beyondGrid.appendChild(el);
+  const row = wrapper.querySelector('.song-row');
+  const panel = wrapper.querySelector('.song-stream-panel');
+  row.addEventListener('click', () => panel.classList.toggle('open'));
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.classList.toggle('open'); } });
+  beyondGrid.appendChild(wrapper);
 });
 
 // Beyond toggle
@@ -2376,6 +2402,11 @@ function openSoloModal(album) {
       <a href="https://tidal.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>
       <a href="https://music.youtube.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube">YouTube Music</a>
       <a href="https://music.amazon.com/search/${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon">Amazon Music</a>
+      ${/downie|goddamned|country of miracles|sadies/i.test(a.credit) ? `<a href="https://gordieland.com" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-hip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        Buy at Gordieland.com</a>` : `<a href="https://thehip.com/pages/listen" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-hip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        Buy at TheHip.com</a>`}
     </div>
   `;
 

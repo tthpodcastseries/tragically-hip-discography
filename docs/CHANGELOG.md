@@ -1,5 +1,25 @@
 # Changelog
 
+## v2.8.1
+**TTHTop40 Podcast Links, Streaming Panels & Buy Links**
+
+### TTHTop40 Countdown
+- Replaced Spotify links on all Top 40 songs (#1-40) with TTHTop40 Countdown podcast episode links via kitelink
+- Red headphone icon replaces the Spotify icon on each song row
+- Hover colour changed from Spotify green to TTH red
+- Songs #41-169 now expand on click to reveal a streaming service panel (Apple Music, Spotify, Tidal, YouTube Music, Amazon Music)
+- Removed point totals from #41-169 song entries (just album name now)
+- Moved Album Vote Breakdown section below the #41-169 list
+
+### Solo Project Buy Links
+- Gord Downie solo modals now include a "Buy at Gordieland.com" gold pill button
+- All other solo/side project modals include a "Buy at TheHip.com" gold pill button
+
+### Footer
+- Updated credit line: "Designed by The Tragically Hip Podcast Series - Coded with Claude"
+
+---
+
 ## v2.8.0
 **Solo Modals, Tracklists & Streaming Links**
 
