@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.8.2
+**Album Timeline View**
+
+### Timeline
+- New horizontal scrolling timeline as the default home screen
+- All 35 official releases plotted chronologically from 1984 to 2024
+- Colour-coded by release type: Studio (red), Live (green), Compilation (purple), Box Set (gold), EP (orange), Video (blue)
+- Album art thumbnails with connector lines to a year axis
+- Click any album to open its full detail modal
+- Three milestones marked on the axis: Band Formed (1984), The Final Show (Aug 20, 2016), Gord's Passing (Oct 17, 2017)
+- Drag-to-scroll on desktop, swipe on mobile
+- Legend and scroll hint below the timeline
+- Timeline tab is now the first and default tab on load
+
+---
+
 ## v2.8.1
 **TTHTop40 Podcast Links, Streaming Panels & Buy Links**
 

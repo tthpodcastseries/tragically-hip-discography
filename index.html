@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tragically Hip - Discography v2.8.1</title>
+  <title>The Tragically Hip - Discography v2.8.2</title>
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -635,6 +635,32 @@
     .song-expand-icon { flex-shrink: 0; opacity: 0.25; transition: opacity 0.15s; width: 16px; height: 16px; }
     .song-row.expandable:hover .song-expand-icon { opacity: 0.6; }
 
+    /* ─── TIMELINE ─── */
+    .timeline-section { display: none; padding: 0 0 24px; }
+    .timeline-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; cursor: grab; padding: 12px 40px 0; scrollbar-width: thin; scrollbar-color: #3a1080 transparent; }
+    .timeline-track { position: relative; min-width: max-content; height: 200px; }
+    .timeline-axis { position: absolute; bottom: 28px; left: 0; right: 0; height: 2px; background: var(--border); }
+    .timeline-year-mark { position: absolute; bottom: 0; text-align: center; transform: translateX(-50%); font-size: 0.6rem; color: var(--muted2); white-space: nowrap; }
+    .timeline-year-mark::before { content: ''; display: block; width: 1px; height: 10px; background: var(--border); margin: 0 auto 4px; }
+    .timeline-item { position: absolute; top: 0; bottom: 36px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; width: 80px; }
+    .timeline-item:hover { transform: translateY(-4px); }
+    .tl-art { width: 60px; height: 60px; border-radius: 6px; overflow: hidden; border: 2px solid var(--border); transition: border-color 0.15s; flex-shrink: 0; }
+    .tl-art img { width: 100%; height: 100%; object-fit: cover; }
+    .timeline-item:hover .tl-art { border-color: var(--red); }
+    .tl-title { font-size: 0.58rem; color: var(--text); text-align: center; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; line-height: 1.2; }
+    .tl-connector { width: 1px; flex: 1; min-height: 8px; }
+    .tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .timeline-milestone { position: absolute; bottom: 34px; transform: translateX(-50%); z-index: 2; }
+    .tl-ms-label { font-size: 0.55rem; font-weight: 700; color: var(--gold); white-space: nowrap; padding: 2px 8px; border: 1px solid var(--gold); border-radius: 4px; background: rgba(212,160,23,0.12); text-align: center; }
+    .tl-ms-line { width: 1px; background: var(--gold); opacity: 0.3; height: 100%; position: absolute; bottom: 100%; left: 50%; }
+    .timeline-legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 10px 16px; font-size: 0.68rem; color: var(--muted); }
+    .timeline-hint { text-align: center; font-size: 0.62rem; color: var(--muted2); margin-bottom: 6px; letter-spacing: 0.04em; }
+    @media (max-width: 500px) {
+      .tl-art { width: 46px; height: 46px; }
+      .tl-title { font-size: 0.5rem; max-width: 60px; }
+      .timeline-scroll { padding: 12px 16px 0; }
+    }
+
     /* ─── MODAL ─── */
     .overlay {
       position: fixed; inset: 0;
@@ -886,7 +912,8 @@
     <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
   </div>
   <div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
-    <button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button>
+    <button class="category-btn active" data-category="timeline" role="tab" aria-selected="true" aria-controls="timelineSection">Timeline</button>
+    <button class="category-btn" data-category="studio" role="tab" aria-selected="false" aria-controls="albumsGrid">Studio</button>
     <button class="category-btn" data-category="live" role="tab" aria-selected="false" aria-controls="albumsGrid">Live</button>
     <button class="category-btn" data-category="compilations" role="tab" aria-selected="false" aria-controls="albumsGrid">Compilations</button>
     <button class="category-btn" data-category="boxsets" role="tab" aria-selected="false" aria-controls="albumsGrid">Box Sets</button>
@@ -902,6 +929,14 @@
     <button class="random-song-btn" id="randomSongBtn">Random Hip Song</button>
   </div>
   <div class="albums-grid" id="albumsGrid" role="tabpanel" aria-label="Album grid"></div>
+
+  <div id="timelineSection" class="timeline-section" role="tabpanel" aria-label="Album timeline">
+    <div class="timeline-scroll" id="timelineScroll">
+      <div class="timeline-track" id="timelineTrack"></div>
+    </div>
+    <div class="timeline-legend" id="timelineLegend"></div>
+  </div>
+
   <div id="categoryAnnounce" class="sr-only" aria-live="polite"></div>
 
   <div id="top40Section">
@@ -1444,6 +1479,7 @@ const categoryData = {
   video: videoAlbums,
   top40: [],
   solo: [],
+  timeline: [],
 };
 
 const categoryStats = {
@@ -1494,6 +1530,12 @@ const categoryStats = {
     { num: '19', lbl: 'Solo Releases' },
     { num: '2001', lbl: 'First Solo Album' },
     { num: '2026', lbl: 'Latest Release' },
+  ],
+  timeline: [
+    { num: '26', lbl: 'Official Releases' },
+    { num: '1984', lbl: 'Band Formed' },
+    { num: '2016', lbl: 'Final Show' },
+    { num: '35+', lbl: 'Years of Music' },
   ],
 };
 
@@ -1961,6 +2003,151 @@ function rankClass(rankStr) {
   return 't40';
 }
 
+// ─── Timeline View ───
+function renderTimeline() {
+  const track = document.getElementById('timelineTrack');
+  const legend = document.getElementById('timelineLegend');
+  if (!track) return;
+
+  const typeColors = {
+    'Studio':      '#C8102E',
+    'Live':        '#1DB954',
+    'Compilation': '#9B59B6',
+    'Box Set':     '#D4A017',
+    'EP':          '#E67E22',
+    'Video':       '#3498DB'
+  };
+
+  // Collect all releases with their category index for modal opening
+  const allReleases = [];
+  Object.entries(categoryData).forEach(([cat, albums]) => {
+    if (['top40','solo','timeline'].includes(cat)) return;
+    albums.forEach((a, idx) => {
+      allReleases.push({ ...a, catKey: cat, catIdx: idx });
+    });
+  });
+  allReleases.sort((a, b) => {
+    const yA = parseInt(a.year); const yB = parseInt(b.year);
+    if (yA !== yB) return yA - yB;
+    const order = ['Studio','EP','Live','Compilation','Box Set','Video'];
+    return order.indexOf(a.type) - order.indexOf(b.type);
+  });
+
+  const milestones = [
+    { year: 1984, label: 'Band Formed', sub: 'Kingston, ON' },
+    { year: 2016, label: 'The Final Show', sub: 'Aug 20 - Kingston' },
+    { year: 2017, label: "Gord's Passing", sub: 'Oct 17, 2017' }
+  ];
+
+  // Layout: use a cursor to place items sequentially, snapping to year positions
+  // but never overlapping. Each item is 88px wide with 8px gap.
+  const itemW = 88;
+  const gap = 8;
+  const pxPerYear = 110;
+  const firstYear = 1984;
+  const lastYear = Math.max(parseInt(allReleases[allReleases.length - 1].year), 2024);
+
+  // Build placement array: each item gets an x position
+  let cursor = 0;
+  const placements = [];
+  allReleases.forEach(a => {
+    const yearX = (parseInt(a.year) - firstYear) * pxPerYear;
+    const x = Math.max(cursor, yearX);
+    placements.push({ ...a, x });
+    cursor = x + itemW + gap;
+  });
+
+  const trackWidth = cursor + 60;
+  track.innerHTML = '';
+  track.style.width = trackWidth + 'px';
+
+  // Year axis marks
+  const axis = document.createElement('div');
+  axis.className = 'timeline-axis';
+  for (let y = firstYear; y <= lastYear + 1; y++) {
+    const mark = document.createElement('div');
+    mark.className = 'timeline-year-mark';
+    mark.style.left = ((y - firstYear) * pxPerYear) + 'px';
+    mark.textContent = y;
+    axis.appendChild(mark);
+  }
+  track.appendChild(axis);
+
+  // Milestones (positioned on the axis)
+  milestones.forEach(m => {
+    const el = document.createElement('div');
+    el.className = 'timeline-milestone';
+    el.style.left = ((m.year - firstYear) * pxPerYear) + 'px';
+    el.innerHTML = `<div class="tl-ms-label">${m.label}<br><small>${m.sub}</small></div>`;
+    track.appendChild(el);
+  });
+
+  // Album items
+  const axisY = 130; // px from top where axis sits
+  placements.forEach(a => {
+    const el = document.createElement('div');
+    el.className = 'timeline-item';
+    el.style.left = (a.x + itemW / 2) + 'px';
+    const color = typeColors[a.type] || '#aaa';
+
+    el.innerHTML = `
+      <div class="tl-art" style="border-color:${color}">
+        ${a.img ? `<img src="${a.img}" alt="${a.title}">` : `<div style="width:100%;height:100%;background:${a.gradient};border-radius:4px"></div>`}
+      </div>
+      <div class="tl-title">${a.title}<br><small style="color:${color}">${a.type} - ${a.year}</small></div>
+      <div class="tl-connector" style="background:${color}"></div>
+      <div class="tl-dot" style="background:${color}"></div>
+    `;
+
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', `${a.title} (${a.year})`);
+
+    const openFn = () => {
+      currentCategory = a.catKey;
+      currentAlbums = categoryData[a.catKey];
+      openModal(a.catIdx);
+    };
+    el.addEventListener('click', openFn);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFn(); }});
+
+    track.appendChild(el);
+  });
+
+  // Legend
+  legend.innerHTML = '';
+  const typeOrder = ['Studio','EP','Live','Compilation','Box Set','Video'];
+  typeOrder.forEach(type => {
+    const dot = document.createElement('span');
+    dot.style.cssText = 'display:inline-flex;align-items:center;gap:6px;margin-right:16px;font-size:0.75rem;color:var(--muted);';
+    dot.innerHTML = `<span style="width:10px;height:10px;border-radius:50%;background:${typeColors[type]};display:inline-block"></span>${type}`;
+    legend.appendChild(dot);
+  });
+
+  // Scroll hint
+  const hint = document.createElement('div');
+  hint.className = 'timeline-hint';
+  hint.textContent = 'Scroll or drag to explore the timeline';
+  legend.parentElement.insertBefore(hint, legend);
+
+  // Drag-to-scroll
+  const scroll = document.getElementById('timelineScroll');
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => {
+    if (e.target.closest('.timeline-item')) return;
+    isDown = true; scroll.style.cursor = 'grabbing';
+    startX = e.pageX - scroll.offsetLeft;
+    scrollLeft = scroll.scrollLeft;
+  });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.style.cursor = 'grab'; });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.style.cursor = 'grab'; });
+  scroll.addEventListener('mousemove', e => {
+    if (!isDown) return; e.preventDefault();
+    const x = e.pageX - scroll.offsetLeft;
+    scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+}
+
 // Render category
 function renderCategory(category) {
   currentCategory = category;
@@ -1989,6 +2176,14 @@ function renderCategory(category) {
     announceEl.textContent = `Showing ${activeBtn ? activeBtn.textContent : category}`;
   }
 
+  // Show/hide Timeline section
+  const timelineEl = document.getElementById('timelineSection');
+  timelineEl.style.display = category === 'timeline' ? 'block' : 'none';
+  if (category === 'timeline' && !timelineEl.dataset.rendered) {
+    renderTimeline();
+    timelineEl.dataset.rendered = '1';
+  }
+
   // Show/hide Top 40 section
   document.getElementById('top40Section').style.display = category === 'top40' ? '' : 'none';
 
@@ -2003,7 +2198,8 @@ function renderCategory(category) {
   // Re-render album grid
   const grid = document.getElementById('albumsGrid');
   grid.innerHTML = '';
-  if (category === 'solo') return;
+  grid.style.display = (category === 'timeline') ? 'none' : '';
+  if (category === 'solo' || category === 'timeline') return;
   const categoryLabels = { studio: ['Studio Album', 'Studio Albums'], live: ['Live Album', 'Live Albums'], compilations: ['Compilation', 'Compilations'], boxsets: ['Box Set', 'Box Sets'], eps: ['EP', 'EPs'], video: ['Video Release', 'Video Releases'], top40: ['',''] };
   if (category !== 'top40' && currentAlbums.length > 0) {
     const countEl = document.createElement('div');
@@ -2081,7 +2277,7 @@ catBtns.forEach((btn, idx) => {
 });
 
 // Initial render
-renderCategory('studio');
+renderCategory('timeline');
 
 // Solo Projects - member button handlers
 document.querySelectorAll('.solo-member-btn').forEach(btn => {
