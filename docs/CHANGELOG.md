@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.8.3
+**Lyrics Search**
+
+### Lyrics Search
+- New "Lyrics Search" tab - search across every Hip song by keyword or phrase
+- Powered by lyrics.ovh API with full localStorage caching - fetch once, search forever
+- One-click "Build Lyrics Index" fetches lyrics for all 169 songs (13 studio albums + 2 EPs)
+- Search results show matching lines with context, keywords highlighted in gold
+- Album breakdown pills show which albums contain the most matches, sorted by frequency
+- Click any album pill to filter results to just that album
+- Rebuild Index and Clear Cache controls for managing the local lyrics database
+- Progress bar with real-time status during index building
+
+---
+
 ## v2.8.2
 **Album Timeline View**
 

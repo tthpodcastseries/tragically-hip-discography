@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tragically Hip - Discography v2.8.2</title>
+  <title>The Tragically Hip - Discography v2.8.3</title>
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -661,6 +661,35 @@
       .timeline-scroll { padding: 12px 16px 0; }
     }
 
+    /* ─── LYRICS SEARCH ─── */
+    .lyrics-section { display: none; padding: 0 16px 32px; max-width: 800px; margin: 0 auto; }
+    .lyrics-search-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+    .lyrics-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
+    .lyrics-search-input:focus { border-color: var(--gold); }
+    .lyrics-search-input::placeholder { color: var(--muted2); }
+    .lyrics-search-btn { padding: 12px 24px; border-radius: 30px; border: none; background: var(--red); color: #fff; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .lyrics-search-btn:hover { background: #a00d24; }
+    .lyrics-search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .lyrics-status { text-align: center; color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; }
+    .lyrics-status-bar { width: 100%; height: 4px; border-radius: 2px; background: var(--border); margin-top: 8px; overflow: hidden; }
+    .lyrics-status-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.3s; width: 0; }
+    .lyrics-album-breakdown { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; justify-content: center; }
+    .lyrics-album-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .lyrics-album-pill:hover, .lyrics-album-pill.active { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.1); }
+    .lyrics-album-pill .pill-count { color: var(--red); margin-left: 4px; }
+    .lyrics-results-count { font-size: 0.75rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .lyrics-result { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; transition: border-color 0.15s; cursor: pointer; }
+    .lyrics-result:hover { border-color: var(--gold); }
+    .lyrics-result-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .lyrics-result-song { font-weight: 700; color: var(--text); font-size: 0.9rem; }
+    .lyrics-result-album { font-size: 0.7rem; color: var(--muted); }
+    .lyrics-result-lines { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+    .lyrics-result-lines mark { background: rgba(212,160,23,0.25); color: var(--gold); border-radius: 2px; padding: 0 2px; }
+    .lyrics-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
+    .lyrics-cache-actions { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+    .lyrics-cache-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.7rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
+    .lyrics-cache-btn:hover { border-color: var(--gold); color: var(--gold); }
+
     /* ─── MODAL ─── */
     .overlay {
       position: fixed; inset: 0;
@@ -921,6 +950,7 @@
     <button class="category-btn" data-category="video" role="tab" aria-selected="false" aria-controls="albumsGrid">Video</button>
     <button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid">TTH Top 40</button>
     <button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button>
+    <button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button>
   </div>
 </header>
 
@@ -938,6 +968,26 @@
   </div>
 
   <div id="categoryAnnounce" class="sr-only" aria-live="polite"></div>
+
+  <div id="lyricsSection" class="lyrics-section" role="tabpanel" aria-label="Lyrics search">
+    <div class="section-header">
+      <h2 class="section-label">Lyrics Search</h2>
+      <p class="section-note">Search across the complete Hip catalog by keyword or phrase</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="lyrics-search-bar">
+      <input type="text" class="lyrics-search-input" id="lyricsSearchInput" placeholder="Search lyrics (e.g. water, courage, highway)..." autocomplete="off">
+      <button class="lyrics-search-btn" id="lyricsSearchBtn">Search</button>
+    </div>
+    <div id="lyricsStatus" class="lyrics-status" style="display:none"></div>
+    <div id="lyricsAlbumBreakdown" class="lyrics-album-breakdown"></div>
+    <div id="lyricsResultsCount" class="lyrics-results-count"></div>
+    <div id="lyricsResults"></div>
+    <div id="lyricsEmpty" class="lyrics-empty">
+      <p>Type a word or phrase and hit Search to find matching lyrics across all Tragically Hip songs.</p>
+      <div id="lyricsCacheStatus"></div>
+    </div>
+  </div>
 
   <div id="top40Section">
     <div class="section-header">
@@ -1480,6 +1530,7 @@ const categoryData = {
   top40: [],
   solo: [],
   timeline: [],
+  lyrics: [],
 };
 
 const categoryStats = {
@@ -1536,6 +1587,12 @@ const categoryStats = {
     { num: '1984', lbl: 'Band Formed' },
     { num: '2016', lbl: 'Final Show' },
     { num: '35+', lbl: 'Years of Music' },
+  ],
+  lyrics: [
+    { num: '15', lbl: 'Albums Indexed' },
+    { num: '169', lbl: 'Songs Searchable' },
+    { num: '0', lbl: 'Cached Songs' },
+    { num: 'API', lbl: 'lyrics.ovh' },
   ],
 };
 
@@ -2003,6 +2060,271 @@ function rankClass(rankStr) {
   return 't40';
 }
 
+// ─── Lyrics Search Engine ───
+const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v1';
+let lyricsSearchInitialized = false;
+
+function getLyricsCache() {
+  try { return JSON.parse(localStorage.getItem(LYRICS_CACHE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function saveLyricsCache(cache) {
+  try { localStorage.setItem(LYRICS_CACHE_KEY, JSON.stringify(cache)); } catch {}
+}
+
+function getAllSongsForLyrics() {
+  const songs = [];
+  const sources = [studioAlbums, epAlbums];
+  sources.forEach(albumList => {
+    albumList.forEach(a => {
+      (a.tracks || []).forEach(t => {
+        // Strip ranking badges like "🏅 " or "(Single)" markers
+        const clean = t.replace(/^\u{1F396}\uFE0F?\s*/u, '').replace(/\s*\(Single\)/i, '').trim();
+        songs.push({ song: clean, album: a.title, year: a.year });
+      });
+    });
+  });
+  return songs;
+}
+
+async function fetchLyrics(artist, song) {
+  try {
+    const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(song)}`;
+    const resp = await fetch(url);
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    return data.lyrics || null;
+  } catch { return null; }
+}
+
+async function buildLyricsIndex(onProgress) {
+  const cache = getLyricsCache();
+  const allSongs = getAllSongsForLyrics();
+  const total = allSongs.length;
+  let fetched = 0;
+  let newFetches = 0;
+
+  for (const s of allSongs) {
+    const key = `${s.album}|||${s.song}`;
+    if (cache[key] !== undefined) { fetched++; onProgress(fetched, total, s.song, false); continue; }
+
+    // Rate-limit: small delay between requests
+    if (newFetches > 0) await new Promise(r => setTimeout(r, 200));
+
+    const lyrics = await fetchLyrics('The Tragically Hip', s.song);
+    cache[key] = lyrics || ''; // empty string = tried but not found
+    newFetches++;
+    fetched++;
+    onProgress(fetched, total, s.song, true);
+
+    // Save periodically
+    if (newFetches % 10 === 0) saveLyricsCache(cache);
+  }
+
+  saveLyricsCache(cache);
+  return cache;
+}
+
+function searchLyrics(query) {
+  const cache = getLyricsCache();
+  const allSongs = getAllSongsForLyrics();
+  const results = [];
+  const q = query.toLowerCase();
+  const qRegex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+
+  allSongs.forEach(s => {
+    const key = `${s.album}|||${s.song}`;
+    const lyrics = cache[key];
+    if (!lyrics) return;
+
+    const lines = lyrics.split('\n').filter(l => l.trim());
+    const matchingLines = [];
+    lines.forEach((line, idx) => {
+      if (line.toLowerCase().includes(q)) {
+        // Get context: line before and after
+        const context = [];
+        if (idx > 0 && lines[idx - 1].trim()) context.push(lines[idx - 1]);
+        context.push(line);
+        if (idx < lines.length - 1 && lines[idx + 1].trim()) context.push(lines[idx + 1]);
+        matchingLines.push({ line, context, idx });
+      }
+    });
+
+    if (matchingLines.length > 0) {
+      results.push({
+        song: s.song,
+        album: s.album,
+        year: s.year,
+        matches: matchingLines,
+        matchCount: matchingLines.length
+      });
+    }
+  });
+
+  // Sort by match count descending
+  results.sort((a, b) => b.matchCount - a.matchCount);
+  return results;
+}
+
+function renderLyricsResults(results, query) {
+  const container = document.getElementById('lyricsResults');
+  const countEl = document.getElementById('lyricsResultsCount');
+  const breakdownEl = document.getElementById('lyricsAlbumBreakdown');
+  const emptyEl = document.getElementById('lyricsEmpty');
+  const qRegex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+
+  if (results.length === 0) {
+    container.innerHTML = '';
+    countEl.textContent = '';
+    breakdownEl.innerHTML = '';
+    emptyEl.style.display = '';
+    emptyEl.innerHTML = `<p>No lyrics found matching "<strong>${query}</strong>"</p><p style="font-size:0.75rem;margin-top:8px;color:var(--muted2)">Try a different word or phrase. Some songs may not have cached lyrics yet.</p>`;
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  const totalMatches = results.reduce((s, r) => s + r.matchCount, 0);
+  countEl.textContent = `${totalMatches} match${totalMatches !== 1 ? 'es' : ''} across ${results.length} song${results.length !== 1 ? 's' : ''}`;
+
+  // Album breakdown
+  const albumCounts = {};
+  results.forEach(r => {
+    albumCounts[r.album] = (albumCounts[r.album] || 0) + r.matchCount;
+  });
+  const sortedAlbums = Object.entries(albumCounts).sort((a, b) => b[1] - a[1]);
+  let activeAlbumFilter = null;
+
+  function renderBreakdown() {
+    breakdownEl.innerHTML = '';
+    sortedAlbums.forEach(([album, count]) => {
+      const pill = document.createElement('span');
+      pill.className = 'lyrics-album-pill' + (activeAlbumFilter === album ? ' active' : '');
+      pill.innerHTML = `${album} <span class="pill-count">${count}</span>`;
+      pill.addEventListener('click', () => {
+        activeAlbumFilter = activeAlbumFilter === album ? null : album;
+        renderBreakdown();
+        renderCards();
+      });
+      breakdownEl.appendChild(pill);
+    });
+  }
+
+  function renderCards() {
+    container.innerHTML = '';
+    const filtered = activeAlbumFilter ? results.filter(r => r.album === activeAlbumFilter) : results;
+    filtered.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'lyrics-result';
+      const contextHtml = r.matches.slice(0, 3).map(m => {
+        return m.context.map(line => {
+          const highlighted = line.replace(qRegex, '<mark>$1</mark>');
+          return highlighted;
+        }).join('<br>');
+      }).join('<br><span style="color:var(--border)">...</span><br>');
+
+      card.innerHTML = `
+        <div class="lyrics-result-header">
+          <span class="lyrics-result-song">${r.song}</span>
+          <span class="lyrics-result-album">${r.album} (${r.year})</span>
+        </div>
+        <div class="lyrics-result-lines">${contextHtml}${r.matchCount > 3 ? `<br><span style="color:var(--muted2);font-size:0.7rem">+ ${r.matchCount - 3} more match${r.matchCount - 3 !== 1 ? 'es' : ''}</span>` : ''}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  renderBreakdown();
+  renderCards();
+}
+
+function initLyricsSearch() {
+  if (lyricsSearchInitialized) { updateLyricsCacheStatus(); return; }
+  lyricsSearchInitialized = true;
+
+  const input = document.getElementById('lyricsSearchInput');
+  const btn = document.getElementById('lyricsSearchBtn');
+  const statusEl = document.getElementById('lyricsStatus');
+
+  updateLyricsCacheStatus();
+
+  function doSearch() {
+    const q = input.value.trim();
+    if (q.length < 2) return;
+    const results = searchLyrics(q);
+    renderLyricsResults(results, q);
+  }
+
+  btn.addEventListener('click', doSearch);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+}
+
+function updateLyricsCacheStatus() {
+  const cache = getLyricsCache();
+  const allSongs = getAllSongsForLyrics();
+  const cached = allSongs.filter(s => cache[`${s.album}|||${s.song}`]).length;
+  const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
+
+  // Update stats row
+  const stat3 = document.getElementById('statNum3');
+  if (stat3 && document.querySelector('.category-btn.active')?.dataset.category === 'lyrics') {
+    stat3.textContent = String(found);
+  }
+
+  const statusArea = document.getElementById('lyricsCacheStatus');
+  if (!statusArea) return;
+  if (cached === 0) {
+    statusArea.innerHTML = `
+      <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">No lyrics cached yet. Build the index to enable search.</p>
+      <div class="lyrics-cache-actions">
+        <button class="lyrics-cache-btn" id="lyricsBuildBtn">Build Lyrics Index</button>
+      </div>`;
+    document.getElementById('lyricsBuildBtn').addEventListener('click', startBuildIndex);
+  } else {
+    statusArea.innerHTML = `
+      <p style="margin-top:12px;font-size:0.75rem;color:var(--muted)">${found} of ${allSongs.length} songs indexed with lyrics</p>
+      <div class="lyrics-cache-actions">
+        <button class="lyrics-cache-btn" id="lyricsRebuildBtn">Rebuild Index</button>
+        <button class="lyrics-cache-btn" id="lyricsClearBtn">Clear Cache</button>
+      </div>`;
+    document.getElementById('lyricsRebuildBtn')?.addEventListener('click', () => {
+      localStorage.removeItem(LYRICS_CACHE_KEY);
+      startBuildIndex();
+    });
+    document.getElementById('lyricsClearBtn')?.addEventListener('click', () => {
+      localStorage.removeItem(LYRICS_CACHE_KEY);
+      updateLyricsCacheStatus();
+      document.getElementById('lyricsResults').innerHTML = '';
+      document.getElementById('lyricsAlbumBreakdown').innerHTML = '';
+      document.getElementById('lyricsResultsCount').textContent = '';
+      document.getElementById('lyricsEmpty').style.display = '';
+    });
+  }
+}
+
+async function startBuildIndex() {
+  const statusEl = document.getElementById('lyricsStatus');
+  const btn = document.getElementById('lyricsSearchBtn');
+  btn.disabled = true;
+  statusEl.style.display = '';
+  statusEl.innerHTML = 'Preparing to fetch lyrics...<div class="lyrics-status-bar"><div class="lyrics-status-fill" id="lyricsFill"></div></div>';
+
+  const fill = document.getElementById('lyricsFill');
+  await buildLyricsIndex((done, total, songName, wasFetched) => {
+    const pct = Math.round((done / total) * 100);
+    fill.style.width = pct + '%';
+    statusEl.innerHTML = `${wasFetched ? 'Fetching' : 'Cached'}: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
+  });
+
+  btn.disabled = false;
+  const cache = getLyricsCache();
+  const allSongs = getAllSongsForLyrics();
+  const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
+  statusEl.innerHTML = `Index complete - ${found} songs with lyrics found`;
+  setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
+  updateLyricsCacheStatus();
+}
+
 // ─── Timeline View ───
 function renderTimeline() {
   const track = document.getElementById('timelineTrack');
@@ -2187,6 +2509,11 @@ function renderCategory(category) {
   // Show/hide Top 40 section
   document.getElementById('top40Section').style.display = category === 'top40' ? '' : 'none';
 
+  // Show/hide Lyrics Search section
+  const lyricsEl = document.getElementById('lyricsSection');
+  lyricsEl.style.display = category === 'lyrics' ? 'block' : 'none';
+  if (category === 'lyrics') initLyricsSearch();
+
   // Show/hide Solo Projects section
   const soloSection = document.getElementById('soloSection');
   soloSection.style.display = category === 'solo' ? '' : 'none';
@@ -2198,8 +2525,8 @@ function renderCategory(category) {
   // Re-render album grid
   const grid = document.getElementById('albumsGrid');
   grid.innerHTML = '';
-  grid.style.display = (category === 'timeline') ? 'none' : '';
-  if (category === 'solo' || category === 'timeline') return;
+  grid.style.display = (['timeline','lyrics'].includes(category)) ? 'none' : '';
+  if (['solo','timeline','lyrics'].includes(category)) return;
   const categoryLabels = { studio: ['Studio Album', 'Studio Albums'], live: ['Live Album', 'Live Albums'], compilations: ['Compilation', 'Compilations'], boxsets: ['Box Set', 'Box Sets'], eps: ['EP', 'EPs'], video: ['Video Release', 'Video Releases'], top40: ['',''] };
   if (category !== 'top40' && currentAlbums.length > 0) {
     const countEl = document.createElement('div');
