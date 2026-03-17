@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.8.4
+**Setlist Explorer**
+
+### Setlist Explorer
+- New "Setlists" tab - browse 1,358 live shows from 1985 to 2016
+- Data sourced from setlist.fm API (static JSON, fetched via Node script)
+- Filter by year, tour name, or city using dropdown selectors
+- Free-text search across venue names, cities, and songs played
+- Summary stats update live: show count, unique songs, total songs played
+- "Most Played Songs" pills show the top 15 songs for any filtered view - click to search
+- Each setlist card shows date, venue, city, tour badge, full song list with encore labels
+- "View on setlist.fm" links on every card
+- Paginated results with "Load More" button (20 per page)
+- 1,091 shows with full setlist data, 299 unique songs, 20,312 total performances
+
+---
+
 ## v2.8.3
 **Lyrics Search**
 

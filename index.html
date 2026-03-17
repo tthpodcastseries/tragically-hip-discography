@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tragically Hip - Discography v2.8.3</title>
+  <title>The Tragically Hip - Discography v2.8.4</title>
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -690,6 +690,41 @@
     .lyrics-cache-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.7rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
     .lyrics-cache-btn:hover { border-color: var(--gold); color: var(--gold); }
 
+    /* ─── SETLIST EXPLORER ─── */
+    .setlist-section { display: none; padding: 0 16px 32px; max-width: 900px; margin: 0 auto; }
+    .setlist-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .setlist-filter { padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; min-width: 140px; cursor: pointer; }
+    .setlist-filter:focus { border-color: var(--gold); }
+    .setlist-filter option { background: var(--bg2); color: var(--text); }
+    .setlist-search { flex: 1; min-width: 180px; border-radius: 30px; padding: 10px 16px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; }
+    .setlist-search:focus { border-color: var(--gold); }
+    .setlist-search::placeholder { color: var(--muted2); }
+    .setlist-summary { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px; font-size: 0.75rem; color: var(--muted); }
+    .setlist-summary-item { display: flex; align-items: center; gap: 4px; }
+    .setlist-summary-num { color: var(--gold); font-weight: 700; }
+    .setlist-results-info { font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .setlist-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; transition: border-color 0.15s; }
+    .setlist-card:hover { border-color: var(--gold); }
+    .setlist-card-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+    .setlist-date { font-weight: 700; color: var(--gold); font-size: 0.85rem; }
+    .setlist-venue { font-size: 0.78rem; color: var(--text); }
+    .setlist-city { font-size: 0.72rem; color: var(--muted); }
+    .setlist-tour { display: inline-block; font-size: 0.62rem; color: var(--red); border: 1px solid var(--red); border-radius: 12px; padding: 1px 8px; margin-bottom: 6px; }
+    .setlist-songs { font-size: 0.75rem; color: var(--muted); line-height: 1.8; }
+    .setlist-songs .encore-label { color: var(--gold); font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 6px; }
+    .setlist-songs .song-name { color: var(--text); }
+    .setlist-songs .song-cover { color: var(--muted2); font-style: italic; }
+    .setlist-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
+    .setlist-load-more { display: block; margin: 16px auto; padding: 10px 28px; border-radius: 30px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.78rem; cursor: pointer; transition: all 0.15s; }
+    .setlist-load-more:hover { border-color: var(--gold); color: var(--gold); }
+    .setlist-link { font-size: 0.65rem; color: var(--muted2); text-decoration: none; float: right; }
+    .setlist-link:hover { color: var(--gold); }
+    .setlist-top-songs { margin-bottom: 20px; }
+    .setlist-top-songs-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+    .setlist-top-pill { padding: 3px 10px; border-radius: 14px; font-size: 0.68rem; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .setlist-top-pill:hover { border-color: var(--red); color: var(--red); }
+    .setlist-top-pill .pill-ct { color: var(--gold); margin-left: 4px; font-weight: 600; }
+
     /* ─── MODAL ─── */
     .overlay {
       position: fixed; inset: 0;
@@ -951,6 +986,7 @@
     <button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid">TTH Top 40</button>
     <button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button>
     <button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button>
+    <button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlists</button>
   </div>
 </header>
 
@@ -987,6 +1023,25 @@
       <p>Type a word or phrase and hit Search to find matching lyrics across all Tragically Hip songs.</p>
       <div id="lyricsCacheStatus"></div>
     </div>
+  </div>
+
+  <div id="setlistSection" class="setlist-section" role="tabpanel" aria-label="Setlist explorer">
+    <div class="section-header">
+      <h2 class="section-label">Setlist Explorer</h2>
+      <p class="section-note">Browse 1,358 live shows from 1985 to 2016 - powered by setlist.fm</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="setlist-filters" id="setlistFilters">
+      <select class="setlist-filter" id="setlistYear"><option value="">All Years</option></select>
+      <select class="setlist-filter" id="setlistTour"><option value="">All Tours</option></select>
+      <select class="setlist-filter" id="setlistCity"><option value="">All Cities</option></select>
+      <input type="text" class="setlist-search" id="setlistSearch" placeholder="Search venue, city, or song...">
+    </div>
+    <div id="setlistSummary" class="setlist-summary"></div>
+    <div id="setlistTopSongs" class="setlist-top-songs"></div>
+    <div id="setlistResultsInfo" class="setlist-results-info"></div>
+    <div id="setlistResults"></div>
+    <div id="setlistEmpty" class="setlist-empty">Loading setlist data...</div>
   </div>
 
   <div id="top40Section">
@@ -1531,6 +1586,7 @@ const categoryData = {
   solo: [],
   timeline: [],
   lyrics: [],
+  setlists: [],
 };
 
 const categoryStats = {
@@ -1593,6 +1649,12 @@ const categoryStats = {
     { num: '169', lbl: 'Songs Searchable' },
     { num: '0', lbl: 'Cached Songs' },
     { num: 'API', lbl: 'lyrics.ovh' },
+  ],
+  setlists: [
+    { num: '1,358', lbl: 'Live Shows' },
+    { num: '302', lbl: 'Cities' },
+    { num: '23', lbl: 'Tours' },
+    { num: '1985-2016', lbl: 'Years Active' },
   ],
 };
 
@@ -2060,6 +2122,197 @@ function rankClass(rankStr) {
   return 't40';
 }
 
+// ─── Setlist Explorer ───
+let setlistData = null;
+let setlistInitialized = false;
+
+async function loadSetlistData() {
+  if (setlistData) return setlistData;
+  try {
+    const resp = await fetch('data/setlists.min.json');
+    setlistData = await resp.json();
+    return setlistData;
+  } catch (e) {
+    console.error('Failed to load setlist data:', e);
+    return null;
+  }
+}
+
+function formatSetlistDate(dateStr) {
+  // dd-MM-yyyy -> readable
+  const [d, m, y] = dateStr.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
+}
+
+function getSetlistYear(dateStr) {
+  return dateStr.split('-')[2];
+}
+
+async function initSetlistExplorer() {
+  if (setlistInitialized) return;
+  setlistInitialized = true;
+
+  const data = await loadSetlistData();
+  if (!data) {
+    document.getElementById('setlistEmpty').textContent = 'Failed to load setlist data.';
+    return;
+  }
+
+  const emptyEl = document.getElementById('setlistEmpty');
+  emptyEl.style.display = 'none';
+
+  const allSetlists = data.setlists;
+  const withSongs = allSetlists.filter(s => s.songs.length > 0);
+
+  // Build filter options
+  const years = [...new Set(allSetlists.map(s => getSetlistYear(s.date)))].sort().reverse();
+  const tours = [...new Set(allSetlists.map(s => s.tour).filter(Boolean))].sort();
+  const cities = [...new Set(allSetlists.map(s => s.city).filter(Boolean))].sort();
+
+  const yearSelect = document.getElementById('setlistYear');
+  years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSelect.appendChild(o); });
+
+  const tourSelect = document.getElementById('setlistTour');
+  tours.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; tourSelect.appendChild(o); });
+
+  const citySelect = document.getElementById('setlistCity');
+  cities.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; citySelect.appendChild(o); });
+
+  let currentPage = 1;
+  const perPage = 20;
+
+  function getFiltered() {
+    const year = yearSelect.value;
+    const tour = tourSelect.value;
+    const city = citySelect.value;
+    const search = document.getElementById('setlistSearch').value.toLowerCase().trim();
+
+    return withSongs.filter(s => {
+      if (year && getSetlistYear(s.date) !== year) return false;
+      if (tour && s.tour !== tour) return false;
+      if (city && s.city !== city) return false;
+      if (search) {
+        const haystack = [s.venue, s.city, s.state, s.tour, ...s.songs.map(sg => sg.name)].filter(Boolean).join(' ').toLowerCase();
+        if (!haystack.includes(search)) return false;
+      }
+      return true;
+    });
+  }
+
+  function renderSummary(filtered) {
+    const summaryEl = document.getElementById('setlistSummary');
+    const songCounts = {};
+    filtered.forEach(s => {
+      s.songs.forEach(sg => {
+        if (!sg.tape) songCounts[sg.name] = (songCounts[sg.name] || 0) + 1;
+      });
+    });
+    const uniqueSongs = Object.keys(songCounts).length;
+    const totalSongsPlayed = Object.values(songCounts).reduce((a, b) => a + b, 0);
+
+    summaryEl.innerHTML = `
+      <span class="setlist-summary-item"><span class="setlist-summary-num">${filtered.length}</span> shows</span>
+      <span class="setlist-summary-item"><span class="setlist-summary-num">${uniqueSongs}</span> unique songs</span>
+      <span class="setlist-summary-item"><span class="setlist-summary-num">${totalSongsPlayed.toLocaleString()}</span> total songs played</span>
+    `;
+
+    // Top 15 most played songs
+    const topSongs = Object.entries(songCounts).sort((a, b) => b[1] - a[1]).slice(0, 15);
+    const topEl = document.getElementById('setlistTopSongs');
+    if (topSongs.length > 0) {
+      topEl.innerHTML = '<div style="font-size:0.7rem;color:var(--muted2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Most Played Songs</div><div class="setlist-top-songs-grid"></div>';
+      const grid = topEl.querySelector('.setlist-top-songs-grid');
+      topSongs.forEach(([name, count]) => {
+        const pill = document.createElement('span');
+        pill.className = 'setlist-top-pill';
+        pill.innerHTML = `${name} <span class="pill-ct">${count}</span>`;
+        pill.addEventListener('click', () => {
+          document.getElementById('setlistSearch').value = name;
+          currentPage = 1;
+          render();
+        });
+        grid.appendChild(pill);
+      });
+    } else {
+      topEl.innerHTML = '';
+    }
+  }
+
+  function renderCards(filtered) {
+    const container = document.getElementById('setlistResults');
+    const infoEl = document.getElementById('setlistResultsInfo');
+    const showing = filtered.slice(0, currentPage * perPage);
+
+    infoEl.textContent = `Showing ${showing.length} of ${filtered.length} shows`;
+    container.innerHTML = '';
+
+    showing.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'setlist-card';
+
+      // Group songs by set
+      let songsHtml = '';
+      let currentSet = '';
+      s.songs.forEach(sg => {
+        if (sg.set !== currentSet) {
+          currentSet = sg.set;
+          if (currentSet !== 'Main Set') {
+            songsHtml += `<span class="encore-label">${currentSet}</span>`;
+          }
+        }
+        const coverNote = sg.cover ? ` <span class="song-cover">(${sg.cover} cover)</span>` : '';
+        songsHtml += `<span class="song-name">${sg.name}</span>${coverNote} &middot; `;
+      });
+      // Remove trailing middot
+      songsHtml = songsHtml.replace(/ &middot; $/, '');
+
+      const location = [s.city, s.state, s.country].filter(Boolean).join(', ');
+      card.innerHTML = `
+        <div class="setlist-card-header">
+          <span class="setlist-date">${formatSetlistDate(s.date)}</span>
+          <span class="setlist-city">${location}</span>
+        </div>
+        <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
+        ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
+        <div class="setlist-songs">${songsHtml}</div>
+        <a href="${s.url}" target="_blank" rel="noopener" class="setlist-link">View on setlist.fm</a>
+      `;
+      container.appendChild(card);
+    });
+
+    // Load more button
+    const existingBtn = container.parentElement.querySelector('.setlist-load-more');
+    if (existingBtn) existingBtn.remove();
+
+    if (showing.length < filtered.length) {
+      const btn = document.createElement('button');
+      btn.className = 'setlist-load-more';
+      btn.textContent = `Load More (${filtered.length - showing.length} remaining)`;
+      btn.addEventListener('click', () => { currentPage++; render(); });
+      container.after(btn);
+    }
+  }
+
+  function render() {
+    const filtered = getFiltered();
+    renderSummary(filtered);
+    renderCards(filtered);
+  }
+
+  // Event listeners
+  yearSelect.addEventListener('change', () => { currentPage = 1; render(); });
+  tourSelect.addEventListener('change', () => { currentPage = 1; render(); });
+  citySelect.addEventListener('change', () => { currentPage = 1; render(); });
+  let searchTimeout;
+  document.getElementById('setlistSearch').addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => { currentPage = 1; render(); }, 300);
+  });
+
+  render();
+}
+
 // ─── Lyrics Search Engine ───
 const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v1';
 let lyricsSearchInitialized = false;
@@ -2514,6 +2767,11 @@ function renderCategory(category) {
   lyricsEl.style.display = category === 'lyrics' ? 'block' : 'none';
   if (category === 'lyrics') initLyricsSearch();
 
+  // Show/hide Setlist Explorer section
+  const setlistEl = document.getElementById('setlistSection');
+  setlistEl.style.display = category === 'setlists' ? 'block' : 'none';
+  if (category === 'setlists') initSetlistExplorer();
+
   // Show/hide Solo Projects section
   const soloSection = document.getElementById('soloSection');
   soloSection.style.display = category === 'solo' ? '' : 'none';
@@ -2525,8 +2783,9 @@ function renderCategory(category) {
   // Re-render album grid
   const grid = document.getElementById('albumsGrid');
   grid.innerHTML = '';
-  grid.style.display = (['timeline','lyrics'].includes(category)) ? 'none' : '';
-  if (['solo','timeline','lyrics'].includes(category)) return;
+  const hiddenCats = ['timeline','lyrics','setlists'];
+  grid.style.display = hiddenCats.includes(category) ? 'none' : '';
+  if (['solo','timeline','lyrics','setlists'].includes(category)) return;
   const categoryLabels = { studio: ['Studio Album', 'Studio Albums'], live: ['Live Album', 'Live Albums'], compilations: ['Compilation', 'Compilations'], boxsets: ['Box Set', 'Box Sets'], eps: ['EP', 'EPs'], video: ['Video Release', 'Video Releases'], top40: ['',''] };
   if (category !== 'top40' && currentAlbums.length > 0) {
     const countEl = document.createElement('div');
