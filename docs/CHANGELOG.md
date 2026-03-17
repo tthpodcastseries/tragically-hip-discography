@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.8.0
+**Solo Modals, Tracklists & Streaming Links**
+
+### Solo & Side Projects
+- Added complete tracklists for all 19 solo and side project albums (213 total tracks)
+- Solo album cards now open a full detail modal (matching the main album modal style)
+- Each solo modal includes description, tracklist, and streaming links
+- Posthumous releases display a gold "Posthumous" tag in the modal
+- Removed inline notes from solo cards in favour of the cleaner "Details" hover hint
+
+### Streaming Links
+- Added brand-coloured pill buttons for all streaming services across the app:
+  - Tidal (cyan), YouTube Music (red), Amazon Music (teal), Buy at TheHip.com (gold)
+  - Previously only Apple Music and Spotify had colour; the rest were grey
+- Solo project modals include Apple Music, Spotify, Tidal, YouTube Music, and Amazon Music search links using the artist name
+
+### Data Fixes
+- Fixed TTHTop40 rank #115: corrected "Shy" to "Fly" (World Container)
+
+---
+
 ## v2.7.0
 **Solo Records & Side Projects - New Sections + Full Cover Art**
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tragically Hip - Discography v2.7.3</title>
+  <title>The Tragically Hip - Discography v2.8</title>
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, album details, singles, and Spotify links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,8 +46,14 @@
     .stream-link-apple:hover, .stream-link-apple:focus { background: #fa586a; color: #fff; }
     .stream-link-spotify { color: #1DB954; border-color: #1DB954; }
     .stream-link-spotify:hover, .stream-link-spotify:focus { background: #1DB954; color: #fff; }
-    .stream-link-default { color: #aaa; border-color: #aaa; }
-    .stream-link-default:hover, .stream-link-default:focus { background: #aaa; color: #000; }
+    .stream-link-tidal { color: #00FFFF; border-color: #00FFFF; }
+    .stream-link-tidal:hover, .stream-link-tidal:focus { background: #00FFFF; color: #000; }
+    .stream-link-youtube { color: #FF0000; border-color: #FF0000; }
+    .stream-link-youtube:hover, .stream-link-youtube:focus { background: #FF0000; color: #fff; }
+    .stream-link-amazon { color: #25D1DA; border-color: #25D1DA; }
+    .stream-link-amazon:hover, .stream-link-amazon:focus { background: #25D1DA; color: #000; }
+    .stream-link-hip { color: #D4A017; border-color: #D4A017; }
+    .stream-link-hip:hover, .stream-link-hip:focus { background: #D4A017; color: #000; }
 
     /* ─── SKIP LINK ─── */
     .skip-link {
@@ -1351,15 +1357,24 @@ const soloProjects = {
     role: 'Vocals / Lyrics - The Tragically Hip (1984-2017)',
     bio: 'Gord Downie pursued a solo career alongside the Hip beginning in 2001, releasing a series of records that drew on indie rock, Americana, folk, and spoken word. He released five solo albums during his lifetime, with four posthumous releases following his death from glioblastoma on October 17, 2017. His final completed project, Secret Path (2016), was a multimedia concept album about Chanie Wenjack and became a landmark in Canadian reconciliation.',
     albums: [
-      { title: 'Coke Machine Glow', year: '2001', credit: 'Gordon Downie w/ The Goddamned Band', img: 'assets/solo-projects/Gord Downie/Coke-machine-glow.jpg', notes: 'Solo debut. Folk/indie rock. Accompanied by poetry book of same name.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)' },
-      { title: 'Battle of the Nudes', year: '2003', credit: 'Gordon Downie w/ Country of Miracles', img: 'assets/solo-projects/Gord Downie/Battle_of_the_Nudes_(album).jpg', notes: 'Harder-edged follow-up. Features Christmastime in Toronto.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)' },
-      { title: 'The Grand Bounce', year: '2010', credit: 'Gord Downie & the Country of Miracles', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_the_Country_of_Miracles_-_The_Grand_Bounce.png', notes: 'Third solo effort. Backing band includes The Dinner Is Ruined.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)' },
-      { title: 'And the Conquering Sun', year: '2014', credit: 'Gord Downie, The Sadies & The Conquering Sun', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_the_Sadies_-_And_the_Conquering_Sun.png', notes: 'Americana-tinged collaboration with The Sadies. 10 originals.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)' },
-      { title: 'Secret Path', year: '2016', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Secret_Path_cover_art.jpg', notes: 'Concept album about Chanie Wenjack. Graphic novel + animated CBC film.', gradient: 'linear-gradient(145deg, #1A0D0D 0%, #3D1A1A 50%, #0F0606 100%)' },
-      { title: 'Introduce Yerself', year: '2017', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Gord_Downie_–_Introduce_Yerself.png', notes: 'Posthumous. First #1 solo album. Double album released 10 days after his death.', gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1A3D1A 50%, #050F05 100%)', posthumous: true },
-      { title: 'Away Is Mine', year: '2020', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Gord_Downie_-_Away_Is_Mine.png', notes: 'Posthumous. Genre-defying. Produced by Nilling & LaBelle.', gradient: 'linear-gradient(145deg, #0D1A1A 0%, #1A3D3D 50%, #060F0F 100%)', posthumous: true },
-      { title: 'Lustre Parfait', year: '2023', credit: 'Gord Downie & Bob Rock', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_Bob_Rock_-_Lustre_Parfait.png', notes: 'Posthumous. Sessions begun during Downie\'s lifetime with producer Bob Rock.', gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)', posthumous: true },
-      { title: 'Live at 6 O\'Clock', year: '2026', credit: 'Gord Downie, The Sadies & The Conquering Sun', img: 'assets/solo-projects/Gord Downie/Gord Downie - Live at SIx.jpg', notes: 'Posthumous. 8 live tracks from 4 festival sets, 2014 summer tour. Arts & Crafts.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)', posthumous: true },
+      { title: 'Coke Machine Glow', year: '2001', credit: 'Gordon Downie w/ The Goddamned Band', img: 'assets/solo-projects/Gord Downie/Coke-machine-glow.jpg', notes: 'Solo debut. Folk/indie rock. Accompanied by poetry book of same name.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+        tracks: ['Starpainters','Vancouver Divorce','SF Song','Trick Rider','Canada Geese','Chancellor','The Never-Ending Present','Nothing But Heartache in Your Social Life','Blackflies','Lofty Pines','Boy Bruised By Butterfly Chase','Mystery','Elaborate','Yer Possessed','Every Irrelevance','Insomniacs of the World, Good Night'] },
+      { title: 'Battle of the Nudes', year: '2003', credit: 'Gordon Downie w/ Country of Miracles', img: 'assets/solo-projects/Gord Downie/Battle_of_the_Nudes_(album).jpg', notes: 'Harder-edged follow-up. Features Christmastime in Toronto.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+        tracks: ['Into the Night','Figment','Christmastime in Toronto','Willow Logic','Pascal\'s Submarine','11th Fret','Who by Rote','Steeplechase','More Me Less You','We\'re Hardcore','Pillform No. 2','Pillform No. 1'] },
+      { title: 'The Grand Bounce', year: '2010', credit: 'Gord Downie & the Country of Miracles', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_the_Country_of_Miracles_-_The_Grand_Bounce.png', notes: 'Third solo effort. Backing band includes The Dinner Is Ruined.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)',
+        tracks: ['The East Wind','Moon over Glenora','As a Mover','The Dance and Its Disappearance','The Hard Canadian','Gone','The Drowning Machine','Yellow Days','Night Is for Getting','Moonslow Yer Lashes','Retrace','Broadcast','Pinned'] },
+      { title: 'And the Conquering Sun', year: '2014', credit: 'Gord Downie, The Sadies & The Conquering Sun', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_the_Sadies_-_And_the_Conquering_Sun.png', notes: 'Americana-tinged collaboration with The Sadies. 10 originals.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
+        tracks: ['Crater','The Conquering Sun','Los Angeles Times','One Good Fast Job','It Didn\'t Start to Break My Heart Until This Afternoon','Budget Shoes','Demand Destruction','Devil Enough','I\'m Free, Disarray Me','Saved'] },
+      { title: 'Secret Path', year: '2016', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Secret_Path_cover_art.jpg', notes: 'Concept album about Chanie Wenjack. Graphic novel + animated CBC film.', gradient: 'linear-gradient(145deg, #1A0D0D 0%, #3D1A1A 50%, #0F0606 100%)',
+        tracks: ['The Stranger','Swing Set','Seven Matches','I Will Not Be Struck','Son','Secret Path','Don\'t Let This Touch You','Haunt Them, Haunt Them, Haunt Them','The Only Place to Be','Here, Here and Here'] },
+      { title: 'Introduce Yerself', year: '2017', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Gord_Downie_–_Introduce_Yerself.png', notes: 'Posthumous. First #1 solo album. Double album released 10 days after his death.', gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1A3D1A 50%, #050F05 100%)', posthumous: true,
+        tracks: ['First Person','Wolf\'s Home','Bedtime','Introduce Yerself','Coco Chanel No.5','Ricky Please','Safe Is Dead','Spoon','A Natural','Faith Faith','My First Girlfriend','Yer Ashore','Love over Money','You Me and the B\'s','Snowflake','A Better End','Nancy','Thinking About Us','The Road','You Are the Bird','The Lake','Far Away and Blurred','The North'] },
+      { title: 'Away Is Mine', year: '2020', credit: 'Gord Downie', img: 'assets/solo-projects/Gord Downie/Gord_Downie_-_Away_Is_Mine.png', notes: 'Posthumous. Genre-defying. Produced by Nilling & LaBelle.', gradient: 'linear-gradient(145deg, #0D1A1A 0%, #1A3D3D 50%, #060F0F 100%)', posthumous: true,
+        tracks: ['Hotel Worth','Useless Nights','I Am Lost','About Blank','River Don\'t Care','The Least Impossible','Traffic Is Magic','Away Is Mine','No Solace','Untitled','Hotel Worth (Acoustic)','Useless Nights (Acoustic)','I Am Lost (Acoustic)','About Blank (Acoustic)','River Don\'t Care (Acoustic)','The Least Impossible (Acoustic)','Traffic Is Magic (Acoustic)','Away Is Mine (Acoustic)','No Solace (Acoustic)','Untitled (Acoustic)'] },
+      { title: 'Lustre Parfait', year: '2023', credit: 'Gord Downie & Bob Rock', img: 'assets/solo-projects/Gord Downie/Gord_Downie_and_Bob_Rock_-_Lustre_Parfait.png', notes: 'Posthumous. Sessions begun during Downie\'s lifetime with producer Bob Rock.', gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)', posthumous: true,
+        tracks: ['Greyboy Says','The Raven and the Red-Tailed Hawk','Lustre Parfait','The Moment Is a Wild Place','Something More','Camaro','The North Shore','Is There Nowhere','To Catch the Truth','Let Me Howl','HellBreaksLoose','The Safest Day of the Year','In the Field','There Goes the Sun'] },
+      { title: 'Live at 6 O\'Clock', year: '2026', credit: 'Gord Downie, The Sadies & The Conquering Sun', img: 'assets/solo-projects/Gord Downie/Gord Downie - Live at SIx.jpg', notes: 'Posthumous. 8 live tracks from 4 festival sets, 2014 summer tour. Arts & Crafts.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)', posthumous: true,
+        tracks: ['If You Have Ghosts','So Sad About Us','It Didn\'t Start to Break My Heart Until This Afternoon','Grey Riders','Generation','Goodbye Johnny','Demand Destruction','I Got a Right'] },
     ]
   },
   baker: {
@@ -1367,9 +1382,12 @@ const soloProjects = {
     role: 'Lead Guitar - The Tragically Hip (1984-2017)',
     bio: 'Rob Baker formed Stripper\'s Union with Craig Northey (The Odds) after decades of accumulated instrumental ideas that needed a lyricist and vocalist. The partnership has produced three albums, all recorded at The Bathouse Recording Studio in Bath, Ontario.',
     albums: [
-      { title: 'Stripper\'s Union Local 518', year: '2006', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/Local 518.jpg', notes: 'Debut. Recorded at The Bathouse. Top 10 rock radio hit Give Up and Go Away.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)' },
-      { title: 'The Deuce', year: '2011', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/The Deuce.jpg', notes: 'Blend of blues, jazz, and country rock. Deluxe edition available.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)' },
-      { title: 'The Undertaking', year: '2021', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/The Undertaking.jpg', notes: 'Double LP. Disc 1: Feb 5, Disc 2: Mar 12. Baker illustrated each song.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)' },
+      { title: 'Stripper\'s Union Local 518', year: '2006', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/Local 518.jpg', notes: 'Debut. Recorded at The Bathouse. Top 10 rock radio hit Give Up and Go Away.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+        tracks: ['Shake It Off (Walkin\' with the King o\' Funk)','Full Flow Angry Boy','No Ones Watching','Bullet-Proof White Limo','Lost Lost Highway','Everybody Knows the Words','Give Up and Go Away','Local Bear','Horses and Trains (Harmonica Miner)','Nothing Can Bring You Back','Sweet and Low (2nd Last Temptation)','The Radio (Foggy Hill)','Wave After Wave'] },
+      { title: 'The Deuce', year: '2011', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/The Deuce.jpg', notes: 'Blend of blues, jazz, and country rock. Deluxe edition available.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+        tracks: ['Making Strange','When Your Beauty Fades','Only Lows (You\'ll Be Lonely)','High','I Give You Away','Nala','Burn the Bridge Down','Fade to Black','Whiteout','The Circle Is Small'] },
+      { title: 'The Undertaking', year: '2021', credit: 'Stripper\'s Union', img: 'assets/solo-projects/Robby Baker/The Undertaking.jpg', notes: 'Double LP. Disc 1: Feb 5, Disc 2: Mar 12. Baker illustrated each song.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
+        tracks: ['We Are the Underworld','Take the Edge Off','Traveller Traveller','The Enforcer','Dogstar','Invitation','Too Close to the Truth','I\'ll Find You in the Mountains','When I Come Back as a Dog','Into Your Arms (The End)','No Fear','Take It Back','No Rain Tonight','Permanent Damage','Damn Hallelujah','Way Down','Identity Thief','All Clear'] },
     ]
   },
   langlois: {
@@ -1377,10 +1395,14 @@ const soloProjects = {
     role: 'Rhythm Guitar - The Tragically Hip (1986-2017)',
     bio: 'Paul Langlois released two solo albums before forming the Paul Langlois Band. His fourth and most recent album, Smooth Rock Falls, was a surprise digital release in February 2026. All releases are on his own Ching Music label.',
     albums: [
-      { title: 'Fix This Head', year: '2010', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Fix This Head.jpg', notes: 'Solo debut. Released on Ching Music, the label Langlois founded in 2005.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)' },
-      { title: 'Not Guilty', year: '2013', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Not Guilty.jpg', notes: 'Second solo record. Ching Music.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)' },
-      { title: 'Guess What', year: '2023', credit: 'Paul Langlois Band', img: 'assets/solo-projects/Paul Langlois/Guess What.jpg', notes: 'Thoughtful straight-up rock. Band: Greg Ball, Joe Carscallen, Matt Mulvihill, Billy Anglin.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)' },
-      { title: 'Smooth Rock Falls', year: '2026', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Smooth Rock Falls.jpg', notes: 'Surprise release Feb 20, 2026. 10 tracks. Ching Music / Fontana North. Vinyl Apr 27.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)' },
+      { title: 'Fix This Head', year: '2010', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Fix This Head.jpg', notes: 'Solo debut. Released on Ching Music, the label Langlois founded in 2005.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+        tracks: ['Broken Road','Fix This Head','Can\'t Wait Anymore','Confidences','Shattered Down','If I Were You','Cards','House I Fix','Homeless in Aspen','Things I Should Have Said'] },
+      { title: 'Not Guilty', year: '2013', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Not Guilty.jpg', notes: 'Second solo record. Ching Music.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+        tracks: ['Capital Punishment','Not Guilty','Everything We Were','Table\'s Been Set','Waiting on My Train','Retirement','Watching You','It\'s Dark','Leading Me Down','Common Ground'] },
+      { title: 'Guess What', year: '2023', credit: 'Paul Langlois Band', img: 'assets/solo-projects/Paul Langlois/Guess What.jpg', notes: 'Thoughtful straight-up rock. Band: Greg Ball, Joe Carscallen, Matt Mulvihill, Billy Anglin.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
+        tracks: ['It Matters to Me','Desperation Calling','Will to Fight','Been Waiting','The Face of Time','Don\'t Leave Me Brother','638 Main','I Feel Real Yo','Peels Is Sleep Backwards','Guess What'] },
+      { title: 'Smooth Rock Falls', year: '2026', credit: 'Paul Langlois', img: 'assets/solo-projects/Paul Langlois/Smooth Rock Falls.jpg', notes: 'Surprise release Feb 20, 2026. 10 tracks. Ching Music / Fontana North. Vinyl Apr 27.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)',
+        tracks: ['Hardly Holding On','Wrapped in a Bow','Is This What You Want','How You Are?','Into the Night','No Problem in the Daylight','When the Fish Are Gone','Construin\'','There\'s Nothing Wrong','MorningGuyNightGuy'] },
     ]
   },
   sinclair: {
@@ -1388,8 +1410,10 @@ const soloProjects = {
     role: 'Bass Guitar / Backing Vocals - The Tragically Hip (1984-2017)',
     bio: 'The first surviving Hip member to release new music after Gord Downie\'s death, Gord Sinclair described himself as a "reluctant solo artist." Taxi Dancers (2020) was created while processing the loss of his lifelong friend and bandmate.',
     albums: [
-      { title: 'Taxi Dancers', year: '2020', credit: 'Gord Sinclair', img: 'assets/solo-projects/Gord Sinclair/Taxi Dancers.jpg', notes: 'Solo debut. First new music from any Hip member post-Downie. Pheromone Recordings.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)' },
-      { title: 'In Continental Drift', year: '2023', credit: 'Gord Sinclair', img: 'assets/solo-projects/Gord Sinclair/In Contiental Drift.jpeg', notes: 'Sophomore album. More confident vocal range. Pheromone / Cadence Music Group.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)' },
+      { title: 'Taxi Dancers', year: '2020', credit: 'Gord Sinclair', img: 'assets/solo-projects/Gord Sinclair/Taxi Dancers.jpg', notes: 'Solo debut. First new music from any Hip member post-Downie. Pheromone Recordings.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+        tracks: ['It\'s Already Too Late','Wonderful Way','In the Next Life','Forward March Fight','Your Comet Drowns Out the Star Filled Sky','Up and Over','Change of Heart','No Words','Never Coming Back','Take Me to the Moon'] },
+      { title: 'In Continental Drift', year: '2023', credit: 'Gord Sinclair', img: 'assets/solo-projects/Gord Sinclair/In Contiental Drift.jpeg', notes: 'Sophomore album. More confident vocal range. Pheromone / Cadence Music Group.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+        tracks: ['Gool Guy','Sometimes','It\'s Hard to Believe','Now That\'s Gone Too','Carole\'en','Change Your Mind','Over and Over Again','I\'m Getting By','All the Way'] },
     ]
   },
   fay: {
@@ -1397,7 +1421,8 @@ const soloProjects = {
     role: 'Drums - The Tragically Hip (1984-2017)',
     bio: 'Johnny Fay\'s Mercury Sea EP is a significant departure from his three decades behind the kit with the Hip. A 6-track ambient and atmospheric work inspired by explorer Aleksander Doba\'s solo kayak crossings of the Atlantic Ocean. Mixed by Grammy-winning producer David Botrill.',
     albums: [
-      { title: 'Mercury Sea', year: '2025', credit: 'Johnny Fay', img: 'assets/solo-projects/Johnny Fay/Mercury Sea.jpg', notes: '6-track ambient EP. Released Jan 22, 2025. Mixed by David Botrill. Tracks: Endurance (Aleksander Doba), Twin Crossings, Glowstate, Nassau Cloud, Time Shift, Glittering.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)' },
+      { title: 'Mercury Sea', year: '2025', credit: 'Johnny Fay', img: 'assets/solo-projects/Johnny Fay/Mercury Sea.jpg', notes: '6-track ambient EP. Released Jan 22, 2025. Mixed by David Botrill.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
+        tracks: ['Endurance (Aleksander Doba)','Twin Crossings','Glowstate','Nassau Cloud','Time Shift','Glittering'] },
     ]
   },
 };
@@ -1854,7 +1879,7 @@ const beyondTop40 = [
   { rank: 112, title: 'Cemetery Sideroad', album: 'The Tragically Hip', points: 79 },
   { rank: 113, title: 'The Lookahead', album: 'Now for Plan A', points: 77 },
   { rank: 114, title: 'Streets Ahead', album: 'Now for Plan A', points: 71 },
-  { rank: 115, title: 'Shy', album: 'World Container', points: 71 },
+  { rank: 115, title: 'Fly', album: 'World Container', points: 71 },
   { rank: 116, title: 'The Completists', album: 'Music @ Work', points: 66 },
   { rank: 117, title: 'Are You Ready', album: 'In Violet Light', points: 64 },
   { rank: 118, title: 'All Tore Up', album: 'In Violet Light', points: 63 },
@@ -2075,15 +2100,17 @@ document.querySelectorAll('.solo-member-btn').forEach(btn => {
           ${a.img ? `<img src="${a.img}" alt="${a.title} album cover" class="album-art-img" onerror="this.style.display='none'; this.parentElement.style.background='${a.gradient}'">` : ''}
         </div>
         <div class="album-info">
+          <span class="album-info-hint">Details</span>
           <div class="album-name">${a.title}</div>
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:4px;">${a.credit}</div>
           <div class="album-bottom">
             <span>${a.year}</span>
             ${a.posthumous ? '<span class="type-badge" style="background:rgba(212,160,23,0.2);color:var(--gold);">Posthumous</span>' : '<span class="type-badge">Solo</span>'}
           </div>
-          <div style="font-size:0.7rem;color:var(--muted2);margin-top:6px;line-height:1.5;">${a.notes}</div>
         </div>
       `;
+      card.addEventListener('click', () => openSoloModal(a));
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSoloModal(a); } });
       soloGrid.appendChild(card);
     });
     window.scrollTo({ top: memberView.offsetTop - 100, behavior: 'smooth' });
@@ -2277,10 +2304,10 @@ function openModal(i) {
       ${a.spotifyAlbumURL ? `<a href="${a.spotifyAlbumURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><use href="#spotify-icon"/></svg>
         Spotify</a>` : ''}
-      <a href="https://tidal.com/search?q=${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-default">Tidal</a>
-      <a href="https://music.youtube.com/search?q=${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-default">YouTube Music</a>
-      <a href="https://music.amazon.com/search/${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-default">Amazon Music</a>
-      <a href="https://thehip.com/pages/listen" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-default">
+      <a href="https://tidal.com/search?q=${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>
+      <a href="https://music.youtube.com/search?q=${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube">YouTube Music</a>
+      <a href="https://music.amazon.com/search/${encodeURIComponent(a.title + ' The Tragically Hip')}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon">Amazon Music</a>
+      <a href="https://thehip.com/pages/listen" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-hip">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
         Buy at TheHip.com</a>
     </div>
@@ -2313,6 +2340,69 @@ function closeModal() {
     lastFocusedCard.focus();
   }
   lastFocusedCard = null;
+}
+
+function openSoloModal(album) {
+  lastFocusedCard = document.activeElement;
+  const a = album;
+
+  const mArt = document.getElementById('mArt');
+  if (a.img) {
+    mArt.style.background = '';
+    mArt.innerHTML = `<img src="${a.img}" alt="${a.title}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" onerror="this.style.display='none'; this.parentElement.style.background='${a.gradient}'">`;
+  } else {
+    mArt.style.background = a.gradient;
+    mArt.innerHTML = '';
+  }
+  document.getElementById('mTitle').textContent = a.title;
+  document.getElementById('mSub').textContent = `${a.year} · ${a.credit}`;
+
+  const tagsEl = document.getElementById('mTags');
+  tagsEl.innerHTML = `<span class="modal-tag red">Solo</span>`;
+  if (a.posthumous) tagsEl.innerHTML += `<span class="modal-tag gold">Posthumous</span>`;
+
+  const descHtml = a.notes ? `<p class="modal-desc">${a.notes}</p>` : '';
+
+  const searchArtist = a.credit.replace(/&amp;/g, '&');
+  const searchQuery = encodeURIComponent(a.title + ' ' + searchArtist);
+  const streamLinks = `
+    <div class="stream-links">
+      <a href="https://music.apple.com/us/search?term=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.997 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v11.81c.01.14.017.28.026.42.05.776.137 1.546.44 2.275.54 1.297 1.478 2.215 2.78 2.763.46.19.94.3 1.44.37.37.05.74.08 1.11.1h12.96c.39-.02.78-.05 1.17-.1.72-.1 1.41-.3 2.04-.63 1.15-.6 1.97-1.5 2.46-2.71.2-.5.32-1.01.39-1.54.05-.37.08-.74.09-1.12V6.125zm-3.15 8.076c-.02.37-.13.73-.33 1.06-.37.6-.92.97-1.59 1.14-.39.1-.79.14-1.19.13-.39-.01-.78-.06-1.16-.14-.5-.1-.98-.26-1.45-.44-.96-.37-1.87-.84-2.72-1.42-.56-.38-1.09-.8-1.58-1.26-.65-.62-1.24-1.3-1.73-2.06-.41-.62-.76-1.28-1.02-1.98-.2-.55-.35-1.12-.41-1.71-.05-.48-.03-.95.1-1.41.22-.79.69-1.37 1.41-1.71.33-.15.68-.22 1.04-.23.23-.01.45.03.67.1.32.11.59.31.84.53.19.18.37.37.55.56l.29.32c.23.27.34.59.35.94 0 .35-.09.67-.29.96-.16.23-.35.44-.55.64-.14.14-.29.28-.43.42-.21.2-.21.2-.14.48.13.48.37.91.65 1.31.49.7 1.08 1.3 1.78 1.78.2.14.42.26.65.35.14.06.28.08.43.03.1-.03.18-.1.26-.17.23-.22.46-.44.68-.67.32-.33.7-.49 1.15-.44.33.03.62.16.87.38.28.24.55.49.82.74.26.24.52.48.77.73.27.27.42.6.43.99z"/></svg>
+        Apple Music</a>
+      <a href="https://open.spotify.com/search/${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><use href="#spotify-icon"/></svg>
+        Spotify</a>
+      <a href="https://tidal.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>
+      <a href="https://music.youtube.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube">YouTube Music</a>
+      <a href="https://music.amazon.com/search/${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon">Amazon Music</a>
+    </div>
+  `;
+
+  const tracksHtml = a.tracks && a.tracks.length ? `
+    <div class="modal-section-title">Tracks</div>
+    <ul class="tracks-list">
+      ${a.tracks.map((t, idx) => `
+        <li class="track-item">
+          <span class="track-num">${idx + 1}</span>
+          <span class="track-name">${t}</span>
+        </li>
+      `).join('')}
+    </ul>
+  ` : '';
+
+  document.getElementById('mBody').innerHTML = `
+    ${descHtml}
+    ${streamLinks}
+    ${tracksHtml}
+  `;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('header').inert = true;
+  document.querySelector('main').inert = true;
+  document.querySelector('footer').inert = true;
+  modalClose.focus();
 }
 
 modalClose.addEventListener('click', closeModal);
