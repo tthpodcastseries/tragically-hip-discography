@@ -825,6 +825,80 @@
       color: #fff !important;
       transform: scale(1.03);
     }
+    .connect-jd-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff !important;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .connect-jd-btn:hover {
+      background: #a00d24;
+      color: #fff !important;
+      transform: scale(1.03);
+    }
+    .connect-jd-btn svg {
+      fill: #fff;
+    }
+
+    /* ─── ON THIS DAY ─── */
+    .otd-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 32px 24px 0;
+      text-align: center;
+    }
+    .otd-header {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .otd-header span {
+      color: var(--red);
+    }
+    .otd-gig-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: left;
+      margin: 0 auto;
+    }
+    .otd-gig-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .otd-gig-item:last-child {
+      border-bottom: none;
+    }
+    .otd-gig-year {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .otd-gig-venue {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-top: 2px;
+    }
+    .otd-gig-tour {
+      font-size: 0.75rem;
+      color: var(--muted2);
+      margin-top: 2px;
+    }
+    .otd-no-gigs {
+      color: var(--muted2);
+      font-size: 0.85rem;
+      padding: 16px 0;
+    }
 
     /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 5px; }
@@ -962,6 +1036,11 @@
   </div>
 </div>
 
+<div class="otd-section" id="otdSection">
+  <h2 class="otd-header"><span>On This Day</span> – <span id="otdDate"></span></h2>
+  <div class="otd-gig-box" id="otdGigBox"></div>
+</div>
+
 <footer>
   <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
   Discography data sourced from the
@@ -969,7 +1048,7 @@
   TTHTop40 rankings from the 2024-25 fan countdown<br>
   Built by the <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">TTH Podcast Series</a>
   <div style="margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
-    <a href="mailto:jd@tthpods.com" style="color:var(--muted2);font-size:0.8rem;text-decoration:none;">Email jD</a>
+    <a href="mailto:jd@tthpods.com" class="connect-jd-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Connect with jD</a>
     <a href="https://mailchi.mp/85b59bbbf1f5/tthpodscommunity" target="_blank" rel="noopener noreferrer" class="yer-letter-btn">Sign up For Yer Letter - The TTH Community Newsletter</a>
   </div>
 </footer>
@@ -2329,6 +2408,54 @@ overlay.addEventListener('keydown', e => {
   if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 });
+
+// ─── ON THIS DAY ───
+(function renderOnThisDay() {
+  const hipGigs = [
+    { date: '01-17', year: 1987, venue: 'Clark Hall Pub, Kingston, ON', tour: 'Early Club Days' },
+    { date: '01-25', year: 1992, venue: 'The Horseshoe Tavern, Toronto, ON', tour: 'Road Apples Tour' },
+    { date: '02-14', year: 1995, venue: 'Maple Leaf Gardens, Toronto, ON', tour: 'Day for Night Tour' },
+    { date: '02-20', year: 1999, venue: 'Air Canada Centre, Toronto, ON', tour: 'Phantom Power Tour' },
+    { date: '03-17', year: 1990, venue: 'The Horseshoe Tavern, Toronto, ON', tour: 'Up to Here Tour' },
+    { date: '03-17', year: 1995, venue: 'Metropolis, Montreal, QC', tour: 'Day for Night Tour' },
+    { date: '03-17', year: 2000, venue: 'Molson Centre, Montreal, QC', tour: 'Music @ Work Tour' },
+    { date: '03-17', year: 2007, venue: 'General Motors Centre, Oshawa, ON', tour: 'World Container Tour' },
+    { date: '04-12', year: 1996, venue: 'Cobo Arena, Detroit, MI', tour: 'Trouble at the Henhouse Tour' },
+    { date: '05-08', year: 2002, venue: 'Copps Coliseum, Hamilton, ON', tour: 'In Violet Light Tour' },
+    { date: '06-21', year: 1997, venue: 'Edgefest, Barrie, ON', tour: 'Trouble at the Henhouse Tour' },
+    { date: '07-01', year: 1992, venue: 'Canada Day, Parliament Hill, Ottawa, ON', tour: 'Road Apples Tour' },
+    { date: '07-11', year: 2009, venue: 'Live Nation Amphitheatre, Toronto, ON', tour: 'We Are the Same Tour' },
+    { date: '08-20', year: 2016, venue: 'Rogers K-Rock Centre, Kingston, ON', tour: 'Man Machine Poem Tour — The Final Concert' },
+    { date: '09-02', year: 1993, venue: 'Edgefest II, Barrie, ON', tour: 'Fully Completely Tour' },
+    { date: '10-15', year: 1998, venue: 'Corel Centre, Ottawa, ON', tour: 'Phantom Power Tour' },
+    { date: '11-26', year: 2004, venue: 'Air Canada Centre, Toronto, ON', tour: 'In Between Evolution Tour' },
+    { date: '12-14', year: 1996, venue: 'Maple Leaf Gardens, Toronto, ON', tour: 'Trouble at the Henhouse Tour' },
+  ];
+
+  const now = new Date();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const todayKey = mm + '-' + dd;
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dateLabel = monthNames[now.getMonth()] + ' ' + now.getDate();
+
+  document.getElementById('otdDate').textContent = dateLabel;
+
+  const todayGigs = hipGigs.filter(g => g.date === todayKey);
+
+  const gigBox = document.getElementById('otdGigBox');
+  if (todayGigs.length === 0) {
+    gigBox.innerHTML = '<div class="otd-no-gigs">No known Tragically Hip gigs on this date — but every day is a good day to listen to The Hip.</div>';
+  } else {
+    gigBox.innerHTML = todayGigs.map(g => `
+      <div class="otd-gig-item">
+        <div class="otd-gig-year">${g.year}</div>
+        <div class="otd-gig-venue">${g.venue}</div>
+        <div class="otd-gig-tour">${g.tour}</div>
+      </div>
+    `).join('');
+  }
+})();
 </script>
 </body>
 </html>
