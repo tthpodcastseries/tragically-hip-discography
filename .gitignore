@@ -4,3 +4,8 @@ spotify-url-report.json
 check-spotify-urls.js
 *.pdf
 Web_App_Project_Plan_v2.5_Updated.pdf
+
+# Dev-only data files (not needed in production)
+data/setlists.json
+data/hip-archive-index.json
+data/tth-tour-stats.json

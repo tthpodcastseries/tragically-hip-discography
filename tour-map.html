@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TTH Tour Map - The Tragically Hip Live</title>
+<meta name="description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
+<meta property="og:title" content="TTH Tour Map - The Tragically Hip Live">
+<meta property="og:description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #000000;
+  --bg2: #000000;
+  --bg3: #1a1a1a;
+  --text: #ffffff;
+  --muted: #888;
+  --red: #C8102E;
+  --gold: #CCA23C;
+  --white: #fff;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.map-header {
+  background: var(--bg2);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--bg3);
+  flex-shrink: 0;
+  z-index: 1000;
+}
+.map-header h1 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.map-header h1 span.the { color: var(--red); }
+.map-header .back-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.map-header .back-link:hover { text-decoration: underline; }
+
+/* CONTROLS BAR */
+.controls {
+  background: var(--bg2);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--bg3);
+  flex-shrink: 0;
+  z-index: 1000;
+}
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.control-group label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+select, button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid #3a3450;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+select:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+select:hover, button:hover { border-color: var(--gold); }
+button.active { background: var(--red); border-color: var(--red); color: var(--white); }
+
+.play-btn {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  font-weight: 600;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.play-btn:hover { background: #e02200; }
+.play-btn.playing { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+
+.stats-pill {
+  margin-left: auto;
+  background: var(--bg3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* YEAR SLIDER */
+.year-slider-container {
+  background: var(--bg2);
+  padding: 8px 20px 12px;
+  border-bottom: 1px solid var(--bg3);
+  flex-shrink: 0;
+  z-index: 1000;
+}
+.year-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+.year-range-wrap {
+  position: relative;
+  height: 30px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 30px;
+  background: transparent;
+  pointer-events: none;
+  z-index: 2;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid var(--bg);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid var(--bg);
+}
+.slider-track {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--bg3);
+  border-radius: 2px;
+}
+.slider-track-fill {
+  position: absolute;
+  top: 12px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.year-display {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* MAP */
+#map {
+  flex: 1;
+  z-index: 1;
+}
+
+/* Custom popup */
+.leaflet-popup-content-wrapper {
+  background: var(--bg2) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--bg3) !important;
+  font-family: 'Poppins', sans-serif !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+}
+.leaflet-popup-tip { background: var(--bg2) !important; }
+.leaflet-popup-content { margin: 12px 16px !important; font-size: 0.8rem !important; line-height: 1.5 !important; }
+.popup-date { color: var(--gold); font-weight: 600; font-size: 0.85rem; }
+.popup-venue { color: var(--white); font-weight: 500; margin: 2px 0; }
+.popup-city { color: var(--muted); font-size: 0.75rem; }
+.popup-tour { color: var(--red); font-size: 0.7rem; font-weight: 500; margin-top: 4px; }
+.popup-songs { color: var(--muted); font-size: 0.7rem; }
+.popup-link { display: inline-block; margin-top: 6px; color: var(--gold); text-decoration: none; font-size: 0.7rem; font-weight: 500; }
+.popup-link:hover { text-decoration: underline; }
+.popup-archive { display: block; color: var(--red); font-weight: 600; margin-bottom: 2px; }
+
+/* Cluster overrides */
+.marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+  background: rgba(204, 162, 60, 0.25) !important;
+}
+.marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+  background: var(--gold) !important;
+  color: var(--bg) !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+/* Playback indicator */
+.playback-overlay {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 12px 24px;
+  z-index: 2000;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+.playback-overlay.active { display: flex; }
+.playback-left { text-align: center; }
+.playback-year { font-size: 1.6rem; font-weight: 700; color: var(--white); line-height: 1; }
+.playback-year-gigs { font-size: 0.65rem; color: var(--muted); margin-top: 2px; }
+.playback-divider { width: 1px; height: 36px; background: var(--bg3); }
+.playback-stats { display: flex; gap: 14px; }
+.playback-stat { text-align: center; }
+.playback-stat-val { font-size: 1.1rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.playback-stat-label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+.speed-controls { display: flex; gap: 4px; margin-left: 8px; }
+.speed-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  background: var(--bg3);
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.speed-btn.active { background: var(--gold); color: var(--bg); font-weight: 600; }
+
+/* GIG COUNTER animation */
+.gig-flash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: 0;
+  z-index: 3000;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  text-shadow: 0 0 40px rgba(204, 162, 60, 0.3);
+}
+.gig-flash.show { opacity: 0.35; }
+
+/* ON THIS DAY BANNER */
+.otd-banner {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid var(--gold);
+  padding: 10px 20px;
+  flex-shrink: 0;
+  z-index: 1000;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.otd-banner:hover { background: rgba(255, 255, 255, 0.08); }
+.otd-banner.active { display: block; }
+.otd-banner .otd-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.otd-banner .otd-detail {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.otd-pin-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .map-header { padding: 10px 14px; }
+  .map-header h1 { font-size: 0.95rem; }
+  .controls { padding: 8px 14px; gap: 8px; }
+  .stats-pill { margin-left: 0; width: 100%; text-align: center; }
+  .year-slider-container { padding: 6px 14px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="map-header">
+  <h1><span class="the">THE</span> TRAGICALLY HIP — Tour Map</h1>
+  <a href="index.html" class="back-link">← Back to Discography</a>
+</div>
+
+<div class="otd-banner" id="otdBanner">
+  <div class="otd-title" id="otdTitle"></div>
+  <div class="otd-detail" id="otdDetail">Click to zoom to today's gigs</div>
+</div>
+
+<div class="controls">
+  <div class="control-group">
+    <label>Tour</label>
+    <select id="tourFilter">
+      <option value="all">All Tours</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label>Country</label>
+    <select id="countryFilter">
+      <option value="all">All Countries</option>
+    </select>
+  </div>
+  <button class="play-btn" id="playBtn" title="Watch the tours unfold chronologically">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    Play Timeline
+  </button>
+  <button id="resetBtn" title="Reset to show all gigs">Reset</button>
+  <div class="stats-pill" id="statsPill">Loading...</div>
+</div>
+
+<div class="year-slider-container">
+  <div class="year-labels">
+    <span>1985</span><span>1990</span><span>1995</span><span>2000</span><span>2005</span><span>2010</span><span>2016</span>
+  </div>
+  <div class="year-range-wrap">
+    <div class="slider-track"></div>
+    <div class="slider-track-fill" id="trackFill"></div>
+    <input type="range" id="yearMin" min="1985" max="2022" value="1985" step="1">
+    <input type="range" id="yearMax" min="1985" max="2022" value="2022" step="1">
+  </div>
+  <div class="year-display" id="yearDisplay">1985 — 2022</div>
+</div>
+
+<div id="map"></div>
+
+<div class="playback-overlay" id="playbackOverlay">
+  <div class="playback-left">
+    <div class="playback-year" id="playbackYear">1985</div>
+    <div class="playback-year-gigs" id="playbackYearGigs">0 shows this year</div>
+  </div>
+  <div class="playback-divider"></div>
+  <div class="playback-stats">
+    <div class="playback-stat">
+      <div class="playback-stat-val" id="pbTotal">0</div>
+      <div class="playback-stat-label">Total Gigs</div>
+    </div>
+    <div class="playback-stat">
+      <div class="playback-stat-val" id="pbCities">0</div>
+      <div class="playback-stat-label">Cities</div>
+    </div>
+    <div class="playback-stat">
+      <div class="playback-stat-val" id="pbCountries">0</div>
+      <div class="playback-stat-label">Countries</div>
+    </div>
+  </div>
+  <div class="speed-controls">
+    <button class="speed-btn" data-speed="1200">Slow</button>
+    <button class="speed-btn active" data-speed="800">Normal</button>
+    <button class="speed-btn" data-speed="400">Fast</button>
+  </div>
+</div>
+
+<div class="gig-flash" id="gigFlash"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+(async function() {
+
+  // Load data
+  let allGigs;
+  try {
+    const res = await fetch('data/tth-tour-data.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allGigs = await res.json();
+  } catch (e) {
+    document.getElementById('statsPill').textContent = 'Failed to load tour data';
+    document.getElementById('map').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Failed to load tour data.</p><p style="font-size:0.85rem;">Please refresh the page to try again.</p></div></div>';
+    console.error('Tour data load failed:', e);
+    return;
+  }
+
+  // Map setup - dark tiles
+  const map = L.map('map', {
+    center: [50, -85],
+    zoom: 4,
+    zoomControl: true,
+    attributionControl: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase.com</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Hip Archive</a> (Darrin Cappe)',
+    subdomains: 'abcd',
+    maxZoom: 18
+  }).addTo(map);
+
+  // Custom red marker
+  function createIcon(color = '#C8102E') {
+    return L.divIcon({
+      className: 'custom-pin',
+      html: `<svg width="20" height="28" viewBox="0 0 20 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 0C4.5 0 0 4.5 0 10c0 7.5 10 18 10 18s10-10.5 10-18C20 4.5 15.5 0 10 0z" fill="${color}" opacity="0.9"/>
+        <circle cx="10" cy="10" r="4" fill="#0e0b16"/>
+      </svg>`,
+      iconSize: [20, 28],
+      iconAnchor: [10, 28],
+      popupAnchor: [0, -28]
+    });
+  }
+
+  const redIcon = createIcon('#C8102E');
+  const goldIcon = createIcon('#CCA23C');
+
+  // Marker cluster group
+  let clusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true
+  });
+  map.addLayer(clusterGroup);
+
+  // Populate filters
+  const tours = [...new Set(allGigs.map(g => g.tour).filter(Boolean))].sort();
+  const countries = [...new Set(allGigs.map(g => g.countryName).filter(Boolean))].sort();
+
+  const tourSelect = document.getElementById('tourFilter');
+  tours.forEach(t => {
+    const count = allGigs.filter(g => g.tour === t).length;
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.textContent = `${t} (${count})`;
+    tourSelect.appendChild(opt);
+  });
+
+  const countrySelect = document.getElementById('countryFilter');
+  countries.forEach(c => {
+    const count = allGigs.filter(g => g.countryName === c).length;
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = `${c} (${count})`;
+    countrySelect.appendChild(opt);
+  });
+
+  // Format date nicely
+  function formatDate(iso) {
+    if (!iso) return 'Unknown date';
+    const d = new Date(iso + 'T12:00:00');
+    return d.toLocaleDateString('en-CA', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  // Create popup content
+  function popupHTML(g) {
+    let html = `<div class="popup-date">${formatDate(g.isoDate)}</div>`;
+    html += `<div class="popup-venue">${g.venue || 'Unknown venue'}</div>`;
+    html += `<div class="popup-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' — ' + g.countryName : ''}</div>`;
+    if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
+    if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
+    if (g.archiveUrl) html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Listen to this show</a>`;
+    if (g.setlistUrl) html += `<a href="${g.setlistUrl}" target="_blank" rel="noopener noreferrer" class="popup-link">View full setlist →</a>`;
+    return html;
+  }
+
+  // Render markers
+  function renderGigs(gigs) {
+    clusterGroup.clearLayers();
+    gigs.forEach(g => {
+      if (!g.lat || !g.lng) return;
+      const marker = L.marker([g.lat, g.lng], { icon: redIcon });
+      marker.bindPopup(popupHTML(g), { maxWidth: 280 });
+      clusterGroup.addLayer(marker);
+    });
+    document.getElementById('statsPill').textContent =
+      `${gigs.length.toLocaleString()} gigs — ${[...new Set(gigs.map(g => g.city))].length} cities — ${[...new Set(gigs.map(g => g.countryName))].length} countries`;
+  }
+
+  // Filter logic
+  function getFilteredGigs() {
+    const tour = tourSelect.value;
+    const country = countrySelect.value;
+    const yearMinVal = parseInt(document.getElementById('yearMin').value);
+    const yearMaxVal = parseInt(document.getElementById('yearMax').value);
+    const minY = Math.min(yearMinVal, yearMaxVal);
+    const maxY = Math.max(yearMinVal, yearMaxVal);
+
+    return allGigs.filter(g => {
+      const year = g.isoDate ? parseInt(g.isoDate.substring(0, 4)) : null;
+      if (tour !== 'all' && g.tour !== tour) return false;
+      if (country !== 'all' && g.countryName !== country) return false;
+      if (year && (year < minY || year > maxY)) return false;
+      return true;
+    });
+  }
+
+  function applyFilters() {
+    renderGigs(getFilteredGigs());
+    updateSliderTrack();
+    const minY = Math.min(
+      parseInt(document.getElementById('yearMin').value),
+      parseInt(document.getElementById('yearMax').value)
+    );
+    const maxY = Math.max(
+      parseInt(document.getElementById('yearMin').value),
+      parseInt(document.getElementById('yearMax').value)
+    );
+    document.getElementById('yearDisplay').textContent = minY === maxY ? `${minY}` : `${minY} — ${maxY}`;
+  }
+
+  // Slider track fill
+  function updateSliderTrack() {
+    const min = 1985, max = 2022;
+    const minVal = Math.min(
+      parseInt(document.getElementById('yearMin').value),
+      parseInt(document.getElementById('yearMax').value)
+    );
+    const maxVal = Math.max(
+      parseInt(document.getElementById('yearMin').value),
+      parseInt(document.getElementById('yearMax').value)
+    );
+    const left = ((minVal - min) / (max - min)) * 100;
+    const right = ((maxVal - min) / (max - min)) * 100;
+    const fill = document.getElementById('trackFill');
+    fill.style.left = left + '%';
+    fill.style.width = (right - left) + '%';
+  }
+
+  // Event listeners
+  tourSelect.addEventListener('change', applyFilters);
+  countrySelect.addEventListener('change', applyFilters);
+  document.getElementById('yearMin').addEventListener('input', applyFilters);
+  document.getElementById('yearMax').addEventListener('input', applyFilters);
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    tourSelect.value = 'all';
+    countrySelect.value = 'all';
+    document.getElementById('yearMin').value = 1985;
+    document.getElementById('yearMax').value = 2022;
+    applyFilters();
+    map.setView([50, -85], 4);
+  });
+
+  // ANIMATED PLAYBACK
+  let isPlaying = false;
+  let playbackTimeout = null;
+  let playbackSpeed = 800;
+  let allSeenCities = new Set();
+  let allSeenCountries = new Set();
+
+  // Speed controls
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      playbackSpeed = parseInt(btn.dataset.speed);
+    });
+  });
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    if (isPlaying) {
+      stopPlayback();
+      return;
+    }
+    startPlayback();
+  });
+
+  function startPlayback() {
+    isPlaying = true;
+    allSeenCities.clear();
+    allSeenCountries.clear();
+    const btn = document.getElementById('playBtn');
+    btn.classList.add('playing');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg> Pause';
+
+    const overlay = document.getElementById('playbackOverlay');
+    overlay.classList.add('active');
+
+    // Reset filters
+    tourSelect.value = 'all';
+    countrySelect.value = 'all';
+    clusterGroup.clearLayers();
+
+    const years = [...new Set(allGigs.map(g => g.isoDate?.substring(0, 4)).filter(Boolean))].sort();
+    let yearIdx = 0;
+    let totalShown = 0;
+
+    function showYear() {
+      if (!isPlaying || yearIdx >= years.length) {
+        finishPlayback();
+        return;
+      }
+
+      const year = years[yearIdx];
+      const yearGigs = allGigs.filter(g => g.isoDate?.startsWith(year));
+
+      // Update sliders
+      document.getElementById('yearMin').value = 1985;
+      document.getElementById('yearMax').value = parseInt(year);
+      updateSliderTrack();
+      document.getElementById('yearDisplay').textContent = `1985 — ${year}`;
+
+      // Add markers for this year with gold icon
+      yearGigs.forEach(g => {
+        if (!g.lat || !g.lng) return;
+        const marker = L.marker([g.lat, g.lng], { icon: goldIcon });
+        marker.bindPopup(popupHTML(g), { maxWidth: 280 });
+        clusterGroup.addLayer(marker);
+        if (g.city) allSeenCities.add(g.city);
+        if (g.countryName) allSeenCountries.add(g.countryName);
+      });
+
+      totalShown += yearGigs.length;
+
+      // Update overlay stats
+      document.getElementById('playbackYear').textContent = year;
+      document.getElementById('playbackYearGigs').textContent = `${yearGigs.length} show${yearGigs.length !== 1 ? 's' : ''} this year`;
+      document.getElementById('pbTotal').textContent = totalShown.toLocaleString();
+      document.getElementById('pbCities').textContent = allSeenCities.size;
+      document.getElementById('pbCountries').textContent = allSeenCountries.size;
+      document.getElementById('statsPill').textContent = `${totalShown.toLocaleString()} gigs through ${year}`;
+
+      // Flash the year
+      const flash = document.getElementById('gigFlash');
+      flash.textContent = year;
+      flash.classList.add('show');
+      setTimeout(() => flash.classList.remove('show'), Math.min(playbackSpeed * 0.5, 400));
+
+      yearIdx++;
+      playbackTimeout = setTimeout(showYear, playbackSpeed);
+    }
+
+    showYear();
+  }
+
+  function finishPlayback() {
+    isPlaying = false;
+    clearTimeout(playbackTimeout);
+    const btn = document.getElementById('playBtn');
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Play Timeline';
+
+    // Final flash
+    const flash = document.getElementById('gigFlash');
+    flash.textContent = `${allGigs.length} gigs`;
+    flash.classList.add('show');
+    setTimeout(() => {
+      flash.classList.remove('show');
+      document.getElementById('playbackOverlay').classList.remove('active');
+      applyFilters();
+      map.setView([50, -85], 4, { animate: true });
+    }, 1500);
+  }
+
+  function stopPlayback() {
+    isPlaying = false;
+    clearTimeout(playbackTimeout);
+    const btn = document.getElementById('playBtn');
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Play Timeline';
+    document.getElementById('playbackOverlay').classList.remove('active');
+    applyFilters();
+  }
+
+  // Initial render
+  renderGigs(allGigs);
+  updateSliderTrack();
+
+  // ON THIS DAY
+  const today = new Date();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const todaySuffix = `-${mm}-${dd}`;
+  const otdGigs = allGigs.filter(g => g.isoDate?.endsWith(todaySuffix));
+
+  if (otdGigs.length > 0) {
+    const banner = document.getElementById('otdBanner');
+    const monthName = today.toLocaleDateString('en-CA', { month: 'long', day: 'numeric' });
+    document.getElementById('otdTitle').textContent =
+      `On This Day (${monthName}): The Hip played ${otdGigs.length} show${otdGigs.length > 1 ? 's' : ''}`;
+
+    const details = otdGigs.map(g => {
+      const year = g.isoDate.substring(0, 4);
+      return `${year} — ${g.venue || 'Unknown'}, ${g.city || ''}`;
+    }).join('  ·  ');
+    document.getElementById('otdDetail').textContent = details + '  ·  Click to visit each gig';
+
+    banner.classList.add('active');
+
+    // Mark OTD pins with gold icon and badge
+    const otdMarkers = [];
+    otdGigs.forEach(g => {
+      if (!g.lat || !g.lng) return;
+      const marker = L.marker([g.lat, g.lng], { icon: goldIcon });
+      const badgeHTML = `<div class="otd-pin-badge">On This Day</div>`;
+      marker.bindPopup(badgeHTML + popupHTML(g), { maxWidth: 280 });
+      clusterGroup.addLayer(marker);
+      otdMarkers.push(marker);
+    });
+
+    // Click banner to zoom to OTD gigs
+    let otdIndex = 0;
+    banner.addEventListener('click', () => {
+      const m = otdMarkers[otdIndex % otdMarkers.length];
+      const ll = m.getLatLng();
+      map.setView(ll, 13, { animate: true });
+      // Wait for zoom to finish then open popup
+      setTimeout(() => {
+        // At zoom 13 clusters should be broken - find the visible marker
+        clusterGroup.eachLayer(layer => {
+          if (layer.getLatLng().equals(ll)) {
+            layer.openPopup();
+          }
+        });
+      }, 600);
+      otdIndex++;
+    });
+  }
+
+
+})();
+</script>
+</body>
+</html>
