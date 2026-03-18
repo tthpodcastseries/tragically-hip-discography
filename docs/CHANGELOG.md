@@ -1,5 +1,129 @@
 # Changelog
 
+## v2.9.2.2
+**Emergency - Patch 2 (Spotify/Security + Performance Cleanup)** — March 22, 2026
+
+### Spotify & Security
+- Update Spotify redirect URI to thehipexperience.tthpods.com
+- Switch Spotify token storage from localStorage to sessionStorage (XSS mitigation)
+- Remove console.log from tour map production code
+
+### Performance & Cleanup
+- Defer Spotify SDK load - now injected dynamically only when user clicks Connect
+- Add preconnect hints to tour-map.html (fonts.googleapis.com, fonts.gstatic.com, unpkg.com)
+- Add touch event handlers for timeline drag-to-scroll on mobile
+- Update .gitignore to exclude unused dev data files (setlists.json, hip-archive-index.json, tth-tour-stats.json)
+
+---
+
+## v2.9.2.1
+**Emergency - Patch 1 (Accessibility + Visual Consistency)** — March 22, 2026
+
+### Accessibility
+- Fix Random Song button and Hip Quiz link roles inside tablist (role="none")
+- Add Escape key handler + focus management + inert background to Random Song overlay
+- Add focus-visible styles to 8 missing interactive elements
+- Fix tour map: remove outline:none, add proper focus-visible indicators
+- Fix all rel="noopener" to include noreferrer (index.html setlist links, tour-map.html popup/attribution links)
+- Bump --muted2 color from #aaa to #b0b0b0 for better small-text contrast
+
+### Visual Consistency
+- Unify color palette across both pages: --red: #C8102E, --gold: #CCA23C, --text: #ffffff
+- Document purple hover colors as CSS variables (--accent: #2a1065, --accent-scroll: #3a1080)
+- Remove !important from .yer-letter-btn color rules
+
+---
+
+## v2.9.2
+**Emergency (QA Audit: SEO/Meta + Error Handling)** — March 22, 2026
+
+### SEO & Meta
+- Add Open Graph tags (og:title, og:description, og:image, og:type) to both pages
+- Add Twitter Card meta tag to both pages
+- Add SVG maple leaf favicon to both pages
+- Remove version number from page title ("Complete Discography" instead of "Discography v2.8.5")
+- Add meta description to tour-map.html
+- Add JSON-LD MusicGroup structured data to index.html
+
+### Error Handling
+- Tour map: wrap data fetch in try/catch with user-facing error message on failure
+- Setlist fetch: add resp.ok check before parsing JSON
+- Lyrics fetch: add 10-second AbortController timeout
+- Fix XSS risk in lyrics search results with escapeHtml helper
+- Fix On This Day date parsing to handle incomplete dates (e.g. "December 1987")
+- Wrap initial renderCategory call in error boundary
+
+---
+
+## v2.9.1.3
+**Fire In The Hole - Patch 3 (QA Audit: Data Integrity + Image Optimization)** — March 21, 2026
+
+### Data Integrity
+- Fix "As I Wind Down the Pines" (#50) album attribution from In Between Evolution to Music @ Work
+- Fix duplicate Spotify URL: That Night in Toronto was sharing Live Between Us URL
+- Fix timeline stat: "26 Official Releases" corrected to "35"
+- Flag missing rank #151 in beyondTop40 array with TODO comment
+- Add Tiger the Lion cross-album attribution note (Phantom Power single, M@W track)
+
+### Image Optimization
+- Create assets-optimized/ folder with all 56 images resized to 600px max dimension
+- Convert 7 PNG album covers to JPG format
+- Total image payload reduced from 30MB to 5MB (83% reduction)
+- Update all image paths in index.html to reference optimized versions
+- Add loading="lazy" to band photos and all dynamically created album art images
+
+---
+
+## v2.9.1.2
+**Fire In The Hole - Patch 2 (Universal Black Backgrounds)** — March 22, 2026
+
+---
+
+## v2.9.1.1
+**Fire In The Hole - Patch 1 (Attribution: Lance Robinson, Darrin Cappe)** — March 22, 2026
+
+---
+
+## v2.9.1
+**Fire In The Hole (Hip Archive Integration - 625 live recordings linked)** — March 21, 2026
+
+---
+
+## v2.9
+**Daredevil (Interactive Tour Map - 1,358 gigs, Leaflet.js, On This Day, Animated Playback)** — March 21, 2026
+
+---
+
+## v2.8.6
+**Thugs - Patch 5 (On This Day Align + Footer Button)** — March 18, 2026
+
+---
+
+## v2.8.5.4
+**Thugs - Patch 4 (Footer Credit Update)** — March 20, 2026
+
+---
+
+## v2.8.5.3
+**Thugs - Patch 3 (On This Day + Footer Buttons)** — March 20, 2026
+
+---
+
+## v2.8.5.2
+**Thugs - Patch 2 (Art Overflow + Footer)** — March 19, 2026
+
+---
+
+## v2.8.5.1
+**Thugs - Patch 1 (Album Art Border Fix)** — March 19, 2026
+
+---
+
+## v2.8.5
+**Thugs (Band Photo + On This Day + Nav)** — March 19, 2026
+
+---
+
 ## v2.8.4
 **Setlist Explorer**
 
