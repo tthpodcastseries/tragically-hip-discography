@@ -55,8 +55,8 @@
 
     .stream-links { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 16px; }
     .stream-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; transition: background 0.15s, color 0.15s; border-width: 1.5px; border-style: solid; }
-    .stream-link-apple { color: #fa586a; border-color: #fa586a; }
-    .stream-link-apple:hover, .stream-link-apple:focus { background: #fa586a; color: #fff; }
+    .stream-link-apple { color: var(--red); border-color: var(--red); }
+    .stream-link-apple:hover, .stream-link-apple:focus { background: var(--red); color: #fff; }
     .stream-link-spotify { color: #1DB954; border-color: #1DB954; }
     .stream-link-spotify:hover, .stream-link-spotify:focus { background: #1DB954; color: #fff; }
     .stream-link-tidal { color: #00FFFF; border-color: #00FFFF; }
@@ -67,6 +67,7 @@
     .stream-link-amazon:hover, .stream-link-amazon:focus { background: #25D1DA; color: #000; }
     .stream-link-hip { color: #D4A017; border-color: #D4A017; }
     .stream-link-hip:hover, .stream-link-hip:focus { background: #D4A017; color: #000; }
+    .stream-link.preferred, .stream-btn.preferred { ring: none; box-shadow: 0 0 0 2px currentColor; opacity: 1; }
 
     /* ─── SKIP LINK ─── */
     .skip-link {
@@ -275,7 +276,7 @@
       transform: scale(1.03);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .stream-btn-apple { background: #fa586a; color: #fff; }
+    .stream-btn-apple { background: var(--red); color: #fff; }
     .stream-btn-spotify { background: #1DB954; color: #fff; }
     .stream-btn-tidal { background: #000; color: #fff; border: 1px solid #444; }
     .stream-btn-youtube { background: var(--red); color: #fff; }
@@ -672,8 +673,17 @@
     .lyrics-result-lines mark { background: rgba(212,160,23,0.25); color: var(--gold); border-radius: 2px; padding: 0 2px; }
     .lyrics-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
     .lyrics-cache-actions { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
-    .lyrics-cache-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.7rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
-    .lyrics-cache-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .lyrics-cache-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: var(--muted); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
+    .lyrics-cache-btn:hover { border-color: var(--red); color: var(--text); }
+    .lyrics-cache-btn:active { background: var(--red); border-color: var(--red); color: #fff; }
+    .lyrics-loading-state { text-align: center; padding: 48px 20px; }
+    .lyrics-loading-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .lyrics-loading-subtitle { font-size: 0.78rem; color: var(--muted); margin-bottom: 20px; }
+    .lyrics-progress-bar { width: 100%; max-width: 400px; height: 6px; border-radius: 3px; background: var(--border); margin: 0 auto 12px; overflow: hidden; }
+    .lyrics-progress-fill { height: 100%; background: var(--gold); border-radius: 3px; transition: width 0.15s ease; width: 0; }
+    .lyrics-progress-song { font-size: 0.72rem; color: var(--muted2); min-height: 1.2em; }
+    .lyrics-ready-msg { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-top: 12px; }
+    .lyrics-search-bar.disabled { opacity: 0.4; pointer-events: none; }
 
     /* ─── SETLIST EXPLORER ─── */
     .setlist-section { display: none; padding: 0 16px 32px; max-width: 900px; margin: 0 auto; }
@@ -984,12 +994,12 @@
   <div id="lyricsSection" class="lyrics-section" role="tabpanel" aria-label="Lyrics search">
     <div class="section-header">
       <h2 class="section-label">Lyrics Search</h2>
-      <p class="section-note">Search across the complete Hip catalog by keyword or phrase</p>
+      <p class="section-note">Search across all 169 studio releases by keyword or phrase</p>
       <div class="section-line"></div>
     </div>
-    <div class="lyrics-search-bar">
-      <input type="text" class="lyrics-search-input" id="lyricsSearchInput" placeholder="Search lyrics (e.g. water, courage, highway)..." autocomplete="off">
-      <button class="lyrics-search-btn" id="lyricsSearchBtn">Search</button>
+    <div class="lyrics-search-bar disabled" id="lyricsSearchBar">
+      <input type="text" class="lyrics-search-input" id="lyricsSearchInput" placeholder="Building lyrics index..." autocomplete="off" disabled>
+      <button class="lyrics-search-btn" id="lyricsSearchBtn" disabled>Search</button>
     </div>
     <div id="lyricsStatus" class="lyrics-status" style="display:none"></div>
     <div id="lyricsAlbumBreakdown" class="lyrics-album-breakdown"></div>
@@ -1121,7 +1131,7 @@ const studioAlbums = [
   {
     num: '01', title: 'Up to Here', year: '1989', releaseDate: 'September 5, 1989', type: 'Studio', img: 'assets-optimized/studio-albums/Up to Here.jpg',
     label: 'MCA Records', producer: 'Don Smith',
-    chart: '#13 / #1 (2019 reissue)', units: '1M+ (Diamond, Canada)',
+    chart: '#13', units: '1M+ (Diamond, Canada)',
     junoAwards: ['Most Promising Group (1990)'],
     desc: 'Debut full-length, recorded in Memphis. Certified Diamond in Canada. Introduced the band to a national audience and launched four consecutive Canadian radio singles.',
     gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
@@ -1942,6 +1952,31 @@ async function playSpotifyTrack(trackId) {
   } catch { return false; }
 }
 
+// ─── STICKY STREAMING PREFERENCE ───
+function getPreferredStream() { return sessionStorage.getItem('tth_preferred_stream') || ''; }
+function setPreferredStream(service) { sessionStorage.setItem('tth_preferred_stream', service); }
+function applyStreamPreference(container) {
+  if (!container) return;
+  const pref = getPreferredStream();
+  if (!pref) return;
+  const links = container.querySelectorAll('.stream-link, .stream-btn');
+  let preferred = null;
+  links.forEach(el => {
+    el.classList.remove('preferred');
+    if (el.classList.contains('stream-link-' + pref) || el.classList.contains('stream-btn-' + pref)) {
+      el.classList.add('preferred');
+      preferred = el;
+    }
+  });
+  if (preferred && preferred.parentElement) preferred.parentElement.prepend(preferred);
+}
+document.addEventListener('click', e => {
+  const link = e.target.closest('.stream-link, .stream-btn');
+  if (!link) return;
+  const cls = [...link.classList].find(c => /^stream-(?:link|btn)-(?!hip)(apple|spotify|tidal|youtube|amazon)$/.test(c));
+  if (cls) setPreferredStream(cls.replace(/^stream-(?:link|btn)-/, ''));
+});
+
 // Random Hip Song click handler
 document.getElementById('randomSongBtn').addEventListener('click', () => {
   const track = hipTracks[Math.floor(Math.random() * hipTracks.length)];
@@ -1959,6 +1994,7 @@ document.getElementById('randomSongBtn').addEventListener('click', () => {
     <a href="https://music.amazon.com/search/${searchTerm}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-amazon">Amazon Music</a>
     <a href="https://tidal.com/search?q=${searchTerm}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-tidal">Tidal</a>
     <a href="https://music.youtube.com/search?q=${searchTerm}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-youtube">YouTube Music</a>`;
+  applyStreamPreference(document.getElementById('rspStreams'));
   const rsp = document.getElementById('randomSongPage');
   rsp.classList.add('open');
   document.querySelector('header').inert = true;
@@ -2378,7 +2414,32 @@ async function fetchLyrics(artist, song) {
   } catch { return null; }
 }
 
-async function buildLyricsIndex(onProgress) {
+async function loadLyricsFromStatic(onProgress) {
+  try {
+    const resp = await fetch('data/lyrics.json');
+    if (!resp.ok) throw new Error('Failed to load lyrics data');
+    const data = await resp.json();
+    const entries = Object.entries(data.songs);
+    const total = entries.length;
+    const cache = {};
+    for (let i = 0; i < total; i++) {
+      const [key, lyrics] = entries[i];
+      cache[key] = lyrics;
+      if (i % 5 === 0 || i === total - 1) {
+        const songName = key.split('|||')[1] || key;
+        onProgress(i + 1, total, songName);
+        await new Promise(r => setTimeout(r, 0));
+      }
+    }
+    saveLyricsCache(cache);
+    return cache;
+  } catch (e) {
+    console.warn('Static lyrics load failed:', e);
+    return null;
+  }
+}
+
+async function buildLyricsIndexFromAPI(onProgress) {
   const cache = getLyricsCache();
   const allSongs = getAllSongsForLyrics();
   const total = allSongs.length;
@@ -2522,15 +2583,57 @@ function renderLyricsResults(results, query) {
   renderCards();
 }
 
+function enableLyricsSearch() {
+  const input = document.getElementById('lyricsSearchInput');
+  const btn = document.getElementById('lyricsSearchBtn');
+  const searchBar = document.getElementById('lyricsSearchBar');
+  input.disabled = false;
+  btn.disabled = false;
+  searchBar.classList.remove('disabled');
+  input.placeholder = 'Search lyrics (e.g. water, courage, highway)...';
+}
+
+async function autoLoadLyrics(onComplete) {
+  const emptyEl = document.getElementById('lyricsEmpty');
+  const statusEl = document.getElementById('lyricsStatus');
+  emptyEl.style.display = 'none';
+  statusEl.style.display = '';
+  statusEl.innerHTML = `
+    <div class="lyrics-loading-state">
+      <div class="lyrics-loading-title">Building Lyrics Index</div>
+      <div class="lyrics-loading-subtitle">Loading lyrics for all 169 songs...</div>
+      <div class="lyrics-progress-bar"><div class="lyrics-progress-fill" id="lyricsAutoFill"></div></div>
+      <div class="lyrics-progress-song" id="lyricsAutoSong"></div>
+    </div>`;
+  const fill = document.getElementById('lyricsAutoFill');
+  const songLabel = document.getElementById('lyricsAutoSong');
+
+  const cache = await loadLyricsFromStatic((done, total, songName) => {
+    const pct = Math.round((done / total) * 100);
+    fill.style.width = pct + '%';
+    songLabel.textContent = songName;
+  });
+
+  if (cache) {
+    const allSongs = getAllSongsForLyrics();
+    const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
+    statusEl.innerHTML = `<div class="lyrics-loading-state"><div class="lyrics-ready-msg">Ready to search - ${found} songs indexed</div></div>`;
+    setTimeout(() => { statusEl.style.display = 'none'; emptyEl.style.display = ''; updateLyricsCacheStatus(); }, 1500);
+    onComplete();
+  } else {
+    statusEl.style.display = 'none';
+    emptyEl.style.display = '';
+    updateLyricsCacheStatus();
+    onComplete();
+  }
+}
+
 function initLyricsSearch() {
   if (lyricsSearchInitialized) { updateLyricsCacheStatus(); return; }
   lyricsSearchInitialized = true;
 
   const input = document.getElementById('lyricsSearchInput');
   const btn = document.getElementById('lyricsSearchBtn');
-  const statusEl = document.getElementById('lyricsStatus');
-
-  updateLyricsCacheStatus();
 
   function doSearch() {
     const q = input.value.trim();
@@ -2538,9 +2641,20 @@ function initLyricsSearch() {
     const results = searchLyrics(q);
     renderLyricsResults(results, q);
   }
-
   btn.addEventListener('click', doSearch);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+
+  // Check if cache already exists
+  const cache = getLyricsCache();
+  const allSongs = getAllSongsForLyrics();
+  const cached = allSongs.filter(s => cache[`${s.album}|||${s.song}`]).length;
+
+  if (cached > 0) {
+    enableLyricsSearch();
+    updateLyricsCacheStatus();
+  } else {
+    autoLoadLyrics(enableLyricsSearch);
+  }
 }
 
 function updateLyricsCacheStatus() {
@@ -2559,11 +2673,12 @@ function updateLyricsCacheStatus() {
   if (!statusArea) return;
   if (cached === 0) {
     statusArea.innerHTML = `
-      <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">No lyrics cached yet. Build the index to enable search.</p>
-      <div class="lyrics-cache-actions">
-        <button class="lyrics-cache-btn" id="lyricsBuildBtn">Build Lyrics Index</button>
-      </div>`;
-    document.getElementById('lyricsBuildBtn').addEventListener('click', startBuildIndex);
+      <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">No lyrics cached.
+        <button class="lyrics-cache-btn" id="lyricsBuildBtn" style="display:inline;margin-left:8px">Retry Build</button>
+      </p>`;
+    document.getElementById('lyricsBuildBtn').addEventListener('click', () => {
+      autoLoadLyrics(enableLyricsSearch);
+    });
   } else {
     statusArea.innerHTML = `
       <p style="margin-top:12px;font-size:0.75rem;color:var(--muted)">${found} of ${allSongs.length} songs indexed with lyrics</p>
@@ -2591,19 +2706,29 @@ async function startBuildIndex() {
   const btn = document.getElementById('lyricsSearchBtn');
   btn.disabled = true;
   statusEl.style.display = '';
-  statusEl.innerHTML = 'Preparing to fetch lyrics...<div class="lyrics-status-bar"><div class="lyrics-status-fill" id="lyricsFill"></div></div>';
+  statusEl.innerHTML = 'Loading lyrics data...<div class="lyrics-status-bar"><div class="lyrics-status-fill" id="lyricsFill"></div></div>';
 
   const fill = document.getElementById('lyricsFill');
-  await buildLyricsIndex((done, total, songName, wasFetched) => {
+
+  // Try static file first
+  let cache = await loadLyricsFromStatic((done, total, songName) => {
     const pct = Math.round((done / total) * 100);
     fill.style.width = pct + '%';
-    statusEl.innerHTML = `${wasFetched ? 'Fetching' : 'Cached'}: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
+    statusEl.innerHTML = `Loading: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
   });
 
+  // Fall back to API if static file unavailable
+  if (!cache) {
+    cache = await buildLyricsIndexFromAPI((done, total, songName, wasFetched) => {
+      const pct = Math.round((done / total) * 100);
+      fill.style.width = pct + '%';
+      statusEl.innerHTML = `${wasFetched ? 'Fetching' : 'Cached'}: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
+    });
+  }
+
   btn.disabled = false;
-  const cache = getLyricsCache();
   const allSongs = getAllSongsForLyrics();
-  const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
+  const found = allSongs.filter(s => { const v = (cache || {})[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
   statusEl.innerHTML = `Index complete - ${found} songs with lyrics found`;
   setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
   updateLyricsCacheStatus();
@@ -2873,8 +2998,8 @@ beyondTop40.forEach(s => {
   `;
   const row = wrapper.querySelector('.song-row');
   const panel = wrapper.querySelector('.song-stream-panel');
-  row.addEventListener('click', () => panel.classList.toggle('open'));
-  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.classList.toggle('open'); } });
+  row.addEventListener('click', () => { panel.classList.toggle('open'); if (panel.classList.contains('open')) applyStreamPreference(panel); });
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.classList.toggle('open'); if (panel.classList.contains('open')) applyStreamPreference(panel); } });
   beyondGrid.appendChild(wrapper);
 });
 
@@ -3030,6 +3155,7 @@ function openModal(i) {
     ${singlesHtml}
     ${tracksHtml}
   `;
+  applyStreamPreference(document.getElementById('mBody').querySelector('.stream-links'));
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -3110,6 +3236,7 @@ function openSoloModal(album) {
     ${streamLinks}
     ${tracksHtml}
   `;
+  applyStreamPreference(document.getElementById('mBody').querySelector('.stream-links'));
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
