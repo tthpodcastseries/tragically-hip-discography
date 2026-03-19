@@ -9,3 +9,6 @@ Web_App_Project_Plan_v2.5_Updated.pdf
 data/setlists.json
 data/hip-archive-index.json
 data/tth-tour-stats.json
+
+# Local Netlify folder
+.netlify

@@ -9,6 +9,7 @@
 <meta property="og:description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://thehipexperience.tthpods.com/tour-map.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,6 +76,12 @@ body {
   border-bottom: 1px solid var(--bg3);
   flex-shrink: 0;
   z-index: 1000;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.controls select {
+  max-width: 45%;
 }
 .control-group {
   display: flex;
@@ -93,9 +100,9 @@ select, button {
   font-size: 0.8rem;
   background: var(--bg3);
   color: var(--text);
-  border: 1px solid #3a3450;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 12px 16px;
   cursor: pointer;
 }
 select:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
@@ -276,7 +283,7 @@ input[type="range"]::-moz-range-thumb {
   color: var(--muted);
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 3px 8px;
+  padding: 8px 14px;
   cursor: pointer;
 }
 .speed-btn.active { background: var(--gold); color: var(--bg); font-weight: 600; }
