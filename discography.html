@@ -873,8 +873,12 @@
       align-items: center;
     }
     .track-item:last-child { border-bottom: none; }
+    .track-item.clickable { cursor: pointer; transition: background 0.15s; border-radius: 6px; margin: 0 -8px; padding: 8px 8px; }
+    .track-item.clickable:hover { background: rgba(255,255,255,0.04); }
     .track-num { font-size: 0.75rem; color: var(--muted2); min-width: 22px; text-align: right; }
     .track-name { font-size: 0.86rem; }
+    .track-stream-panel { display: none; padding: 6px 0 4px 36px; }
+    .track-stream-panel.open { display: flex; flex-wrap: wrap; gap: 8px; }
     .track-single-dot { display: none; }
     .track-top40-badge {
       margin-left: auto;
@@ -1976,6 +1980,49 @@ document.addEventListener('click', e => {
   const cls = [...link.classList].find(c => /^stream-(?:link|btn)-(?!hip)(apple|spotify|tidal|youtube|amazon)$/.test(c));
   if (cls) setPreferredStream(cls.replace(/^stream-(?:link|btn)-/, ''));
 });
+
+function getStreamURL(service, query) {
+  const q = encodeURIComponent(query);
+  const urls = {
+    apple: `https://music.apple.com/us/search?term=${q}`,
+    spotify: `https://open.spotify.com/search/${q}`,
+    tidal: `https://tidal.com/search?q=${q}`,
+    youtube: `https://music.youtube.com/search?q=${q}`,
+    amazon: `https://music.amazon.com/search/${q}`
+  };
+  return urls[service] || '';
+}
+function buildTrackStreamPanel(trackTitle, albumTitle) {
+  const searchQ = encodeURIComponent(trackTitle + ' The Tragically Hip');
+  return `<div class="track-stream-panel">
+    <a href="https://music.apple.com/us/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
+    <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
+    <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
+    <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
+    <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
+  </div>`;
+}
+function initTrackStreaming(container) {
+  if (!container) return;
+  container.querySelectorAll('.track-item.clickable').forEach(item => {
+    const panel = item.nextElementSibling;
+    if (!panel || !panel.classList.contains('track-stream-panel')) return;
+    item.addEventListener('click', e => {
+      if (e.target.closest('a')) return; // don't intercept link clicks
+      const pref = getPreferredStream();
+      if (pref) {
+        const trackName = item.querySelector('.track-name').textContent;
+        const url = getStreamURL(pref, trackName + ' The Tragically Hip');
+        if (url) window.open(url, '_blank', 'noopener,noreferrer');
+      } else {
+        // close other open panels in this list
+        container.querySelectorAll('.track-stream-panel.open').forEach(p => { if (p !== panel) p.classList.remove('open'); });
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) applyStreamPreference(panel);
+      }
+    });
+  });
+}
 
 // Random Hip Song click handler
 document.getElementById('randomSongBtn').addEventListener('click', () => {
@@ -3116,14 +3163,15 @@ function openModal(i) {
 
   const tracksHtml = a.tracks && a.tracks.length ? `
     <div class="modal-section-title">Tracks</div>
-    <ul class="tracks-list">
+    <ul class="tracks-list" id="modalTracksList">
       ${a.tracks.map((t, idx) => `
-        <li class="track-item">
+        <li class="track-item clickable" role="button" tabindex="0">
           <span class="track-num">${idx + 1}</span>
           <span class="track-name">${t}</span>
           ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
           ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="TTH Top 40 - #${top40Ranks.get(t)}">#${top40Ranks.get(t)}</span>` : ''}
         </li>
+        ${buildTrackStreamPanel(t, a.title)}
       `).join('')}
     </ul>
   ` : '';
@@ -3156,6 +3204,7 @@ function openModal(i) {
     ${tracksHtml}
   `;
   applyStreamPreference(document.getElementById('mBody').querySelector('.stream-links'));
+  initTrackStreaming(document.getElementById('modalTracksList'));
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -3221,12 +3270,13 @@ function openSoloModal(album) {
 
   const tracksHtml = a.tracks && a.tracks.length ? `
     <div class="modal-section-title">Tracks</div>
-    <ul class="tracks-list">
+    <ul class="tracks-list" id="soloTracksList">
       ${a.tracks.map((t, idx) => `
-        <li class="track-item">
+        <li class="track-item clickable" role="button" tabindex="0">
           <span class="track-num">${idx + 1}</span>
           <span class="track-name">${t}</span>
         </li>
+        ${buildTrackStreamPanel(t, a.title)}
       `).join('')}
     </ul>
   ` : '';
@@ -3237,6 +3287,7 @@ function openSoloModal(album) {
     ${tracksHtml}
   `;
   applyStreamPreference(document.getElementById('mBody').querySelector('.stream-links'));
+  initTrackStreaming(document.getElementById('soloTracksList'));
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
