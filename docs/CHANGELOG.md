@@ -1,5 +1,33 @@
 # Changelog
 
+## v2.9.8
+**Yawning Or Snarling - Pre-Deployment Audit Fixes** - March 19, 2026
+
+### Security
+- Removed hardcoded setlist.fm API key from `fetch-setlist-data.js`, moved to env var pattern
+- Added `node_modules/` and `.env*` to `.gitignore`
+- Created Netlify `_headers` file with Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, and Permissions-Policy
+- Added SRI (Subresource Integrity) hashes to all CDN-loaded resources on tour-map (Leaflet JS/CSS, MarkerCluster JS/CSS)
+
+### SEO
+- Created `robots.txt` with sitemap reference
+- Created `sitemap.xml` covering all three pages
+- Fixed `og:image` to use absolute URLs on index and discography pages
+- Added `og:image` and upgraded `twitter:card` to `summary_large_image` on tour-map
+- Fixed canonical URL on index to use `/` instead of `/index.html`
+
+### Accessibility
+- Added `aria-label` attributes to 9 unlabeled form inputs (5 on discography, 4 on tour-map)
+- Added skip-to-content links on index and tour-map pages
+- Wrapped navigation sections in `<nav>` landmark elements on all three pages
+- Associated `<label>` elements with `for` attributes on tour-map filter dropdowns
+
+### UI
+- Fixed tour map year slider range from 1985-2022 to 1985-2016 (actual last show year)
+- Created branded 404 page with navigation links
+
+---
+
 ## v2.9.2.2
 **Emergency - Patch 2 (Spotify/Security + Performance Cleanup)** — March 22, 2026
 
