@@ -10,5 +10,11 @@ data/setlists.json
 data/hip-archive-index.json
 data/tth-tour-stats.json
 
+# Dependencies
+node_modules/
+
+# Environment files
+.env*
+
 # Local Netlify folder
 .netlify

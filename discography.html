@@ -7,7 +7,7 @@
   <meta name="description" content="The Tragically Hip - complete discography, TTHTop40 fan-ranked songs, 1,358 live setlists, lyrics search, and streaming links for Canada's band.">
   <meta property="og:title" content="The Hip Experience - The Tragically Hip">
   <meta property="og:description" content="Complete discography, TTHTop40 fan-ranked songs, 1,358 live setlists, lyrics search, and streaming links for Canada's band.">
-  <meta property="og:image" content="assets-optimized/band/band-photo-2.jpg">
+  <meta property="og:image" content="https://thehipexperience.tthpods.com/assets-optimized/band/band-photo-2.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://thehipexperience.tthpods.com/discography.html">
@@ -979,7 +979,7 @@
     <div class="stat"><div class="stat-num" id="statNum3"></div><div class="stat-lbl" id="statLbl3"></div></div>
     <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
   </div>
-  <div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
+  <nav aria-label="Discography categories"><div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
     <div class="nav-row"><a href="index.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Timeline</a></div>
     <div class="nav-row" role="none"><button class="category-btn random-song-btn" id="randomSongBtn" role="none" style="flex:1;max-width:480px;">Random Hip Song</button></div>
     <div class="nav-row"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
@@ -987,7 +987,7 @@
     <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlists</button><a href="https://link.fans/hipquiz" target="_blank" rel="noopener noreferrer" class="category-btn" style="text-decoration:none;">Hip Quiz</a></div>
     <div class="nav-row"><a href="tour-map.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Tour Map</a></div>
     <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid" style="flex:1;max-width:480px;font-size:0.78rem;padding:8px 22px;">Top Forty Countdown</button></div>
-  </div>
+  </div></nav>
 </header>
 
 <main id="main-content">
@@ -1002,7 +1002,7 @@
       <div class="section-line"></div>
     </div>
     <div class="lyrics-search-bar disabled" id="lyricsSearchBar">
-      <input type="text" class="lyrics-search-input" id="lyricsSearchInput" placeholder="Building lyrics index..." autocomplete="off" disabled>
+      <input type="text" class="lyrics-search-input" id="lyricsSearchInput" placeholder="Building lyrics index..." autocomplete="off" disabled aria-label="Search lyrics">
       <button class="lyrics-search-btn" id="lyricsSearchBtn" disabled>Search</button>
     </div>
     <div id="lyricsStatus" class="lyrics-status" style="display:none"></div>
@@ -1022,10 +1022,10 @@
       <div class="section-line"></div>
     </div>
     <div class="setlist-filters" id="setlistFilters">
-      <select class="setlist-filter" id="setlistYear"><option value="">All Years</option></select>
-      <select class="setlist-filter" id="setlistTour"><option value="">All Tours</option></select>
-      <select class="setlist-filter" id="setlistCity"><option value="">All Cities</option></select>
-      <input type="text" class="setlist-search" id="setlistSearch" placeholder="Search venue, city, or song...">
+      <select class="setlist-filter" id="setlistYear" aria-label="Filter by year"><option value="">All Years</option></select>
+      <select class="setlist-filter" id="setlistTour" aria-label="Filter by tour"><option value="">All Tours</option></select>
+      <select class="setlist-filter" id="setlistCity" aria-label="Filter by city"><option value="">All Cities</option></select>
+      <input type="text" class="setlist-search" id="setlistSearch" placeholder="Search venue, city, or song..." aria-label="Search setlists">
     </div>
     <div id="setlistSummary" class="setlist-summary"></div>
     <div id="setlistTopSongs" class="setlist-top-songs"></div>

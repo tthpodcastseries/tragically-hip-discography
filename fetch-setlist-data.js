@@ -2,7 +2,7 @@
 // setlist.fm API Data Pull - The Tragically Hip Tour Map Dataset
 // No external dependencies - Node v22
 
-const API_KEY = 'F2SEnErfN5soGAhxFdKw7TqaTfls9BoVuScR';
+const API_KEY = process.env.SETLISTFM_API_KEY || 'YOUR_API_KEY_HERE';
 const MBID = 'e86ab653-bec8-46f3-b4b6-a1a866919ef6';
 const BASE_URL = 'https://api.setlist.fm/rest/1.0';
 const ITEMS_PER_PAGE = 20;

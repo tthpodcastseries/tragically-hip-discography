@@ -7,10 +7,10 @@
   <meta name="description" content="The Hip Experience - timeline, discography, setlists, and more for Canada's band, The Tragically Hip.">
   <meta property="og:title" content="The Hip Experience - The Tragically Hip">
   <meta property="og:description" content="Explore the complete Tragically Hip discography timeline - 35 releases from 1987 to 2024.">
-  <meta property="og:image" content="assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:image" content="https://thehipexperience.tthpods.com/assets-optimized/band/band-photo-4.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://thehipexperience.tthpods.com/index.html">
+  <link rel="canonical" href="https://thehipexperience.tthpods.com/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: var(--red); color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
+    .skip-link:focus { left: 16px; top: 16px; }
 
     :root {
       --bg: #000000;
@@ -210,6 +212,7 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <header>
   <h1><span style="color: #C8102E;">THE</span> <span style="color: #ffffff;">HIP</span> <span style="color: #C8102E;">EXPERIENCE</span></h1>
@@ -232,16 +235,16 @@
   <div class="stat"><div class="stat-num">Canada's</div><div class="stat-lbl">Band</div></div>
 </div>
 
-<div class="category-nav">
+<nav aria-label="Discography navigation" class="category-nav">
   <div class="nav-row" role="none"><a href="discography.html#randomSong" class="category-btn random-song-btn" style="flex:1;max-width:480px;">Random Hip Song</a></div>
   <div class="nav-row"><a href="discography.html?cat=studio" class="category-btn">Studio</a><a href="discography.html?cat=eps" class="category-btn">EPs</a><a href="discography.html?cat=solo" class="category-btn">Solo Projects</a></div>
   <div class="nav-row"><a href="discography.html?cat=live" class="category-btn">Live</a><a href="discography.html?cat=compilations" class="category-btn">Compilations</a><a href="discography.html?cat=boxsets" class="category-btn">Box Sets</a><a href="discography.html?cat=video" class="category-btn">Video</a></div>
   <div class="nav-row"><a href="discography.html?cat=lyrics" class="category-btn">Lyrics Search</a><a href="discography.html?cat=setlists" class="category-btn">Setlists</a><a href="https://link.fans/hipquiz" target="_blank" rel="noopener noreferrer" class="category-btn">Hip Quiz</a></div>
   <div class="nav-row"><a href="tour-map.html" class="category-btn" style="flex:1;max-width:480px;">Tour Map</a></div>
   <div class="nav-row"><a href="discography.html?cat=top40" class="category-btn" style="flex:1;max-width:480px;font-size:0.85rem;padding:14px 24px;">The Tragically Hip Top Forty Countdown</a></div>
-</div>
+</nav>
 
-<main>
+<main id="main-content">
   <div class="timeline-section">
     <div class="timeline-scroll" id="timelineScroll">
       <div class="timeline-track" id="timelineTrack"></div>

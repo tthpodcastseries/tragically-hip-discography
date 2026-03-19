@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thehipexperience.tthpods.com/sitemap.xml
