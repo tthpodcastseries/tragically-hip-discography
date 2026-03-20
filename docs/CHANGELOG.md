@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.9.8.1
+**Yer Letter Link Update** - March 19, 2026
+- Updated Yer Letter newsletter signup links on both index and discography pages to `subscribe.tthpods.com`
+- Replaced old Mailchimp (index) and Cyberimpact (discography) URLs
+
+---
+
 ## v2.9.8
 **Yawning Or Snarling - Pre-Deployment Audit Fixes** - March 19, 2026
 
