@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.9.8.2
+**Security Hardening** - March 19, 2026
+- Escaped user input in lyrics search empty state to prevent self-XSS via `innerHTML`
+- Added `state` parameter to Spotify OAuth flow for CSRF protection (validates on callback, rejects mismatches)
+- Added SRI integrity hash to dynamically loaded Spotify Web Playback SDK with `onerror` fallback
+
+---
+
 ## v2.9.8.1
 **Yer Letter Link Update** - March 19, 2026
 - Updated Yer Letter newsletter signup links on both index and discography pages to `subscribe.tthpods.com`
