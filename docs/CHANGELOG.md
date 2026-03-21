@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.9.9
+**An Inch An Hour - Release Candidate** - March 21, 2026
+- Added Stephen Dame credit for The Hip Museum on Yer Hip Links page
+- Fixed password gate duplicate CSS display property across all 5 pages
+- Standardized password gate background to #000000 (was inconsistent #0e0b16)
+- Added aria-label to password gate input on all pages for screen reader accessibility
+- Added aria-hidden="true" to decorative SVG icons on Yer Hip Links page
+- Fixed double decodeURIComponent on album deep link in discography (URLSearchParams.get() already decodes)
+
+---
+
 ## v2.9.8.4
 **The Hip Compendium + Yer Hip Links** - March 21, 2026
 - Renamed app from "The Hip Experience" to "The Hip Compendium" across all pages (titles, meta tags, headers, password gates)
