@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.9.8.4
+**The Hip Compendium + Yer Hip Links** - March 21, 2026
+- Renamed app from "The Hip Experience" to "The Hip Compendium" across all pages (titles, meta tags, headers, password gates)
+- Added new Yer Hip Links page with curated community resources in 4 categories: Community & Fan Sites, Official, Podcasts & Media, Articles & Guides
+- Links include TTH Community, r/TragicallyHip, Hipbase, The Hip Archive, The Hip Museum, tragicallyhip.com, setlist.fm, TTH Podcast Series, Yer Letter, Hip Quiz, and Shaun Robertson's Ultimate TTH Bucket List
+- Added Yer Hip Links nav button on index page and 404 page
+
+---
+
+## v2.9.8.3
+**Pre-Launch Password Gate** - March 21, 2026
+- Added password gate to all pages (index, discography, tour-map, 404) for pre-launch access control
+- Gate uses session storage so password persists across page navigation within a session
+
+---
+
 ## v2.9.8.2
 **Security Hardening** - March 19, 2026
 - Escaped user input in lyrics search empty state to prevent self-XSS via `innerHTML`
