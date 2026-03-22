@@ -1786,28 +1786,28 @@ const spotifyTrackURLs = {
 };
 
 const appleMusicAlbumURLs = {
-  'Up to Here': 'https://music.apple.com/us/album/up-to-here/1440842642',
-  'Road Apples': 'https://music.apple.com/us/album/road-apples/1440845275',
-  'Fully Completely': 'https://music.apple.com/us/album/fully-completely/1469548485',
-  'Day for Night': 'https://music.apple.com/ca/album/day-for-night/1440826552',
-  'Trouble at the Henhouse': 'https://music.apple.com/ca/album/trouble-at-the-henhouse/1440855998',
-  'Phantom Power': 'https://music.apple.com/ca/album/phantom-power/1440826990',
-  'Music @ Work': 'https://music.apple.com/ca/album/music-work/1440829579',
-  'In Violet Light': 'https://music.apple.com/us/album/in-violet-light/1469546313',
-  'In Between Evolution': 'https://music.apple.com/us/album/in-between-evolution/1440828991',
-  'World Container': 'https://music.apple.com/ca/album/world-container/1443560147',
-  'We Are the Same': 'https://music.apple.com/us/album/we-are-the-same/1440831279',
-  'Now for Plan A': 'https://music.apple.com/ca/album/now-for-plan-a/1442445847',
-  'Man Machine Poem': 'https://music.apple.com/us/album/man-machine-poem/1444160103',
-  'Live Between Us': 'https://music.apple.com/ca/album/live-between-us/1440844264',
-  'Live at the Roxy': 'https://music.apple.com/us/album/live-at-the-roxy/1621335855',
-  'That Night in Toronto': 'https://music.apple.com/ca/album/that-night-in-toronto-live/1440776402',
-  'Yer Favourites': 'https://music.apple.com/us/album/yer-favourites/1440817057',
-  'Fully Completely Box Set': 'https://music.apple.com/us/album/fully-completely-deluxe-version/1422703267',
-  'Up To Here Box Set': 'https://music.apple.com/us/album/up-to-here-deluxe/1750989687',
-  'Phantom Power Box Set': 'https://music.apple.com/us/album/phantom-power-deluxe/1704043571',
-  'The Tragically Hip': 'https://music.apple.com/us/album/the-tragically-hip-ep/1440827504',
-  'Saskadelphia': 'https://music.apple.com/us/album/saskadelphia-ep/1566475818',
+  'Up to Here': 'https://music.apple.com/album/up-to-here/1440842642',
+  'Road Apples': 'https://music.apple.com/album/road-apples/1440845275',
+  'Fully Completely': 'https://music.apple.com/album/fully-completely/1469548485',
+  'Day for Night': 'https://music.apple.com/album/day-for-night/1440826552',
+  'Trouble at the Henhouse': 'https://music.apple.com/album/trouble-at-the-henhouse/1440855998',
+  'Phantom Power': 'https://music.apple.com/album/phantom-power/1440826990',
+  'Music @ Work': 'https://music.apple.com/album/music-work/1440829579',
+  'In Violet Light': 'https://music.apple.com/album/in-violet-light/1469546313',
+  'In Between Evolution': 'https://music.apple.com/album/in-between-evolution/1440828991',
+  'World Container': 'https://music.apple.com/album/world-container/1443560147',
+  'We Are the Same': 'https://music.apple.com/album/we-are-the-same/1440831279',
+  'Now for Plan A': 'https://music.apple.com/album/now-for-plan-a/1442445847',
+  'Man Machine Poem': 'https://music.apple.com/album/man-machine-poem/1444160103',
+  'Live Between Us': 'https://music.apple.com/album/live-between-us/1440844264',
+  'Live at the Roxy': 'https://music.apple.com/album/live-at-the-roxy/1621335855',
+  'That Night in Toronto': 'https://music.apple.com/album/that-night-in-toronto-live/1440776402',
+  'Yer Favourites': 'https://music.apple.com/album/yer-favourites/1440817057',
+  'Fully Completely Box Set': 'https://music.apple.com/album/fully-completely-deluxe-version/1422703267',
+  'Up To Here Box Set': 'https://music.apple.com/album/up-to-here-deluxe/1750989687',
+  'Phantom Power Box Set': 'https://music.apple.com/album/phantom-power-deluxe/1704043571',
+  'The Tragically Hip': 'https://music.apple.com/album/the-tragically-hip-ep/1440827504',
+  'Saskadelphia': 'https://music.apple.com/album/saskadelphia-ep/1566475818',
 };
 
 // Inject Spotify and Apple Music URLs into all album and single objects
@@ -2024,7 +2024,7 @@ document.addEventListener('click', e => {
 function getStreamURL(service, query) {
   const q = encodeURIComponent(query);
   const urls = {
-    apple: `https://music.apple.com/us/search?term=${q}`,
+    apple: `https://music.apple.com/search?term=${q}`,
     spotify: `https://open.spotify.com/search/${q}`,
     tidal: `https://tidal.com/search?q=${q}`,
     youtube: `https://music.youtube.com/search?q=${q}`,
@@ -2035,7 +2035,7 @@ function getStreamURL(service, query) {
 function buildTrackStreamPanel(trackTitle, albumTitle) {
   const searchQ = encodeURIComponent(trackTitle + ' The Tragically Hip');
   return `<div class="track-stream-panel">
-    <a href="https://music.apple.com/us/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
+    <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
     <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
     <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
     <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
@@ -2072,7 +2072,7 @@ document.getElementById('randomSongBtn').addEventListener('click', () => {
   document.getElementById('rspTrack').textContent = `'${track.title}'`;
   document.getElementById('rspAlbum').textContent = `from "${track.album}"`;
   document.getElementById('rspStreams').innerHTML = `
-    <a href="https://music.apple.com/us/search?term=${searchTerm}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-apple">
+    <a href="https://music.apple.com/search?term=${searchTerm}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-apple">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.997 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v11.81c.01.14.017.28.026.42.05.776.137 1.546.44 2.275.54 1.297 1.478 2.215 2.78 2.763.46.19.94.3 1.44.37.37.05.74.08 1.11.1h12.96c.39-.02.78-.05 1.17-.1.72-.1 1.41-.3 2.04-.63 1.15-.6 1.97-1.5 2.46-2.71.2-.5.32-1.01.39-1.54.05-.37.08-.74.09-1.12V6.125z"/></svg>
       Apple Music</a>
     <a href="${spotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-btn stream-btn-spotify">
@@ -3076,7 +3076,7 @@ beyondTop40.forEach(s => {
       <svg class="song-expand-icon" viewBox="0 0 24 24" fill="var(--muted2)"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
     <div class="song-stream-panel">
-      <a href="https://music.apple.com/us/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
+      <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
       <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
       <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
       <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
@@ -3291,7 +3291,7 @@ function openSoloModal(album) {
   const searchQuery = encodeURIComponent(a.title + ' ' + searchArtist);
   const streamLinks = `
     <div class="stream-links">
-      <a href="https://music.apple.com/us/search?term=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">
+      <a href="https://music.apple.com/search?term=${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.997 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v11.81c.01.14.017.28.026.42.05.776.137 1.546.44 2.275.54 1.297 1.478 2.215 2.78 2.763.46.19.94.3 1.44.37.37.05.74.08 1.11.1h12.96c.39-.02.78-.05 1.17-.1.72-.1 1.41-.3 2.04-.63 1.15-.6 1.97-1.5 2.46-2.71.2-.5.32-1.01.39-1.54.05-.37.08-.74.09-1.12V6.125zm-3.15 8.076c-.02.37-.13.73-.33 1.06-.37.6-.92.97-1.59 1.14-.39.1-.79.14-1.19.13-.39-.01-.78-.06-1.16-.14-.5-.1-.98-.26-1.45-.44-.96-.37-1.87-.84-2.72-1.42-.56-.38-1.09-.8-1.58-1.26-.65-.62-1.24-1.3-1.73-2.06-.41-.62-.76-1.28-1.02-1.98-.2-.55-.35-1.12-.41-1.71-.05-.48-.03-.95.1-1.41.22-.79.69-1.37 1.41-1.71.33-.15.68-.22 1.04-.23.23-.01.45.03.67.1.32.11.59.31.84.53.19.18.37.37.55.56l.29.32c.23.27.34.59.35.94 0 .35-.09.67-.29.96-.16.23-.35.44-.55.64-.14.14-.29.28-.43.42-.21.2-.21.2-.14.48.13.48.37.91.65 1.31.49.7 1.08 1.3 1.78 1.78.2.14.42.26.65.35.14.06.28.08.43.03.1-.03.18-.1.26-.17.23-.22.46-.44.68-.67.32-.33.7-.49 1.15-.44.33.03.62.16.87.38.28.24.55.49.82.74.26.24.52.48.77.73.27.27.42.6.43.99z"/></svg>
         Apple Music</a>
       <a href="https://open.spotify.com/search/${searchQuery}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">
