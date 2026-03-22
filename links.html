@@ -153,10 +153,28 @@
 <div id="passGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#000000;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
   <p style="color:#aaa;font-size:0.85rem;margin:0;">This site is in pre-launch. Enter the password to continue.</p>
+  <div id="countdown" style="display:flex;gap:18px;margin:8px 0 4px;">
+    <div style="text-align:center;"><span id="cdDays" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Days</span></div>
+    <div style="text-align:center;"><span id="cdHrs" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Hours</span></div>
+    <div style="text-align:center;"><span id="cdMin" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Min</span></div>
+    <div style="text-align:center;"><span id="cdSec" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Sec</span></div>
+  </div>
   <input id="passInput" type="password" placeholder="Password" autocomplete="off" aria-label="Enter site password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 16px;border-radius:6px;font-size:1rem;font-family:Poppins,sans-serif;width:220px;text-align:center;" onkeydown="if(event.key==='Enter')document.getElementById('passBtn').click()">
   <button id="passBtn" onclick="if(document.getElementById('passInput').value==='roadapples'){sessionStorage.setItem('tth_pass','1');document.getElementById('passGate').remove()}else{document.getElementById('passInput').style.borderColor='#C8102E';document.getElementById('passInput').value=''}" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Enter</button>
 </div>
 <script>if(!sessionStorage.getItem('tth_pass')){document.getElementById('passGate').style.display='flex'}else{document.getElementById('passGate').remove()}</script>
+<script>
+(function(){
+  var target=new Date('2026-04-07T08:00:00-04:00').getTime();
+  function tick(){
+    var now=Date.now(),diff=target-now;
+    if(diff<=0){document.getElementById('cdDays').textContent='0';document.getElementById('cdHrs').textContent='0';document.getElementById('cdMin').textContent='0';document.getElementById('cdSec').textContent='0';return}
+    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    document.getElementById('cdDays').textContent=d;document.getElementById('cdHrs').textContent=h;document.getElementById('cdMin').textContent=m;document.getElementById('cdSec').textContent=s;
+  }
+  if(document.getElementById('passGate')){tick();setInterval(tick,1000)}
+})();
+</script>
 <!-- END PASSWORD GATE -->
 <a href="#main-content" class="skip-link">Skip to content</a>
 
