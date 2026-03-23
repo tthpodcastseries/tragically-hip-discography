@@ -626,8 +626,9 @@ input[type="range"]::-moz-range-thumb {
     });
   }
 
-  function applyFilters() {
-    renderGigs(getFilteredGigs());
+  function applyFilters(fitMap) {
+    const filtered = getFilteredGigs();
+    renderGigs(filtered);
     updateSliderTrack();
     const minY = Math.min(
       parseInt(document.getElementById('yearMin').value),
@@ -638,6 +639,10 @@ input[type="range"]::-moz-range-thumb {
       parseInt(document.getElementById('yearMax').value)
     );
     document.getElementById('yearDisplay').textContent = minY === maxY ? `${minY}` : `${minY} — ${maxY}`;
+    if (fitMap && filtered.length) {
+      const pts = filtered.filter(g => g.lat && g.lng).map(g => [g.lat, g.lng]);
+      if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 12 });
+    }
   }
 
   // Slider track fill
@@ -659,8 +664,8 @@ input[type="range"]::-moz-range-thumb {
   }
 
   // Event listeners
-  tourSelect.addEventListener('change', applyFilters);
-  countrySelect.addEventListener('change', applyFilters);
+  tourSelect.addEventListener('change', () => applyFilters(true));
+  countrySelect.addEventListener('change', () => applyFilters(true));
   document.getElementById('yearMin').addEventListener('input', applyFilters);
   document.getElementById('yearMax').addEventListener('input', applyFilters);
 
