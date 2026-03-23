@@ -2043,6 +2043,41 @@ function buildTrackStreamPanel(trackTitle, albumTitle) {
     <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
   </div>`;
 }
+// Mobile deep-link handler: try native app URI schemes on touch devices
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.href;
+    let nativeURI = null;
+
+    // Spotify: open.spotify.com/track/ID -> spotify:track:ID
+    const spotifyTrack = href.match(/open\.spotify\.com\/track\/([a-zA-Z0-9]+)/);
+    if (spotifyTrack) nativeURI = 'spotify:track:' + spotifyTrack[1];
+
+    // Spotify: open.spotify.com/album/ID -> spotify:album:ID
+    const spotifyAlbum = href.match(/open\.spotify\.com\/album\/([a-zA-Z0-9]+)/);
+    if (!nativeURI && spotifyAlbum) nativeURI = 'spotify:album:' + spotifyAlbum[1];
+
+    // Spotify search -> spotify:search:query
+    const spotifySearch = href.match(/open\.spotify\.com\/search\/(.+)/);
+    if (!nativeURI && spotifySearch) nativeURI = 'spotify:search:' + decodeURIComponent(spotifySearch[1]);
+
+    // Apple Music: use music:// scheme
+    if (!nativeURI && href.includes('music.apple.com')) {
+      nativeURI = href.replace('https://music.apple.com', 'music://music.apple.com');
+    }
+
+    if (nativeURI) {
+      e.preventDefault();
+      window.location.href = nativeURI;
+      // Fallback to web URL if native app doesn't open within 1.5s
+      setTimeout(function() { window.open(href, '_blank'); }, 1500);
+    }
+  });
+}
+
 function initTrackStreaming(container) {
   if (!container) return;
   container.querySelectorAll('.track-item.clickable').forEach(item => {
