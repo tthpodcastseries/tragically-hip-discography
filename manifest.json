@@ -1,0 +1,27 @@
+{
+  "name": "The Hip Compendium",
+  "short_name": "Hip Compendium",
+  "description": "The complete Tragically Hip discography explorer - albums, streaming, lyrics, setlists, and tour map.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0e0b16",
+  "background_color": "#0e0b16",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
