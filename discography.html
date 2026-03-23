@@ -2050,9 +2050,10 @@ function getStreamURL(service, query) {
 }
 function buildTrackStreamPanel(trackTitle, albumTitle) {
   const searchQ = encodeURIComponent(trackTitle + ' The Tragically Hip');
+  const spotifyURL = spotifyTrackURLs[trackTitle] || `https://open.spotify.com/search/${searchQ}`;
   return `<div class="track-stream-panel">
     <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
-    <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
+    <a href="${spotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
     <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
     <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
     <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
@@ -2103,7 +2104,12 @@ function initTrackStreaming(container) {
       const pref = getPreferredStream();
       if (pref) {
         const trackName = item.querySelector('.track-name').textContent;
-        const url = getStreamURL(pref, trackName + ' The Tragically Hip');
+        let url;
+        if (pref === 'spotify' && spotifyTrackURLs[trackName]) {
+          url = spotifyTrackURLs[trackName];
+        } else {
+          url = getStreamURL(pref, trackName + ' The Tragically Hip');
+        }
         if (url) window.open(url, '_blank', 'noopener,noreferrer');
       } else {
         // close other open panels in this list
@@ -3144,6 +3150,7 @@ const beyondGrid = document.getElementById('beyondGrid');
 beyondTop40.forEach(s => {
   const wrapper = document.createElement('div');
   const searchQ = encodeURIComponent(s.title + ' The Tragically Hip');
+  const beyondSpotifyURL = spotifyTrackURLs[s.title] || `https://open.spotify.com/search/${searchQ}`;
   wrapper.innerHTML = `
     <div class="song-row expandable" role="button" tabindex="0" aria-label="${s.title} - select to see streaming links">
       <div class="song-rank beyond">#${s.rank}</div>
@@ -3155,7 +3162,7 @@ beyondTop40.forEach(s => {
     </div>
     <div class="song-stream-panel">
       <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
-      <a href="https://open.spotify.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
+      <a href="${beyondSpotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
       <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
       <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
       <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
