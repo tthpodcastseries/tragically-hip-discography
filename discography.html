@@ -3014,14 +3014,18 @@ catBtns.forEach((btn, idx) => {
 // Initial render
 // Default to studio, or handle deep links from index.html
 try {
+  // Check both query params and hash params (hash survives pretty-URL redirects)
   const params = new URLSearchParams(window.location.search);
-  const catParam = params.get('cat');
-  const albumParam = params.get('album');
+  const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+  const catParam = params.get('cat') || hashParams.get('cat');
+  const albumParam = params.get('album') || hashParams.get('album');
   if (catParam && categoryData[catParam]) {
     renderCategory(catParam);
     if (albumParam) {
-      const idx = categoryData[catParam].findIndex(a => a.title === albumParam);
-      if (idx >= 0) { currentAlbums = categoryData[catParam]; openModal(idx); }
+      setTimeout(() => {
+        const idx = categoryData[catParam].findIndex(a => a.title === albumParam);
+        if (idx >= 0) { currentAlbums = categoryData[catParam]; openModal(idx); }
+      }, 50);
     }
   } else {
     renderCategory('studio');

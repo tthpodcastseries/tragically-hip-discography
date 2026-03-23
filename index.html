@@ -264,11 +264,11 @@
 
 <nav aria-label="Discography navigation" class="category-nav">
   <div class="nav-row" role="none"><a href="discography.html#randomSong" class="category-btn random-song-btn" style="flex:1;max-width:480px;">Random Hip Song</a></div>
-  <div class="nav-row"><a href="discography.html?cat=studio" class="category-btn">Studio</a><a href="discography.html?cat=eps" class="category-btn">EPs</a><a href="discography.html?cat=solo" class="category-btn">Solo Projects</a></div>
-  <div class="nav-row"><a href="discography.html?cat=live" class="category-btn">Live</a><a href="discography.html?cat=compilations" class="category-btn">Compilations</a><a href="discography.html?cat=boxsets" class="category-btn">Box Sets</a><a href="discography.html?cat=video" class="category-btn">Video</a></div>
-  <div class="nav-row"><a href="discography.html?cat=lyrics" class="category-btn">Lyrics Search</a><a href="discography.html?cat=setlists" class="category-btn">Setlists</a></div>
+  <div class="nav-row"><a href="discography.html#cat=studio" class="category-btn">Studio</a><a href="discography.html#cat=eps" class="category-btn">EPs</a><a href="discography.html#cat=solo" class="category-btn">Solo Projects</a></div>
+  <div class="nav-row"><a href="discography.html#cat=live" class="category-btn">Live</a><a href="discography.html#cat=compilations" class="category-btn">Compilations</a><a href="discography.html#cat=boxsets" class="category-btn">Box Sets</a><a href="discography.html#cat=video" class="category-btn">Video</a></div>
+  <div class="nav-row"><a href="discography.html#cat=lyrics" class="category-btn">Lyrics Search</a><a href="discography.html#cat=setlists" class="category-btn">Setlists</a></div>
   <div class="nav-row"><a href="tour-map.html" class="category-btn" style="flex:1;max-width:480px;">Tour Map</a></div>
-  <div class="nav-row"><a href="discography.html?cat=top40" class="category-btn" style="flex:1;max-width:480px;font-size:0.85rem;padding:14px 24px;">The Tragically Hip Top Forty Countdown</a></div>
+  <div class="nav-row"><a href="discography.html#cat=top40" class="category-btn" style="flex:1;max-width:480px;font-size:0.85rem;padding:14px 24px;">The Tragically Hip Top Forty Countdown</a></div>
   <div class="nav-row"><a href="links.html" class="category-btn" style="flex:1;max-width:480px;">Yer Hip Links</a></div>
 </nav>
 
@@ -468,7 +468,7 @@
 
     var openFn = (function(album) {
       return function() {
-        window.location.href = 'discography.html?cat=' + encodeURIComponent(album.category) + '&album=' + encodeURIComponent(album.title);
+        window.location.href = 'discography.html#cat=' + encodeURIComponent(album.category) + '&album=' + encodeURIComponent(album.title);
       };
     })(a);
 
