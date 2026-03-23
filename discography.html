@@ -2101,8 +2101,31 @@ function initTrackStreaming(container) {
 }
 
 // Random Hip Song click handler
+function getRandomTrackURL(pref, track) {
+  const searchTerm = encodeURIComponent(track.title + ' The Tragically Hip');
+  const urls = {
+    spotify: track.spotifyTrackURL || `https://open.spotify.com/search/${searchTerm}`,
+    apple: `https://music.apple.com/search?term=${searchTerm}`,
+    tidal: `https://tidal.com/search?q=${searchTerm}`,
+    youtube: `https://music.youtube.com/search?q=${searchTerm}`,
+    amazon: `https://music.amazon.com/search/${searchTerm}`
+  };
+  return urls[pref] || '';
+}
 document.getElementById('randomSongBtn').addEventListener('click', () => {
   const track = hipTracks[Math.floor(Math.random() * hipTracks.length)];
+  const pref = getPreferredStream();
+
+  // If user has a preferred service, go directly to the song
+  if (pref) {
+    const url = getRandomTrackURL(pref, track);
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
+  }
+
+  // No preference set - show the picker panel
   const searchTerm = encodeURIComponent(track.title + ' The Tragically Hip');
   const spotifyURL = track.spotifyTrackURL || `https://open.spotify.com/search/${searchTerm}`;
   document.getElementById('rspTrack').textContent = `'${track.title}'`;
