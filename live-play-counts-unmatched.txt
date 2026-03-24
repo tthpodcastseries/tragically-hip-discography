@@ -1,0 +1,260 @@
+=== LIVE PLAY COUNTS - UNMATCHED SONGS REPORT ===
+Generated: 2026-03-24
+
+--- DISCOGRAPHY TRACKS WITH NO MATCH IN EITHER SOURCE (0) ---
+(none)
+
+--- HIPBASE SONGS NOT MATCHED TO DISCOGRAPHY (106) ---
+  "??unknown??" [Unreleased] - 23 plays
+  "Train Kept A Rollin (Tiny Bradshaw)" [Covers] - 8 plays
+  "No Threat" [Yer Favourites] - 7 plays
+  "Baby Please Don't Go (Muddy Waters)" [Covers] - 5 plays
+  "Queen Bitch (David Bowie)" [Covers] - 5 plays
+  "Get Back Again" [Unreleased] - 5 plays
+  "Pillform #3" [GD Unreleased] - 5 plays
+  "Summerside Of Life (Gordon Lightfoot)" [Covers] - 4 plays
+  "Suzie Q (Dale Hawkins)" [Covers] - 4 plays
+  "Going Going Gone (Bob Dylan)" [Covers] - 4 plays
+  "Gloria" [Unreleased] - 4 plays
+  "2000 Light Years From Home (The Rolling Stones)" [Covers] - 3 plays
+  "1979 (Smashing Pumpkins)" [Covers] - 3 plays
+  "On A Night Like This (Bob Dylan)" [Covers] - 3 plays
+  "Heart Attack Love" [Unreleased] - 3 plays
+  "Fighter Fighter" [Unreleased] - 3 plays
+  "The New Maybe" [Yer Favourites] - 3 plays
+  "Radio Show" [Fully Completely] - 2 plays
+  "I Can Only Give You Everything (Van Morrison)" [Covers] - 2 plays
+  "Substitute (The Who)" [Covers] - 2 plays
+  "Mr. Soul (Neil Young)" [Covers] - 2 plays
+  "Johnny Appleseed (Joe Strummer And The Mescaleros)" [Covers] - 2 plays
+  "The Magnificent Seven (The Clash)" [Covers] - 2 plays
+  "Surrender (Cheap Trick)" [Covers] - 2 plays
+  "“c’mon Everybody (Eddie Cochran)" [Covers] - 2 plays
+  "It Makes No Difference (The Band)" [Covers] - 2 plays
+  "Train In Vain (The Clash)" [Covers] - 2 plays
+  "Diamond Dogs (David Bowie)" [Covers] - 2 plays
+  "I'll Make Love To You Anytime (JJ Cole)" [Covers] - 2 plays
+  "Running For Your Life" [Unreleased] - 2 plays
+  "Times Are Passing Us By" [Unreleased] - 2 plays
+  "Waltz For Juliette" [Unreleased] - 2 plays
+  "Ballroom" [Unreleased] - 2 plays
+  "Tonight's the Night (Neil Young)" [GD Covers] - 2 plays
+  "Nobody Cept You (Bob Dylan)" [GD Covers] - 2 plays
+  "When You Dance I Can Really Love (Neil Young)" [GD Covers] - 2 plays
+  "Good Morning Little School Girl (Sonny Boy Williamson)" [Covers] - 1 plays
+  "Road Runner (Bo Diddley)" [Covers] - 1 plays
+  "Hey Marie (Andrew Cash)" [Covers] - 1 plays
+  "Little By Little (The Rolling Stones)" [Covers] - 1 plays
+  "Seven Days (Bob Dylan)" [Covers] - 1 plays
+  "Rockin' In The Free World (Neil Young)" [Covers] - 1 plays
+  "Can’t Explain (The Who)" [Covers] - 1 plays
+  "I Want You (Bob Dylan)" [Covers] - 1 plays
+  "Suspicious Minds (Mark James)" [Covers] - 1 plays
+  "Still In Hollywood (Concrete Blonde)" [Covers] - 1 plays
+  "If You Gotta Go, Go Now (Bob Dylan)" [Covers] - 1 plays
+  "Don’t Worry Baby (Los Lobos)" [Covers] - 1 plays
+  "Jumping Jack Flash (The Rolling Stones)" [Covers] - 1 plays
+  "Black Day In July (Gordon Lightfoot)" [Covers] - 1 plays
+  "Cold Metal (Iggy Pop)" [Covers] - 1 plays
+  "Wreck Of The Edmund Fitzgerald (Gordon Lightfoot)" [Covers] - 1 plays
+  "Child Of The Moon (The Rolling Stones)" [Covers] - 1 plays
+  "Tax Man (The Beatles)" [Covers] - 1 plays
+  "Is This Love (Bob Marley And The Wailers)" [Covers] - 1 plays
+  "Rudie Can’t Fail (The Clash)" [Covers] - 1 plays
+  "The Last Time (The Rolling Stones)" [Covers] - 1 plays
+  "Dead Flowers (The Rolling Stones)" [Covers] - 1 plays
+  "Young Americans (David Bowie)" [Covers] - 1 plays
+  "Helter Skelter (The Beatles)" [Covers] - 1 plays
+  "Bastards Of Young (The Replacements)" [Covers] - 1 plays
+  "Come Together (The Beatles)" [Covers] - 1 plays
+  "The Shape I’m In (The Band)" [Covers] - 1 plays
+  "Street Fighting Man (The Rolling Stones)" [Covers] - 1 plays
+  "Papa’s Got A Brand New Bag (James Brown)" [Covers] - 1 plays
+  "Somethin’ Else (Eddie Cochran)" [Covers] - 1 plays
+  "Four Stong Winds (Ian & Sylvia)" [Covers] - 1 plays
+  "Powderfinger (Neil Young)" [Covers] - 1 plays
+  "Six Days On The Road (Dave Dudley)" [Covers] - 1 plays
+  "The Weight (The Band)" [Covers] - 1 plays
+  "Sudbury Saturday Night (Stompin’ Tom Connors)" [Covers] - 1 plays
+  "Big Yellow Taxi (Joni Mitchell)" [Covers] - 1 plays
+  "Hang On To Yourself (David Bowie)" [Covers] - 1 plays
+  "Like A Rolling Stone (Bob Dylan)" [Covers] - 1 plays
+  "Lust For Life (Iggy Pop)" [Covers] - 1 plays
+  "Picture My Face (Teenage Head)" [Covers] - 1 plays
+  "Mary, Mary (The Monkees)" [Covers] - 1 plays
+  "Sweet Jane (Velvet Underground)" [Covers] - 1 plays
+  "Off The Hook (The Rolling Stones)" [Covers] - 1 plays
+  "Treat Her Right (Roy Head)" [Covers] - 1 plays
+  "Big City (The Pretty Things)" [Covers] - 1 plays
+  "Money (That's What I Want) (Berry Gordy)" [Covers] - 1 plays
+  "For Your Love (The Yardbirds)" [Covers] - 1 plays
+  "I'm a Believer (The Monkees)" [Covers] - 1 plays
+  "Here 'Tis (Lou Donaldson)" [Covers] - 1 plays
+  "Blonde Solid" [Unreleased] - 1 plays
+  "Hailstone Hands Of God" [Unreleased] - 1 plays
+  "It's So Easy" [Unreleased] - 1 plays
+  "Raining Hearts Of Fire" [Unreleased] - 1 plays
+  "She's Got What It Takes" [Unreleased] - 1 plays
+  "You See Details" [Unreleased] - 1 plays
+  "Lofty Pines Motel" [Unreleased] - 1 plays
+  "Down Home Girl" [Unreleased] - 1 plays
+  "Baby Blue Blood" [Unreleased] - 1 plays
+  "Psychedelic Ramblings of Rich Kids" [Unreleased] - 1 plays
+  "If She's Seventeen" [Unreleased] - 1 plays
+  "??unknown?? GD" [GD Unreleased] - 1 plays
+  "The Bread Song" [GD Unreleased] - 1 plays
+  "Don't Mind Me Jesus" [GD Unreleased] - 1 plays
+  "Fortunate Son (Creedence Clearwater Revival)" [GD Covers] - 1 plays
+  "Barstool Blues (Neil Young)" [GD Covers] - 1 plays
+  "Ray Charles Kind Of Party (Dinner Is Ruined Band)" [GD Covers] - 1 plays
+  "Hush" [We Are the Same] - 0 plays
+  "Skeleton Park" [We Are the Same] - 0 plays
+  "The Man Comes Around (Johnny Cash)" [GD Covers] - 0 plays
+  "Atlantic City (Bruce Springsteen)" [Covers] - 0 plays
+
+--- SETLIST.FM SONGS NOT MATCHED TO DISCOGRAPHY (136) ---
+  "New Orleans Is Sinking / Nautical Disaster" - 31 plays
+  "No Threat" - 10 plays
+  "Get Back Again" - 10 plays
+  "Susie-Q" - 10 plays [COVER]
+  "2000 Light Years From Home" - 8 plays [COVER]
+  "Heart Attack Love" - 8 plays
+  "The Train Kept A-Rollin'" - 7 plays [COVER]
+  "Baby, Please Don't Go" - 7 plays [COVER]
+  "Gloria" - 7 plays [COVER]
+  "Interview 1" - 6 plays
+  "Hiccups" - 6 plays
+  "Queen Bitch" - 5 plays [COVER]
+  "Summer Side of Life" - 4 plays [COVER]
+  "New Orleans Is Sinking / Escape Is At Hand For The Travellin' Man / New Orleans Is Sinking" - 4 plays
+  "Times Are Passing Us By" - 4 plays
+  "Off the Hook" - 4 plays [COVER]
+  "Money (That's What I Want)" - 4 plays [COVER]
+  "Ô Canada" - 3 plays [COVER]
+  "Fighter fighter" - 3 plays
+  "New Song" - 3 plays
+  "I'll Make Love to You Anytime" - 3 plays [COVER]
+  "Waltz for Juliette" - 3 plays
+  "Mary, Mary" - 3 plays [COVER]
+  "1979" - 2 plays [COVER]
+  "Good Morning, School Girl" - 2 plays [COVER]
+  "Introduction" - 2 plays
+  "Diamond Dogs" - 2 plays [COVER]
+  "Mr. Soul" - 2 plays [COVER]
+  "The Magnificent Seven" - 2 plays [COVER]
+  "Johnny Appleseed" - 2 plays [COVER]
+  "Train in Vain" - 2 plays [COVER]
+  "Substitute" - 2 plays [COVER]
+  "Surrender" - 2 plays [COVER]
+  "Dead Flowers" - 2 plays [COVER]
+  "Still in Hollywood" - 2 plays [COVER]
+  "Going, Going, Gone" - 2 plays [COVER]
+  "It Makes No Difference" - 2 plays [COVER]
+  "On a Night Like This" - 2 plays [COVER]
+  "C'mon Everybody" - 2 plays [COVER]
+  "The New Maybe" - 2 plays
+  "Show Intro" - 2 plays
+  "New Orleans Is Sinking / Ahead by a Century / New Orleans Is Sinking" - 2 plays
+  "Blonde Solid" - 2 plays
+  "Radio Show" - 2 plays
+  "Road Runner" - 2 plays [COVER]
+  "Running for Your Life" - 2 plays
+  "Bedrock Twitch" - 2 plays [COVER]
+  "Treat Her Right" - 2 plays [COVER]
+  "Baby Blueblood" - 2 plays
+  "Big City" - 2 plays [COVER]
+  "Psychedelic Ramblings of Rich Kids" - 2 plays
+  "It's Snowing" - 2 plays
+  "For Your Love" - 2 plays [COVER]
+  "Mercy, Mercy" - 2 plays [COVER]
+  "Here 'Tis" - 2 plays [COVER]
+  "Now That the Buffalo's Gone" - 1 plays [COVER]
+  "Haven't You Heard" - 1 plays
+  "Old Wive's Tale" - 1 plays
+  "Edelweiss" - 1 plays [COVER]
+  "Interview 2" - 1 plays
+  "Riders on the Storm" - 1 plays [COVER]
+  "Papa's Got a Brand New Bag" - 1 plays [COVER]
+  "Street Fighting Man" - 1 plays [COVER]
+  "The Shape I'm In" - 1 plays [COVER]
+  "Come Together" - 1 plays [COVER]
+  "Bastards of Young" - 1 plays [COVER]
+  "Helter Skelter" - 1 plays [COVER]
+  "Young Americans" - 1 plays [COVER]
+  "Atlantic City" - 1 plays [COVER]
+  "The Last Time" - 1 plays [COVER]
+  "Rudie Can't Fail" - 1 plays [COVER]
+  "Is This Love" - 1 plays [COVER]
+  "I Want You" - 1 plays [COVER]
+  "Taxman" - 1 plays [COVER]
+  "Child of the Moon" - 1 plays [COVER]
+  "The Wreck of the Edmund Fitzgerald" - 1 plays [COVER]
+  "Cold Metal" - 1 plays [COVER]
+  "Black Day in July" - 1 plays [COVER]
+  "Jumpin' Jack Flash" - 1 plays [COVER]
+  "Don't Worry Baby" - 1 plays [COVER]
+  "If You Gotta Go, Go Now" - 1 plays [COVER]
+  "Suspicious Minds" - 1 plays [COVER]
+  "Tush" - 1 plays [COVER]
+  "It's the End of the World as We Know It (And I Feel Fine)" - 1 plays [COVER]
+  "I Can't Explain" - 1 plays [COVER]
+  "Picture My Face" - 1 plays [COVER]
+  "Lust for Life" - 1 plays [COVER]
+  "Like a Rolling Stone" - 1 plays [COVER]
+  "Hang On to Yourself" - 1 plays [COVER]
+  "Big Yellow Taxi" - 1 plays [COVER]
+  "Sudbury Saturday Night" - 1 plays [COVER]
+  "The Weight" - 1 plays [COVER]
+  "Six Days on the Road" - 1 plays [COVER]
+  "Powderfinger" - 1 plays [COVER]
+  "Four Strong Winds" - 1 plays [COVER]
+  "I Can Only Give You Everything" - 1 plays [COVER]
+  "The Man Comes Around" - 1 plays [COVER]
+  "We Are the Next Us" - 1 plays
+  "Rockin' in the Free World" - 1 plays [COVER]
+  "New Orleans Is Sinking / Elaborate / The Never-Ending Present" - 1 plays
+  "Inevitability of Death / If You're Freaked" - 1 plays
+  "At the Hundredth Meridian / Lofty Pines / Blackflies" - 1 plays
+  "New Orleans Is Sinking / Chagrin Falls" - 1 plays
+  "Band Intro" - 1 plays
+  "Lofty Pines" - 1 plays [COVER]
+  "At the Hundredth Meridian / So Hard Done By" - 1 plays
+  "New Orleans Is Sinking / Apartment Song" - 1 plays
+  "At the Hundredth Meridian / Poets / Chagrin Falls / At the Hundredth Meridian" - 1 plays
+  "Jamming" - 1 plays
+  "Past..." - 1 plays
+  "New Orleans Is Sinking / If You're Freaked, I'm Fucked" - 1 plays
+  "Win" - 1 plays
+  "Land" - 1 plays [COVER]
+  "New Orleans Is Sinking / Born in the Water" - 1 plays
+  "New Orleans Is Sinking / Nautical Disaster / New Orleans Is Sinking" - 1 plays
+  "You See Details" - 1 plays
+  "I'm For Real" - 1 plays
+  "Seven Days" - 1 plays [COVER]
+  "Night Comes Down" - 1 plays [COVER]
+  "Wait So Long" - 1 plays
+  "Raining Hearts of Fire" - 1 plays
+  "Little by Little" - 1 plays [COVER]
+  "It's So Easy" - 1 plays [COVER]
+  "She's Got All It Takes" - 1 plays
+  "Down Home Girl" - 1 plays [COVER]
+  "Not Fade Away" - 1 plays [COVER]
+  "We Love You" - 1 plays [COVER]
+  "Hitch Hike" - 1 plays [COVER]
+  "What'd I Say" - 1 plays [COVER]
+  "Who Do You Love?" - 1 plays [COVER]
+  "Wooly Bully" - 1 plays [COVER]
+  "I'm Not Your Stepping Stone" - 1 plays [COVER]
+  "Nadine (Is It You?)" - 1 plays [COVER]
+  "Sweet Jane" - 1 plays [COVER]
+  "I'm a Believer" - 1 plays [COVER]
+  "Daydream Believer" - 1 plays [COVER]
+
+--- SUMMARY ---
+Total discography tracks: 169
+Matched in both sources: 163
+Matched Hipbase only: 6
+Matched setlist.fm only: 0
+Unmatched (no source): 0
+Hipbase songs not in discography: 106
+Setlist.fm songs not in discography: 136

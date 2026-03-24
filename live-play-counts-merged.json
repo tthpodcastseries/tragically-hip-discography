@@ -1,0 +1,2979 @@
+{
+  "generated": "2026-03-24",
+  "sources": {
+    "hipbase": {
+      "total_songs": 276,
+      "scraped": "2026-03-24"
+    },
+    "setlistfm": {
+      "total_songs": 300,
+      "scraped": "2026-03-24"
+    }
+  },
+  "albums": [
+    {
+      "album": "Up to Here",
+      "year": 1989,
+      "tracks": [
+        {
+          "title": "Blow at High Dough",
+          "track_number": 1,
+          "hipbase_plays": 474,
+          "setlistfm_plays": 505,
+          "best_estimate": 505,
+          "hipbase_opener": 16,
+          "setlistfm_opener": 20,
+          "hipbase_encore": 223,
+          "setlistfm_encore": 135,
+          "first_played": "1988-05-20",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "I'll Believe in You (Or I'll Be Leaving You Tonight)",
+          "track_number": 2,
+          "hipbase_plays": 26,
+          "setlistfm_plays": 1,
+          "best_estimate": 26,
+          "hipbase_opener": 5,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 0,
+          "first_played": "1988-07-15",
+          "last_played": "1993-06-25",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "New Orleans Is Sinking",
+          "track_number": 3,
+          "hipbase_plays": 836,
+          "setlistfm_plays": 831,
+          "best_estimate": 836,
+          "hipbase_opener": 33,
+          "setlistfm_opener": 37,
+          "hipbase_encore": 143,
+          "setlistfm_encore": 82,
+          "first_played": "1988-03-02",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "38 Years Old",
+          "track_number": 4,
+          "hipbase_plays": 36,
+          "setlistfm_plays": 54,
+          "best_estimate": 54,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 3,
+          "first_played": "1988-05-20",
+          "last_played": "2008-02-23",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "She Didn't Know",
+          "track_number": 5,
+          "hipbase_plays": 24,
+          "setlistfm_plays": 42,
+          "best_estimate": 42,
+          "hipbase_opener": 7,
+          "setlistfm_opener": 13,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1988-03-02",
+          "last_played": "1991-08-04",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Boots or Hearts",
+          "track_number": 6,
+          "hipbase_plays": 119,
+          "setlistfm_plays": 140,
+          "best_estimate": 140,
+          "hipbase_opener": 2,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 20,
+          "setlistfm_encore": 14,
+          "first_played": "1989-06-30",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Everytime You Go",
+          "track_number": 7,
+          "hipbase_plays": 39,
+          "setlistfm_plays": 61,
+          "best_estimate": 61,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 2,
+          "first_played": "1988-07-15",
+          "last_played": "2004-06-25",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "When the Weight Comes Down",
+          "track_number": 8,
+          "hipbase_plays": 5,
+          "setlistfm_plays": 10,
+          "best_estimate": 10,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "1988-02-19",
+          "last_played": "1990-03-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Trickle Down",
+          "track_number": 9,
+          "hipbase_plays": 17,
+          "setlistfm_plays": 31,
+          "best_estimate": 31,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "1989-06-30",
+          "last_played": "2002-11-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Another Midnight",
+          "track_number": 10,
+          "hipbase_plays": 7,
+          "setlistfm_plays": 9,
+          "best_estimate": 9,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 2,
+          "first_played": "1989-08-27",
+          "last_played": "1991-11-15",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Opiated",
+          "track_number": 11,
+          "hipbase_plays": 56,
+          "setlistfm_plays": 70,
+          "best_estimate": 70,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 2,
+          "first_played": "1988-05-20",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Road Apples",
+      "year": 1991,
+      "tracks": [
+        {
+          "title": "Little Bones",
+          "track_number": 1,
+          "hipbase_plays": 424,
+          "setlistfm_plays": 451,
+          "best_estimate": 451,
+          "hipbase_opener": 10,
+          "setlistfm_opener": 15,
+          "hipbase_encore": 219,
+          "setlistfm_encore": 127,
+          "first_played": "1990-11-13",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Twist My Arm",
+          "track_number": 2,
+          "hipbase_plays": 214,
+          "setlistfm_plays": 226,
+          "best_estimate": 226,
+          "hipbase_opener": 2,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 19,
+          "setlistfm_encore": 14,
+          "first_played": "1990-11-13",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Cordelia",
+          "track_number": 3,
+          "hipbase_plays": 65,
+          "setlistfm_plays": 76,
+          "best_estimate": 76,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 1,
+          "first_played": "1989-06-30",
+          "last_played": "2007-07-05",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Luxury",
+          "track_number": 4,
+          "hipbase_plays": 65,
+          "setlistfm_plays": 70,
+          "best_estimate": 70,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 2,
+          "first_played": "1991-03-01",
+          "last_played": "2016-08-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Born in the Water",
+          "track_number": 5,
+          "hipbase_plays": 1,
+          "setlistfm_plays": 1,
+          "best_estimate": 1,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1990-04-11",
+          "last_played": "1990-04-11",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Long Time Running",
+          "track_number": 6,
+          "hipbase_plays": 149,
+          "setlistfm_plays": 149,
+          "best_estimate": 149,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 47,
+          "setlistfm_encore": 30,
+          "first_played": "1990-05-23",
+          "last_played": "2016-08-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Bring It All Back",
+          "track_number": 7,
+          "hipbase_plays": 26,
+          "setlistfm_plays": 36,
+          "best_estimate": 36,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "1991-03-00",
+          "last_played": "1993-07-17",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Three Pistols",
+          "track_number": 8,
+          "hipbase_plays": 103,
+          "setlistfm_plays": 132,
+          "best_estimate": 132,
+          "hipbase_opener": 6,
+          "setlistfm_opener": 10,
+          "hipbase_encore": 28,
+          "setlistfm_encore": 22,
+          "first_played": "1988-01-01",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fight",
+          "track_number": 9,
+          "hipbase_plays": 38,
+          "setlistfm_plays": 51,
+          "best_estimate": 51,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "1989-06-30",
+          "last_played": "1999-08-27",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "On the Verge",
+          "track_number": 10,
+          "hipbase_plays": 76,
+          "setlistfm_plays": 91,
+          "best_estimate": 91,
+          "hipbase_opener": 2,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 42,
+          "setlistfm_encore": 28,
+          "first_played": "1988-09-30",
+          "last_played": "2012-11-17",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fiddler's Green",
+          "track_number": 11,
+          "hipbase_plays": 94,
+          "setlistfm_plays": 93,
+          "best_estimate": 94,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 18,
+          "setlistfm_encore": 17,
+          "first_played": "2006-10-28",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Last of the Unplucked Gems",
+          "track_number": 12,
+          "hipbase_plays": 128,
+          "setlistfm_plays": 147,
+          "best_estimate": 147,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 5,
+          "hipbase_encore": 6,
+          "setlistfm_encore": 4,
+          "first_played": "1991-07-30",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Fully Completely",
+      "year": 1992,
+      "tracks": [
+        {
+          "title": "Courage (for Hugh MacLennan)",
+          "track_number": 1,
+          "hipbase_plays": 637,
+          "setlistfm_plays": 651,
+          "best_estimate": 651,
+          "hipbase_opener": 4,
+          "setlistfm_opener": 6,
+          "hipbase_encore": 50,
+          "setlistfm_encore": 40,
+          "first_played": "1992-04-18",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Looking for a Place to Happen",
+          "track_number": 2,
+          "hipbase_plays": 79,
+          "setlistfm_plays": 82,
+          "best_estimate": 82,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 1,
+          "first_played": "1991-05-24",
+          "last_played": "2015-10-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "At the Hundredth Meridian",
+          "track_number": 3,
+          "hipbase_plays": 761,
+          "setlistfm_plays": 781,
+          "best_estimate": 781,
+          "hipbase_opener": 5,
+          "setlistfm_opener": 5,
+          "hipbase_encore": 89,
+          "setlistfm_encore": 65,
+          "first_played": "1991-08-09",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Pigeon Camera",
+          "track_number": 4,
+          "hipbase_plays": 144,
+          "setlistfm_plays": 164,
+          "best_estimate": 164,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 1,
+          "first_played": "1992-09-13",
+          "last_played": "2016-08-08",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Lionized",
+          "track_number": 5,
+          "hipbase_plays": 129,
+          "setlistfm_plays": 137,
+          "best_estimate": 137,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 6,
+          "first_played": "1992-04-18",
+          "last_played": "2015-10-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Locked in the Trunk of a Car",
+          "track_number": 6,
+          "hipbase_plays": 328,
+          "setlistfm_plays": 356,
+          "best_estimate": 356,
+          "hipbase_opener": 11,
+          "setlistfm_opener": 23,
+          "hipbase_encore": 49,
+          "setlistfm_encore": 32,
+          "first_played": "1991-12-31",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "We'll Go, Too",
+          "track_number": 7,
+          "hipbase_plays": 98,
+          "setlistfm_plays": 110,
+          "best_estimate": 110,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 19,
+          "setlistfm_encore": 10,
+          "first_played": "1992-04-18",
+          "last_played": "2016-07-26",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fully Completely",
+          "track_number": 8,
+          "hipbase_plays": 567,
+          "setlistfm_plays": 587,
+          "best_estimate": 587,
+          "hipbase_opener": 17,
+          "setlistfm_opener": 19,
+          "hipbase_encore": 36,
+          "setlistfm_encore": 17,
+          "first_played": "1991-12-31",
+          "last_played": "2016-08-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Wheat Kings",
+          "track_number": 9,
+          "hipbase_plays": 324,
+          "setlistfm_plays": 332,
+          "best_estimate": 332,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 92,
+          "setlistfm_encore": 68,
+          "first_played": "1991-07-27",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fifty-Mission Cap",
+          "track_number": 10,
+          "hipbase_plays": 199,
+          "setlistfm_plays": 227,
+          "best_estimate": 227,
+          "hipbase_opener": 6,
+          "setlistfm_opener": 10,
+          "hipbase_encore": 50,
+          "setlistfm_encore": 36,
+          "first_played": "1991-12-16",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Wherewithal",
+          "track_number": 11,
+          "hipbase_plays": 126,
+          "setlistfm_plays": 142,
+          "best_estimate": 142,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 35,
+          "setlistfm_encore": 18,
+          "first_played": "1992-04-18",
+          "last_played": "2015-10-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Eldorado",
+          "track_number": 12,
+          "hipbase_plays": 112,
+          "setlistfm_plays": 126,
+          "best_estimate": 126,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 8,
+          "setlistfm_encore": 7,
+          "first_played": "1992-04-18",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Day for Night",
+      "year": 1994,
+      "tracks": [
+        {
+          "title": "Grace, Too",
+          "track_number": 1,
+          "hipbase_plays": 699,
+          "setlistfm_plays": 719,
+          "best_estimate": 719,
+          "hipbase_opener": 185,
+          "setlistfm_opener": 192,
+          "hipbase_encore": 80,
+          "setlistfm_encore": 50,
+          "first_played": "1993-12-09",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Daredevil",
+          "track_number": 2,
+          "hipbase_plays": 184,
+          "setlistfm_plays": 198,
+          "best_estimate": 198,
+          "hipbase_opener": 3,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 40,
+          "setlistfm_encore": 17,
+          "first_played": "1994-07-01",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Greasy Jungle",
+          "track_number": 3,
+          "hipbase_plays": 144,
+          "setlistfm_plays": 152,
+          "best_estimate": 152,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 20,
+          "setlistfm_encore": 11,
+          "first_played": "1994-07-01",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Yawning or Snarling",
+          "track_number": 4,
+          "hipbase_plays": 51,
+          "setlistfm_plays": 56,
+          "best_estimate": 56,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 0,
+          "first_played": "1994-07-01",
+          "last_played": "2016-08-01",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fire in the Hole",
+          "track_number": 5,
+          "hipbase_plays": 334,
+          "setlistfm_plays": 347,
+          "best_estimate": 347,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 139,
+          "setlistfm_encore": 63,
+          "first_played": "1991-05-20",
+          "last_played": "2015-10-02",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "So Hard Done By",
+          "track_number": 6,
+          "hipbase_plays": 86,
+          "setlistfm_plays": 92,
+          "best_estimate": 92,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 8,
+          "setlistfm_encore": 5,
+          "first_played": "1991-12-16",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Nautical Disaster",
+          "track_number": 7,
+          "hipbase_plays": 532,
+          "setlistfm_plays": 525,
+          "best_estimate": 532,
+          "hipbase_opener": 4,
+          "setlistfm_opener": 5,
+          "hipbase_encore": 55,
+          "setlistfm_encore": 45,
+          "first_played": "1991-05-20",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Thugs",
+          "track_number": 8,
+          "hipbase_plays": 110,
+          "setlistfm_plays": 122,
+          "best_estimate": 122,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 33,
+          "setlistfm_encore": 20,
+          "first_played": "1993-02-07",
+          "last_played": "2016-08-03",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Inevitability of Death",
+          "track_number": 9,
+          "hipbase_plays": 133,
+          "setlistfm_plays": 137,
+          "best_estimate": 137,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 10,
+          "setlistfm_encore": 1,
+          "first_played": "1993-06-25",
+          "last_played": "2009-09-11",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Scared",
+          "track_number": 10,
+          "hipbase_plays": 219,
+          "setlistfm_plays": 222,
+          "best_estimate": 222,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 73,
+          "setlistfm_encore": 47,
+          "first_played": "1993-06-25",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "An Inch an Hour",
+          "track_number": 11,
+          "hipbase_plays": 40,
+          "setlistfm_plays": 43,
+          "best_estimate": 43,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 20,
+          "setlistfm_encore": 11,
+          "first_played": "1994-07-01",
+          "last_played": "2013-01-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Emergency",
+          "track_number": 12,
+          "hipbase_plays": 1,
+          "setlistfm_plays": 1,
+          "best_estimate": 1,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1993-12-09",
+          "last_played": "1993-12-09",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Titanic Terrarium",
+          "track_number": 13,
+          "hipbase_plays": 46,
+          "setlistfm_plays": 52,
+          "best_estimate": 52,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "1994-10-07",
+          "last_played": "2015-04-11",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Impossibilium",
+          "track_number": 14,
+          "hipbase_plays": 15,
+          "setlistfm_plays": 17,
+          "best_estimate": 17,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 1,
+          "first_played": "1994-08-04",
+          "last_played": "1995-04-29",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Trouble at the Henhouse",
+      "year": 1996,
+      "tracks": [
+        {
+          "title": "Gift Shop",
+          "track_number": 1,
+          "hipbase_plays": 571,
+          "setlistfm_plays": 569,
+          "best_estimate": 571,
+          "hipbase_opener": 44,
+          "setlistfm_opener": 54,
+          "hipbase_encore": 17,
+          "setlistfm_encore": 10,
+          "first_played": "1995-06-24",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Springtime in Vienna",
+          "track_number": 2,
+          "hipbase_plays": 451,
+          "setlistfm_plays": 456,
+          "best_estimate": 456,
+          "hipbase_opener": 14,
+          "setlistfm_opener": 14,
+          "hipbase_encore": 41,
+          "setlistfm_encore": 12,
+          "first_played": "1993-06-25",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Ahead by a Century",
+          "track_number": 3,
+          "hipbase_plays": 695,
+          "setlistfm_plays": 699,
+          "best_estimate": 699,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 62,
+          "setlistfm_encore": 32,
+          "first_played": "1995-06-05",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Don't Wake Daddy",
+          "track_number": 4,
+          "hipbase_plays": 141,
+          "setlistfm_plays": 146,
+          "best_estimate": 146,
+          "hipbase_opener": 9,
+          "setlistfm_opener": 10,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 3,
+          "first_played": "1996-05-06",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Flamenco",
+          "track_number": 5,
+          "hipbase_plays": 181,
+          "setlistfm_plays": 185,
+          "best_estimate": 185,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 15,
+          "setlistfm_encore": 13,
+          "first_played": "1995-07-22",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "700 Ft. Ceiling",
+          "track_number": 6,
+          "hipbase_plays": 122,
+          "setlistfm_plays": 130,
+          "best_estimate": 130,
+          "hipbase_opener": 3,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 2,
+          "first_played": "1995-10-21",
+          "last_played": "2004-11-27",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Butts Wigglin'",
+          "track_number": 7,
+          "hipbase_plays": 50,
+          "setlistfm_plays": 59,
+          "best_estimate": 59,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 8,
+          "setlistfm_encore": 2,
+          "first_played": "1996-05-06",
+          "last_played": "1997-05-11",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Apartment Song",
+          "track_number": 8,
+          "hipbase_plays": 22,
+          "setlistfm_plays": 24,
+          "best_estimate": 24,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 4,
+          "setlistfm_encore": 3,
+          "first_played": "1996-05-06",
+          "last_played": "2000-11-19",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Coconut Cream",
+          "track_number": 9,
+          "hipbase_plays": 41,
+          "setlistfm_plays": 51,
+          "best_estimate": 51,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 18,
+          "setlistfm_encore": 8,
+          "first_played": "1996-05-06",
+          "last_played": "1997-07-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Let's Stay Engaged",
+          "track_number": 10,
+          "hipbase_plays": 25,
+          "setlistfm_plays": 25,
+          "best_estimate": 25,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 19,
+          "setlistfm_encore": 12,
+          "first_played": "1996-05-06",
+          "last_played": "2007-04-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Sherpa",
+          "track_number": 11,
+          "hipbase_plays": 57,
+          "setlistfm_plays": 63,
+          "best_estimate": 63,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 23,
+          "setlistfm_encore": 11,
+          "first_played": "1995-08-10",
+          "last_played": "2007-06-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Put It Off",
+          "track_number": 12,
+          "hipbase_plays": 48,
+          "setlistfm_plays": 55,
+          "best_estimate": 55,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 6,
+          "setlistfm_encore": 3,
+          "first_played": "1996-05-06",
+          "last_played": "2007-10-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Phantom Power",
+      "year": 1998,
+      "tracks": [
+        {
+          "title": "Poets",
+          "track_number": 1,
+          "hipbase_plays": 611,
+          "setlistfm_plays": 595,
+          "best_estimate": 611,
+          "hipbase_opener": 27,
+          "setlistfm_opener": 24,
+          "hipbase_encore": 56,
+          "setlistfm_encore": 43,
+          "first_played": "1998-07-02",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Something On",
+          "track_number": 2,
+          "hipbase_plays": 220,
+          "setlistfm_plays": 217,
+          "best_estimate": 220,
+          "hipbase_opener": 27,
+          "setlistfm_opener": 26,
+          "hipbase_encore": 11,
+          "setlistfm_encore": 6,
+          "first_played": "1998-07-02",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Save the Planet",
+          "track_number": 3,
+          "hipbase_plays": 125,
+          "setlistfm_plays": 125,
+          "best_estimate": 125,
+          "hipbase_opener": 31,
+          "setlistfm_opener": 30,
+          "hipbase_encore": 45,
+          "setlistfm_encore": 21,
+          "first_played": "1997-05-10",
+          "last_played": "2009-06-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Bobcaygeon",
+          "track_number": 4,
+          "hipbase_plays": 575,
+          "setlistfm_plays": 563,
+          "best_estimate": 575,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 114,
+          "setlistfm_encore": 70,
+          "first_played": "1997-05-10",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Thompson Girl",
+          "track_number": 5,
+          "hipbase_plays": 90,
+          "setlistfm_plays": 90,
+          "best_estimate": 90,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 0,
+          "first_played": "1998-07-02",
+          "last_played": "2013-02-12",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Membership",
+          "track_number": 6,
+          "hipbase_plays": 119,
+          "setlistfm_plays": 114,
+          "best_estimate": 119,
+          "hipbase_opener": 2,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 13,
+          "setlistfm_encore": 5,
+          "first_played": "1997-04-29",
+          "last_played": "2016-08-12",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fireworks",
+          "track_number": 7,
+          "hipbase_plays": 426,
+          "setlistfm_plays": 415,
+          "best_estimate": 426,
+          "hipbase_opener": 31,
+          "setlistfm_opener": 30,
+          "hipbase_encore": 43,
+          "setlistfm_encore": 23,
+          "first_played": "1997-05-01",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Vapour Trails",
+          "track_number": 8,
+          "hipbase_plays": 121,
+          "setlistfm_plays": 119,
+          "best_estimate": 121,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 24,
+          "setlistfm_encore": 10,
+          "first_played": "1997-05-03",
+          "last_played": "2015-04-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Rules",
+          "track_number": 9,
+          "hipbase_plays": 58,
+          "setlistfm_plays": 25,
+          "best_estimate": 58,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 25,
+          "setlistfm_encore": 4,
+          "first_played": "1998-07-02",
+          "last_played": "2012-12-07",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Chagrin Falls",
+          "track_number": 10,
+          "hipbase_plays": 127,
+          "setlistfm_plays": 122,
+          "best_estimate": 127,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 45,
+          "setlistfm_encore": 7,
+          "first_played": "1998-07-02",
+          "last_played": "2009-09-19",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Escape Is at Hand for the Travellin' Man",
+          "track_number": 11,
+          "hipbase_plays": 282,
+          "setlistfm_plays": 275,
+          "best_estimate": 282,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 56,
+          "setlistfm_encore": 32,
+          "first_played": "1996-05-07",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Emperor Penguin",
+          "track_number": 12,
+          "hipbase_plays": 72,
+          "setlistfm_plays": 69,
+          "best_estimate": 72,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 11,
+          "setlistfm_encore": 2,
+          "first_played": "1998-07-02",
+          "last_played": "2009-09-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Music @ Work",
+      "year": 2000,
+      "tracks": [
+        {
+          "title": "My Music at Work",
+          "track_number": 1,
+          "hipbase_plays": 464,
+          "setlistfm_plays": 459,
+          "best_estimate": 464,
+          "hipbase_opener": 28,
+          "setlistfm_opener": 28,
+          "hipbase_encore": 64,
+          "setlistfm_encore": 51,
+          "first_played": "1999-12-29",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Tiger the Lion",
+          "track_number": 2,
+          "hipbase_plays": 89,
+          "setlistfm_plays": 87,
+          "best_estimate": 89,
+          "hipbase_opener": 15,
+          "setlistfm_opener": 15,
+          "hipbase_encore": 15,
+          "setlistfm_encore": 10,
+          "first_played": "2000-06-16",
+          "last_played": "2009-11-25",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Lake Fever",
+          "track_number": 3,
+          "hipbase_plays": 155,
+          "setlistfm_plays": 153,
+          "best_estimate": 155,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 22,
+          "setlistfm_encore": 9,
+          "first_played": "1999-12-29",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Putting Down",
+          "track_number": 4,
+          "hipbase_plays": 139,
+          "setlistfm_plays": 136,
+          "best_estimate": 139,
+          "hipbase_opener": 13,
+          "setlistfm_opener": 13,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 4,
+          "first_played": "1999-12-29",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Stay",
+          "track_number": 5,
+          "hipbase_plays": 47,
+          "setlistfm_plays": 46,
+          "best_estimate": 47,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 4,
+          "first_played": "1999-12-29",
+          "last_played": "2009-04-24",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Bastard",
+          "track_number": 6,
+          "hipbase_plays": 13,
+          "setlistfm_plays": 14,
+          "best_estimate": 14,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 0,
+          "first_played": "1999-12-29",
+          "last_played": "2004-10-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Completists",
+          "track_number": 7,
+          "hipbase_plays": 50,
+          "setlistfm_plays": 51,
+          "best_estimate": 51,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 8,
+          "setlistfm_encore": 1,
+          "first_played": "2000-06-06",
+          "last_played": "2009-05-07",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Freak Turbulence",
+          "track_number": 8,
+          "hipbase_plays": 54,
+          "setlistfm_plays": 52,
+          "best_estimate": 54,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 17,
+          "setlistfm_encore": 6,
+          "first_played": "2000-01-01",
+          "last_played": "2007-02-26",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Sharks",
+          "track_number": 9,
+          "hipbase_plays": 16,
+          "setlistfm_plays": 16,
+          "best_estimate": 16,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "1999-12-29",
+          "last_played": "2004-10-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Toronto #4",
+          "track_number": 10,
+          "hipbase_plays": 30,
+          "setlistfm_plays": 30,
+          "best_estimate": 30,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 1,
+          "first_played": "2000-06-13",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Wild Mountain Honey",
+          "track_number": 11,
+          "hipbase_plays": 26,
+          "setlistfm_plays": 24,
+          "best_estimate": 26,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2000-06-13",
+          "last_played": "2000-12-23",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Train Overnight",
+          "track_number": 12,
+          "hipbase_plays": 36,
+          "setlistfm_plays": 36,
+          "best_estimate": 36,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 4,
+          "setlistfm_encore": 1,
+          "first_played": "1999-12-29",
+          "last_played": "2004-10-21",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Bear",
+          "track_number": 13,
+          "hipbase_plays": 5,
+          "setlistfm_plays": 4,
+          "best_estimate": 5,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-24",
+          "last_played": "2009-06-06",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "As I Wind Down the Pines",
+          "track_number": 14,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "In Violet Light",
+      "year": 2002,
+      "tracks": [
+        {
+          "title": "Are You Ready",
+          "track_number": 1,
+          "hipbase_plays": 73,
+          "setlistfm_plays": 72,
+          "best_estimate": 73,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 35,
+          "setlistfm_encore": 12,
+          "first_played": "2001-11-11",
+          "last_played": "2006-07-03",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Use It Up",
+          "track_number": 2,
+          "hipbase_plays": 78,
+          "setlistfm_plays": 77,
+          "best_estimate": 78,
+          "hipbase_opener": 55,
+          "setlistfm_opener": 52,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 2,
+          "first_played": "2001-11-11",
+          "last_played": "2016-08-12",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Darkest One",
+          "track_number": 3,
+          "hipbase_plays": 31,
+          "setlistfm_plays": 31,
+          "best_estimate": 31,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2001-12-31",
+          "last_played": "2003-08-01",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "It's a Good Life If You Don't Weaken",
+          "track_number": 4,
+          "hipbase_plays": 263,
+          "setlistfm_plays": 254,
+          "best_estimate": 263,
+          "hipbase_opener": 4,
+          "setlistfm_opener": 4,
+          "hipbase_encore": 13,
+          "setlistfm_encore": 6,
+          "first_played": "2001-11-11",
+          "last_played": "2021-06-06",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Silver Jet",
+          "track_number": 5,
+          "hipbase_plays": 103,
+          "setlistfm_plays": 97,
+          "best_estimate": 103,
+          "hipbase_opener": 28,
+          "setlistfm_opener": 27,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 1,
+          "first_played": "2001-11-11",
+          "last_played": "2004-11-26",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Throwing Off Glass",
+          "track_number": 6,
+          "hipbase_plays": 24,
+          "setlistfm_plays": 26,
+          "best_estimate": 26,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "2001-12-31",
+          "last_played": "2016-08-12",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "All Tore Up",
+          "track_number": 7,
+          "hipbase_plays": 46,
+          "setlistfm_plays": 44,
+          "best_estimate": 46,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 12,
+          "setlistfm_encore": 7,
+          "first_played": "2001-12-31",
+          "last_played": "2002-11-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Leave",
+          "track_number": 8,
+          "hipbase_plays": 4,
+          "setlistfm_plays": 5,
+          "best_estimate": 5,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2001-12-31",
+          "last_played": "2002-06-27",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "A Beautiful Thing",
+          "track_number": 9,
+          "hipbase_plays": 23,
+          "setlistfm_plays": 24,
+          "best_estimate": 24,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2001-11-11",
+          "last_played": "2002-11-11",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Dire Wolf",
+          "track_number": 10,
+          "hipbase_plays": 91,
+          "setlistfm_plays": 92,
+          "best_estimate": 92,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 2,
+          "first_played": "2001-12-31",
+          "last_played": "2016-08-12",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Dark Canuck",
+          "track_number": 11,
+          "hipbase_plays": 48,
+          "setlistfm_plays": 50,
+          "best_estimate": 50,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 6,
+          "setlistfm_encore": 3,
+          "first_played": "2001-12-31",
+          "last_played": "2009-11-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "In Between Evolution",
+      "year": 2004,
+      "tracks": [
+        {
+          "title": "Heaven Is a Better Place Today",
+          "track_number": 1,
+          "hipbase_plays": 65,
+          "setlistfm_plays": 63,
+          "best_estimate": 65,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 45,
+          "setlistfm_encore": 19,
+          "first_played": "2004-06-22",
+          "last_played": "2014-10-08",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Summer's Killing Us",
+          "track_number": 2,
+          "hipbase_plays": 79,
+          "setlistfm_plays": 75,
+          "best_estimate": 79,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 6,
+          "setlistfm_encore": 4,
+          "first_played": "2004-01-01",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Gus: The Polar Bear from Central Park",
+          "track_number": 3,
+          "hipbase_plays": 127,
+          "setlistfm_plays": 127,
+          "best_estimate": 127,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 1,
+          "first_played": "2003-10-27",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Vaccination Scar",
+          "track_number": 4,
+          "hipbase_plays": 59,
+          "setlistfm_plays": 53,
+          "best_estimate": 59,
+          "hipbase_opener": 42,
+          "setlistfm_opener": 37,
+          "hipbase_encore": 10,
+          "setlistfm_encore": 1,
+          "first_played": "2004-06-22",
+          "last_played": "2005-07-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "It Can't Be Nashville Every Night",
+          "track_number": 5,
+          "hipbase_plays": 94,
+          "setlistfm_plays": 91,
+          "best_estimate": 94,
+          "hipbase_opener": 2,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "2004-01-01",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "If New Orleans Is Beat",
+          "track_number": 6,
+          "hipbase_plays": 15,
+          "setlistfm_plays": 16,
+          "best_estimate": 16,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 6,
+          "setlistfm_encore": 3,
+          "first_played": "2003-10-27",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "You're Everywhere",
+          "track_number": 7,
+          "hipbase_plays": 29,
+          "setlistfm_plays": 31,
+          "best_estimate": 31,
+          "hipbase_opener": 6,
+          "setlistfm_opener": 5,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 4,
+          "first_played": "2003-08-01",
+          "last_played": "2006-06-17",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "As Makeshift As We Are",
+          "track_number": 8,
+          "hipbase_plays": 44,
+          "setlistfm_plays": 41,
+          "best_estimate": 44,
+          "hipbase_opener": 7,
+          "setlistfm_opener": 6,
+          "hipbase_encore": 12,
+          "setlistfm_encore": 1,
+          "first_played": "2003-10-27",
+          "last_played": "2009-04-27",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Mean Streak",
+          "track_number": 9,
+          "hipbase_plays": 30,
+          "setlistfm_plays": 28,
+          "best_estimate": 30,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 1,
+          "first_played": "2004-06-22",
+          "last_played": "2004-11-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Heart of the Melt",
+          "track_number": 10,
+          "hipbase_plays": 4,
+          "setlistfm_plays": 4,
+          "best_estimate": 4,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2004-06-22",
+          "last_played": "2004-09-26",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "One Night in Copenhagen",
+          "track_number": 11,
+          "hipbase_plays": 18,
+          "setlistfm_plays": 19,
+          "best_estimate": 19,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 8,
+          "setlistfm_encore": 0,
+          "first_played": "2004-01-01",
+          "last_played": "2004-12-31",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Are We Family",
+          "track_number": 12,
+          "hipbase_plays": 26,
+          "setlistfm_plays": 26,
+          "best_estimate": 26,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2004-06-22",
+          "last_played": "2009-05-29",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Goodnight Josephine",
+          "track_number": 13,
+          "hipbase_plays": 38,
+          "setlistfm_plays": 32,
+          "best_estimate": 38,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 1,
+          "first_played": "2003-08-01",
+          "last_played": "2009-05-15",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "World Container",
+      "year": 2006,
+      "tracks": [
+        {
+          "title": "Yer Not the Ocean",
+          "track_number": 1,
+          "hipbase_plays": 186,
+          "setlistfm_plays": 187,
+          "best_estimate": 187,
+          "hipbase_opener": 44,
+          "setlistfm_opener": 45,
+          "hipbase_encore": 4,
+          "setlistfm_encore": 1,
+          "first_played": "2006-06-24",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Lonely End of the Rink",
+          "track_number": 2,
+          "hipbase_plays": 178,
+          "setlistfm_plays": 178,
+          "best_estimate": 178,
+          "hipbase_opener": 70,
+          "setlistfm_opener": 70,
+          "hipbase_encore": 36,
+          "setlistfm_encore": 20,
+          "first_played": "2004-11-17",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "In View",
+          "track_number": 3,
+          "hipbase_plays": 318,
+          "setlistfm_plays": 316,
+          "best_estimate": 318,
+          "hipbase_opener": 16,
+          "setlistfm_opener": 16,
+          "hipbase_encore": 29,
+          "setlistfm_encore": 22,
+          "first_played": "2006-09-09",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Fly",
+          "track_number": 4,
+          "hipbase_plays": 35,
+          "setlistfm_plays": 34,
+          "best_estimate": 35,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2006-05-26",
+          "last_played": "2007-10-24",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Luv (sic)",
+          "track_number": 5,
+          "hipbase_plays": 34,
+          "setlistfm_plays": 34,
+          "best_estimate": 34,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 1,
+          "first_played": "2006-10-17",
+          "last_played": "2007-10-19",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Kids Don't Get It",
+          "track_number": 6,
+          "hipbase_plays": 111,
+          "setlistfm_plays": 110,
+          "best_estimate": 111,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 9,
+          "setlistfm_encore": 5,
+          "first_played": "2006-10-15",
+          "last_played": "2016-08-01",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Pretend",
+          "track_number": 7,
+          "hipbase_plays": 45,
+          "setlistfm_plays": 43,
+          "best_estimate": 45,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 13,
+          "setlistfm_encore": 9,
+          "first_played": "2006-05-24",
+          "last_played": "2007-10-27",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Last Night I Dreamed You Didn't Love Me",
+          "track_number": 8,
+          "hipbase_plays": 12,
+          "setlistfm_plays": 12,
+          "best_estimate": 12,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 2,
+          "first_played": "2006-10-17",
+          "last_played": "2007-05-19",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Drop-Off",
+          "track_number": 9,
+          "hipbase_plays": 94,
+          "setlistfm_plays": 93,
+          "best_estimate": 94,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 11,
+          "setlistfm_encore": 5,
+          "first_played": "2006-05-26",
+          "last_played": "2009-12-03",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Family Band",
+          "track_number": 10,
+          "hipbase_plays": 187,
+          "setlistfm_plays": 181,
+          "best_estimate": 187,
+          "hipbase_opener": 9,
+          "setlistfm_opener": 7,
+          "hipbase_encore": 24,
+          "setlistfm_encore": 13,
+          "first_played": "2006-10-15",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "World Container",
+          "track_number": 11,
+          "hipbase_plays": 94,
+          "setlistfm_plays": 93,
+          "best_estimate": 94,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 7,
+          "first_played": "2006-10-15",
+          "last_played": "2016-08-01",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "We Are the Same",
+      "year": 2009,
+      "tracks": [
+        {
+          "title": "Morning Moon",
+          "track_number": 1,
+          "hipbase_plays": 89,
+          "setlistfm_plays": 91,
+          "best_estimate": 91,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "2009-04-09",
+          "last_played": "2016-07-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Honey, Please",
+          "track_number": 2,
+          "hipbase_plays": 21,
+          "setlistfm_plays": 7,
+          "best_estimate": 21,
+          "hipbase_opener": 3,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-24",
+          "last_played": "2009-10-24",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Last Recluse",
+          "track_number": 3,
+          "hipbase_plays": 72,
+          "setlistfm_plays": 69,
+          "best_estimate": 72,
+          "hipbase_opener": 5,
+          "setlistfm_opener": 5,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 2,
+          "first_played": "2009-04-09",
+          "last_played": "2016-07-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Coffee Girl",
+          "track_number": 4,
+          "hipbase_plays": 77,
+          "setlistfm_plays": 78,
+          "best_estimate": 78,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-09",
+          "last_played": "2016-07-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Now the Struggle Has a Name",
+          "track_number": 5,
+          "hipbase_plays": 57,
+          "setlistfm_plays": 55,
+          "best_estimate": 57,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 2,
+          "first_played": "2009-04-09",
+          "last_played": "2016-07-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Depression Suite",
+          "track_number": 6,
+          "hipbase_plays": 86,
+          "setlistfm_plays": 86,
+          "best_estimate": 86,
+          "hipbase_opener": 36,
+          "setlistfm_opener": 35,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-09",
+          "last_played": "2009-12-04",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Exact Feeling",
+          "track_number": 7,
+          "hipbase_plays": 19,
+          "setlistfm_plays": 20,
+          "best_estimate": 20,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-24",
+          "last_played": "2015-01-24",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Queen of the Furrows",
+          "track_number": 8,
+          "hipbase_plays": 23,
+          "setlistfm_plays": 22,
+          "best_estimate": 23,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 2,
+          "first_played": "2009-04-28",
+          "last_played": "2009-10-28",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Speed River",
+          "track_number": 9,
+          "hipbase_plays": 10,
+          "setlistfm_plays": 11,
+          "best_estimate": 11,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2009-04-29",
+          "last_played": "2009-06-05",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Frozen in My Tracks",
+          "track_number": 10,
+          "hipbase_plays": 52,
+          "setlistfm_plays": 48,
+          "best_estimate": 52,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 31,
+          "setlistfm_encore": 17,
+          "first_played": "2009-05-01",
+          "last_played": "2009-12-03",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Love Is a First",
+          "track_number": 11,
+          "hipbase_plays": 119,
+          "setlistfm_plays": 121,
+          "best_estimate": 121,
+          "hipbase_opener": 21,
+          "setlistfm_opener": 21,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 4,
+          "first_played": "2009-04-09",
+          "last_played": "2013-09-09",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Country Day",
+          "track_number": 12,
+          "hipbase_plays": 7,
+          "setlistfm_plays": 8,
+          "best_estimate": 8,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 2,
+          "first_played": "2009-04-09",
+          "last_played": "2009-11-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Now for Plan A",
+      "year": 2012,
+      "tracks": [
+        {
+          "title": "At Transformation",
+          "track_number": 1,
+          "hipbase_plays": 129,
+          "setlistfm_plays": 130,
+          "best_estimate": 130,
+          "hipbase_opener": 65,
+          "setlistfm_opener": 67,
+          "hipbase_encore": 15,
+          "setlistfm_encore": 15,
+          "first_played": "2011-06-21",
+          "last_played": "2016-08-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Man Machine Poem",
+          "track_number": 2,
+          "hipbase_plays": 90,
+          "setlistfm_plays": 91,
+          "best_estimate": 91,
+          "hipbase_opener": 3,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 4,
+          "first_played": "2012-02-16",
+          "last_played": "2016-08-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Lookahead",
+          "track_number": 3,
+          "hipbase_plays": 35,
+          "setlistfm_plays": 35,
+          "best_estimate": 35,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 9,
+          "setlistfm_encore": 7,
+          "first_played": "2012-02-16",
+          "last_played": "2016-08-05",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "We Want to Be It",
+          "track_number": 4,
+          "hipbase_plays": 85,
+          "setlistfm_plays": 89,
+          "best_estimate": 89,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 7,
+          "setlistfm_encore": 6,
+          "first_played": "2011-06-21",
+          "last_played": "2016-08-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Streets Ahead",
+          "track_number": 5,
+          "hipbase_plays": 80,
+          "setlistfm_plays": 82,
+          "best_estimate": 82,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 3,
+          "setlistfm_encore": 3,
+          "first_played": "2011-06-21",
+          "last_played": "2016-08-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Now for Plan A",
+          "track_number": 6,
+          "hipbase_plays": 10,
+          "setlistfm_plays": 10,
+          "best_estimate": 10,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 5,
+          "setlistfm_encore": 5,
+          "first_played": "2012-11-03",
+          "last_played": "2013-02-14",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "The Modern Spirit",
+          "track_number": 7,
+          "hipbase_plays": 11,
+          "setlistfm_plays": 12,
+          "best_estimate": 12,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 2,
+          "setlistfm_encore": 1,
+          "first_played": "2012-09-30",
+          "last_played": "2013-01-28",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "About This Map",
+          "track_number": 8,
+          "hipbase_plays": 2,
+          "setlistfm_plays": 2,
+          "best_estimate": 2,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2012-11-17",
+          "last_played": "2012-12-05",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Take Forever",
+          "track_number": 9,
+          "hipbase_plays": 7,
+          "setlistfm_plays": 8,
+          "best_estimate": 8,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "2012-02-16",
+          "last_played": "2013-09-07",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Done and Done",
+          "track_number": 10,
+          "hipbase_plays": 1,
+          "setlistfm_plays": 1,
+          "best_estimate": 1,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2012-11-06",
+          "last_played": "2012-11-06",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Goodnight Attawapiskat",
+          "track_number": 11,
+          "hipbase_plays": 36,
+          "setlistfm_plays": 37,
+          "best_estimate": 37,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 9,
+          "setlistfm_encore": 9,
+          "first_played": "2012-06-28",
+          "last_played": "2013-09-10",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Man Machine Poem",
+      "year": 2016,
+      "tracks": [
+        {
+          "title": "Man",
+          "track_number": 1,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        },
+        {
+          "title": "In a World Possessed by the Human Mind",
+          "track_number": 2,
+          "hipbase_plays": 15,
+          "setlistfm_plays": 15,
+          "best_estimate": 15,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2016-07-22",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "What Blue",
+          "track_number": 3,
+          "hipbase_plays": 15,
+          "setlistfm_plays": 15,
+          "best_estimate": 15,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2016-07-22",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "In Sarnia",
+          "track_number": 4,
+          "hipbase_plays": 4,
+          "setlistfm_plays": 4,
+          "best_estimate": 4,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2016-07-26",
+          "last_played": "2016-08-16",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Here, in the Dark",
+          "track_number": 5,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        },
+        {
+          "title": "Great Soul",
+          "track_number": 6,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        },
+        {
+          "title": "Tired as Fuck",
+          "track_number": 7,
+          "hipbase_plays": 6,
+          "setlistfm_plays": 6,
+          "best_estimate": 6,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2016-07-22",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Hot Mic",
+          "track_number": 8,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        },
+        {
+          "title": "Ocean Next",
+          "track_number": 9,
+          "hipbase_plays": 5,
+          "setlistfm_plays": 6,
+          "best_estimate": 6,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2007-02-27",
+          "last_played": "2016-08-18",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Machine",
+          "track_number": 10,
+          "hipbase_plays": 15,
+          "setlistfm_plays": 15,
+          "best_estimate": 15,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "2016-07-22",
+          "last_played": "2016-08-20",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "The Tragically Hip",
+      "year": 1987,
+      "tracks": [
+        {
+          "title": "Small Town Bringdown",
+          "track_number": 1,
+          "hipbase_plays": 8,
+          "setlistfm_plays": 14,
+          "best_estimate": 14,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1985-07-01",
+          "last_played": "1990-02-23",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Last American Exit",
+          "track_number": 2,
+          "hipbase_plays": 8,
+          "setlistfm_plays": 18,
+          "best_estimate": 18,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1987-03-03",
+          "last_played": "1989-12-31",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Killing Time",
+          "track_number": 3,
+          "hipbase_plays": 2,
+          "setlistfm_plays": 4,
+          "best_estimate": 4,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1988-03-02",
+          "last_played": "1991-07-03",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Evelyn",
+          "track_number": 4,
+          "hipbase_plays": 14,
+          "setlistfm_plays": 12,
+          "best_estimate": 14,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1985-02-27",
+          "last_played": "1991-12-31",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Cemetery Sideroad",
+          "track_number": 5,
+          "hipbase_plays": 1,
+          "setlistfm_plays": 2,
+          "best_estimate": 2,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "1988-03-02",
+          "last_played": "1988-09-08",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "I'm a Werewolf, Baby",
+          "track_number": 6,
+          "hipbase_plays": 3,
+          "setlistfm_plays": 6,
+          "best_estimate": 6,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 1,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "1987-07-02",
+          "last_played": "1991-10-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Highway Girl",
+          "track_number": 7,
+          "hipbase_plays": 17,
+          "setlistfm_plays": 34,
+          "best_estimate": 34,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 2,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1987-03-04",
+          "last_played": "1991-08-04",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "All Canadian Surf Club",
+          "track_number": 8,
+          "hipbase_plays": 13,
+          "setlistfm_plays": 27,
+          "best_estimate": 27,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 1,
+          "first_played": "1985-02-27",
+          "last_played": "1991-08-29",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    },
+    {
+      "album": "Saskadelphia",
+      "year": 2021,
+      "tracks": [
+        {
+          "title": "Ouch",
+          "track_number": 1,
+          "hipbase_plays": 9,
+          "setlistfm_plays": 13,
+          "best_estimate": 13,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 2,
+          "first_played": "1990-05-23",
+          "last_played": "1991-08-29",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Not Necessary",
+          "track_number": 2,
+          "hipbase_plays": 0,
+          "setlistfm_plays": null,
+          "best_estimate": 0,
+          "hipbase_opener": 0,
+          "setlistfm_opener": null,
+          "hipbase_encore": 0,
+          "setlistfm_encore": null,
+          "first_played": null,
+          "last_played": null,
+          "sources_matched": [
+            "hipbase"
+          ]
+        },
+        {
+          "title": "Montreal (Live)",
+          "track_number": 3,
+          "hipbase_plays": 7,
+          "setlistfm_plays": 9,
+          "best_estimate": 9,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1991-07-06",
+          "last_played": "2000-12-07",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Crack My Spine Like a Whip",
+          "track_number": 4,
+          "hipbase_plays": 8,
+          "setlistfm_plays": 15,
+          "best_estimate": 15,
+          "hipbase_opener": 4,
+          "setlistfm_opener": 9,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1989-06-30",
+          "last_played": "1991-11-24",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Just as Well",
+          "track_number": 5,
+          "hipbase_plays": 4,
+          "setlistfm_plays": 10,
+          "best_estimate": 10,
+          "hipbase_opener": 0,
+          "setlistfm_opener": 0,
+          "hipbase_encore": 0,
+          "setlistfm_encore": 0,
+          "first_played": "1990-02-23",
+          "last_played": "1990-06-30",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        },
+        {
+          "title": "Reformed Baptist Blues",
+          "track_number": 6,
+          "hipbase_plays": 7,
+          "setlistfm_plays": 9,
+          "best_estimate": 9,
+          "hipbase_opener": 1,
+          "setlistfm_opener": 3,
+          "hipbase_encore": 1,
+          "setlistfm_encore": 1,
+          "first_played": "1985-02-27",
+          "last_played": "1991-08-09",
+          "sources_matched": [
+            "hipbase",
+            "setlistfm"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_discography_tracks": 169,
+    "matched_both_sources": 163,
+    "matched_hipbase_only": 6,
+    "matched_setlistfm_only": 0,
+    "unmatched": 0
+  }
+}

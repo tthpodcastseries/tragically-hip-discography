@@ -1,0 +1,2408 @@
+{
+  "source": "setlist.fm",
+  "fetched": "2026-03-24",
+  "total_setlists_processed": 1358,
+  "total_unique_songs": 300,
+  "songs": {
+    "1979": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-10",
+      "last_played": "2007-05-11",
+      "is_cover": true
+    },
+    "New Orleans Is Sinking": {
+      "total_plays": 831,
+      "as_opener": 37,
+      "as_encore": 82,
+      "first_played": "1988-03-02",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "At the Hundredth Meridian": {
+      "total_plays": 781,
+      "as_opener": 5,
+      "as_encore": 65,
+      "first_played": "1991-08-09",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Grace, Too": {
+      "total_plays": 719,
+      "as_opener": 192,
+      "as_encore": 50,
+      "first_played": "1993-12-09",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Ahead by a Century": {
+      "total_plays": 699,
+      "as_opener": 1,
+      "as_encore": 32,
+      "first_played": "1995-06-05",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Courage (for Hugh MacLennan)": {
+      "total_plays": 651,
+      "as_opener": 6,
+      "as_encore": 40,
+      "first_played": "1992-04-18",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Poets": {
+      "total_plays": 595,
+      "as_opener": 24,
+      "as_encore": 43,
+      "first_played": "1998-07-02",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Fully Completely": {
+      "total_plays": 587,
+      "as_opener": 19,
+      "as_encore": 17,
+      "first_played": "1991-12-31",
+      "last_played": "2016-08-10",
+      "is_cover": false
+    },
+    "Gift Shop": {
+      "total_plays": 569,
+      "as_opener": 54,
+      "as_encore": 10,
+      "first_played": "1995-06-24",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Bobcaygeon": {
+      "total_plays": 563,
+      "as_opener": 1,
+      "as_encore": 70,
+      "first_played": "1997-05-10",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Nautical Disaster": {
+      "total_plays": 525,
+      "as_opener": 5,
+      "as_encore": 45,
+      "first_played": "1991-05-20",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Blow at High Dough": {
+      "total_plays": 505,
+      "as_opener": 20,
+      "as_encore": 135,
+      "first_played": "1988-05-20",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "My Music at Work": {
+      "total_plays": 459,
+      "as_opener": 28,
+      "as_encore": 51,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Springtime in Vienna": {
+      "total_plays": 456,
+      "as_opener": 14,
+      "as_encore": 12,
+      "first_played": "1994-06-24",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Little Bones": {
+      "total_plays": 451,
+      "as_opener": 15,
+      "as_encore": 127,
+      "first_played": "1990-11-13",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Fireworks": {
+      "total_plays": 415,
+      "as_opener": 30,
+      "as_encore": 23,
+      "first_played": "1997-05-01",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Locked in the Trunk of a Car": {
+      "total_plays": 356,
+      "as_opener": 23,
+      "as_encore": 32,
+      "first_played": "1991-12-31",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Fire in the Hole": {
+      "total_plays": 347,
+      "as_opener": 2,
+      "as_encore": 63,
+      "first_played": "1991-05-20",
+      "last_played": "2015-10-02",
+      "is_cover": false
+    },
+    "Wheat Kings": {
+      "total_plays": 332,
+      "as_opener": 0,
+      "as_encore": 68,
+      "first_played": "1991-07-27",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "In View": {
+      "total_plays": 316,
+      "as_opener": 16,
+      "as_encore": 22,
+      "first_played": "2006-09-09",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "Escape Is at Hand for the Travellin' Man": {
+      "total_plays": 275,
+      "as_opener": 0,
+      "as_encore": 32,
+      "first_played": "1996-05-07",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "It's a Good Life if You Don't Weaken": {
+      "total_plays": 254,
+      "as_opener": 4,
+      "as_encore": 6,
+      "first_played": "2001-11-11",
+      "last_played": "2021-06-06",
+      "is_cover": false
+    },
+    "Fifty-Mission Cap": {
+      "total_plays": 227,
+      "as_opener": 10,
+      "as_encore": 36,
+      "first_played": "1991-12-16",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Twist My Arm": {
+      "total_plays": 226,
+      "as_opener": 2,
+      "as_encore": 14,
+      "first_played": "1990-11-13",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Scared": {
+      "total_plays": 222,
+      "as_opener": 0,
+      "as_encore": 47,
+      "first_played": "1993-12-09",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Something On": {
+      "total_plays": 217,
+      "as_opener": 26,
+      "as_encore": 6,
+      "first_played": "1998-07-02",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Daredevil": {
+      "total_plays": 198,
+      "as_opener": 3,
+      "as_encore": 17,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "Yer Not the Ocean": {
+      "total_plays": 187,
+      "as_opener": 45,
+      "as_encore": 1,
+      "first_played": "2006-06-24",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "Flamenco": {
+      "total_plays": 185,
+      "as_opener": 0,
+      "as_encore": 13,
+      "first_played": "1995-07-22",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Family Band": {
+      "total_plays": 181,
+      "as_opener": 7,
+      "as_encore": 13,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "The Lonely End of the Rink": {
+      "total_plays": 178,
+      "as_opener": 70,
+      "as_encore": 20,
+      "first_played": "2004-11-17",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "Pigeon Camera": {
+      "total_plays": 164,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1992-09-13",
+      "last_played": "2016-08-08",
+      "is_cover": false
+    },
+    "Lake Fever": {
+      "total_plays": 153,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Greasy Jungle": {
+      "total_plays": 152,
+      "as_opener": 0,
+      "as_encore": 11,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Long Time Running": {
+      "total_plays": 149,
+      "as_opener": 0,
+      "as_encore": 30,
+      "first_played": "1990-05-23",
+      "last_played": "2016-08-14",
+      "is_cover": false
+    },
+    "The Last of the Unplucked Gems": {
+      "total_plays": 147,
+      "as_opener": 5,
+      "as_encore": 4,
+      "first_played": "1991-07-30",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Don't Wake Daddy": {
+      "total_plays": 146,
+      "as_opener": 10,
+      "as_encore": 3,
+      "first_played": "1996-05-06",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "The Wherewithal": {
+      "total_plays": 142,
+      "as_opener": 1,
+      "as_encore": 18,
+      "first_played": "1992-04-18",
+      "last_played": "2015-10-10",
+      "is_cover": false
+    },
+    "Boots or Hearts": {
+      "total_plays": 140,
+      "as_opener": 3,
+      "as_encore": 14,
+      "first_played": "1989-06-30",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Lionized": {
+      "total_plays": 137,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "1992-04-18",
+      "last_played": "2015-10-10",
+      "is_cover": false
+    },
+    "Inevitability of Death": {
+      "total_plays": 137,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1994-06-24",
+      "last_played": "2009-09-11",
+      "is_cover": false
+    },
+    "Putting Down": {
+      "total_plays": 136,
+      "as_opener": 13,
+      "as_encore": 4,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Three Pistols": {
+      "total_plays": 132,
+      "as_opener": 10,
+      "as_encore": 22,
+      "first_played": "1988-01-01",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "At Transformation": {
+      "total_plays": 130,
+      "as_opener": 67,
+      "as_encore": 15,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "is_cover": false
+    },
+    "700 ft. Ceiling": {
+      "total_plays": 130,
+      "as_opener": 3,
+      "as_encore": 2,
+      "first_played": "1995-10-21",
+      "last_played": "2004-11-27",
+      "is_cover": false
+    },
+    "Gus: The Polar Bear from Central Park": {
+      "total_plays": 127,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "2003-10-27",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Eldorado": {
+      "total_plays": 126,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "1992-04-18",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "Save the Planet": {
+      "total_plays": 125,
+      "as_opener": 30,
+      "as_encore": 21,
+      "first_played": "1997-05-10",
+      "last_played": "2009-06-10",
+      "is_cover": false
+    },
+    "Thugs": {
+      "total_plays": 122,
+      "as_opener": 0,
+      "as_encore": 20,
+      "first_played": "1993-07-16",
+      "last_played": "2016-08-03",
+      "is_cover": false
+    },
+    "Chagrin Falls": {
+      "total_plays": 122,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "1998-07-02",
+      "last_played": "2009-09-19",
+      "is_cover": false
+    },
+    "Love Is a First": {
+      "total_plays": 121,
+      "as_opener": 21,
+      "as_encore": 4,
+      "first_played": "2009-04-27",
+      "last_played": "2013-09-09",
+      "is_cover": false
+    },
+    "Vapour Trails": {
+      "total_plays": 119,
+      "as_opener": 0,
+      "as_encore": 10,
+      "first_played": "1997-05-03",
+      "last_played": "2015-04-10",
+      "is_cover": false
+    },
+    "Membership": {
+      "total_plays": 114,
+      "as_opener": 1,
+      "as_encore": 5,
+      "first_played": "1997-04-29",
+      "last_played": "2016-08-12",
+      "is_cover": false
+    },
+    "The Kids Don't Get It": {
+      "total_plays": 110,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-01",
+      "is_cover": false
+    },
+    "We'll Go Too": {
+      "total_plays": 110,
+      "as_opener": 2,
+      "as_encore": 10,
+      "first_played": "1992-04-18",
+      "last_played": "2016-07-26",
+      "is_cover": false
+    },
+    "Silver Jet": {
+      "total_plays": 97,
+      "as_opener": 27,
+      "as_encore": 1,
+      "first_played": "2001-11-11",
+      "last_played": "2004-11-26",
+      "is_cover": false
+    },
+    "Fiddler's Green": {
+      "total_plays": 93,
+      "as_opener": 0,
+      "as_encore": 17,
+      "first_played": "2006-10-28",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "World Container": {
+      "total_plays": 93,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-01",
+      "is_cover": false
+    },
+    "The Drop-Off": {
+      "total_plays": 93,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "2006-05-26",
+      "last_played": "2009-12-03",
+      "is_cover": false
+    },
+    "So Hard Done By": {
+      "total_plays": 92,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "1991-12-16",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "The Dire Wolf": {
+      "total_plays": 92,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2001-12-31",
+      "last_played": "2016-08-12",
+      "is_cover": false
+    },
+    "It Can't Be Nashville Every Night": {
+      "total_plays": 91,
+      "as_opener": 2,
+      "as_encore": 1,
+      "first_played": "2004-01-01",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Man Machine Poem": {
+      "total_plays": 91,
+      "as_opener": 3,
+      "as_encore": 4,
+      "first_played": "2012-02-16",
+      "last_played": "2016-08-14",
+      "is_cover": false
+    },
+    "Morning Moon": {
+      "total_plays": 91,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "2009-04-24",
+      "last_played": "2016-07-30",
+      "is_cover": false
+    },
+    "On the Verge": {
+      "total_plays": 91,
+      "as_opener": 3,
+      "as_encore": 28,
+      "first_played": "1988-09-30",
+      "last_played": "2012-11-17",
+      "is_cover": false
+    },
+    "Thompson Girl": {
+      "total_plays": 90,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-07-02",
+      "last_played": "2013-02-12",
+      "is_cover": false
+    },
+    "We Want to Be It": {
+      "total_plays": 89,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "is_cover": false
+    },
+    "Tiger the Lion": {
+      "total_plays": 87,
+      "as_opener": 15,
+      "as_encore": 10,
+      "first_played": "2000-06-16",
+      "last_played": "2009-11-25",
+      "is_cover": false
+    },
+    "The Depression Suite": {
+      "total_plays": 86,
+      "as_opener": 35,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2009-12-04",
+      "is_cover": false
+    },
+    "Streets Ahead": {
+      "total_plays": 82,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "is_cover": false
+    },
+    "Looking for a Place to Happen": {
+      "total_plays": 82,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1991-05-24",
+      "last_played": "2015-10-10",
+      "is_cover": false
+    },
+    "Coffee Girl": {
+      "total_plays": 78,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2016-07-30",
+      "is_cover": false
+    },
+    "Use It Up": {
+      "total_plays": 77,
+      "as_opener": 52,
+      "as_encore": 2,
+      "first_played": "2001-11-11",
+      "last_played": "2016-08-12",
+      "is_cover": false
+    },
+    "Cordelia": {
+      "total_plays": 76,
+      "as_opener": 2,
+      "as_encore": 1,
+      "first_played": "1989-06-30",
+      "last_played": "2007-07-05",
+      "is_cover": false
+    },
+    "Summer's Killing Us": {
+      "total_plays": 75,
+      "as_opener": 1,
+      "as_encore": 4,
+      "first_played": "2004-01-01",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Are You Ready": {
+      "total_plays": 72,
+      "as_opener": 1,
+      "as_encore": 12,
+      "first_played": "2001-11-11",
+      "last_played": "2006-07-03",
+      "is_cover": false
+    },
+    "Opiated": {
+      "total_plays": 70,
+      "as_opener": 1,
+      "as_encore": 2,
+      "first_played": "1988-05-20",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "The Luxury": {
+      "total_plays": 70,
+      "as_opener": 1,
+      "as_encore": 2,
+      "first_played": "1991-03-01",
+      "last_played": "2016-08-10",
+      "is_cover": false
+    },
+    "The Last Recluse": {
+      "total_plays": 69,
+      "as_opener": 5,
+      "as_encore": 2,
+      "first_played": "2009-04-24",
+      "last_played": "2016-07-30",
+      "is_cover": false
+    },
+    "Emperor Penguin": {
+      "total_plays": 69,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1998-07-02",
+      "last_played": "2009-09-14",
+      "is_cover": false
+    },
+    "Heaven Is a Better Place Today": {
+      "total_plays": 63,
+      "as_opener": 1,
+      "as_encore": 19,
+      "first_played": "2004-06-22",
+      "last_played": "2014-10-08",
+      "is_cover": false
+    },
+    "Sherpa": {
+      "total_plays": 63,
+      "as_opener": 1,
+      "as_encore": 11,
+      "first_played": "1995-08-10",
+      "last_played": "2007-06-30",
+      "is_cover": false
+    },
+    "Everytime You Go": {
+      "total_plays": 61,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1988-07-15",
+      "last_played": "2004-06-25",
+      "is_cover": false
+    },
+    "Butts Wigglin": {
+      "total_plays": 59,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1996-05-06",
+      "last_played": "1997-05-11",
+      "is_cover": false
+    },
+    "Yawning or Snarling": {
+      "total_plays": 56,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-01",
+      "is_cover": false
+    },
+    "Now the Struggle Has a Name": {
+      "total_plays": 55,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2009-04-27",
+      "last_played": "2016-07-30",
+      "is_cover": false
+    },
+    "Put It Off": {
+      "total_plays": 55,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "1996-05-06",
+      "last_played": "2007-10-10",
+      "is_cover": false
+    },
+    "38 Years Old": {
+      "total_plays": 54,
+      "as_opener": 1,
+      "as_encore": 3,
+      "first_played": "1988-05-20",
+      "last_played": "2008-02-23",
+      "is_cover": false
+    },
+    "Vaccination Scar": {
+      "total_plays": 53,
+      "as_opener": 37,
+      "as_encore": 1,
+      "first_played": "2004-06-22",
+      "last_played": "2005-07-16",
+      "is_cover": false
+    },
+    "Titanic Terrarium": {
+      "total_plays": 52,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1994-10-07",
+      "last_played": "2015-04-11",
+      "is_cover": false
+    },
+    "Freak Turbulence": {
+      "total_plays": 52,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "2000-01-01",
+      "last_played": "2004-10-21",
+      "is_cover": false
+    },
+    "The Completists": {
+      "total_plays": 51,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2000-06-06",
+      "last_played": "2009-05-07",
+      "is_cover": false
+    },
+    "Fight": {
+      "total_plays": 51,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1989-06-30",
+      "last_played": "1999-08-27",
+      "is_cover": false
+    },
+    "Coconut Cream": {
+      "total_plays": 51,
+      "as_opener": 1,
+      "as_encore": 8,
+      "first_played": "1996-05-06",
+      "last_played": "1997-07-30",
+      "is_cover": false
+    },
+    "The Dark Canuck": {
+      "total_plays": 50,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2001-12-31",
+      "last_played": "2009-11-30",
+      "is_cover": false
+    },
+    "Frozen in My Tracks": {
+      "total_plays": 48,
+      "as_opener": 0,
+      "as_encore": 17,
+      "first_played": "2009-05-01",
+      "last_played": "2009-12-03",
+      "is_cover": false
+    },
+    "Stay": {
+      "total_plays": 46,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "1999-12-29",
+      "last_played": "2009-04-24",
+      "is_cover": false
+    },
+    "All Tore Up": {
+      "total_plays": 44,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2001-12-31",
+      "last_played": "2002-11-20",
+      "is_cover": false
+    },
+    "An Inch an Hour": {
+      "total_plays": 43,
+      "as_opener": 0,
+      "as_encore": 11,
+      "first_played": "1994-07-01",
+      "last_played": "2013-01-20",
+      "is_cover": false
+    },
+    "Pretend": {
+      "total_plays": 43,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "2006-05-24",
+      "last_played": "2007-10-27",
+      "is_cover": false
+    },
+    "I'll Believe in You (or I'll Be Leaving You Tonight)": {
+      "total_plays": 42,
+      "as_opener": 5,
+      "as_encore": 4,
+      "first_played": "1988-05-20",
+      "last_played": "1994-06-24",
+      "is_cover": false
+    },
+    "She Didn't Know": {
+      "total_plays": 42,
+      "as_opener": 13,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1991-08-04",
+      "is_cover": false
+    },
+    "As Makeshift as We Are": {
+      "total_plays": 41,
+      "as_opener": 6,
+      "as_encore": 1,
+      "first_played": "2003-10-27",
+      "last_played": "2009-04-27",
+      "is_cover": false
+    },
+    "Goodnight Attawapiskat": {
+      "total_plays": 37,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "2012-06-28",
+      "last_played": "2013-09-10",
+      "is_cover": false
+    },
+    "Train Overnight": {
+      "total_plays": 36,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1999-12-29",
+      "last_played": "2004-10-21",
+      "is_cover": false
+    },
+    "Bring It All Back": {
+      "total_plays": 36,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1991-03-01",
+      "last_played": "1993-07-17",
+      "is_cover": false
+    },
+    "The Lookahead": {
+      "total_plays": 35,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2012-02-16",
+      "last_played": "2016-08-05",
+      "is_cover": false
+    },
+    "Fly": {
+      "total_plays": 34,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2006-05-26",
+      "last_played": "2007-10-24",
+      "is_cover": false
+    },
+    "Luv (Sic)": {
+      "total_plays": 34,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2006-10-17",
+      "last_played": "2007-10-19",
+      "is_cover": false
+    },
+    "Highway Girl": {
+      "total_plays": 34,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "1987-03-04",
+      "last_played": "1991-08-04",
+      "is_cover": false
+    },
+    "Goodnight Josephine": {
+      "total_plays": 32,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2003-08-01",
+      "last_played": "2009-05-15",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Nautical Disaster": {
+      "total_plays": 31,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-09-05",
+      "last_played": "2013-09-12",
+      "is_cover": false
+    },
+    "You're Everywhere": {
+      "total_plays": 31,
+      "as_opener": 5,
+      "as_encore": 4,
+      "first_played": "2003-08-01",
+      "last_played": "2006-06-17",
+      "is_cover": false
+    },
+    "The Darkest One": {
+      "total_plays": 31,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-12-31",
+      "last_played": "2003-08-01",
+      "is_cover": false
+    },
+    "Trickle Down": {
+      "total_plays": 31,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1989-06-30",
+      "last_played": "2002-11-14",
+      "is_cover": false
+    },
+    "Toronto #4": {
+      "total_plays": 30,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2000-06-13",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Mean Streak": {
+      "total_plays": 28,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2004-06-22",
+      "last_played": "2004-11-20",
+      "is_cover": false
+    },
+    "All Canadian Surf Club": {
+      "total_plays": 27,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1985-02-27",
+      "last_played": "1991-08-29",
+      "is_cover": false
+    },
+    "Throwing Off Glass": {
+      "total_plays": 26,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2001-12-31",
+      "last_played": "2016-08-12",
+      "is_cover": false
+    },
+    "Are We Family": {
+      "total_plays": 26,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2004-06-22",
+      "last_played": "2009-05-29",
+      "is_cover": false
+    },
+    "The Rules": {
+      "total_plays": 25,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "1998-07-21",
+      "last_played": "2012-12-07",
+      "is_cover": false
+    },
+    "Let's Stay Engaged": {
+      "total_plays": 25,
+      "as_opener": 0,
+      "as_encore": 12,
+      "first_played": "1996-05-06",
+      "last_played": "2007-04-16",
+      "is_cover": false
+    },
+    "A Beautiful Thing": {
+      "total_plays": 24,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-11-11",
+      "last_played": "2002-11-11",
+      "is_cover": false
+    },
+    "Wild Mountain Honey": {
+      "total_plays": 24,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2000-06-13",
+      "last_played": "2000-12-23",
+      "is_cover": false
+    },
+    "Apartment Song": {
+      "total_plays": 24,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "1996-05-06",
+      "last_played": "2000-11-19",
+      "is_cover": false
+    },
+    "Queen of the Furrows": {
+      "total_plays": 22,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2009-04-28",
+      "last_played": "2009-10-28",
+      "is_cover": false
+    },
+    "The Exact Feeling": {
+      "total_plays": 20,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2015-01-24",
+      "is_cover": false
+    },
+    "One Night in Copenhagen": {
+      "total_plays": 19,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2004-01-01",
+      "last_played": "2004-12-31",
+      "is_cover": false
+    },
+    "Last American Exit": {
+      "total_plays": 18,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1987-03-03",
+      "last_played": "1989-12-31",
+      "is_cover": false
+    },
+    "Impossibilium": {
+      "total_plays": 17,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1994-08-04",
+      "last_played": "1995-04-29",
+      "is_cover": false
+    },
+    "If New Orleans Is Beat": {
+      "total_plays": 16,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2003-10-27",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Sharks": {
+      "total_plays": 16,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1999-12-29",
+      "last_played": "2004-10-16",
+      "is_cover": false
+    },
+    "In a World Possessed by the Human Mind": {
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "What Blue": {
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Machine": {
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Crack My Spine Like a Whip": {
+      "total_plays": 15,
+      "as_opener": 9,
+      "as_encore": 0,
+      "first_played": "1989-06-30",
+      "last_played": "1991-11-24",
+      "is_cover": false
+    },
+    "The Bastard": {
+      "total_plays": 14,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1999-12-29",
+      "last_played": "2004-10-16",
+      "is_cover": false
+    },
+    "Small Town Bringdown": {
+      "total_plays": 14,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "1985-07-01",
+      "last_played": "1990-02-23",
+      "is_cover": false
+    },
+    "Ouch!": {
+      "total_plays": 13,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1990-05-23",
+      "last_played": "1991-08-29",
+      "is_cover": false
+    },
+    "The Modern Spirit": {
+      "total_plays": 12,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2012-09-30",
+      "last_played": "2013-01-28",
+      "is_cover": false
+    },
+    "Last Night I Dreamed You Didn’t Love Me": {
+      "total_plays": 12,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2006-10-17",
+      "last_played": "2007-05-19",
+      "is_cover": false
+    },
+    "Evelyn": {
+      "total_plays": 12,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1991-09-10",
+      "is_cover": false
+    },
+    "Speed River": {
+      "total_plays": 11,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-29",
+      "last_played": "2009-06-05",
+      "is_cover": false
+    },
+    "Now for Plan A": {
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "2012-11-03",
+      "last_played": "2013-02-14",
+      "is_cover": false
+    },
+    "No Threat": {
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1991-11-15",
+      "last_played": "2006-07-02",
+      "is_cover": false
+    },
+    "Get Back Again": {
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-03-05",
+      "last_played": "1995-02-06",
+      "is_cover": false
+    },
+    "It's Just as Well": {
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-02-23",
+      "last_played": "1990-06-30",
+      "is_cover": false
+    },
+    "When the Weight Comes Down": {
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1988-02-19",
+      "last_played": "1990-03-30",
+      "is_cover": false
+    },
+    "Susie-Q": {
+      "total_plays": 10,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1990-03-05",
+      "is_cover": true
+    },
+    "Montreal": {
+      "total_plays": 9,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1991-07-06",
+      "last_played": "2000-12-07",
+      "is_cover": false
+    },
+    "Another Midnight": {
+      "total_plays": 9,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1989-08-27",
+      "last_played": "1991-11-15",
+      "is_cover": false
+    },
+    "Reformed Baptist Blues": {
+      "total_plays": 9,
+      "as_opener": 3,
+      "as_encore": 1,
+      "first_played": "1985-02-27",
+      "last_played": "1991-08-09",
+      "is_cover": false
+    },
+    "Take Forever": {
+      "total_plays": 8,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2012-02-16",
+      "last_played": "2013-09-07",
+      "is_cover": false
+    },
+    "Country Day": {
+      "total_plays": 8,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2009-04-24",
+      "last_played": "2009-11-30",
+      "is_cover": false
+    },
+    "2000 Light Years From Home": {
+      "total_plays": 8,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1987-05-20",
+      "last_played": "2007-01-20",
+      "is_cover": true
+    },
+    "Heart Attack Love": {
+      "total_plays": 8,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1989-10-10",
+      "is_cover": false
+    },
+    "Honey, Please": {
+      "total_plays": 7,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2009-10-03",
+      "is_cover": false
+    },
+    "The Train Kept A-Rollin'": {
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-09-30",
+      "last_played": "2007-03-19",
+      "is_cover": true
+    },
+    "Baby, Please Don't Go": {
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1990-07-01",
+      "is_cover": true
+    },
+    "Gloria": {
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1985-02-27",
+      "last_played": "1988-09-30",
+      "is_cover": true
+    },
+    "Tired as Fuck": {
+      "total_plays": 6,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "is_cover": false
+    },
+    "Ocean Next": {
+      "total_plays": 6,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-02-27",
+      "last_played": "2016-08-18",
+      "is_cover": false
+    },
+    "Interview 1": {
+      "total_plays": 6,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-08-06",
+      "last_played": "2009-06-17",
+      "is_cover": false
+    },
+    "Hiccups": {
+      "total_plays": 6,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1995-04-28",
+      "last_played": "2000-12-01",
+      "is_cover": false
+    },
+    "I’m a Werewolf, Baby": {
+      "total_plays": 6,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1987-07-02",
+      "last_played": "1991-10-30",
+      "is_cover": false
+    },
+    "Queen Bitch": {
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "2006-12-13",
+      "last_played": "2008-07-03",
+      "is_cover": true
+    },
+    "Leave": {
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-12-31",
+      "last_played": "2002-06-27",
+      "is_cover": false
+    },
+    "In Sarnia": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-26",
+      "last_played": "2016-08-16",
+      "is_cover": false
+    },
+    "The Bear": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2009-06-06",
+      "is_cover": false
+    },
+    "Summer Side of Life": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1995-06-22",
+      "last_played": "2007-01-14",
+      "is_cover": true
+    },
+    "The Heart of the Melt": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2004-06-22",
+      "last_played": "2004-09-26",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Escape Is At Hand For The Travellin' Man / New Orleans Is Sinking": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1996-05-29",
+      "last_played": "1996-08-17",
+      "is_cover": false
+    },
+    "Killing Time": {
+      "total_plays": 4,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1991-07-03",
+      "is_cover": false
+    },
+    "Times Are Passing Us By": {
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-05-20",
+      "last_played": "1989-10-10",
+      "is_cover": false
+    },
+    "Off the Hook": {
+      "total_plays": 4,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Money (That's What I Want)": {
+      "total_plays": 4,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Ô Canada": {
+      "total_plays": 3,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "1998-08-28",
+      "last_played": "2013-07-01",
+      "is_cover": true
+    },
+    "Fighter fighter": {
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2004-09-19",
+      "last_played": "2004-10-04",
+      "is_cover": false
+    },
+    "New Song": {
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1996-06-13",
+      "last_played": "1996-07-27",
+      "is_cover": false
+    },
+    "I'll Make Love to You Anytime": {
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1990-04-11",
+      "last_played": "1991-07-13",
+      "is_cover": true
+    },
+    "Waltz for Juliette": {
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-11-27",
+      "last_played": "1988-07-15",
+      "is_cover": false
+    },
+    "Mary, Mary": {
+      "total_plays": 3,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Good Morning, School Girl": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-03",
+      "last_played": "2012-12-12",
+      "is_cover": true
+    },
+    "About This Map": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2012-11-17",
+      "last_played": "2012-12-05",
+      "is_cover": false
+    },
+    "Introduction": {
+      "total_plays": 2,
+      "as_opener": 2,
+      "as_encore": 0,
+      "first_played": "2009-05-27",
+      "last_played": "2009-06-17",
+      "is_cover": false
+    },
+    "Diamond Dogs": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-08",
+      "last_played": "2007-10-11",
+      "is_cover": true
+    },
+    "Mr. Soul": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-23",
+      "last_played": "2007-10-10",
+      "is_cover": true
+    },
+    "The Magnificent Seven": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-04-25",
+      "last_played": "2007-09-26",
+      "is_cover": true
+    },
+    "Johnny Appleseed": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-24",
+      "last_played": "2007-09-25",
+      "is_cover": true
+    },
+    "Train in Vain": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-25",
+      "last_played": "2007-09-15",
+      "is_cover": true
+    },
+    "Substitute": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-15",
+      "last_played": "2007-09-11",
+      "is_cover": true
+    },
+    "Surrender": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-05-12",
+      "last_played": "2007-09-08",
+      "is_cover": true
+    },
+    "Dead Flowers": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-07-01",
+      "last_played": "2007-04-28",
+      "is_cover": true
+    },
+    "Still in Hollywood": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-05-23",
+      "last_played": "2007-03-24",
+      "is_cover": true
+    },
+    "Going, Going, Gone": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2005-12-14",
+      "last_played": "2007-01-22",
+      "is_cover": true
+    },
+    "It Makes No Difference": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2006-12-13",
+      "last_played": "2007-01-12",
+      "is_cover": true
+    },
+    "On a Night Like This": {
+      "total_plays": 2,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "2006-12-13",
+      "last_played": "2007-01-10",
+      "is_cover": true
+    },
+    "C'mon Everybody": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2006-12-13",
+      "last_played": "2007-01-08",
+      "is_cover": true
+    },
+    "The New Maybe": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2005-12-14",
+      "last_played": "2006-05-26",
+      "is_cover": false
+    },
+    "Show Intro": {
+      "total_plays": 2,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1998-08-06",
+      "last_played": "1998-08-06",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Ahead by a Century / New Orleans Is Sinking": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1991-05-20",
+      "last_played": "1995-03-31",
+      "is_cover": false
+    },
+    "Blonde Solid": {
+      "total_plays": 2,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1995-01-01",
+      "is_cover": false
+    },
+    "Radio Show": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1992-04-30",
+      "is_cover": false
+    },
+    "Cemetery Sideroad": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1988-03-02",
+      "last_played": "1988-09-08",
+      "is_cover": false
+    },
+    "Road Runner": {
+      "total_plays": 2,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1988-07-15",
+      "is_cover": true
+    },
+    "Running for Your Life": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1988-07-15",
+      "is_cover": false
+    },
+    "Bedrock Twitch": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Treat Her Right": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Baby Blueblood": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": false
+    },
+    "Big City": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Psychedelic Ramblings of Rich Kids": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": false
+    },
+    "It's Snowing": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": false
+    },
+    "For Your Love": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Mercy, Mercy": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Here 'Tis": {
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Now That the Buffalo's Gone": {
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "2022-09-16",
+      "last_played": "2022-09-16",
+      "is_cover": true
+    },
+    "Haven't You Heard": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2015-09-26",
+      "last_played": "2015-09-26",
+      "is_cover": false
+    },
+    "Old Wive's Tale": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2013-07-19",
+      "last_played": "2013-07-19",
+      "is_cover": false
+    },
+    "Done and Done": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2012-11-06",
+      "last_played": "2012-11-06",
+      "is_cover": false
+    },
+    "Edelweiss": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-09-28",
+      "last_played": "2009-09-28",
+      "is_cover": true
+    },
+    "Interview 2": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-06-17",
+      "last_played": "2009-06-17",
+      "is_cover": false
+    },
+    "Riders on the Storm": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-10-30",
+      "last_played": "2007-10-30",
+      "is_cover": true
+    },
+    "Papa's Got a Brand New Bag": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-05-19",
+      "last_played": "2007-05-19",
+      "is_cover": true
+    },
+    "Street Fighting Man": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-18",
+      "last_played": "2007-05-18",
+      "is_cover": true
+    },
+    "The Shape I'm In": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-16",
+      "last_played": "2007-05-16",
+      "is_cover": true
+    },
+    "Come Together": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-05-15",
+      "last_played": "2007-05-15",
+      "is_cover": true
+    },
+    "Bastards of Young": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-05-14",
+      "last_played": "2007-05-14",
+      "is_cover": true
+    },
+    "Helter Skelter": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-05-10",
+      "last_played": "2007-05-10",
+      "is_cover": true
+    },
+    "Young Americans": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-29",
+      "last_played": "2007-04-29",
+      "is_cover": true
+    },
+    "Atlantic City": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-27",
+      "last_played": "2007-04-27",
+      "is_cover": true
+    },
+    "The Last Time": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-22",
+      "last_played": "2007-04-22",
+      "is_cover": true
+    },
+    "Rudie Can't Fail": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-21",
+      "last_played": "2007-04-21",
+      "is_cover": true
+    },
+    "Is This Love": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-20",
+      "last_played": "2007-04-20",
+      "is_cover": true
+    },
+    "I Want You": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-18",
+      "last_played": "2007-04-18",
+      "is_cover": true
+    },
+    "Taxman": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-17",
+      "last_played": "2007-04-17",
+      "is_cover": true
+    },
+    "Child of the Moon": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-16",
+      "last_played": "2007-04-16",
+      "is_cover": true
+    },
+    "The Wreck of the Edmund Fitzgerald": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-04-14",
+      "last_played": "2007-04-14",
+      "is_cover": true
+    },
+    "Cold Metal": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-13",
+      "last_played": "2007-04-13",
+      "is_cover": true
+    },
+    "Black Day in July": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-12",
+      "last_played": "2007-04-12",
+      "is_cover": true
+    },
+    "Jumpin' Jack Flash": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-29",
+      "last_played": "2007-03-29",
+      "is_cover": true
+    },
+    "Don't Worry Baby": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-28",
+      "last_played": "2007-03-28",
+      "is_cover": true
+    },
+    "If You Gotta Go, Go Now": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-26",
+      "last_played": "2007-03-26",
+      "is_cover": true
+    },
+    "Suspicious Minds": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-21",
+      "last_played": "2007-03-21",
+      "is_cover": true
+    },
+    "Tush": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-16",
+      "last_played": "2007-03-16",
+      "is_cover": true
+    },
+    "It's the End of the World as We Know It (And I Feel Fine)": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-13",
+      "last_played": "2007-03-13",
+      "is_cover": true
+    },
+    "I Can't Explain": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-03-09",
+      "last_played": "2007-03-09",
+      "is_cover": true
+    },
+    "Picture My Face": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-06",
+      "last_played": "2007-02-06",
+      "is_cover": true
+    },
+    "Lust for Life": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-05",
+      "last_played": "2007-02-05",
+      "is_cover": true
+    },
+    "Like a Rolling Stone": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-02",
+      "last_played": "2007-02-02",
+      "is_cover": true
+    },
+    "Hang On to Yourself": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-31",
+      "last_played": "2007-01-31",
+      "is_cover": true
+    },
+    "Big Yellow Taxi": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-29",
+      "last_played": "2007-01-29",
+      "is_cover": true
+    },
+    "Sudbury Saturday Night": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-27",
+      "last_played": "2007-01-27",
+      "is_cover": true
+    },
+    "The Weight": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-01-26",
+      "last_played": "2007-01-26",
+      "is_cover": true
+    },
+    "Six Days on the Road": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-01-23",
+      "last_played": "2007-01-23",
+      "is_cover": true
+    },
+    "Powderfinger": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-01-19",
+      "last_played": "2007-01-19",
+      "is_cover": true
+    },
+    "Four Strong Winds": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-01-17",
+      "last_played": "2007-01-17",
+      "is_cover": true
+    },
+    "I Can Only Give You Everything": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2007-01-13",
+      "last_played": "2007-01-13",
+      "is_cover": true
+    },
+    "The Man Comes Around": {
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "2005-12-14",
+      "last_played": "2005-12-14",
+      "is_cover": true
+    },
+    "We Are the Next Us": {
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "2005-04-09",
+      "last_played": "2005-04-09",
+      "is_cover": false
+    },
+    "Rockin' in the Free World": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2001-10-21",
+      "last_played": "2001-10-21",
+      "is_cover": true
+    },
+    "New Orleans Is Sinking / Elaborate / The Never-Ending Present": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-10-01",
+      "last_played": "1998-10-01",
+      "is_cover": false
+    },
+    "Inevitability of Death / If You're Freaked": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-10-01",
+      "last_played": "1998-10-01",
+      "is_cover": false
+    },
+    "At the Hundredth Meridian / Lofty Pines / Blackflies": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-10-01",
+      "last_played": "1998-10-01",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Chagrin Falls": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-08-10",
+      "last_played": "1998-08-10",
+      "is_cover": false
+    },
+    "Band Intro": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-08-06",
+      "last_played": "1998-08-06",
+      "is_cover": false
+    },
+    "Lofty Pines": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-07-23",
+      "last_played": "1998-07-23",
+      "is_cover": true
+    },
+    "At the Hundredth Meridian / So Hard Done By": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1996-07-13",
+      "last_played": "1996-07-13",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Apartment Song": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1996-07-13",
+      "last_played": "1996-07-13",
+      "is_cover": false
+    },
+    "At the Hundredth Meridian / Poets / Chagrin Falls / At the Hundredth Meridian": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1996-05-29",
+      "last_played": "1996-05-29",
+      "is_cover": false
+    },
+    "Jamming": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1996-05-07",
+      "last_played": "1996-05-07",
+      "is_cover": false
+    },
+    "Past...": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1995-07-22",
+      "last_played": "1995-07-22",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / If You're Freaked, I'm Fucked": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1994-12-07",
+      "last_played": "1994-12-07",
+      "is_cover": false
+    },
+    "Win": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-12-09",
+      "last_played": "1993-12-09",
+      "is_cover": false
+    },
+    "Emergency": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-12-09",
+      "last_played": "1993-12-09",
+      "is_cover": false
+    },
+    "Land": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-08-01",
+      "last_played": "1993-08-01",
+      "is_cover": true
+    },
+    "New Orleans Is Sinking / Born in the Water": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-07-23",
+      "last_played": "1993-07-23",
+      "is_cover": false
+    },
+    "New Orleans Is Sinking / Nautical Disaster / New Orleans Is Sinking": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-07-16",
+      "last_played": "1993-07-16",
+      "is_cover": false
+    },
+    "You See Details": {
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1992-04-18",
+      "is_cover": false
+    },
+    "I'm For Real": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1991-07-04",
+      "last_played": "1991-07-04",
+      "is_cover": false
+    },
+    "Seven Days": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1991-05-24",
+      "last_played": "1991-05-24",
+      "is_cover": true
+    },
+    "I'll Believe In You (Or I'll Be Leaving You Tonight)": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-06-30",
+      "last_played": "1990-06-30",
+      "is_cover": false
+    },
+    "Born in the Water": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-04-11",
+      "last_played": "1990-04-11",
+      "is_cover": false
+    },
+    "Night Comes Down": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-03-05",
+      "last_played": "1990-03-05",
+      "is_cover": true
+    },
+    "Wait So Long": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-09-30",
+      "last_played": "1988-09-30",
+      "is_cover": false
+    },
+    "Raining Hearts of Fire": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "is_cover": false
+    },
+    "Little by Little": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "is_cover": true
+    },
+    "It's So Easy": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "is_cover": true
+    },
+    "She's Got All It Takes": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-24",
+      "last_played": "1988-03-24",
+      "is_cover": false
+    },
+    "Down Home Girl": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-24",
+      "last_played": "1988-03-24",
+      "is_cover": true
+    },
+    "Not Fade Away": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-24",
+      "last_played": "1988-03-24",
+      "is_cover": true
+    },
+    "We Love You": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-11-27",
+      "last_played": "1987-11-27",
+      "is_cover": true
+    },
+    "Hitch Hike": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "What'd I Say": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Who Do You Love?": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Wooly Bully": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "I'm Not Your Stepping Stone": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Nadine (Is It You?)": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-05-20",
+      "last_played": "1987-05-20",
+      "is_cover": true
+    },
+    "Sweet Jane": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "I'm a Believer": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "is_cover": true
+    },
+    "Daydream Believer": {
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-02-27",
+      "last_played": "1985-02-27",
+      "is_cover": true
+    }
+  }
+}

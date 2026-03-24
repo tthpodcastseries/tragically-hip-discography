@@ -882,12 +882,11 @@
     .track-item.clickable { cursor: pointer; transition: background 0.15s; border-radius: 6px; margin: 0 -8px; padding: 8px 8px; }
     .track-item.clickable:hover { background: rgba(255,255,255,0.04); }
     .track-num { font-size: 0.75rem; color: var(--muted2); min-width: 22px; text-align: right; }
-    .track-name { font-size: 0.86rem; }
+    .track-name { font-size: 0.86rem; flex: 1; }
     .track-stream-panel { display: none; padding: 6px 0 4px 36px; }
     .track-stream-panel.open { display: flex; flex-wrap: wrap; gap: 8px; }
     .track-single-dot { display: none; }
     .track-top40-badge {
-      margin-left: auto;
       font-size: 0.65rem;
       font-weight: 700;
       color: var(--gold);
@@ -896,10 +895,144 @@
       border-radius: 10px;
       white-space: nowrap;
       letter-spacing: 0.02em;
+      min-width: 42px;
+      text-align: center;
+      flex-shrink: 0;
     }
     .track-top40-badge.beyond {
       color: var(--red);
       background: rgba(200,16,46,0.12);
+    }
+
+    /* ─── TRACK FLIP CARDS ─── */
+    .track-flip-container {
+      perspective: 800px;
+      list-style: none;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .track-flip-container:last-child { border-bottom: none; }
+    .track-flip-container .track-item { border-bottom: none; }
+    .track-flip-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+    .track-flip-inner.flipped {
+      transform: rotateY(180deg);
+    }
+    .track-flip-container.is-flipped .track-flip-back {
+      position: relative;
+      min-height: 140px;
+    }
+    .track-flip-container.is-flipped .track-flip-front {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+    }
+    .track-flip-front,
+    .track-flip-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .track-flip-front {
+      position: relative;
+    }
+    .track-flip-back {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      transform: rotateY(180deg);
+      background: var(--bg3);
+      border-radius: 8px;
+      padding: 12px 14px;
+      min-height: 100%;
+      cursor: pointer;
+    }
+    .track-flip-hint {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--muted2);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      margin-left: auto;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .track-flip-front:hover .track-flip-hint,
+    .track-flip-front:focus .track-flip-hint {
+      opacity: 1;
+    }
+    .track-flip-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+    }
+    .track-flip-stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .track-flip-stat-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--muted2);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .track-flip-stat-value {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .track-flip-stat-value.gold {
+      color: var(--gold);
+    }
+    .track-flip-freq-bar {
+      grid-column: 1 / -1;
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .track-flip-freq-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .track-flip-no-data {
+      font-size: 0.78rem;
+      color: var(--muted2);
+      text-align: center;
+      padding: 8px 0;
+    }
+    .track-stream-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted2);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      flex-shrink: 0;
+      border: none;
+      padding: 0;
+    }
+    .track-stream-icon:hover,
+    .track-stream-icon:focus {
+      background: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .track-flip-inner { transition: none !important; }
+      .track-flip-inner.flipped { transform: none; }
+      .track-flip-inner.flipped .track-flip-front { display: none; }
+      .track-flip-inner.flipped .track-flip-back { position: relative; transform: none; }
     }
 
     /* ─── FOOTER ─── */
@@ -1005,6 +1138,7 @@
   <p class="tagline">Kingston, Ontario · 1984 – 2016 · Canada's Band</p>
   <div style="max-width:600px;margin:20px auto 8px;">
     <img src="assets-optimized/band/band-photo-5.jpg" alt="The Tragically Hip" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+    <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
   </div>
   <div class="stats-row">
     <div class="stat"><div class="stat-num" id="statNum1"></div><div class="stat-lbl" id="statLbl1"></div></div>
@@ -1095,7 +1229,8 @@
         <div class="section-line"></div>
       </div>
       <div style="max-width:700px;margin:0 auto 32px;text-align:center;">
-        <img src="assets-optimized/band/band-photo-7.jpg" alt="The Tragically Hip - Early Years" loading="lazy" style="width:100%;border-radius:12px;margin-bottom:24px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <img src="assets-optimized/band/band-photo-8.jpg" alt="The Tragically Hip" loading="lazy" style="width:100%;border-radius:12px;margin-bottom:4px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <p style="font-size:0.7rem;color:#888;margin-bottom:24px;font-style:italic;">Photo: Bob Berg</p>
         <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:55ch;margin:0 auto 32px;">Sometimes even the greatest bands need to explore space outside of the collective. Here is the complete discography of Gord, Gord, Johnny, Paul, and Robby.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
           <button class="solo-member-btn" data-member="downie">Gord Downie</button>
@@ -1142,6 +1277,7 @@
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
   <img src="assets-optimized/band/band-photo-6.jpg" alt="The Tragically Hip - Early Days" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Taffi Laing</p>
 </div>
 
 <footer>
@@ -1837,6 +1973,28 @@ Object.values(categoryData).flat().forEach(album => {
   }
 });
 
+// ─── Live Play Count Data ───
+let livePlayCountMap = {};
+(async function loadLivePlayCounts() {
+  try {
+    const res = await fetch('live-play-counts-merged.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (data && data.albums) {
+      data.albums.forEach(album => {
+        if (!album.tracks) return;
+        album.tracks.forEach(track => {
+          const key = album.album + '|||' + track.title;
+          livePlayCountMap[key] = track;
+        });
+      });
+    }
+    console.log('Live play counts loaded:', Object.keys(livePlayCountMap).length, 'tracks');
+  } catch (e) {
+    console.warn('Could not load live play count data:', e.message);
+  }
+})();
+
 let currentCategory = 'studio';
 let currentAlbums = studioAlbums;
 
@@ -2059,6 +2217,118 @@ function buildTrackStreamPanel(trackTitle, albumTitle) {
     <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
   </div>`;
 }
+
+function buildTrackFlipBack(albumTitle, trackTitle) {
+  const key = albumTitle + '|||' + trackTitle;
+  const data = livePlayCountMap[key];
+  if (!data) {
+    return '<div class="track-flip-no-data">No live performance data available</div>';
+  }
+  const MAX_PLAYS = 836;
+  const plays = data.best_estimate || 0;
+  const openerCount = Math.max(data.hipbase_opener || 0, data.setlistfm_opener || 0);
+  const encoreCount = Math.max(data.hipbase_encore || 0, data.setlistfm_encore || 0);
+  const firstPlayed = data.first_played ? new Date(data.first_played + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '-';
+  const lastPlayed = data.last_played ? new Date(data.last_played + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '-';
+  const sources = (data.sources_matched || []).join(' + ') || '-';
+  const pct = Math.min(Math.round((plays / MAX_PLAYS) * 100), 100);
+  return `<div class="track-flip-stats">
+    <div class="track-flip-stat"><span class="track-flip-stat-label">Times Played</span><span class="track-flip-stat-value gold">${plays.toLocaleString()}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">As Opener</span><span class="track-flip-stat-value">${openerCount}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">First Played</span><span class="track-flip-stat-value">${firstPlayed}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">As Encore</span><span class="track-flip-stat-value">${encoreCount}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">Last Played</span><span class="track-flip-stat-value">${lastPlayed}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">Sources</span><span class="track-flip-stat-value">${sources}</span></div>
+    <div class="track-flip-freq-bar"><div class="track-flip-freq-fill" style="width:${pct}%"></div></div>
+  </div>`;
+}
+
+function getTrackStreamURL(trackTitle) {
+  const pref = getPreferredStream();
+  if (pref) {
+    if (pref === 'spotify' && spotifyTrackURLs[trackTitle]) return spotifyTrackURLs[trackTitle];
+    return getStreamURL(pref, trackTitle + ' The Tragically Hip');
+  }
+  // No preference - return Spotify search as default
+  const searchQ = encodeURIComponent(trackTitle + ' The Tragically Hip');
+  return spotifyTrackURLs[trackTitle] || 'https://open.spotify.com/search/' + searchQ;
+}
+
+function initTrackFlip(container) {
+  if (!container) return;
+  container.querySelectorAll('.track-flip-container').forEach(flipContainer => {
+    const inner = flipContainer.querySelector('.track-flip-inner');
+    const front = flipContainer.querySelector('.track-flip-front');
+    const back = flipContainer.querySelector('.track-flip-back');
+    if (!inner || !front || !back) return;
+
+    function flipOpen() {
+      // Close other flipped cards first
+      container.querySelectorAll('.track-flip-inner.flipped').forEach(other => {
+        if (other !== inner) {
+          other.classList.remove('flipped');
+          other.closest('.track-flip-container').classList.remove('is-flipped');
+        }
+      });
+      // Populate back face lazily on first flip
+      if (!back.dataset.populated) {
+        const albumTitle = front.dataset.album;
+        const trackTitle = front.dataset.track;
+        back.innerHTML = buildTrackFlipBack(albumTitle, trackTitle);
+        back.dataset.populated = '1';
+      }
+      inner.classList.add('flipped');
+      flipContainer.classList.add('is-flipped');
+    }
+    function flipClose() {
+      inner.classList.remove('flipped');
+      flipContainer.classList.remove('is-flipped');
+    }
+
+    front.addEventListener('click', e => {
+      if (e.target.closest('.track-stream-icon')) return;
+      e.preventDefault();
+      flipOpen();
+    });
+    front.addEventListener('keydown', e => {
+      if (e.target.closest('.track-stream-icon')) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipOpen(); }
+    });
+
+    back.addEventListener('click', e => {
+      e.preventDefault();
+      flipClose();
+    });
+    back.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipClose(); }
+    });
+
+    // Stream icon handler
+    const streamIcon = front.querySelector('.track-stream-icon');
+    if (streamIcon) {
+      streamIcon.addEventListener('click', e => {
+        e.stopPropagation();
+        const trackName = front.querySelector('.track-name').textContent;
+        const pref = getPreferredStream();
+        if (pref) {
+          const url = getTrackStreamURL(trackName);
+          if (url) window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          // No preference set - show stream panel inline below the track
+          let panel = flipContainer.querySelector('.track-stream-panel');
+          if (panel) {
+            panel.classList.toggle('open');
+          } else {
+            const panelHTML = buildTrackStreamPanel(trackName, front.dataset.album);
+            front.insertAdjacentHTML('afterend', panelHTML);
+            panel = flipContainer.querySelector('.track-stream-panel');
+            if (panel) { panel.classList.add('open'); panel.style.position = 'relative'; panel.style.zIndex = '2'; }
+          }
+        }
+      });
+    }
+  });
+}
 // Mobile deep-link handler: try native app URI schemes on touch devices
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 if (isMobile) {
@@ -2095,30 +2365,10 @@ if (isMobile) {
 }
 
 function initTrackStreaming(container) {
+  // Legacy function - streaming now handled via stream icon on flip cards
+  // Kept as no-op for backwards compatibility with any remaining calls
   if (!container) return;
-  container.querySelectorAll('.track-item.clickable').forEach(item => {
-    const panel = item.nextElementSibling;
-    if (!panel || !panel.classList.contains('track-stream-panel')) return;
-    item.addEventListener('click', e => {
-      if (e.target.closest('a')) return; // don't intercept link clicks
-      const pref = getPreferredStream();
-      if (pref) {
-        const trackName = item.querySelector('.track-name').textContent;
-        let url;
-        if (pref === 'spotify' && spotifyTrackURLs[trackName]) {
-          url = spotifyTrackURLs[trackName];
-        } else {
-          url = getStreamURL(pref, trackName + ' The Tragically Hip');
-        }
-        if (url) window.open(url, '_blank', 'noopener,noreferrer');
-      } else {
-        // close other open panels in this list
-        container.querySelectorAll('.track-stream-panel.open').forEach(p => { if (p !== panel) p.classList.remove('open'); });
-        panel.classList.toggle('open');
-        if (panel.classList.contains('open')) applyStreamPreference(panel);
-      }
-    });
-  });
+  initTrackFlip(container);
 }
 
 // Random Hip Song click handler
@@ -3290,13 +3540,19 @@ function openModal(i) {
     <div class="modal-section-title">Tracks</div>
     <ul class="tracks-list" id="modalTracksList">
       ${a.tracks.map((t, idx) => `
-        <li class="track-item clickable" role="button" tabindex="0">
-          <span class="track-num">${idx + 1}</span>
-          <span class="track-name">${t}</span>
-          ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
-          ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="TTH Top 40 - #${top40Ranks.get(t)}">#${top40Ranks.get(t)}</span>` : ''}
+        <li class="track-flip-container">
+          <div class="track-flip-inner">
+            <div class="track-flip-front track-item clickable" role="button" tabindex="0" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+              <span class="track-num">${idx + 1}</span>
+              <span class="track-name">${t}</span>
+              ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
+              ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="TTH Top 40 - #${top40Ranks.get(t)}">#${top40Ranks.get(t)}</span>` : '<span class="track-top40-badge" style="visibility:hidden">#00</span>'}
+              <span class="track-flip-hint">LIVE STATS &#8635;</span>
+              <button class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
+            </div>
+            <div class="track-flip-back" role="button" tabindex="0" aria-label="Close live stats"></div>
+          </div>
         </li>
-        ${buildTrackStreamPanel(t, a.title)}
       `).join('')}
     </ul>
   ` : '';
@@ -3397,11 +3653,17 @@ function openSoloModal(album) {
     <div class="modal-section-title">Tracks</div>
     <ul class="tracks-list" id="soloTracksList">
       ${a.tracks.map((t, idx) => `
-        <li class="track-item clickable" role="button" tabindex="0">
-          <span class="track-num">${idx + 1}</span>
-          <span class="track-name">${t}</span>
+        <li class="track-flip-container">
+          <div class="track-flip-inner">
+            <div class="track-flip-front track-item clickable" role="button" tabindex="0" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+              <span class="track-num">${idx + 1}</span>
+              <span class="track-name">${t}</span>
+              <span class="track-flip-hint">LIVE STATS &#8635;</span>
+              <button class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
+            </div>
+            <div class="track-flip-back" role="button" tabindex="0" aria-label="Close live stats"></div>
+          </div>
         </li>
-        ${buildTrackStreamPanel(t, a.title)}
       `).join('')}
     </ul>
   ` : '';

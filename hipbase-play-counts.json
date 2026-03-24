@@ -1,0 +1,2757 @@
+{
+  "source": "hipbase.com",
+  "fetched": "2026-03-24",
+  "total_songs": 276,
+  "songs": {
+    "Blow At High Dough": {
+      "song_id": 23,
+      "album": "Up To Here",
+      "total_plays": 474,
+      "as_opener": 16,
+      "as_encore": 223,
+      "first_played": "1988-10-00",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 47.45
+    },
+    "I'll Believe In You": {
+      "song_id": 60,
+      "album": "Up To Here",
+      "total_plays": 26,
+      "as_opener": 5,
+      "as_encore": 2,
+      "first_played": "1988-07-15",
+      "last_played": "1993-06-25",
+      "pct_of_shows": 2.6
+    },
+    "New Orleans Is Sinking": {
+      "song_id": 81,
+      "album": "Up To Here",
+      "total_plays": 836,
+      "as_opener": 33,
+      "as_encore": 143,
+      "first_played": "1988-03-02",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 83.43
+    },
+    "38 Years Old": {
+      "song_id": 11,
+      "album": "Up To Here",
+      "total_plays": 36,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1988-10-00",
+      "last_played": "2008-02-23",
+      "pct_of_shows": 3.6
+    },
+    "She Didn't Know": {
+      "song_id": 96,
+      "album": "Up To Here",
+      "total_plays": 24,
+      "as_opener": 7,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1991-08-04",
+      "pct_of_shows": 2.4
+    },
+    "Boots Or Hearts": {
+      "song_id": 25,
+      "album": "Up To Here",
+      "total_plays": 119,
+      "as_opener": 2,
+      "as_encore": 20,
+      "first_played": "1989-07-01",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 11.92
+    },
+    "Everytime You Go": {
+      "song_id": 42,
+      "album": "Up To Here",
+      "total_plays": 39,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "1988-07-15",
+      "last_played": "2004-06-25",
+      "pct_of_shows": 3.9
+    },
+    "When The Weight Comes Down": {
+      "song_id": 130,
+      "album": "Up To Here",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1989-11-30",
+      "pct_of_shows": 0.5
+    },
+    "Trickle Down": {
+      "song_id": 124,
+      "album": "Up To Here",
+      "total_plays": 17,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1990-04-06",
+      "last_played": "1991-11-24",
+      "pct_of_shows": 1.71
+    },
+    "Another Midnight": {
+      "song_id": 16,
+      "album": "Up To Here",
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1989-08-27",
+      "last_played": "1991-11-15",
+      "pct_of_shows": 0.7
+    },
+    "Opiated": {
+      "song_id": 83,
+      "album": "Up To Here",
+      "total_plays": 56,
+      "as_opener": 1,
+      "as_encore": 2,
+      "first_played": "1988-10-00",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 5.61
+    },
+    "Little Bones": {
+      "song_id": 72,
+      "album": "Road Apples",
+      "total_plays": 424,
+      "as_opener": 10,
+      "as_encore": 219,
+      "first_played": "1990-11-13",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 42.91
+    },
+    "Twist My Arm": {
+      "song_id": 125,
+      "album": "Road Apples",
+      "total_plays": 214,
+      "as_opener": 2,
+      "as_encore": 19,
+      "first_played": "1990-11-13",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 21.66
+    },
+    "Cordelia": {
+      "song_id": 33,
+      "album": "Road Apples",
+      "total_plays": 65,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "1990-06-22",
+      "last_played": "2007-07-05",
+      "pct_of_shows": 6.56
+    },
+    "The Luxury": {
+      "song_id": 111,
+      "album": "Road Apples",
+      "total_plays": 65,
+      "as_opener": 1,
+      "as_encore": 2,
+      "first_played": "1991-03-01",
+      "last_played": "2016-08-10",
+      "pct_of_shows": 6.59
+    },
+    "Born In The Water": {
+      "song_id": 26,
+      "album": "Road Apples",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-04-11",
+      "last_played": "1990-04-11",
+      "pct_of_shows": 0.1
+    },
+    "Long Time Running": {
+      "song_id": 75,
+      "album": "Road Apples",
+      "total_plays": 149,
+      "as_opener": 0,
+      "as_encore": 47,
+      "first_played": "1990-06-22",
+      "last_played": "2016-08-14",
+      "pct_of_shows": 15.04
+    },
+    "Bring It All Back": {
+      "song_id": 27,
+      "album": "Road Apples",
+      "total_plays": 26,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1991-03-00",
+      "last_played": "1993-05-01",
+      "pct_of_shows": 2.63
+    },
+    "Three Pistols": {
+      "song_id": 116,
+      "album": "Road Apples",
+      "total_plays": 103,
+      "as_opener": 6,
+      "as_encore": 28,
+      "first_played": "1988-10-00",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 10.31
+    },
+    "Fight": {
+      "song_id": 45,
+      "album": "Road Apples",
+      "total_plays": 38,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1990-02-23",
+      "last_played": "1999-08-27",
+      "pct_of_shows": 3.82
+    },
+    "On The Verge": {
+      "song_id": 82,
+      "album": "Road Apples",
+      "total_plays": 76,
+      "as_opener": 2,
+      "as_encore": 42,
+      "first_played": "1990-02-23",
+      "last_played": "2012-11-17",
+      "pct_of_shows": 7.65
+    },
+    "Fiddler's Green": {
+      "song_id": 43,
+      "album": "Road Apples",
+      "total_plays": 94,
+      "as_opener": 0,
+      "as_encore": 18,
+      "first_played": "2006-10-28",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 25.41
+    },
+    "The Last Of The Unplucked Gems": {
+      "song_id": 69,
+      "album": "Road Apples",
+      "total_plays": 128,
+      "as_opener": 1,
+      "as_encore": 6,
+      "first_played": "1991-07-30",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 13.11
+    },
+    "Small Town Bringdown": {
+      "song_id": 99,
+      "album": "The Tragically Hip",
+      "total_plays": 8,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1987-07-02",
+      "last_played": "1990-02-23",
+      "pct_of_shows": 0.8
+    },
+    "Last American Exit": {
+      "song_id": 68,
+      "album": "The Tragically Hip",
+      "total_plays": 8,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1987-07-02",
+      "last_played": "1989-11-30",
+      "pct_of_shows": 0.8
+    },
+    "Killing Time": {
+      "song_id": 66,
+      "album": "The Tragically Hip",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.2
+    },
+    "Evelyn": {
+      "song_id": 134,
+      "album": "The Tragically Hip",
+      "total_plays": 14,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1991-12-31",
+      "pct_of_shows": 1.39
+    },
+    "Cemetery Sideroad": {
+      "song_id": 29,
+      "album": "The Tragically Hip",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1988-03-02",
+      "pct_of_shows": 0.1
+    },
+    "I'm A Werewolf Baby": {
+      "song_id": 61,
+      "album": "The Tragically Hip",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1987-07-02",
+      "last_played": "1990-04-11",
+      "pct_of_shows": 0.3
+    },
+    "Highway Girl": {
+      "song_id": 59,
+      "album": "The Tragically Hip",
+      "total_plays": 17,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1991-08-04",
+      "pct_of_shows": 1.7
+    },
+    "All Canadian Surf Club": {
+      "song_id": 14,
+      "album": "The Tragically Hip",
+      "total_plays": 13,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1991-08-29",
+      "pct_of_shows": 1.29
+    },
+    "Courage (for Hugh Maclennan)": {
+      "song_id": 34,
+      "album": "Fully Completely",
+      "total_plays": 637,
+      "as_opener": 4,
+      "as_encore": 50,
+      "first_played": "1992-04-18",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 66.08
+    },
+    "Looking For A Place To Happen": {
+      "song_id": 76,
+      "album": "Fully Completely",
+      "total_plays": 79,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1991-05-24",
+      "last_played": "2015-10-10",
+      "pct_of_shows": 8.06
+    },
+    "At The Hundredth Meridian": {
+      "song_id": 19,
+      "album": "Fully Completely",
+      "total_plays": 761,
+      "as_opener": 5,
+      "as_encore": 89,
+      "first_played": "1991-11-15",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 78.53
+    },
+    "Pigeon Camera": {
+      "song_id": 84,
+      "album": "Fully Completely",
+      "total_plays": 144,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "1992-09-13",
+      "last_played": "2016-08-08",
+      "pct_of_shows": 15.03
+    },
+    "Lionized": {
+      "song_id": 71,
+      "album": "Fully Completely",
+      "total_plays": 129,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "1992-04-18",
+      "last_played": "2015-10-10",
+      "pct_of_shows": 13.38
+    },
+    "Locked In The Trunk Of A Car": {
+      "song_id": 74,
+      "album": "Fully Completely",
+      "total_plays": 328,
+      "as_opener": 11,
+      "as_encore": 49,
+      "first_played": "1991-12-31",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 33.99
+    },
+    "We'll Go Too": {
+      "song_id": 128,
+      "album": "Fully Completely",
+      "total_plays": 98,
+      "as_opener": 1,
+      "as_encore": 19,
+      "first_played": "1992-04-18",
+      "last_played": "2016-07-26",
+      "pct_of_shows": 10.17
+    },
+    "Fully Completely": {
+      "song_id": 50,
+      "album": "Fully Completely",
+      "total_plays": 567,
+      "as_opener": 17,
+      "as_encore": 36,
+      "first_played": "1991-12-31",
+      "last_played": "2016-08-10",
+      "pct_of_shows": 58.76
+    },
+    "Fifty Mission Cap": {
+      "song_id": 44,
+      "album": "Fully Completely",
+      "total_plays": 199,
+      "as_opener": 6,
+      "as_encore": 50,
+      "first_played": "1991-12-16",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 20.6
+    },
+    "Wheat Kings": {
+      "song_id": 129,
+      "album": "Fully Completely",
+      "total_plays": 324,
+      "as_opener": 0,
+      "as_encore": 92,
+      "first_played": "1991-07-31",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 33.23
+    },
+    "The Wherewithal": {
+      "song_id": 114,
+      "album": "Fully Completely",
+      "total_plays": 126,
+      "as_opener": 0,
+      "as_encore": 35,
+      "first_played": "1992-04-18",
+      "last_played": "2015-10-10",
+      "pct_of_shows": 13.07
+    },
+    "Eldorado": {
+      "song_id": 38,
+      "album": "Fully Completely",
+      "total_plays": 112,
+      "as_opener": 0,
+      "as_encore": 8,
+      "first_played": "1992-04-18",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 11.62
+    },
+    "Radio Show": {
+      "song_id": 88,
+      "album": "Fully Completely",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1992-04-30",
+      "pct_of_shows": 0.21
+    },
+    "Grace, Too": {
+      "song_id": 55,
+      "album": "Day For Night",
+      "total_plays": 699,
+      "as_opener": 185,
+      "as_encore": 80,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 74.44
+    },
+    "Daredevil": {
+      "song_id": 36,
+      "album": "Day For Night",
+      "total_plays": 184,
+      "as_opener": 3,
+      "as_encore": 40,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 19.6
+    },
+    "Greasy Jungle": {
+      "song_id": 56,
+      "album": "Day For Night",
+      "total_plays": 144,
+      "as_opener": 0,
+      "as_encore": 20,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 15.34
+    },
+    "Yawning Or Snarling": {
+      "song_id": 132,
+      "album": "Day For Night",
+      "total_plays": 51,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1994-07-01",
+      "last_played": "2016-08-01",
+      "pct_of_shows": 5.43
+    },
+    "Fire In The Hole": {
+      "song_id": 46,
+      "album": "Day For Night",
+      "total_plays": 334,
+      "as_opener": 1,
+      "as_encore": 139,
+      "first_played": "1994-07-01",
+      "last_played": "2015-10-02",
+      "pct_of_shows": 35.57
+    },
+    "So Hard Done By": {
+      "song_id": 100,
+      "album": "Day For Night",
+      "total_plays": 86,
+      "as_opener": 0,
+      "as_encore": 8,
+      "first_played": "1991-12-16",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 8.9
+    },
+    "Nautical Disaster": {
+      "song_id": 80,
+      "album": "Day For Night",
+      "total_plays": 532,
+      "as_opener": 4,
+      "as_encore": 55,
+      "first_played": "1993-06-25",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 56.18
+    },
+    "Thugs": {
+      "song_id": 117,
+      "album": "Day For Night",
+      "total_plays": 110,
+      "as_opener": 0,
+      "as_encore": 33,
+      "first_played": "1993-02-07",
+      "last_played": "2016-08-03",
+      "pct_of_shows": 11.53
+    },
+    "Inevitability Of Death": {
+      "song_id": 63,
+      "album": "Day For Night",
+      "total_plays": 133,
+      "as_opener": 1,
+      "as_encore": 10,
+      "first_played": "1993-06-25",
+      "last_played": "2009-09-11",
+      "pct_of_shows": 14.04
+    },
+    "Scared": {
+      "song_id": 93,
+      "album": "Day For Night",
+      "total_plays": 219,
+      "as_opener": 0,
+      "as_encore": 73,
+      "first_played": "1993-06-25",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 23.13
+    },
+    "An Inch An Hour": {
+      "song_id": 15,
+      "album": "Day For Night",
+      "total_plays": 40,
+      "as_opener": 0,
+      "as_encore": 20,
+      "first_played": "1994-07-01",
+      "last_played": "2013-01-20",
+      "pct_of_shows": 4.26
+    },
+    "Emergency": {
+      "song_id": 39,
+      "album": "Day For Night",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1993-12-09",
+      "last_played": "1993-12-09",
+      "pct_of_shows": 0.11
+    },
+    "Titanic Terrarium": {
+      "song_id": 120,
+      "album": "Day For Night",
+      "total_plays": 46,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1994-10-07",
+      "last_played": "2015-04-11",
+      "pct_of_shows": 4.92
+    },
+    "Impossibilium": {
+      "song_id": 62,
+      "album": "Day For Night",
+      "total_plays": 15,
+      "as_opener": 1,
+      "as_encore": 2,
+      "first_played": "1994-08-08",
+      "last_played": "1995-04-29",
+      "pct_of_shows": 1.6
+    },
+    "Gift Shop": {
+      "song_id": 52,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 571,
+      "as_opener": 44,
+      "as_encore": 17,
+      "first_played": "1995-06-24",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 63.66
+    },
+    "Springtime In Vienna": {
+      "song_id": 103,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 451,
+      "as_opener": 14,
+      "as_encore": 41,
+      "first_played": "1993-06-25",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 47.62
+    },
+    "Ahead By A Century": {
+      "song_id": 13,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 695,
+      "as_opener": 1,
+      "as_encore": 62,
+      "first_played": "1996-05-06",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 79.52
+    },
+    "Don't Wake Daddy": {
+      "song_id": 37,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 141,
+      "as_opener": 9,
+      "as_encore": 7,
+      "first_played": "1996-05-06",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 16.13
+    },
+    "Flamenco": {
+      "song_id": 48,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 181,
+      "as_opener": 0,
+      "as_encore": 15,
+      "first_played": "1996-05-06",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 20.71
+    },
+    "700 Ft. Ceiling": {
+      "song_id": 12,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 122,
+      "as_opener": 3,
+      "as_encore": 7,
+      "first_played": "1995-10-21",
+      "last_played": "2004-11-27",
+      "pct_of_shows": 13.88
+    },
+    "Butts Wigglin": {
+      "song_id": 28,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 50,
+      "as_opener": 0,
+      "as_encore": 8,
+      "first_played": "1996-05-06",
+      "last_played": "1997-05-11",
+      "pct_of_shows": 5.72
+    },
+    "Apartment Song": {
+      "song_id": 17,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 22,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "1996-05-06",
+      "last_played": "2000-11-19",
+      "pct_of_shows": 2.52
+    },
+    "Coconut Cream": {
+      "song_id": 31,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 41,
+      "as_opener": 0,
+      "as_encore": 18,
+      "first_played": "1996-05-06",
+      "last_played": "1997-07-30",
+      "pct_of_shows": 4.69
+    },
+    "Let's Stay Engaged": {
+      "song_id": 70,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 25,
+      "as_opener": 0,
+      "as_encore": 19,
+      "first_played": "1996-05-06",
+      "last_played": "2007-04-16",
+      "pct_of_shows": 2.86
+    },
+    "Sherpa": {
+      "song_id": 97,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 57,
+      "as_opener": 0,
+      "as_encore": 23,
+      "first_played": "1995-08-10",
+      "last_played": "2007-06-30",
+      "pct_of_shows": 6.43
+    },
+    "Put It Off": {
+      "song_id": 86,
+      "album": "Trouble at the Henhouse",
+      "total_plays": 48,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "1996-05-06",
+      "last_played": "2007-10-10",
+      "pct_of_shows": 5.49
+    },
+    "Poets": {
+      "song_id": 85,
+      "album": "Phantom Power",
+      "total_plays": 611,
+      "as_opener": 27,
+      "as_encore": 56,
+      "first_played": "1998-07-02",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 77.24
+    },
+    "Something On": {
+      "song_id": 101,
+      "album": "Phantom Power",
+      "total_plays": 220,
+      "as_opener": 27,
+      "as_encore": 11,
+      "first_played": "1998-07-02",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 27.81
+    },
+    "Save The Planet": {
+      "song_id": 92,
+      "album": "Phantom Power",
+      "total_plays": 125,
+      "as_opener": 31,
+      "as_encore": 45,
+      "first_played": "1997-05-10",
+      "last_played": "2009-06-10",
+      "pct_of_shows": 15.57
+    },
+    "Bobcaygeon": {
+      "song_id": 24,
+      "album": "Phantom Power",
+      "total_plays": 575,
+      "as_opener": 1,
+      "as_encore": 114,
+      "first_played": "1997-05-10",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 71.61
+    },
+    "Thompson Girl": {
+      "song_id": 115,
+      "album": "Phantom Power",
+      "total_plays": 90,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "1998-07-02",
+      "last_played": "2013-02-12",
+      "pct_of_shows": 11.38
+    },
+    "Membership": {
+      "song_id": 77,
+      "album": "Phantom Power",
+      "total_plays": 119,
+      "as_opener": 2,
+      "as_encore": 13,
+      "first_played": "1997-04-29",
+      "last_played": "2016-08-12",
+      "pct_of_shows": 14.73
+    },
+    "Fireworks": {
+      "song_id": 47,
+      "album": "Phantom Power",
+      "total_plays": 426,
+      "as_opener": 31,
+      "as_encore": 43,
+      "first_played": "1997-05-01",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 52.79
+    },
+    "Vapour Trails": {
+      "song_id": 126,
+      "album": "Phantom Power",
+      "total_plays": 121,
+      "as_opener": 0,
+      "as_encore": 24,
+      "first_played": "1997-05-03",
+      "last_played": "2015-04-10",
+      "pct_of_shows": 15.01
+    },
+    "The Rules": {
+      "song_id": 113,
+      "album": "Phantom Power",
+      "total_plays": 58,
+      "as_opener": 0,
+      "as_encore": 25,
+      "first_played": "1998-07-02",
+      "last_played": "2012-12-07",
+      "pct_of_shows": 7.33
+    },
+    "Chagrin Falls": {
+      "song_id": 30,
+      "album": "Phantom Power",
+      "total_plays": 127,
+      "as_opener": 0,
+      "as_encore": 45,
+      "first_played": "1998-07-02",
+      "last_played": "2009-09-19",
+      "pct_of_shows": 16.06
+    },
+    "Escape Is At Hand For The Travellin Man": {
+      "song_id": 41,
+      "album": "Phantom Power",
+      "total_plays": 282,
+      "as_opener": 0,
+      "as_encore": 56,
+      "first_played": "1996-11-09",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 33.94
+    },
+    "Emperor Penguin": {
+      "song_id": 40,
+      "album": "Phantom Power",
+      "total_plays": 72,
+      "as_opener": 0,
+      "as_encore": 11,
+      "first_played": "1998-07-02",
+      "last_played": "2009-09-14",
+      "pct_of_shows": 9.1
+    },
+    "My Music At Work": {
+      "song_id": 79,
+      "album": "Music @ Work",
+      "total_plays": 464,
+      "as_opener": 28,
+      "as_encore": 64,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 72.05
+    },
+    "Tiger The Lion": {
+      "song_id": 118,
+      "album": "Music @ Work",
+      "total_plays": 89,
+      "as_opener": 15,
+      "as_encore": 15,
+      "first_played": "2000-06-16",
+      "last_played": "2009-11-25",
+      "pct_of_shows": 13.99
+    },
+    "Lake Fever": {
+      "song_id": 67,
+      "album": "Music @ Work",
+      "total_plays": 155,
+      "as_opener": 0,
+      "as_encore": 22,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 24.07
+    },
+    "Putting Down": {
+      "song_id": 87,
+      "album": "Music @ Work",
+      "total_plays": 139,
+      "as_opener": 13,
+      "as_encore": 5,
+      "first_played": "1999-12-29",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 21.58
+    },
+    "Stay": {
+      "song_id": 104,
+      "album": "Music @ Work",
+      "total_plays": 47,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "1999-12-29",
+      "last_played": "2009-04-24",
+      "pct_of_shows": 7.3
+    },
+    "The Bastard": {
+      "song_id": 107,
+      "album": "Music @ Work",
+      "total_plays": 13,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "1999-12-29",
+      "last_played": "2000-10-25",
+      "pct_of_shows": 2.02
+    },
+    "The Completists": {
+      "song_id": 109,
+      "album": "Music @ Work",
+      "total_plays": 50,
+      "as_opener": 0,
+      "as_encore": 8,
+      "first_played": "2000-06-06",
+      "last_played": "2009-05-07",
+      "pct_of_shows": 7.81
+    },
+    "Freak Turbulence": {
+      "song_id": 49,
+      "album": "Music @ Work",
+      "total_plays": 54,
+      "as_opener": 0,
+      "as_encore": 17,
+      "first_played": "2000-01-01",
+      "last_played": "2007-02-26",
+      "pct_of_shows": 8.41
+    },
+    "Sharks": {
+      "song_id": 95,
+      "album": "Music @ Work",
+      "total_plays": 16,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1999-12-29",
+      "last_played": "2000-12-14",
+      "pct_of_shows": 2.48
+    },
+    "Toronto #4": {
+      "song_id": 121,
+      "album": "Music @ Work",
+      "total_plays": 30,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2000-06-13",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 4.7
+    },
+    "Wild Mountain Honey": {
+      "song_id": 131,
+      "album": "Music @ Work",
+      "total_plays": 26,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2000-06-13",
+      "last_played": "2000-12-23",
+      "pct_of_shows": 4.08
+    },
+    "Train Overnight": {
+      "song_id": 123,
+      "album": "Music @ Work",
+      "total_plays": 36,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "1999-12-29",
+      "last_played": "2000-12-21",
+      "pct_of_shows": 5.59
+    },
+    "The Bear": {
+      "song_id": 108,
+      "album": "Music @ Work",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2009-06-06",
+      "pct_of_shows": 2.09
+    },
+    "As I Wind Down The Pines": {
+      "song_id": 18,
+      "album": "Music @ Work",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Are You Ready": {
+      "song_id": 144,
+      "album": "In Violet Light",
+      "total_plays": 73,
+      "as_opener": 1,
+      "as_encore": 35,
+      "first_played": "2002-06-12",
+      "last_played": "2006-07-03",
+      "pct_of_shows": 13.15
+    },
+    "Use It Up": {
+      "song_id": 140,
+      "album": "In Violet Light",
+      "total_plays": 78,
+      "as_opener": 55,
+      "as_encore": 5,
+      "first_played": "2002-02-20",
+      "last_played": "2016-08-12",
+      "pct_of_shows": 14
+    },
+    "The Darkest One": {
+      "song_id": 141,
+      "album": "In Violet Light",
+      "total_plays": 31,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2002-02-20",
+      "last_played": "2003-08-01",
+      "pct_of_shows": 5.57
+    },
+    "It's A Good Life If You Don't Weaken": {
+      "song_id": 145,
+      "album": "In Violet Light",
+      "total_plays": 263,
+      "as_opener": 4,
+      "as_encore": 13,
+      "first_played": "2002-06-12",
+      "last_played": "2021-06-06",
+      "pct_of_shows": 47.39
+    },
+    "Silver Jet": {
+      "song_id": 146,
+      "album": "In Violet Light",
+      "total_plays": 103,
+      "as_opener": 28,
+      "as_encore": 5,
+      "first_played": "2002-06-12",
+      "last_played": "2004-11-26",
+      "pct_of_shows": 18.56
+    },
+    "Throwing Off Glass": {
+      "song_id": 147,
+      "album": "In Violet Light",
+      "total_plays": 24,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2002-06-12",
+      "last_played": "2016-08-12",
+      "pct_of_shows": 4.32
+    },
+    "All Torn Up": {
+      "song_id": 142,
+      "album": "In Violet Light",
+      "total_plays": 46,
+      "as_opener": 0,
+      "as_encore": 12,
+      "first_played": "2002-02-20",
+      "last_played": "2002-11-20",
+      "pct_of_shows": 8.26
+    },
+    "Leave": {
+      "song_id": 148,
+      "album": "In Violet Light",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2002-06-12",
+      "last_played": "2002-06-27",
+      "pct_of_shows": 0.72
+    },
+    "A Beautiful Thing": {
+      "song_id": 149,
+      "album": "In Violet Light",
+      "total_plays": 23,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2002-06-12",
+      "last_played": "2002-11-11",
+      "pct_of_shows": 4.14
+    },
+    "The Dire Wolf": {
+      "song_id": 150,
+      "album": "In Violet Light",
+      "total_plays": 91,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2002-06-12",
+      "last_played": "2016-08-12",
+      "pct_of_shows": 16.4
+    },
+    "The Dark Canuck": {
+      "song_id": 151,
+      "album": "In Violet Light",
+      "total_plays": 48,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "2002-06-12",
+      "last_played": "2009-10-15",
+      "pct_of_shows": 8.65
+    },
+    "Heaven Is A Better Place Today": {
+      "song_id": 159,
+      "album": "In Between Evolution",
+      "total_plays": 65,
+      "as_opener": 1,
+      "as_encore": 45,
+      "first_played": "2004-06-22",
+      "last_played": "2014-10-08",
+      "pct_of_shows": 14.1
+    },
+    "Summer's Killing Us": {
+      "song_id": 160,
+      "album": "In Between Evolution",
+      "total_plays": 79,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "2004-06-22",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 17.14
+    },
+    "Gus: The Polar Bear From Central Park": {
+      "song_id": 162,
+      "album": "In Between Evolution",
+      "total_plays": 127,
+      "as_opener": 1,
+      "as_encore": 5,
+      "first_played": "2003-10-27",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 27.43
+    },
+    "Vaccination Scar": {
+      "song_id": 163,
+      "album": "In Between Evolution",
+      "total_plays": 59,
+      "as_opener": 42,
+      "as_encore": 10,
+      "first_played": "2004-06-22",
+      "last_played": "2005-07-16",
+      "pct_of_shows": 12.8
+    },
+    "It Can't Be Nashville Every Night": {
+      "song_id": 164,
+      "album": "In Between Evolution",
+      "total_plays": 94,
+      "as_opener": 2,
+      "as_encore": 1,
+      "first_played": "2004-06-22",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 20.39
+    },
+    "If New Orleans Is Beat": {
+      "song_id": 165,
+      "album": "In Between Evolution",
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 6,
+      "first_played": "2003-10-27",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 3.24
+    },
+    "You're Everywhere": {
+      "song_id": 166,
+      "album": "In Between Evolution",
+      "total_plays": 29,
+      "as_opener": 6,
+      "as_encore": 5,
+      "first_played": "2003-10-27",
+      "last_played": "2004-12-05",
+      "pct_of_shows": 6.26
+    },
+    "As Makeshift As You Are": {
+      "song_id": 167,
+      "album": "In Between Evolution",
+      "total_plays": 44,
+      "as_opener": 7,
+      "as_encore": 12,
+      "first_played": "2003-10-27",
+      "last_played": "2009-04-27",
+      "pct_of_shows": 9.5
+    },
+    "Mean Streak": {
+      "song_id": 168,
+      "album": "In Between Evolution",
+      "total_plays": 30,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2004-06-22",
+      "last_played": "2004-11-20",
+      "pct_of_shows": 6.51
+    },
+    "The Heart Of The Melt": {
+      "song_id": 169,
+      "album": "In Between Evolution",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2004-06-22",
+      "last_played": "2004-09-26",
+      "pct_of_shows": 0.87
+    },
+    "One Night In Copenhagen": {
+      "song_id": 170,
+      "album": "In Between Evolution",
+      "total_plays": 18,
+      "as_opener": 0,
+      "as_encore": 8,
+      "first_played": "2004-06-22",
+      "last_played": "2004-12-31",
+      "pct_of_shows": 3.9
+    },
+    "Are We Family": {
+      "song_id": 171,
+      "album": "In Between Evolution",
+      "total_plays": 26,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2004-06-22",
+      "last_played": "2009-05-29",
+      "pct_of_shows": 5.64
+    },
+    "Goodnight Josephine": {
+      "song_id": 172,
+      "album": "In Between Evolution",
+      "total_plays": 38,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2003-08-01",
+      "last_played": "2009-05-15",
+      "pct_of_shows": 8.17
+    },
+    "Pretend": {
+      "song_id": 180,
+      "album": "World Container",
+      "total_plays": 45,
+      "as_opener": 0,
+      "as_encore": 13,
+      "first_played": "2006-05-24",
+      "last_played": "2007-10-27",
+      "pct_of_shows": 11.36
+    },
+    "The Lonely End Of The Rink": {
+      "song_id": 181,
+      "album": "World Container",
+      "total_plays": 178,
+      "as_opener": 70,
+      "as_encore": 36,
+      "first_played": "2006-05-26",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 45.06
+    },
+    "The Drop-off": {
+      "song_id": 182,
+      "album": "World Container",
+      "total_plays": 94,
+      "as_opener": 0,
+      "as_encore": 11,
+      "first_played": "2006-05-26",
+      "last_played": "2009-12-03",
+      "pct_of_shows": 23.8
+    },
+    "Fly": {
+      "song_id": 183,
+      "album": "World Container",
+      "total_plays": 35,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2006-05-26",
+      "last_played": "2007-10-24",
+      "pct_of_shows": 8.86
+    },
+    "Yer Not The Ocean": {
+      "song_id": 184,
+      "album": "World Container",
+      "total_plays": 186,
+      "as_opener": 44,
+      "as_encore": 4,
+      "first_played": "2006-06-24",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 47.94
+    },
+    "In View": {
+      "song_id": 185,
+      "album": "World Container",
+      "total_plays": 318,
+      "as_opener": 16,
+      "as_encore": 29,
+      "first_played": "2006-09-09",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 84.13
+    },
+    "Luv (sic)": {
+      "song_id": 186,
+      "album": "World Container",
+      "total_plays": 34,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2006-10-17",
+      "last_played": "2007-10-19",
+      "pct_of_shows": 9.07
+    },
+    "The Kids Don't Get It": {
+      "song_id": 187,
+      "album": "World Container",
+      "total_plays": 111,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-01",
+      "pct_of_shows": 29.52
+    },
+    "Last Night I Dreamed You Didn't Love Me": {
+      "song_id": 188,
+      "album": "World Container",
+      "total_plays": 12,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2006-10-17",
+      "last_played": "2007-05-19",
+      "pct_of_shows": 3.2
+    },
+    "Family Band": {
+      "song_id": 189,
+      "album": "World Container",
+      "total_plays": 187,
+      "as_opener": 9,
+      "as_encore": 24,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 49.73
+    },
+    "World Container": {
+      "song_id": 190,
+      "album": "World Container",
+      "total_plays": 94,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2006-10-15",
+      "last_played": "2016-08-01",
+      "pct_of_shows": 25
+    },
+    "Morning Moon": {
+      "song_id": 243,
+      "album": "We Are the Same",
+      "total_plays": 89,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-09",
+      "last_played": "2016-07-30",
+      "pct_of_shows": 37.08
+    },
+    "Honey, Please": {
+      "song_id": 244,
+      "album": "We Are the Same",
+      "total_plays": 21,
+      "as_opener": 3,
+      "as_encore": 0,
+      "first_played": "2009-04-24",
+      "last_played": "2009-10-24",
+      "pct_of_shows": 8.79
+    },
+    "The Last Recluse": {
+      "song_id": 245,
+      "album": "We Are the Same",
+      "total_plays": 72,
+      "as_opener": 5,
+      "as_encore": 1,
+      "first_played": "2009-04-09",
+      "last_played": "2016-07-30",
+      "pct_of_shows": 30
+    },
+    "Coffee Girl": {
+      "song_id": 246,
+      "album": "We Are the Same",
+      "total_plays": 77,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2009-04-09",
+      "last_played": "2016-07-30",
+      "pct_of_shows": 32.08
+    },
+    "Now The Struggle Has A Name": {
+      "song_id": 247,
+      "album": "We Are the Same",
+      "total_plays": 57,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2009-04-09",
+      "last_played": "2016-07-30",
+      "pct_of_shows": 23.75
+    },
+    "The Depression Suite": {
+      "song_id": 248,
+      "album": "We Are the Same",
+      "total_plays": 86,
+      "as_opener": 36,
+      "as_encore": 0,
+      "first_played": "2009-04-09",
+      "last_played": "2009-12-04",
+      "pct_of_shows": 35.83
+    },
+    "The Exact Feeling": {
+      "song_id": 249,
+      "album": "We Are the Same",
+      "total_plays": 19,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2009-04-24",
+      "last_played": "2015-01-24",
+      "pct_of_shows": 7.95
+    },
+    "Queen Of The Furrows": {
+      "song_id": 250,
+      "album": "We Are the Same",
+      "total_plays": 23,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2009-04-28",
+      "last_played": "2009-10-28",
+      "pct_of_shows": 9.7
+    },
+    "Speed River": {
+      "song_id": 251,
+      "album": "We Are the Same",
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2009-04-29",
+      "last_played": "2009-06-05",
+      "pct_of_shows": 4.24
+    },
+    "Frozen In My Tracks": {
+      "song_id": 252,
+      "album": "We Are the Same",
+      "total_plays": 52,
+      "as_opener": 0,
+      "as_encore": 31,
+      "first_played": "2009-05-01",
+      "last_played": "2009-12-03",
+      "pct_of_shows": 22.13
+    },
+    "Love Is A First": {
+      "song_id": 253,
+      "album": "We Are the Same",
+      "total_plays": 119,
+      "as_opener": 21,
+      "as_encore": 5,
+      "first_played": "2009-04-09",
+      "last_played": "2013-07-25",
+      "pct_of_shows": 49.58
+    },
+    "Country Day": {
+      "song_id": 254,
+      "album": "We Are the Same",
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2009-04-09",
+      "last_played": "2009-06-04",
+      "pct_of_shows": 2.92
+    },
+    "Hush": {
+      "song_id": 255,
+      "album": "We Are the Same",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Skeleton Park": {
+      "song_id": 256,
+      "album": "We Are the Same",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "At Transformation": {
+      "song_id": 257,
+      "album": "Now for Plan A",
+      "total_plays": 129,
+      "as_opener": 65,
+      "as_encore": 15,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "pct_of_shows": 84.87
+    },
+    "Man Machine Poem": {
+      "song_id": 258,
+      "album": "Now for Plan A",
+      "total_plays": 90,
+      "as_opener": 3,
+      "as_encore": 5,
+      "first_played": "2012-02-16",
+      "last_played": "2016-08-14",
+      "pct_of_shows": 65.22
+    },
+    "The Lookahead": {
+      "song_id": 259,
+      "album": "Now for Plan A",
+      "total_plays": 35,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "2012-02-16",
+      "last_played": "2016-08-05",
+      "pct_of_shows": 25.36
+    },
+    "We Want To Be It": {
+      "song_id": 260,
+      "album": "Now for Plan A",
+      "total_plays": 85,
+      "as_opener": 0,
+      "as_encore": 7,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "pct_of_shows": 55.92
+    },
+    "Streets Ahead": {
+      "song_id": 261,
+      "album": "Now for Plan A",
+      "total_plays": 80,
+      "as_opener": 0,
+      "as_encore": 3,
+      "first_played": "2011-06-21",
+      "last_played": "2016-08-14",
+      "pct_of_shows": 52.63
+    },
+    "Now For Plan A": {
+      "song_id": 262,
+      "album": "Now for Plan A",
+      "total_plays": 10,
+      "as_opener": 0,
+      "as_encore": 5,
+      "first_played": "2012-11-03",
+      "last_played": "2013-02-14",
+      "pct_of_shows": 8
+    },
+    "The Modern Spirit": {
+      "song_id": 263,
+      "album": "Now for Plan A",
+      "total_plays": 11,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2012-10-02",
+      "last_played": "2013-01-28",
+      "pct_of_shows": 8.59
+    },
+    "About This Map": {
+      "song_id": 264,
+      "album": "Now for Plan A",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2012-11-17",
+      "last_played": "2012-12-05",
+      "pct_of_shows": 1.72
+    },
+    "Take Forever": {
+      "song_id": 265,
+      "album": "Now for Plan A",
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2012-02-16",
+      "last_played": "2013-09-07",
+      "pct_of_shows": 5.07
+    },
+    "Done And Done": {
+      "song_id": 266,
+      "album": "Now for Plan A",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2012-11-06",
+      "last_played": "2012-11-06",
+      "pct_of_shows": 0.81
+    },
+    "Goodnight Attawapiskat": {
+      "song_id": 267,
+      "album": "Now for Plan A",
+      "total_plays": 36,
+      "as_opener": 0,
+      "as_encore": 9,
+      "first_played": "2012-06-28",
+      "last_played": "2013-09-10",
+      "pct_of_shows": 26.28
+    },
+    "Man": {
+      "song_id": 242,
+      "album": "Man Machine Poem",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "In A World Possessed By The Human Mind": {
+      "song_id": 268,
+      "album": "Man Machine Poem",
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 100
+    },
+    "What Blue": {
+      "song_id": 269,
+      "album": "Man Machine Poem",
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 100
+    },
+    "In Sarnia": {
+      "song_id": 270,
+      "album": "Man Machine Poem",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-26",
+      "last_played": "2016-08-16",
+      "pct_of_shows": 30.77
+    },
+    "Here, In The Dark": {
+      "song_id": 271,
+      "album": "Man Machine Poem",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Great Soul": {
+      "song_id": 272,
+      "album": "Man Machine Poem",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Tired As Fuck": {
+      "song_id": 273,
+      "album": "Man Machine Poem",
+      "total_plays": 6,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 40
+    },
+    "Hot Mic": {
+      "song_id": 274,
+      "album": "Man Machine Poem",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Ocean Next": {
+      "song_id": 275,
+      "album": "Man Machine Poem",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-28",
+      "last_played": "2016-08-18",
+      "pct_of_shows": 41.67
+    },
+    "Machine": {
+      "song_id": 276,
+      "album": "Man Machine Poem",
+      "total_plays": 15,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2016-07-22",
+      "last_played": "2016-08-20",
+      "pct_of_shows": 100
+    },
+    "Good Morning Little School Girl (Sonny Boy Williamson)": {
+      "song_id": 54,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-03",
+      "last_played": "1988-03-03",
+      "pct_of_shows": 0.1
+    },
+    "2000 Light Years From Home (The Rolling Stones)": {
+      "song_id": 10,
+      "album": "Covers",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1988-03-02",
+      "last_played": "2007-01-20",
+      "pct_of_shows": 0.3
+    },
+    "Baby Please Don't Go (Muddy Waters)": {
+      "song_id": 20,
+      "album": "Covers",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1990-07-01",
+      "pct_of_shows": 0.5
+    },
+    "Road Runner (Bo Diddley)": {
+      "song_id": 21,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Hey Marie (Andrew Cash)": {
+      "song_id": 58,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1993-09-05",
+      "last_played": "1993-09-05",
+      "pct_of_shows": 0.11
+    },
+    "Little By Little (The Rolling Stones)": {
+      "song_id": 73,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Seven Days (Bob Dylan)": {
+      "song_id": 94,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1991-05-24",
+      "last_played": "1991-05-24",
+      "pct_of_shows": 0.1
+    },
+    "Summerside Of Life (Gordon Lightfoot)": {
+      "song_id": 105,
+      "album": "Covers",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "1995-07-22",
+      "last_played": "2007-01-14",
+      "pct_of_shows": 0.45
+    },
+    "Suzie Q (Dale Hawkins)": {
+      "song_id": 106,
+      "album": "Covers",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.4
+    },
+    "Train Kept A Rollin (Tiny Bradshaw)": {
+      "song_id": 122,
+      "album": "Covers",
+      "total_plays": 8,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "1988-07-15",
+      "last_played": "2007-03-19",
+      "pct_of_shows": 0.8
+    },
+    "Rockin' In The Free World (Neil Young)": {
+      "song_id": 137,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2001-10-21",
+      "last_played": "2001-10-21",
+      "pct_of_shows": 0.18
+    },
+    "I Can Only Give You Everything (Van Morrison)": {
+      "song_id": 175,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1989-07-01",
+      "last_played": "2007-01-13",
+      "pct_of_shows": 0.2
+    },
+    "The Man Comes Around (Johnny Cash)": {
+      "song_id": 307,
+      "album": "GD Covers",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Going Going Gone (Bob Dylan)": {
+      "song_id": 179,
+      "album": "Covers",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2003-08-31",
+      "last_played": "2007-01-22",
+      "pct_of_shows": 0.86
+    },
+    "Can’t Explain (The Who)": {
+      "song_id": 191,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-09",
+      "last_played": "2007-03-09",
+      "pct_of_shows": 0.3
+    },
+    "1979 (Smashing Pumpkins)": {
+      "song_id": 192,
+      "album": "Covers",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2006-09-15",
+      "last_played": "2007-05-11",
+      "pct_of_shows": 0.8
+    },
+    "I Want You (Bob Dylan)": {
+      "song_id": 193,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-18",
+      "last_played": "2007-04-18",
+      "pct_of_shows": 0.32
+    },
+    "Substitute (The Who)": {
+      "song_id": 195,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-15",
+      "last_played": "2007-09-11",
+      "pct_of_shows": 0.61
+    },
+    "Suspicious Minds (Mark James)": {
+      "song_id": 196,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-21",
+      "last_played": "2007-03-21",
+      "pct_of_shows": 0.31
+    },
+    "Mr. Soul (Neil Young)": {
+      "song_id": 197,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-03-23",
+      "last_played": "2007-10-10",
+      "pct_of_shows": 0.62
+    },
+    "Still In Hollywood (Concrete Blonde)": {
+      "song_id": 198,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-24",
+      "last_played": "2007-03-24",
+      "pct_of_shows": 0.31
+    },
+    "If You Gotta Go, Go Now (Bob Dylan)": {
+      "song_id": 199,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-26",
+      "last_played": "2007-03-26",
+      "pct_of_shows": 0.31
+    },
+    "Don’t Worry Baby (Los Lobos)": {
+      "song_id": 200,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-28",
+      "last_played": "2007-03-28",
+      "pct_of_shows": 0.31
+    },
+    "Jumping Jack Flash (The Rolling Stones)": {
+      "song_id": 201,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-03-29",
+      "last_played": "2007-03-29",
+      "pct_of_shows": 0.32
+    },
+    "Black Day In July (Gordon Lightfoot)": {
+      "song_id": 202,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-12",
+      "last_played": "2007-04-12",
+      "pct_of_shows": 0.32
+    },
+    "Cold Metal (Iggy Pop)": {
+      "song_id": 203,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-13",
+      "last_played": "2007-04-13",
+      "pct_of_shows": 0.32
+    },
+    "Wreck Of The Edmund Fitzgerald (Gordon Lightfoot)": {
+      "song_id": 204,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-14",
+      "last_played": "2007-04-14",
+      "pct_of_shows": 0.32
+    },
+    "Child Of The Moon (The Rolling Stones)": {
+      "song_id": 205,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-16",
+      "last_played": "2007-04-16",
+      "pct_of_shows": 0.32
+    },
+    "Tax Man (The Beatles)": {
+      "song_id": 206,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-17",
+      "last_played": "2007-04-17",
+      "pct_of_shows": 0.32
+    },
+    "Is This Love (Bob Marley And The Wailers)": {
+      "song_id": 207,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-20",
+      "last_played": "2007-04-20",
+      "pct_of_shows": 0.32
+    },
+    "Rudie Can’t Fail (The Clash)": {
+      "song_id": 208,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-21",
+      "last_played": "2007-04-21",
+      "pct_of_shows": 0.32
+    },
+    "The Last Time (The Rolling Stones)": {
+      "song_id": 209,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-22",
+      "last_played": "2007-04-22",
+      "pct_of_shows": 0.33
+    },
+    "Johnny Appleseed (Joe Strummer And The Mescaleros)": {
+      "song_id": 210,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-04-24",
+      "last_played": "2007-09-25",
+      "pct_of_shows": 0.65
+    },
+    "The Magnificent Seven (The Clash)": {
+      "song_id": 211,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-04-25",
+      "last_played": "2007-09-26",
+      "pct_of_shows": 0.66
+    },
+    "Dead Flowers (The Rolling Stones)": {
+      "song_id": 212,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-28",
+      "last_played": "2007-04-28",
+      "pct_of_shows": 0.33
+    },
+    "Young Americans (David Bowie)": {
+      "song_id": 213,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-04-29",
+      "last_played": "2007-04-29",
+      "pct_of_shows": 0.33
+    },
+    "Helter Skelter (The Beatles)": {
+      "song_id": 214,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-10",
+      "last_played": "2007-05-10",
+      "pct_of_shows": 0.33
+    },
+    "Surrender (Cheap Trick)": {
+      "song_id": 215,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-12",
+      "last_played": "2007-09-08",
+      "pct_of_shows": 0.67
+    },
+    "Bastards Of Young (The Replacements)": {
+      "song_id": 216,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-14",
+      "last_played": "2007-05-14",
+      "pct_of_shows": 0.34
+    },
+    "Come Together (The Beatles)": {
+      "song_id": 217,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-15",
+      "last_played": "2007-05-15",
+      "pct_of_shows": 0.34
+    },
+    "The Shape I’m In (The Band)": {
+      "song_id": 218,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-16",
+      "last_played": "2007-05-16",
+      "pct_of_shows": 0.34
+    },
+    "Street Fighting Man (The Rolling Stones)": {
+      "song_id": 219,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-18",
+      "last_played": "2007-05-18",
+      "pct_of_shows": 0.34
+    },
+    "Papa’s Got A Brand New Bag (James Brown)": {
+      "song_id": 220,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-05-19",
+      "last_played": "2007-05-19",
+      "pct_of_shows": 0.34
+    },
+    "Queen Bitch (David Bowie)": {
+      "song_id": 221,
+      "album": "Covers",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 4,
+      "first_played": "2006-12-13",
+      "last_played": "2008-07-03",
+      "pct_of_shows": 1.39
+    },
+    "“c’mon Everybody (Eddie Cochran)": {
+      "song_id": 222,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2006-12-13",
+      "last_played": "2007-01-08",
+      "pct_of_shows": 0.56
+    },
+    "On A Night Like This (Bob Dylan)": {
+      "song_id": 223,
+      "album": "Covers",
+      "total_plays": 3,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "2003-08-30",
+      "last_played": "2007-01-10",
+      "pct_of_shows": 0.65
+    },
+    "It Makes No Difference (The Band)": {
+      "song_id": 224,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2006-12-13",
+      "last_played": "2007-01-12",
+      "pct_of_shows": 0.56
+    },
+    "Somethin’ Else (Eddie Cochran)": {
+      "song_id": 227,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-16",
+      "last_played": "2007-01-16",
+      "pct_of_shows": 0.28
+    },
+    "Four Stong Winds (Ian & Sylvia)": {
+      "song_id": 228,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-17",
+      "last_played": "2007-01-17",
+      "pct_of_shows": 0.29
+    },
+    "Powderfinger (Neil Young)": {
+      "song_id": 229,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-19",
+      "last_played": "2007-01-19",
+      "pct_of_shows": 0.29
+    },
+    "Six Days On The Road (Dave Dudley)": {
+      "song_id": 230,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-23",
+      "last_played": "2007-01-23",
+      "pct_of_shows": 0.29
+    },
+    "Train In Vain (The Clash)": {
+      "song_id": 231,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-01-25",
+      "last_played": "2007-09-15",
+      "pct_of_shows": 0.58
+    },
+    "The Weight (The Band)": {
+      "song_id": 232,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-26",
+      "last_played": "2007-01-26",
+      "pct_of_shows": 0.29
+    },
+    "Sudbury Saturday Night (Stompin’ Tom Connors)": {
+      "song_id": 233,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-27",
+      "last_played": "2007-01-27",
+      "pct_of_shows": 0.29
+    },
+    "Big Yellow Taxi (Joni Mitchell)": {
+      "song_id": 234,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-29",
+      "last_played": "2007-01-29",
+      "pct_of_shows": 0.29
+    },
+    "Hang On To Yourself (David Bowie)": {
+      "song_id": 235,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-01-31",
+      "last_played": "2007-01-31",
+      "pct_of_shows": 0.29
+    },
+    "Like A Rolling Stone (Bob Dylan)": {
+      "song_id": 236,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-02",
+      "last_played": "2007-02-02",
+      "pct_of_shows": 0.29
+    },
+    "Lust For Life (Iggy Pop)": {
+      "song_id": 237,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-05",
+      "last_played": "2007-02-05",
+      "pct_of_shows": 0.29
+    },
+    "Picture My Face (Teenage Head)": {
+      "song_id": 238,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2007-02-06",
+      "last_played": "2007-02-06",
+      "pct_of_shows": 0.3
+    },
+    "Diamond Dogs (David Bowie)": {
+      "song_id": 239,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2007-02-08",
+      "last_played": "2007-10-11",
+      "pct_of_shows": 0.59
+    },
+    "Atlantic City (Bruce Springsteen)": {
+      "song_id": 240,
+      "album": "Covers",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "I'll Make Love To You Anytime (JJ Cole)": {
+      "song_id": 280,
+      "album": "Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1991-05-01",
+      "last_played": "1991-07-13",
+      "pct_of_shows": 0.2
+    },
+    "Mary, Mary (The Monkees)": {
+      "song_id": 318,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Sweet Jane (Velvet Underground)": {
+      "song_id": 319,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Off The Hook (The Rolling Stones)": {
+      "song_id": 320,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Treat Her Right (Roy Head)": {
+      "song_id": 321,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Big City (The Pretty Things)": {
+      "song_id": 323,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Money (That's What I Want) (Berry Gordy)": {
+      "song_id": 324,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "For Your Love (The Yardbirds)": {
+      "song_id": 327,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "I'm a Believer (The Monkees)": {
+      "song_id": 329,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Here 'Tis (Lou Donaldson)": {
+      "song_id": 330,
+      "album": "Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Gloria": {
+      "song_id": 53,
+      "album": "Unreleased",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1988-10-00",
+      "pct_of_shows": 0.4
+    },
+    "Blonde Solid": {
+      "song_id": 22,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1992-04-18",
+      "pct_of_shows": 0.1
+    },
+    "Heart Attack Love": {
+      "song_id": 32,
+      "album": "Unreleased",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1988-10-00",
+      "pct_of_shows": 0.3
+    },
+    "Get Back Again": {
+      "song_id": 51,
+      "album": "Unreleased",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-04-06",
+      "last_played": "1995-02-06",
+      "pct_of_shows": 0.5
+    },
+    "Hailstone Hands Of God": {
+      "song_id": 57,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "It's So Easy": {
+      "song_id": 65,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Raining Hearts Of Fire": {
+      "song_id": 90,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Running For Your Life": {
+      "song_id": 91,
+      "album": "Unreleased",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.2
+    },
+    "She's Got What It Takes": {
+      "song_id": 98,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Times Are Passing Us By": {
+      "song_id": 119,
+      "album": "Unreleased",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-10-00",
+      "pct_of_shows": 0.2
+    },
+    "Waltz For Juliette": {
+      "song_id": 127,
+      "album": "Unreleased",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-03-02",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.2
+    },
+    "You See Details": {
+      "song_id": 133,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 1,
+      "as_encore": 0,
+      "first_played": "1992-04-18",
+      "last_played": "1992-04-18",
+      "pct_of_shows": 0.1
+    },
+    "??unknown??": {
+      "song_id": 135,
+      "album": "Unreleased",
+      "total_plays": 23,
+      "as_opener": 0,
+      "as_encore": 11,
+      "first_played": "1985-11-09",
+      "last_played": "2003-10-27",
+      "pct_of_shows": 2.29
+    },
+    "Lofty Pines Motel": {
+      "song_id": 139,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1998-07-23",
+      "last_played": "1998-07-23",
+      "pct_of_shows": 0.13
+    },
+    "Ballroom": {
+      "song_id": 156,
+      "album": "Unreleased",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2003-08-01",
+      "last_played": "2003-09-06",
+      "pct_of_shows": 0.43
+    },
+    "Fighter Fighter": {
+      "song_id": 173,
+      "album": "Unreleased",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2004-09-19",
+      "last_played": "2004-10-04",
+      "pct_of_shows": 0.67
+    },
+    "Down Home Girl": {
+      "song_id": 174,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1988-07-15",
+      "last_played": "1988-07-15",
+      "pct_of_shows": 0.1
+    },
+    "Baby Blue Blood": {
+      "song_id": 322,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "Psychedelic Ramblings of Rich Kids": {
+      "song_id": 325,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "If She's Seventeen": {
+      "song_id": 326,
+      "album": "Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1985-11-09",
+      "last_played": "1985-11-09",
+      "pct_of_shows": 0.1
+    },
+    "No Threat": {
+      "song_id": 176,
+      "album": "Yer Favourites",
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2005-07-16",
+      "last_played": "2006-07-02",
+      "pct_of_shows": 1.75
+    },
+    "The New Maybe": {
+      "song_id": 178,
+      "album": "Yer Favourites",
+      "total_plays": 3,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2005-12-14",
+      "last_played": "2006-05-26",
+      "pct_of_shows": 0.76
+    },
+    "Ouch": {
+      "song_id": 138,
+      "album": "Saskadelphia",
+      "total_plays": 9,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "1990-06-22",
+      "last_played": "1991-08-29",
+      "pct_of_shows": 0.91
+    },
+    "Not Necessary": {
+      "song_id": 279,
+      "album": "Saskadelphia",
+      "total_plays": 0,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": null,
+      "last_played": null,
+      "pct_of_shows": 0
+    },
+    "Montreal": {
+      "song_id": 78,
+      "album": "Saskadelphia",
+      "total_plays": 7,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1991-07-06",
+      "last_played": "2000-12-07",
+      "pct_of_shows": 0.72
+    },
+    "Crack My Spine (Like A Whip)": {
+      "song_id": 35,
+      "album": "Saskadelphia",
+      "total_plays": 8,
+      "as_opener": 4,
+      "as_encore": 0,
+      "first_played": "1990-04-06",
+      "last_played": "1991-11-24",
+      "pct_of_shows": 0.81
+    },
+    "Just As Well": {
+      "song_id": 64,
+      "album": "Saskadelphia",
+      "total_plays": 4,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "1990-02-23",
+      "last_played": "1990-06-24",
+      "pct_of_shows": 0.4
+    },
+    "Reformed Bapist Blues": {
+      "song_id": 89,
+      "album": "Saskadelphia",
+      "total_plays": 7,
+      "as_opener": 1,
+      "as_encore": 1,
+      "first_played": "1985-11-09",
+      "last_played": "1991-08-09",
+      "pct_of_shows": 0.7
+    },
+    "Pillform #3": {
+      "song_id": 296,
+      "album": "GD Unreleased",
+      "total_plays": 5,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2003-06-07",
+      "last_played": "2003-09-01",
+      "pct_of_shows": 83.33
+    },
+    "??unknown?? GD": {
+      "song_id": 304,
+      "album": "GD Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2003-08-29",
+      "last_played": "2003-08-29",
+      "pct_of_shows": 25
+    },
+    "The Bread Song": {
+      "song_id": 308,
+      "album": "GD Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-07-30",
+      "last_played": "2001-07-30",
+      "pct_of_shows": 12.5
+    },
+    "Don't Mind Me Jesus": {
+      "song_id": 309,
+      "album": "GD Unreleased",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-07-30",
+      "last_played": "2001-07-30",
+      "pct_of_shows": 12.5
+    },
+    "Tonight's the Night (Neil Young)": {
+      "song_id": 298,
+      "album": "GD Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 1,
+      "first_played": "2001-07-30",
+      "last_played": "2003-06-07",
+      "pct_of_shows": 25
+    },
+    "Fortunate Son (Creedence Clearwater Revival)": {
+      "song_id": 299,
+      "album": "GD Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2003-07-01",
+      "last_played": "2003-07-01",
+      "pct_of_shows": 20
+    },
+    "Nobody Cept You (Bob Dylan)": {
+      "song_id": 301,
+      "album": "GD Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2003-08-31",
+      "last_played": "2003-09-01",
+      "pct_of_shows": 100
+    },
+    "When You Dance I Can Really Love (Neil Young)": {
+      "song_id": 302,
+      "album": "GD Covers",
+      "total_plays": 2,
+      "as_opener": 0,
+      "as_encore": 2,
+      "first_played": "2001-07-30",
+      "last_played": "2003-08-31",
+      "pct_of_shows": 25
+    },
+    "Barstool Blues (Neil Young)": {
+      "song_id": 306,
+      "album": "GD Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2003-08-30",
+      "last_played": "2003-08-30",
+      "pct_of_shows": 33.33
+    },
+    "Ray Charles Kind Of Party (Dinner Is Ruined Band)": {
+      "song_id": 310,
+      "album": "GD Covers",
+      "total_plays": 1,
+      "as_opener": 0,
+      "as_encore": 0,
+      "first_played": "2001-07-30",
+      "last_played": "2001-07-30",
+      "pct_of_shows": 12.5
+    }
+  }
+}
