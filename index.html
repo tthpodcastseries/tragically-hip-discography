@@ -55,15 +55,27 @@
 
     /* HEADER */
     header {
+      position: relative;
       text-align: center;
-      padding: 48px 24px 32px;
+      padding: 72px 24px 56px;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      background: #0e0b16;
     }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .maple { font-size: 2rem; margin-bottom: 16px; display: block; }
     header h1 {
-      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-size: clamp(2.2rem, 7vw, 5rem);
       font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #fff;
       margin-bottom: 20px;
     }
     .hero-img {
@@ -160,6 +172,20 @@
     }
     .random-song-btn:hover { background: #a00d24; border-color: #a00d24; }
 
+    /* SONG SEARCH */
+    .song-search-autocomplete { position: relative; max-width: 480px; margin: 24px auto 20px; }
+    .song-search-input { width: 100%; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.25); background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
+    .song-search-input:focus { border-color: #fff; }
+    .song-search-input::placeholder { color: var(--muted2); }
+    .song-search-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; max-height: 260px; overflow-y: auto; z-index: 50; display: none; margin-top: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .song-search-dropdown.open { display: block; }
+    .song-search-option { padding: 10px 16px; cursor: pointer; font-size: 0.82rem; color: var(--muted); transition: background 0.1s; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .song-search-option:last-child { border-bottom: none; }
+    .song-search-option:hover, .song-search-option.active { background: rgba(255,255,255,0.06); color: var(--text); }
+    .song-search-option .opt-song { color: var(--text); font-weight: 600; }
+    .song-search-option .opt-album { color: var(--muted2); font-size: 0.72rem; margin-left: 6px; }
+    .song-search-input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
     /* TIMELINE */
     .timeline-section { padding: 0 0 24px; }
     .timeline-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; cursor: grab; padding: 12px 40px 0; scrollbar-width: thin; scrollbar-color: var(--accent-scroll) transparent; }
@@ -234,7 +260,7 @@
 <script>if(!sessionStorage.getItem('tth_pass')){document.getElementById('passGate').style.display='flex'}else{document.getElementById('passGate').remove()}</script>
 <script>
 (function(){
-  var target=new Date('2026-04-07T08:00:00-04:00').getTime();
+  var target=new Date('2026-04-20T20:00:00-04:00').getTime();
   function tick(){
     var now=Date.now(),diff=target-now;
     if(diff<=0){document.getElementById('cdDays').textContent='0';document.getElementById('cdHrs').textContent='0';document.getElementById('cdMin').textContent='0';document.getElementById('cdSec').textContent='0';return}
@@ -248,8 +274,14 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <header>
-  <h1><span style="color: #C8102E;">THE</span> <span style="color: #ffffff;">HIP</span> <span style="color: #C8102E;">COMPENDIUM</span></h1>
+  <span class="maple" aria-hidden="true">🍁</span>
+  <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">COMPENDIUM</span></h1>
+  <div class="song-search-autocomplete">
+    <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search for a Hip song..." autocomplete="off" aria-label="Search for a song">
+    <div class="song-search-dropdown" id="songSearchDropdown"></div>
+  </div>
   <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
+  <p style="font-size:0.7rem;color:#888;margin:-4px 0 8px;font-style:italic;">Photo: David Bastedo</p>
   <a href="discography.html" class="explore-link">Explore the Discography &rarr;</a>
 
   <div class="on-this-day" id="onThisDay">
@@ -274,7 +306,7 @@
   <div class="nav-row"><a href="discography.html#cat=live" class="category-btn">Live</a><a href="discography.html#cat=compilations" class="category-btn">Compilations</a><a href="discography.html#cat=boxsets" class="category-btn">Box Sets</a><a href="discography.html#cat=video" class="category-btn">Video</a></div>
   <div class="nav-row"><a href="discography.html#cat=lyrics" class="category-btn">Lyrics Search</a><a href="discography.html#cat=setlists" class="category-btn">Setlists</a></div>
   <div class="nav-row"><a href="tour-map.html" class="category-btn" style="flex:1;max-width:480px;">Tour Map</a></div>
-  <div class="nav-row"><a href="discography.html#cat=top40" class="category-btn" style="flex:1;max-width:480px;font-size:0.85rem;padding:14px 24px;">The Tragically Hip Top Forty Countdown</a></div>
+  <div class="nav-row"><a href="discography.html#cat=top40" class="category-btn" style="flex:1;max-width:480px;">Top Forty Countdown</a></div>
   <div class="nav-row"><a href="links.html" class="category-btn" style="flex:1;max-width:480px;">Yer Hip Links</a></div>
 </nav>
 
@@ -288,7 +320,13 @@
 </main>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
+  <img src="assets-optimized/band/band-photo.jpg" alt="The Tragically Hip" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Anthony Pidgeon</p>
+</div>
+
+<div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
   <img src="assets-optimized/band/band-photo-3.jpg" alt="The Tragically Hip" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
 </div>
 
 <footer>
@@ -303,7 +341,7 @@
   Discography data sourced from the <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series - Complete Discography v6.0</a><br>
   Tour map data: <a href="https://www.setlist.fm" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">setlist.fm</a> &middot; <a href="https://www.hipbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">Hipbase.com</a> (Lance Robinson) &middot; <a href="https://www.thehiparchive.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Hip Archive</a> (Darrin Cappe)<br>
   Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v2.9.9.4 (An Inch An Hour)</span>
+  <span style="color:#666;font-size:0.7rem;">v2.9.9.5 (Song Search)</span>
 </footer>
 
 <script>
@@ -528,6 +566,123 @@
     var x = e.touches[0].pageX - scroll.offsetLeft;
     scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
   }, { passive: true });
+
+  // ─── Song Search (uses album data from discography.json + autocomplete) ───
+  // Build search index from albums (titles only - track data lives in discography.html)
+  var albumIndex = albums.map(function(a) {
+    return { title: a.title, year: a.year, type: a.type, category: a.category };
+  });
+
+  function getSearchSuggestions(query) {
+    if (!query || query.length < 1) return [];
+    var q = query.toLowerCase();
+    var results = [];
+    // Search albums
+    albumIndex.forEach(function(a) {
+      if (a.title.toLowerCase().includes(q)) {
+        results.push({ title: a.title, sub: a.type + ' (' + a.year + ')', resultType: 'album', category: a.category });
+      }
+    });
+    results.sort(function(a, b) {
+      var aStarts = a.title.toLowerCase().startsWith(q) ? 0 : 1;
+      var bStarts = b.title.toLowerCase().startsWith(q) ? 0 : 1;
+      if (aStarts !== bStarts) return aStarts - bStarts;
+      return a.title.localeCompare(b.title);
+    });
+    return results.slice(0, 10);
+  }
+
+  var searchInput = document.getElementById('songSearchInput');
+  var searchDropdown = document.getElementById('songSearchDropdown');
+  var activeIdx = -1;
+
+  function showDropdown(suggestions) {
+    if (suggestions.length === 0) {
+      // If typing but no album match, show "Search songs" option
+      var q = searchInput.value.trim();
+      if (q.length >= 2) {
+        searchDropdown.innerHTML = '';
+        var opt = document.createElement('div');
+        opt.className = 'song-search-option';
+        opt.innerHTML = '<span style="color:var(--gold);font-size:0.7rem;margin-right:6px;">SONG SEARCH</span><span class="opt-song">Search for "' + q.replace(/</g,'&lt;') + '"</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); goToSongSearch(q); });
+        searchDropdown.appendChild(opt);
+        activeIdx = -1;
+        searchDropdown.classList.add('open');
+      } else {
+        searchDropdown.classList.remove('open');
+      }
+      return;
+    }
+    searchDropdown.innerHTML = '';
+    suggestions.forEach(function(s) {
+      var opt = document.createElement('div');
+      opt.className = 'song-search-option';
+      opt.innerHTML = '<span style="font-size:0.6rem;color:var(--gold);margin-right:4px;">ALBUM</span><span class="opt-song">' + s.title + '</span><span class="opt-album">' + s.sub + '</span>';
+      opt.dataset.title = s.title;
+      opt.dataset.category = s.category;
+      opt.addEventListener('mousedown', function(e) { e.preventDefault(); goToAlbum(s); });
+      searchDropdown.appendChild(opt);
+    });
+    // Always add "Search songs" option at bottom
+    var q = searchInput.value.trim();
+    if (q.length >= 2) {
+      var songOpt = document.createElement('div');
+      songOpt.className = 'song-search-option';
+      songOpt.style.borderTop = '1px solid rgba(255,255,255,0.1)';
+      songOpt.innerHTML = '<span style="color:var(--gold);font-size:0.7rem;margin-right:6px;">SONG SEARCH</span><span class="opt-song">Search songs for "' + q.replace(/</g,'&lt;') + '"</span>';
+      songOpt.addEventListener('mousedown', function(e) { e.preventDefault(); goToSongSearch(q); });
+      searchDropdown.appendChild(songOpt);
+    }
+    activeIdx = -1;
+    searchDropdown.classList.add('open');
+  }
+
+  function goToAlbum(s) {
+    window.location.href = 'discography.html#cat=' + encodeURIComponent(s.category) + '&album=' + encodeURIComponent(s.title);
+  }
+
+  function goToSongSearch(query) {
+    window.location.href = 'discography.html#cat=songsearch&q=' + encodeURIComponent(query);
+  }
+
+  searchInput.addEventListener('input', function() {
+    var q = searchInput.value.trim();
+    if (q.length < 1) { searchDropdown.classList.remove('open'); return; }
+    showDropdown(getSearchSuggestions(q));
+  });
+
+  searchInput.addEventListener('keydown', function(e) {
+    var opts = searchDropdown.querySelectorAll('.song-search-option');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIdx = Math.min(activeIdx + 1, opts.length - 1);
+      opts.forEach(function(o, i) { o.classList.toggle('active', i === activeIdx); });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIdx = Math.max(activeIdx - 1, 0);
+      opts.forEach(function(o, i) { o.classList.toggle('active', i === activeIdx); });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (activeIdx >= 0 && opts[activeIdx]) {
+        opts[activeIdx].dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
+      } else if (searchInput.value.trim().length >= 2) {
+        goToSongSearch(searchInput.value.trim());
+      }
+    } else if (e.key === 'Escape') {
+      searchDropdown.classList.remove('open');
+    }
+  });
+
+  searchInput.addEventListener('blur', function() {
+    setTimeout(function() { searchDropdown.classList.remove('open'); }, 150);
+  });
+
+  searchInput.addEventListener('focus', function() {
+    if (searchInput.value.trim().length >= 1) {
+      showDropdown(getSearchSuggestions(searchInput.value.trim()));
+    }
+  });
 
 })();
 </script>
