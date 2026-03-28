@@ -152,6 +152,20 @@
       .link-card { padding: 12px 14px; }
       .link-card-name { font-size: 0.85rem; }
     }
+
+    /* ON THIS DAY */
+    .on-this-day { max-width: 600px; margin: 24px auto 0; padding: 16px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; display: none; }
+    .on-this-day-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; font-size: 0.82rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; }
+    .on-this-day-header svg { flex-shrink: 0; }
+    .otd-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; }
+    .otd-event { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .otd-event:first-of-type { border-top: none; padding-top: 0; }
+    .otd-year { font-weight: 700; font-size: 0.85rem; color: var(--red); min-width: 42px; flex-shrink: 0; }
+    .otd-desc { font-size: 0.82rem; color: var(--text); line-height: 1.5; }
+    .otd-desc .otd-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 6px; border-radius: 4px; margin-right: 4px; vertical-align: 1px; }
+    .otd-tag-release { background: var(--gold); color: #000; }
+    .otd-tag-show { background: var(--red); color: #fff; }
+    .otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }
   </style>
 </head>
 <body>
@@ -189,6 +203,14 @@
   <div class="subtitle">Yer Hip Links</div>
   <a href="index.html" class="back-link">&larr; Back to Home</a>
 </header>
+
+<div class="on-this-day" id="onThisDay">
+  <div class="on-this-day-header">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+    <span id="onThisDayTitle">On This Day in Hip History</span>
+  </div>
+  <div id="onThisDayEvents"></div>
+</div>
 
 <main id="main-content">
 
@@ -276,6 +298,83 @@
   <span style="color:#666;font-size:0.7rem;">v2.9.9.4 (An Inch An Hour)</span>
 </footer>
 
+<script>
+(async function() {
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var now = new Date();
+  var todayMonth = now.getMonth() + 1;
+  var todayDay = now.getDate();
+  var events = [];
+
+  try {
+    var resp = await fetch('data/discography.json');
+    if (!resp.ok) return;
+    var disc = await resp.json();
+
+    for (var i = 0; i < disc.albums.length; i++) {
+      var a = disc.albums[i];
+      if (!a.releaseDate) continue;
+      var match = a.releaseDate.match(/^(\w+)\s+(\d+),\s+(\d{4})$/);
+      if (match) {
+        var mIdx = MONTHS.indexOf(match[1]) + 1;
+        var d = parseInt(match[2]);
+        if (mIdx === todayMonth && d === todayDay) {
+          events.push({ year: parseInt(match[3]), tag: 'release', desc: '<b>' + a.title + '</b> (' + a.type + ') released.' });
+        }
+      }
+    }
+
+    if (disc.milestones) {
+      for (var j = 0; j < disc.milestones.length; j++) {
+        var m = disc.milestones[j];
+        if (m.month === todayMonth && m.day === todayDay) {
+          events.push({ year: m.year, tag: 'milestone', desc: m.desc });
+        }
+      }
+    }
+  } catch (e) { /* discography data unavailable */ }
+
+  try {
+    var setResp = await fetch('data/setlists.min.json');
+    if (setResp.ok) {
+      var setData = await setResp.json();
+      if (setData && setData.setlists) {
+        var dayStr = String(todayDay).padStart(2, '0');
+        var monthStr = String(todayMonth).padStart(2, '0');
+        for (var k = 0; k < setData.setlists.length; k++) {
+          var s = setData.setlists[k];
+          var parts = s.date.split('-');
+          if (parts[0] === dayStr && parts[1] === monthStr) {
+            var yr = parseInt(parts[2]);
+            var venue = s.venue || 'Unknown venue';
+            var loc = [s.city || '', s.state || '', s.country].filter(Boolean).join(', ');
+            var songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
+            var tourInfo = s.tour ? ' (' + s.tour + ')' : '';
+            var noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
+            events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + venue + '</b>, ' + loc + tourInfo + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist });
+          }
+        }
+      }
+    }
+  } catch (e) { /* setlist data unavailable */ }
+
+  events.sort(function(a, b) { return a.year - b.year; });
+
+  var container = document.getElementById('onThisDayEvents');
+  var wrapper = document.getElementById('onThisDay');
+  var titleEl = document.getElementById('onThisDayTitle');
+  titleEl.textContent = 'On This Day - ' + MONTHS[todayMonth - 1] + ' ' + todayDay;
+
+  if (events.length === 0) {
+    container.innerHTML = '<div class="otd-empty">No known Hip events on this date.</div>';
+  } else {
+    container.innerHTML = events.map(function(e) {
+      return '<div class="otd-event"><span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + '</span></div>';
+    }).join('');
+  }
+  wrapper.style.display = 'block';
+})();
+</script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
 </body>
 </html>
