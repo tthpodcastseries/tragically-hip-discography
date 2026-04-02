@@ -242,7 +242,7 @@
     }
     .yer-letter-btn:hover { background: #a00d24; }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/js/supabase.min.js"></script>
 </head>
 <body>
 <!-- PASSWORD GATE - TEMPORARY UNTIL APRIL 20 LAUNCH -->
@@ -324,7 +324,7 @@ window.handleLogin=async function(){
 window.handleSignup=async function(){
   var err=document.getElementById('authError');
   err.textContent='';
-  if(!window.tthSupabase){err.textContent='Loading, please try again...';return}
+  if(!window.tthSupabase){err.textContent='Loading, please try again...;return}
   var email=document.getElementById('authEmailSignup').value.trim();
   var pass=document.getElementById('authPassSignup').value;
   var confirm=document.getElementById('authPassConfirm').value;
