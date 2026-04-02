@@ -3,7 +3,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://sdk.scdn.co https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self' https://accounts.spotify.com https://api.spotify.com https://api.lyrics.ovh; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://sdk.scdn.co https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self' https://accounts.spotify.com https://api.spotify.com https://api.lyrics.ovh https://*.supabase.co; manifest-src 'self'
 
 /service-worker.js
   Cache-Control: no-cache, no-store, must-revalidate
