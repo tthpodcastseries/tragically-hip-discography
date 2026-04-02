@@ -273,7 +273,7 @@
 </script>
 <!-- END PASSWORD GATE -->
 <!-- AUTH GATE - Supabase Auth -->
-<div id="authGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+<div id="authGate" style="display:flex;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
   <p style="color:#aaa;font-size:0.85rem;margin:0;text-align:center;max-width:300px;">Create a free account or log in to access The Hip Compendium.</p>
   <div id="authTabs" style="display:flex;gap:0;margin-top:8px;">
@@ -299,6 +299,7 @@
   var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
   if(isLocal){gate.remove();var pg=document.getElementById('passGate');if(pg)pg.remove();return}
 
+  if(typeof supabase==='undefined'){console.error('Supabase SDK not loaded');return}
   window.tthSupabase=supabase.createClient('https://deqslacywpwnjjckdygp.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM');
 
   window.showAuthTab=function(tab){
@@ -352,7 +353,6 @@
   }
 
   // Show gate immediately, then check session
-  gate.style.display='flex';
   window.tthSupabase.auth.getSession().then(function(res){
     if(res.data.session){gate.remove();addLogout()}
   });
