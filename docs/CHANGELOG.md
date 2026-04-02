@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.9.9.6
+**Countdown Update** - March 27, 2026
+- Changed password gate countdown target from April 7 at 8 AM to April 20 at 8 PM ET across all 5 pages
+
+---
+
+## v2.9.9.5
+**Song Search** - March 25, 2026
+- Added Search feature to discography page - type any Hip song and see every place it appears
+- Searches across all album tracklists (studio, live, compilations, box sets, EPs), alternate versions (Live/Demo/Alternate), TTHTop40 fan rankings (all 169 voted songs), 1,358 live setlists from setlist.fm, and cached lyrics
+- Type-ahead autocomplete dropdown with keyboard navigation (arrow keys + Enter)
+- Results grouped into Albums, Alternate Versions, Fan Rankings, Live Performances, and Lyrics sections
+- Live performances sorted newest-first with paginated "Show all" button
+- Search input embedded in header below title, replacing tagline - always visible, no button needed
+- Selecting a song hides current category and shows results in main content area
+- Autocomplete dropdown overlays from header for immediate access
+- Deep-linkable via #cat=songsearch
+- Stats row: 169 Songs, 26 Releases, 1,358 Live Shows, 1984-2016
+
+---
+
 ## v2.9.9
 **An Inch An Hour - Release Candidate** - March 21, 2026
 - Added Stephen Dame credit for The Hip Museum on Yer Hip Links page

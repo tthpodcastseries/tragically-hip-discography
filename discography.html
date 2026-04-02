@@ -722,6 +722,24 @@
 
     .setlist-link { font-size: 0.65rem; color: var(--muted2); text-decoration: none; float: right; }
     .setlist-link:hover { color: var(--gold); }
+    .setlist-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; clear: both; }
+    .iwt-btn { background: transparent; border: 1px solid var(--border); color: var(--muted2); padding: 4px 12px; border-radius: 14px; font-size: 0.65rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.2s; letter-spacing: 0.03em; }
+    .iwt-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .iwt-btn.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
+    .setlist-card.attended { border-left: 3px solid var(--gold); }
+    .my-shows-filter { display: flex; align-items: center; gap: 8px; }
+    .my-shows-toggle { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
+    .my-shows-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .my-shows-toggle.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
+
+    /* ─── MY PROFILE / MY SHOWS ─── */
+    .profile-section { display: none; padding: 0 16px 32px; max-width: 900px; margin: 0 auto; }
+    .profile-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .profile-stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .profile-stat-num { font-size: 1.6rem; font-weight: 800; color: var(--gold); display: block; }
+    .profile-stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .profile-show-list { margin-top: 16px; }
+    .profile-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
     .setlist-top-songs { margin-bottom: 20px; }
     .setlist-top-songs-grid { display: flex; flex-wrap: wrap; gap: 6px; }
     .setlist-top-pill { padding: 3px 10px; border-radius: 14px; font-size: 0.68rem; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; }
@@ -1146,35 +1164,46 @@
     .otd-tag-show { background: var(--red); color: #fff; }
     .otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-<!-- PASSWORD GATE - REMOVE BEFORE v3.0 LAUNCH -->
-<div id="passGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+<!-- AUTH GATE - Netlify Identity -->
+<div id="authGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
-  <p style="color:#aaa;font-size:0.85rem;margin:0;">This site is in pre-launch. Enter the password to continue.</p>
-  <div id="countdown" style="display:flex;gap:18px;margin:8px 0 4px;">
-    <div style="text-align:center;"><span id="cdDays" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Days</span></div>
-    <div style="text-align:center;"><span id="cdHrs" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Hours</span></div>
-    <div style="text-align:center;"><span id="cdMin" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Min</span></div>
-    <div style="text-align:center;"><span id="cdSec" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Sec</span></div>
+  <p style="color:#aaa;font-size:0.85rem;margin:0;text-align:center;max-width:300px;">Create a free account or log in to access The Hip Compendium.</p>
+  <div style="display:flex;gap:12px;margin-top:8px;">
+    <button onclick="netlifyIdentity.open('signup')" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Sign Up</button>
+    <button onclick="netlifyIdentity.open('login')" style="background:transparent;color:#C8102E;border:1px solid #C8102E;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Log In</button>
   </div>
-  <input id="passInput" type="password" placeholder="Password" autocomplete="off" aria-label="Enter site password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 16px;border-radius:6px;font-size:1rem;font-family:Poppins,sans-serif;width:220px;text-align:center;" onkeydown="if(event.key==='Enter')document.getElementById('passBtn').click()">
-  <button id="passBtn" onclick="if(document.getElementById('passInput').value==='roadapples'){sessionStorage.setItem('tth_pass','1');document.getElementById('passGate').remove()}else{document.getElementById('passInput').style.borderColor='#C8102E';document.getElementById('passInput').value=''}" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Enter</button>
 </div>
-<script>if(!sessionStorage.getItem('tth_pass')){document.getElementById('passGate').style.display='flex'}else{document.getElementById('passGate').remove()}</script>
 <script>
 (function(){
-  var target=new Date('2026-04-20T20:00:00-04:00').getTime();
-  function tick(){
-    var now=Date.now(),diff=target-now;
-    if(diff<=0){document.getElementById('cdDays').textContent='0';document.getElementById('cdHrs').textContent='0';document.getElementById('cdMin').textContent='0';document.getElementById('cdSec').textContent='0';return}
-    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    document.getElementById('cdDays').textContent=d;document.getElementById('cdHrs').textContent=h;document.getElementById('cdMin').textContent=m;document.getElementById('cdSec').textContent=s;
+  var gate=document.getElementById('authGate');
+  var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
+  if(isLocal){gate.remove();return}
+  function onReady(){
+    var user=netlifyIdentity.currentUser();
+    if(user){gate.remove();addLogout()}
+    else{gate.style.display='flex'}
+    netlifyIdentity.on('login',function(){gate.remove();netlifyIdentity.close();addLogout()});
+    netlifyIdentity.on('logout',function(){window.location.reload()});
   }
-  if(document.getElementById('passGate')){tick();setInterval(tick,1000)}
+  function addLogout(){
+    if(document.getElementById('tth-logout'))return;
+    var btn=document.createElement('button');
+    btn.id='tth-logout';
+    btn.textContent='Log Out';
+    btn.onclick=function(){netlifyIdentity.logout()};
+    btn.style.cssText='position:fixed;bottom:16px;right:16px;z-index:9998;background:rgba(14,11,22,0.9);color:#888;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;transition:color 0.2s;';
+    btn.onmouseenter=function(){btn.style.color='#C8102E'};
+    btn.onmouseleave=function(){btn.style.color='#888'};
+    document.body.appendChild(btn);
+  }
+  if(window.netlifyIdentity)onReady();
+  else window.addEventListener('load',onReady);
 })();
 </script>
-<!-- END PASSWORD GATE -->
+<!-- END AUTH GATE -->
 
 <svg style="display:none">
   <symbol id="spotify-icon" viewBox="0 0 24 24">
@@ -1210,6 +1239,8 @@
     <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlists</button></div>
     <div class="nav-row"><a href="tour-map.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Tour Map</a></div>
     <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid" style="flex:1;max-width:480px;font-size:0.78rem;padding:8px 22px;">Top Forty Countdown</button></div>
+    <div class="nav-row"><button class="category-btn" data-category="myshows" role="tab" aria-selected="false" aria-controls="myShowsSection" style="flex:1;max-width:480px;">My Shows</button></div>
+    <div class="nav-row"><a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Yer Discussions</a></div>
     <div class="nav-row"><a href="links.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Yer Hip Links</a></div>
   </div></nav>
 </header>
@@ -1260,12 +1291,26 @@
       <select class="setlist-filter" id="setlistTour" aria-label="Filter by tour"><option value="">All Tours</option></select>
       <select class="setlist-filter" id="setlistCity" aria-label="Filter by city"><option value="">All Cities</option></select>
       <input type="text" class="setlist-search" id="setlistSearch" placeholder="Search venue, city, or song..." aria-label="Search setlists">
+      <button class="my-shows-toggle" id="myShowsToggle" aria-pressed="false">I Was There</button>
     </div>
     <div id="setlistSummary" class="setlist-summary"></div>
     <div id="setlistTopSongs" class="setlist-top-songs"></div>
     <div id="setlistResultsInfo" class="setlist-results-info"></div>
     <div id="setlistResults"></div>
     <div id="setlistEmpty" class="setlist-empty">Loading setlist data...</div>
+  </div>
+
+  <div id="myShowsSection" class="profile-section" role="tabpanel" aria-label="My shows profile">
+    <div class="section-header">
+      <h2 class="section-label">My Shows</h2>
+      <p class="section-note">Your personal Tragically Hip concert history</p>
+      <div class="section-line"></div>
+    </div>
+    <div id="myShowsStats" class="profile-stats"></div>
+    <div id="myShowsList" class="profile-show-list"></div>
+    <div id="myShowsEmpty" class="profile-empty">
+      You haven't marked any shows yet. Head to the <button onclick="document.querySelector('[data-category=setlists]').click()" style="background:none;border:none;color:var(--gold);font-family:Poppins,sans-serif;font-size:inherit;cursor:pointer;text-decoration:underline;">Setlist Explorer</button> and tap "I Was There" on shows you attended.
+    </div>
   </div>
 
   <div id="top40Section">
@@ -1358,7 +1403,7 @@
   TTHTop40 rankings from the 2024-25 fan countdown<br>
   Tour map data: <a href="https://www.setlist.fm" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">setlist.fm</a> · <a href="https://www.hipbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">Hipbase.com</a> (Lance Robinson) · <a href="https://www.thehiparchive.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Hip Archive</a> (Darrin Cappe)<br>
   Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v2.9.9.5 (Song Search)</span>
+  <span style="color:#666;font-size:0.7rem;">v3.1 (Little Bones)</span>
 </footer>
 
 <script>
@@ -1891,6 +1936,12 @@ const categoryStats = {
     { num: '302', lbl: 'Cities' },
     { num: '23', lbl: 'Tours' },
     { num: '1985-2016', lbl: 'Years Active' },
+  ],
+  myshows: [
+    { num: '-', lbl: 'Shows Attended' },
+    { num: '-', lbl: 'Cities' },
+    { num: '-', lbl: 'Venues' },
+    { num: '-', lbl: 'Unique Songs' },
   ],
 };
 
@@ -2647,6 +2698,172 @@ function rankClass(rankStr) {
   return 't40';
 }
 
+// ─── Attended Shows (I Was There) ───
+const attendedShows = {
+  _shows: new Set(),
+  _saving: false,
+
+  init() {
+    if (window.netlifyIdentity) {
+      const user = netlifyIdentity.currentUser();
+      if (user && user.user_metadata && user.user_metadata.attended_shows) {
+        user.user_metadata.attended_shows.forEach(id => this._shows.add(id));
+      }
+    }
+  },
+
+  has(id) { return this._shows.has(id); },
+
+  async toggle(id) {
+    if (this._shows.has(id)) this._shows.delete(id);
+    else this._shows.add(id);
+    await this._save();
+    return this._shows.has(id);
+  },
+
+  getAll() { return [...this._shows]; },
+  count() { return this._shows.size; },
+
+  async _save() {
+    if (this._saving || !window.netlifyIdentity) return;
+    this._saving = true;
+    try {
+      const user = netlifyIdentity.currentUser();
+      if (user) {
+        await user.update({ data: { attended_shows: [...this._shows] } });
+      }
+    } catch (e) {
+      console.error('Failed to save attended shows:', e);
+    }
+    this._saving = false;
+  }
+};
+
+// Initialize attended shows when identity is ready
+if (window.netlifyIdentity) {
+  const user = netlifyIdentity.currentUser();
+  if (user) attendedShows.init();
+  else netlifyIdentity.on('login', () => { attendedShows.init(); });
+}
+
+async function renderMyShows() {
+  const data = await loadSetlistData();
+  const statsEl = document.getElementById('myShowsStats');
+  const listEl = document.getElementById('myShowsList');
+  const emptyEl = document.getElementById('myShowsEmpty');
+
+  const ids = attendedShows.getAll();
+  if (!ids.length || !data) {
+    statsEl.innerHTML = '';
+    listEl.innerHTML = '';
+    emptyEl.style.display = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  // Update stats row with live data
+  function updateStatsRow(showCount, cityCount, venueCount, songCount) {
+    document.getElementById('statNum1').textContent = showCount;
+    document.getElementById('statNum2').textContent = cityCount;
+    document.getElementById('statNum3').textContent = venueCount;
+    document.getElementById('statNum4').textContent = songCount;
+  }
+
+  // Find matching setlists
+  const idSet = new Set(ids);
+  const shows = data.setlists.filter(s => idSet.has(s.id));
+
+  // Sort chronologically (oldest first)
+  shows.sort((a, b) => {
+    const [ad, am, ay] = a.date.split('-');
+    const [bd, bm, by] = b.date.split('-');
+    return (ay + am + ad).localeCompare(by + bm + bd);
+  });
+
+  // Calculate stats
+  const cities = new Set(shows.map(s => s.city).filter(Boolean));
+  const venues = new Set(shows.map(s => s.venue).filter(Boolean));
+  const years = new Set(shows.map(s => s.date.split('-')[2]));
+  const tours = new Set(shows.map(s => s.tour).filter(Boolean));
+  let totalSongs = 0;
+  const songCounts = {};
+  shows.forEach(s => {
+    s.songs.forEach(sg => {
+      if (!sg.tape) {
+        totalSongs++;
+        songCounts[sg.name] = (songCounts[sg.name] || 0) + 1;
+      }
+    });
+  });
+  const uniqueSongs = Object.keys(songCounts).length;
+  const topSong = Object.entries(songCounts).sort((a, b) => b[1] - a[1])[0];
+
+  // Update header stats row
+  updateStatsRow(shows.length, cities.size, venues.size, uniqueSongs);
+
+  // Render stats
+  statsEl.innerHTML = `
+    <div class="profile-stat-card"><span class="profile-stat-num">${shows.length}</span><span class="profile-stat-label">Shows</span></div>
+    <div class="profile-stat-card"><span class="profile-stat-num">${cities.size}</span><span class="profile-stat-label">Cities</span></div>
+    <div class="profile-stat-card"><span class="profile-stat-num">${venues.size}</span><span class="profile-stat-label">Venues</span></div>
+    <div class="profile-stat-card"><span class="profile-stat-num">${years.size}</span><span class="profile-stat-label">Years</span></div>
+    <div class="profile-stat-card"><span class="profile-stat-num">${uniqueSongs}</span><span class="profile-stat-label">Unique Songs</span></div>
+    <div class="profile-stat-card"><span class="profile-stat-num">${tours.size}</span><span class="profile-stat-label">Tours</span></div>
+  `;
+
+  // Render show list
+  let html = '';
+  if (topSong) {
+    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.78rem;color:var(--muted);">Most heard song: <span style="color:var(--gold);font-weight:700;">${topSong[0]}</span> (${topSong[1]}x)</div>`;
+  }
+  if (shows.length > 0) {
+    const first = shows[0];
+    const last = shows[shows.length - 1];
+    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.72rem;color:var(--muted2);">First show: ${formatSetlistDate(first.date)} at ${first.venue} &middot; Most recent: ${formatSetlistDate(last.date)} at ${last.venue}</div>`;
+  }
+
+  shows.slice().reverse().forEach(s => {
+    const location = [s.city, s.state, s.country].filter(Boolean).join(', ');
+    let songsHtml = '';
+    let currentSet = '';
+    s.songs.forEach(sg => {
+      if (sg.set !== currentSet) {
+        currentSet = sg.set;
+        if (currentSet !== 'Main Set') {
+          songsHtml += `<span class="encore-label">${currentSet}</span>`;
+        }
+      }
+      const coverNote = sg.cover ? ` <span class="song-cover">(${sg.cover} cover)</span>` : '';
+      songsHtml += `<span class="song-name">${sg.name}</span>${coverNote} &middot; `;
+    });
+    songsHtml = songsHtml.replace(/ &middot; $/, '');
+
+    html += `
+      <div class="setlist-card attended">
+        <div class="setlist-card-header">
+          <span class="setlist-date">${formatSetlistDate(s.date)}</span>
+          <span class="setlist-city">${location}</span>
+        </div>
+        <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
+        ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
+        <div class="setlist-songs">${songsHtml}</div>
+        <div class="setlist-card-footer">
+          <button class="iwt-btn active" data-show-id="${s.id}">I Was There ✓</button>
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>
+        </div>
+      </div>`;
+  });
+  listEl.innerHTML = html;
+
+  // Wire up remove buttons in My Shows view
+  listEl.querySelectorAll('.iwt-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      await attendedShows.toggle(btn.dataset.showId);
+      renderMyShows();
+    });
+  });
+}
+
 // ─── Setlist Explorer ───
 let setlistData = null;
 let setlistInitialized = false;
@@ -2707,6 +2924,17 @@ async function initSetlistExplorer() {
 
   let currentPage = 1;
   const perPage = 20;
+  let showOnlyAttended = false;
+
+  // Wire up "I Was There" filter toggle
+  const iwtToggle = document.getElementById('myShowsToggle');
+  iwtToggle.addEventListener('click', () => {
+    showOnlyAttended = !showOnlyAttended;
+    iwtToggle.classList.toggle('active', showOnlyAttended);
+    iwtToggle.setAttribute('aria-pressed', showOnlyAttended);
+    currentPage = 1;
+    render();
+  });
 
   function getFiltered() {
     const year = yearSelect.value;
@@ -2715,6 +2943,7 @@ async function initSetlistExplorer() {
     const search = document.getElementById('setlistSearch').value.toLowerCase().trim();
 
     return withSongs.filter(s => {
+      if (showOnlyAttended && !attendedShows.has(s.id)) return false;
       if (year && getSetlistYear(s.date) !== year) return false;
       if (tour && s.tour !== tour) return false;
       if (city && s.city !== city) return false;
@@ -2775,7 +3004,8 @@ async function initSetlistExplorer() {
 
     showing.forEach(s => {
       const card = document.createElement('div');
-      card.className = 'setlist-card';
+      const isAttended = attendedShows.has(s.id);
+      card.className = 'setlist-card' + (isAttended ? ' attended' : '');
 
       // Group songs by set
       let songsHtml = '';
@@ -2802,8 +3032,21 @@ async function initSetlistExplorer() {
         <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
         ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
         <div class="setlist-songs">${songsHtml}</div>
-        <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>
+        <div class="setlist-card-footer">
+          <button class="iwt-btn${isAttended ? ' active' : ''}" data-show-id="${s.id}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>
+        </div>
       `;
+
+      // Wire up the I Was There button
+      const iwtBtn = card.querySelector('.iwt-btn');
+      iwtBtn.addEventListener('click', async () => {
+        const nowAttended = await attendedShows.toggle(s.id);
+        iwtBtn.classList.toggle('active', nowAttended);
+        iwtBtn.textContent = nowAttended ? 'I Was There ✓' : 'I Was There';
+        card.classList.toggle('attended', nowAttended);
+      });
+
       container.appendChild(card);
     });
 
@@ -3592,6 +3835,11 @@ function renderCategory(category) {
   setlistEl.style.display = category === 'setlists' ? 'block' : 'none';
   if (category === 'setlists') initSetlistExplorer();
 
+  // Show/hide My Shows section
+  const myShowsEl = document.getElementById('myShowsSection');
+  myShowsEl.style.display = category === 'myshows' ? 'block' : 'none';
+  if (category === 'myshows') renderMyShows();
+
   // Show/hide Solo Projects section
   const soloSection = document.getElementById('soloSection');
   soloSection.style.display = category === 'solo' ? '' : 'none';
@@ -3603,9 +3851,9 @@ function renderCategory(category) {
   // Re-render album grid
   const grid = document.getElementById('albumsGrid');
   grid.innerHTML = '';
-  const hiddenCats = ['lyrics','setlists'];
+  const hiddenCats = ['lyrics','setlists','myshows'];
   grid.style.display = hiddenCats.includes(category) ? 'none' : '';
-  if (['solo','lyrics','setlists'].includes(category)) return;
+  if (['solo','lyrics','setlists','myshows'].includes(category)) return;
   const categoryLabels = { studio: ['Studio Album', 'Studio Albums'], live: ['Live Album', 'Live Albums'], compilations: ['Compilation', 'Compilations'], boxsets: ['Box Set', 'Box Sets'], eps: ['EP', 'EPs'], video: ['Video Release', 'Video Releases'], top40: ['',''] };
   if (category !== 'top40' && currentAlbums.length > 0) {
     const countEl = document.createElement('div');

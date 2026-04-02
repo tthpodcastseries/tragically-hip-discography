@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha256-YU3qCpj/P06tdPBJGPax0bm6Q1wltfwjsho5TR4+TYc=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" integrity="sha256-YSWCMtmNZNwqex4CEw1nQhvFub2lmU7vcCKP+XVwwXA=" crossorigin="anonymous" />
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: var(--red); color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
@@ -361,13 +362,265 @@ input[type="range"]::-moz-range-track {
   letter-spacing: 0.5px;
 }
 
+/* SEARCH */
+.search-group { position: relative; }
+.search-wrap { position: relative; }
+.search-wrap input {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 28px 6px 10px;
+  width: 200px;
+  outline: none;
+}
+.search-wrap input:focus { border-color: var(--gold); }
+.search-wrap input::placeholder { color: var(--muted); font-size: 0.75rem; }
+.search-clear {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  display: none;
+  line-height: 1;
+}
+.search-clear:hover { color: var(--white); }
+.search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 340px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--bg2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  z-index: 2000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+.search-results.open { display: block; }
+.search-result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.15s;
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: rgba(255, 255, 255, 0.06); }
+.search-result-item .sr-date { color: var(--gold); font-size: 0.75rem; font-weight: 600; }
+.search-result-item .sr-venue { color: var(--white); font-size: 0.8rem; font-weight: 500; }
+.search-result-item .sr-city { color: var(--muted); font-size: 0.7rem; }
+.search-result-count {
+  padding: 6px 12px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 500;
+}
+
+/* AUDIO PLAYER */
+.audio-player {
+  display: none;
+  position: fixed;
+  bottom: 44px;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: rgba(14, 11, 22, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 2px solid var(--gold);
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.audio-player.active { display: block; }
+.ap-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+.ap-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.ap-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.ap-btn:hover { background: rgba(255,255,255,0.1); }
+.ap-btn svg { width: 20px; height: 20px; }
+.ap-btn-play svg { width: 28px; height: 28px; }
+.ap-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.ap-show-title {
+  font-size: 0.7rem;
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ap-track-title {
+  font-size: 0.8rem;
+  color: var(--white);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ap-time {
+  font-size: 0.65rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  min-width: 80px;
+  text-align: right;
+}
+.ap-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.ap-close:hover { color: var(--white); }
+.ap-progress-wrap {
+  position: relative;
+  height: 4px;
+  background: var(--bg3);
+  cursor: pointer;
+}
+.ap-progress-bar {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+  transition: width 0.2s linear;
+  border-radius: 0 2px 2px 0;
+}
+.ap-progress-wrap:hover { height: 6px; margin-top: -2px; }
+.ap-tracklist {
+  display: none;
+  max-height: 240px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.ap-tracklist.open { display: block; }
+.ap-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--muted);
+  transition: background 0.15s;
+}
+.ap-track:hover { background: rgba(255,255,255,0.05); }
+.ap-track.active { color: var(--gold); background: rgba(204,162,60,0.08); }
+.ap-track-num { width: 20px; text-align: right; font-size: 0.65rem; flex-shrink: 0; }
+.ap-track-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ap-track-dur { font-size: 0.65rem; flex-shrink: 0; }
+.ap-loading {
+  display: none;
+  padding: 20px 16px;
+  text-align: center;
+}
+.ap-loading.active { display: block; }
+.ap-loading-text {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 500;
+}
+.ap-loading-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.ap-loading-bar {
+  height: 3px;
+  background: var(--bg3);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.ap-loading-fill {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+.ap-volume {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.ap-volume input[type="range"] {
+  position: relative;
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg3);
+  border-radius: 2px;
+  outline: none;
+  pointer-events: all;
+  margin: 0;
+}
+.ap-volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  margin-top: -4px;
+  border: none;
+  pointer-events: all;
+}
+.ap-volume input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .map-header { padding: 10px 14px; }
   .map-header h1 { font-size: 0.95rem; }
   .controls { padding: 8px 14px; gap: 8px; }
   .stats-pill { margin-left: 0; width: 100%; text-align: center; }
+  .search-wrap input { width: 160px; }
+  .search-results { width: calc(100vw - 28px); left: auto; right: -14px; }
   .year-slider-container { padding: 6px 14px 10px; }
+  .ap-volume { display: none; }
+  .ap-main { gap: 8px; padding: 8px 12px; }
+  .ap-tracklist { max-height: 180px; }
 }
 .map-footer {
   position: fixed;
@@ -408,33 +661,43 @@ input[type="range"]::-moz-range-track {
 </style>
 </head>
 <body>
-<!-- PASSWORD GATE - REMOVE BEFORE v3.0 LAUNCH -->
-<div id="passGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+<!-- AUTH GATE - Netlify Identity -->
+<div id="authGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
-  <p style="color:#aaa;font-size:0.85rem;margin:0;">This site is in pre-launch. Enter the password to continue.</p>
-  <div id="countdown" style="display:flex;gap:18px;margin:8px 0 4px;">
-    <div style="text-align:center;"><span id="cdDays" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Days</span></div>
-    <div style="text-align:center;"><span id="cdHrs" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Hours</span></div>
-    <div style="text-align:center;"><span id="cdMin" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Min</span></div>
-    <div style="text-align:center;"><span id="cdSec" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Sec</span></div>
+  <p style="color:#aaa;font-size:0.85rem;margin:0;text-align:center;max-width:300px;">Create a free account or log in to access The Hip Compendium.</p>
+  <div style="display:flex;gap:12px;margin-top:8px;">
+    <button onclick="netlifyIdentity.open('signup')" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Sign Up</button>
+    <button onclick="netlifyIdentity.open('login')" style="background:transparent;color:#C8102E;border:1px solid #C8102E;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Log In</button>
   </div>
-  <input id="passInput" type="password" placeholder="Password" autocomplete="off" aria-label="Enter site password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 16px;border-radius:6px;font-size:1rem;font-family:Poppins,sans-serif;width:220px;text-align:center;" onkeydown="if(event.key==='Enter')document.getElementById('passBtn').click()">
-  <button id="passBtn" onclick="if(document.getElementById('passInput').value==='roadapples'){sessionStorage.setItem('tth_pass','1');document.getElementById('passGate').remove()}else{document.getElementById('passInput').style.borderColor='#C8102E';document.getElementById('passInput').value=''}" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Enter</button>
 </div>
-<script>if(!sessionStorage.getItem('tth_pass')){document.getElementById('passGate').style.display='flex'}else{document.getElementById('passGate').remove()}</script>
 <script>
 (function(){
-  var target=new Date('2026-04-20T20:00:00-04:00').getTime();
-  function tick(){
-    var now=Date.now(),diff=target-now;
-    if(diff<=0){document.getElementById('cdDays').textContent='0';document.getElementById('cdHrs').textContent='0';document.getElementById('cdSec').textContent='0';return}
-    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    document.getElementById('cdDays').textContent=d;document.getElementById('cdHrs').textContent=h;document.getElementById('cdMin').textContent=m;document.getElementById('cdSec').textContent=s;
+  var gate=document.getElementById('authGate');
+  var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
+  if(isLocal){gate.remove();return}
+  function onReady(){
+    var user=netlifyIdentity.currentUser();
+    if(user){gate.remove();addLogout()}
+    else{gate.style.display='flex'}
+    netlifyIdentity.on('login',function(){gate.remove();netlifyIdentity.close();addLogout()});
+    netlifyIdentity.on('logout',function(){window.location.reload()});
   }
-  if(document.getElementById('passGate')){tick();setInterval(tick,1000)}
+  function addLogout(){
+    if(document.getElementById('tth-logout'))return;
+    var btn=document.createElement('button');
+    btn.id='tth-logout';
+    btn.textContent='Log Out';
+    btn.onclick=function(){netlifyIdentity.logout()};
+    btn.style.cssText='position:fixed;bottom:16px;right:16px;z-index:9998;background:rgba(14,11,22,0.9);color:#888;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;transition:color 0.2s;';
+    btn.onmouseenter=function(){btn.style.color='#C8102E'};
+    btn.onmouseleave=function(){btn.style.color='#888'};
+    document.body.appendChild(btn);
+  }
+  if(window.netlifyIdentity)onReady();
+  else window.addEventListener('load',onReady);
 })();
 </script>
-<!-- END PASSWORD GATE -->
+<!-- END AUTH GATE -->
 <a href="#map" class="skip-link">Skip to map</a>
 
 <div class="map-header">
@@ -465,6 +728,14 @@ input[type="range"]::-moz-range-track {
     Play Timeline
   </button>
   <button id="resetBtn" title="Reset to show all gigs">Reset</button>
+  <div class="control-group search-group">
+    <label for="gigSearch">Search</label>
+    <div class="search-wrap">
+      <input type="text" id="gigSearch" placeholder="Venue, city, or date..." autocomplete="off" spellcheck="false">
+      <button id="searchClear" class="search-clear" aria-label="Clear search">&times;</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
   <div class="stats-pill" id="statsPill">Loading...</div>
 </nav>
 
@@ -606,7 +877,11 @@ input[type="range"]::-moz-range-track {
     html += `<div class="popup-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' — ' + g.countryName : ''}</div>`;
     if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
     if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
-    if (g.archiveUrl) html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Listen to this show</a>`;
+    if (g.tracks && g.tracks.length) {
+      html += `<a href="#" onclick="window.tthPlayer.loadShow(${JSON.stringify(g).replace(/"/g, '&quot;')});return false;" class="popup-link popup-archive">🎧 Play this show</a>`;
+    } else if (g.archiveUrl) {
+      html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
+    }
     if (g.setlistUrl) html += `<a href="${g.setlistUrl}" target="_blank" rel="noopener noreferrer" class="popup-link">View full setlist →</a>`;
     return html;
   }
@@ -816,6 +1091,96 @@ input[type="range"]::-moz-range-track {
     applyFilters();
   }
 
+  // SEARCH FUNCTIONALITY
+  const searchInput = document.getElementById('gigSearch');
+  const searchResults = document.getElementById('searchResults');
+  const searchClear = document.getElementById('searchClear');
+  let searchDebounce = null;
+
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchDebounce);
+    const q = searchInput.value.trim();
+    searchClear.style.display = q ? 'block' : 'none';
+    if (q.length < 2) {
+      searchResults.classList.remove('open');
+      return;
+    }
+    searchDebounce = setTimeout(() => runSearch(q), 200);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchResults.classList.remove('open');
+      searchInput.blur();
+    }
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    searchResults.classList.remove('open');
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrap')) {
+      searchResults.classList.remove('open');
+    }
+  });
+
+  function runSearch(query) {
+    const q = query.toLowerCase();
+    const matches = allGigs.filter(g => {
+      const venue = (g.venue || '').toLowerCase();
+      const city = (g.city || '').toLowerCase();
+      const state = (g.state || '').toLowerCase();
+      const country = (g.countryName || '').toLowerCase();
+      const date = (g.isoDate || '');
+      const tour = (g.tour || '').toLowerCase();
+      return venue.includes(q) || city.includes(q) || state.includes(q) ||
+             country.includes(q) || date.includes(q) || tour.includes(q);
+    });
+
+    searchResults.innerHTML = '';
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="search-result-count">No shows found</div>';
+      searchResults.classList.add('open');
+      return;
+    }
+
+    const shown = matches.slice(0, 50);
+    const countDiv = document.createElement('div');
+    countDiv.className = 'search-result-count';
+    countDiv.textContent = matches.length === 1 ? '1 show found' :
+      `${matches.length} shows found` + (matches.length > 50 ? ' (showing first 50)' : '');
+    searchResults.appendChild(countDiv);
+
+    shown.forEach(g => {
+      const item = document.createElement('div');
+      item.className = 'search-result-item';
+      item.innerHTML = `<div class="sr-date">${formatDate(g.isoDate)}</div>
+        <div class="sr-venue">${g.venue || 'Unknown venue'}</div>
+        <div class="sr-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' - ' + g.countryName : ''}</div>`;
+      item.addEventListener('click', () => {
+        searchResults.classList.remove('open');
+        if (g.lat && g.lng) {
+          map.setView([g.lat, g.lng], 14, { animate: true });
+          setTimeout(() => {
+            clusterGroup.eachLayer(layer => {
+              const ll = layer.getLatLng();
+              if (Math.abs(ll.lat - g.lat) < 0.0001 && Math.abs(ll.lng - g.lng) < 0.0001) {
+                layer.openPopup();
+              }
+            });
+          }, 600);
+        }
+      });
+      searchResults.appendChild(item);
+    });
+
+    searchResults.classList.add('open');
+  }
+
   // Initial render
   renderGigs(allGigs);
   updateSliderTrack();
@@ -875,11 +1240,215 @@ input[type="range"]::-moz-range-track {
 })();
 </script>
 
+<!-- AUDIO PLAYER JS -->
+<script>
+(function() {
+  const player = document.getElementById('audioPlayer');
+  const progressWrap = document.getElementById('apProgressWrap');
+  const progressBar = document.getElementById('apProgressBar');
+  const loadingEl = document.getElementById('apLoading');
+  const loadingText = document.getElementById('apLoadingText');
+  const loadingSub = document.getElementById('apLoadingSub');
+  const loadingFill = document.getElementById('apLoadingFill');
+  const showTitle = document.getElementById('apShowTitle');
+  const trackTitle = document.getElementById('apTrackTitle');
+  const timeDisplay = document.getElementById('apTime');
+  const playPauseBtn = document.getElementById('apPlayPause');
+  const playIcon = document.getElementById('apPlayIcon');
+  const prevBtn = document.getElementById('apPrev');
+  const nextBtn = document.getElementById('apNext');
+  const closeBtn = document.getElementById('apClose');
+  const listToggle = document.getElementById('apListToggle');
+  const tracklist = document.getElementById('apTracklist');
+  const volumeSlider = document.getElementById('apVolume');
+
+  const audio = new Audio();
+  audio.volume = 0.8;
+
+  let currentShow = null;
+  let currentTrackIndex = 0;
+  let tracks = [];
+
+  function formatTime(s) {
+    if (isNaN(s) || !isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  function updatePlayIcon(playing) {
+    if (playing) {
+      playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+    } else {
+      playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    }
+  }
+
+  function renderTracklist() {
+    tracklist.innerHTML = '';
+    tracks.forEach((t, i) => {
+      const div = document.createElement('div');
+      div.className = 'ap-track' + (i === currentTrackIndex ? ' active' : '');
+      div.innerHTML = `<span class="ap-track-num">${i + 1}</span>
+        <span class="ap-track-name">${t.name}</span>
+        <span class="ap-track-dur">${t.duration || ''}</span>`;
+      div.addEventListener('click', () => playTrack(i));
+      tracklist.appendChild(div);
+    });
+  }
+
+  function playTrack(index) {
+    if (index < 0 || index >= tracks.length) return;
+    currentTrackIndex = index;
+    const track = tracks[index];
+    trackTitle.textContent = track.name;
+    audio.src = track.url;
+    audio.play();
+    updatePlayIcon(true);
+    renderTracklist();
+  }
+
+  // Backblaze B2 public URL for audio files
+  const AUDIO_BASE = 'https://f006.backblazeb2.com/file/tth-audio';
+
+  function loadShow(gig) {
+    currentShow = gig;
+    player.classList.add('active');
+
+    const dateStr = gig.isoDate || 'Unknown date';
+    const venue = gig.venue || 'Unknown venue';
+    const city = gig.city || '';
+    showTitle.textContent = `${dateStr} - ${venue}, ${city}`;
+
+    if (gig.tracks && gig.tracks.length) {
+      tracks = gig.tracks.map(t => ({
+        name: t.name || t.title || 'Unknown track',
+        url: t.url.startsWith('http') ? t.url : `${AUDIO_BASE}/${t.url}`,
+        duration: t.duration || ''
+      }));
+      currentTrackIndex = 0;
+      renderTracklist();
+      playTrack(0);
+    }
+  }
+
+  // Transport controls
+  playPauseBtn.addEventListener('click', () => {
+    if (!tracks.length) return;
+    if (audio.paused) {
+      audio.play();
+      updatePlayIcon(true);
+    } else {
+      audio.pause();
+      updatePlayIcon(false);
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (audio.currentTime > 3) {
+      audio.currentTime = 0;
+    } else {
+      playTrack(currentTrackIndex - 1);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => playTrack(currentTrackIndex + 1));
+
+  closeBtn.addEventListener('click', () => {
+    audio.pause();
+    audio.src = '';
+    player.classList.remove('active');
+    tracklist.classList.remove('open');
+    tracks = [];
+    currentShow = null;
+    updatePlayIcon(false);
+  });
+
+  listToggle.addEventListener('click', () => {
+    tracklist.classList.toggle('open');
+  });
+
+  // Volume
+  volumeSlider.addEventListener('input', () => {
+    audio.volume = parseFloat(volumeSlider.value);
+  });
+
+  // Progress bar updates
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = pct + '%';
+      timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+    }
+  });
+
+  // Seek
+  progressWrap.addEventListener('click', (e) => {
+    if (!audio.duration) return;
+    const rect = progressWrap.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+
+  // Auto-advance to next track
+  audio.addEventListener('ended', () => {
+    if (currentTrackIndex < tracks.length - 1) {
+      playTrack(currentTrackIndex + 1);
+    } else {
+      updatePlayIcon(false);
+      progressBar.style.width = '0%';
+    }
+  });
+
+  // Expose loadShow globally for popup onclick
+  window.tthPlayer = { loadShow };
+})();
+</script>
+
+<!-- AUDIO PLAYER -->
+<div class="audio-player" id="audioPlayer">
+  <div class="ap-progress-wrap" id="apProgressWrap">
+    <div class="ap-progress-bar" id="apProgressBar"></div>
+  </div>
+  <div class="ap-loading" id="apLoading">
+    <div class="ap-loading-text" id="apLoadingText">Loading show...</div>
+    <div class="ap-loading-sub" id="apLoadingSub">Preparing audio files</div>
+    <div class="ap-loading-bar"><div class="ap-loading-fill" id="apLoadingFill"></div></div>
+  </div>
+  <div class="ap-main">
+    <div class="ap-controls">
+      <button class="ap-btn" id="apPrev" title="Previous track">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+      </button>
+      <button class="ap-btn ap-btn-play" id="apPlayPause" title="Play/Pause">
+        <svg viewBox="0 0 24 24" fill="currentColor" id="apPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <button class="ap-btn" id="apNext" title="Next track">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+      </button>
+    </div>
+    <div class="ap-info">
+      <div class="ap-show-title" id="apShowTitle">No show loaded</div>
+      <div class="ap-track-title" id="apTrackTitle">—</div>
+    </div>
+    <div class="ap-time" id="apTime">0:00 / 0:00</div>
+    <div class="ap-volume">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#888"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      <input type="range" id="apVolume" min="0" max="1" step="0.05" value="0.8">
+    </div>
+    <button class="ap-btn" id="apListToggle" title="Show tracklist">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+    </button>
+    <button class="ap-close" id="apClose" title="Close player">&times;</button>
+  </div>
+  <div class="ap-tracklist" id="apTracklist"></div>
+</div>
+
 <div class="map-footer">
   <a href="mailto:jd@tthpods.com" class="footer-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Connect with jD</a>
   <a href="https://tthpods.kit.com/products/tipsforjd" target="_blank" rel="noopener noreferrer" class="footer-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Leave A Tip</a>
   <span>Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">The TTH Podcast Series</a></span>
-  <span style="color:#666;font-size:0.6rem;">v2.9.9.4 (An Inch An Hour)</span>
+  <span style="color:#666;font-size:0.6rem;">v3.1 (Little Bones)</span>
 </div>
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
