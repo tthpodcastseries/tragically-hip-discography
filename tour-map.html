@@ -767,9 +767,9 @@ input[type="range"]::-moz-range-track {
     document.body.appendChild(btn);
   }
 
+  gate.style.display='flex';
   window.tthSupabase.auth.getSession().then(function(res){
     if(res.data.session){gate.remove();addLogout()}
-    else{gate.style.display='flex'}
   });
 
   window.tthSupabase.auth.onAuthStateChange(function(event,session){
