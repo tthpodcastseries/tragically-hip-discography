@@ -609,6 +609,39 @@ input[type="range"]::-moz-range-track {
   background: transparent;
 }
 
+/* I WAS THERE */
+.iwt-popup-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+.iwt-popup-btn:hover { background: rgba(204,162,60,0.15); }
+.iwt-popup-btn.active {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+.iwt-counter {
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .map-header { padding: 10px 14px; }
@@ -834,6 +867,7 @@ window.handleSignup=async function(){
     Play Timeline
   </button>
   <button id="resetBtn" title="Reset to show all gigs">Reset</button>
+  <button id="myShowsBtn" title="Show only gigs you attended" style="display:none;">My Shows <span id="myShowsCount" class="iwt-counter">0</span></button>
   <div class="control-group search-group">
     <label for="gigSearch">Search</label>
     <div class="search-wrap">
@@ -989,6 +1023,8 @@ window.handleSignup=async function(){
       html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
     if (g.setlistUrl) html += `<a href="${g.setlistUrl}" target="_blank" rel="noopener noreferrer" class="popup-link">View full setlist →</a>`;
+    const isAttended = tthAttended.has(g.id);
+    html += `<button class="iwt-popup-btn${isAttended ? ' active' : ''}" onclick="window.toggleAttended('${g.id}',this)">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>`;
     return html;
   }
 
@@ -1285,6 +1321,91 @@ window.handleSignup=async function(){
     });
 
     searchResults.classList.add('open');
+  }
+
+  // ─── Attended Shows (I Was There) ───
+  const tthAttended = {
+    _shows: new Set(),
+    _saving: false,
+    has(id) { return this._shows.has(id); },
+    count() { return this._shows.size; },
+    getAll() { return [...this._shows]; },
+    async init() {
+      if (!window.tthSupabase) return;
+      const { data } = await window.tthSupabase.auth.getSession();
+      const user = data?.session?.user;
+      if (user?.user_metadata?.attended_shows) {
+        user.user_metadata.attended_shows.forEach(id => this._shows.add(id));
+      }
+      this._updateUI();
+    },
+    async toggle(id) {
+      if (this._shows.has(id)) this._shows.delete(id);
+      else this._shows.add(id);
+      this._updateUI();
+      await this._save();
+      return this._shows.has(id);
+    },
+    _updateUI() {
+      const btn = document.getElementById('myShowsBtn');
+      const count = document.getElementById('myShowsCount');
+      if (this._shows.size > 0) {
+        btn.style.display = '';
+        count.textContent = this._shows.size;
+      } else {
+        btn.style.display = 'none';
+      }
+    },
+    async _save() {
+      if (this._saving || !window.tthSupabase) return;
+      this._saving = true;
+      try {
+        const { data } = await window.tthSupabase.auth.getSession();
+        if (data?.session) {
+          await window.tthSupabase.auth.updateUser({
+            data: { attended_shows: [...this._shows] }
+          });
+        }
+      } catch (e) { console.error('Failed to save attended shows:', e); }
+      this._saving = false;
+    }
+  };
+
+  // Toggle handler for popup buttons
+  window.toggleAttended = async function(id, btn) {
+    const now = await tthAttended.toggle(id);
+    btn.className = 'iwt-popup-btn' + (now ? ' active' : '');
+    btn.textContent = now ? 'I Was There ✓' : 'I Was There';
+  };
+
+  // "My Shows" filter button
+  let showingMyShows = false;
+  document.getElementById('myShowsBtn').addEventListener('click', () => {
+    showingMyShows = !showingMyShows;
+    const btn = document.getElementById('myShowsBtn');
+    if (showingMyShows) {
+      btn.classList.add('active');
+      const myGigs = allGigs.filter(g => tthAttended.has(g.id));
+      renderGigs(myGigs);
+      if (myGigs.length) {
+        const pts = myGigs.filter(g => g.lat && g.lng).map(g => [g.lat, g.lng]);
+        if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 12 });
+      }
+    } else {
+      btn.classList.remove('active');
+      applyFilters();
+      map.setView([50, -85], 4);
+    }
+  });
+
+  // Init attended shows when auth is ready
+  if (window.tthSupabase) {
+    window.tthSupabase.auth.getSession().then(({ data }) => {
+      if (data?.session) tthAttended.init();
+    });
+    window.tthSupabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) tthAttended.init();
+    });
   }
 
   // Initial render
