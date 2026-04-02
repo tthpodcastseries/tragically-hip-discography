@@ -2793,9 +2793,10 @@ const attendedShows = {
   _shows: new Set(),
   _saving: false,
 
-  init() {
-    if (window.netlifyIdentity) {
-      const user = netlifyIdentity.currentUser();
+  async init() {
+    if (window.tthSupabase) {
+      const { data } = await window.tthSupabase.auth.getSession();
+      const user = data?.session?.user;
       if (user && user.user_metadata && user.user_metadata.attended_shows) {
         user.user_metadata.attended_shows.forEach(id => this._shows.add(id));
       }
@@ -2815,12 +2816,14 @@ const attendedShows = {
   count() { return this._shows.size; },
 
   async _save() {
-    if (this._saving || !window.netlifyIdentity) return;
+    if (this._saving || !window.tthSupabase) return;
     this._saving = true;
     try {
-      const user = netlifyIdentity.currentUser();
-      if (user) {
-        await user.update({ data: { attended_shows: [...this._shows] } });
+      const { data } = await window.tthSupabase.auth.getSession();
+      if (data?.session) {
+        await window.tthSupabase.auth.updateUser({
+          data: { attended_shows: [...this._shows] }
+        });
       }
     } catch (e) {
       console.error('Failed to save attended shows:', e);
@@ -2829,11 +2832,14 @@ const attendedShows = {
   }
 };
 
-// Initialize attended shows when identity is ready
-if (window.netlifyIdentity) {
-  const user = netlifyIdentity.currentUser();
-  if (user) attendedShows.init();
-  else netlifyIdentity.on('login', () => { attendedShows.init(); });
+// Initialize attended shows when auth is ready
+if (window.tthSupabase) {
+  window.tthSupabase.auth.getSession().then(({ data }) => {
+    if (data?.session) attendedShows.init();
+  });
+  window.tthSupabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN' && session) attendedShows.init();
+  });
 }
 
 async function renderMyShows() {
