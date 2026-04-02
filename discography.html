@@ -1216,51 +1216,60 @@
   <p id="authError" style="color:#C8102E;font-size:0.78rem;margin:0;text-align:center;max-width:260px;min-height:1.2em;"></p>
 </div>
 <script>
-(function(){
+// UI functions - always available regardless of SDK load state
+window.showAuthTab=function(tab){
+  var tl=document.getElementById('tabLogin'),ts=document.getElementById('tabSignup');
+  var fl=document.getElementById('authFormLogin'),fs=document.getElementById('authFormSignup');
+  document.getElementById('authError').textContent='';
+  if(tab==='login'){
+    fl.style.display='flex';fs.style.display='none';
+    tl.style.background='#C8102E';tl.style.color='#fff';tl.style.border='none';
+    ts.style.background='transparent';ts.style.color='#C8102E';ts.style.border='1px solid #C8102E';ts.style.borderLeft='none';
+  }else{
+    fl.style.display='none';fs.style.display='flex';
+    ts.style.background='#C8102E';ts.style.color='#fff';ts.style.border='none';
+    tl.style.background='transparent';tl.style.color='#C8102E';tl.style.border='1px solid #C8102E';tl.style.borderRight='none';
+  }
+};
+
+window.handleLogin=async function(){
+  var err=document.getElementById('authError');
+  err.textContent='';
+  if(!window.tthSupabase){err.textContent='Loading, please try again...';return}
+  var email=document.getElementById('authEmail').value.trim();
+  var pass=document.getElementById('authPass').value;
+  if(!email||!pass){err.textContent='Please enter email and password.';return}
+  var res=await window.tthSupabase.auth.signInWithPassword({email:email,password:pass});
+  if(res.error){err.textContent=res.error.message}
+};
+
+window.handleSignup=async function(){
+  var err=document.getElementById('authError');
+  err.textContent='';
+  if(!window.tthSupabase){err.textContent='Loading, please try again...';return}
+  var email=document.getElementById('authEmailSignup').value.trim();
+  var pass=document.getElementById('authPassSignup').value;
+  var confirm=document.getElementById('authPassConfirm').value;
+  if(!email||!pass){err.textContent='Please enter email and password.';return}
+  if(pass!==confirm){err.textContent='Passwords do not match.';return}
+  var res=await window.tthSupabase.auth.signUp({email:email,password:pass});
+  if(res.error){err.textContent=res.error.message}
+  else{err.style.color='#4CAF50';err.textContent='Check your email to confirm your account.'}
+};
+
+// Supabase init - runs when SDK is ready
+(function initAuth(){
   var gate=document.getElementById('authGate');
   var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
   if(isLocal){gate.remove();var pg=document.getElementById('passGate');if(pg)pg.remove();return}
 
-  if(typeof supabase==='undefined'){console.error('Supabase SDK not loaded');return}
+  if(typeof supabase==='undefined'){
+    // SDK not loaded yet, retry in 100ms
+    setTimeout(initAuth,100);
+    return;
+  }
+
   window.tthSupabase=supabase.createClient('https://deqslacywpwnjjckdygp.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM');
-
-  window.showAuthTab=function(tab){
-    var tl=document.getElementById('tabLogin'),ts=document.getElementById('tabSignup');
-    var fl=document.getElementById('authFormLogin'),fs=document.getElementById('authFormSignup');
-    document.getElementById('authError').textContent='';
-    if(tab==='login'){
-      fl.style.display='flex';fs.style.display='none';
-      tl.style.background='#C8102E';tl.style.color='#fff';tl.style.border='none';
-      ts.style.background='transparent';ts.style.color='#C8102E';ts.style.border='1px solid #C8102E';ts.style.borderLeft='none';
-    }else{
-      fl.style.display='none';fs.style.display='flex';
-      ts.style.background='#C8102E';ts.style.color='#fff';ts.style.border='none';
-      tl.style.background='transparent';tl.style.color='#C8102E';tl.style.border='1px solid #C8102E';tl.style.borderRight='none';
-    }
-  };
-
-  window.handleLogin=async function(){
-    var err=document.getElementById('authError');
-    err.textContent='';
-    var email=document.getElementById('authEmail').value.trim();
-    var pass=document.getElementById('authPass').value;
-    if(!email||!pass){err.textContent='Please enter email and password.';return}
-    var res=await window.tthSupabase.auth.signInWithPassword({email:email,password:pass});
-    if(res.error){err.textContent=res.error.message}
-  };
-
-  window.handleSignup=async function(){
-    var err=document.getElementById('authError');
-    err.textContent='';
-    var email=document.getElementById('authEmailSignup').value.trim();
-    var pass=document.getElementById('authPassSignup').value;
-    var confirm=document.getElementById('authPassConfirm').value;
-    if(!email||!pass){err.textContent='Please enter email and password.';return}
-    if(pass!==confirm){err.textContent='Passwords do not match.';return}
-    var res=await window.tthSupabase.auth.signUp({email:email,password:pass});
-    if(res.error){err.textContent=res.error.message}
-    else{err.style.color='#4CAF50';err.textContent='Check your email to confirm your account.'}
-  };
 
   function addLogout(){
     if(document.getElementById('tth-logout'))return;
