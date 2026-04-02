@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: #C8102E; color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
@@ -197,40 +197,94 @@
 })();
 </script>
 <!-- END PASSWORD GATE -->
-<!-- AUTH GATE - Netlify Identity -->
+<!-- AUTH GATE - Supabase Auth -->
 <div id="authGate" style="display:none;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
   <p style="color:#aaa;font-size:0.85rem;margin:0;text-align:center;max-width:300px;">Create a free account or log in to access The Hip Compendium.</p>
-  <div style="display:flex;gap:12px;margin-top:8px;">
-    <button onclick="netlifyIdentity.open('signup')" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Sign Up</button>
-    <button onclick="netlifyIdentity.open('login')" style="background:transparent;color:#C8102E;border:1px solid #C8102E;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Log In</button>
+  <div id="authTabs" style="display:flex;gap:0;margin-top:8px;">
+    <button id="tabLogin" onclick="showAuthTab('login')" style="background:#C8102E;color:#fff;border:none;padding:8px 20px;border-radius:6px 0 0 6px;font-size:0.8rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Log In</button>
+    <button id="tabSignup" onclick="showAuthTab('signup')" style="background:transparent;color:#C8102E;border:1px solid #C8102E;border-left:none;padding:8px 20px;border-radius:0 6px 6px 0;font-size:0.8rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Sign Up</button>
   </div>
+  <div id="authFormLogin" style="display:flex;flex-direction:column;gap:10px;width:260px;">
+    <input id="authEmail" type="email" placeholder="Email" autocomplete="email" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPass" type="password" placeholder="Password" autocomplete="current-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitLogin').click()">
+    <button id="authSubmitLogin" onclick="handleLogin()" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;width:100%;">Log In</button>
+  </div>
+  <div id="authFormSignup" style="display:none;flex-direction:column;gap:10px;width:260px;">
+    <input id="authEmailSignup" type="email" placeholder="Email" autocomplete="email" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPassSignup" type="password" placeholder="Password" autocomplete="new-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPassConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitSignup').click()">
+    <button id="authSubmitSignup" onclick="handleSignup()" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;width:100%;">Sign Up</button>
+  </div>
+  <p id="authError" style="color:#C8102E;font-size:0.78rem;margin:0;text-align:center;max-width:260px;min-height:1.2em;"></p>
 </div>
 <script>
 (function(){
   var gate=document.getElementById('authGate');
   var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
   if(isLocal){gate.remove();var pg=document.getElementById('passGate');if(pg)pg.remove();return}
-  function onReady(){
-    var user=netlifyIdentity.currentUser();
-    if(user){gate.remove();addLogout()}
-    else{gate.style.display='flex'}
-    netlifyIdentity.on('login',function(){gate.remove();netlifyIdentity.close();addLogout()});
-    netlifyIdentity.on('logout',function(){window.location.reload()});
-  }
+
+  window.tthSupabase=supabase.createClient('https://deqslacywpwnjjckdygp.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM');
+
+  window.showAuthTab=function(tab){
+    var tl=document.getElementById('tabLogin'),ts=document.getElementById('tabSignup');
+    var fl=document.getElementById('authFormLogin'),fs=document.getElementById('authFormSignup');
+    document.getElementById('authError').textContent='';
+    if(tab==='login'){
+      fl.style.display='flex';fs.style.display='none';
+      tl.style.background='#C8102E';tl.style.color='#fff';tl.style.border='none';
+      ts.style.background='transparent';ts.style.color='#C8102E';ts.style.border='1px solid #C8102E';ts.style.borderLeft='none';
+    }else{
+      fl.style.display='none';fs.style.display='flex';
+      ts.style.background='#C8102E';ts.style.color='#fff';ts.style.border='none';
+      tl.style.background='transparent';tl.style.color='#C8102E';tl.style.border='1px solid #C8102E';tl.style.borderRight='none';
+    }
+  };
+
+  window.handleLogin=async function(){
+    var err=document.getElementById('authError');
+    err.textContent='';
+    var email=document.getElementById('authEmail').value.trim();
+    var pass=document.getElementById('authPass').value;
+    if(!email||!pass){err.textContent='Please enter email and password.';return}
+    var res=await window.tthSupabase.auth.signInWithPassword({email:email,password:pass});
+    if(res.error){err.textContent=res.error.message}
+  };
+
+  window.handleSignup=async function(){
+    var err=document.getElementById('authError');
+    err.textContent='';
+    var email=document.getElementById('authEmailSignup').value.trim();
+    var pass=document.getElementById('authPassSignup').value;
+    var confirm=document.getElementById('authPassConfirm').value;
+    if(!email||!pass){err.textContent='Please enter email and password.';return}
+    if(pass!==confirm){err.textContent='Passwords do not match.';return}
+    var res=await window.tthSupabase.auth.signUp({email:email,password:pass});
+    if(res.error){err.textContent=res.error.message}
+    else{err.style.color='#4CAF50';err.textContent='Check your email to confirm your account.'}
+  };
+
   function addLogout(){
     if(document.getElementById('tth-logout'))return;
     var btn=document.createElement('button');
     btn.id='tth-logout';
     btn.textContent='Log Out';
-    btn.onclick=function(){netlifyIdentity.logout()};
+    btn.onclick=async function(){await window.tthSupabase.auth.signOut();window.location.reload()};
     btn.style.cssText='position:fixed;bottom:16px;right:16px;z-index:9998;background:rgba(14,11,22,0.9);color:#888;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;transition:color 0.2s;';
     btn.onmouseenter=function(){btn.style.color='#C8102E'};
     btn.onmouseleave=function(){btn.style.color='#888'};
     document.body.appendChild(btn);
   }
-  if(window.netlifyIdentity)onReady();
-  else window.addEventListener('load',onReady);
+
+  window.tthSupabase.auth.getSession().then(function(res){
+    if(res.data.session){gate.remove();addLogout()}
+    else{gate.style.display='flex'}
+  });
+
+  window.tthSupabase.auth.onAuthStateChange(function(event,session){
+    if(event==='SIGNED_IN'&&session){gate.remove();addLogout()}
+    if(event==='SIGNED_OUT'){window.location.reload()}
+  });
 })();
 </script>
 <!-- END AUTH GATE -->
