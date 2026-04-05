@@ -1031,7 +1031,7 @@ window.handleSignup=async function(){
     if (g.tracks && g.tracks.length) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
-      html += `<button onclick="window.tthPlayer.loadShow(window._gigLookup['${g.id}'])" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#CCA23C;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
+      html += `<button onclick="window.playGig('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#CCA23C;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
     } else if (g.archiveUrl) {
       html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
@@ -1552,6 +1552,7 @@ window.handleSignup=async function(){
   const AUDIO_BASE = 'https://f006.backblazeb2.com/file/tth-audio';
 
   function loadShow(gig) {
+    if (!gig) return;
     currentShow = gig;
     player.classList.add('active');
 
@@ -1642,6 +1643,10 @@ window.handleSignup=async function(){
 
   // Expose loadShow globally
   window.tthPlayer = { loadShow };
+  window.playGig = function(id) {
+    var gig = window._gigLookup && window._gigLookup[id];
+    if (gig) loadShow(gig);
+  };
 
 })();
 </script>
