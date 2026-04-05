@@ -734,9 +734,10 @@ window.handleSignup=async function(){
     results.albums = results.albums.slice(0, 5);
 
     // Songs (from album track lists in discographyData)
-    if (discographyData) {
+    var albumsList = discographyData && discographyData.albums ? discographyData.albums : discographyData;
+    if (albumsList && Array.isArray(albumsList)) {
       var seenSongs = new Set();
-      discographyData.forEach(function(a) {
+      albumsList.forEach(function(a) {
         if (a.tracks) a.tracks.forEach(function(t) {
           if (t.title && t.title.toLowerCase().includes(q) && !seenSongs.has(t.title)) {
             seenSongs.add(t.title);
