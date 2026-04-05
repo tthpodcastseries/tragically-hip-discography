@@ -30,8 +30,8 @@ from urllib.request import urlopen, Request
 from urllib.error import HTTPError, URLError
 
 # --- Backblaze B2 S3-compatible config ---
-B2_KEY_ID = os.environ.get('B2_KEY_ID', '00650080ffc2e1c0000000001')
-B2_APP_KEY = os.environ.get('B2_APP_KEY', 'K006ryvnu0azsG63INGwmeUmF/Zs5hU')
+B2_KEY_ID = os.environ.get('B2_KEY_ID', '')
+B2_APP_KEY = os.environ.get('B2_APP_KEY', '')
 B2_BUCKET = os.environ.get('B2_BUCKET', 'tth-audio')
 B2_ENDPOINT = os.environ.get('B2_ENDPOINT', 'https://s3.ca-east-006.backblazeb2.com')
 B2_PUBLIC_BASE = os.environ.get('B2_PUBLIC_BASE', f'https://f006.backblazeb2.com/file/{B2_BUCKET}')

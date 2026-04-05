@@ -1164,36 +1164,9 @@
     .otd-tag-show { background: var(--red); color: #fff; }
     .otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }
   </style>
-  <script src="/js/supabase.min.js"></script>
+  <script src="/js/supabase.min.js" defer></script>
 </head>
 <body>
-<!-- PASSWORD GATE - TEMPORARY UNTIL APRIL 20 LAUNCH -->
-<div id="passGate" style="display:none;position:fixed;inset:0;z-index:100000;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-  <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
-  <p style="color:#aaa;font-size:0.85rem;margin:0;">This site is in pre-launch. Enter the password to continue.</p>
-  <div id="countdown" style="display:flex;gap:18px;margin:8px 0 4px;">
-    <div style="text-align:center;"><span id="cdDays" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Days</span></div>
-    <div style="text-align:center;"><span id="cdHrs" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Hours</span></div>
-    <div style="text-align:center;"><span id="cdMin" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Min</span></div>
-    <div style="text-align:center;"><span id="cdSec" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Sec</span></div>
-  </div>
-  <input id="passInput" type="password" placeholder="Password" autocomplete="off" aria-label="Enter site password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 16px;border-radius:6px;font-size:1rem;font-family:Poppins,sans-serif;width:220px;text-align:center;" onkeydown="if(event.key==='Enter')document.getElementById('passBtn').click()">
-  <button id="passBtn" onclick="if(document.getElementById('passInput').value==='roadapples'){sessionStorage.setItem('tth_pass','1');document.getElementById('passGate').remove()}else{document.getElementById('passInput').style.borderColor='#C8102E';document.getElementById('passInput').value=''}" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Enter</button>
-</div>
-<script>if(!sessionStorage.getItem('tth_pass')){document.getElementById('passGate').style.display='flex'}else{document.getElementById('passGate').remove()}</script>
-<script>
-(function(){
-  var target=new Date('2026-04-20T20:00:00-04:00').getTime();
-  function tick(){
-    var now=Date.now(),diff=target-now;
-    if(diff<=0){document.getElementById('cdDays').textContent='0';document.getElementById('cdHrs').textContent='0';document.getElementById('cdMin').textContent='0';document.getElementById('cdSec').textContent='0';return}
-    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    document.getElementById('cdDays').textContent=d;document.getElementById('cdHrs').textContent=h;document.getElementById('cdMin').textContent=m;document.getElementById('cdSec').textContent=s;
-  }
-  if(document.getElementById('passGate')){tick();setInterval(tick,1000)}
-})();
-</script>
-<!-- END PASSWORD GATE -->
 <!-- AUTH GATE - Supabase Auth -->
 <div id="authGate" style="display:flex;position:fixed;inset:0;z-index:99999;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
   <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;">THE HIP COMPENDIUM</h1>
@@ -1203,14 +1176,14 @@
     <button id="tabSignup" onclick="showAuthTab('signup')" style="background:transparent;color:#C8102E;border:1px solid #C8102E;border-left:none;padding:8px 20px;border-radius:0 6px 6px 0;font-size:0.8rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;">Sign Up</button>
   </div>
   <div id="authFormLogin" style="display:flex;flex-direction:column;gap:10px;width:260px;">
-    <input id="authEmail" type="email" placeholder="Email" autocomplete="email" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
-    <input id="authPass" type="password" placeholder="Password" autocomplete="current-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitLogin').click()">
+    <input id="authEmail" type="email" placeholder="Email" autocomplete="email" aria-label="Email address" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPass" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitLogin').click()">
     <button id="authSubmitLogin" onclick="handleLogin()" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;width:100%;">Log In</button>
   </div>
   <div id="authFormSignup" style="display:none;flex-direction:column;gap:10px;width:260px;">
-    <input id="authEmailSignup" type="email" placeholder="Email" autocomplete="email" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
-    <input id="authPassSignup" type="password" placeholder="Password" autocomplete="new-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
-    <input id="authPassConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitSignup').click()">
+    <input id="authEmailSignup" type="email" placeholder="Email" autocomplete="email" aria-label="Email address for signup" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPassSignup" type="password" placeholder="Password" autocomplete="new-password" aria-label="Password for signup" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;">
+    <input id="authPassConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password" aria-label="Confirm password" style="background:#1a1a2e;border:1px solid #333;color:#fff;padding:10px 14px;border-radius:6px;font-size:0.9rem;font-family:Poppins,sans-serif;width:100%;" onkeydown="if(event.key==='Enter')document.getElementById('authSubmitSignup').click()">
     <button id="authSubmitSignup" onclick="handleSignup()" style="background:#C8102E;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:0.85rem;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.05em;width:100%;">Sign Up</button>
   </div>
   <p id="authError" style="color:#C8102E;font-size:0.78rem;margin:0;text-align:center;max-width:260px;min-height:1.2em;"></p>
@@ -1288,7 +1261,7 @@ window.handleSignup=async function(){
 (function initAuth(){
   var gate=document.getElementById('authGate');
   var isLocal=location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
-  if(isLocal){gate.remove();var pg=document.getElementById('passGate');if(pg)pg.remove();return}
+  if(isLocal){gate.remove();return}
 
   if(typeof supabase==='undefined'){
     // SDK not loaded yet, retry in 100ms
