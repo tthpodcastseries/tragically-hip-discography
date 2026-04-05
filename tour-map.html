@@ -1319,15 +1319,29 @@ window.handleSignup=async function(){
       item.addEventListener('click', () => {
         searchResults.classList.remove('open');
         if (g.lat && g.lng) {
-          map.setView([g.lat, g.lng], 14, { animate: true });
-          setTimeout(() => {
+          // Zoom to max to break all clusters, then open the exact show popup
+          map.setView([g.lat, g.lng], 18, { animate: true });
+          function tryOpenPopup(attempts) {
+            if (attempts <= 0) return;
+            let found = false;
             clusterGroup.eachLayer(layer => {
+              if (found) return;
               const ll = layer.getLatLng();
               if (Math.abs(ll.lat - g.lat) < 0.0001 && Math.abs(ll.lng - g.lng) < 0.0001) {
-                layer.openPopup();
+                // Check popup content matches this specific show
+                const popup = layer.getPopup();
+                if (popup) {
+                  const content = popup.getContent();
+                  if (content.includes(g.venue || '') && content.includes(formatDate(g.isoDate))) {
+                    layer.openPopup();
+                    found = true;
+                  }
+                }
               }
             });
-          }, 600);
+            if (!found) setTimeout(() => tryOpenPopup(attempts - 1), 300);
+          }
+          setTimeout(() => tryOpenPopup(5), 500);
         }
       });
       searchResults.appendChild(item);
