@@ -717,6 +717,144 @@ input[type="range"]::-moz-range-track {
   margin-left: 4px;
 }
 
+/* SETLIST OVERLAY */
+.setlist-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2600;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+.setlist-overlay.active { display: flex; }
+.setlist-card {
+  background: var(--bg2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px 28px;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+.setlist-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.setlist-close:hover { color: var(--white); }
+.setlist-date { color: var(--gold); font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.setlist-venue { color: var(--white); font-weight: 600; font-size: 1.15rem; margin-bottom: 2px; }
+.setlist-city { color: var(--muted); font-size: 0.85rem; margin-bottom: 4px; }
+.setlist-tour { color: var(--red); font-size: 0.8rem; font-weight: 500; margin-bottom: 12px; }
+.setlist-songs-wrap {
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+.setlist-songs-wrap::-webkit-scrollbar { width: 4px; }
+.setlist-songs-wrap::-webkit-scrollbar-track { background: transparent; }
+.setlist-songs-wrap::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
+.setlist-set-header {
+  color: var(--gold);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 12px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(204,162,60,0.2);
+}
+.setlist-set-header:first-child { margin-top: 0; }
+.setlist-song {
+  font-size: 0.82rem;
+  color: var(--white);
+  padding: 3px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.setlist-song-num {
+  color: var(--muted);
+  font-size: 0.65rem;
+  min-width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.setlist-song-name { flex: 1; }
+.setlist-song-cover {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-style: italic;
+}
+.setlist-song-tape {
+  opacity: 0.5;
+}
+.setlist-song-tape-label {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+.setlist-count {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.setlist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.setlist-actions button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.setlist-play-btn {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+}
+.setlist-play-btn:hover { background: #d4af4a; }
+.setlist-close-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.setlist-close-btn:hover { background: rgba(255,255,255,0.05); }
+.setlist-credit {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.6rem;
+}
+.setlist-credit a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.setlist-credit a:hover { color: var(--gold); text-decoration: underline; }
+.setlist-empty {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 20px 0;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .map-header { padding: 10px 14px; }
@@ -1027,6 +1165,20 @@ window.handleSignup=async function(){
     return;
   }
 
+  // Load setlist data
+  let setlistLookup = {};
+  try {
+    const slRes = await fetch('data/setlists.min.json');
+    if (slRes.ok) {
+      const slData = await slRes.json();
+      if (slData.setlists) {
+        slData.setlists.forEach(s => { setlistLookup[s.id] = s; });
+      }
+    }
+  } catch (e) {
+    console.warn('Setlist data load failed:', e);
+  }
+
   // Map setup - dark tiles
   const map = L.map('map', {
     center: [50, -85],
@@ -1110,7 +1262,7 @@ window.handleSignup=async function(){
     } else if (g.archiveUrl) {
       html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
-    if (g.setlistUrl) html += `<a href="${g.setlistUrl}" target="_blank" rel="noopener noreferrer" class="popup-link">View full setlist →</a>`;
+    if (g.setlistUrl) html += `<button onclick="window.showSetlist('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:4px 0;background:none;border:none;color:#CCA23C;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;text-align:left;">View setlist →</button>`;
     const isAttended = tthAttended.has(g.id);
     html += `<button class="iwt-popup-btn${isAttended ? ' active' : ''}" onclick="window.toggleAttended('${g.id}',this)">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>`;
     return html;
@@ -1512,13 +1664,14 @@ window.handleSignup=async function(){
     }
 
     if (g.setlistUrl) {
-      const setlistLink = document.createElement('a');
-      setlistLink.className = 'show-detail-setlist';
-      setlistLink.href = g.setlistUrl;
-      setlistLink.target = '_blank';
-      setlistLink.rel = 'noopener noreferrer';
-      setlistLink.textContent = 'View full setlist →';
-      actions.appendChild(setlistLink);
+      const setlistBtn = document.createElement('button');
+      setlistBtn.className = 'show-detail-setlist';
+      setlistBtn.textContent = 'View setlist →';
+      setlistBtn.addEventListener('click', () => {
+        document.getElementById('showDetailOverlay').classList.remove('active');
+        window.showSetlist(g.id);
+      });
+      actions.appendChild(setlistBtn);
     }
 
     if (g.lat && g.lng) {
@@ -1550,6 +1703,134 @@ window.handleSignup=async function(){
     document.getElementById('showDetailOverlay').classList.remove('active');
   });
   document.getElementById('showDetailOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+  });
+
+  // Setlist overlay logic
+  window.showSetlist = function(gigId) {
+    const sl = setlistLookup[gigId];
+    const g = allGigs.find(x => x.id === gigId);
+    const overlay = document.getElementById('setlistOverlay');
+
+    // Header info - use gig data as fallback
+    document.getElementById('slDate').textContent = formatDate(g ? g.isoDate : null);
+    document.getElementById('slVenue').textContent = (sl ? sl.venue : (g ? g.venue : 'Unknown venue'));
+    const cityParts = [];
+    if (sl) {
+      if (sl.city) cityParts.push(sl.city);
+      if (sl.state) cityParts.push(sl.state);
+    } else if (g) {
+      if (g.city) cityParts.push(g.city);
+      if (g.state) cityParts.push(g.state);
+      if (g.countryName) cityParts.push(g.countryName);
+    }
+    document.getElementById('slCity').textContent = cityParts.join(', ');
+
+    const tourName = (sl && sl.tour) || (g && g.tour) || '';
+    document.getElementById('slTour').textContent = tourName;
+    document.getElementById('slTour').style.display = tourName ? '' : 'none';
+
+    const songsWrap = document.getElementById('slSongsWrap');
+    songsWrap.innerHTML = '';
+
+    if (sl && sl.songs && sl.songs.length > 0) {
+      // Group songs by set
+      const sets = {};
+      const setOrder = [];
+      sl.songs.forEach(song => {
+        const setName = song.set || 'Set';
+        if (!sets[setName]) {
+          sets[setName] = [];
+          setOrder.push(setName);
+        }
+        sets[setName].push(song);
+      });
+
+      let songNum = 0;
+      setOrder.forEach(setName => {
+        const header = document.createElement('div');
+        header.className = 'setlist-set-header';
+        header.textContent = setName;
+        songsWrap.appendChild(header);
+
+        sets[setName].forEach(song => {
+          songNum++;
+          const row = document.createElement('div');
+          row.className = 'setlist-song' + (song.tape ? ' setlist-song-tape' : '');
+
+          const num = document.createElement('span');
+          num.className = 'setlist-song-num';
+          num.textContent = songNum;
+          row.appendChild(num);
+
+          const name = document.createElement('span');
+          name.className = 'setlist-song-name';
+          name.textContent = song.name;
+          row.appendChild(name);
+
+          if (song.cover) {
+            const cover = document.createElement('span');
+            cover.className = 'setlist-song-cover';
+            cover.textContent = '(cover)';
+            row.appendChild(cover);
+          }
+
+          if (song.tape) {
+            const tape = document.createElement('span');
+            tape.className = 'setlist-song-tape-label';
+            tape.textContent = '[tape]';
+            row.appendChild(tape);
+          }
+
+          songsWrap.appendChild(row);
+        });
+      });
+
+      document.getElementById('slCount').textContent = songNum + ' song' + (songNum !== 1 ? 's' : '');
+    } else {
+      songsWrap.innerHTML = '<div class="setlist-empty">No setlist data available for this show.</div>';
+      document.getElementById('slCount').textContent = '';
+    }
+
+    // Actions
+    const actions = document.getElementById('slActions');
+    actions.innerHTML = '';
+
+    if (g && g.tracks && g.tracks.length) {
+      window._gigLookup = window._gigLookup || {};
+      window._gigLookup[g.id] = g;
+      const playBtn = document.createElement('button');
+      playBtn.className = 'setlist-play-btn';
+      playBtn.textContent = '\uD83C\uDFA7 Play this show';
+      playBtn.addEventListener('click', () => {
+        overlay.classList.remove('active');
+        window.playGig(g.id);
+      });
+      actions.appendChild(playBtn);
+    }
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'setlist-close-btn';
+    closeBtn.textContent = 'Close';
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('active'); });
+    actions.appendChild(closeBtn);
+
+    // Credit link
+    const credit = document.getElementById('slCredit');
+    const setlistUrl = (sl && sl.url) || (g && g.setlistUrl) || '';
+    if (setlistUrl) {
+      credit.innerHTML = '<a href="' + setlistUrl + '" target="_blank" rel="noopener noreferrer">Setlist data from setlist.fm</a>';
+    } else {
+      credit.innerHTML = '';
+    }
+
+    overlay.classList.add('active');
+  };
+
+  document.getElementById('setlistClose').addEventListener('click', () => {
+    document.getElementById('setlistOverlay').classList.remove('active');
+  });
+  document.getElementById('setlistOverlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
   });
 
@@ -1622,6 +1903,21 @@ window.handleSignup=async function(){
     <div class="show-detail-tour" id="sdTour"></div>
     <div class="show-detail-songs" id="sdSongs"></div>
     <div class="show-detail-actions" id="sdActions"></div>
+  </div>
+</div>
+
+<!-- SETLIST OVERLAY -->
+<div class="setlist-overlay" id="setlistOverlay">
+  <div class="setlist-card">
+    <button class="setlist-close" id="setlistClose">&times;</button>
+    <div class="setlist-date" id="slDate"></div>
+    <div class="setlist-venue" id="slVenue"></div>
+    <div class="setlist-city" id="slCity"></div>
+    <div class="setlist-tour" id="slTour"></div>
+    <div class="setlist-songs-wrap" id="slSongsWrap"></div>
+    <div class="setlist-count" id="slCount"></div>
+    <div class="setlist-actions" id="slActions"></div>
+    <div class="setlist-credit" id="slCredit"></div>
   </div>
 </div>
 
