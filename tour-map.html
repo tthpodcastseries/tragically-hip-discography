@@ -1480,177 +1480,6 @@ window.handleSignup=async function(){
 })();
 </script>
 
-<!-- AUDIO PLAYER JS -->
-<script>
-(function() {
-  const player = document.getElementById('audioPlayer');
-  const progressWrap = document.getElementById('apProgressWrap');
-  const progressBar = document.getElementById('apProgressBar');
-  const loadingEl = document.getElementById('apLoading');
-  const loadingText = document.getElementById('apLoadingText');
-  const loadingSub = document.getElementById('apLoadingSub');
-  const loadingFill = document.getElementById('apLoadingFill');
-  const showTitle = document.getElementById('apShowTitle');
-  const trackTitle = document.getElementById('apTrackTitle');
-  const timeDisplay = document.getElementById('apTime');
-  const playPauseBtn = document.getElementById('apPlayPause');
-  const playIcon = document.getElementById('apPlayIcon');
-  const prevBtn = document.getElementById('apPrev');
-  const nextBtn = document.getElementById('apNext');
-  const closeBtn = document.getElementById('apClose');
-  const listToggle = document.getElementById('apListToggle');
-  const tracklist = document.getElementById('apTracklist');
-  const volumeSlider = document.getElementById('apVolume');
-
-  const audio = new Audio();
-  audio.volume = 0.8;
-
-  let currentShow = null;
-  let currentTrackIndex = 0;
-  let tracks = [];
-
-  function formatTime(s) {
-    if (isNaN(s) || !isFinite(s)) return '0:00';
-    const m = Math.floor(s / 60);
-    const sec = Math.floor(s % 60);
-    return `${m}:${sec.toString().padStart(2, '0')}`;
-  }
-
-  function updatePlayIcon(playing) {
-    if (playing) {
-      playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-    } else {
-      playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-    }
-  }
-
-  function renderTracklist() {
-    tracklist.innerHTML = '';
-    tracks.forEach((t, i) => {
-      const div = document.createElement('div');
-      div.className = 'ap-track' + (i === currentTrackIndex ? ' active' : '');
-      div.innerHTML = `<span class="ap-track-num">${i + 1}</span>
-        <span class="ap-track-name">${t.name}</span>
-        <span class="ap-track-dur">${t.duration || ''}</span>`;
-      div.addEventListener('click', () => playTrack(i));
-      tracklist.appendChild(div);
-    });
-  }
-
-  function playTrack(index) {
-    if (index < 0 || index >= tracks.length) return;
-    currentTrackIndex = index;
-    const track = tracks[index];
-    trackTitle.textContent = track.name;
-    audio.src = track.url;
-    audio.play();
-    updatePlayIcon(true);
-    renderTracklist();
-  }
-
-  // Backblaze B2 public URL for audio files
-  const AUDIO_BASE = 'https://f006.backblazeb2.com/file/tth-audio';
-
-  function loadShow(gig) {
-    if (!gig) return;
-    currentShow = gig;
-    player.classList.add('active');
-
-    const dateStr = gig.isoDate || 'Unknown date';
-    const venue = gig.venue || 'Unknown venue';
-    const city = gig.city || '';
-    showTitle.textContent = `${dateStr} - ${venue}, ${city}`;
-
-    if (gig.tracks && gig.tracks.length) {
-      tracks = gig.tracks.map(t => ({
-        name: t.name || t.title || 'Unknown track',
-        url: t.url.startsWith('http') ? t.url : `${AUDIO_BASE}/${t.url}`,
-        duration: t.duration || ''
-      }));
-      currentTrackIndex = 0;
-      renderTracklist();
-      playTrack(0);
-    }
-  }
-
-  // Transport controls
-  playPauseBtn.addEventListener('click', () => {
-    if (!tracks.length) return;
-    if (audio.paused) {
-      audio.play();
-      updatePlayIcon(true);
-    } else {
-      audio.pause();
-      updatePlayIcon(false);
-    }
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (audio.currentTime > 3) {
-      audio.currentTime = 0;
-    } else {
-      playTrack(currentTrackIndex - 1);
-    }
-  });
-
-  nextBtn.addEventListener('click', () => playTrack(currentTrackIndex + 1));
-
-  closeBtn.addEventListener('click', () => {
-    audio.pause();
-    audio.src = '';
-    player.classList.remove('active');
-    tracklist.classList.remove('open');
-    tracks = [];
-    currentShow = null;
-    updatePlayIcon(false);
-  });
-
-  listToggle.addEventListener('click', () => {
-    tracklist.classList.toggle('open');
-  });
-
-  // Volume
-  volumeSlider.addEventListener('input', () => {
-    audio.volume = parseFloat(volumeSlider.value);
-  });
-
-  // Progress bar updates
-  audio.addEventListener('timeupdate', () => {
-    if (audio.duration) {
-      const pct = (audio.currentTime / audio.duration) * 100;
-      progressBar.style.width = pct + '%';
-      timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-    }
-  });
-
-  // Seek
-  progressWrap.addEventListener('click', (e) => {
-    if (!audio.duration) return;
-    const rect = progressWrap.getBoundingClientRect();
-    const pct = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = pct * audio.duration;
-  });
-
-  // Auto-advance to next track
-  audio.addEventListener('ended', () => {
-    if (currentTrackIndex < tracks.length - 1) {
-      playTrack(currentTrackIndex + 1);
-    } else {
-      updatePlayIcon(false);
-      progressBar.style.width = '0%';
-    }
-  });
-
-  // Expose loadShow globally
-  window.tthPlayer = { loadShow };
-  window.playGig = function(id) {
-    var gig = window._gigLookup && window._gigLookup[id];
-    if (gig) loadShow(gig);
-  };
-
-})();
-</script>
-
 <!-- AUDIO PLAYER -->
 <div class="audio-player" id="audioPlayer">
   <div class="ap-progress-wrap" id="apProgressWrap">
@@ -1689,6 +1518,102 @@ window.handleSignup=async function(){
   </div>
   <div class="ap-tracklist" id="apTracklist"></div>
 </div>
+
+<!-- AUDIO PLAYER JS -->
+<script>
+(function() {
+  const player = document.getElementById('audioPlayer');
+  const progressWrap = document.getElementById('apProgressWrap');
+  const progressBar = document.getElementById('apProgressBar');
+  const showTitle = document.getElementById('apShowTitle');
+  const trackTitle = document.getElementById('apTrackTitle');
+  const timeDisplay = document.getElementById('apTime');
+  const playPauseBtn = document.getElementById('apPlayPause');
+  const playIcon = document.getElementById('apPlayIcon');
+  const prevBtn = document.getElementById('apPrev');
+  const nextBtn = document.getElementById('apNext');
+  const closeBtn = document.getElementById('apClose');
+  const listToggle = document.getElementById('apListToggle');
+  const tracklist = document.getElementById('apTracklist');
+  const volumeSlider = document.getElementById('apVolume');
+
+  const audio = new Audio();
+  audio.volume = 0.8;
+  let currentShow = null;
+  let currentTrackIndex = 0;
+  let tracks = [];
+
+  function formatTime(s) {
+    if (isNaN(s) || !isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  function updatePlayIcon(playing) {
+    playIcon.innerHTML = playing
+      ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+  }
+
+  function renderTracklist() {
+    tracklist.innerHTML = '';
+    tracks.forEach((t, i) => {
+      const div = document.createElement('div');
+      div.className = 'ap-track' + (i === currentTrackIndex ? ' active' : '');
+      div.innerHTML = `<span class="ap-track-num">${i + 1}</span><span class="ap-track-name">${t.name}</span><span class="ap-track-dur">${t.duration || ''}</span>`;
+      div.addEventListener('click', () => playTrack(i));
+      tracklist.appendChild(div);
+    });
+  }
+
+  function playTrack(index) {
+    if (index < 0 || index >= tracks.length) return;
+    currentTrackIndex = index;
+    trackTitle.textContent = tracks[index].name;
+    audio.src = tracks[index].url;
+    audio.play();
+    updatePlayIcon(true);
+    renderTracklist();
+  }
+
+  const AUDIO_BASE = 'https://f006.backblazeb2.com/file/tth-audio';
+
+  function loadShow(gig) {
+    if (!gig) return;
+    currentShow = gig;
+    player.classList.add('active');
+    showTitle.textContent = `${gig.isoDate || ''} - ${gig.venue || 'Unknown'}, ${gig.city || ''}`;
+    if (gig.tracks && gig.tracks.length) {
+      tracks = gig.tracks.map(t => ({
+        name: t.name || 'Unknown track',
+        url: t.url.startsWith('http') ? t.url : `${AUDIO_BASE}/${t.url}`,
+        duration: t.duration || ''
+      }));
+      currentTrackIndex = 0;
+      renderTracklist();
+      playTrack(0);
+    }
+  }
+
+  playPauseBtn.addEventListener('click', () => {
+    if (!tracks.length) return;
+    if (audio.paused) { audio.play(); updatePlayIcon(true); }
+    else { audio.pause(); updatePlayIcon(false); }
+  });
+  prevBtn.addEventListener('click', () => { audio.currentTime > 3 ? audio.currentTime = 0 : playTrack(currentTrackIndex - 1); });
+  nextBtn.addEventListener('click', () => playTrack(currentTrackIndex + 1));
+  closeBtn.addEventListener('click', () => { audio.pause(); audio.src = ''; player.classList.remove('active'); tracklist.classList.remove('open'); tracks = []; updatePlayIcon(false); });
+  listToggle.addEventListener('click', () => tracklist.classList.toggle('open'));
+  volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value); });
+  audio.addEventListener('timeupdate', () => { if (audio.duration) { progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%'; timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`; } });
+  progressWrap.addEventListener('click', (e) => { if (!audio.duration) return; audio.currentTime = ((e.clientX - progressWrap.getBoundingClientRect().left) / progressWrap.offsetWidth) * audio.duration; });
+  audio.addEventListener('ended', () => { currentTrackIndex < tracks.length - 1 ? playTrack(currentTrackIndex + 1) : (updatePlayIcon(false), progressBar.style.width = '0%'); });
+
+  window.tthPlayer = { loadShow };
+  window.playGig = function(id) { var gig = window._gigLookup && window._gigLookup[id]; if (gig) loadShow(gig); };
+})();
+</script>
 
 <div class="map-footer">
   <a href="mailto:jd@tthpods.com" class="footer-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Connect with jD</a>
