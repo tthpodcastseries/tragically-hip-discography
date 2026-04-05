@@ -212,6 +212,40 @@
     .sd-iwt:hover { background:rgba(204,162,60,0.15); }
     .sd-iwt.active { background:var(--gold); color:var(--bg); }
 
+    /* SETLIST OVERLAY */
+    .setlist-overlay { display:none; position:fixed; inset:0; z-index:2600; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); align-items:center; justify-content:center; font-family:'Poppins',sans-serif; }
+    .setlist-overlay.active { display:flex; }
+    .setlist-card { background:#0e0b16; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px 28px; max-width:420px; width:90%; position:relative; box-shadow:0 12px 40px rgba(0,0,0,0.6); }
+    .setlist-close { position:absolute; top:12px; right:16px; background:none; border:none; color:var(--muted); font-size:1.4rem; cursor:pointer; line-height:1; }
+    .setlist-close:hover { color:#fff; }
+    .setlist-date { color:var(--gold); font-weight:600; font-size:0.95rem; margin-bottom:4px; }
+    .setlist-venue { color:#fff; font-weight:600; font-size:1.15rem; margin-bottom:2px; }
+    .setlist-city { color:var(--muted); font-size:0.85rem; margin-bottom:4px; }
+    .setlist-tour { color:var(--red); font-size:0.8rem; font-weight:500; margin-bottom:12px; }
+    .setlist-songs-wrap { max-height:55vh; overflow-y:auto; margin-bottom:12px; }
+    .setlist-songs-wrap::-webkit-scrollbar { width:4px; }
+    .setlist-songs-wrap::-webkit-scrollbar-track { background:transparent; }
+    .setlist-songs-wrap::-webkit-scrollbar-thumb { background:var(--bg3); border-radius:2px; }
+    .setlist-set-header { color:var(--gold); font-size:0.65rem; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; margin:12px 0 6px; padding-bottom:4px; border-bottom:1px solid rgba(204,162,60,0.2); }
+    .setlist-set-header:first-child { margin-top:0; }
+    .setlist-song { font-size:0.82rem; color:#fff; padding:3px 0; display:flex; align-items:baseline; gap:6px; }
+    .setlist-song-num { color:var(--muted); font-size:0.65rem; min-width:18px; text-align:right; flex-shrink:0; }
+    .setlist-song-name { flex:1; }
+    .setlist-song-cover { color:var(--muted); font-size:0.7rem; font-style:italic; }
+    .setlist-song-tape { opacity:0.5; }
+    .setlist-song-tape-label { color:var(--muted); font-size:0.65rem; }
+    .setlist-count { font-size:0.72rem; color:var(--muted); margin-bottom:12px; }
+    .setlist-actions { display:flex; flex-direction:column; gap:8px; }
+    .setlist-actions button, .setlist-actions a { display:block; width:100%; padding:10px 16px; border-radius:6px; font-family:'Poppins',sans-serif; font-size:0.8rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.15s; }
+    .setlist-play-btn { background:var(--gold); color:var(--bg); border:none; }
+    .setlist-play-btn:hover { background:#d4af4a; }
+    .setlist-close-btn { background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.1); }
+    .setlist-close-btn:hover { background:rgba(255,255,255,0.05); }
+    .setlist-credit { text-align:center; margin-top:8px; font-size:0.6rem; }
+    .setlist-credit a { color:var(--muted); text-decoration:none; }
+    .setlist-credit a:hover { color:var(--gold); text-decoration:underline; }
+    .setlist-empty { color:var(--muted); font-size:0.82rem; font-style:italic; }
+
     /* TIMELINE */
     .timeline-section { padding: 0 0 24px; }
     .timeline-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; cursor: grab; padding: 12px 40px 0; scrollbar-width: thin; scrollbar-color: var(--accent-scroll) transparent; }
@@ -484,6 +518,21 @@ window.handleSignup=async function(){
   <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
 </div>
 
+<!-- SETLIST OVERLAY -->
+<div class="setlist-overlay" id="setlistOverlay">
+  <div class="setlist-card">
+    <button class="setlist-close" id="setlistClose">&times;</button>
+    <div class="setlist-date" id="slDate"></div>
+    <div class="setlist-venue" id="slVenue"></div>
+    <div class="setlist-city" id="slCity"></div>
+    <div class="setlist-tour" id="slTour"></div>
+    <div class="setlist-songs-wrap" id="slSongsWrap"></div>
+    <div class="setlist-count" id="slCount"></div>
+    <div class="setlist-actions" id="slActions"></div>
+    <div class="setlist-credit" id="slCredit"></div>
+  </div>
+</div>
+
 <!-- SHOW DETAIL OVERLAY -->
 <div class="show-detail-overlay" id="showDetailOverlay">
   <div class="show-detail-card">
@@ -744,6 +793,8 @@ window.handleSignup=async function(){
   // Lazy-loaded data
   var lyricsData = null;
   var tourData = null;
+  var setlistData = null;
+  var setlistLookup = {};
   var searchDebounce = null;
 
   async function loadSearchData() {
@@ -752,6 +803,17 @@ window.handleSignup=async function(){
     }
     if (!tourData) {
       try { const r = await fetch('data/tth-tour-data.json'); if (r.ok) tourData = await r.json(); } catch(e) {}
+    }
+    if (!setlistData) {
+      try {
+        const r = await fetch('data/setlists.min.json');
+        if (r.ok) {
+          setlistData = await r.json();
+          if (setlistData.setlists) {
+            setlistData.setlists.forEach(function(s) { setlistLookup[s.id] = s; });
+          }
+        }
+      } catch(e) {}
     }
   }
 
@@ -997,15 +1059,16 @@ window.handleSignup=async function(){
       actions.appendChild(dlBtn);
     }
 
-    // Setlist.fm link
-    if (g.setlistUrl) {
-      var setlistLink = document.createElement('a');
-      setlistLink.className = 'sd-setlist-link';
-      setlistLink.href = g.setlistUrl;
-      setlistLink.target = '_blank';
-      setlistLink.rel = 'noopener noreferrer';
-      setlistLink.textContent = 'View full setlist →';
-      actions.appendChild(setlistLink);
+    // View setlist button
+    if (g.setlistUrl || setlistLookup[g.id]) {
+      var setlistBtn = document.createElement('button');
+      setlistBtn.className = 'sd-setlist-link';
+      setlistBtn.textContent = 'View full setlist →';
+      setlistBtn.addEventListener('click', function() {
+        document.getElementById('showDetailOverlay').classList.remove('active');
+        showSetlistCard(g);
+      });
+      actions.appendChild(setlistBtn);
     }
 
     // Show on map
@@ -1023,6 +1086,138 @@ window.handleSignup=async function(){
     document.getElementById('showDetailOverlay').classList.remove('active');
   });
   document.getElementById('showDetailOverlay').addEventListener('click', function(e) {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+  });
+
+  // Setlist overlay logic
+  function showSetlistCard(g) {
+    var sl = setlistLookup[g.id];
+    var overlay = document.getElementById('setlistOverlay');
+
+    // If no setlist data at all, fall back to setlist.fm in new tab
+    if (!sl && g.setlistUrl) {
+      window.open(g.setlistUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    // Header
+    document.getElementById('slDate').textContent = formatShowDate(g.isoDate);
+    document.getElementById('slVenue').textContent = (sl ? sl.venue : g.venue) || 'Unknown venue';
+
+    var cityParts = [];
+    if (sl) {
+      if (sl.city) cityParts.push(sl.city);
+      if (sl.state) cityParts.push(sl.state);
+    } else {
+      if (g.city) cityParts.push(g.city);
+      if (g.state) cityParts.push(g.state);
+      if (g.countryName) cityParts.push(g.countryName);
+    }
+    document.getElementById('slCity').textContent = cityParts.join(', ');
+
+    var tourName = (sl && sl.tour) || g.tour || '';
+    document.getElementById('slTour').textContent = tourName;
+    document.getElementById('slTour').style.display = tourName ? '' : 'none';
+
+    // Songs
+    var songsWrap = document.getElementById('slSongsWrap');
+    songsWrap.innerHTML = '';
+
+    if (sl && sl.songs && sl.songs.length > 0) {
+      var sets = {};
+      var setOrder = [];
+      sl.songs.forEach(function(song) {
+        var setName = song.set || 'Set';
+        if (!sets[setName]) {
+          sets[setName] = [];
+          setOrder.push(setName);
+        }
+        sets[setName].push(song);
+      });
+
+      var songNum = 0;
+      setOrder.forEach(function(setName) {
+        var header = document.createElement('div');
+        header.className = 'setlist-set-header';
+        header.textContent = setName;
+        songsWrap.appendChild(header);
+
+        sets[setName].forEach(function(song) {
+          songNum++;
+          var row = document.createElement('div');
+          row.className = 'setlist-song' + (song.tape ? ' setlist-song-tape' : '');
+
+          var num = document.createElement('span');
+          num.className = 'setlist-song-num';
+          num.textContent = songNum;
+          row.appendChild(num);
+
+          var name = document.createElement('span');
+          name.className = 'setlist-song-name';
+          name.textContent = song.name;
+          row.appendChild(name);
+
+          if (song.cover) {
+            var cover = document.createElement('span');
+            cover.className = 'setlist-song-cover';
+            cover.textContent = '(cover)';
+            row.appendChild(cover);
+          }
+
+          if (song.tape) {
+            var tape = document.createElement('span');
+            tape.className = 'setlist-song-tape-label';
+            tape.textContent = '[tape]';
+            row.appendChild(tape);
+          }
+
+          songsWrap.appendChild(row);
+        });
+      });
+
+      document.getElementById('slCount').textContent = songNum + ' song' + (songNum !== 1 ? 's' : '');
+    } else {
+      songsWrap.innerHTML = '<div class="setlist-empty">No setlist data available for this show.</div>';
+      document.getElementById('slCount').textContent = '';
+    }
+
+    // Actions
+    var slActions = document.getElementById('slActions');
+    slActions.innerHTML = '';
+
+    if (g.tracks && g.tracks.length) {
+      var playBtn = document.createElement('button');
+      playBtn.className = 'setlist-play-btn';
+      playBtn.textContent = '\uD83C\uDFA7 Play this show';
+      playBtn.addEventListener('click', function() {
+        overlay.classList.remove('active');
+        window.location.href = 'tour-map.html#play=' + encodeURIComponent(g.id);
+      });
+      slActions.appendChild(playBtn);
+    }
+
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'setlist-close-btn';
+    closeBtn.textContent = 'Close';
+    closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+    slActions.appendChild(closeBtn);
+
+    // Credit
+    var credit = document.getElementById('slCredit');
+    var setlistUrl = (sl && sl.url) || g.setlistUrl || '';
+    if (setlistUrl) {
+      credit.innerHTML = '<a href="' + setlistUrl + '" target="_blank" rel="noopener noreferrer">Setlist data from setlist.fm</a>';
+    } else {
+      credit.innerHTML = '';
+    }
+
+    overlay.classList.add('active');
+  }
+
+  document.getElementById('setlistClose').addEventListener('click', function() {
+    document.getElementById('setlistOverlay').classList.remove('active');
+  });
+  document.getElementById('setlistOverlay').addEventListener('click', function(e) {
     if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
   });
 
