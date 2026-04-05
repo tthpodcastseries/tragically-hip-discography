@@ -187,6 +187,30 @@
     .song-search-option .opt-lyric { color: var(--muted2); font-size: 0.72rem; display: block; margin-top: 2px; font-style: italic; }
     .search-category-label { padding: 6px 16px 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(255,255,255,0.04); }
     .song-search-input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .show-detail-overlay { display:none; position:fixed; inset:0; z-index:2500; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); align-items:center; justify-content:center; font-family:'Poppins',sans-serif; }
+    .show-detail-overlay.active { display:flex; }
+    .show-detail-card { background:var(--bg2); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px 28px; max-width:400px; width:90%; position:relative; box-shadow:0 12px 40px rgba(0,0,0,0.6); }
+    .show-detail-close { position:absolute; top:12px; right:16px; background:none; border:none; color:var(--muted); font-size:1.4rem; cursor:pointer; line-height:1; }
+    .show-detail-close:hover { color:#fff; }
+    .sd-date { color:var(--gold); font-weight:600; font-size:0.95rem; margin-bottom:4px; }
+    .sd-venue { color:#fff; font-weight:600; font-size:1.15rem; margin-bottom:2px; }
+    .sd-city { color:var(--muted); font-size:0.85rem; margin-bottom:8px; }
+    .sd-tour { color:var(--red); font-size:0.8rem; font-weight:500; margin-bottom:4px; }
+    .sd-songs { color:var(--muted); font-size:0.78rem; margin-bottom:12px; }
+    .sd-setlist { color:var(--muted2); font-size:0.75rem; line-height:1.6; margin-bottom:14px; max-height:200px; overflow-y:auto; }
+    .sd-setlist ol { padding-left:20px; margin:0; }
+    .sd-setlist li { padding:1px 0; }
+    .sd-actions { display:flex; flex-direction:column; gap:8px; }
+    .sd-actions button, .sd-actions a { display:block; width:100%; padding:10px 16px; border-radius:6px; font-family:'Poppins',sans-serif; font-size:0.8rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.15s; }
+    .sd-play { background:var(--gold); color:var(--bg); border:none; }
+    .sd-play:hover { background:#d4af4a; }
+    .sd-download { background:transparent; color:var(--gold); border:1px solid rgba(204,162,60,0.3); }
+    .sd-download:hover { background:rgba(204,162,60,0.1); }
+    .sd-setlist-link { background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.1); }
+    .sd-setlist-link:hover { background:rgba(255,255,255,0.05); }
+    .sd-iwt { display:block; width:100%; margin-top:4px; padding:8px 10px; background:transparent; border:1px solid var(--gold); color:var(--gold); font-family:'Poppins',sans-serif; font-size:0.75rem; font-weight:600; border-radius:6px; cursor:pointer; transition:all 0.15s; }
+    .sd-iwt:hover { background:rgba(204,162,60,0.15); }
+    .sd-iwt.active { background:var(--gold); color:var(--bg); }
 
     /* TIMELINE */
     .timeline-section { padding: 0 0 24px; }
@@ -458,6 +482,20 @@ window.handleSignup=async function(){
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
   <img src="assets-optimized/band/band-photo-3.jpg" alt="The Tragically Hip" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
   <p style="font-size:0.7rem;color:#888;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
+</div>
+
+<!-- SHOW DETAIL OVERLAY -->
+<div class="show-detail-overlay" id="showDetailOverlay">
+  <div class="show-detail-card">
+    <button class="show-detail-close" id="showDetailClose">&times;</button>
+    <div class="sd-date" id="sdDate"></div>
+    <div class="sd-venue" id="sdVenue"></div>
+    <div class="sd-city" id="sdCity"></div>
+    <div class="sd-tour" id="sdTour"></div>
+    <div class="sd-songs" id="sdSongs"></div>
+    <div class="sd-setlist" id="sdSetlist"></div>
+    <div class="sd-actions" id="sdActions"></div>
+  </div>
 </div>
 
 <footer>
@@ -845,7 +883,7 @@ window.handleSignup=async function(){
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
         opt.innerHTML = '<span class="opt-song">' + (g.venue || 'Unknown') + '</span><span class="opt-album">' + (g.city || '') + ' - ' + (g.isoDate || '') + '</span>';
-        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'tour-map.html#show=' + encodeURIComponent(g.id); });
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); showDetailCard(g); });
         searchDropdown.appendChild(opt);
       });
     }
@@ -904,6 +942,88 @@ window.handleSignup=async function(){
         renderUniversalDropdown(universalSearch(searchInput.value.trim()), searchInput.value.trim());
       });
     }
+  });
+
+  // ─── Show Detail Card ───
+  function formatShowDate(iso) {
+    if (!iso) return 'Unknown date';
+    var d = new Date(iso + 'T12:00:00');
+    return d.toLocaleDateString('en-CA', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function showDetailCard(g) {
+    document.getElementById('sdDate').textContent = formatShowDate(g.isoDate);
+    document.getElementById('sdVenue').textContent = g.venue || 'Unknown venue';
+    document.getElementById('sdCity').textContent = (g.city || '') + (g.state ? ', ' + g.state : '') + (g.countryName ? ' - ' + g.countryName : '');
+    document.getElementById('sdTour').textContent = g.tour || '';
+    document.getElementById('sdTour').style.display = g.tour ? '' : 'none';
+    document.getElementById('sdSongs').textContent = g.songCount > 0 ? g.songCount + ' songs in setlist' : '';
+
+    // Show track list if available
+    var setlistEl = document.getElementById('sdSetlist');
+    if (g.tracks && g.tracks.length) {
+      var ol = '<ol>';
+      g.tracks.forEach(function(t) { ol += '<li>' + (t.name || 'Unknown') + '</li>'; });
+      ol += '</ol>';
+      setlistEl.innerHTML = ol;
+      setlistEl.style.display = '';
+    } else {
+      setlistEl.style.display = 'none';
+    }
+
+    var actions = document.getElementById('sdActions');
+    actions.innerHTML = '';
+
+    // Play button
+    if (g.tracks && g.tracks.length) {
+      var playBtn = document.createElement('button');
+      playBtn.className = 'sd-play';
+      playBtn.textContent = '🎧 Play this show';
+      playBtn.addEventListener('click', function() {
+        document.getElementById('showDetailOverlay').classList.remove('active');
+        window.location.href = 'tour-map.html#play=' + encodeURIComponent(g.id);
+      });
+      actions.appendChild(playBtn);
+    }
+
+    // Download button
+    if (g.archiveUrl && (!g.tracks || !g.tracks.length)) {
+      var dlBtn = document.createElement('a');
+      dlBtn.className = 'sd-download';
+      dlBtn.href = g.archiveUrl;
+      dlBtn.target = '_blank';
+      dlBtn.rel = 'noopener noreferrer';
+      dlBtn.textContent = '🎧 Download this show';
+      actions.appendChild(dlBtn);
+    }
+
+    // Setlist.fm link
+    if (g.setlistUrl) {
+      var setlistLink = document.createElement('a');
+      setlistLink.className = 'sd-setlist-link';
+      setlistLink.href = g.setlistUrl;
+      setlistLink.target = '_blank';
+      setlistLink.rel = 'noopener noreferrer';
+      setlistLink.textContent = 'View full setlist →';
+      actions.appendChild(setlistLink);
+    }
+
+    // Show on map
+    var mapBtn = document.createElement('a');
+    mapBtn.className = 'sd-setlist-link';
+    mapBtn.href = 'tour-map.html';
+    mapBtn.textContent = 'Open Tour Map';
+    actions.appendChild(mapBtn);
+
+    document.getElementById('showDetailOverlay').classList.add('active');
+    searchDropdown.classList.remove('open');
+  }
+
+  document.getElementById('showDetailClose').addEventListener('click', function() {
+    document.getElementById('showDetailOverlay').classList.remove('active');
+  });
+  document.getElementById('showDetailOverlay').addEventListener('click', function(e) {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
   });
 
 })();
