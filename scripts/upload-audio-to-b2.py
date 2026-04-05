@@ -73,6 +73,10 @@ def save_progress(done_ids):
 
 def download_zip(url, dest_path):
     """Download a ZIP file with retries."""
+    # Fix URLs with spaces or control characters
+    from urllib.parse import quote
+    url = quote(url, safe=':/?&=#')
+    url = url.replace('%0D', '').replace('%0A', '').replace('%09', '')
     for attempt in range(3):
         try:
             req = Request(url, headers={'User-Agent': 'TTH-Audio-Uploader/1.0'})
