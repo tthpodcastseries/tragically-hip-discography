@@ -818,9 +818,9 @@ window.handleSignup=async function(){
   }
 
   function universalSearch(query) {
-    if (!query || query.length < 2) return { albums: [], songs: [], lyrics: [], shows: [] };
+    if (!query || query.length < 2) return { albums: [], songs: [], lyrics: [], shows: [], livePerformances: [] };
     var q = query.toLowerCase();
-    var results = { albums: [], songs: [], lyrics: [], shows: [] };
+    var results = { albums: [], songs: [], lyrics: [], shows: [], livePerformances: [] };
 
     // Albums
     albumIndex.forEach(function(a) {
@@ -863,13 +863,26 @@ window.handleSignup=async function(){
       });
     }
 
-    // Shows
+    // Shows (by venue/city/date)
     if (tourData) {
       tourData.forEach(function(g) {
         if (results.shows.length >= 5) return;
         var haystack = [g.venue, g.city, g.state, g.isoDate].filter(Boolean).join(' ').toLowerCase();
         if (haystack.includes(q)) {
           results.shows.push(g);
+        }
+      });
+    }
+
+    // Live Performances (shows where a song was played)
+    if (setlistData && setlistData.setlists && tourData) {
+      var tourLookup = {};
+      tourData.forEach(function(g) { tourLookup[g.id] = g; });
+      setlistData.setlists.forEach(function(s) {
+        if (results.livePerformances.length >= 5) return;
+        var played = s.songs && s.songs.some(function(sg) { return sg.name.toLowerCase().includes(q); });
+        if (played && tourLookup[s.id]) {
+          results.livePerformances.push(tourLookup[s.id]);
         }
       });
     }
@@ -942,6 +955,22 @@ window.handleSignup=async function(){
       label.textContent = 'Live Shows';
       searchDropdown.appendChild(label);
       results.shows.forEach(function(g) {
+        var opt = document.createElement('div');
+        opt.className = 'song-search-option';
+        opt.innerHTML = '<span class="opt-song">' + (g.venue || 'Unknown') + '</span><span class="opt-album">' + (g.city || '') + ' - ' + (g.isoDate || '') + '</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); showDetailCard(g); });
+        searchDropdown.appendChild(opt);
+      });
+    }
+
+    // Live Performances (song was played at these shows)
+    if (results.livePerformances.length) {
+      hasResults = true;
+      var label = document.createElement('div');
+      label.className = 'search-category-label';
+      label.textContent = 'Live Performances';
+      searchDropdown.appendChild(label);
+      results.livePerformances.forEach(function(g) {
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
         opt.innerHTML = '<span class="opt-song">' + (g.venue || 'Unknown') + '</span><span class="opt-album">' + (g.city || '') + ' - ' + (g.isoDate || '') + '</span>';
