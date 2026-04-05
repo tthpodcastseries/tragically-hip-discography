@@ -1031,7 +1031,7 @@ window.handleSignup=async function(){
     if (g.tracks && g.tracks.length) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
-      html += `<a href="#" onclick="window.tthPlayer.loadShow(window._gigLookup['${g.id}']);return false;" class="popup-link popup-archive">🎧 Play this show</a>`;
+      html += `<a href="javascript:void(0)" class="popup-link popup-archive play-show-btn" data-gig-id="${g.id}">🎧 Play this show</a>`;
     } else if (g.archiveUrl) {
       html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
@@ -1640,8 +1640,19 @@ window.handleSignup=async function(){
     }
   });
 
-  // Expose loadShow globally for popup onclick
+  // Expose loadShow globally
   window.tthPlayer = { loadShow };
+
+  // Event delegation for play buttons in popups
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.play-show-btn');
+    if (btn) {
+      e.preventDefault();
+      const gigId = btn.getAttribute('data-gig-id');
+      const gig = window._gigLookup && window._gigLookup[gigId];
+      if (gig) loadShow(gig);
+    }
+  });
 })();
 </script>
 
