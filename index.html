@@ -885,6 +885,8 @@ window.handleSignup=async function(){
       e.preventDefault();
       if (activeIdx >= 0 && opts[activeIdx]) {
         opts[activeIdx].dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
+      } else if (opts.length > 0) {
+        opts[0].dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
       }
     } else if (e.key === 'Escape') {
       searchDropdown.classList.remove('open');
