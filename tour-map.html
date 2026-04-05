@@ -609,6 +609,81 @@ input[type="range"]::-moz-range-track {
   background: transparent;
 }
 
+/* SHOW DETAIL CARD (search result overlay) */
+.show-detail-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+.show-detail-overlay.active { display: flex; }
+.show-detail-card {
+  background: var(--bg2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px 28px;
+  max-width: 380px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+.show-detail-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.show-detail-close:hover { color: var(--white); }
+.show-detail-date { color: var(--gold); font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.show-detail-venue { color: var(--white); font-weight: 600; font-size: 1.15rem; margin-bottom: 2px; }
+.show-detail-city { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+.show-detail-tour { color: var(--red); font-size: 0.8rem; font-weight: 500; margin-bottom: 4px; }
+.show-detail-songs { color: var(--muted); font-size: 0.78rem; margin-bottom: 12px; }
+.show-detail-actions { display: flex; flex-direction: column; gap: 8px; }
+.show-detail-actions button,
+.show-detail-actions a {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.show-detail-play {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+}
+.show-detail-play:hover { background: #d4af4a; }
+.show-detail-setlist {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(204,162,60,0.3);
+}
+.show-detail-setlist:hover { background: rgba(204,162,60,0.1); }
+.show-detail-map-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.show-detail-map-btn:hover { background: rgba(255,255,255,0.05); }
+
 /* I WAS THERE */
 .iwt-popup-btn {
   display: block;
@@ -1318,31 +1393,7 @@ window.handleSignup=async function(){
         <div class="sr-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' - ' + g.countryName : ''}</div>`;
       item.addEventListener('click', () => {
         searchResults.classList.remove('open');
-        if (g.lat && g.lng) {
-          // Zoom to max to break all clusters, then open the exact show popup
-          map.setView([g.lat, g.lng], 18, { animate: true });
-          function tryOpenPopup(attempts) {
-            if (attempts <= 0) return;
-            let found = false;
-            clusterGroup.eachLayer(layer => {
-              if (found) return;
-              const ll = layer.getLatLng();
-              if (Math.abs(ll.lat - g.lat) < 0.0001 && Math.abs(ll.lng - g.lng) < 0.0001) {
-                // Check popup content matches this specific show
-                const popup = layer.getPopup();
-                if (popup) {
-                  const content = popup.getContent();
-                  if (content.includes(g.venue || '') && content.includes(formatDate(g.isoDate))) {
-                    layer.openPopup();
-                    found = true;
-                  }
-                }
-              }
-            });
-            if (!found) setTimeout(() => tryOpenPopup(attempts - 1), 300);
-          }
-          setTimeout(() => tryOpenPopup(5), 500);
-        }
+        showDetailCard(g);
       });
       searchResults.appendChild(item);
     });
@@ -1435,6 +1486,73 @@ window.handleSignup=async function(){
     });
   }
 
+  // Show detail card (from search results)
+  function showDetailCard(g) {
+    document.getElementById('sdDate').textContent = formatDate(g.isoDate);
+    document.getElementById('sdVenue').textContent = g.venue || 'Unknown venue';
+    document.getElementById('sdCity').textContent = (g.city || '') + (g.state ? ', ' + g.state : '') + (g.countryName ? ' - ' + g.countryName : '');
+    document.getElementById('sdTour').textContent = g.tour || '';
+    document.getElementById('sdTour').style.display = g.tour ? '' : 'none';
+    document.getElementById('sdSongs').textContent = g.songCount > 0 ? g.songCount + ' songs in setlist' : '';
+
+    const actions = document.getElementById('sdActions');
+    actions.innerHTML = '';
+
+    if (g.tracks && g.tracks.length) {
+      window._gigLookup = window._gigLookup || {};
+      window._gigLookup[g.id] = g;
+      const playBtn = document.createElement('button');
+      playBtn.className = 'show-detail-play';
+      playBtn.textContent = '🎧 Play this show';
+      playBtn.addEventListener('click', () => {
+        document.getElementById('showDetailOverlay').classList.remove('active');
+        window.playGig(g.id);
+      });
+      actions.appendChild(playBtn);
+    }
+
+    if (g.setlistUrl) {
+      const setlistLink = document.createElement('a');
+      setlistLink.className = 'show-detail-setlist';
+      setlistLink.href = g.setlistUrl;
+      setlistLink.target = '_blank';
+      setlistLink.rel = 'noopener noreferrer';
+      setlistLink.textContent = 'View full setlist →';
+      actions.appendChild(setlistLink);
+    }
+
+    if (g.lat && g.lng) {
+      const mapBtn = document.createElement('button');
+      mapBtn.className = 'show-detail-map-btn';
+      mapBtn.textContent = 'Show on map';
+      mapBtn.addEventListener('click', () => {
+        document.getElementById('showDetailOverlay').classList.remove('active');
+        map.setView([g.lat, g.lng], 14, { animate: true });
+      });
+      actions.appendChild(mapBtn);
+    }
+
+    const iwtBtn = document.createElement('button');
+    const isAttended = tthAttended.has(g.id);
+    iwtBtn.className = 'iwt-popup-btn' + (isAttended ? ' active' : '');
+    iwtBtn.textContent = isAttended ? 'I Was There ✓' : 'I Was There';
+    iwtBtn.addEventListener('click', async () => {
+      const now = await tthAttended.toggle(g.id);
+      iwtBtn.className = 'iwt-popup-btn' + (now ? ' active' : '');
+      iwtBtn.textContent = now ? 'I Was There ✓' : 'I Was There';
+    });
+    actions.appendChild(iwtBtn);
+
+    document.getElementById('showDetailOverlay').classList.add('active');
+  }
+
+  document.getElementById('showDetailClose').addEventListener('click', () => {
+    document.getElementById('showDetailOverlay').classList.remove('active');
+  });
+  document.getElementById('showDetailOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+  });
+
   // Initial render
   renderGigs(allGigs);
   updateSliderTrack();
@@ -1493,6 +1611,19 @@ window.handleSignup=async function(){
 
 })();
 </script>
+
+<!-- SHOW DETAIL OVERLAY -->
+<div class="show-detail-overlay" id="showDetailOverlay">
+  <div class="show-detail-card">
+    <button class="show-detail-close" id="showDetailClose">&times;</button>
+    <div class="show-detail-date" id="sdDate"></div>
+    <div class="show-detail-venue" id="sdVenue"></div>
+    <div class="show-detail-city" id="sdCity"></div>
+    <div class="show-detail-tour" id="sdTour"></div>
+    <div class="show-detail-songs" id="sdSongs"></div>
+    <div class="show-detail-actions" id="sdActions"></div>
+  </div>
+</div>
 
 <!-- AUDIO PLAYER -->
 <div class="audio-player" id="audioPlayer">
