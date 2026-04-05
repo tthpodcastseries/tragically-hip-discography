@@ -15,7 +15,119 @@
     "songCount": 20,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1985/copper-penny-restaurant-kingston-on-canada-73515215.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1985-02-27-Kingston-ON-V2-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Mary Mary",
+        "url": "1985-02-27-Kingston-ON/01 Mary Mary.mp3",
+        "filename": "01 Mary Mary.mp3"
+      },
+      {
+        "name": "Baby Please Don t Go",
+        "url": "1985-02-27-Kingston-ON/02 Baby Please Don_t Go.mp3",
+        "filename": "02 Baby Please Don_t Go.mp3"
+      },
+      {
+        "name": "Suzie Q",
+        "url": "1985-02-27-Kingston-ON/03 Suzie Q.mp3",
+        "filename": "03 Suzie Q.mp3"
+      },
+      {
+        "name": "Bedrock (twitch twitch)",
+        "url": "1985-02-27-Kingston-ON/04 Bedrock (twitch twitch).mp3",
+        "filename": "04 Bedrock (twitch twitch).mp3"
+      },
+      {
+        "name": "Sweet Jane",
+        "url": "1985-02-27-Kingston-ON/05 Sweet Jane .mp3",
+        "filename": "05 Sweet Jane .mp3"
+      },
+      {
+        "name": "Off the Hook",
+        "url": "1985-02-27-Kingston-ON/06 Off the Hook.mp3",
+        "filename": "06 Off the Hook.mp3"
+      },
+      {
+        "name": "Treat Her Right",
+        "url": "1985-02-27-Kingston-ON/07 Treat Her Right.mp3",
+        "filename": "07 Treat Her Right.mp3"
+      },
+      {
+        "name": "Baby Blue Blood",
+        "url": "1985-02-27-Kingston-ON/08 Baby Blue Blood.mp3",
+        "filename": "08 Baby Blue Blood.mp3"
+      },
+      {
+        "name": "Reformed Baptist Blues",
+        "url": "1985-02-27-Kingston-ON/09 Reformed Baptist Blues.mp3",
+        "filename": "09 Reformed Baptist Blues.mp3"
+      },
+      {
+        "name": "Heart Attack Love",
+        "url": "1985-02-27-Kingston-ON/10 Heart Attack Love .mp3",
+        "filename": "10 Heart Attack Love .mp3"
+      },
+      {
+        "name": "Big City",
+        "url": "1985-02-27-Kingston-ON/11 Big City.mp3",
+        "filename": "11 Big City.mp3"
+      },
+      {
+        "name": "All Canadian Surf Club",
+        "url": "1985-02-27-Kingston-ON/12 All Canadian Surf Club.mp3",
+        "filename": "12 All Canadian Surf Club.mp3"
+      },
+      {
+        "name": "Money (that s what I want)",
+        "url": "1985-02-27-Kingston-ON/13 Money (that_s what I want).mp3",
+        "filename": "13 Money (that_s what I want).mp3"
+      },
+      {
+        "name": "Psychedelic Ramblings of",
+        "url": "1985-02-27-Kingston-ON/14 Psychedelic Ramblings of.mp3",
+        "filename": "14 Psychedelic Ramblings of.mp3"
+      },
+      {
+        "name": "If She s Seventeen",
+        "url": "1985-02-27-Kingston-ON/15 If She_s Seventeen.mp3",
+        "filename": "15 If She_s Seventeen.mp3"
+      },
+      {
+        "name": "For Your Love",
+        "url": "1985-02-27-Kingston-ON/16 For Your Love.mp3",
+        "filename": "16 For Your Love.mp3"
+      },
+      {
+        "name": "Mercy Mercy",
+        "url": "1985-02-27-Kingston-ON/17 Mercy Mercy.mp3",
+        "filename": "17 Mercy Mercy.mp3"
+      },
+      {
+        "name": "Evelyn",
+        "url": "1985-02-27-Kingston-ON/18 Evelyn.mp3",
+        "filename": "18 Evelyn.mp3"
+      },
+      {
+        "name": "I m a Believer",
+        "url": "1985-02-27-Kingston-ON/19 I_m a Believer.mp3",
+        "filename": "19 I_m a Believer.mp3"
+      },
+      {
+        "name": "Here Tis",
+        "url": "1985-02-27-Kingston-ON/20 Here Tis.mp3",
+        "filename": "20 Here Tis.mp3"
+      },
+      {
+        "name": "Wish You Would",
+        "url": "1985-02-27-Kingston-ON/21 Wish You Would.mp3",
+        "filename": "21 Wish You Would.mp3"
+      },
+      {
+        "name": "Gloria",
+        "url": "1985-02-27-Kingston-ON/22 Gloria.mp3",
+        "filename": "22 Gloria.mp3"
+      }
+    ]
   },
   {
     "id": "235c5483",
@@ -33,7 +145,19 @@
     "songCount": 3,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1985/unknown-venue-bath-on-canada-235c5483.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1985-07-01-Bath-ON-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": ". Tragically Hip 1985 07 01 Bath, ON",
+        "url": "1985-07-01-Bath-ON/._Tragically Hip - 1985-07-01 - Bath, ON.mp3",
+        "filename": "._Tragically Hip - 1985-07-01 - Bath, ON.mp3"
+      },
+      {
+        "name": "Tragically Hip 1985 07 01 Bath, ON",
+        "url": "1985-07-01-Bath-ON/Tragically Hip - 1985-07-01 - Bath, ON.mp3",
+        "filename": "Tragically Hip - 1985-07-01 - Bath, ON.mp3"
+      }
+    ]
   },
   {
     "id": "3bf27890",
@@ -403,7 +527,34 @@
     "songCount": 5,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1987/el-mocambo-toronto-on-canada-63fe0a1b.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1987-07-02-Toronto-ON-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Reformed Baptist Blues",
+        "url": "1987-07-02-Toronto-ON/01 - Reformed Baptist Blues.mp3",
+        "filename": "01 - Reformed Baptist Blues.mp3"
+      },
+      {
+        "name": "Smalltown Bringdown",
+        "url": "1987-07-02-Toronto-ON/02 - Smalltown Bringdown.mp3",
+        "filename": "02 - Smalltown Bringdown.mp3"
+      },
+      {
+        "name": "Last American Exit",
+        "url": "1987-07-02-Toronto-ON/03 - Last American Exit.mp3",
+        "filename": "03 - Last American Exit.mp3"
+      },
+      {
+        "name": "Evelyn",
+        "url": "1987-07-02-Toronto-ON/04 - Evelyn.mp3",
+        "filename": "04 - Evelyn.mp3"
+      },
+      {
+        "name": "I'm a Werewolf Baby",
+        "url": "1987-07-02-Toronto-ON/05 - I'm a Werewolf Baby.mp3",
+        "filename": "05 - I'm a Werewolf Baby.mp3"
+      }
+    ]
   },
   {
     "id": "13901189",
@@ -2412,7 +2563,74 @@
     "songCount": 13,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/unknown-venue-london-on-canada-6bfc768e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-02-23-Windsor-ON-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "TTH1990 02 23t01",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t01.mp3",
+        "filename": "TTH1990-02-23t01.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t02",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t02.mp3",
+        "filename": "TTH1990-02-23t02.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t03",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t03.mp3",
+        "filename": "TTH1990-02-23t03.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t04",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t04.mp3",
+        "filename": "TTH1990-02-23t04.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t05",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t05.mp3",
+        "filename": "TTH1990-02-23t05.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t06",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t06.mp3",
+        "filename": "TTH1990-02-23t06.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t07",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t07.mp3",
+        "filename": "TTH1990-02-23t07.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t08",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t08.mp3",
+        "filename": "TTH1990-02-23t08.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t09",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t09.mp3",
+        "filename": "TTH1990-02-23t09.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t10",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t10.mp3",
+        "filename": "TTH1990-02-23t10.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t11",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t11.mp3",
+        "filename": "TTH1990-02-23t11.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t12",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t12.mp3",
+        "filename": "TTH1990-02-23t12.mp3"
+      },
+      {
+        "name": "TTH1990 02 23t13",
+        "url": "1990-02-23-London-ON/TTH1990-02-23t13.mp3",
+        "filename": "TTH1990-02-23t13.mp3"
+      }
+    ]
   },
   {
     "id": "5ba9bf0c",
@@ -2510,7 +2728,84 @@
     "songCount": 14,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/86-street-music-hall-vancouver-bc-canada-73fc768d.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-03-23-Vancouver-BC-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Introduction",
+        "url": "1990-03-23-Vancouver-BC/01 -Introduction-.mp3",
+        "filename": "01 -Introduction-.mp3"
+      },
+      {
+        "name": "Crack my Spine",
+        "url": "1990-03-23-Vancouver-BC/02 Crack my Spine.mp3",
+        "filename": "02 Crack my Spine.mp3"
+      },
+      {
+        "name": "She Didnt Know",
+        "url": "1990-03-23-Vancouver-BC/03 She Didnt Know.mp3",
+        "filename": "03 She Didnt Know.mp3"
+      },
+      {
+        "name": "Highway Girl",
+        "url": "1990-03-23-Vancouver-BC/04 Highway Girl.mp3",
+        "filename": "04 Highway Girl.mp3"
+      },
+      {
+        "name": "Its just as Well",
+        "url": "1990-03-23-Vancouver-BC/05 Its just as Well.mp3",
+        "filename": "05 Its just as Well.mp3"
+      },
+      {
+        "name": "Opiated",
+        "url": "1990-03-23-Vancouver-BC/06 Opiated.mp3",
+        "filename": "06 Opiated.mp3"
+      },
+      {
+        "name": "Everytime you Go",
+        "url": "1990-03-23-Vancouver-BC/07 Everytime you Go.mp3",
+        "filename": "07 Everytime you Go.mp3"
+      },
+      {
+        "name": "Boots or Hearts",
+        "url": "1990-03-23-Vancouver-BC/08 Boots or Hearts.mp3",
+        "filename": "08 Boots or Hearts.mp3"
+      },
+      {
+        "name": "Trickle Down",
+        "url": "1990-03-23-Vancouver-BC/09 Trickle Down.mp3",
+        "filename": "09 Trickle Down.mp3"
+      },
+      {
+        "name": "Get Back Again",
+        "url": "1990-03-23-Vancouver-BC/10 Get Back Again.mp3",
+        "filename": "10 Get Back Again.mp3"
+      },
+      {
+        "name": "Three Pistols",
+        "url": "1990-03-23-Vancouver-BC/11 Three Pistols.mp3",
+        "filename": "11 Three Pistols.mp3"
+      },
+      {
+        "name": "Fight",
+        "url": "1990-03-23-Vancouver-BC/12 Fight.mp3",
+        "filename": "12 Fight.mp3"
+      },
+      {
+        "name": "All Canadian Surf Club",
+        "url": "1990-03-23-Vancouver-BC/13 All Canadian Surf Club.mp3",
+        "filename": "13 All Canadian Surf Club.mp3"
+      },
+      {
+        "name": "Blow at High Dough",
+        "url": "1990-03-23-Vancouver-BC/14 Blow at High Dough.mp3",
+        "filename": "14 Blow at High Dough.mp3"
+      },
+      {
+        "name": "New Orleans is Sinking",
+        "url": "1990-03-23-Vancouver-BC/15 New Orleans is Sinking.mp3",
+        "filename": "15 New Orleans is Sinking.mp3"
+      }
+    ]
   },
   {
     "id": "6bf7f24e",
@@ -2528,7 +2823,19 @@
     "songCount": 19,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/the-concert-hall-toronto-on-canada-6bf7f24e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-03-30-Toronto-ON-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": ". Tragically Hip 1990 03 30 The Concert Hall, Toronto, ON",
+        "url": "1990-03-30-Toronto-ON/._Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3",
+        "filename": "._Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3"
+      },
+      {
+        "name": "Tragically Hip 1990 03 30 The Concert Hall, Toronto, ON",
+        "url": "1990-03-30-Toronto-ON/Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3",
+        "filename": "Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3"
+      }
+    ]
   },
   {
     "id": "63fec227",
@@ -2562,7 +2869,104 @@
     "songCount": 19,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/le-spectrum-montreal-qc-canada-13cbe1bd.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-04-11-Montreal-QC-mp3-v1.zip",
-    "archiveFormat": "v1"
+    "archiveFormat": "v1",
+    "tracks": [
+      {
+        "name": "tth1990 04 11d01t01",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t01.mp3",
+        "filename": "tth1990-04-11d01t01.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t02",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t02.mp3",
+        "filename": "tth1990-04-11d01t02.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t03",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t03.mp3",
+        "filename": "tth1990-04-11d01t03.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t04",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t04.mp3",
+        "filename": "tth1990-04-11d01t04.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t05",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t05.mp3",
+        "filename": "tth1990-04-11d01t05.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t06",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t06.mp3",
+        "filename": "tth1990-04-11d01t06.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t07",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t07.mp3",
+        "filename": "tth1990-04-11d01t07.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t08",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t08.mp3",
+        "filename": "tth1990-04-11d01t08.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t09",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t09.mp3",
+        "filename": "tth1990-04-11d01t09.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t10",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t10.mp3",
+        "filename": "tth1990-04-11d01t10.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t11",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t11.mp3",
+        "filename": "tth1990-04-11d01t11.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t12",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t12.mp3",
+        "filename": "tth1990-04-11d01t12.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t13",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t13.mp3",
+        "filename": "tth1990-04-11d01t13.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t14",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t14.mp3",
+        "filename": "tth1990-04-11d01t14.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t15",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t15.mp3",
+        "filename": "tth1990-04-11d01t15.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t16",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t16.mp3",
+        "filename": "tth1990-04-11d01t16.mp3"
+      },
+      {
+        "name": "tth1990 04 11d01t17",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d01t17.mp3",
+        "filename": "tth1990-04-11d01t17.mp3"
+      },
+      {
+        "name": "tth1990 04 11d02t01",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d02t01.mp3",
+        "filename": "tth1990-04-11d02t01.mp3"
+      },
+      {
+        "name": "tth1990 04 11d02t02",
+        "url": "1990-04-11-Montreal-QC/tth1990-04-11d02t02.mp3",
+        "filename": "tth1990-04-11d02t02.mp3"
+      }
+    ]
   },
   {
     "id": "3cbe1b3",
@@ -2612,7 +3016,94 @@
     "songCount": 17,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/axis-boston-ma-738a964d.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-04-19-Boston-MA-mp3.zip",
-    "archiveFormat": "mp3"
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "crack my spine like a whip",
+        "url": "1990-04-19-Boston-MA/01 crack my spine like a whip.mp3",
+        "filename": "01 crack my spine like a whip.mp3"
+      },
+      {
+        "name": "she didnt know",
+        "url": "1990-04-19-Boston-MA/02 she didnt know.mp3",
+        "filename": "02 she didnt know.mp3"
+      },
+      {
+        "name": "highway girl",
+        "url": "1990-04-19-Boston-MA/03 highway girl.mp3",
+        "filename": "03 highway girl.mp3"
+      },
+      {
+        "name": "its just as well",
+        "url": "1990-04-19-Boston-MA/04 its just as well.mp3",
+        "filename": "04 its just as well.mp3"
+      },
+      {
+        "name": "opiated",
+        "url": "1990-04-19-Boston-MA/05 opiated.mp3",
+        "filename": "05 opiated.mp3"
+      },
+      {
+        "name": "everytime you go",
+        "url": "1990-04-19-Boston-MA/06 everytime you go.mp3",
+        "filename": "06 everytime you go.mp3"
+      },
+      {
+        "name": "boots or hearts",
+        "url": "1990-04-19-Boston-MA/07 boots or hearts.mp3",
+        "filename": "07 boots or hearts.mp3"
+      },
+      {
+        "name": "trickle down",
+        "url": "1990-04-19-Boston-MA/08 trickle down.mp3",
+        "filename": "08 trickle down.mp3"
+      },
+      {
+        "name": "gt back again",
+        "url": "1990-04-19-Boston-MA/09 gt back again.mp3",
+        "filename": "09 gt back again.mp3"
+      },
+      {
+        "name": "three pistols",
+        "url": "1990-04-19-Boston-MA/10 three pistols.mp3",
+        "filename": "10 three pistols.mp3"
+      },
+      {
+        "name": "fight",
+        "url": "1990-04-19-Boston-MA/11 fight.mp3",
+        "filename": "11 fight.mp3"
+      },
+      {
+        "name": "all canadian surf club",
+        "url": "1990-04-19-Boston-MA/12 all canadian surf club.mp3",
+        "filename": "12 all canadian surf club.mp3"
+      },
+      {
+        "name": "38 years old",
+        "url": "1990-04-19-Boston-MA/13 38 years old.mp3",
+        "filename": "13 38 years old.mp3"
+      },
+      {
+        "name": "blow at high dough",
+        "url": "1990-04-19-Boston-MA/14 blow at high dough.mp3",
+        "filename": "14 blow at high dough.mp3"
+      },
+      {
+        "name": "i'll believe in you",
+        "url": "1990-04-19-Boston-MA/15 i'll believe in you.mp3",
+        "filename": "15 i'll believe in you.mp3"
+      },
+      {
+        "name": "new orleans is sinking",
+        "url": "1990-04-19-Boston-MA/16 new orleans is sinking.mp3",
+        "filename": "16 new orleans is sinking.mp3"
+      },
+      {
+        "name": "on the verge",
+        "url": "1990-04-19-Boston-MA/17 on the verge.mp3",
+        "filename": "17 on the verge.mp3"
+      }
+    ]
   },
   {
     "id": "139c8db9",
