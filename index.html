@@ -184,6 +184,8 @@
     .song-search-option:hover, .song-search-option.active { background: rgba(255,255,255,0.06); color: var(--text); }
     .song-search-option .opt-song { color: var(--text); font-weight: 600; }
     .song-search-option .opt-album { color: var(--muted2); font-size: 0.72rem; margin-left: 6px; }
+    .song-search-option .opt-lyric { color: var(--muted2); font-size: 0.72rem; display: block; margin-top: 2px; font-style: italic; }
+    .search-category-label { padding: 6px 16px 4px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(255,255,255,0.04); }
     .song-search-input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
     /* TIMELINE */
@@ -405,7 +407,7 @@ window.handleSignup=async function(){
   <span class="maple" aria-hidden="true">🍁</span>
   <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">COMPENDIUM</span></h1>
   <div class="song-search-autocomplete">
-    <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search for a Hip song..." autocomplete="off" aria-label="Search for a song">
+    <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search songs, lyrics, shows..." autocomplete="off" aria-label="Search songs, lyrics, and shows">
     <div class="song-search-dropdown" id="songSearchDropdown"></div>
   </div>
   <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
@@ -696,89 +698,177 @@ window.handleSignup=async function(){
     scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
   }, { passive: true });
 
-  // ─── Song Search (uses album data from discography.json + autocomplete) ───
-  // Build search index from albums (titles only - track data lives in discography.html)
+  // ─── Universal Search (albums, songs, lyrics, shows) ───
   var albumIndex = albums.map(function(a) {
     return { title: a.title, year: a.year, type: a.type, category: a.category };
   });
 
-  function getSearchSuggestions(query) {
-    if (!query || query.length < 1) return [];
+  // Lazy-loaded data
+  var lyricsData = null;
+  var tourData = null;
+  var searchDebounce = null;
+
+  async function loadSearchData() {
+    if (!lyricsData) {
+      try { const r = await fetch('data/lyrics.json'); if (r.ok) lyricsData = await r.json(); } catch(e) {}
+    }
+    if (!tourData) {
+      try { const r = await fetch('data/tth-tour-data.json'); if (r.ok) tourData = await r.json(); } catch(e) {}
+    }
+  }
+
+  function universalSearch(query) {
+    if (!query || query.length < 2) return { albums: [], songs: [], lyrics: [], shows: [] };
     var q = query.toLowerCase();
-    var results = [];
-    // Search albums
+    var results = { albums: [], songs: [], lyrics: [], shows: [] };
+
+    // Albums
     albumIndex.forEach(function(a) {
       if (a.title.toLowerCase().includes(q)) {
-        results.push({ title: a.title, sub: a.type + ' (' + a.year + ')', resultType: 'album', category: a.category });
+        results.albums.push(a);
       }
     });
-    results.sort(function(a, b) {
-      var aStarts = a.title.toLowerCase().startsWith(q) ? 0 : 1;
-      var bStarts = b.title.toLowerCase().startsWith(q) ? 0 : 1;
-      if (aStarts !== bStarts) return aStarts - bStarts;
-      return a.title.localeCompare(b.title);
+    results.albums.sort(function(a, b) {
+      return (a.title.toLowerCase().startsWith(q) ? 0 : 1) - (b.title.toLowerCase().startsWith(q) ? 0 : 1) || a.title.localeCompare(b.title);
     });
-    return results.slice(0, 10);
+    results.albums = results.albums.slice(0, 5);
+
+    // Songs (from album track lists in discographyData)
+    if (discographyData) {
+      var seenSongs = new Set();
+      discographyData.forEach(function(a) {
+        if (a.tracks) a.tracks.forEach(function(t) {
+          if (t.title && t.title.toLowerCase().includes(q) && !seenSongs.has(t.title)) {
+            seenSongs.add(t.title);
+            results.songs.push({ title: t.title, album: a.title, category: a.category });
+          }
+        });
+      });
+      results.songs = results.songs.slice(0, 5);
+    }
+
+    // Lyrics
+    if (lyricsData && lyricsData.songs) {
+      Object.entries(lyricsData.songs).forEach(function(entry) {
+        if (results.lyrics.length >= 3) return;
+        var key = entry[0], text = entry[1];
+        if (typeof text === 'string' && text.toLowerCase().includes(q)) {
+          var parts = key.split('|||');
+          var idx = text.toLowerCase().indexOf(q);
+          var start = Math.max(0, idx - 30);
+          var snippet = (start > 0 ? '...' : '') + text.substring(start, idx + q.length + 40).replace(/\n/g, ' ') + '...';
+          results.lyrics.push({ song: parts[1] || key, album: parts[0] || '', snippet: snippet, query: q });
+        }
+      });
+    }
+
+    // Shows
+    if (tourData) {
+      tourData.forEach(function(g) {
+        if (results.shows.length >= 5) return;
+        var haystack = [g.venue, g.city, g.state, g.isoDate].filter(Boolean).join(' ').toLowerCase();
+        if (haystack.includes(q)) {
+          results.shows.push(g);
+        }
+      });
+    }
+
+    return results;
   }
 
   var searchInput = document.getElementById('songSearchInput');
   var searchDropdown = document.getElementById('songSearchDropdown');
   var activeIdx = -1;
 
-  function showDropdown(suggestions) {
-    if (suggestions.length === 0) {
-      // If typing but no album match, show "Search songs" option
-      var q = searchInput.value.trim();
-      if (q.length >= 2) {
-        searchDropdown.innerHTML = '';
+  function renderUniversalDropdown(results, query) {
+    searchDropdown.innerHTML = '';
+    var hasResults = false;
+
+    // Albums
+    if (results.albums.length) {
+      hasResults = true;
+      var label = document.createElement('div');
+      label.className = 'search-category-label';
+      label.textContent = 'Albums';
+      searchDropdown.appendChild(label);
+      results.albums.forEach(function(a) {
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
-        opt.innerHTML = '<span style="color:var(--gold);font-size:0.7rem;margin-right:6px;">SONG SEARCH</span><span class="opt-song">Search for "' + q.replace(/</g,'&lt;') + '"</span>';
-        opt.addEventListener('mousedown', function(e) { e.preventDefault(); goToSongSearch(q); });
+        opt.innerHTML = '<span class="opt-song">' + a.title + '</span><span class="opt-album">' + a.type + ' (' + a.year + ')</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'discography.html#cat=' + encodeURIComponent(a.category) + '&album=' + encodeURIComponent(a.title); });
         searchDropdown.appendChild(opt);
-        activeIdx = -1;
-        searchDropdown.classList.add('open');
-      } else {
-        searchDropdown.classList.remove('open');
-      }
-      return;
+      });
     }
-    searchDropdown.innerHTML = '';
-    suggestions.forEach(function(s) {
+
+    // Songs
+    if (results.songs.length) {
+      hasResults = true;
+      var label = document.createElement('div');
+      label.className = 'search-category-label';
+      label.textContent = 'Songs';
+      searchDropdown.appendChild(label);
+      results.songs.forEach(function(s) {
+        var opt = document.createElement('div');
+        opt.className = 'song-search-option';
+        opt.innerHTML = '<span class="opt-song">' + s.title + '</span><span class="opt-album">' + s.album + '</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'discography.html#cat=' + encodeURIComponent(s.category) + '&album=' + encodeURIComponent(s.album); });
+        searchDropdown.appendChild(opt);
+      });
+    }
+
+    // Lyrics
+    if (results.lyrics.length) {
+      hasResults = true;
+      var label = document.createElement('div');
+      label.className = 'search-category-label';
+      label.textContent = 'Lyrics';
+      searchDropdown.appendChild(label);
+      results.lyrics.forEach(function(l) {
+        var opt = document.createElement('div');
+        opt.className = 'song-search-option';
+        var highlighted = l.snippet.replace(new RegExp('(' + l.query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong style="color:var(--gold)">$1</strong>');
+        opt.innerHTML = '<span class="opt-song">' + l.song + '</span><span class="opt-album">' + l.album + '</span><span class="opt-lyric">' + highlighted + '</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'discography.html#cat=lyrics&q=' + encodeURIComponent(l.query); });
+        searchDropdown.appendChild(opt);
+      });
+    }
+
+    // Shows
+    if (results.shows.length) {
+      hasResults = true;
+      var label = document.createElement('div');
+      label.className = 'search-category-label';
+      label.textContent = 'Live Shows';
+      searchDropdown.appendChild(label);
+      results.shows.forEach(function(g) {
+        var opt = document.createElement('div');
+        opt.className = 'song-search-option';
+        opt.innerHTML = '<span class="opt-song">' + (g.venue || 'Unknown') + '</span><span class="opt-album">' + (g.city || '') + ' - ' + (g.isoDate || '') + '</span>';
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'tour-map.html#show=' + encodeURIComponent(g.id); });
+        searchDropdown.appendChild(opt);
+      });
+    }
+
+    if (!hasResults && query.length >= 2) {
       var opt = document.createElement('div');
       opt.className = 'song-search-option';
-      opt.innerHTML = '<span style="font-size:0.6rem;color:var(--gold);margin-right:4px;">ALBUM</span><span class="opt-song">' + s.title + '</span><span class="opt-album">' + s.sub + '</span>';
-      opt.dataset.title = s.title;
-      opt.dataset.category = s.category;
-      opt.addEventListener('mousedown', function(e) { e.preventDefault(); goToAlbum(s); });
+      opt.innerHTML = '<span class="opt-song" style="color:var(--muted)">No results for "' + query.replace(/</g,'&lt;') + '"</span>';
       searchDropdown.appendChild(opt);
-    });
-    // Always add "Search songs" option at bottom
-    var q = searchInput.value.trim();
-    if (q.length >= 2) {
-      var songOpt = document.createElement('div');
-      songOpt.className = 'song-search-option';
-      songOpt.style.borderTop = '1px solid rgba(255,255,255,0.1)';
-      songOpt.innerHTML = '<span style="color:var(--gold);font-size:0.7rem;margin-right:6px;">SONG SEARCH</span><span class="opt-song">Search songs for "' + q.replace(/</g,'&lt;') + '"</span>';
-      songOpt.addEventListener('mousedown', function(e) { e.preventDefault(); goToSongSearch(q); });
-      searchDropdown.appendChild(songOpt);
     }
+
     activeIdx = -1;
-    searchDropdown.classList.add('open');
-  }
-
-  function goToAlbum(s) {
-    window.location.href = 'discography.html#cat=' + encodeURIComponent(s.category) + '&album=' + encodeURIComponent(s.title);
-  }
-
-  function goToSongSearch(query) {
-    window.location.href = 'discography.html#cat=songsearch&q=' + encodeURIComponent(query);
+    if (query.length >= 2) searchDropdown.classList.add('open');
+    else searchDropdown.classList.remove('open');
   }
 
   searchInput.addEventListener('input', function() {
     var q = searchInput.value.trim();
-    if (q.length < 1) { searchDropdown.classList.remove('open'); return; }
-    showDropdown(getSearchSuggestions(q));
+    if (q.length < 2) { searchDropdown.classList.remove('open'); return; }
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(async function() {
+      await loadSearchData();
+      renderUniversalDropdown(universalSearch(q), q);
+    }, 150);
   });
 
   searchInput.addEventListener('keydown', function(e) {
@@ -795,8 +885,6 @@ window.handleSignup=async function(){
       e.preventDefault();
       if (activeIdx >= 0 && opts[activeIdx]) {
         opts[activeIdx].dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
-      } else if (searchInput.value.trim().length >= 2) {
-        goToSongSearch(searchInput.value.trim());
       }
     } else if (e.key === 'Escape') {
       searchDropdown.classList.remove('open');
@@ -808,8 +896,10 @@ window.handleSignup=async function(){
   });
 
   searchInput.addEventListener('focus', function() {
-    if (searchInput.value.trim().length >= 1) {
-      showDropdown(getSearchSuggestions(searchInput.value.trim()));
+    if (searchInput.value.trim().length >= 2) {
+      loadSearchData().then(function() {
+        renderUniversalDropdown(universalSearch(searchInput.value.trim()), searchInput.value.trim());
+      });
     }
   });
 
