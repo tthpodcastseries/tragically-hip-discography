@@ -1,6 +1,4 @@
-// /js/tth-auth.js
-// (Filename retained from the previous auth-gate version. This file is now
-//  the pre-launch password gate, not an auth gate. Rename later if desired.)
+// /js/tth-launch-gate.js
 //
 // Pre-launch gate for The Hip Compendium.
 //
