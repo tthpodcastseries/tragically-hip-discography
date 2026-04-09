@@ -18,3 +18,26 @@ node_modules/
 
 # Local Netlify folder
 .netlify
+
+# Personal context files - never commit these to the public repo
+_MANIFEST.md
+about-me.md
+brand-voice.md
+working-style.md
+
+# Internal state from local upload scripts
+scripts/.upload-progress.json
+scripts/.track-results/
+
+# Supabase CLI local state
+supabase/.temp/
+
+# Defensive: never commit anything that looks like a key or credential file
+*.pem
+*.p12
+*.pfx
+*.key
+*credentials*
+* Key.png
+* Key.jpg
+* Key.txt

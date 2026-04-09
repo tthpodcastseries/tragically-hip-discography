@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yer Discussions - You're Invited</title>
+  <meta name="description" content="You've been invited to Yer Discussions, The Tragically Hip Podcast Series Forum.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/js/supabase.min.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0e0b16;
+      color: #d9d9d9;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 620px;
+      width: 100%;
+    }
+
+    /* --- WELCOME SCREEN --- */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #C8102E;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      color: #C8102E;
+    }
+
+    .welcome-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #b0b0b0;
+      margin-bottom: 2rem;
+    }
+
+    .welcome-text p {
+      margin-bottom: 1rem;
+    }
+
+    .welcome-text strong {
+      color: #d9d9d9;
+    }
+
+    /* --- FORM --- */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #d9d9d9;
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      background: #1a1528;
+      border: 1px solid #2a2340;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: #ffffff;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #C8102E;
+    }
+
+    input[type="text"]::placeholder {
+      color: #555;
+    }
+
+    .song-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .skip-hint {
+      font-size: 0.7rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #555;
+      font-weight: 400;
+    }
+
+    /* --- BUTTONS --- */
+    .btn-connect {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #C8102E;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-connect:hover {
+      background: #a00d24;
+    }
+
+    .btn-connect:active {
+      transform: scale(0.98);
+    }
+
+    .btn-connect:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+
+    .error-msg {
+      color: #C8102E;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      min-height: 1.2em;
+    }
+
+    /* --- REVEAL SCREEN --- */
+    .membership-number {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #CCA23C;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .membership-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #d9d9d9;
+      margin-bottom: 2rem;
+    }
+
+    .reveal-greeting {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .categories {
+      margin: 1.5rem 0 2rem;
+    }
+
+    .categories h2 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #d9d9d9;
+      margin-bottom: 1rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .category-pill {
+      background: #1a1528;
+      border: 1px solid #2a2340;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #d9d9d9;
+      font-weight: 500;
+    }
+
+    .and-more {
+      font-size: 0.85rem;
+      color: #555;
+      font-style: italic;
+      margin-top: 0.75rem;
+    }
+
+    .btn-forum {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #C8102E;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .btn-forum:hover {
+      background: #a00d24;
+    }
+
+    .btn-forum:active {
+      transform: scale(0.98);
+    }
+
+    .signoff {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .signoff strong {
+      color: #b0b0b0;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 500px) {
+      h1 { font-size: 1.5rem; }
+      .form-row { flex-direction: column; gap: 0; }
+      .membership-number { font-size: 3rem; }
+      .category-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SCREEN 1: Welcome + Form -->
+  <div id="screen-welcome" class="screen active">
+    <div class="eyebrow">You've been invited</div>
+    <h1>Welcome to <span>Yer Discussions</span></h1>
+
+    <div class="welcome-text">
+      <p>Hey man, thanks for being here.</p>
+      <p>I built <strong>Yer Discussions</strong> because the Hip community deserves a dedicated space to talk about the music, the shows, the lyrics, the memories - all of it. Not buried in a Facebook comment section. Not lost in an algorithm. A real place where the conversations actually stick around.</p>
+      <p>This is <strong>The Tragically Hip Podcast Series Forum</strong> - a home base for fans who want to dig deeper. Whether you've been listening since '89 or you just discovered <em>Fully Completely</em> last week, you belong here.</p>
+      <p>You're getting early access. Not everybody has this link yet.</p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" placeholder="Gord" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" placeholder="Downie" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="song-label">
+        <label for="fav-song">Yer Favourite Song</label>
+        <span class="skip-hint">Optional - skip if you can't pick just one</span>
+      </div>
+      <input type="text" id="fav-song" placeholder="Ahead By A Century">
+    </div>
+
+    <button class="btn-connect" id="btn-connect" onclick="handleConnect()">Connect</button>
+    <div class="error-msg" id="error-msg"></div>
+  </div>
+
+  <!-- SCREEN 2: Reveal -->
+  <div id="screen-reveal" class="screen">
+    <div class="membership-number" id="membership-num">#1</div>
+    <div class="membership-label">membersHIP</div>
+
+    <div class="reveal-greeting" id="reveal-greeting">Yer in, friend.</div>
+
+    <div class="welcome-text">
+      <p>That number's yours. You're one of the first people through the door and that's not nothing.</p>
+      <p>Here's what's waiting for you inside:</p>
+    </div>
+
+    <div class="categories">
+      <h2>Conversations</h2>
+      <div class="category-grid">
+        <div class="category-pill">Song Talk</div>
+        <div class="category-pill">Tour Memories</div>
+        <div class="category-pill">Discography Talk</div>
+        <div class="category-pill">Yer Hipstories</div>
+      </div>
+      <p class="and-more">...and many more.</p>
+    </div>
+
+    <a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="btn-forum">
+      Enter Yer Discussions &rarr;
+    </a>
+
+    <div class="signoff">
+      <strong>- jD</strong><br>
+      The Tragically Hip Podcast Series
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var sb;
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.supabase) {
+      sb = supabase.createClient(
+        'https://deqslacywpwnjjckdygp.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM'
+      );
+    }
+  });
+
+  async function handleConnect() {
+    var firstName = document.getElementById('first-name').value.trim();
+    var lastName = document.getElementById('last-name').value.trim();
+    var favSong = document.getElementById('fav-song').value.trim();
+    var errEl = document.getElementById('error-msg');
+    var btn = document.getElementById('btn-connect');
+
+    errEl.textContent = '';
+
+    if (!firstName || !lastName) {
+      errEl.textContent = 'First and last name are required.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Connecting...';
+
+    try {
+      if (!sb) throw new Error('Still loading - try again in a sec.');
+
+      var { data, error } = await sb
+        .from('forum_members')
+        .insert({
+          first_name: firstName,
+          last_name: lastName,
+          favourite_song: favSong || null
+        })
+        .select('membership_number')
+        .single();
+
+      if (error) throw error;
+
+      var num = data.membership_number;
+
+      document.getElementById('membership-num').textContent = '#' + num;
+      document.getElementById('reveal-greeting').textContent =
+        "Yer in, " + firstName + ". You're membersHIP #" + num + ".";
+
+      document.getElementById('screen-welcome').classList.remove('active');
+      document.getElementById('screen-reveal').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (e) {
+      errEl.textContent = e.message || 'Something went wrong. Try again.';
+      btn.disabled = false;
+      btn.textContent = 'Connect';
+    }
+  }
+</script>
+
+</body>
+</html>
