@@ -2,7 +2,7 @@
 
 ## v2.9.9.6
 **Countdown Update** - March 27, 2026
-- Changed password gate countdown target from April 7 at 8 AM to April 20 at 8 PM ET across all 5 pages
+- Changed password gate countdown target from April 7 at 8 AM to May 1 at 8 PM ET across all 5 pages
 
 ---
 

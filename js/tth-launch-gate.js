@@ -12,9 +12,9 @@
 //   <script src="/js/tth-auth.js"></script>
 
 (function () {
-  // Launch target: April 20, 2026 at 8:00 PM Eastern Daylight Time.
+  // Launch target: May 1, 2026 at 8:00 PM Eastern Daylight Time.
   // Stored as an absolute moment in time, so users in any timezone unlock simultaneously.
-  var LAUNCH_TIME = new Date('2026-04-20T20:00:00-04:00').getTime();
+  var LAUNCH_TIME = new Date('2026-05-01T20:00:00-04:00').getTime();
   var PASSWORD = 'roadapples';
   var STORAGE_KEY = 'tth_pass';
 
