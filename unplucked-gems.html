@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unplucked Gems - The Hip Compendium</title>
+  <meta name="description" content="Every known unreleased recording, demo, outtake, and alternate version from The Tragically Hip - the complete sessions tracker.">
+  <meta property="og:title" content="Unplucked Gems - The Hip Compendium">
+  <meta property="og:description" content="Every known unreleased recording, demo, outtake, and alternate version from The Tragically Hip.">
+  <meta property="og:image" content="https://thehipexperience.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehipexperience.tthpods.com/unplucked-gems.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hip Compendium">
+<meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: #C8102E; color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    :root {
+      --bg: #0e0b16;
+      --border: #1a1a1a;
+      --red: #C8102E;
+      --gold: #CCA23C;
+      --text: #ffffff;
+      --muted: #d0d0d0;
+      --muted2: #b0b0b0;
+      --accent-scroll: #3a1080;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: #d9d9d9;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-scroll) transparent;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #3a1080; border-radius: 4px; }
+
+    header {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .header-desc {
+      font-size: 0.82rem;
+      color: var(--muted2);
+      max-width: 520px;
+      margin: 0 auto 16px;
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+      transition: all 0.18s ease;
+    }
+    .back-link:hover { border-color: var(--red); color: var(--text); }
+
+    /* STATS */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 20px 16px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .stat { text-align: center; min-width: 70px; }
+    .stat-num { font-size: 1.4rem; font-weight: 900; color: var(--red); }
+    .stat-lbl { font-size: 0.65rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* SEARCH & FILTERS */
+    .controls {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 16px 0;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: transparent;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: #fff; }
+    .search-input::placeholder { color: var(--muted2); }
+
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      justify-content: center;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--muted2);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--red); color: var(--text); }
+    .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+    /* ERA SIDEBAR NAV */
+    .era-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 14px;
+    }
+    .era-chip {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--muted2);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .era-chip:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    .era-section {
+      margin-bottom: 40px;
+    }
+    .era-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .era-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .era-count {
+      font-size: 0.68rem;
+      color: var(--muted2);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .era-stats {
+      display: flex;
+      gap: 12px;
+      margin-left: auto;
+    }
+    .era-stat {
+      font-size: 0.62rem;
+      color: var(--muted2);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .era-stat strong { color: var(--red); }
+
+    /* SESSION CARD */
+    .session-card {
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .session-card:hover {
+      border-color: rgba(200, 16, 46, 0.4);
+      background: rgba(200, 16, 46, 0.04);
+    }
+    .session-card.expanded {
+      border-color: rgba(200, 16, 46, 0.3);
+      background: rgba(200, 16, 46, 0.06);
+    }
+    .session-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .session-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .session-alt {
+      font-size: 0.72rem;
+      color: var(--muted2);
+      font-weight: 400;
+      font-style: italic;
+    }
+    .tier-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .tier-holy-grail { background: #D4A017; color: #000; }
+    .tier-standout { background: rgba(200, 16, 46, 0.8); color: #fff; }
+    .tier-notable { background: rgba(255, 255, 255, 0.15); color: var(--text); }
+
+    .session-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+    .tag-type { background: rgba(255, 255, 255, 0.08); color: var(--muted); }
+    .tag-full { background: rgba(29, 185, 84, 0.2); color: #1DB954; }
+    .tag-confirmed { background: rgba(255, 255, 255, 0.06); color: var(--muted2); }
+    .tag-partial { background: rgba(204, 162, 60, 0.2); color: var(--gold); }
+    .tag-snippet { background: rgba(204, 162, 60, 0.15); color: var(--gold); }
+    .tag-rumored { background: rgba(200, 16, 46, 0.15); color: #e66; }
+    .tag-quality-lossless { background: rgba(29, 185, 84, 0.15); color: #1DB954; }
+    .tag-quality-cd { background: rgba(29, 185, 84, 0.1); color: #59c76e; }
+    .tag-quality-high { background: rgba(100, 180, 255, 0.12); color: #7ab8f5; }
+    .tag-quality-low { background: rgba(255, 200, 100, 0.1); color: #c9a74e; }
+    .tag-link { background: rgba(200, 16, 46, 0.2); color: var(--red); cursor: pointer; text-decoration: none; }
+    .tag-link:hover { background: var(--red); color: #fff; }
+
+    .session-notes {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .session-card.expanded .session-notes { display: block; }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--muted2);
+      font-size: 0.9rem;
+    }
+
+    .credit {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted2);
+      padding: 8px 16px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted2);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 480px) {
+      .era-stats { display: none; }
+      .session-card { padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+<script src="/js/tth-launch-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="subtitle">The Hip Compendium</div>
+  <h1>Unplucked Gems</h1>
+  <p class="header-desc">Every known unreleased recording, demo, outtake, and alternate version from The Tragically Hip - the complete sessions tracker.</p>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat"><div class="stat-num" id="statTotal">--</div><div class="stat-lbl">Sessions</div></div>
+    <div class="stat"><div class="stat-num" id="statEras">--</div><div class="stat-lbl">Eras</div></div>
+    <div class="stat"><div class="stat-num" id="statFull">--</div><div class="stat-lbl">Available</div></div>
+    <div class="stat"><div class="stat-num" id="statVault">--</div><div class="stat-lbl">In the Vault</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search sessions, songs, eras..." aria-label="Search sessions">
+  <div class="filter-row" id="filterRow">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="full">Available</button>
+    <button class="filter-btn" data-filter="holy-grail">Holy Grails</button>
+    <button class="filter-btn" data-filter="demo">Demos</button>
+    <button class="filter-btn" data-filter="throwaway">Throwaways</button>
+  </div>
+  <div class="era-nav" id="eraNav"></div>
+  <p class="credit" id="creditLine"></p>
+</div>
+
+<main id="main-content">
+  <div id="sessionsContainer"></div>
+  <div class="no-results" id="noResults" style="display:none;">No sessions match your search.</div>
+</main>
+
+<footer>
+  <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
+  Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
+  <span style="color:#666;font-size:0.7rem;">v3.2 (Twist My Arm)</span>
+</footer>
+
+<script>
+(async function() {
+  var resp = await fetch('data/unplucked-gems.json');
+  if (!resp.ok) return;
+  var data = await resp.json();
+
+  // Stats
+  document.getElementById('statTotal').textContent = data.summary.totalSessions;
+  document.getElementById('statEras').textContent = data.summary.totalEras;
+  document.getElementById('statFull').textContent = data.summary.totalFull;
+  document.getElementById('statVault').textContent = data.summary.totalUnavailable;
+  document.getElementById('creditLine').textContent = data.credit + ' - Last updated ' + data.lastUpdated;
+
+  // Era nav chips
+  var eraNav = document.getElementById('eraNav');
+  data.eras.forEach(function(era) {
+    var chip = document.createElement('a');
+    chip.className = 'era-chip';
+    chip.href = '#era-' + slugify(era.era);
+    chip.textContent = era.era;
+    eraNav.appendChild(chip);
+  });
+
+  // Render sessions
+  var container = document.getElementById('sessionsContainer');
+  data.eras.forEach(function(era) {
+    var section = document.createElement('section');
+    section.className = 'era-section';
+    section.id = 'era-' + slugify(era.era);
+    section.setAttribute('data-era', era.era);
+
+    var header = document.createElement('div');
+    header.className = 'era-header';
+    header.innerHTML =
+      '<span class="era-title">' + esc(era.era) + '</span>' +
+      '<span class="era-count">' + era.sessions.length + ' sessions</span>' +
+      '<div class="era-stats">' +
+        (era.counts.full ? '<span class="era-stat"><strong>' + era.counts.full + '</strong> available</span>' : '') +
+        (era.counts.unavailable ? '<span class="era-stat"><strong>' + era.counts.unavailable + '</strong> vault</span>' : '') +
+      '</div>';
+    section.appendChild(header);
+
+    era.sessions.forEach(function(s) {
+      var card = document.createElement('div');
+      card.className = 'session-card';
+      card.setAttribute('data-type', (s.type || '').toLowerCase());
+      card.setAttribute('data-availability', (s.availability || '').toLowerCase());
+      card.setAttribute('data-tier', s.tier || '');
+      card.setAttribute('data-search', [s.name, s.era, (s.altNames || []).join(' '), s.notes || '', s.type || ''].join(' ').toLowerCase());
+
+      var tierBadge = '';
+      if (s.tier === 'holy-grail') tierBadge = '<span class="tier-badge tier-holy-grail">Holy Grail</span>';
+      else if (s.tier === 'standout') tierBadge = '<span class="tier-badge tier-standout">Standout</span>';
+      else if (s.tier === 'notable') tierBadge = '<span class="tier-badge tier-notable">Notable</span>';
+
+      var altText = s.altNames && s.altNames.length ? '<span class="session-alt"> aka ' + s.altNames.map(esc).join(', ') + '</span>' : '';
+
+      var tags = '';
+      if (s.type) tags += '<span class="tag tag-type">' + esc(s.type) + '</span>';
+      if (s.availability) {
+        var avClass = 'tag-confirmed';
+        if (s.availability === 'Full') avClass = 'tag-full';
+        else if (s.availability === 'Partial') avClass = 'tag-partial';
+        else if (s.availability === 'Snippet') avClass = 'tag-snippet';
+        else if (s.availability === 'Rumored') avClass = 'tag-rumored';
+        tags += '<span class="tag ' + avClass + '">' + esc(s.availability) + '</span>';
+      }
+      if (s.quality && s.quality !== 'Not Available') {
+        var qClass = 'tag-quality-low';
+        if (s.quality === 'Lossless') qClass = 'tag-quality-lossless';
+        else if (s.quality === 'CD Quality') qClass = 'tag-quality-cd';
+        else if (s.quality === 'High Quality') qClass = 'tag-quality-high';
+        tags += '<span class="tag ' + qClass + '">' + esc(s.quality) + '</span>';
+      }
+      if (s.link) {
+        tags += '<a href="' + esc(s.link) + '" target="_blank" rel="noopener noreferrer" class="tag tag-link" onclick="event.stopPropagation()">Listen</a>';
+      }
+
+      var notesHtml = s.notes ? '<div class="session-notes">' + esc(s.notes) + '</div>' : '';
+
+      card.innerHTML =
+        '<div class="session-top">' +
+          '<div class="session-name">' + esc(s.name) + altText + '</div>' +
+          tierBadge +
+        '</div>' +
+        (tags ? '<div class="session-tags">' + tags + '</div>' : '') +
+        notesHtml;
+
+      if (s.notes) {
+        card.addEventListener('click', function() { card.classList.toggle('expanded'); });
+      }
+
+      section.appendChild(card);
+    });
+
+    container.appendChild(section);
+  });
+
+  // Search
+  var searchInput = document.getElementById('searchInput');
+  var noResults = document.getElementById('noResults');
+  var activeFilter = 'all';
+
+  function applyFilters() {
+    var q = searchInput.value.toLowerCase().trim();
+    var cards = container.querySelectorAll('.session-card');
+    var sections = container.querySelectorAll('.era-section');
+    var anyVisible = false;
+
+    cards.forEach(function(card) {
+      var matchSearch = !q || card.getAttribute('data-search').indexOf(q) !== -1;
+      var matchFilter = true;
+      if (activeFilter === 'full') matchFilter = card.getAttribute('data-availability') === 'full';
+      else if (activeFilter === 'holy-grail') matchFilter = card.getAttribute('data-tier') === 'holy-grail';
+      else if (activeFilter === 'demo') matchFilter = card.getAttribute('data-type') === 'demo';
+      else if (activeFilter === 'throwaway') matchFilter = card.getAttribute('data-type') === 'throwaway';
+
+      var show = matchSearch && matchFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) anyVisible = true;
+    });
+
+    sections.forEach(function(sec) {
+      var hasVisible = sec.querySelector('.session-card:not([style*="display: none"])');
+      sec.style.display = hasVisible ? '' : 'none';
+    });
+
+    noResults.style.display = anyVisible ? 'none' : '';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  document.getElementById('filterRow').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeFilter = btn.getAttribute('data-filter');
+    applyFilters();
+  });
+
+  function slugify(str) { return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+  function esc(str) {
+    var el = document.createElement('span');
+    el.textContent = str;
+    return el.innerHTML;
+  }
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
+</body>
+</html>
