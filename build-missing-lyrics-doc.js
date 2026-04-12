@@ -1,3 +1,4 @@
+// Requires: npm install docx   (or run via npx)
 const fs = require('fs');
 const { Document, Packer, Paragraph, TextRun, AlignmentType, LevelFormat, BorderStyle } = require('docx');
 

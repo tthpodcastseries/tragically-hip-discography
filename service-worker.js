@@ -1,12 +1,21 @@
-const CACHE_NAME = 'thc-v2.9.9.4';
+const CACHE_NAME = 'thc-v3.3';
 const CORE_ASSETS = [
   '/',
   '/index.html',
   '/discography.html',
   '/tour-map.html',
   '/links.html',
+  '/unplucked-gems.html',
+  '/forum-invite.html',
   '/404.html',
+  '/js/tth-launch-gate.js',
+  '/js/supabase.min.js',
   '/data/discography.json',
+  '/data/lyrics.json',
+  '/data/setlists.min.json',
+  '/data/tth-tour-data.json',
+  '/data/unplucked-gems.json',
+  '/data/live-play-counts-merged.json',
   '/manifest.json'
 ];
 

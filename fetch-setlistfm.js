@@ -5,13 +5,14 @@
 // No external dependencies - uses built-in https module.
 
 const https = require('https');
+const path = require('path');
 
 const API_KEY = 'F2SEnErfN5soGAhxFdKw7TqaTfls9BoVuScR';
 const MBID = 'e86ab653-bec8-46f3-b4b6-a1a866919ef6';
 const DELAY_MS = 500;
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 2000;
-const OUTPUT_PATH = __dirname + '/setlistfm-play-counts.json';
+const OUTPUT_PATH = path.join(__dirname, 'data', 'setlistfm-play-counts.json');
 const fs = require('fs');
 
 function fetchPage(page) {
