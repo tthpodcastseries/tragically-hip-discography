@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Compendium
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v3.3.3 (Cordelia)';
+  var version = 'v3.3.4 (Cordelia)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
