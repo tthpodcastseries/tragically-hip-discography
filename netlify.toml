@@ -2,8 +2,10 @@
   from = "/scripts/*"
   to = "/404.html"
   status = 404
+  force = true
 
 [[redirects]]
   from = "/data/live-play-counts-unmatched.txt"
   to = "/404.html"
   status = 404
+  force = true
