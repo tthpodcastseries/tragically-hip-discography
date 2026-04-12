@@ -22,35 +22,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: var(--red); color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
-    .skip-link:focus { left: 16px; top: 16px; }
-
     :root {
-      --bg: #0e0b16;
-      --bg2: #0a0a0a;
-      --bg3: #141414;
-      --border: #1a1a1a;
-      --red: #C8102E;
       --red-bright: #C8102E;
-      --gold: #CCA23C;
-      --text: #ffffff;
-      --muted: #d0d0d0;
-      --muted2: #b0b0b0;
-      --accent-scroll: #3a1080;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: #d9d9d9;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      line-height: 1.5;
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent-scroll) transparent;
     }
 
     /* HEADER */
@@ -116,19 +91,9 @@
     .otd-tag-show { background: var(--red); color: #fff; }
     .otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }
 
-    /* STATS */
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      padding: 24px 16px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .stat { text-align: center; min-width: 80px; }
-    .stat-num { font-size: 1.4rem; font-weight: 900; color: var(--red); }
-    .stat-lbl { font-size: 0.65rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; }
+    /* STATS (overrides for index) */
+    .stats-row { padding: 24px 16px; }
+    .stat { min-width: 80px; }
 
     /* NAV BUTTONS - matches index.html category-nav exactly */
     .category-nav {
@@ -276,31 +241,6 @@
       .category-btn { padding: 10px 20px; font-size: 0.72rem; }
     }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted2);
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--text); }
-    .yer-letter-btn {
-      display: inline-block;
-      background: var(--red);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 10px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .yer-letter-btn:hover { background: #a00d24; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -397,21 +337,7 @@
   </div>
 </div>
 
-<footer>
-  <div style="margin-bottom:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
-    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
-      <a href="mailto:jd@tthpods.com" class="yer-letter-btn" style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Connect with jD</a>
-      <a href="https://tthpods.kit.com/products/tipsforjd" target="_blank" rel="noopener noreferrer" class="yer-letter-btn" style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Leave A Tip</a>
-    </div>
-    <a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-btn">Sign up For Yer Letter - The TTH Community Newsletter</a>
-  </div>
-  <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
-  Discography data sourced from the <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">TTH Podcast Series - Complete Discography v6.0</a><br>
-  Tour map data: <a href="https://www.setlist.fm" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">setlist.fm</a> &middot; <a href="https://www.hipbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">Hipbase.com</a> (Lance Robinson) &middot; <a href="https://www.thehiparchive.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Hip Archive</a> (Darrin Cappe)<br>
-  Unplucked Gems by: Darius<br>
-  Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v3.2 (Twist My Arm)</span>
-</footer>
+<footer id="site-footer"></footer>
 
 <script>
 (async function() {
@@ -1103,6 +1029,6 @@
 
 })();
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
+<script src="/js/shared-footer.js"></script>
 </body>
 </html>

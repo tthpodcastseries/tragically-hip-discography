@@ -1,0 +1,127 @@
+/* shared.css - The Hip Compendium shared styles */
+/* v3.3.1 (Cordelia) */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0e0b16;
+  --bg2: #0a0a0a;
+  --bg3: #141414;
+  --border: #1a1a1a;
+  --red: #C8102E;
+  --red-dim: rgba(200, 16, 46, 0.15);
+  --gold: #CCA23C;
+  --text: #ffffff;
+  --muted: #d0d0d0;
+  --muted2: #b0b0b0;
+  --accent-scroll: #3a1080;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: #d9d9d9;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-scroll) transparent;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3a1080; border-radius: 4px; }
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+/* Back link button */
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  transition: all 0.18s ease;
+}
+.back-link:hover { border-color: var(--red); color: var(--text); }
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 20px 16px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.stat { text-align: center; min-width: 70px; }
+.stat-num { font-size: 1.4rem; font-weight: 900; color: var(--red); line-height: 1; }
+.stat-lbl { font-size: 0.65rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+/* Site footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted2);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { color: var(--text); }
+.site-footer .footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.site-footer .footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--muted);
+  background: transparent;
+}
+.site-footer .footer-btn:hover { border-color: var(--red); color: var(--text); }
+.site-footer .footer-btn svg { width: 14px; height: 14px; fill: currentColor; }
+.site-footer .yer-letter-link {
+  display: inline-block;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.78rem;
+  margin-bottom: 16px;
+}
+.site-footer .yer-letter-link:hover { color: var(--text); }

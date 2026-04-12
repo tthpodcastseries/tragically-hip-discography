@@ -115,7 +115,7 @@ async function scrapeAll() {
 
   // Save
   const fs = require('fs');
-  const outPath = require('path').join(__dirname, 'data', 'hip-archive-index.json');
+  const outPath = require('path').join(__dirname, '..', 'data', 'hip-archive-index.json');
   fs.writeFileSync(outPath, JSON.stringify(allShows, null, 2));
   console.log(`\nSaved to ${outPath}`);
 

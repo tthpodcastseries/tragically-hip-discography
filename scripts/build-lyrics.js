@@ -239,7 +239,7 @@ async function main() {
   }
 
   const output = { version: 1, generated: new Date().toISOString(), songs: result };
-  const outPath = path.join(__dirname, 'data', 'lyrics.json');
+  const outPath = path.join(__dirname, '..', 'data', 'lyrics.json');
   fs.writeFileSync(outPath, JSON.stringify(output, null, 0));
 
   const size = (fs.statSync(outPath).size / 1024).toFixed(1);

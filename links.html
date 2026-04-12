@@ -21,31 +21,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: #C8102E; color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
-    .skip-link:focus { left: 16px; top: 16px; }
-
-    :root {
-      --bg: #0e0b16;
-      --border: #1a1a1a;
-      --red: #C8102E;
-      --gold: #CCA23C;
-      --text: #ffffff;
-      --muted: #d0d0d0;
-      --muted2: #b0b0b0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: #d9d9d9;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-
     header {
       text-align: center;
       padding: 48px 24px 32px;
@@ -66,21 +43,6 @@
       letter-spacing: 0.1em;
       margin-bottom: 16px;
     }
-    .back-link {
-      display: inline-block;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 30px;
-      transition: all 0.18s ease;
-    }
-    .back-link:hover { border-color: var(--red); color: var(--text); }
-
     main {
       max-width: 600px;
       margin: 0 auto;
@@ -134,19 +96,6 @@
       opacity: 0.7;
       margin-top: 2px;
     }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted2);
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--text); }
 
     @media (max-width: 500px) {
       .link-card { padding: 12px 14px; }
@@ -266,12 +215,7 @@
 
 </main>
 
-<footer>
-  <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
-  Unplucked Gems by: Darius<br>
-  Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v3.2 (Twist My Arm)</span>
-</footer>
+<footer id="site-footer"></footer>
 
 <script>
 (async function() {
@@ -350,6 +294,6 @@
   wrapper.style.display = 'block';
 })();
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
+<script src="/js/shared-footer.js"></script>
 </body>
 </html>

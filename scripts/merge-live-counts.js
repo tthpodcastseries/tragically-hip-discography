@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DIR = path.join(__dirname, 'data');
+const DIR = path.join(__dirname, '..', 'data');
 
 // ─── Load source files ───────────────────────────────────────────────
 const hipbase = JSON.parse(fs.readFileSync(path.join(DIR, 'hipbase-play-counts.json'), 'utf8'));

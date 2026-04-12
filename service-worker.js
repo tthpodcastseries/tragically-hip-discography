@@ -1,21 +1,28 @@
 const CACHE_NAME = 'thc-v3.3';
 const CORE_ASSETS = [
+  // HTML pages
   '/',
   '/index.html',
   '/discography.html',
-  '/tour-map.html',
   '/links.html',
+  '/tour-map.html',
   '/unplucked-gems.html',
   '/forum-invite.html',
   '/404.html',
+  // CSS
+  '/css/shared.css',
+  // JS
+  '/js/shared-footer.js',
   '/js/tth-launch-gate.js',
   '/js/supabase.min.js',
+  // Data
   '/data/discography.json',
   '/data/lyrics.json',
   '/data/setlists.min.json',
   '/data/tth-tour-data.json',
   '/data/unplucked-gems.json',
   '/data/live-play-counts-merged.json',
+  // Other
   '/manifest.json'
 ];
 

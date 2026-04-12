@@ -19,13 +19,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #0e0b16;
-      color: #d9d9d9;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -51,38 +47,6 @@
     }
     .links a:hover, .links a:focus { border-color: #C8102E; color: #ffffff; }
     .links a:focus-visible { outline: 2px solid #C8102E; outline-offset: 2px; }
-    .footer-404 {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 16px 24px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #666;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .footer-404 a { color: #666; text-decoration: none; }
-    .footer-404 a:hover { color: #d9d9d9; }
-    .footer-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #C8102E;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      padding: 6px 16px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .footer-btn:hover { background: #a00d24; }
   </style>
 </head>
 <body>
@@ -96,12 +60,8 @@
     <a href="/links.html">Yer Hip Links</a>
   </div>
 
-<div class="footer-404">
-  <a href="mailto:jd@tthpods.com" class="footer-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Connect with jD</a>
-  <a href="https://tthpods.kit.com/products/tipsforjd" target="_blank" rel="noopener noreferrer" class="footer-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Leave A Tip</a>
-  <br><span style="color:#666;font-size:0.6rem;font-family:Poppins,sans-serif;">v2.9.9.4 (An Inch An Hour)</span>
-</div>
+<footer id="site-footer"></footer>
 
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
+<script src="/js/shared-footer.js"></script>
 </body>
 </html>

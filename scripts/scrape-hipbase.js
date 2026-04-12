@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DELAY_MS = 1000; // 1 second between requests
-const OUTPUT_FILE = path.join(__dirname, 'data', 'hipbase-play-counts.json');
+const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'hipbase-play-counts.json');
 const TODAY = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
 function sleep(ms) {

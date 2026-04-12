@@ -21,37 +21,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    .skip-link { position: absolute; left: -9999px; top: auto; z-index: 9999; padding: 8px 16px; background: #C8102E; color: #fff; text-decoration: none; font-weight: 600; border-radius: 4px; font-family: 'Poppins', sans-serif; }
-    .skip-link:focus { left: 16px; top: 16px; }
-
-    :root {
-      --bg: #0e0b16;
-      --border: #1a1a1a;
-      --red: #C8102E;
-      --gold: #CCA23C;
-      --text: #ffffff;
-      --muted: #d0d0d0;
-      --muted2: #b0b0b0;
-      --accent-scroll: #3a1080;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: #d9d9d9;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      line-height: 1.5;
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent-scroll) transparent;
-    }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #3a1080; border-radius: 4px; }
-
     header {
       text-align: center;
       padding: 48px 24px 32px;
@@ -78,40 +49,9 @@
       max-width: 520px;
       margin: 0 auto 16px;
     }
-    .back-link {
-      display: inline-block;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 30px;
-      transition: all 0.18s ease;
-    }
-    .back-link:hover { border-color: var(--red); color: var(--text); }
-
-    /* STATS */
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      padding: 20px 16px 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .stat { text-align: center; min-width: 70px; }
-    .stat-num {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--red);
-      transition: opacity 0.3s ease;
-    }
+    /* STATS - page-specific overrides */
+    .stat-num { transition: opacity 0.3s ease; }
     .stat-num.updating { opacity: 0.3; }
-    .stat-lbl { font-size: 0.65rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; }
     .stats-context {
       text-align: center;
       font-size: 0.72rem;
@@ -446,19 +386,6 @@
     }
     .grid-overlay.active { display: block; }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted2);
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--text); }
-
     @media (max-width: 480px) {
       .session-card { padding: 12px 14px; }
       .flip-card-label { font-size: 0.6rem; }
@@ -493,11 +420,7 @@
   <div class="album-grid" id="albumGrid"></div>
 </main>
 
-<footer>
-  <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
-  Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v3.3 (Cordelia)</span>
-</footer>
+<footer id="site-footer"></footer>
 
 <script>
 (async function() {
@@ -822,6 +745,6 @@
   });
 })();
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
+<script src="/js/shared-footer.js"></script>
 </body>
 </html>
