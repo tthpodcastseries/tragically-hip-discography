@@ -104,47 +104,226 @@
       margin: 0 auto;
     }
     .stat { text-align: center; min-width: 70px; }
-    .stat-num { font-size: 1.4rem; font-weight: 900; color: var(--red); }
+    .stat-num {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--red);
+      transition: opacity 0.3s ease;
+    }
+    .stat-num.updating { opacity: 0.3; }
     .stat-lbl { font-size: 0.65rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; }
+    .stats-context {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 8px;
+      min-height: 1.2em;
+      transition: opacity 0.3s ease;
+    }
 
-    /* SEARCH & FILTERS */
-    .controls {
+    /* CREDIT */
+    .credit {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted2);
+      padding: 16px 16px 0;
       max-width: 600px;
       margin: 0 auto;
-      padding: 20px 16px 0;
     }
-    .search-input {
+
+    /* ALBUM GRID */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+      perspective: 1000px;
+    }
+    @media (max-width: 768px) {
+      .album-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .album-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+
+    /* FLIP CARD GRID ITEM */
+    .flip-card {
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* FRONT FACE */
+    .flip-card-front {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-card-front img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: block;
+    }
+    .flip-card:not(.flipped):hover .flip-card-front img {
+      border-color: rgba(204, 162, 60, 0.5);
+      transform: scale(1.03);
+    }
+    .flip-card-label {
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted2);
+      margin-top: 6px;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+    .flip-card:not(.flipped):hover .flip-card-label {
+      color: var(--gold);
+    }
+    .flip-card-count {
+      text-align: center;
+      font-size: 0.58rem;
+      color: var(--muted2);
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    /* BACK FACE - hidden placeholder to preserve 3D flip illusion */
+    .flip-card-back-placeholder {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-card-back-placeholder span {
+      font-size: 0.7rem;
+      color: var(--muted2);
+    }
+
+    /* EXPANDED PANEL - positioned as overlay near card */
+    .expanded-panel {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(700px, 92vw);
+      max-height: 85vh;
+      background: var(--bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      z-index: 200;
+      padding: 20px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      animation: panelIn 0.35s ease;
+    }
+    .expanded-panel.active {
+      display: flex;
+    }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.92) rotateY(-8deg); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotateY(0deg); }
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      flex-shrink: 0;
+    }
+    .panel-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .panel-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+    }
+    .panel-close:hover {
+      background: var(--red);
+      color: #fff;
+    }
+
+    /* PANEL CONTROLS */
+    .panel-controls {
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+    .panel-search {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: transparent;
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-family: 'Poppins', sans-serif;
       outline: none;
       transition: border-color 0.2s;
     }
-    .search-input:focus { border-color: #fff; }
-    .search-input::placeholder { color: var(--muted2); }
+    .panel-search:focus { border-color: #fff; }
+    .panel-search::placeholder { color: var(--muted2); }
 
-    .filter-row {
+    .panel-filter-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
-      margin-top: 12px;
-      justify-content: center;
+      margin-top: 10px;
     }
     .filter-btn {
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--muted2);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 20px;
+      padding: 4px 12px;
+      border-radius: 18px;
       cursor: pointer;
       transition: all 0.18s ease;
       font-family: inherit;
@@ -152,74 +331,23 @@
     .filter-btn:hover { border-color: var(--red); color: var(--text); }
     .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
 
-    /* ERA SIDEBAR NAV */
-    .era-nav {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 14px;
+    /* PANEL SESSIONS */
+    .panel-sessions {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-scroll) transparent;
     }
-    .era-chip {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--muted2);
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      text-decoration: none;
-      font-family: inherit;
-    }
-    .era-chip:hover { border-color: var(--gold); color: var(--gold); }
+    .panel-sessions::-webkit-scrollbar { width: 6px; }
+    .panel-sessions::-webkit-scrollbar-track { background: transparent; }
+    .panel-sessions::-webkit-scrollbar-thumb { background: #3a1080; border-radius: 3px; }
 
-    /* MAIN CONTENT */
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-    }
-
-    .era-section {
-      margin-bottom: 40px;
-    }
-    .era-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .era-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .era-count {
-      font-size: 0.68rem;
+    .panel-no-results {
+      text-align: center;
+      padding: 24px 8px;
       color: var(--muted2);
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 2px 8px;
-      border-radius: 10px;
+      font-size: 0.82rem;
     }
-    .era-stats {
-      display: flex;
-      gap: 12px;
-      margin-left: auto;
-    }
-    .era-stat {
-      font-size: 0.62rem;
-      color: var(--muted2);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .era-stat strong { color: var(--red); }
 
     /* SESSION CARD */
     .session-card {
@@ -306,21 +434,17 @@
     }
     .session-card.expanded .session-notes { display: block; }
 
-    .no-results {
-      text-align: center;
-      padding: 40px 16px;
-      color: var(--muted2);
-      font-size: 0.9rem;
+    /* OVERLAY */
+    .grid-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 11, 22, 0.75);
+      z-index: 150;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
-
-    .credit {
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--muted2);
-      padding: 8px 16px 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    .grid-overlay.active { display: block; }
 
     footer {
       border-top: 1px solid var(--border);
@@ -336,8 +460,9 @@
     footer a:hover { color: var(--text); }
 
     @media (max-width: 480px) {
-      .era-stats { display: none; }
       .session-card { padding: 12px 14px; }
+      .flip-card-label { font-size: 0.6rem; }
+      .expanded-panel { padding: 14px; }
     }
   </style>
 </head>
@@ -357,30 +482,21 @@
     <div class="stat"><div class="stat-num" id="statFull">--</div><div class="stat-lbl">Available</div></div>
     <div class="stat"><div class="stat-num" id="statVault">--</div><div class="stat-lbl">In the Vault</div></div>
   </div>
+  <div class="stats-context" id="statsContext"></div>
 </header>
 
-<div class="controls">
-  <input type="text" class="search-input" id="searchInput" placeholder="Search sessions, songs, eras..." aria-label="Search sessions">
-  <div class="filter-row" id="filterRow">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="full">Available</button>
-    <button class="filter-btn" data-filter="holy-grail">Holy Grails</button>
-    <button class="filter-btn" data-filter="demo">Demos</button>
-    <button class="filter-btn" data-filter="throwaway">Throwaways</button>
-  </div>
-  <div class="era-nav" id="eraNav"></div>
-  <p class="credit" id="creditLine"></p>
-</div>
+<p class="credit" id="creditLine"></p>
+
+<div class="grid-overlay" id="gridOverlay"></div>
 
 <main id="main-content">
-  <div id="sessionsContainer"></div>
-  <div class="no-results" id="noResults" style="display:none;">No sessions match your search.</div>
+  <div class="album-grid" id="albumGrid"></div>
 </main>
 
 <footer>
   <strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>
   Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted2)">The Tragically Hip Podcast Series</a> - Coded by Claude<br>
-  <span style="color:#666;font-size:0.7rem;">v3.2 (Twist My Arm)</span>
+  <span style="color:#666;font-size:0.7rem;">v3.3 (Cordelia)</span>
 </footer>
 
 <script>
@@ -389,55 +505,187 @@
   if (!resp.ok) return;
   var data = await resp.json();
 
+  // Image path mapping (fallback when JSON imagePath not yet populated)
+  var imageMap = {
+    'The Tragically Hip': 'assets-optimized/eps/The EP.jpg',
+    'Up To Here': 'assets-optimized/studio-albums/Up to Here.jpg',
+    'Road Apples': 'assets-optimized/studio-albums/Road Apples.jpg',
+    'Fully Completely': 'assets-optimized/studio-albums/Fully Completely.jpg',
+    'Day For Night': 'assets-optimized/studio-albums/Day for Night.jpg',
+    'Trouble At The Henhouse': 'assets-optimized/studio-albums/Trouble at the Henhouse.jpg',
+    'Live Between Us': 'assets-optimized/live-albums/live Between Us.jpg',
+    'Phantom Power': 'assets-optimized/studio-albums/Phantom Power.jpg',
+    'Music @ Work': 'assets-optimized/studio-albums/Music @ Work.jpg',
+    'In Violet Light': 'assets-optimized/studio-albums/In Violet Light.jpg',
+    'In Between Evolution': 'assets-optimized/studio-albums/In Between Evolution.jpg',
+    'World Container': 'assets-optimized/studio-albums/World Container.jpg',
+    'We Are The Same': 'assets-optimized/studio-albums/We are the Same.jpg',
+    'Now For Plan A': 'assets-optimized/studio-albums/Now for Plan A.jpg',
+    'Man Machine Poem': 'assets-optimized/studio-albums/Man Machine Poem.jpg'
+  };
+
+  // Utility
+  function esc(str) {
+    if (!str) return '';
+    var el = document.createElement('span');
+    el.textContent = str;
+    return el.innerHTML;
+  }
+
   // Stats
-  document.getElementById('statTotal').textContent = data.summary.totalSessions;
-  document.getElementById('statEras').textContent = data.summary.totalEras;
-  document.getElementById('statFull').textContent = data.summary.totalFull;
-  document.getElementById('statVault').textContent = data.summary.totalUnavailable;
-  document.getElementById('creditLine').textContent = data.credit + ' - Last updated ' + data.lastUpdated;
+  var globalStats = {
+    sessions: data.summary.totalSessions,
+    eras: data.summary.totalEras,
+    full: data.summary.totalFull,
+    vault: data.summary.totalUnavailable
+  };
 
-  // Era nav chips
-  var eraNav = document.getElementById('eraNav');
-  data.eras.forEach(function(era) {
-    var chip = document.createElement('a');
-    chip.className = 'era-chip';
-    chip.href = '#era-' + slugify(era.era);
-    chip.textContent = era.era;
-    eraNav.appendChild(chip);
-  });
+  var statTotal = document.getElementById('statTotal');
+  var statEras = document.getElementById('statEras');
+  var statFull = document.getElementById('statFull');
+  var statVault = document.getElementById('statVault');
+  var statsContext = document.getElementById('statsContext');
 
-  // Render sessions
-  var container = document.getElementById('sessionsContainer');
-  data.eras.forEach(function(era) {
-    var section = document.createElement('section');
-    section.className = 'era-section';
-    section.id = 'era-' + slugify(era.era);
-    section.setAttribute('data-era', era.era);
+  function setStats(stats, label) {
+    var nums = document.querySelectorAll('.stat-num');
+    nums.forEach(function(n) { n.classList.add('updating'); });
+    setTimeout(function() {
+      statTotal.textContent = stats.sessions;
+      statEras.textContent = stats.eras;
+      statFull.textContent = stats.full;
+      statVault.textContent = stats.vault;
+      statsContext.textContent = label || '';
+      nums.forEach(function(n) { n.classList.remove('updating'); });
+    }, 150);
+  }
 
-    var header = document.createElement('div');
-    header.className = 'era-header';
-    header.innerHTML =
-      '<span class="era-title">' + esc(era.era) + '</span>' +
-      '<span class="era-count">' + era.sessions.length + ' sessions</span>' +
-      '<div class="era-stats">' +
-        (era.counts.full ? '<span class="era-stat"><strong>' + era.counts.full + '</strong> available</span>' : '') +
-        (era.counts.unavailable ? '<span class="era-stat"><strong>' + era.counts.unavailable + '</strong> vault</span>' : '') +
-      '</div>';
-    section.appendChild(header);
+  setStats(globalStats, '');
 
+  // Credit
+  if (data.credit) {
+    document.getElementById('creditLine').textContent = data.credit + ' - Last updated ' + data.lastUpdated;
+  }
+
+  // DOM refs
+  var grid = document.getElementById('albumGrid');
+  var overlay = document.getElementById('gridOverlay');
+  var currentFlippedCard = null;
+  var currentPanel = null;
+
+  // Shared close function
+  function closeCurrentAlbum() {
+    if (currentFlippedCard) {
+      currentFlippedCard.classList.remove('flipped');
+      currentFlippedCard = null;
+    }
+    if (currentPanel) {
+      currentPanel.classList.remove('active');
+      // Reset filters inside panel
+      var search = currentPanel.querySelector('.panel-search');
+      var filterBtns = currentPanel.querySelectorAll('.filter-btn');
+      var sessions = currentPanel.querySelectorAll('.session-card');
+      var noResults = currentPanel.querySelector('.panel-no-results');
+      if (search) search.value = '';
+      filterBtns.forEach(function(b, i) {
+        b.classList.toggle('active', i === 0);
+      });
+      sessions.forEach(function(c) {
+        c.style.display = '';
+        c.classList.remove('expanded');
+      });
+      if (noResults) noResults.style.display = 'none';
+      currentPanel._activeFilter = 'all';
+      currentPanel = null;
+    }
+    overlay.classList.remove('active');
+    setStats(globalStats, '');
+  }
+
+  // Build each album card + panel
+  data.eras.forEach(function(era, idx) {
+    var imagePath = era.imagePath || imageMap[era.era] || '';
+
+    // Count availability
+    var eraAvailable = 0;
+    var eraUnavailable = 0;
     era.sessions.forEach(function(s) {
-      var card = document.createElement('div');
-      card.className = 'session-card';
-      card.setAttribute('data-type', (s.type || '').toLowerCase());
-      card.setAttribute('data-availability', (s.availability || '').toLowerCase());
-      card.setAttribute('data-tier', s.tier || '');
-      card.setAttribute('data-search', [s.name, s.era, (s.altNames || []).join(' '), s.notes || '', s.type || ''].join(' ').toLowerCase());
+      var av = (s.availability || '').toLowerCase();
+      if (av === 'full' || av === 'partial' || av === 'snippet') eraAvailable++;
+      else eraUnavailable++;
+    });
+
+    // --- Grid card (front + back placeholder) ---
+    var card = document.createElement('div');
+    card.className = 'flip-card';
+
+    var inner = document.createElement('div');
+    inner.className = 'flip-card-inner';
+
+    var front = document.createElement('div');
+    front.className = 'flip-card-front';
+    front.innerHTML =
+      '<img src="' + esc(imagePath) + '" alt="' + esc(era.era) + ' album cover" loading="lazy">' +
+      '<div class="flip-card-label">' + esc(era.era) + '</div>' +
+      '<div class="flip-card-count">' + era.sessions.length + ' sessions</div>';
+
+    var backPlaceholder = document.createElement('div');
+    backPlaceholder.className = 'flip-card-back-placeholder';
+    backPlaceholder.innerHTML = '<span>Loading...</span>';
+
+    inner.appendChild(front);
+    inner.appendChild(backPlaceholder);
+    card.appendChild(inner);
+    grid.appendChild(card);
+
+    // --- Expanded panel (overlay) ---
+    var panel = document.createElement('div');
+    panel.className = 'expanded-panel';
+    panel._activeFilter = 'all';
+
+    // Panel header
+    var panelHeader = document.createElement('div');
+    panelHeader.className = 'panel-header';
+    panelHeader.innerHTML =
+      '<span class="panel-title">' + esc(era.era) + '</span>' +
+      '<button class="panel-close" aria-label="Close">&times;</button>';
+
+    // Panel controls
+    var panelControls = document.createElement('div');
+    panelControls.className = 'panel-controls';
+    panelControls.innerHTML =
+      '<input type="text" class="panel-search" placeholder="Search this era..." aria-label="Search sessions in ' + esc(era.era) + '">' +
+      '<div class="panel-filter-row">' +
+        '<button class="filter-btn active" data-filter="all">All</button>' +
+        '<button class="filter-btn" data-filter="full">Available</button>' +
+        '<button class="filter-btn" data-filter="holy-grail">Holy Grails</button>' +
+        '<button class="filter-btn" data-filter="demo">Demos</button>' +
+        '<button class="filter-btn" data-filter="throwaway">Throwaways</button>' +
+      '</div>';
+
+    // Panel sessions list
+    var panelSessions = document.createElement('div');
+    panelSessions.className = 'panel-sessions';
+
+    var noResults = document.createElement('div');
+    noResults.className = 'panel-no-results';
+    noResults.style.display = 'none';
+    noResults.textContent = 'No sessions match your search.';
+
+    // Build session cards
+    era.sessions.forEach(function(s) {
+      var sc = document.createElement('div');
+      sc.className = 'session-card';
+      sc.setAttribute('data-type', (s.type || '').toLowerCase());
+      sc.setAttribute('data-availability', (s.availability || '').toLowerCase());
+      sc.setAttribute('data-tier', s.tier || '');
+      sc.setAttribute('data-search', [s.displayName || s.name, s.name, (s.altNames || []).join(' '), s.notes || '', s.type || ''].join(' ').toLowerCase());
 
       var tierBadge = '';
       if (s.tier === 'holy-grail') tierBadge = '<span class="tier-badge tier-holy-grail">Holy Grail</span>';
       else if (s.tier === 'standout') tierBadge = '<span class="tier-badge tier-standout">Standout</span>';
       else if (s.tier === 'notable') tierBadge = '<span class="tier-badge tier-notable">Notable</span>';
 
+      var displayLabel = s.displayName || s.name;
       var altText = s.altNames && s.altNames.length ? '<span class="session-alt"> aka ' + s.altNames.map(esc).join(', ') + '</span>' : '';
 
       var tags = '';
@@ -463,73 +711,115 @@
 
       var notesHtml = s.notes ? '<div class="session-notes">' + esc(s.notes) + '</div>' : '';
 
-      card.innerHTML =
+      sc.innerHTML =
         '<div class="session-top">' +
-          '<div class="session-name">' + esc(s.name) + altText + '</div>' +
+          '<div class="session-name">' + esc(displayLabel) + altText + '</div>' +
           tierBadge +
         '</div>' +
         (tags ? '<div class="session-tags">' + tags + '</div>' : '') +
         notesHtml;
 
       if (s.notes) {
-        card.addEventListener('click', function() { card.classList.toggle('expanded'); });
+        sc.addEventListener('click', function() { sc.classList.toggle('expanded'); });
       }
 
-      section.appendChild(card);
+      panelSessions.appendChild(sc);
     });
 
-    container.appendChild(section);
+    panel.appendChild(panelHeader);
+    panel.appendChild(panelControls);
+    panel.appendChild(panelSessions);
+    panel.appendChild(noResults);
+    document.body.appendChild(panel);
+
+    // --- Filter logic for this panel ---
+    var panelSearch = panelControls.querySelector('.panel-search');
+    var panelFilterBtns = panelControls.querySelectorAll('.filter-btn');
+
+    function applyPanelFilters() {
+      var q = panelSearch.value.toLowerCase().trim();
+      var cards = panelSessions.querySelectorAll('.session-card');
+      var af = panel._activeFilter;
+      var anyVisible = false;
+
+      cards.forEach(function(c) {
+        var matchSearch = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+        var matchFilter = true;
+        if (af === 'full') matchFilter = c.getAttribute('data-availability') === 'full';
+        else if (af === 'holy-grail') matchFilter = c.getAttribute('data-tier') === 'holy-grail';
+        else if (af === 'demo') matchFilter = c.getAttribute('data-type') === 'demo';
+        else if (af === 'throwaway') matchFilter = c.getAttribute('data-type') === 'throwaway';
+
+        var show = matchSearch && matchFilter;
+        c.style.display = show ? '' : 'none';
+        if (show) anyVisible = true;
+      });
+
+      noResults.style.display = anyVisible ? 'none' : '';
+    }
+
+    panelSearch.addEventListener('input', applyPanelFilters);
+
+    panelControls.querySelector('.panel-filter-row').addEventListener('click', function(e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      panel._activeFilter = btn.getAttribute('data-filter');
+      applyPanelFilters();
+    });
+
+    // --- Click handlers ---
+
+    // Open: click the card front
+    card.addEventListener('click', function() {
+      if (card.classList.contains('flipped')) {
+        closeCurrentAlbum();
+        return;
+      }
+      // Close any currently open album first
+      if (currentFlippedCard) {
+        closeCurrentAlbum();
+      }
+      // Open this one
+      card.classList.add('flipped');
+      currentFlippedCard = card;
+
+      // Show panel after a brief delay so the flip animation starts first
+      setTimeout(function() {
+        panel.classList.add('active');
+        currentPanel = panel;
+        overlay.classList.add('active');
+
+        // Focus search input for quick typing
+        panelSearch.focus();
+      }, 350);
+
+      // Update stats
+      setStats({
+        sessions: era.sessions.length,
+        eras: 1,
+        full: eraAvailable,
+        vault: eraUnavailable
+      }, era.era);
+    });
+
+    // Close button
+    panelHeader.querySelector('.panel-close').addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeCurrentAlbum();
+    });
   });
 
-  // Search
-  var searchInput = document.getElementById('searchInput');
-  var noResults = document.getElementById('noResults');
-  var activeFilter = 'all';
+  // Overlay click to close
+  overlay.addEventListener('click', closeCurrentAlbum);
 
-  function applyFilters() {
-    var q = searchInput.value.toLowerCase().trim();
-    var cards = container.querySelectorAll('.session-card');
-    var sections = container.querySelectorAll('.era-section');
-    var anyVisible = false;
-
-    cards.forEach(function(card) {
-      var matchSearch = !q || card.getAttribute('data-search').indexOf(q) !== -1;
-      var matchFilter = true;
-      if (activeFilter === 'full') matchFilter = card.getAttribute('data-availability') === 'full';
-      else if (activeFilter === 'holy-grail') matchFilter = card.getAttribute('data-tier') === 'holy-grail';
-      else if (activeFilter === 'demo') matchFilter = card.getAttribute('data-type') === 'demo';
-      else if (activeFilter === 'throwaway') matchFilter = card.getAttribute('data-type') === 'throwaway';
-
-      var show = matchSearch && matchFilter;
-      card.style.display = show ? '' : 'none';
-      if (show) anyVisible = true;
-    });
-
-    sections.forEach(function(sec) {
-      var hasVisible = sec.querySelector('.session-card:not([style*="display: none"])');
-      sec.style.display = hasVisible ? '' : 'none';
-    });
-
-    noResults.style.display = anyVisible ? 'none' : '';
-  }
-
-  searchInput.addEventListener('input', applyFilters);
-
-  document.getElementById('filterRow').addEventListener('click', function(e) {
-    var btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    activeFilter = btn.getAttribute('data-filter');
-    applyFilters();
+  // Escape to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && currentPanel) {
+      closeCurrentAlbum();
+    }
   });
-
-  function slugify(str) { return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
-  function esc(str) {
-    var el = document.createElement('span');
-    el.textContent = str;
-    return el.innerHTML;
-  }
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js')})}</script>
