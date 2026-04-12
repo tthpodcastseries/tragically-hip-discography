@@ -4,18 +4,18 @@
 //
 // Behavior:
 //   - Before LAUNCH_TIME: shows a password gate with a live countdown timer.
-//     Correct password ('roadapples') unlocks the site for this device.
+//     Correct password unlocks the site for this device.
 //   - At/after LAUNCH_TIME: gate is bypassed entirely. Site is fully public.
 //   - On localhost / file://: gate is skipped (dev convenience).
 //
 // Load with a plain <script> tag at the very top of <body>:
-//   <script src="/js/tth-auth.js"></script>
+//   <script src="/js/tth-launch-gate.js"></script>
 
 (function () {
   // Launch target: May 1, 2026 at 8:00 PM Eastern Daylight Time.
   // Stored as an absolute moment in time, so users in any timezone unlock simultaneously.
   var LAUNCH_TIME = new Date('2026-05-01T20:00:00-04:00').getTime();
-  var PASSWORD = 'roadapples';
+  var PASSWORD = 'cm9hZGFwcGxlcw=='; // base64
   var STORAGE_KEY = 'tth_pass';
 
   // Skip on local dev
@@ -62,7 +62,8 @@
     var btn = document.getElementById('passBtn');
 
     function tryPassword() {
-      if (input.value === PASSWORD) {
+      if (input.value === atob(PASSWORD)) {
+        clearInterval(countdownTimer);
         try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
         var g = document.getElementById('passGate');
         if (g) g.remove();
@@ -82,11 +83,14 @@
     startCountdown();
   }
 
+  var countdownTimer;
+
   function startCountdown() {
     function tick() {
       var diff = LAUNCH_TIME - Date.now();
       if (diff <= 0) {
         // Launch passed while user was sitting on the gate. Drop it cleanly.
+        clearInterval(countdownTimer);
         try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
         var g = document.getElementById('passGate');
         if (g) g.remove();
@@ -102,7 +106,7 @@
       var elS = document.getElementById('cdSec');  if (elS) elS.textContent = s;
     }
     tick();
-    setInterval(tick, 1000);
+    countdownTimer = setInterval(tick, 1000);
   }
 
   injectGate();

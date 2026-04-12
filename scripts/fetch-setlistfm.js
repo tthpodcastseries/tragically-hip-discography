@@ -6,7 +6,7 @@
 
 const https = require('https');
 
-const API_KEY = 'F2SEnErfN5soGAhxFdKw7TqaTfls9BoVuScR';
+const API_KEY = process.env.SETLISTFM_API_KEY || 'YOUR_API_KEY_HERE';
 const MBID = 'e86ab653-bec8-46f3-b4b6-a1a866919ef6';
 const DELAY_MS = 500;
 const MAX_RETRIES = 3;

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v3.3';
+const CACHE_NAME = 'thc-v3.3.3';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -61,6 +61,20 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(() => caches.match(event.request).then(r => r || caches.match('/404.html')))
+    );
+    return;
+  }
+
+  // JSON data files: network-first with cache fallback (ensures data updates reach users)
+  if (url.pathname.startsWith('/data/') && url.pathname.endsWith('.json')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }

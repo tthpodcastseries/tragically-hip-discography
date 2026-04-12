@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const { Document, Packer, Paragraph, TextRun, AlignmentType, LevelFormat, BorderStyle } = require('docx');
 
 const albums = [
@@ -160,7 +161,7 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(buffer => {
-  const outPath = '/Users/jd/Documents/Discography Web App/TTH Discography - Missing Lyrics Checklist.docx';
+  const outPath = path.join(__dirname, '..', 'TTH Discography - Missing Lyrics Checklist.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Written to: ' + outPath);
 });

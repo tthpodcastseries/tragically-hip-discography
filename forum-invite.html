@@ -4,7 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yer Discussions - You're Invited</title>
-  <meta name="description" content="You've been invited to Yer Discussions, The Tragically Hip Podcast Series Forum.">
+  <meta name="description" content="Join The Hip Compendium community forum - connect with fellow Tragically Hip fans.">
+  <meta property="og:title" content="Yer Discussions - You're Invited">
+  <meta property="og:description" content="Join The Hip Compendium community forum - connect with fellow Tragically Hip fans.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compendium.tthpods.com/forum-invite.html">
+  <meta property="og:site_name" content="The Hip Compendium">
+  <link rel="canonical" href="https://compendium.tthpods.com/forum-invite.html">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0e0b16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -105,7 +116,7 @@
     }
 
     input[type="text"]::placeholder {
-      color: #555;
+      color: #b0b0b0;
     }
 
     .song-label {
@@ -118,7 +129,7 @@
       font-size: 0.7rem;
       text-transform: none;
       letter-spacing: 0;
-      color: #555;
+      color: #b0b0b0;
       font-weight: 400;
     }
 
@@ -216,7 +227,7 @@
 
     .and-more {
       font-size: 0.85rem;
-      color: #555;
+      color: #b0b0b0;
       font-style: italic;
       margin-top: 0.75rem;
     }
@@ -249,7 +260,7 @@
     .signoff {
       margin-top: 2rem;
       font-size: 0.85rem;
-      color: #555;
+      color: #b0b0b0;
     }
 
     .signoff strong {
@@ -267,11 +278,30 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
     }
+
+    /* --- SKIP LINK --- */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: #C8102E;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 9999;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
   </style>
 </head>
 <body>
 
-<div class="container">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="container" id="main-content">
 
   <!-- SCREEN 1: Welcome + Form -->
   <div id="screen-welcome" class="screen active">

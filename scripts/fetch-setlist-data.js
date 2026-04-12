@@ -2,6 +2,7 @@
 // setlist.fm API Data Pull - The Tragically Hip Tour Map Dataset
 // No external dependencies - Node v22
 
+const path = require('path');
 const API_KEY = process.env.SETLISTFM_API_KEY || 'YOUR_API_KEY_HERE';
 const MBID = 'e86ab653-bec8-46f3-b4b6-a1a866919ef6';
 const BASE_URL = 'https://api.setlist.fm/rest/1.0';
@@ -128,11 +129,11 @@ async function main() {
 
   // save full dataset
   const fs = await import('fs');
-  const outputPath = '/Users/jd/Documents/Discography Web App/data/tth-tour-data.json';
-  const statsPath = '/Users/jd/Documents/Discography Web App/data/tth-tour-stats.json';
+  const outputPath = path.join(__dirname, '..', 'data', 'tth-tour-data.json');
+  const statsPath = path.join(__dirname, '..', 'data', 'tth-tour-stats.json');
 
   // ensure data directory exists
-  fs.mkdirSync('/Users/jd/Documents/Discography Web App/data', { recursive: true });
+  fs.mkdirSync(path.join(__dirname, '..', 'data'), { recursive: true });
 
   fs.writeFileSync(outputPath, JSON.stringify(gigs, null, 2));
   fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2));

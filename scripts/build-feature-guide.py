@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build The Hip Compendium v3.0 Feature Guide PDF"""
 
+import os
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor, white, black
@@ -643,7 +644,7 @@ def build_page10(story):
 
 
 # Build the PDF
-output_path = '/Users/jd/Documents/Discography Web App/The Hip Compendium - v3.0 Feature Guide.pdf'
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'docs', 'The Hip Compendium - v3.0 Feature Guide.pdf')
 
 doc = SimpleDocTemplate(
     output_path,

@@ -9,6 +9,8 @@
   <meta property="og:description" content="Every known unreleased recording, demo, outtake, and alternate version from The Tragically Hip.">
   <meta property="og:image" content="https://compendium.tthpods.com/assets-optimized/band/band-photo-4.jpg">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compendium.tthpods.com/unplucked-gems.html">
+  <meta property="og:site_name" content="The Hip Compendium">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://compendium.tthpods.com/unplucked-gems.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
@@ -166,6 +168,7 @@
     /* EXPANDED PANEL - positioned as overlay near card */
     .expanded-panel {
       display: none;
+      flex-direction: column;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -178,8 +181,6 @@
       z-index: 200;
       padding: 20px;
       overflow: hidden;
-      display: none;
-      flex-direction: column;
       animation: panelIn 0.35s ease;
     }
     .expanded-panel.active {

@@ -9,6 +9,8 @@
 <meta property="og:description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://compendium.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+<meta property="og:url" content="https://compendium.tthpods.com/tour-map.html">
+<meta property="og:site_name" content="The Hip Compendium">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://compendium.tthpods.com/tour-map.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
@@ -27,6 +29,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" integrity="sha256-YSWCMtmNZNwqex4CEw1nQhvFub2lmU7vcCKP+XVwwXA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/shared.css">
 <style>
+/* Override shared.css values: tour map panels use primary brand bg for consistency with map UI */
 :root {
   --white: #ffffff;
   --bg2: #0e0b16;
@@ -260,6 +263,8 @@ input[type="range"]::-moz-range-track {
 /* Playback indicator */
 .playback-overlay {
   display: none;
+  align-items: center;
+  gap: 16px;
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -273,9 +278,6 @@ input[type="range"]::-moz-range-track {
   color: var(--gold);
   font-weight: 500;
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  gap: 16px;
 }
 .playback-overlay.active { display: flex; }
 .playback-left { text-align: center; }

@@ -1,3 +1,4 @@
+import os
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor
@@ -5,7 +6,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 
-output_path = "/Users/jd/Documents/POS/disco-audit/TTH Discography Web App - Changelog v2.7-v2.7.3.pdf"
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'docs', 'TTH Discography Web App - Changelog v2.7-v2.7.3.pdf')
 
 doc = SimpleDocTemplate(
     output_path,
