@@ -183,7 +183,6 @@
     .membership-label {
       font-size: 0.8rem;
       font-weight: 600;
-      text-transform: uppercase;
       letter-spacing: 3px;
       color: #d9d9d9;
       margin-bottom: 2rem;
@@ -216,6 +215,7 @@
     }
 
     .category-pill {
+      display: block;
       background: #1a1528;
       border: 1px solid #2a2340;
       border-radius: 8px;
@@ -223,6 +223,13 @@
       font-size: 0.8rem;
       color: #d9d9d9;
       font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .category-pill:hover {
+      border-color: #C8102E;
+      background: #1f1a2e;
     }
 
     .and-more {
@@ -353,10 +360,10 @@
     <div class="categories">
       <h2>Conversations</h2>
       <div class="category-grid">
-        <div class="category-pill">Song Talk</div>
-        <div class="category-pill">Tour Memories</div>
-        <div class="category-pill">Discography Talk</div>
-        <div class="category-pill">Yer Hipstories</div>
+        <a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="category-pill">Song Talk</a>
+        <a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="category-pill">Tour Memories</a>
+        <a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="category-pill">Discography Talk</a>
+        <a href="https://forum.tthpods.com" target="_blank" rel="noopener noreferrer" class="category-pill">Yer Hipstories</a>
       </div>
       <p class="and-more">...and many more.</p>
     </div>
