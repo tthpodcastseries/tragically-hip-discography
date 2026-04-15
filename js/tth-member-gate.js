@@ -36,6 +36,13 @@
   var SUPABASE_URL = 'https://deqslacywpwnjjckdygp.supabase.co';
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM';
 
+  // Guest bypass for press / external reviewers. These credentials never hit
+  // Supabase; the session is local-only. Any attended-show toggles a guest
+  // makes stay in their own device's localStorage and never touch a real
+  // member row. Safe to share publicly.
+  var GUEST_FIRST_NAME = 'TheHip';
+  var GUEST_NUMBER = 1984;
+
   // Skip on local dev
   var isLocal = location.protocol === 'file:'
              || location.hostname === 'localhost'
@@ -96,6 +103,8 @@
     persistLocal();
     notify();
     if (!session) return Promise.resolve();
+    // Guest sessions are local-only — never write to Supabase.
+    if (session.guest) return Promise.resolve();
     return getSupabase().then(function (sb) {
       return sb.rpc('update_attended_shows', {
         p_first_name: session.firstName,
@@ -250,6 +259,20 @@
         return;
       }
       var num = parseInt(numStr, 10);
+
+      // Guest bypass: match the public press credential without hitting Supabase.
+      if (first.toLowerCase() === GUEST_FIRST_NAME.toLowerCase() && num === GUEST_NUMBER) {
+        session = {
+          memberNumber: GUEST_NUMBER,
+          firstName: GUEST_FIRST_NAME,
+          attendedShows: [],
+          unlockedAt: Date.now(),
+          guest: true
+        };
+        persistLocal();
+        location.reload();
+        return;
+      }
 
       btn.disabled = true;
       btn.textContent = 'Unlocking...';
