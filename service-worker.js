@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v3.3.4';
+const CACHE_NAME = 'thc-v3.4.1';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -14,6 +14,7 @@ const CORE_ASSETS = [
   // JS
   '/js/shared-footer.js',
   '/js/tth-launch-gate.js',
+  '/js/tth-member-gate.js',
   '/js/supabase.min.js',
   // Data
   '/data/discography.json',

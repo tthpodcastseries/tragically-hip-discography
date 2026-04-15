@@ -865,6 +865,7 @@ input[type="range"]::-moz-range-track {
 </head>
 <body>
 <script src="/js/tth-launch-gate.js"></script>
+<script src="/js/tth-member-gate.js"></script>
 <a href="#map" class="skip-link">Skip to map</a>
 
 <div class="map-header">
@@ -895,7 +896,7 @@ input[type="range"]::-moz-range-track {
     Play Timeline
   </button>
   <button id="resetBtn" title="Reset to show all gigs">Reset</button>
-  <button id="myShowsBtn" title="Show only gigs you attended" style="display:none;">My Shows <span id="myShowsCount" class="iwt-counter">0</span></button>
+  <button id="myShowsBtn" title="Show only gigs you attended">My Shows <span id="myShowsCount" class="iwt-counter">0</span></button>
   <div class="control-group search-group">
     <label for="gigSearch">Search</label>
     <div class="search-wrap">
@@ -1358,50 +1359,42 @@ input[type="range"]::-moz-range-track {
   }
 
   // ─── Attended Shows (I Was There) ───
+  // Backed by window.TTHMember (see /js/tth-member-gate.js), which persists to Supabase via RPC.
   const tthAttended = {
     _shows: new Set(),
-    _saving: false,
     has(id) { return this._shows.has(id); },
     count() { return this._shows.size; },
     getAll() { return [...this._shows]; },
-    async init() {
-      if (!window.tthSupabase) return;
-      const { data } = await window.tthSupabase.auth.getSession();
-      const user = data?.session?.user;
-      if (user?.user_metadata?.attended_shows) {
-        user.user_metadata.attended_shows.forEach(id => this._shows.add(id));
-      }
+    init() {
+      const session = window.TTHMember && window.TTHMember.getSession();
+      this._shows = new Set(session && session.attendedShows ? session.attendedShows : []);
       this._updateUI();
     },
     async toggle(id) {
-      if (this._shows.has(id)) this._shows.delete(id);
+      // Optimistic local update, then persist.
+      const wasAttended = this._shows.has(id);
+      if (wasAttended) this._shows.delete(id);
       else this._shows.add(id);
       this._updateUI();
-      await this._save();
-      return this._shows.has(id);
-    },
-    _updateUI() {
-      const btn = document.getElementById('myShowsBtn');
-      const count = document.getElementById('myShowsCount');
-      if (this._shows.size > 0) {
-        btn.style.display = '';
-        count.textContent = this._shows.size;
-      } else {
-        btn.style.display = 'none';
+      try {
+        const nowAttended = await window.TTHMember.toggleShow(id);
+        // Reconcile in case server state differs.
+        if (nowAttended) this._shows.add(id);
+        else this._shows.delete(id);
+        this._updateUI();
+        return nowAttended;
+      } catch (e) {
+        // Roll back on failure.
+        if (wasAttended) this._shows.add(id);
+        else this._shows.delete(id);
+        this._updateUI();
+        console.error('Failed to save attended show:', e);
+        return wasAttended;
       }
     },
-    async _save() {
-      if (this._saving || !window.tthSupabase) return;
-      this._saving = true;
-      try {
-        const { data } = await window.tthSupabase.auth.getSession();
-        if (data?.session) {
-          await window.tthSupabase.auth.updateUser({
-            data: { attended_shows: [...this._shows] }
-          });
-        }
-      } catch (e) { console.error('Failed to save attended shows:', e); }
-      this._saving = false;
+    _updateUI() {
+      const count = document.getElementById('myShowsCount');
+      if (count) count.textContent = this._shows.size;
     }
   };
 
@@ -1432,14 +1425,13 @@ input[type="range"]::-moz-range-track {
     }
   });
 
-  // Init attended shows when auth is ready
-  if (window.tthSupabase) {
-    window.tthSupabase.auth.getSession().then(({ data }) => {
-      if (data?.session) tthAttended.init();
-    });
-    window.tthSupabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN' && session) tthAttended.init();
-    });
+  // Init attended shows from TTHMember (unlock is guaranteed by the member gate).
+  if (window.TTHMember) {
+    tthAttended.init();
+    // Keep local state in sync if the session changes (e.g. sign-out on another tab).
+    if (typeof window.TTHMember.onChange === 'function') {
+      window.TTHMember.onChange(() => tthAttended.init());
+    }
   }
 
   // Show detail card (from search results)

@@ -1081,6 +1081,7 @@
 </head>
 <body>
 <script src="/js/tth-launch-gate.js"></script>
+<script src="/js/tth-member-gate.js"></script>
 
 <svg style="display:none">
   <symbol id="spotify-icon" viewBox="0 0 24 24">
@@ -1182,6 +1183,8 @@
       <h2 class="section-label">In View</h2>
       <p class="section-note">Your personal Tragically Hip concert history</p>
       <div class="section-line"></div>
+      <div id="myShowsMemberHeader" style="margin-top:10px;font-family:Poppins,sans-serif;font-size:0.95rem;color:#d9d9d9;"></div>
+      <button id="myShowsSignOutBtn" type="button" onclick="if(window.TTHMember)window.TTHMember.signOut();" style="margin-top:8px;background:none;border:1px solid #b0b0b0;color:#b0b0b0;font-family:Poppins,sans-serif;font-size:0.72rem;padding:4px 10px;border-radius:4px;cursor:pointer;letter-spacing:0.04em;">Switch member</button>
     </div>
     <div id="myShowsStats" class="profile-stats"></div>
     <div id="myShowsList" class="profile-show-list"></div>
@@ -2560,65 +2563,42 @@ function rankClass(rankStr) {
   return 't40';
 }
 
-// ─── Attended Shows (I Was There) ───
+// ─── Attended Shows (I Was There) - backed by TTHMember gate ───
 const attendedShows = {
-  _shows: new Set(),
-  _saving: false,
-
-  async init() {
-    if (window.tthSupabase) {
-      const { data } = await window.tthSupabase.auth.getSession();
-      const user = data?.session?.user;
-      if (user && user.user_metadata && user.user_metadata.attended_shows) {
-        user.user_metadata.attended_shows.forEach(id => this._shows.add(id));
-      }
-    }
-  },
-
-  has(id) { return this._shows.has(id); },
-
+  has(id) { return window.TTHMember ? window.TTHMember.hasShow(id) : false; },
   async toggle(id) {
-    if (this._shows.has(id)) this._shows.delete(id);
-    else this._shows.add(id);
-    await this._save();
-    return this._shows.has(id);
+    if (!window.TTHMember) return false;
+    return await window.TTHMember.toggleShow(id);
   },
-
-  getAll() { return [...this._shows]; },
-  count() { return this._shows.size; },
-
-  async _save() {
-    if (this._saving || !window.tthSupabase) return;
-    this._saving = true;
-    try {
-      const { data } = await window.tthSupabase.auth.getSession();
-      if (data?.session) {
-        await window.tthSupabase.auth.updateUser({
-          data: { attended_shows: [...this._shows] }
-        });
-      }
-    } catch (e) {
-      console.error('Failed to save attended shows:', e);
-    }
-    this._saving = false;
-  }
+  getAll() {
+    if (!window.TTHMember) return [];
+    const s = window.TTHMember.getSession();
+    return s ? s.attendedShows.slice() : [];
+  },
+  count() { return this.getAll().length; }
 };
-
-// Initialize attended shows when auth is ready
-if (window.tthSupabase) {
-  window.tthSupabase.auth.getSession().then(({ data }) => {
-    if (data?.session) attendedShows.init();
-  });
-  window.tthSupabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN' && session) attendedShows.init();
-  });
-}
 
 async function renderMyShows() {
   const data = await loadSetlistData();
   const statsEl = document.getElementById('myShowsStats');
   const listEl = document.getElementById('myShowsList');
   const emptyEl = document.getElementById('myShowsEmpty');
+  const memberHeaderEl = document.getElementById('myShowsMemberHeader');
+
+  // Personalized header for the unlocked member
+  if (memberHeaderEl) {
+    const session = (window.TTHMember && window.TTHMember.getSession) ? window.TTHMember.getSession() : null;
+    if (session && session.firstName) {
+      memberHeaderEl.textContent = `Yer Shows, ${session.firstName} (#${session.memberNumber})`;
+      memberHeaderEl.style.display = '';
+    } else if (session && session.memberNumber) {
+      memberHeaderEl.textContent = `Yer Shows (#${session.memberNumber})`;
+      memberHeaderEl.style.display = '';
+    } else {
+      memberHeaderEl.textContent = '';
+      memberHeaderEl.style.display = 'none';
+    }
+  }
 
   const ids = attendedShows.getAll();
   if (!ids.length || !data) {
