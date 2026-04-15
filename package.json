@@ -1,0 +1,9 @@
+{
+  "name": "thc-compendium-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify Functions for The Hip Compendium (SSO bridge to forum.tthpods.com).",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
