@@ -176,6 +176,10 @@
   // If we have a session, we're done. Page renders normally.
   if (session) return;
 
+  // If the pre-launch gate is showing, bail out. The launch gate reloads on
+  // unlock, at which point this script runs fresh and takes over cleanly.
+  if (document.getElementById('passGate')) return;
+
   // No session: hide page content and render the gate.
   // Anti-flash: insert a style that keeps body hidden until we mount the overlay.
   var hideStyle = document.createElement('style');

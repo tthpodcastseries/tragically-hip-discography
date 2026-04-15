@@ -65,8 +65,8 @@
       if (input.value === atob(PASSWORD)) {
         clearInterval(countdownTimer);
         try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
-        var g = document.getElementById('passGate');
-        if (g) g.remove();
+        // Reload so the member gate runs fresh without this overlay in the DOM.
+        location.reload();
       } else {
         input.style.borderColor = '#C8102E';
         input.value = '';
@@ -89,11 +89,11 @@
     function tick() {
       var diff = LAUNCH_TIME - Date.now();
       if (diff <= 0) {
-        // Launch passed while user was sitting on the gate. Drop it cleanly.
+        // Launch passed while user was sitting on the gate. Reload so the
+        // member gate runs fresh and takes over.
         clearInterval(countdownTimer);
         try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* ignore */ }
-        var g = document.getElementById('passGate');
-        if (g) g.remove();
+        location.reload();
         return;
       }
       var d = Math.floor(diff / 86400000);
