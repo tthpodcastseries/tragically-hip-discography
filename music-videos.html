@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>They Shot A Movie Once - The Hip Compendium</title>
+  <meta name="description" content="Every official Tragically Hip music video, from Small Town Bringdown (1987) to Get Back Again (2024).">
+  <meta property="og:title" content="They Shot A Movie Once - The Hip Compendium">
+  <meta property="og:description" content="Every official Tragically Hip music video, from Small Town Bringdown (1987) to Get Back Again (2024).">
+  <meta property="og:image" content="https://compendium.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compendium.tthpods.com/music-videos.html">
+  <meta property="og:site_name" content="The Hip Compendium">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://compendium.tthpods.com/music-videos.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Compendium">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <style>
+    header {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .header-desc {
+      font-size: 0.82rem;
+      color: var(--muted2);
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .header-lyric {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-style: italic;
+      max-width: 520px;
+      margin: 0 auto 8px;
+    }
+    .playlist-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .playlist-link:hover { text-decoration: underline; }
+    .stat-num { transition: opacity 0.3s ease; }
+
+    .credit {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted2);
+      padding: 16px 16px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .filter-search {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.18s ease;
+    }
+    .filter-search:focus {
+      border-color: var(--red);
+    }
+    .filter-search::placeholder {
+      color: var(--muted);
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted2);
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
+    .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    /* VIDEO GRID */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 32px auto 48px;
+      padding: 0 16px;
+    }
+    .mv-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.18s ease;
+    }
+    .mv-card:hover {
+      border-color: rgba(200, 16, 46, 0.5);
+      background: rgba(200, 16, 46, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .mv-thumb {
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .mv-card:hover .mv-thumb img { transform: scale(1.04); }
+    .mv-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--text);
+      background: linear-gradient(135deg, #1a0b2e 0%, #0e0b16 100%);
+    }
+    .mv-thumb-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+    .mv-card:hover .mv-thumb-play { opacity: 1; }
+    .mv-thumb-play svg {
+      width: 52px;
+      height: 52px;
+      fill: var(--red);
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+    }
+
+    .mv-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .mv-song {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .mv-song a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .mv-song a:hover { color: var(--gold); }
+    .mv-album-year {
+      font-size: 0.74rem;
+      color: var(--muted2);
+      margin-bottom: 6px;
+    }
+    .mv-album {
+      font-style: italic;
+    }
+    .mv-director {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .mv-director.unknown {
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .mv-trilogy-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(204, 162, 60, 0.18);
+      color: var(--gold);
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+    .mv-notes {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .mv-watch {
+      display: inline-block;
+      padding: 7px 16px;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 16px;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.18s ease;
+    }
+    .mv-watch:hover { background: #e01d3c; }
+    .mv-watch.fallback {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--muted2);
+    }
+    .mv-watch.fallback:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--text);
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 48px 16px;
+      color: var(--muted2);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      .mv-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<script src="/js/tth-launch-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="subtitle">The Hip Compendium</div>
+  <h1>They Shot A Movie Once</h1>
+  <p class="header-lyric">"The constellations reveal themselves one star at a time..."</p>
+  <p class="header-desc">Every official Tragically Hip music video, from <em>Small Town Bringdown</em> (1987) to <em>Get Back Again</em> (2024).</p>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat"><div class="stat-num" id="statTotal">--</div><div class="stat-lbl">Videos</div></div>
+    <div class="stat"><div class="stat-num" id="statAlbums">--</div><div class="stat-lbl">Albums</div></div>
+    <div class="stat"><div class="stat-num" id="statDirectors">--</div><div class="stat-lbl">Directors</div></div>
+    <div class="stat"><div class="stat-num" id="statDecades">--</div><div class="stat-lbl">Decades</div></div>
+  </div>
+  <a id="playlistLink" class="playlist-link" href="#" target="_blank" rel="noopener noreferrer">Watch the full playlist on YouTube &rarr;</a>
+</header>
+
+<p class="credit" id="creditLine"></p>
+
+<div class="filter-bar">
+  <input type="search" class="filter-search" id="filterSearch" placeholder="Search by song, album, or director...">
+  <div class="filter-group" id="filterGroup">
+    <button type="button" class="filter-btn active" data-decade="all">All Decades</button>
+    <button type="button" class="filter-btn" data-decade="1980">'80s</button>
+    <button type="button" class="filter-btn" data-decade="1990">'90s</button>
+    <button type="button" class="filter-btn" data-decade="2000">'00s</button>
+    <button type="button" class="filter-btn" data-decade="2010">'10s</button>
+    <button type="button" class="filter-btn" data-decade="2020">'20s</button>
+  </div>
+</div>
+
+<main id="main-content">
+  <div class="mv-grid" id="mvGrid"></div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script>
+(async function() {
+  var resp = await fetch('data/music-videos.json');
+  if (!resp.ok) {
+    document.getElementById('mvGrid').innerHTML = '<p class="no-results">Could not load music video data.</p>';
+    return;
+  }
+  var data = await resp.json();
+
+  function esc(str) {
+    if (str == null) return '';
+    var el = document.createElement('span');
+    el.textContent = str;
+    return el.innerHTML;
+  }
+
+  // Stats
+  var videos = data.videos || [];
+  var albums = new Set(videos.map(function(v) { return v.album; }));
+  var directors = new Set(videos.filter(function(v) { return v.director; }).map(function(v) { return v.director; }));
+  var decades = new Set(videos.map(function(v) { return Math.floor(v.year / 10) * 10; }));
+
+  document.getElementById('statTotal').textContent = videos.length;
+  document.getElementById('statAlbums').textContent = albums.size;
+  document.getElementById('statDirectors').textContent = directors.size;
+  document.getElementById('statDecades').textContent = decades.size;
+
+  if (data.playlistUrl) {
+    document.getElementById('playlistLink').href = data.playlistUrl;
+  }
+  if (data.credit) {
+    document.getElementById('creditLine').textContent = data.credit + ' - Last updated ' + data.lastUpdated;
+  }
+
+  // Build cards (oldest to newest)
+  var sorted = videos.slice().sort(function(a, b) {
+    if (a.year !== b.year) return a.year - b.year;
+    return a.song.localeCompare(b.song);
+  });
+
+  var grid = document.getElementById('mvGrid');
+  sorted.forEach(function(v) {
+    var card = document.createElement('div');
+    card.className = 'mv-card';
+    var decade = Math.floor(v.year / 10) * 10;
+    card.setAttribute('data-decade', String(decade));
+    var searchBlob = [v.song, v.album, v.director, String(v.year)].filter(Boolean).join(' ').toLowerCase();
+    card.setAttribute('data-search', searchBlob);
+
+    var isFallback = !v.youtubeId;
+    var thumbInner = v.thumbnailUrl
+      ? '<img src="' + esc(v.thumbnailUrl) + '" alt="' + esc(v.song) + ' music video thumbnail" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=&quot;mv-thumb-placeholder&quot;>' + esc(v.song) + '</div>\'">'
+      : '<div class="mv-thumb-placeholder">' + esc(v.song) + '</div>';
+    var thumbHtml =
+      '<a class="mv-thumb" href="' + esc(v.youtubeUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="Watch ' + esc(v.song) + '">' +
+        thumbInner +
+        '<span class="mv-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
+      '</a>';
+
+    var trilogyBadge = v.trilogy ? '<span class="mv-trilogy-badge">Part of trilogy</span>' : '';
+    var directorHtml = v.director
+      ? '<div class="mv-director">dir. ' + esc(v.director) + '</div>'
+      : '<div class="mv-director unknown">director unknown</div>';
+    var notesHtml = v.notes ? '<div class="mv-notes">' + esc(v.notes) + '</div>' : '<div class="mv-notes"></div>';
+    var watchClass = isFallback ? 'mv-watch fallback' : 'mv-watch';
+    var watchLabel = isFallback ? 'Search on YouTube &rarr;' : 'Watch on YouTube &rarr;';
+
+    card.innerHTML =
+      thumbHtml +
+      '<div class="mv-body">' +
+        '<div class="mv-song"><a href="' + esc(v.youtubeUrl) + '" target="_blank" rel="noopener noreferrer">' + esc(v.song) + '</a></div>' +
+        '<div class="mv-album-year"><span class="mv-album">' + esc(v.album) + '</span> &middot; ' + esc(String(v.year)) + '</div>' +
+        directorHtml +
+        trilogyBadge +
+        notesHtml +
+        '<a class="' + watchClass + '" href="' + esc(v.youtubeUrl) + '" target="_blank" rel="noopener noreferrer">' + watchLabel + '</a>' +
+      '</div>';
+
+    grid.appendChild(card);
+  });
+
+  // Filter logic
+  var activeDecade = 'all';
+  var activeSearch = '';
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var searchInput = document.getElementById('filterSearch');
+
+  function applyFilters() {
+    var cards = grid.querySelectorAll('.mv-card');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var matchDecade = activeDecade === 'all' || card.getAttribute('data-decade') === activeDecade;
+      var matchSearch = !activeSearch || card.getAttribute('data-search').indexOf(activeSearch) !== -1;
+      var show = matchDecade && matchSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    var noRes = grid.querySelector('.no-results');
+    if (visible === 0) {
+      if (!noRes) {
+        noRes = document.createElement('p');
+        noRes.className = 'no-results';
+        noRes.textContent = 'No videos match those filters.';
+        grid.appendChild(noRes);
+      }
+    } else if (noRes) {
+      noRes.remove();
+    }
+  }
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeDecade = btn.getAttribute('data-decade');
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', function() {
+    activeSearch = searchInput.value.trim().toLowerCase();
+    applyFilters();
+  });
+})();
+</script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

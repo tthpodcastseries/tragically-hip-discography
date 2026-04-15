@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Compendium
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v3.3.4 (Cordelia)';
+  var version = 'v3.4 (The Luxury)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
@@ -20,6 +20,7 @@
       '<a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-link">Sign up For Yer Letter - The TTH Podcast Series Newsletter</a><br>' +
       '<strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://www.tragicallyhippodcast.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
+      '<span style="color:#888;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
       '<span style="color:#666;font-size:0.7rem;">' + version + '</span>';
   }
 

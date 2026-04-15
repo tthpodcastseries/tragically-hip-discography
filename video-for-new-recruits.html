@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video For New Recruits - The Hip Compendium</title>
+  <meta name="description" content="A curated YouTube archive of Tragically Hip concerts, soundboards, rarities and compilations - bucketed by era.">
+  <meta property="og:title" content="Video For New Recruits - The Hip Compendium">
+  <meta property="og:description" content="Curated YouTube archive of Hip concerts, soundboards, rarities and compilations, bucketed by era.">
+  <meta property="og:image" content="https://compendium.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compendium.tthpods.com/video-for-new-recruits.html">
+  <meta property="og:site_name" content="The Hip Compendium">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://compendium.tthpods.com/video-for-new-recruits.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Compendium">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <style>
+    header {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .header-desc {
+      font-size: 0.82rem;
+      color: var(--muted2);
+      max-width: 560px;
+      margin: 0 auto 16px;
+    }
+    .stat-num { transition: opacity 0.3s ease; }
+    .stat-num.updating { opacity: 0.3; }
+    .stats-context {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 8px;
+      min-height: 1.2em;
+      transition: opacity 0.3s ease;
+    }
+
+    .credit {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted2);
+      padding: 16px 16px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ERA GRID - 7 cards, reuses flip-card pattern from Unplucked Gems */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+      perspective: 1000px;
+    }
+    @media (max-width: 768px) {
+      .album-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .album-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+
+    .flip-card { cursor: pointer; }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+    .flip-card-front {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-card-front img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: block;
+    }
+    .flip-card:not(.flipped):hover .flip-card-front img {
+      border-color: rgba(204, 162, 60, 0.5);
+      transform: scale(1.03);
+    }
+    .flip-card-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 6px;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+    .flip-card:not(.flipped):hover .flip-card-label { color: var(--gold); }
+    .flip-card-sublabel {
+      text-align: center;
+      font-size: 0.6rem;
+      color: var(--muted2);
+      margin-top: 2px;
+      line-height: 1.3;
+      padding: 0 4px;
+    }
+    .flip-card-count {
+      text-align: center;
+      font-size: 0.58rem;
+      color: var(--muted2);
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .flip-card-back-placeholder {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-card-back-placeholder span {
+      font-size: 0.7rem;
+      color: var(--muted2);
+    }
+
+    /* EXPANDED PANEL */
+    .expanded-panel {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(760px, 94vw);
+      max-height: 88vh;
+      background: var(--bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      z-index: 200;
+      padding: 20px;
+      overflow: hidden;
+      animation: panelIn 0.35s ease;
+    }
+    .expanded-panel.active { display: flex; }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.92) rotateY(-8deg); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotateY(0deg); }
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      flex-shrink: 0;
+    }
+    .panel-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .panel-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+    }
+    .panel-close:hover { background: var(--red); color: #fff; }
+
+    .panel-controls { margin-bottom: 12px; flex-shrink: 0; }
+    .panel-search {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .panel-search:focus { border-color: #fff; }
+    .panel-search::placeholder { color: var(--muted2); }
+
+    .panel-filter-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--muted2);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--red); color: var(--text); }
+    .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+    .panel-videos {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-scroll) transparent;
+    }
+    .panel-videos::-webkit-scrollbar { width: 6px; }
+    .panel-videos::-webkit-scrollbar-track { background: transparent; }
+    .panel-videos::-webkit-scrollbar-thumb { background: #3a1080; border-radius: 3px; }
+
+    .panel-no-results {
+      text-align: center;
+      padding: 24px 8px;
+      color: var(--muted2);
+      font-size: 0.82rem;
+    }
+
+    /* VIDEO CARD */
+    .video-card {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: all 0.18s ease;
+    }
+    .video-card:hover {
+      border-color: rgba(200, 16, 46, 0.4);
+      background: rgba(200, 16, 46, 0.04);
+    }
+    .video-thumb {
+      flex-shrink: 0;
+      width: 140px;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-thumb-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+    .video-card:hover .video-thumb-play { opacity: 1; }
+    .video-thumb-play svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--red);
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+    }
+    .video-body { flex: 1; min-width: 0; }
+    .video-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .video-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .video-title a:hover { color: var(--gold); }
+    .video-meta {
+      font-size: 0.72rem;
+      color: var(--muted2);
+      margin-bottom: 6px;
+    }
+    .video-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+    .tag-sbd { background: rgba(29, 185, 84, 0.2); color: #1DB954; }
+    .tag-fm { background: rgba(100, 180, 255, 0.12); color: #7ab8f5; }
+    .tag-proshot { background: rgba(204, 162, 60, 0.2); color: var(--gold); }
+    .tag-complete { background: rgba(255, 255, 255, 0.1); color: var(--muted); }
+    .tag-comp { background: rgba(200, 16, 46, 0.18); color: #ff8798; }
+    .tag-partial { background: rgba(204, 162, 60, 0.15); color: var(--gold); }
+    .tag-rehearsal { background: rgba(255, 255, 255, 0.08); color: var(--muted); }
+
+    .video-tracks {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .video-tracks-head {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted2);
+      margin-bottom: 4px;
+    }
+    .video-tracks-list {
+      display: none;
+    }
+    .video-tracks.expanded .video-tracks-list { display: block; }
+    .video-tracks-preview {
+      color: var(--muted2);
+      font-style: italic;
+    }
+    .video-tracks.expanded .video-tracks-preview { display: none; }
+    .video-tracks-toggle {
+      background: none;
+      border: none;
+      color: var(--red);
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0 0;
+      font-family: inherit;
+    }
+    .video-tracks-toggle:hover { color: #ff5a6f; }
+    .video-tracks-partial {
+      display: block;
+      font-size: 0.62rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    .video-watch {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 14px;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: background 0.18s ease;
+    }
+    .video-watch:hover { background: #e01d3c; }
+
+    .grid-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 11, 22, 0.75);
+      z-index: 150;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .grid-overlay.active { display: block; }
+
+    @media (max-width: 640px) {
+      .video-card { flex-direction: column; gap: 8px; padding: 10px; }
+      .video-thumb { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .expanded-panel { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+<script src="/js/tth-launch-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="subtitle">The Hip Compendium</div>
+  <h1>Video For New Recruits</h1>
+  <p class="header-desc">A curated YouTube archive of Tragically Hip concerts, soundboards, radio simulcasts, rarities and compilations - bucketed by era.</p>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat"><div class="stat-num" id="statTotal">--</div><div class="stat-lbl">Videos</div></div>
+    <div class="stat"><div class="stat-num" id="statEras">--</div><div class="stat-lbl">Eras</div></div>
+    <div class="stat"><div class="stat-num" id="statSBD">--</div><div class="stat-lbl">Soundboards</div></div>
+    <div class="stat"><div class="stat-num" id="statPartial">--</div><div class="stat-lbl">Partial Lists</div></div>
+  </div>
+  <div class="stats-context" id="statsContext"></div>
+</header>
+
+<p class="credit" id="creditLine"></p>
+
+<div class="grid-overlay" id="gridOverlay"></div>
+
+<main id="main-content">
+  <div class="album-grid" id="albumGrid"></div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script>
+(async function() {
+  var resp = await fetch('data/youtube-videos.json');
+  if (!resp.ok) {
+    document.getElementById('albumGrid').innerHTML = '<p style="color:var(--muted2);text-align:center;grid-column:1/-1;">Could not load video data.</p>';
+    return;
+  }
+  var data = await resp.json();
+
+  function esc(str) {
+    if (str == null) return '';
+    var el = document.createElement('span');
+    el.textContent = str;
+    return el.innerHTML;
+  }
+
+  // Stats
+  var globalStats = {
+    total: data.summary.totalVideos,
+    eras: data.summary.totalEras,
+    sbd: data.summary.totalSBD,
+    partial: data.summary.partialTracklists
+  };
+
+  var statTotal = document.getElementById('statTotal');
+  var statEras = document.getElementById('statEras');
+  var statSBD = document.getElementById('statSBD');
+  var statPartial = document.getElementById('statPartial');
+  var statsContext = document.getElementById('statsContext');
+
+  function setStats(stats, label) {
+    var nums = document.querySelectorAll('.stat-num');
+    nums.forEach(function(n) { n.classList.add('updating'); });
+    setTimeout(function() {
+      statTotal.textContent = stats.total;
+      statEras.textContent = stats.eras;
+      statSBD.textContent = stats.sbd;
+      statPartial.textContent = stats.partial;
+      statsContext.textContent = label || '';
+      nums.forEach(function(n) { n.classList.remove('updating'); });
+    }, 150);
+  }
+
+  setStats(globalStats, '');
+
+  if (data.credit) {
+    document.getElementById('creditLine').textContent = data.credit + ' - Last updated ' + data.lastUpdated;
+  }
+
+  // DOM refs
+  var grid = document.getElementById('albumGrid');
+  var overlay = document.getElementById('gridOverlay');
+  var currentFlippedCard = null;
+  var currentPanel = null;
+
+  function closeCurrentEra() {
+    if (currentFlippedCard) {
+      currentFlippedCard.classList.remove('flipped');
+      currentFlippedCard = null;
+    }
+    if (currentPanel) {
+      currentPanel.classList.remove('active');
+      var search = currentPanel.querySelector('.panel-search');
+      var filterBtns = currentPanel.querySelectorAll('.filter-btn');
+      var videos = currentPanel.querySelectorAll('.video-card');
+      var noResults = currentPanel.querySelector('.panel-no-results');
+      if (search) search.value = '';
+      filterBtns.forEach(function(b, i) {
+        b.classList.toggle('active', i === 0);
+      });
+      videos.forEach(function(c) { c.style.display = ''; });
+      if (noResults) noResults.style.display = 'none';
+      currentPanel._activeFilter = 'all';
+      currentPanel = null;
+    }
+    overlay.classList.remove('active');
+    setStats(globalStats, '');
+  }
+
+  function tagClass(t) {
+    var k = t.toLowerCase();
+    if (k === 'sbd') return 'tag-sbd';
+    if (k === 'fm simulcast') return 'tag-fm';
+    if (k === 'pro-shot') return 'tag-proshot';
+    if (k === 'complete video' || k === 'complete bootleg') return 'tag-complete';
+    if (k === 'compilation') return 'tag-comp';
+    if (k === 'rehearsal') return 'tag-rehearsal';
+    return 'tag-complete';
+  }
+
+  function buildVideoCard(v) {
+    var card = document.createElement('div');
+    card.className = 'video-card';
+    card.setAttribute('data-tags', (v.tags || []).join(',').toLowerCase());
+    var searchBlob = [
+      v.title, v.rawTitle, v.location, v.dateDisplay,
+      (v.tracks || []).join(' '),
+      (v.tags || []).join(' ')
+    ].filter(Boolean).join(' ').toLowerCase();
+    card.setAttribute('data-search', searchBlob);
+
+    var thumb = v.thumbnail
+      ? '<img src="' + esc(v.thumbnail) + '" alt="' + esc(v.title) + ' thumbnail" loading="lazy" onerror="this.style.display=\'none\'">'
+      : '';
+    var thumbHtml =
+      '<a class="video-thumb" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer" aria-label="Watch ' + esc(v.title) + ' on YouTube">' +
+        thumb +
+        '<span class="video-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
+      '</a>';
+
+    var metaBits = [];
+    if (v.dateDisplay) metaBits.push(esc(v.dateDisplay));
+    if (v.location) metaBits.push(esc(v.location));
+    var metaHtml = metaBits.length ? '<div class="video-meta">' + metaBits.join(' &middot; ') + '</div>' : '';
+
+    var tagsHtml = '';
+    if (v.tags && v.tags.length) {
+      tagsHtml = '<div class="video-tags">' +
+        v.tags.map(function(t) {
+          return '<span class="tag ' + tagClass(t) + '">' + esc(t) + '</span>';
+        }).join('') +
+      '</div>';
+    }
+
+    var tracksHtml = '';
+    if (v.tracks && v.tracks.length) {
+      var previewCount = 3;
+      var preview = v.tracks.slice(0, previewCount).join(' - ');
+      var isLong = v.tracks.length > previewCount;
+      var fullList = v.tracks.map(function(t) { return '<div>&bull; ' + esc(t) + '</div>'; }).join('');
+      tracksHtml =
+        '<div class="video-tracks">' +
+          '<div class="video-tracks-head">Tracks' + (isLong ? ' (' + v.tracks.length + ')' : '') + '</div>' +
+          (isLong
+            ? '<div class="video-tracks-preview">' + esc(preview) + ' ...</div>' +
+              '<div class="video-tracks-list">' + fullList + '</div>' +
+              '<button type="button" class="video-tracks-toggle">Show all tracks</button>'
+            : '<div class="video-tracks-list" style="display:block">' + fullList + '</div>') +
+          (v.partialTracklist ? '<span class="video-tracks-partial">Partial tracklist - recovery pending</span>' : '') +
+        '</div>';
+    } else if (v.partialTracklist) {
+      tracksHtml = '<div class="video-tracks"><span class="video-tracks-partial">Tracklist not yet recovered</span></div>';
+    }
+
+    var watchHtml = '<a class="video-watch" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>';
+
+    var titleHtml =
+      '<div class="video-title">' +
+        '<a href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">' + esc(v.title || v.rawTitle) + '</a>' +
+      '</div>';
+
+    card.innerHTML =
+      thumbHtml +
+      '<div class="video-body">' +
+        titleHtml +
+        metaHtml +
+        tagsHtml +
+        tracksHtml +
+        watchHtml +
+      '</div>';
+
+    // Tracks toggle
+    var toggle = card.querySelector('.video-tracks-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var wrap = card.querySelector('.video-tracks');
+        var expanded = wrap.classList.toggle('expanded');
+        toggle.textContent = expanded ? 'Hide tracks' : 'Show all tracks';
+      });
+    }
+
+    return card;
+  }
+
+  // Build era cards + panels
+  data.eras.forEach(function(era) {
+    var sbdCount = era.videos.filter(function(v) { return (v.tags || []).indexOf('SBD') !== -1; }).length;
+    var partialCount = era.videos.filter(function(v) { return v.partialTracklist; }).length;
+
+    // --- Grid card ---
+    var card = document.createElement('div');
+    card.className = 'flip-card';
+
+    var inner = document.createElement('div');
+    inner.className = 'flip-card-inner';
+
+    var front = document.createElement('div');
+    front.className = 'flip-card-front';
+    front.innerHTML =
+      '<img src="' + esc(era.imagePath) + '" alt="' + esc(era.era) + '" loading="lazy">' +
+      '<div class="flip-card-count">' + era.videos.length + ' videos</div>';
+
+    var backPlaceholder = document.createElement('div');
+    backPlaceholder.className = 'flip-card-back-placeholder';
+    backPlaceholder.innerHTML = '<span>Loading...</span>';
+
+    inner.appendChild(front);
+    inner.appendChild(backPlaceholder);
+    card.appendChild(inner);
+    grid.appendChild(card);
+
+    // --- Panel ---
+    var panel = document.createElement('div');
+    panel.className = 'expanded-panel';
+    panel._activeFilter = 'all';
+
+    var panelHeader = document.createElement('div');
+    panelHeader.className = 'panel-header';
+    panelHeader.innerHTML =
+      '<span class="panel-title">' + esc(era.era) + ' &middot; ' + era.videos.length + ' videos</span>' +
+      '<button class="panel-close" aria-label="Close">&times;</button>';
+
+    var panelControls = document.createElement('div');
+    panelControls.className = 'panel-controls';
+    panelControls.innerHTML =
+      '<input type="text" class="panel-search" placeholder="Search title, location, or track..." aria-label="Search videos in ' + esc(era.era) + '">' +
+      '<div class="panel-filter-row">' +
+        '<button class="filter-btn active" data-filter="all">All</button>' +
+        '<button class="filter-btn" data-filter="sbd">Soundboard</button>' +
+        '<button class="filter-btn" data-filter="fm simulcast">FM Simulcast</button>' +
+        '<button class="filter-btn" data-filter="pro-shot">Pro-Shot</button>' +
+        '<button class="filter-btn" data-filter="compilation">Compilations</button>' +
+      '</div>';
+
+    var panelVideos = document.createElement('div');
+    panelVideos.className = 'panel-videos';
+
+    var noResults = document.createElement('div');
+    noResults.className = 'panel-no-results';
+    noResults.style.display = 'none';
+    noResults.textContent = 'No videos match your search.';
+
+    if (era.videos.length === 0) {
+      noResults.textContent = 'No videos in this era yet.';
+      noResults.style.display = '';
+    } else {
+      era.videos.forEach(function(v) {
+        panelVideos.appendChild(buildVideoCard(v));
+      });
+    }
+
+    panel.appendChild(panelHeader);
+    panel.appendChild(panelControls);
+    panel.appendChild(panelVideos);
+    panel.appendChild(noResults);
+    document.body.appendChild(panel);
+
+    // Filter logic
+    var panelSearch = panelControls.querySelector('.panel-search');
+    var panelFilterBtns = panelControls.querySelectorAll('.filter-btn');
+
+    function applyPanelFilters() {
+      var q = panelSearch.value.toLowerCase().trim();
+      var cards = panelVideos.querySelectorAll('.video-card');
+      var af = panel._activeFilter;
+      var anyVisible = false;
+
+      cards.forEach(function(c) {
+        var matchSearch = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+        var matchFilter = true;
+        if (af !== 'all') {
+          var tags = (c.getAttribute('data-tags') || '').split(',');
+          matchFilter = tags.indexOf(af) !== -1;
+        }
+        var show = matchSearch && matchFilter;
+        c.style.display = show ? '' : 'none';
+        if (show) anyVisible = true;
+      });
+      noResults.style.display = anyVisible ? 'none' : '';
+    }
+
+    panelSearch.addEventListener('input', applyPanelFilters);
+    panelControls.querySelector('.panel-filter-row').addEventListener('click', function(e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      panel._activeFilter = btn.getAttribute('data-filter');
+      applyPanelFilters();
+    });
+
+    // Card click to open
+    card.addEventListener('click', function() {
+      if (card.classList.contains('flipped')) {
+        closeCurrentEra();
+        return;
+      }
+      if (currentFlippedCard) closeCurrentEra();
+      card.classList.add('flipped');
+      currentFlippedCard = card;
+
+      setTimeout(function() {
+        panel.classList.add('active');
+        currentPanel = panel;
+        overlay.classList.add('active');
+        panelSearch.focus();
+      }, 350);
+
+      setStats({
+        total: era.videos.length,
+        eras: 1,
+        sbd: sbdCount,
+        partial: partialCount
+      }, era.era);
+    });
+
+    panelHeader.querySelector('.panel-close').addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeCurrentEra();
+    });
+  });
+
+  overlay.addEventListener('click', closeCurrentEra);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && currentPanel) closeCurrentEra();
+  });
+})();
+</script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

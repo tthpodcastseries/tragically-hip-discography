@@ -1,5 +1,23 @@
 # Changelog
 
+## v3.4
+**The Luxury** - April 15, 2026
+- Added new **Video For New Recruits** page: a curated YouTube archive of 380 Tragically Hip concerts, soundboards, radio simulcasts, rarities and compilations
+- 7 flip-card era buckets: 1984–1988 (8), 1989–1994 (33), 1995–1999 (72), 2000–2006 (97), 2007–2010 (57), 2011–2016 (12), Rarities & Compilations (101)
+- The Filters (pre-Hip, 1983) included in the Early Years bucket
+- 96 soundboard recordings tagged and filterable; 99 entries flagged for tracklist recovery
+- Per-era panel with search (title, location, track name) and filter pills: All / Soundboard / FM Simulcast / Pro-Shot / Compilations
+- Video cards show YouTube thumbnail, date, location, source tags, tracklist, and a Watch on YouTube button
+- Re-runnable CSV → JSON build script at `scripts/build-youtube-videos.js` (dedupes by URL, drops Gord solo / Sadies / Buck 65 / Country of Miracles content — Hip-only archive)
+- Footer masthead now credits **Alonx** for Unplucked Gems (previously Darius, per his request)
+- Updated `data/unplucked-gems.json` credit line from "Darius" to "Alonx"
+- Nav: new "Video For New Recruits" button on index under Unplucked Gems
+- Added new **They Shot A Movie Once** page (Blow At High Dough lyric): standalone archive of 35 official Tragically Hip music videos, chronological grid with decade filter pills, search, and YouTube thumbnails sourced from the band's official YouTube channel
+- **Hip-lyric section rebrand**: Discography → **Music @ Work**, Lyrics Search → **Poets**, Setlists → **Family Band**, My Shows → **In View**, Tour Map → **About This Map**
+- Promoted Poets, Family Band, and In View to top-level home-page nav (previously only reachable from inside Music @ Work)
+
+---
+
 ## v2.9.9.6
 **Countdown Update** - March 27, 2026
 - Changed password gate countdown target from April 7 at 8 AM to May 1 at 8 PM ET across all 5 pages
