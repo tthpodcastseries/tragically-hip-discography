@@ -200,6 +200,7 @@
     '#tth-member-gate .mg-sub a:hover { text-decoration:underline; }',
     '#tth-member-gate form { display:flex; flex-direction:column; gap:1rem; text-align:left; }',
     '#tth-member-gate label { font-size:0.7rem; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:#d9d9d9; margin-bottom:0.4rem; display:block; }',
+    '#tth-member-gate label.mg-label-cased { text-transform:none; letter-spacing:0.5px; font-size:0.75rem; }',
     '#tth-member-gate input { width:100%; padding:0.9rem 1rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
     '#tth-member-gate input:focus { outline:none; border-color:#CCA23C; }',
     '#tth-member-gate button { width:100%; padding:1rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; transition:background 0.15s; margin-top:0.5rem; }',
@@ -222,7 +223,7 @@
           '<input id="mg-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required>' +
         '</div>' +
         '<div>' +
-          '<label for="mg-num">membersHIP number</label>' +
+          '<label for="mg-num" class="mg-label-cased">membersHIP number</label>' +
           '<input id="mg-num" name="member_number" type="text" inputmode="numeric" pattern="[0-9]{1,7}" maxlength="7" autocomplete="off" required>' +
         '</div>' +
         '<div class="mg-err" id="mg-err" role="alert"></div>' +
