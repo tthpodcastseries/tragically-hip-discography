@@ -109,6 +109,9 @@ exports.handler = async function (event) {
 
   var token;
   try {
+    // avatarUrl must be a non-null string: the Maicol07 JWTSSOController reads
+    // it and calls strpos() on the value, which throws a TypeError on PHP 8.1+
+    // if the field is absent (returns null from Arr::get). Empty string is safe.
     token = jwt.sign({
       iss: ISSUER,
       aud: FORUM_URL,
@@ -117,7 +120,8 @@ exports.handler = async function (event) {
         id: verifiedNumber,
         attributes: {
           email: email,
-          username: username
+          username: username,
+          avatarUrl: ''
         }
       }
     }, SIGNER_KEY, {
