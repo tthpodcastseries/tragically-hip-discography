@@ -146,6 +146,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 600;
+      text-decoration: none;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
       margin-top: 0.5rem;
@@ -288,6 +289,8 @@
       <p><strong>Screenshot this page or write it down.</strong> You'll need yer first name and this number every time you unlock the Compendium.</p>
     </div>
 
+    <a class="btn-connect" id="btn-unlock" href="/">Unlock the Compendium &rarr;</a>
+
     <div class="signoff">
       <strong>- jD</strong><br>
       The Tragically Hip Podcast Series
@@ -344,6 +347,12 @@
       document.getElementById('membership-num').textContent = '#' + num;
       document.getElementById('reveal-greeting').textContent =
         "Yer in, " + firstName + ". You're membersHIP #" + num + ".";
+
+      // Pre-fill the gate with their first name so they only have to type the number.
+      document.getElementById('btn-unlock').setAttribute(
+        'href',
+        '/?first=' + encodeURIComponent(firstName)
+      );
 
       document.getElementById('screen-welcome').classList.remove('active');
       document.getElementById('screen-reveal').classList.add('active');

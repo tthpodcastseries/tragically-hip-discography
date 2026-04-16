@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.4.9
+**The Luxury** - April 16, 2026
+- Random membersHIP number generator (server-side, Supabase): replaces sequential numbering with a uniformly random integer across 3 to 7 digits, equal odds per digit count, with collision retry
+- Added "Unlock the Compendium →" CTA on the forum-invite reveal screen — fixes dead end where new members had no path back to the gate after claiming their number
+- Member gate pre-fills first name from `?first=` query param (set by the unlock button) and jumps focus straight to the number field; param is stripped from the URL after read
+- Bumped service worker cache to `thc-v3.4.9`
+
+---
+
 ## v3.4
 **The Luxury** - April 15, 2026
 - Added new **Video For New Recruits** page: a curated YouTube archive of 380 Tragically Hip concerts, soundboards, radio simulcasts, rarities and compilations

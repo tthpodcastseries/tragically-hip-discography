@@ -250,7 +250,26 @@
     var btn = document.getElementById('mg-btn');
     var form = document.getElementById('mg-form');
 
-    setTimeout(function () { try { firstEl.focus(); } catch (e) {} }, 60);
+    // If we arrived from the invite reveal screen, pre-fill the first name and
+    // jump focus straight to the number field. Strip the param so it doesn't
+    // linger in the address bar.
+    var prefillFirst = '';
+    try {
+      var params = new URLSearchParams(location.search);
+      prefillFirst = (params.get('first') || '').trim();
+      if (prefillFirst) {
+        params.delete('first');
+        var qs = params.toString();
+        history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+      }
+    } catch (e) { /* ignore */ }
+
+    if (prefillFirst) {
+      firstEl.value = prefillFirst;
+      setTimeout(function () { try { numEl.focus(); } catch (e) {} }, 60);
+    } else {
+      setTimeout(function () { try { firstEl.focus(); } catch (e) {} }, 60);
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
