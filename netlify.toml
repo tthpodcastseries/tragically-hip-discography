@@ -1,9 +1,3 @@
-[build]
-  functions = "netlify/functions"
-
-[functions]
-  node_bundler = "esbuild"
-
 [[redirects]]
   from = "/scripts/*"
   to = "/404.html"

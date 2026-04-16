@@ -24,56 +24,6 @@
       '<span style="color:#666;font-size:0.7rem;">' + version + '</span>';
   }
 
-  // Wire existing "Yer Discussions" menu links into the SSO flow.
-  // Any <a href="https://forum.tthpods.com"> on the page will, for unlocked
-  // non-guest members, be intercepted and submitted as a form POST to
-  // /.netlify/functions/sso-login (verifies the membersHIP server-side,
-  // exchanges for a Flarum session cookie, redirects to the forum).
-  // Guests and locked users fall through to the plain link behaviour.
-  function wireForumLinks() {
-    var member = window.TTHMember;
-    if (!member || typeof member.isUnlocked !== 'function' || !member.isUnlocked()) return;
-    var session = member.getSession();
-    if (!session) return;
-    // Guest bypass (TheHip/1984) cannot SSO into the forum — let the plain link
-    // carry them to the public-facing forum view instead.
-    if (session.firstName === 'TheHip' && session.memberNumber === 1984) return;
-
-    var links = document.querySelectorAll('a[href="https://forum.tthpods.com"], a[href="https://forum.tthpods.com/"]');
-    for (var i = 0; i < links.length; i++) {
-      (function (link) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          var form = document.createElement('form');
-          form.method = 'POST';
-          form.action = '/.netlify/functions/sso-login';
-          form.style.display = 'none';
-
-          var fn = document.createElement('input');
-          fn.type = 'hidden';
-          fn.name = 'first_name';
-          fn.value = session.firstName;
-          form.appendChild(fn);
-
-          var num = document.createElement('input');
-          num.type = 'hidden';
-          num.name = 'member_number';
-          num.value = String(session.memberNumber);
-          form.appendChild(num);
-
-          document.body.appendChild(form);
-          form.submit();
-        });
-      })(links[i]);
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', wireForumLinks);
-  } else {
-    wireForumLinks();
-  }
-
   // Service worker registration
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
