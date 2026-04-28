@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Compendium
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v3.5.2 (Born in the Water)';
+  var version = 'v3.6 (Long Time Running)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {

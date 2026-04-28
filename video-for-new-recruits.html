@@ -421,6 +421,27 @@
     }
     .video-watch:hover { background: #e01d3c; }
 
+    /* Back-link to the matched show on About This Map (v3.6 Long Time Running) */
+    .video-show-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      margin-left: 8px;
+      padding: 6px 12px;
+      background: transparent;
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 16px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      transition: all 0.15s ease;
+    }
+    .video-show-link:hover { background: var(--gold); color: #000; }
+
     .grid-overlay {
       display: none;
       position: fixed;
@@ -479,6 +500,16 @@
     return;
   }
   var data = await resp.json();
+
+  // Show ↔ video map (v3.6 Long Time Running). Silent failure ok — back-links just won't render.
+  var videoToShow = {};
+  try {
+    var svResp = await fetch('data/show-videos.json');
+    if (svResp.ok) {
+      var svData = await svResp.json();
+      videoToShow = svData.byVideo || {};
+    }
+  } catch (e) { /* hide silently */ }
 
   function esc(str) {
     if (str == null) return '';
@@ -617,6 +648,18 @@
 
     var watchHtml = '<a class="video-watch" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>';
 
+    // If this video maps to a known show, add a back-link to About This Map
+    var showLinkHtml = '';
+    var matchedShow = v.videoId ? videoToShow[v.videoId] : null;
+    if (matchedShow && matchedShow.showId) {
+      var showLabel = [matchedShow.venue, matchedShow.city].filter(Boolean).join(', ') || 'this show';
+      showLinkHtml =
+        '<a class="video-show-link" href="tour-map.html#show=' + esc(matchedShow.showId) + '" ' +
+          'aria-label="View ' + esc(showLabel) + ' on About This Map">' +
+          'View on Map &rarr;' +
+        '</a>';
+    }
+
     var titleHtml =
       '<div class="video-title">' +
         '<a href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">' + esc(v.title || v.rawTitle) + '</a>' +
@@ -630,6 +673,7 @@
         tagsHtml +
         tracksHtml +
         watchHtml +
+        showLinkHtml +
       '</div>';
 
     // Tracks toggle

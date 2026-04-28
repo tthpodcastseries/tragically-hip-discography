@@ -670,6 +670,15 @@
     .iwt-btn:hover { border-color: var(--gold); color: var(--gold); }
     .iwt-btn.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 600; }
     .setlist-card.attended { border-left: 3px solid var(--gold); }
+    /* Show videos strip — YouTube recordings tied to this show (v3.6 Long Time Running) */
+    .setlist-videos-strip { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(204,162,60,0.18); }
+    .setlist-videos-strip-label { color: var(--gold); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+    .setlist-videos-strip-list { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .setlist-video-thumb { flex: 0 0 auto; width: 120px; border-radius: 6px; overflow: hidden; background: #000; position: relative; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); transition: border-color 0.15s, transform 0.15s; }
+    .setlist-video-thumb:hover { border-color: var(--gold); transform: translateY(-1px); }
+    .setlist-video-thumb img { display: block; width: 100%; height: 68px; object-fit: cover; }
+    .setlist-video-thumb-tag { position: absolute; top: 4px; left: 4px; background: rgba(0,0,0,0.75); color: var(--gold); font-size: 0.58rem; font-weight: 600; padding: 2px 6px; border-radius: 3px; letter-spacing: 0.04em; }
+    .setlist-video-thumb-meta { color: var(--muted); font-size: 0.6rem; padding: 4px 6px; line-height: 1.3; }
     .my-shows-filter { display: flex; align-items: center; gap: 8px; }
     .my-shows-toggle { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
     .my-shows-toggle:hover { border-color: var(--gold); color: var(--gold); }
@@ -2714,13 +2723,24 @@ async function renderMyShows() {
 // ─── Setlist Explorer ───
 let setlistData = null;
 let setlistInitialized = false;
+let showVideosMap = {}; // showId -> [video refs]; populated lazily alongside setlist data
 
 async function loadSetlistData() {
   if (setlistData) return setlistData;
   try {
-    const resp = await fetch('data/setlists.min.json');
+    // Fetch both in parallel; show-videos is non-fatal if it fails
+    const [resp, svResp] = await Promise.all([
+      fetch('data/setlists.min.json'),
+      fetch('data/show-videos.json').catch(() => null),
+    ]);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     setlistData = await resp.json();
+    if (svResp && svResp.ok) {
+      try {
+        const svData = await svResp.json();
+        if (svData && svData.byShow) showVideosMap = svData.byShow;
+      } catch (_) { /* hide silently */ }
+    }
     return setlistData;
   } catch (e) {
     console.error('Failed to load setlist data:', e);
@@ -2871,6 +2891,27 @@ async function initSetlistExplorer() {
       songsHtml = songsHtml.replace(/ &middot; $/, '');
 
       const location = [s.city, s.state, s.country].filter(Boolean).join(', ');
+
+      // YouTube recordings tied to this show (silently hidden if no match)
+      const matchedVideos = showVideosMap[s.id] || [];
+      let videosHtml = '';
+      if (matchedVideos.length) {
+        const label = matchedVideos.length === 1 ? '1 YouTube recording' : matchedVideos.length + ' YouTube recordings';
+        const thumbs = matchedVideos.map(v => {
+          const primaryTag = (v.tags && v.tags[0]) ? v.tags[0] : 'Live';
+          const metaParts = [];
+          if (v.trackCount) metaParts.push(v.trackCount + ' tracks');
+          if (v.partialTracklist) metaParts.push('partial');
+          const safeTitle = (v.title || 'recording').replace(/"/g, '&quot;');
+          return `<a class="setlist-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${safeTitle} on YouTube">` +
+                   `<img src="${v.thumbnail || ''}" alt="" loading="lazy" onerror="this.style.display='none'">` +
+                   `<span class="setlist-video-thumb-tag">${primaryTag}</span>` +
+                   (metaParts.length ? `<div class="setlist-video-thumb-meta">${metaParts.join(' · ')}</div>` : '') +
+                 `</a>`;
+        }).join('');
+        videosHtml = `<div class="setlist-videos-strip"><div class="setlist-videos-strip-label">${label}</div><div class="setlist-videos-strip-list">${thumbs}</div></div>`;
+      }
+
       card.innerHTML = `
         <div class="setlist-card-header">
           <span class="setlist-date">${formatSetlistDate(s.date)}</span>
@@ -2879,6 +2920,7 @@ async function initSetlistExplorer() {
         <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
         ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
         <div class="setlist-songs">${songsHtml}</div>
+        ${videosHtml}
         <div class="setlist-card-footer">
           <button class="iwt-btn${isAttended ? ' active' : ''}" data-show-id="${s.id}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>
           <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>

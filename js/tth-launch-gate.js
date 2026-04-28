@@ -12,9 +12,9 @@
 //   <script src="/js/tth-launch-gate.js"></script>
 
 (function () {
-  // Launch target: May 1, 2026 at 8:00 PM Eastern Daylight Time.
+  // Launch target: Monday May 11, 2026 at 8:00 PM Eastern Daylight Time.
   // Stored as an absolute moment in time, so users in any timezone unlock simultaneously.
-  var LAUNCH_TIME = new Date('2026-05-01T20:00:00-04:00').getTime();
+  var LAUNCH_TIME = new Date('2026-05-11T20:00:00-04:00').getTime();
   var PASSWORD = 'cm9hZGFwcGxlcw=='; // base64
   var STORAGE_KEY = 'tth_pass';
 

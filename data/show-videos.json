@@ -1,0 +1,5472 @@
+{
+  "description": "ISO-date match between data/youtube-videos.json and data/tth-tour-data.json. Used by tour-map.html, discography.html (Family Band), and video-for-new-recruits.html for bidirectional show ↔ video links.",
+  "lastUpdated": "2026-04-28",
+  "summary": {
+    "totalShowsWithVideo": 195,
+    "totalVideosMatched": 226,
+    "multipleVideosPerShow": 30,
+    "ambiguousDateMatches": 5,
+    "unmatchedVideos": 154,
+    "skippedNoDate": 101,
+    "skippedYearOnly": 47,
+    "skippedNoShow": 6
+  },
+  "byShow": {
+    "53c4e3b9": [
+      {
+        "videoId": "lVWDixvoCjM",
+        "url": "https://www.youtube.com/watch?v=lVWDixvoCjM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/lVWDixvoCjM/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 9, 1985",
+        "location": "Kingston",
+        "partialTracklist": true,
+        "trackCount": 3
+      },
+      {
+        "videoId": "dfRV9k_Ibpg",
+        "url": "https://www.youtube.com/watch?v=dfRV9k_Ibpg",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/dfRV9k_Ibpg/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 9, 1985",
+        "location": "Kingston, Ontario",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "63fe0a1b": [
+      {
+        "videoId": "y-aJeGxrbIs",
+        "url": "https://www.youtube.com/watch?v=y-aJeGxrbIs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/y-aJeGxrbIs/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Jul 2, 1987",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "ywf6iR9qMOM",
+        "url": "https://www.youtube.com/watch?v=ywf6iR9qMOM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ywf6iR9qMOM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 2, 1987",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "4bc4e3aa": [
+      {
+        "videoId": "CkggbIHyYsY",
+        "url": "https://www.youtube.com/watch?v=CkggbIHyYsY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/CkggbIHyYsY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 2, 1988",
+        "location": "Ottawa, Ontario",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "6bcf82d2": [
+      {
+        "videoId": "cLajii3V6rI",
+        "url": "https://www.youtube.com/watch?v=cLajii3V6rI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/cLajii3V6rI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 3, 1988",
+        "location": "London, Ontario",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "6bc4da96": [
+      {
+        "videoId": "-rRWCcZx4_8",
+        "url": "https://www.youtube.com/watch?v=-rRWCcZx4_8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/-rRWCcZx4_8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 15, 1988",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "2bfe0402": [
+      {
+        "videoId": "T7e8HxPx1E0",
+        "url": "https://www.youtube.com/watch?v=T7e8HxPx1E0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/T7e8HxPx1E0/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Nov 2, 1989",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3c4d55b": [
+      {
+        "videoId": "nDYqbgFcQ5k",
+        "url": "https://www.youtube.com/watch?v=nDYqbgFcQ5k",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/nDYqbgFcQ5k/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 30, 1989",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "6bfc768e": [
+      {
+        "videoId": "IWUL_JGP6Nk",
+        "url": "https://www.youtube.com/watch?v=IWUL_JGP6Nk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/IWUL_JGP6Nk/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Feb 23, 1990",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "33fe0405": [
+      {
+        "videoId": "ZQe0JiK4wsY",
+        "url": "https://www.youtube.com/watch?v=ZQe0JiK4wsY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ZQe0JiK4wsY/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Jun 22, 1990",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "73cf82d1": [
+      {
+        "videoId": "MoknzVWstac",
+        "url": "https://www.youtube.com/watch?v=MoknzVWstac",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/MoknzVWstac/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Nov 13, 1990",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "bfcd9ca": [
+      {
+        "videoId": "iNy_m9Xxkhk",
+        "url": "https://www.youtube.com/watch?v=iNy_m9Xxkhk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/iNy_m9Xxkhk/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Mar 1, 1991",
+        "location": "Vancouver",
+        "partialTracklist": false,
+        "trackCount": 8
+      }
+    ],
+    "7bcf82d0": [
+      {
+        "videoId": "s_KGo8H7SN4",
+        "url": "https://www.youtube.com/watch?v=s_KGo8H7SN4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/s_KGo8H7SN4/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Apr 20, 1991",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "33c6b009": [
+      {
+        "videoId": "j2ZrR41UkqU",
+        "url": "https://www.youtube.com/watch?v=j2ZrR41UkqU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/j2ZrR41UkqU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 31, 1991",
+        "location": "Ottawa, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3cc3d17": [
+      {
+        "videoId": "ePgv1GJ3VWk",
+        "url": "https://www.youtube.com/watch?v=ePgv1GJ3VWk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ePgv1GJ3VWk/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jul 1, 1992",
+        "location": "Vancouver",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "3bfe0484": [
+      {
+        "videoId": "tbb9IvuEyHo",
+        "url": "https://www.youtube.com/watch?v=tbb9IvuEyHo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/tbb9IvuEyHo/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Dec 9, 1992",
+        "location": "Hamburg, Germany",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "3bcf4090": [
+      {
+        "videoId": "EsPot70GktU",
+        "url": "https://www.youtube.com/watch?v=EsPot70GktU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/EsPot70GktU/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Jan 14, 1993",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "6bcc2eee": [
+      {
+        "videoId": "c63nI5_FVv8",
+        "url": "https://www.youtube.com/watch?v=c63nI5_FVv8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/c63nI5_FVv8/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Feb 6, 1993",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "73cc2eed": [
+      {
+        "videoId": "3blc4ivDf3Q",
+        "url": "https://www.youtube.com/watch?v=3blc4ivDf3Q",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/3blc4ivDf3Q/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Feb 9, 1993",
+        "location": "Frankfurt, Germany",
+        "partialTracklist": true,
+        "trackCount": 3
+      },
+      {
+        "videoId": "3oWZ7onlNJg",
+        "url": "https://www.youtube.com/watch?v=3oWZ7onlNJg",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/3oWZ7onlNJg/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 9, 1993",
+        "location": "Frankfurt, Germany",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "43fe07cb": [
+      {
+        "videoId": "nUrcmqlD5UI",
+        "url": "https://www.youtube.com/watch?v=nUrcmqlD5UI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/nUrcmqlD5UI/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Apr 26, 1993",
+        "location": "Los Angeles",
+        "partialTracklist": false,
+        "trackCount": 2
+      },
+      {
+        "videoId": "2i_i0C-7k9E",
+        "url": "https://www.youtube.com/watch?v=2i_i0C-7k9E",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/2i_i0C-7k9E/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "Apr 26, 1993",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "2bfe0052": [
+      {
+        "videoId": "gqp7k75-zME",
+        "url": "https://www.youtube.com/watch?v=gqp7k75-zME",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/gqp7k75-zME/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 20, 1993",
+        "location": "Halfweg, Holland",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "33fe0085": [
+      {
+        "videoId": "DM4KPa1D_yI",
+        "url": "https://www.youtube.com/watch?v=DM4KPa1D_yI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/DM4KPa1D_yI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 8, 1994",
+        "location": "Harrisburg, Pennsylvania",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bfe037c": [
+      {
+        "videoId": "8DNBIQdvZrY",
+        "url": "https://www.youtube.com/watch?v=8DNBIQdvZrY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/8DNBIQdvZrY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 7, 1994",
+        "location": "Portland, Oregon",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "53fe0369": [
+      {
+        "videoId": "Ge2a-gvl3HU",
+        "url": "https://www.youtube.com/watch?v=Ge2a-gvl3HU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Ge2a-gvl3HU/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Oct 16, 1994",
+        "location": "Albuquerque",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "7bfe0210": [
+      {
+        "videoId": "-w6oidsszjc",
+        "url": "https://www.youtube.com/watch?v=-w6oidsszjc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/-w6oidsszjc/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 10, 1994",
+        "location": "Boston",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "7bcf82c0": [
+      {
+        "videoId": "w1UnjTl2mCg",
+        "url": "https://www.youtube.com/watch?v=w1UnjTl2mCg",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/w1UnjTl2mCg/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Dec 7, 1994",
+        "location": "Stockholm, Sweden",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "bd9e1e6": [
+      {
+        "videoId": "obOiLUDLZkE",
+        "url": "https://www.youtube.com/watch?v=obOiLUDLZkE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/obOiLUDLZkE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 7, 1995",
+        "location": "Ottawa, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "7bcf82a8": [
+      {
+        "videoId": "sjRZMgmDa3I",
+        "url": "https://www.youtube.com/watch?v=sjRZMgmDa3I",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/sjRZMgmDa3I/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 28, 1995",
+        "location": "Omaha, Nebraska",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "1bdf2568": [
+      {
+        "videoId": "0vUGydQeYuU",
+        "url": "https://www.youtube.com/watch?v=0vUGydQeYuU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/0vUGydQeYuU/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jul 15, 1995",
+        "location": "High River",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "6bfe7202": [
+      {
+        "videoId": "Epc5KWhQGaE",
+        "url": "https://www.youtube.com/watch?v=Epc5KWhQGaE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Epc5KWhQGaE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 12, 1995",
+        "location": "Dallas, Texas",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bcf435e": [
+      {
+        "videoId": "VeOV0iBfG8o",
+        "url": "https://www.youtube.com/watch?v=VeOV0iBfG8o",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/VeOV0iBfG8o/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Oct 28, 1995",
+        "location": "New York City",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "63ce1a2f": [
+      {
+        "videoId": "F8KP7_TRBA4",
+        "url": "https://www.youtube.com/watch?v=F8KP7_TRBA4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/F8KP7_TRBA4/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "May 18, 1996",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "5bfcf780": [
+      {
+        "videoId": "2LEZW_MbVeA",
+        "url": "https://www.youtube.com/watch?v=2LEZW_MbVeA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/2LEZW_MbVeA/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "May 29, 1996",
+        "location": "Wahington DC",
+        "partialTracklist": true,
+        "trackCount": 2
+      },
+      {
+        "videoId": "tBZ8kVmdf-0",
+        "url": "https://www.youtube.com/watch?v=tBZ8kVmdf-0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/tBZ8kVmdf-0/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "May 29, 1996",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bcf431a": [
+      {
+        "videoId": "amsu5HW0shY",
+        "url": "https://www.youtube.com/watch?v=amsu5HW0shY",
+        "title": "The Tragically Hip - ( SBD - Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/amsu5HW0shY/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jun 1, 1996",
+        "location": "NYC",
+        "partialTracklist": false,
+        "trackCount": 1
+      },
+      {
+        "videoId": "IVjNb5_sjpg",
+        "url": "https://www.youtube.com/watch?v=IVjNb5_sjpg",
+        "title": "The Tragically Hip - ( SBD - Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/IVjNb5_sjpg/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jun 1, 1996",
+        "location": "NYC",
+        "partialTracklist": false,
+        "trackCount": 1
+      }
+    ],
+    "3cc99cb": [
+      {
+        "videoId": "pBxql0J-05k",
+        "url": "https://www.youtube.com/watch?v=pBxql0J-05k",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/pBxql0J-05k/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 21, 1996",
+        "location": "Dallas, Texas",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bfcf7f6": [
+      {
+        "videoId": "ZXruKYc2JRo",
+        "url": "https://www.youtube.com/watch?v=ZXruKYc2JRo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ZXruKYc2JRo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 20, 1996",
+        "location": "Boulder, Colorado",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "b86e94a": [
+      {
+        "videoId": "onUnp8QymtM",
+        "url": "https://www.youtube.com/watch?v=onUnp8QymtM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/onUnp8QymtM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 6, 1996",
+        "location": "Burlington, Vermont",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "2bce9c52": [
+      {
+        "videoId": "TeKAwnWWoXQ",
+        "url": "https://www.youtube.com/watch?v=TeKAwnWWoXQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/TeKAwnWWoXQ/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 13, 1996",
+        "location": "Edmonton",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "33d7180d": [
+      {
+        "videoId": "JmTCaDowlO8",
+        "url": "https://www.youtube.com/watch?v=JmTCaDowlO8",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/JmTCaDowlO8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 26, 1996",
+        "location": "Buffalo",
+        "partialTracklist": false,
+        "trackCount": 3
+      },
+      {
+        "videoId": "KSUEWWzQIu4",
+        "url": "https://www.youtube.com/watch?v=KSUEWWzQIu4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/KSUEWWzQIu4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 26, 1996",
+        "location": "Buffalo, New York",
+        "partialTracklist": false,
+        "trackCount": 3
+      },
+      {
+        "videoId": "mcdEeo7aTAs",
+        "url": "https://www.youtube.com/watch?v=mcdEeo7aTAs",
+        "title": "The Tragically Hip - (Part I)",
+        "thumbnail": "https://i.ytimg.com/vi/mcdEeo7aTAs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 26, 1996",
+        "location": "Buffalo",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "1bfe1d44": [
+      {
+        "videoId": "Qm1GzHRMY4M",
+        "url": "https://www.youtube.com/watch?v=Qm1GzHRMY4M",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Qm1GzHRMY4M/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 29, 1996",
+        "location": "Kanata, Ontario",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "7bc61238": [
+      {
+        "videoId": "90E9_-3E8nM",
+        "url": "https://www.youtube.com/watch?v=90E9_-3E8nM",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/90E9_-3E8nM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 9, 1996",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "eHawgNlJRaI",
+        "url": "https://www.youtube.com/watch?v=eHawgNlJRaI",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/eHawgNlJRaI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 9, 1996",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 1
+      }
+    ],
+    "5bfe7330": [
+      {
+        "videoId": "EzjMdL0YNw8",
+        "url": "https://www.youtube.com/watch?v=EzjMdL0YNw8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/EzjMdL0YNw8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 10, 1997",
+        "location": "Groningen, Holland",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "63d952cf": [
+      {
+        "videoId": "dChsO74VKGQ",
+        "url": "https://www.youtube.com/watch?v=dChsO74VKGQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/dChsO74VKGQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 11, 1997",
+        "location": "Utrecht, Holland",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "53fe7339": [
+      {
+        "videoId": "2tIA-PVmhYA",
+        "url": "https://www.youtube.com/watch?v=2tIA-PVmhYA",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/2tIA-PVmhYA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 9, 1997",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "qFCPnTpi_pk",
+        "url": "https://www.youtube.com/watch?v=qFCPnTpi_pk",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/qFCPnTpi_pk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 9, 1997",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "23cf40f7": [
+      {
+        "videoId": "YRHj61YWWMI",
+        "url": "https://www.youtube.com/watch?v=YRHj61YWWMI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/YRHj61YWWMI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 22, 1998",
+        "location": "New York City",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "73cf8291": [
+      {
+        "videoId": "IzsSPMZqmK4",
+        "url": "https://www.youtube.com/watch?v=IzsSPMZqmK4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/IzsSPMZqmK4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 24, 1998",
+        "location": "New York City",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "2bffc88a": [
+      {
+        "videoId": "1jmEjGV4t6A",
+        "url": "https://www.youtube.com/watch?v=1jmEjGV4t6A",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/1jmEjGV4t6A/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jul 30, 1998",
+        "location": "Sausalito",
+        "partialTracklist": true,
+        "trackCount": 5
+      }
+    ],
+    "13f641f9": [
+      {
+        "videoId": "S6M5VBfBYa4",
+        "url": "https://www.youtube.com/watch?v=S6M5VBfBYa4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/S6M5VBfBYa4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 1, 1998",
+        "location": "Aspen, Colorado",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "23ffc893": [
+      {
+        "videoId": "VNVb_u8PdLQ",
+        "url": "https://www.youtube.com/watch?v=VNVb_u8PdLQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/VNVb_u8PdLQ/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Aug 3, 1998",
+        "location": "Chicago",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "73d952b9": [
+      {
+        "videoId": "cbSaa6no-8Q",
+        "url": "https://www.youtube.com/watch?v=cbSaa6no-8Q",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/cbSaa6no-8Q/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 10, 1998",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "7bd952b8": [
+      {
+        "videoId": "kGjurbVPC-I",
+        "url": "https://www.youtube.com/watch?v=kGjurbVPC-I",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kGjurbVPC-I/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 11, 1998",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "63d952bf": [
+      {
+        "videoId": "u_u_R_mJTE4",
+        "url": "https://www.youtube.com/watch?v=u_u_R_mJTE4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/u_u_R_mJTE4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 12, 1998",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "6bd952be": [
+      {
+        "videoId": "P5BmXlyG6UI",
+        "url": "https://www.youtube.com/watch?v=P5BmXlyG6UI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/P5BmXlyG6UI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 13, 1998",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "7bd59610": [
+      {
+        "videoId": "0RzXzfUmyW8",
+        "url": "https://www.youtube.com/watch?v=0RzXzfUmyW8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/0RzXzfUmyW8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 22, 1998",
+        "location": "Toledo, Ohio",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "7bc936ec": [
+      {
+        "videoId": "XOoMlm9I6kc",
+        "url": "https://www.youtube.com/watch?v=XOoMlm9I6kc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XOoMlm9I6kc/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 27, 1998",
+        "location": "Hampton Beach, New Hampshire",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bffc8cc": [
+      {
+        "videoId": "hzlxQj7aZYM",
+        "url": "https://www.youtube.com/watch?v=hzlxQj7aZYM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/hzlxQj7aZYM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 28, 1998",
+        "location": "Portland, Maine",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "23ffc843": [
+      {
+        "videoId": "VmUSpl0uAbs",
+        "url": "https://www.youtube.com/watch?v=VmUSpl0uAbs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/VmUSpl0uAbs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 2, 1998",
+        "location": "Pittsburgh, Pennsylvania",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bd718ec": [
+      {
+        "videoId": "bZetTMUlnvs",
+        "url": "https://www.youtube.com/watch?v=bZetTMUlnvs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/bZetTMUlnvs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 8, 1998",
+        "location": "Rochester, New York",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "3bffc86c": [
+      {
+        "videoId": "Tz9QBiUBqvk",
+        "url": "https://www.youtube.com/watch?v=Tz9QBiUBqvk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Tz9QBiUBqvk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 21, 1998",
+        "location": "Scottsdale, Arizona",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bffc868": [
+      {
+        "videoId": "UGTyrNGTUVE",
+        "url": "https://www.youtube.com/watch?v=UGTyrNGTUVE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/UGTyrNGTUVE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 22, 1998",
+        "location": "Tucson, Arizona",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "33ffc879": [
+      {
+        "videoId": "lA5klOhtg0M",
+        "url": "https://www.youtube.com/watch?v=lA5klOhtg0M",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/lA5klOhtg0M/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Oct 31, 1998",
+        "location": "Atlanta",
+        "partialTracklist": false,
+        "trackCount": 4
+      },
+      {
+        "videoId": "X2DH4HVydaw",
+        "url": "https://www.youtube.com/watch?v=X2DH4HVydaw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/X2DH4HVydaw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 31, 1998",
+        "location": "Atlanta, Georgia",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "13ffc985": [
+      {
+        "videoId": "DSXQKes1T8w",
+        "url": "https://www.youtube.com/watch?v=DSXQKes1T8w",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/DSXQKes1T8w/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 2, 1998",
+        "location": "Athens, Georgia",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "bffc98e": [
+      {
+        "videoId": "iBMm9Dwymy4",
+        "url": "https://www.youtube.com/watch?v=iBMm9Dwymy4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/iBMm9Dwymy4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 16, 1998",
+        "location": "Winston-Salem, North Carolina",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "73dbd205": [
+      {
+        "videoId": "CXfaw7h1cao",
+        "url": "https://www.youtube.com/watch?v=CXfaw7h1cao",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/CXfaw7h1cao/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 28, 1998",
+        "location": "New York City",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "6bd16a5a": [
+      {
+        "videoId": "92VW91_b4_w",
+        "url": "https://www.youtube.com/watch?v=92VW91_b4_w",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/92VW91_b4_w/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 4, 1998",
+        "location": "Hartford, Connecticut",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "1b9c9994": [
+      {
+        "videoId": "5KFeXwQarz4",
+        "url": "https://www.youtube.com/watch?v=5KFeXwQarz4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/5KFeXwQarz4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 5, 1998",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "6bc61236": [
+      {
+        "videoId": "kYc8yf5e-fI",
+        "url": "https://www.youtube.com/watch?v=kYc8yf5e-fI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kYc8yf5e-fI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 5, 1999",
+        "location": "Montreal, Quebec",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "2bdd649e": [
+      {
+        "videoId": "FNfspSHURm0",
+        "url": "https://www.youtube.com/watch?v=FNfspSHURm0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/FNfspSHURm0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 6, 1999",
+        "location": "Quebec City, Quebec",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "73cc3635": [
+      {
+        "videoId": "P6n8y5fNQFk",
+        "url": "https://www.youtube.com/watch?v=P6n8y5fNQFk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/P6n8y5fNQFk/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Feb 11, 1999",
+        "location": "Novi, Michigan",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "73ff1235": [
+      {
+        "videoId": "88222wwuK8E",
+        "url": "https://www.youtube.com/watch?v=88222wwuK8E",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/88222wwuK8E/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 8, 1999",
+        "location": "Pittsburgh, Pennsylvania",
+        "partialTracklist": false,
+        "trackCount": 2
+      }
+    ],
+    "63ff1233": [
+      {
+        "videoId": "kBhYV_JN_5E",
+        "url": "https://www.youtube.com/watch?v=kBhYV_JN_5E",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kBhYV_JN_5E/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 18, 1999",
+        "location": "Carrboro, North Carolina",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "6bd71676": [
+      {
+        "videoId": "N102GqWljMs",
+        "url": "https://www.youtube.com/watch?v=N102GqWljMs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/N102GqWljMs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 20, 1999",
+        "location": "Nashville, Tennessee",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "13d7d56d": [
+      {
+        "videoId": "bzmWv9atl28",
+        "url": "https://www.youtube.com/watch?v=bzmWv9atl28",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/bzmWv9atl28/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jul 24, 1999",
+        "location": "Woodstock",
+        "partialTracklist": false,
+        "trackCount": 10
+      }
+    ],
+    "6bd5ead6": [
+      {
+        "videoId": "LYCHgiFVnVg",
+        "url": "https://www.youtube.com/watch?v=LYCHgiFVnVg",
+        "title": "The Tragically Hip (SBD)",
+        "thumbnail": "https://i.ytimg.com/vi/LYCHgiFVnVg/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Dec 31, 1999",
+        "location": "Toronto",
+        "partialTracklist": true,
+        "trackCount": 4
+      }
+    ],
+    "4bd7178e": [
+      {
+        "videoId": "VhhZoR1vsOM",
+        "url": "https://www.youtube.com/watch?v=VhhZoR1vsOM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/VhhZoR1vsOM/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jan 1, 2000",
+        "location": "Toronto",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "53ff0b31": [
+      {
+        "videoId": "aaoGSax_-rc",
+        "url": "https://www.youtube.com/watch?v=aaoGSax_-rc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/aaoGSax_-rc/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jun 13, 2000",
+        "location": "Chicago",
+        "partialTracklist": true,
+        "trackCount": 4
+      }
+    ],
+    "13d0e119": [
+      {
+        "videoId": "7K4HHwWM3xc",
+        "url": "https://www.youtube.com/watch?v=7K4HHwWM3xc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/7K4HHwWM3xc/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 1, 2000",
+        "location": "Central Park, NYC",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bf604e4": [
+      {
+        "videoId": "_LbUstaD-L0",
+        "url": "https://www.youtube.com/watch?v=_LbUstaD-L0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/_LbUstaD-L0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 14, 2000",
+        "location": "Cleveland, Ohio",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "13dc79d5": [
+      {
+        "videoId": "3hsmcjGs8Ks",
+        "url": "https://www.youtube.com/watch?v=3hsmcjGs8Ks",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/3hsmcjGs8Ks/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 15, 2000",
+        "location": "Clarkston, Michigan",
+        "partialTracklist": false,
+        "trackCount": 4
+      },
+      {
+        "videoId": "xJrvv_hMGVo",
+        "url": "https://www.youtube.com/watch?v=xJrvv_hMGVo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/xJrvv_hMGVo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 15, 2000",
+        "location": "Clarkston, Michigan",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "33ff0c7d": [
+      {
+        "videoId": "KuLhB9sHOy8",
+        "url": "https://www.youtube.com/watch?v=KuLhB9sHOy8",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/KuLhB9sHOy8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 27, 2000",
+        "location": "Washington",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "E9mvVRCmviQ",
+        "url": "https://www.youtube.com/watch?v=E9mvVRCmviQ",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/E9mvVRCmviQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 27, 2000",
+        "location": "Washington",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "23c34043": [
+      {
+        "videoId": "0O1BcJ0gBGA",
+        "url": "https://www.youtube.com/watch?v=0O1BcJ0gBGA",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/0O1BcJ0gBGA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 4, 2000",
+        "location": "Hartford",
+        "partialTracklist": false,
+        "trackCount": 7
+      },
+      {
+        "videoId": "Pd-znt5OgsA",
+        "url": "https://www.youtube.com/watch?v=Pd-znt5OgsA",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/Pd-znt5OgsA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 4, 2000",
+        "location": "Hartford",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bff0d88": [
+      {
+        "videoId": "70y8d-8qYyA",
+        "url": "https://www.youtube.com/watch?v=70y8d-8qYyA",
+        "title": "The Tragically Hip - (Part I)",
+        "thumbnail": "https://i.ytimg.com/vi/70y8d-8qYyA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 5, 2000",
+        "location": "Burlington",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "4bd71782": [
+      {
+        "videoId": "Da6DvLWvm9Q",
+        "url": "https://www.youtube.com/watch?v=Da6DvLWvm9Q",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/Da6DvLWvm9Q/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 2, 2000",
+        "location": "Rochester",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "9n7stBUmjzk",
+        "url": "https://www.youtube.com/watch?v=9n7stBUmjzk",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/9n7stBUmjzk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 2, 2000",
+        "location": "Rochester",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "2bc3404e": [
+      {
+        "videoId": "MC2ZWX-wqwQ",
+        "url": "https://www.youtube.com/watch?v=MC2ZWX-wqwQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/MC2ZWX-wqwQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 3, 2000",
+        "location": "Syracuse, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "2bcf40ea": [
+      {
+        "videoId": "26jcWqF0b7Y",
+        "url": "https://www.youtube.com/watch?v=26jcWqF0b7Y",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/26jcWqF0b7Y/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 6, 2000",
+        "location": "New York City",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bcf40e4": [
+      {
+        "videoId": "RTIr8Hp3Bus",
+        "url": "https://www.youtube.com/watch?v=RTIr8Hp3Bus",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/RTIr8Hp3Bus/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 19, 2000",
+        "location": "Tucson",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "9yi-V1KShvM",
+        "url": "https://www.youtube.com/watch?v=9yi-V1KShvM",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/9yi-V1KShvM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 19, 2000",
+        "location": "Tucson",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bff0db8": [
+      {
+        "videoId": "j8aACbvLKko",
+        "url": "https://www.youtube.com/watch?v=j8aACbvLKko",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/j8aACbvLKko/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 27, 2000",
+        "location": "Ft Collins, Colorado",
+        "partialTracklist": true,
+        "trackCount": 4
+      }
+    ],
+    "3ff0dbb": [
+      {
+        "videoId": "drN0h7sSL_E",
+        "url": "https://www.youtube.com/watch?v=drN0h7sSL_E",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/drN0h7sSL_E/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 28, 2000",
+        "location": "Denver",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "qoma0A8ZpRA",
+        "url": "https://www.youtube.com/watch?v=qoma0A8ZpRA",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/qoma0A8ZpRA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 28, 2000",
+        "location": "Denver",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "3ff0dd3": [
+      {
+        "videoId": "3lQfdCuC8lM",
+        "url": "https://www.youtube.com/watch?v=3lQfdCuC8lM",
+        "title": "The Tragically Hip - (Second Set)",
+        "thumbnail": "https://i.ytimg.com/vi/3lQfdCuC8lM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 4, 2000",
+        "location": "Portland",
+        "partialTracklist": false,
+        "trackCount": 4
+      },
+      {
+        "videoId": "VbzSnX_iZto",
+        "url": "https://www.youtube.com/watch?v=VbzSnX_iZto",
+        "title": "The Tragically Hip - (First Set)",
+        "thumbnail": "https://i.ytimg.com/vi/VbzSnX_iZto/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 4, 2000",
+        "location": "Portland",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "bdc79e2": [
+      {
+        "videoId": "RCmMS8PdeYQ",
+        "url": "https://www.youtube.com/watch?v=RCmMS8PdeYQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/RCmMS8PdeYQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 2, 2000",
+        "location": "Detroit, Michigan",
+        "partialTracklist": false,
+        "trackCount": 12
+      }
+    ],
+    "1bff0d3c": [
+      {
+        "videoId": "SlUbqm-1Vhw",
+        "url": "https://www.youtube.com/watch?v=SlUbqm-1Vhw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/SlUbqm-1Vhw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 20, 2000",
+        "location": "Buffalo, NY",
+        "partialTracklist": false,
+        "trackCount": 9
+      }
+    ],
+    "3bc61440": [
+      {
+        "videoId": "WSoQASOP6kQ",
+        "url": "https://www.youtube.com/watch?v=WSoQASOP6kQ",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/WSoQASOP6kQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 23, 2000",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "73d5eae5": [
+      {
+        "videoId": "XuEsZ1HcjNU",
+        "url": "https://www.youtube.com/watch?v=XuEsZ1HcjNU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XuEsZ1HcjNU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 20, 2002",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "63ff0a53": [
+      {
+        "videoId": "ceRJi1JYYlE",
+        "url": "https://www.youtube.com/watch?v=ceRJi1JYYlE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ceRJi1JYYlE/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jun 12, 2002",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 7
+      }
+    ],
+    "73ff0a59": [
+      {
+        "videoId": "YpDc7LqcpG0",
+        "url": "https://www.youtube.com/watch?v=YpDc7LqcpG0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/YpDc7LqcpG0/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jun 13, 2002",
+        "location": "Buffalo",
+        "partialTracklist": true,
+        "trackCount": 3
+      }
+    ],
+    "53cf4339": [
+      {
+        "videoId": "Ig8L0XZrP_0",
+        "url": "https://www.youtube.com/watch?v=Ig8L0XZrP_0",
+        "title": "The Tragically Hip - (Part I)",
+        "thumbnail": "https://i.ytimg.com/vi/Ig8L0XZrP_0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 28, 2002",
+        "location": "NYC",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "73d71669": [
+      {
+        "videoId": "HYUFtkgsNRs",
+        "url": "https://www.youtube.com/watch?v=HYUFtkgsNRs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/HYUFtkgsNRs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 16, 2002",
+        "location": "Chicago, Illinois",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bd7b338": [
+      {
+        "videoId": "sxDGbusPdCQ",
+        "url": "https://www.youtube.com/watch?v=sxDGbusPdCQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/sxDGbusPdCQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 17, 2002",
+        "location": "Chicago, Illinois",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bfeff1c": [
+      {
+        "videoId": "gHJmAP8YoOY",
+        "url": "https://www.youtube.com/watch?v=gHJmAP8YoOY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/gHJmAP8YoOY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 18, 2002",
+        "location": "Chicago, Illinois",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "33d14829": [
+      {
+        "videoId": "-EM0MBCz_YE",
+        "url": "https://www.youtube.com/watch?v=-EM0MBCz_YE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/-EM0MBCz_YE/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Jul 19, 2002",
+        "location": "Chicago",
+        "partialTracklist": true,
+        "trackCount": 2
+      },
+      {
+        "videoId": "yOqkl4oQJVw",
+        "url": "https://www.youtube.com/watch?v=yOqkl4oQJVw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/yOqkl4oQJVw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 19, 2002",
+        "location": "Chicago, Illinois",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bfeff12": [
+      {
+        "videoId": "ZBZXlr7dPro",
+        "url": "https://www.youtube.com/watch?v=ZBZXlr7dPro",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ZBZXlr7dPro/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 7, 2002",
+        "location": "Englewood, Colorado",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "53cf433d": [
+      {
+        "videoId": "m2CDk52SCUE",
+        "url": "https://www.youtube.com/watch?v=m2CDk52SCUE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/m2CDk52SCUE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 17, 2002",
+        "location": "San Francisco, California",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "2bcf40d6": [
+      {
+        "videoId": "NUiUbriOxe8",
+        "url": "https://www.youtube.com/watch?v=NUiUbriOxe8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/NUiUbriOxe8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 23, 2002",
+        "location": "Portland, Oregon",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3fef947": [
+      {
+        "videoId": "RbSpaApDXCU",
+        "url": "https://www.youtube.com/watch?v=RbSpaApDXCU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/RbSpaApDXCU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 20, 2002",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 8
+      }
+    ],
+    "bfef966": [
+      {
+        "videoId": "5stux_fFi-0",
+        "url": "https://www.youtube.com/watch?v=5stux_fFi-0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/5stux_fFi-0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 1, 2002",
+        "location": "Winnipeg, Manitoba",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "43cf4337": [
+      {
+        "videoId": "fWhWwU5Duzk",
+        "url": "https://www.youtube.com/watch?v=fWhWwU5Duzk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/fWhWwU5Duzk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 5, 2002",
+        "location": "Syracuse, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "63fefe3b": [
+      {
+        "videoId": "_ZNLpG5HzlU",
+        "url": "https://www.youtube.com/watch?v=_ZNLpG5HzlU",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/_ZNLpG5HzlU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 11, 2002",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "6Hshn4tv-90",
+        "url": "https://www.youtube.com/watch?v=6Hshn4tv-90",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/6Hshn4tv-90/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 11, 2002",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "7bfefe40": [
+      {
+        "videoId": "tKn1ljM2lW0",
+        "url": "https://www.youtube.com/watch?v=tKn1ljM2lW0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/tKn1ljM2lW0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 12, 2002",
+        "location": "Montreal, Quebec",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "SmcDTAmzPfE",
+        "url": "https://www.youtube.com/watch?v=SmcDTAmzPfE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/SmcDTAmzPfE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 12, 2002",
+        "location": "Montreal, Quebec",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "3bc25020": [
+      {
+        "videoId": "L8_8lpmm5VQ",
+        "url": "https://www.youtube.com/watch?v=L8_8lpmm5VQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/L8_8lpmm5VQ/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Oct 20, 2002",
+        "location": "Orlando",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "bc561b2": [
+      {
+        "videoId": "pavfsbTbYF4",
+        "url": "https://www.youtube.com/watch?v=pavfsbTbYF4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/pavfsbTbYF4/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Oct 23, 2002",
+        "location": "New Orleans",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "33ff0c15": [
+      {
+        "videoId": "wBtyqQNsDnA",
+        "url": "https://www.youtube.com/watch?v=wBtyqQNsDnA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/wBtyqQNsDnA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 9, 2002",
+        "location": "Groningen, Holland",
+        "partialTracklist": false,
+        "trackCount": 0
+      }
+    ],
+    "43db7feb": [
+      {
+        "videoId": "v6UU8Th7WVU",
+        "url": "https://www.youtube.com/watch?v=v6UU8Th7WVU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/v6UU8Th7WVU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 6, 2003",
+        "location": "Barrie, Ontario",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "bff0d7a": [
+      {
+        "videoId": "nw-K0_SkyY4",
+        "url": "https://www.youtube.com/watch?v=nw-K0_SkyY4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/nw-K0_SkyY4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 28, 2004",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "4bce0bca": [
+      {
+        "videoId": "ANTYYnGvyV4",
+        "url": "https://www.youtube.com/watch?v=ANTYYnGvyV4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ANTYYnGvyV4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 29, 2004",
+        "location": "Toronto, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3d5591f": [
+      {
+        "videoId": "6Cb2lyAOBNg",
+        "url": "https://www.youtube.com/watch?v=6Cb2lyAOBNg",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/6Cb2lyAOBNg/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 23, 2004",
+        "location": "Darien Lakes, New York",
+        "partialTracklist": false,
+        "trackCount": 4
+      },
+      {
+        "videoId": "buS6rOgtXqs",
+        "url": "https://www.youtube.com/watch?v=buS6rOgtXqs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/buS6rOgtXqs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 23, 2004",
+        "location": "Darien Lakes, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bfcc76c": [
+      {
+        "videoId": "gJ-25zYzXMo",
+        "url": "https://www.youtube.com/watch?v=gJ-25zYzXMo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/gJ-25zYzXMo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 19, 2004",
+        "location": "Cleveland, Ohio",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "bff118a": [
+      {
+        "videoId": "AkPR_36MepA",
+        "url": "https://www.youtube.com/watch?v=AkPR_36MepA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/AkPR_36MepA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 9, 2004",
+        "location": "Portland, Oregon",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "13ff1975": [
+      {
+        "videoId": "OJT-m-H0ulQ",
+        "url": "https://www.youtube.com/watch?v=OJT-m-H0ulQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/OJT-m-H0ulQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 17, 2004",
+        "location": "Pittsburgh, Pennsylvania",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "5bd24f9c": [
+      {
+        "videoId": "qwSiPq2xQYw",
+        "url": "https://www.youtube.com/watch?v=qwSiPq2xQYw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/qwSiPq2xQYw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 23, 2004",
+        "location": "Ottawa, Ontario",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "23ff2457": [
+      {
+        "videoId": "yn5O_oPFMwQ",
+        "url": "https://www.youtube.com/watch?v=yn5O_oPFMwQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/yn5O_oPFMwQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 30, 2004",
+        "location": "Grand Rapids, Michigan",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "6bfe9212": [
+      {
+        "videoId": "pQkfWkupCNE",
+        "url": "https://www.youtube.com/watch?v=pQkfWkupCNE",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/pQkfWkupCNE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 4, 2004",
+        "location": "Sydney, Nova Scotia",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "6bff2ad6": [
+      {
+        "videoId": "1-VZDq9nu64",
+        "url": "https://www.youtube.com/watch?v=1-VZDq9nu64",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/1-VZDq9nu64/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 26, 2006",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "53db8fa1": [
+      {
+        "videoId": "PSOj-1C4dYI",
+        "url": "https://www.youtube.com/watch?v=PSOj-1C4dYI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/PSOj-1C4dYI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 16, 2006",
+        "location": "Pittsburgh, Pennsylvania",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "53f12b15": [
+      {
+        "videoId": "xVUGmlsTnRI",
+        "url": "https://www.youtube.com/watch?v=xVUGmlsTnRI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/xVUGmlsTnRI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 21, 2006",
+        "location": "Belleville, Ontario",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "3decd4f": [
+      {
+        "videoId": "_PGRe2k_6qg",
+        "url": "https://www.youtube.com/watch?v=_PGRe2k_6qg",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/_PGRe2k_6qg/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 23, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "33d64489": [
+      {
+        "videoId": "wof0_r79EjA",
+        "url": "https://www.youtube.com/watch?v=wof0_r79EjA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/wof0_r79EjA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 24, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "73cbc699": [
+      {
+        "videoId": "0xIy7L9quEo",
+        "url": "https://www.youtube.com/watch?v=0xIy7L9quEo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/0xIy7L9quEo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 8, 2006",
+        "location": "Brugge, Belgium",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bdc2040": [
+      {
+        "videoId": "VPIQTn9lR5k",
+        "url": "https://www.youtube.com/watch?v=VPIQTn9lR5k",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/VPIQTn9lR5k/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 9, 2006",
+        "location": "Weert, Holland",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "6bd952c2": [
+      {
+        "videoId": "WWSSo7l8rIQ",
+        "url": "https://www.youtube.com/watch?v=WWSSo7l8rIQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/WWSSo7l8rIQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 11, 2006",
+        "location": "Amsterdam, Holland",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "3cffd6b": [
+      {
+        "videoId": "1LFfqzIb8zQ",
+        "url": "https://www.youtube.com/watch?v=1LFfqzIb8zQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/1LFfqzIb8zQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 22, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bcffd68": [
+      {
+        "videoId": "FJF-xIuvWjo",
+        "url": "https://www.youtube.com/watch?v=FJF-xIuvWjo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/FJF-xIuvWjo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 23, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "3bc570c4": [
+      {
+        "videoId": "w7Vp1VW17G8",
+        "url": "https://www.youtube.com/watch?v=w7Vp1VW17G8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/w7Vp1VW17G8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 25, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bdb7fae": [
+      {
+        "videoId": "s78p9ONlA7A",
+        "url": "https://www.youtube.com/watch?v=s78p9ONlA7A",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/s78p9ONlA7A/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 26, 2006",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "63c7fe0b": [
+      {
+        "videoId": "N49syv6HTd4",
+        "url": "https://www.youtube.com/watch?v=N49syv6HTd4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/N49syv6HTd4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 28, 2006",
+        "location": "Calgary, Alberta",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "7bc7fe14": [
+      {
+        "videoId": "XCzyapriKGo",
+        "url": "https://www.youtube.com/watch?v=XCzyapriKGo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XCzyapriKGo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 29, 2006",
+        "location": "Calgary, Alberta",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3cffd63": [
+      {
+        "videoId": "YXk2TznueTw",
+        "url": "https://www.youtube.com/watch?v=YXk2TznueTw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/YXk2TznueTw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 30, 2006",
+        "location": "Calgary, Alberta",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bcffd60": [
+      {
+        "videoId": "cFBoAgYl37I",
+        "url": "https://www.youtube.com/watch?v=cFBoAgYl37I",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/cFBoAgYl37I/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 1, 2006",
+        "location": "Calgary, Alberta",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "23d748a7": [
+      {
+        "videoId": "GL-1AiqdSzM",
+        "url": "https://www.youtube.com/watch?v=GL-1AiqdSzM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/GL-1AiqdSzM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 4, 2006",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "43d33f3f": [
+      {
+        "videoId": "O-Xz-hQtJ9c",
+        "url": "https://www.youtube.com/watch?v=O-Xz-hQtJ9c",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/O-Xz-hQtJ9c/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 6, 2006",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "bcffd66": [
+      {
+        "videoId": "2IPv_b35p3o",
+        "url": "https://www.youtube.com/watch?v=2IPv_b35p3o",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/2IPv_b35p3o/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 7, 2006",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "13cffd65": [
+      {
+        "videoId": "kCeaCsivrOw",
+        "url": "https://www.youtube.com/watch?v=kCeaCsivrOw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kCeaCsivrOw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 9, 2006",
+        "location": "Montreal, Quebec",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "7ub-6L7DXpk",
+        "url": "https://www.youtube.com/watch?v=7ub-6L7DXpk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/7ub-6L7DXpk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 9, 2006",
+        "location": "Montreal, Quebec",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "1bcffd64": [
+      {
+        "videoId": "hPSE8VEvNSc",
+        "url": "https://www.youtube.com/watch?v=hPSE8VEvNSc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/hPSE8VEvNSc/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 10, 2006",
+        "location": "Montreal, Quebec",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "6bff2afe": [
+      {
+        "videoId": "t5a-W_EHogY",
+        "url": "https://www.youtube.com/watch?v=t5a-W_EHogY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/t5a-W_EHogY/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Dec 31, 2006",
+        "location": "Chicago",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "23cee043": [
+      {
+        "videoId": "xJCZlJJshOo",
+        "url": "https://www.youtube.com/watch?v=xJCZlJJshOo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/xJCZlJJshOo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jan 8, 2007",
+        "location": "Victoria, BC",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "73fef235": [
+      {
+        "videoId": "8PGCRa3ZzdY",
+        "url": "https://www.youtube.com/watch?v=8PGCRa3ZzdY",
+        "title": "The Tragically hip",
+        "thumbnail": "https://i.ytimg.com/vi/8PGCRa3ZzdY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jan 25, 2007",
+        "location": "Barrie, Ontario",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "6bdcb6ce": [
+      {
+        "videoId": "TE29Hrgkq7U",
+        "url": "https://www.youtube.com/watch?v=TE29Hrgkq7U",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/TE29Hrgkq7U/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jan 27, 2007",
+        "location": "Sudbury, Ontario",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "53da635d": [
+      {
+        "videoId": "1Anro3yzX_Y",
+        "url": "https://www.youtube.com/watch?v=1Anro3yzX_Y",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/1Anro3yzX_Y/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Feb 8, 2007",
+        "location": "Toronto",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3bff0474": [
+      {
+        "videoId": "HbGbt9F5fU0",
+        "url": "https://www.youtube.com/watch?v=HbGbt9F5fU0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/HbGbt9F5fU0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 9, 2007",
+        "location": "Buffalo, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "7be9fee8": [
+      {
+        "videoId": "xVAxaN3kL2I",
+        "url": "https://www.youtube.com/watch?v=xVAxaN3kL2I",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/xVAxaN3kL2I/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 10, 2007",
+        "location": "Buffalo, New York",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "3bc7c4a0": [
+      {
+        "videoId": "IfUQmFUWoQ0",
+        "url": "https://www.youtube.com/watch?v=IfUQmFUWoQ0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/IfUQmFUWoQ0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 15, 2007",
+        "location": "Houston, Texas",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "63d5baef": [
+      {
+        "videoId": "XFqnVjmNf0Q",
+        "url": "https://www.youtube.com/watch?v=XFqnVjmNf0Q",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XFqnVjmNf0Q/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Apr 13, 2007",
+        "location": "Detroit, Michigan",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "bff05c6": [
+      {
+        "videoId": "gItUknAmBtQ",
+        "url": "https://www.youtube.com/watch?v=gItUknAmBtQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/gItUknAmBtQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Apr 16, 2007",
+        "location": "Burlington, Vermont",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "4bdccf22": [
+      {
+        "videoId": "SRnplnKR3JU",
+        "url": "https://www.youtube.com/watch?v=SRnplnKR3JU",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/SRnplnKR3JU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Apr 20, 2007",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "33cf4019": [
+      {
+        "videoId": "XyK92mZnwUs",
+        "url": "https://www.youtube.com/watch?v=XyK92mZnwUs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XyK92mZnwUs/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Apr 27, 2007",
+        "location": "Philadelphia",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3ff05df": [
+      {
+        "videoId": "YVLN2uq7eX8",
+        "url": "https://www.youtube.com/watch?v=YVLN2uq7eX8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/YVLN2uq7eX8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 14, 2007",
+        "location": "Minneapolis, Minnesota",
+        "partialTracklist": false,
+        "trackCount": 7
+      }
+    ],
+    "13d76151": [
+      {
+        "videoId": "vs1nersx1Dk",
+        "url": "https://www.youtube.com/watch?v=vs1nersx1Dk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/vs1nersx1Dk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 13, 2007",
+        "location": "Halifax, Nova Scotia",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "735d1675": [
+      {
+        "videoId": "rGkIWG-zfbk",
+        "url": "https://www.youtube.com/watch?v=rGkIWG-zfbk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/rGkIWG-zfbk/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Sep 27, 2007",
+        "location": "Amsterdam",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "63ff0ac3": [
+      {
+        "videoId": "LkBUQ83PnfY",
+        "url": "https://www.youtube.com/watch?v=LkBUQ83PnfY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/LkBUQ83PnfY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 15, 2007",
+        "location": "Aspen, Colorado",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "23f1fcc7": [
+      {
+        "videoId": "NnIaXUMAa1A",
+        "url": "https://www.youtube.com/watch?v=NnIaXUMAa1A",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/NnIaXUMAa1A/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 27, 2007",
+        "location": "Boston, Massachusetts",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bcf4320": [
+      {
+        "videoId": "jFQM62h8qCQ",
+        "url": "https://www.youtube.com/watch?v=jFQM62h8qCQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/jFQM62h8qCQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 1, 2007",
+        "location": "Syracuse, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "bd625ee": [
+      {
+        "videoId": "yju8LYWsGLM",
+        "url": "https://www.youtube.com/watch?v=yju8LYWsGLM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/yju8LYWsGLM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 2, 2007",
+        "location": "Rochester, New York",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "7bd126d4": [
+      {
+        "videoId": "Q5_6Dhs8qL8",
+        "url": "https://www.youtube.com/watch?v=Q5_6Dhs8qL8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Q5_6Dhs8qL8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 3, 2008",
+        "location": "Ottawa, Ontario",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "7bd5eadc": [
+      {
+        "videoId": "liQQ7z2IcCw",
+        "url": "https://www.youtube.com/watch?v=liQQ7z2IcCw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/liQQ7z2IcCw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Apr 24, 2009",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 7
+      }
+    ],
+    "2bca74f6": [
+      {
+        "videoId": "fl_rd6B7Oww",
+        "url": "https://www.youtube.com/watch?v=fl_rd6B7Oww",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/fl_rd6B7Oww/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 1, 2009",
+        "location": "Montreal, Quebec",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "53cbf3c1": [
+      {
+        "videoId": "EUc0Xp5RP_s",
+        "url": "https://www.youtube.com/watch?v=EUc0Xp5RP_s",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/EUc0Xp5RP_s/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 2, 2009",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "ituQLcDKcA4",
+        "url": "https://www.youtube.com/watch?v=ituQLcDKcA4",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/ituQLcDKcA4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 2, 2009",
+        "location": "Montreal",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "53ff039d": [
+      {
+        "videoId": "ZJ32nSweT08",
+        "url": "https://www.youtube.com/watch?v=ZJ32nSweT08",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ZJ32nSweT08/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 7, 2009",
+        "location": "Philadelphia, Pennsylvania",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "73d5ead9": [
+      {
+        "videoId": "c6IHfL-QL9M",
+        "url": "https://www.youtube.com/watch?v=c6IHfL-QL9M",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/c6IHfL-QL9M/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 11, 2009",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "GIMEKdwvOL8",
+        "url": "https://www.youtube.com/watch?v=GIMEKdwvOL8",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/GIMEKdwvOL8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 11, 2009",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "73df2e15": [
+      {
+        "videoId": "XaF83oB7GLw",
+        "url": "https://www.youtube.com/watch?v=XaF83oB7GLw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/XaF83oB7GLw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 14, 2009",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "13e35925": [
+      {
+        "videoId": "-AFfgQ7kbRs",
+        "url": "https://www.youtube.com/watch?v=-AFfgQ7kbRs",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/-AFfgQ7kbRs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 16, 2009",
+        "location": "Toronto",
+        "partialTracklist": false,
+        "trackCount": 7
+      }
+    ],
+    "5b51c390": [
+      {
+        "videoId": "ChXvVj-ADxc",
+        "url": "https://www.youtube.com/watch?v=ChXvVj-ADxc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ChXvVj-ADxc/hqdefault.jpg",
+        "tags": [
+          "FM Simulcast"
+        ],
+        "dateDisplay": "May 27, 2009",
+        "location": null,
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "2bd1482a": [
+      {
+        "videoId": "9fpuCIeAhz8",
+        "url": "https://www.youtube.com/watch?v=9fpuCIeAhz8",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/9fpuCIeAhz8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 29, 2009",
+        "location": "Detroit, Michigan",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "4bd1b36e": [
+      {
+        "videoId": "ItkkLZTt9JA",
+        "url": "https://www.youtube.com/watch?v=ItkkLZTt9JA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/ItkkLZTt9JA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 30, 2009",
+        "location": "Detroit, Michigan",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bd883e4": [
+      {
+        "videoId": "3y0cc95ePZY",
+        "url": "https://www.youtube.com/watch?v=3y0cc95ePZY",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/3y0cc95ePZY/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "May 31, 2009",
+        "location": "Cleveland, Ohio",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3cee193": [
+      {
+        "videoId": "3fqdCC8DlzQ",
+        "url": "https://www.youtube.com/watch?v=3fqdCC8DlzQ",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/3fqdCC8DlzQ/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 20, 2009",
+        "location": "Victoria, BC",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "5bd1a380": [
+      {
+        "videoId": "Xoo6oDmgw1g",
+        "url": "https://www.youtube.com/watch?v=Xoo6oDmgw1g",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Xoo6oDmgw1g/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 22, 2009",
+        "location": "Vancouver, BC",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "23d784af": [
+      {
+        "videoId": "TDC5-zu1fCI",
+        "url": "https://www.youtube.com/watch?v=TDC5-zu1fCI",
+        "title": "The Tragically HipPt. 1",
+        "thumbnail": "https://i.ytimg.com/vi/TDC5-zu1fCI/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Aug 8, 2009",
+        "location": "Abbotsford",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "bd781a6": [
+      {
+        "videoId": "w30yJb0hfHk",
+        "url": "https://www.youtube.com/watch?v=w30yJb0hfHk",
+        "title": "The Tragically Hip - (Second Set)",
+        "thumbnail": "https://i.ytimg.com/vi/w30yJb0hfHk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 26, 2009",
+        "location": "Ottawa",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "T_-5IKHiCNE",
+        "url": "https://www.youtube.com/watch?v=T_-5IKHiCNE",
+        "title": "The Tragically Hip - (First Set)",
+        "thumbnail": "https://i.ytimg.com/vi/T_-5IKHiCNE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 26, 2009",
+        "location": "Ottawa",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "7bd78270": [
+      {
+        "videoId": "D1tAqxjmMpk",
+        "url": "https://www.youtube.com/watch?v=D1tAqxjmMpk",
+        "title": "The Tragically Hip - (Second Set)",
+        "thumbnail": "https://i.ytimg.com/vi/D1tAqxjmMpk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 28, 2009",
+        "location": null,
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "leAM8l3wnJI",
+        "url": "https://www.youtube.com/watch?v=leAM8l3wnJI",
+        "title": "The Tragically Hip - (First Set)",
+        "thumbnail": "https://i.ytimg.com/vi/leAM8l3wnJI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 28, 2009",
+        "location": "Ottawa",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "6bd4b2e2": [
+      {
+        "videoId": "plzgKV05j7c",
+        "url": "https://www.youtube.com/watch?v=plzgKV05j7c",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/plzgKV05j7c/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 30, 2009",
+        "location": "Hamilton",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "53d7ff1d": [
+      {
+        "videoId": "vnK6GWRwySE",
+        "url": "https://www.youtube.com/watch?v=vnK6GWRwySE",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/vnK6GWRwySE/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 2, 2009",
+        "location": "Hamilton",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "73fef231": [
+      {
+        "videoId": "IIlSgzcsb_w",
+        "url": "https://www.youtube.com/watch?v=IIlSgzcsb_w",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/IIlSgzcsb_w/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 3, 2009",
+        "location": "Hamilton",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "43ff0323": [
+      {
+        "videoId": "e9K03Ss5_Rc",
+        "url": "https://www.youtube.com/watch?v=e9K03Ss5_Rc",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/e9K03Ss5_Rc/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Oct 25, 2009",
+        "location": "Austin, Texas",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "3d73523": [
+      {
+        "videoId": "rZRZXzgYmqw",
+        "url": "https://www.youtube.com/watch?v=rZRZXzgYmqw",
+        "title": "The Tragically Hip - (Second Set)",
+        "thumbnail": "https://i.ytimg.com/vi/rZRZXzgYmqw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 7, 2009",
+        "location": "Syracuse, New York",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "sHXAcOzF3wg",
+        "url": "https://www.youtube.com/watch?v=sHXAcOzF3wg",
+        "title": "The Tragically Hip - (First Set)",
+        "thumbnail": "https://i.ytimg.com/vi/sHXAcOzF3wg/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 7, 2009",
+        "location": "Syracuse, New York",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "23ff0467": [
+      {
+        "videoId": "wXEVwJCV0D8",
+        "url": "https://www.youtube.com/watch?v=wXEVwJCV0D8",
+        "title": "The Tragically Hip - (Second Set)",
+        "thumbnail": "https://i.ytimg.com/vi/wXEVwJCV0D8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 2, 2009",
+        "location": "Manchester",
+        "partialTracklist": false,
+        "trackCount": 6
+      }
+    ],
+    "4bd71b92": [
+      {
+        "videoId": "kJ_pIvuRguk",
+        "url": "https://www.youtube.com/watch?v=kJ_pIvuRguk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kJ_pIvuRguk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 3, 2009",
+        "location": "Glasgow, Scotland",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "33ff0461": [
+      {
+        "videoId": "zoiAdTWl0Iw",
+        "url": "https://www.youtube.com/watch?v=zoiAdTWl0Iw",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/zoiAdTWl0Iw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 4, 2009",
+        "location": "Dublin, Ireland",
+        "partialTracklist": false,
+        "trackCount": 6
+      },
+      {
+        "videoId": "4yOtjy8wpN8",
+        "url": "https://www.youtube.com/watch?v=4yOtjy8wpN8",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/4yOtjy8wpN8/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 4, 2009",
+        "location": "Dublin, Ireland",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "3bd358fc": [
+      {
+        "videoId": "ABJ34-bQVH4",
+        "url": "https://www.youtube.com/watch?v=ABJ34-bQVH4",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/ABJ34-bQVH4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 7, 2011",
+        "location": "Winnipeg",
+        "partialTracklist": false,
+        "trackCount": 3
+      },
+      {
+        "videoId": "cvMc1fsEiFM",
+        "url": "https://www.youtube.com/watch?v=cvMc1fsEiFM",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/cvMc1fsEiFM/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 7, 2011",
+        "location": "Winnipeg",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "53e08fad": [
+      {
+        "videoId": "c2w5C0ftJeA",
+        "url": "https://www.youtube.com/watch?v=c2w5C0ftJeA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/c2w5C0ftJeA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 30, 2012",
+        "location": "Kensington Market, Toronto",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bdab9c4": [
+      {
+        "videoId": "Nkg_-Bclbx4",
+        "url": "https://www.youtube.com/watch?v=Nkg_-Bclbx4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Nkg_-Bclbx4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 2, 2012",
+        "location": "Cleveland, Ohio",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "13da39fd": [
+      {
+        "videoId": "i2WJvEW_KcU",
+        "url": "https://www.youtube.com/watch?v=i2WJvEW_KcU",
+        "title": "The Tragically Hip - (Part 2)",
+        "thumbnail": "https://i.ytimg.com/vi/i2WJvEW_KcU/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 28, 2012",
+        "location": "Detroit",
+        "partialTracklist": false,
+        "trackCount": 5
+      },
+      {
+        "videoId": "oZJqu4ddPms",
+        "url": "https://www.youtube.com/watch?v=oZJqu4ddPms",
+        "title": "The Tragically Hip - (Part 1)",
+        "thumbnail": "https://i.ytimg.com/vi/oZJqu4ddPms/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 28, 2012",
+        "location": "Detroit",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "6bda22de": [
+      {
+        "videoId": "OGmpMaflR3g",
+        "url": "https://www.youtube.com/watch?v=OGmpMaflR3g",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/OGmpMaflR3g/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Dec 1, 2012",
+        "location": "Fargo, North Dakota",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "bdbe122": [
+      {
+        "videoId": "exDW1P5kwb0",
+        "url": "https://www.youtube.com/watch?v=exDW1P5kwb0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/exDW1P5kwb0/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 1, 2013",
+        "location": "Moncton, New Brunswick",
+        "partialTracklist": false,
+        "trackCount": 5
+      }
+    ],
+    "1bdbe1c4": [
+      {
+        "videoId": "MfVQgE9fDEs",
+        "url": "https://www.youtube.com/watch?v=MfVQgE9fDEs",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/MfVQgE9fDEs/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 2, 2013",
+        "location": "Halifax, Nova Scotia",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ],
+    "1bdb3df4": [
+      {
+        "videoId": "Ftkxg39bpAI",
+        "url": "https://www.youtube.com/watch?v=Ftkxg39bpAI",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/Ftkxg39bpAI/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 14, 2013",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "7bd90a5c": [
+      {
+        "videoId": "dFeCiLZH49g",
+        "url": "https://www.youtube.com/watch?v=dFeCiLZH49g",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/dFeCiLZH49g/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 29, 2013",
+        "location": "Amsterdam, Holland",
+        "partialTracklist": false,
+        "trackCount": 3
+      }
+    ],
+    "23f4f8db": [
+      {
+        "videoId": "kKwxtqwLWUA",
+        "url": "https://www.youtube.com/watch?v=kKwxtqwLWUA",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/kKwxtqwLWUA/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Sep 21, 2015",
+        "location": "Minneapolis, Minnesota",
+        "partialTracklist": false,
+        "trackCount": 4
+      }
+    ]
+  },
+  "byVideo": {
+    "dfRV9k_Ibpg": {
+      "showId": "53c4e3b9",
+      "isoDate": "1985-11-09",
+      "venue": "Copper Penny Restaurant",
+      "city": "Kingston",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1985/copper-penny-restaurant-kingston-on-canada-53c4e3b9.html"
+    },
+    "lVWDixvoCjM": {
+      "showId": "53c4e3b9",
+      "isoDate": "1985-11-09",
+      "venue": "Copper Penny Restaurant",
+      "city": "Kingston",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1985/copper-penny-restaurant-kingston-on-canada-53c4e3b9.html"
+    },
+    "y-aJeGxrbIs": {
+      "showId": "63fe0a1b",
+      "isoDate": "1987-07-02",
+      "venue": "El Mocambo",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1987/el-mocambo-toronto-on-canada-63fe0a1b.html"
+    },
+    "ywf6iR9qMOM": {
+      "showId": "63fe0a1b",
+      "isoDate": "1987-07-02",
+      "venue": "El Mocambo",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1987/el-mocambo-toronto-on-canada-63fe0a1b.html"
+    },
+    "CkggbIHyYsY": {
+      "showId": "4bc4e3aa",
+      "isoDate": "1988-03-02",
+      "venue": "Grand Central",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/grand-central-ottawa-on-canada-4bc4e3aa.html"
+    },
+    "cLajii3V6rI": {
+      "showId": "6bcf82d2",
+      "isoDate": "1988-03-03",
+      "venue": "Call the Office",
+      "city": "London",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/call-the-office-london-on-canada-6bcf82d2.html"
+    },
+    "-rRWCcZx4_8": {
+      "showId": "6bc4da96",
+      "isoDate": "1988-07-15",
+      "venue": "Horseshoe Tavern",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/horseshoe-tavern-toronto-on-canada-6bc4da96.html"
+    },
+    "T7e8HxPx1E0": {
+      "showId": "2bfe0402",
+      "isoDate": "1989-11-02",
+      "venue": "Mantra Eastern Studios",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/mantra-eastern-studios-toronto-on-canada-2bfe0402.html"
+    },
+    "nDYqbgFcQ5k": {
+      "showId": "3c4d55b",
+      "isoDate": "1989-11-30",
+      "venue": "The Spectrum",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/the-spectrum-toronto-on-canada-3c4d55b.html"
+    },
+    "IWUL_JGP6Nk": {
+      "showId": "6bfc768e",
+      "isoDate": "1990-02-23",
+      "venue": null,
+      "city": "London",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/unknown-venue-london-on-canada-6bfc768e.html"
+    },
+    "ZQe0JiK4wsY": {
+      "showId": "33fe0405",
+      "isoDate": "1990-06-22",
+      "venue": "Ontario Place Forum",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/ontario-place-forum-toronto-on-canada-33fe0405.html"
+    },
+    "MoknzVWstac": {
+      "showId": "73cf82d1",
+      "isoDate": "1990-11-13",
+      "venue": "Nighttown",
+      "city": "Rotterdam",
+      "state": "11",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/nighttown-rotterdam-netherlands-73cf82d1.html"
+    },
+    "iNy_m9Xxkhk": {
+      "showId": "bfcd9ca",
+      "isoDate": "1991-03-01",
+      "venue": "The Town Pump",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Road Apples",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1991/the-town-pump-vancouver-bc-canada-bfcd9ca.html"
+    },
+    "s_KGo8H7SN4": {
+      "showId": "7bcf82d0",
+      "isoDate": "1991-04-20",
+      "venue": "Metro",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Road Apples",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1991/metro-chicago-il-7bcf82d0.html"
+    },
+    "j2ZrR41UkqU": {
+      "showId": "33c6b009",
+      "isoDate": "1991-12-31",
+      "venue": "Congress Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Road Apples",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1991/congress-centre-ottawa-on-canada-33c6b009.html"
+    },
+    "ePgv1GJ3VWk": {
+      "showId": "3cc3d17",
+      "isoDate": "1992-07-01",
+      "venue": "Thunderbird Stadium",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1992/thunderbird-stadium-vancouver-bc-canada-3cc3d17.html"
+    },
+    "tbb9IvuEyHo": {
+      "showId": "3bfe0484",
+      "isoDate": "1992-12-09",
+      "venue": "LOGO",
+      "city": "Hamburg",
+      "state": "04",
+      "country": "DE",
+      "countryName": "Germany",
+      "tour": "Fully Completely Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1992/logo-hamburg-germany-3bfe0484.html"
+    },
+    "EsPot70GktU": {
+      "showId": "3bcf4090",
+      "isoDate": "1993-01-14",
+      "venue": "CBGB",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Fully Completely Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/cbgb-new-york-ny-3bcf4090.html"
+    },
+    "c63nI5_FVv8": {
+      "showId": "6bcc2eee",
+      "isoDate": "1993-02-06",
+      "venue": "Leidsekade Live",
+      "city": "Hilversum",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/leidsekade-live-hilversum-netherlands-6bcc2eee.html"
+    },
+    "3oWZ7onlNJg": {
+      "showId": "73cc2eed",
+      "isoDate": "1993-02-09",
+      "venue": "Batschkapp",
+      "city": "Frankfurt",
+      "state": "05",
+      "country": "DE",
+      "countryName": "Germany",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/batschkapp-frankfurt-germany-73cc2eed.html"
+    },
+    "3blc4ivDf3Q": {
+      "showId": "73cc2eed",
+      "isoDate": "1993-02-09",
+      "venue": "Batschkapp",
+      "city": "Frankfurt",
+      "state": "05",
+      "country": "DE",
+      "countryName": "Germany",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/batschkapp-frankfurt-germany-73cc2eed.html"
+    },
+    "nUrcmqlD5UI": {
+      "showId": "43fe07cb",
+      "isoDate": "1993-04-26",
+      "venue": "The Roxy",
+      "city": "West Hollywood",
+      "state": "CA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/the-roxy-west-hollywood-ca-43fe07cb.html"
+    },
+    "2i_i0C-7k9E": {
+      "showId": "43fe07cb",
+      "isoDate": "1993-04-26",
+      "venue": "The Roxy",
+      "city": "West Hollywood",
+      "state": "CA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/the-roxy-west-hollywood-ca-43fe07cb.html"
+    },
+    "gqp7k75-zME": {
+      "showId": "2bfe0052",
+      "isoDate": "1993-06-20",
+      "venue": "Recreatiegebied Spaarnwoude",
+      "city": "Spaarnwoude",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/recreatiegebied-spaarnwoude-spaarnwoude-netherlands-2bfe0052.html"
+    },
+    "DM4KPa1D_yI": {
+      "showId": "33fe0085",
+      "isoDate": "1994-08-08",
+      "venue": "Metropolis",
+      "city": "Harrisburg",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/metropolis-harrisburg-pa-33fe0085.html"
+    },
+    "8DNBIQdvZrY": {
+      "showId": "5bfe037c",
+      "isoDate": "1994-10-07",
+      "venue": "Roseland Theater",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/roseland-theater-portland-or-5bfe037c.html"
+    },
+    "Ge2a-gvl3HU": {
+      "showId": "53fe0369",
+      "isoDate": "1994-10-16",
+      "venue": "El Rey Theater",
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/el-rey-theater-albuquerque-nm-53fe0369.html"
+    },
+    "-w6oidsszjc": {
+      "showId": "7bfe0210",
+      "isoDate": "1994-11-10",
+      "venue": "Orpheum Theatre",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/orpheum-theatre-boston-ma-7bfe0210.html"
+    },
+    "w1UnjTl2mCg": {
+      "showId": "7bcf82c0",
+      "isoDate": "1994-12-07",
+      "venue": "Gino",
+      "city": "Stockholm",
+      "state": "26",
+      "country": "SE",
+      "countryName": "Sweden",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/gino-stockholm-sweden-7bcf82c0.html"
+    },
+    "obOiLUDLZkE": {
+      "showId": "bd9e1e6",
+      "isoDate": "1995-02-07",
+      "venue": "Ottawa Civic Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Day For Night",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/ottawa-civic-centre-ottawa-on-canada-bd9e1e6.html"
+    },
+    "sjRZMgmDa3I": {
+      "showId": "7bcf82a8",
+      "isoDate": "1995-03-28",
+      "venue": "Ranch Bowl",
+      "city": "Omaha",
+      "state": "NE",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Day For Night",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/ranch-bowl-omaha-ne-7bcf82a8.html"
+    },
+    "0vUGydQeYuU": {
+      "showId": "1bdf2568",
+      "isoDate": "1995-07-15",
+      "venue": "Rocky Mountain Ranch",
+      "city": "High River",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Another Roadside Attraction 1995",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/rocky-mountain-ranch-high-river-ab-canada-1bdf2568.html"
+    },
+    "Epc5KWhQGaE": {
+      "showId": "6bfe7202",
+      "isoDate": "1995-08-12",
+      "venue": "Trees",
+      "city": "Dallas",
+      "state": "TX",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Day For Night",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/trees-dallas-tx-6bfe7202.html"
+    },
+    "VeOV0iBfG8o": {
+      "showId": "4bcf435e",
+      "isoDate": "1995-10-28",
+      "venue": "Irving Plaza",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/irving-plaza-new-york-ny-4bcf435e.html"
+    },
+    "F8KP7_TRBA4": {
+      "showId": "63ce1a2f",
+      "isoDate": "1996-05-18",
+      "venue": "Blossom Music Center",
+      "city": "Cuyahoga Falls",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/blossom-music-center-cuyahoga-falls-oh-63ce1a2f.html"
+    },
+    "2LEZW_MbVeA": {
+      "showId": "5bfcf780",
+      "isoDate": "1996-05-29",
+      "venue": "9:30 Club",
+      "city": "Washington",
+      "state": "DC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/930-club-washington-dc-5bfcf780.html"
+    },
+    "tBZ8kVmdf-0": {
+      "showId": "5bfcf780",
+      "isoDate": "1996-05-29",
+      "venue": "9:30 Club",
+      "city": "Washington",
+      "state": "DC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/930-club-washington-dc-5bfcf780.html"
+    },
+    "IVjNb5_sjpg": {
+      "showId": "4bcf431a",
+      "isoDate": "1996-06-01",
+      "venue": "Irving Plaza",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/irving-plaza-new-york-ny-4bcf431a.html"
+    },
+    "amsu5HW0shY": {
+      "showId": "4bcf431a",
+      "isoDate": "1996-06-01",
+      "venue": "Irving Plaza",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/irving-plaza-new-york-ny-4bcf431a.html"
+    },
+    "pBxql0J-05k": {
+      "showId": "3cc99cb",
+      "isoDate": "1996-06-21",
+      "venue": "Deep Ellum Live",
+      "city": "Dallas",
+      "state": "TX",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/deep-ellum-live-dallas-tx-3cc99cb.html"
+    },
+    "ZXruKYc2JRo": {
+      "showId": "4bfcf7f6",
+      "isoDate": "1996-07-20",
+      "venue": "Fox Theatre",
+      "city": "Boulder",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/fox-theatre-boulder-co-4bfcf7f6.html"
+    },
+    "onUnp8QymtM": {
+      "showId": "b86e94a",
+      "isoDate": "1996-10-06",
+      "venue": "Memorial Auditorium",
+      "city": "Burlington",
+      "state": "VT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Trouble at the Henhouse",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/memorial-auditorium-burlington-vt-b86e94a.html"
+    },
+    "TeKAwnWWoXQ": {
+      "showId": "2bce9c52",
+      "isoDate": "1996-11-13",
+      "venue": "Edmonton Coliseum",
+      "city": "Edmonton",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Trouble at the Henhouse",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/edmonton-coliseum-edmonton-ab-canada-2bce9c52.html"
+    },
+    "JmTCaDowlO8": {
+      "showId": "33d7180d",
+      "isoDate": "1996-11-26",
+      "venue": "Marine Midland Arena",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/marine-midland-arena-buffalo-ny-33d7180d.html"
+    },
+    "KSUEWWzQIu4": {
+      "showId": "33d7180d",
+      "isoDate": "1996-11-26",
+      "venue": "Marine Midland Arena",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/marine-midland-arena-buffalo-ny-33d7180d.html"
+    },
+    "mcdEeo7aTAs": {
+      "showId": "33d7180d",
+      "isoDate": "1996-11-26",
+      "venue": "Marine Midland Arena",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/marine-midland-arena-buffalo-ny-33d7180d.html"
+    },
+    "Qm1GzHRMY4M": {
+      "showId": "1bfe1d44",
+      "isoDate": "1996-11-29",
+      "venue": "Corel Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Trouble at the Henhouse",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/corel-centre-ottawa-on-canada-1bfe1d44.html"
+    },
+    "90E9_-3E8nM": {
+      "showId": "7bc61238",
+      "isoDate": "1996-12-09",
+      "venue": "Centre Molson",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Trouble at the Henhouse",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/centre-molson-montreal-qc-canada-7bc61238.html"
+    },
+    "eHawgNlJRaI": {
+      "showId": "7bc61238",
+      "isoDate": "1996-12-09",
+      "venue": "Centre Molson",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Trouble at the Henhouse",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/centre-molson-montreal-qc-canada-7bc61238.html"
+    },
+    "EzjMdL0YNw8": {
+      "showId": "5bfe7330",
+      "isoDate": "1997-05-10",
+      "venue": "De Oosterpoort",
+      "city": "Groningen",
+      "state": "04",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/de-oosterpoort-groningen-netherlands-5bfe7330.html"
+    },
+    "dChsO74VKGQ": {
+      "showId": "63d952cf",
+      "isoDate": "1997-05-11",
+      "venue": "Tivoli",
+      "city": "Utrecht",
+      "state": "09",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/tivoli-utrecht-netherlands-63d952cf.html"
+    },
+    "2tIA-PVmhYA": {
+      "showId": "53fe7339",
+      "isoDate": "1997-06-09",
+      "venue": "The Concert Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/the-concert-hall-toronto-on-canada-53fe7339.html"
+    },
+    "qFCPnTpi_pk": {
+      "showId": "53fe7339",
+      "isoDate": "1997-06-09",
+      "venue": "The Concert Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/the-concert-hall-toronto-on-canada-53fe7339.html"
+    },
+    "YRHj61YWWMI": {
+      "showId": "23cf40f7",
+      "isoDate": "1998-07-22",
+      "venue": "Wetlands Preserve",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/wetlands-preserve-new-york-ny-23cf40f7.html"
+    },
+    "IzsSPMZqmK4": {
+      "showId": "73cf8291",
+      "isoDate": "1998-07-24",
+      "venue": "Wetlands Preserve",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/wetlands-preserve-new-york-ny-73cf8291.html"
+    },
+    "1jmEjGV4t6A": {
+      "showId": "2bffc88a",
+      "isoDate": "1998-07-30",
+      "venue": "Transmission Theater",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/transmission-theater-san-francisco-ca-2bffc88a.html"
+    },
+    "S6M5VBfBYa4": {
+      "showId": "13f641f9",
+      "isoDate": "1998-08-01",
+      "venue": "Buttermilk",
+      "city": "Aspen",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/buttermilk-aspen-co-13f641f9.html"
+    },
+    "VNVb_u8PdLQ": {
+      "showId": "23ffc893",
+      "isoDate": "1998-08-03",
+      "venue": "Martyrs'",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/martyrs-chicago-il-23ffc893.html"
+    },
+    "cbSaa6no-8Q": {
+      "showId": "73d952b9",
+      "isoDate": "1998-08-10",
+      "venue": "Bill's Bar",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/bills-bar-boston-ma-73d952b9.html"
+    },
+    "kGjurbVPC-I": {
+      "showId": "7bd952b8",
+      "isoDate": "1998-08-11",
+      "venue": "Bill's Bar",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/bills-bar-boston-ma-7bd952b8.html"
+    },
+    "u_u_R_mJTE4": {
+      "showId": "63d952bf",
+      "isoDate": "1998-08-12",
+      "venue": "Bill's Bar",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/bills-bar-boston-ma-63d952bf.html"
+    },
+    "P5BmXlyG6UI": {
+      "showId": "6bd952be",
+      "isoDate": "1998-08-13",
+      "venue": "Bill's Bar",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/bills-bar-boston-ma-6bd952be.html"
+    },
+    "0RzXzfUmyW8": {
+      "showId": "7bd59610",
+      "isoDate": "1998-08-22",
+      "venue": "Toledo Zoo Amphitheater",
+      "city": "Toledo",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/toledo-zoo-amphitheater-toledo-oh-7bd59610.html"
+    },
+    "XOoMlm9I6kc": {
+      "showId": "7bc936ec",
+      "isoDate": "1998-08-27",
+      "venue": "Hampton Beach Casino Ballroom",
+      "city": "Hampton Beach",
+      "state": "NH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/hampton-beach-casino-ballroom-hampton-beach-nh-7bc936ec.html"
+    },
+    "hzlxQj7aZYM": {
+      "showId": "3bffc8cc",
+      "isoDate": "1998-08-28",
+      "venue": "State Theatre",
+      "city": "Portland",
+      "state": "ME",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/state-theatre-portland-me-3bffc8cc.html"
+    },
+    "VmUSpl0uAbs": {
+      "showId": "23ffc843",
+      "isoDate": "1998-10-02",
+      "venue": "Metropol",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/metropol-pittsburgh-pa-23ffc843.html"
+    },
+    "bZetTMUlnvs": {
+      "showId": "3bd718ec",
+      "isoDate": "1998-10-08",
+      "venue": "Dome Arena",
+      "city": "Henrietta",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/dome-arena-henrietta-ny-3bd718ec.html"
+    },
+    "Tz9QBiUBqvk": {
+      "showId": "3bffc86c",
+      "isoDate": "1998-10-21",
+      "venue": "Cajun House",
+      "city": "Scottsdale",
+      "state": "AZ",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/cajun-house-scottsdale-az-3bffc86c.html"
+    },
+    "UGTyrNGTUVE": {
+      "showId": "3bffc868",
+      "isoDate": "1998-10-22",
+      "venue": "Gotham New West",
+      "city": "Tucson",
+      "state": "AZ",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/gotham-new-west-tucson-az-3bffc868.html"
+    },
+    "X2DH4HVydaw": {
+      "showId": "33ffc879",
+      "isoDate": "1998-10-31",
+      "venue": "The Roxy",
+      "city": "Atlanta",
+      "state": "GA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/the-roxy-atlanta-ga-33ffc879.html"
+    },
+    "lA5klOhtg0M": {
+      "showId": "33ffc879",
+      "isoDate": "1998-10-31",
+      "venue": "The Roxy",
+      "city": "Atlanta",
+      "state": "GA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/the-roxy-atlanta-ga-33ffc879.html"
+    },
+    "DSXQKes1T8w": {
+      "showId": "13ffc985",
+      "isoDate": "1998-11-02",
+      "venue": "40 Watt Club",
+      "city": "Athens",
+      "state": "GA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/40-watt-club-athens-ga-13ffc985.html"
+    },
+    "iBMm9Dwymy4": {
+      "showId": "bffc98e",
+      "isoDate": "1998-11-16",
+      "venue": "Ziggy's",
+      "city": "Winston-Salem",
+      "state": "NC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/ziggys-winston-salem-nc-bffc98e.html"
+    },
+    "CXfaw7h1cao": {
+      "showId": "73dbd205",
+      "isoDate": "1998-11-28",
+      "venue": "Hammerstein Ballroom",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/hammerstein-ballroom-new-york-ny-73dbd205.html"
+    },
+    "92VW91_b4_w": {
+      "showId": "6bd16a5a",
+      "isoDate": "1998-12-04",
+      "venue": "Webster Theater",
+      "city": "Hartford",
+      "state": "CT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/webster-theater-hartford-ct-6bd16a5a.html"
+    },
+    "5KFeXwQarz4": {
+      "showId": "1b9c9994",
+      "isoDate": "1998-12-05",
+      "venue": "Orpheum Theatre",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/orpheum-theatre-boston-ma-1b9c9994.html"
+    },
+    "kYc8yf5e-fI": {
+      "showId": "6bc61236",
+      "isoDate": "1999-02-05",
+      "venue": "Centre Molson",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/centre-molson-montreal-qc-canada-6bc61236.html"
+    },
+    "FNfspSHURm0": {
+      "showId": "2bdd649e",
+      "isoDate": "1999-02-06",
+      "venue": "Colisée de Québec",
+      "city": "Quebec City",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/colisee-de-quebec-quebec-city-qc-canada-2bdd649e.html"
+    },
+    "P6n8y5fNQFk": {
+      "showId": "73cc3635",
+      "isoDate": "1999-02-11",
+      "venue": "Overture Sound Studio",
+      "city": "Novi",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/overture-sound-studio-novi-mi-73cc3635.html"
+    },
+    "88222wwuK8E": {
+      "showId": "73ff1235",
+      "isoDate": "1999-05-08",
+      "venue": "I.C. Light Amphitheatre",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/ic-light-amphitheatre-pittsburgh-pa-73ff1235.html"
+    },
+    "kBhYV_JN_5E": {
+      "showId": "63ff1233",
+      "isoDate": "1999-05-18",
+      "venue": "Cat's Cradle",
+      "city": "Carrboro",
+      "state": "NC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/cats-cradle-carrboro-nc-63ff1233.html"
+    },
+    "N102GqWljMs": {
+      "showId": "6bd71676",
+      "isoDate": "1999-05-20",
+      "venue": "Riverfront Park",
+      "city": "Nashville",
+      "state": "TN",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/riverfront-park-nashville-tn-6bd71676.html"
+    },
+    "bzmWv9atl28": {
+      "showId": "13d7d56d",
+      "isoDate": "1999-07-24",
+      "venue": "Griffiss Air Force Base",
+      "city": "Rome",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/griffiss-air-force-base-rome-ny-13d7d56d.html"
+    },
+    "LYCHgiFVnVg": {
+      "showId": "6bd5ead6",
+      "isoDate": "1999-12-31",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/air-canada-centre-toronto-on-canada-6bd5ead6.html"
+    },
+    "VhhZoR1vsOM": {
+      "showId": "4bd7178e",
+      "isoDate": "2000-01-01",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/air-canada-centre-toronto-on-canada-4bd7178e.html"
+    },
+    "aaoGSax_-rc": {
+      "showId": "53ff0b31",
+      "isoDate": "2000-06-13",
+      "venue": "Park West",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/park-west-chicago-il-53ff0b31.html"
+    },
+    "7K4HHwWM3xc": {
+      "showId": "13d0e119",
+      "isoDate": "2000-07-01",
+      "venue": "Central Park SummerStage",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/central-park-summerstage-new-york-ny-13d0e119.html"
+    },
+    "_LbUstaD-L0": {
+      "showId": "3bf604e4",
+      "isoDate": "2000-07-14",
+      "venue": "Nautica Stage",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/nautica-stage-cleveland-oh-3bf604e4.html"
+    },
+    "xJrvv_hMGVo": {
+      "showId": "13dc79d5",
+      "isoDate": "2000-07-15",
+      "venue": "Pine Knob Music Theatre",
+      "city": "Clarkston",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/pine-knob-music-theatre-clarkston-mi-13dc79d5.html"
+    },
+    "3hsmcjGs8Ks": {
+      "showId": "13dc79d5",
+      "isoDate": "2000-07-15",
+      "venue": "Pine Knob Music Theatre",
+      "city": "Clarkston",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/pine-knob-music-theatre-clarkston-mi-13dc79d5.html"
+    },
+    "KuLhB9sHOy8": {
+      "showId": "33ff0c7d",
+      "isoDate": "2000-07-27",
+      "venue": "9:30 Club",
+      "city": "Washington",
+      "state": "DC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/930-club-washington-dc-33ff0c7d.html"
+    },
+    "E9mvVRCmviQ": {
+      "showId": "33ff0c7d",
+      "isoDate": "2000-07-27",
+      "venue": "9:30 Club",
+      "city": "Washington",
+      "state": "DC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/930-club-washington-dc-33ff0c7d.html"
+    },
+    "Pd-znt5OgsA": {
+      "showId": "23c34043",
+      "isoDate": "2000-08-04",
+      "venue": "Webster Theater",
+      "city": "Hartford",
+      "state": "CT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/webster-theater-hartford-ct-23c34043.html"
+    },
+    "0O1BcJ0gBGA": {
+      "showId": "23c34043",
+      "isoDate": "2000-08-04",
+      "venue": "Webster Theater",
+      "city": "Hartford",
+      "state": "CT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/webster-theater-hartford-ct-23c34043.html"
+    },
+    "70y8d-8qYyA": {
+      "showId": "1bff0d88",
+      "isoDate": "2000-08-05",
+      "venue": "Bolton Valley",
+      "city": "Bolton",
+      "state": "VT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/bolton-valley-bolton-vt-1bff0d88.html"
+    },
+    "9n7stBUmjzk": {
+      "showId": "4bd71782",
+      "isoDate": "2000-10-02",
+      "venue": "Auditorium Theatre",
+      "city": "Rochester",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/auditorium-theatre-rochester-ny-4bd71782.html"
+    },
+    "Da6DvLWvm9Q": {
+      "showId": "4bd71782",
+      "isoDate": "2000-10-02",
+      "venue": "Auditorium Theatre",
+      "city": "Rochester",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/auditorium-theatre-rochester-ny-4bd71782.html"
+    },
+    "MC2ZWX-wqwQ": {
+      "showId": "2bc3404e",
+      "isoDate": "2000-10-03",
+      "venue": "Landmark Theatre",
+      "city": "Syracuse",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/landmark-theatre-syracuse-ny-2bc3404e.html"
+    },
+    "26jcWqF0b7Y": {
+      "showId": "2bcf40ea",
+      "isoDate": "2000-10-06",
+      "venue": "The Town Hall",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/the-town-hall-new-york-ny-2bcf40ea.html"
+    },
+    "RTIr8Hp3Bus": {
+      "showId": "3bcf40e4",
+      "isoDate": "2000-10-19",
+      "venue": "Rialto Theatre",
+      "city": "Tucson",
+      "state": "AZ",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/rialto-theatre-tucson-az-3bcf40e4.html"
+    },
+    "9yi-V1KShvM": {
+      "showId": "3bcf40e4",
+      "isoDate": "2000-10-19",
+      "venue": "Rialto Theatre",
+      "city": "Tucson",
+      "state": "AZ",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/rialto-theatre-tucson-az-3bcf40e4.html"
+    },
+    "j8aACbvLKko": {
+      "showId": "1bff0db8",
+      "isoDate": "2000-10-27",
+      "venue": "Aggie Theatre",
+      "city": "Fort Collins",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/aggie-theatre-fort-collins-co-1bff0db8.html"
+    },
+    "qoma0A8ZpRA": {
+      "showId": "3ff0dbb",
+      "isoDate": "2000-10-28",
+      "venue": "Paramount Theatre",
+      "city": "Denver",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/paramount-theatre-denver-co-3ff0dbb.html"
+    },
+    "drN0h7sSL_E": {
+      "showId": "3ff0dbb",
+      "isoDate": "2000-10-28",
+      "venue": "Paramount Theatre",
+      "city": "Denver",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/paramount-theatre-denver-co-3ff0dbb.html"
+    },
+    "VbzSnX_iZto": {
+      "showId": "3ff0dd3",
+      "isoDate": "2000-11-04",
+      "venue": "Aladdin Theater",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/aladdin-theater-portland-or-3ff0dd3.html"
+    },
+    "3lQfdCuC8lM": {
+      "showId": "3ff0dd3",
+      "isoDate": "2000-11-04",
+      "venue": "Aladdin Theater",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/aladdin-theater-portland-or-3ff0dd3.html"
+    },
+    "RCmMS8PdeYQ": {
+      "showId": "bdc79e2",
+      "isoDate": "2000-12-02",
+      "venue": "Cobo Arena",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/cobo-arena-detroit-mi-bdc79e2.html"
+    },
+    "SlUbqm-1Vhw": {
+      "showId": "1bff0d3c",
+      "isoDate": "2000-12-20",
+      "venue": "HSBC Arena",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/hsbc-arena-buffalo-ny-1bff0d3c.html"
+    },
+    "WSoQASOP6kQ": {
+      "showId": "3bc61440",
+      "isoDate": "2000-12-23",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Music @ Work",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/air-canada-centre-toronto-on-canada-3bc61440.html"
+    },
+    "XuEsZ1HcjNU": {
+      "showId": "73d5eae5",
+      "isoDate": "2002-02-20",
+      "venue": "Lee's Palace",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/lees-palace-toronto-on-canada-73d5eae5.html"
+    },
+    "ceRJi1JYYlE": {
+      "showId": "63ff0a53",
+      "isoDate": "2002-06-12",
+      "venue": "Club 279",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/club-279-toronto-on-canada-63ff0a53.html"
+    },
+    "YpDc7LqcpG0": {
+      "showId": "73ff0a59",
+      "isoDate": "2002-06-13",
+      "venue": "Audio Magic Studios",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/audio-magic-studios-buffalo-ny-73ff0a59.html"
+    },
+    "Ig8L0XZrP_0": {
+      "showId": "53cf4339",
+      "isoDate": "2002-06-28",
+      "venue": "Irving Plaza",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/irving-plaza-new-york-ny-53cf4339.html"
+    },
+    "HYUFtkgsNRs": {
+      "showId": "73d71669",
+      "isoDate": "2002-07-16",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-chicago-il-73d71669.html"
+    },
+    "sxDGbusPdCQ": {
+      "showId": "5bd7b338",
+      "isoDate": "2002-07-17",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-chicago-il-5bd7b338.html"
+    },
+    "gHJmAP8YoOY": {
+      "showId": "5bfeff1c",
+      "isoDate": "2002-07-18",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-chicago-il-5bfeff1c.html"
+    },
+    "yOqkl4oQJVw": {
+      "showId": "33d14829",
+      "isoDate": "2002-07-19",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-chicago-il-33d14829.html"
+    },
+    "-EM0MBCz_YE": {
+      "showId": "33d14829",
+      "isoDate": "2002-07-19",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-chicago-il-33d14829.html"
+    },
+    "ZBZXlr7dPro": {
+      "showId": "4bfeff12",
+      "isoDate": "2002-08-07",
+      "venue": "Gothic Theatre",
+      "city": "Englewood",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/gothic-theatre-englewood-co-4bfeff12.html"
+    },
+    "m2CDk52SCUE": {
+      "showId": "53cf433d",
+      "isoDate": "2002-08-17",
+      "venue": "The Fillmore",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/the-fillmore-san-francisco-ca-53cf433d.html"
+    },
+    "NUiUbriOxe8": {
+      "showId": "2bcf40d6",
+      "isoDate": "2002-08-23",
+      "venue": "Aladdin Theater",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/aladdin-theater-portland-or-2bcf40d6.html"
+    },
+    "RbSpaApDXCU": {
+      "showId": "3fef947",
+      "isoDate": "2002-09-20",
+      "venue": "Queen Elizabeth Theatre",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/queen-elizabeth-theatre-vancouver-bc-canada-3fef947.html"
+    },
+    "5stux_fFi-0": {
+      "showId": "bfef966",
+      "isoDate": "2002-10-01",
+      "venue": "Centennial Concert Hall",
+      "city": "Winnipeg",
+      "state": "MB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/centennial-concert-hall-winnipeg-mb-canada-bfef966.html"
+    },
+    "fWhWwU5Duzk": {
+      "showId": "43cf4337",
+      "isoDate": "2002-10-05",
+      "venue": "Landmark Theatre",
+      "city": "Syracuse",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/landmark-theatre-syracuse-ny-43cf4337.html"
+    },
+    "_ZNLpG5HzlU": {
+      "showId": "63fefe3b",
+      "isoDate": "2002-10-11",
+      "venue": "Place des Arts",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/place-des-arts-montreal-qc-canada-63fefe3b.html"
+    },
+    "6Hshn4tv-90": {
+      "showId": "63fefe3b",
+      "isoDate": "2002-10-11",
+      "venue": "Place des Arts",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/place-des-arts-montreal-qc-canada-63fefe3b.html"
+    },
+    "SmcDTAmzPfE": {
+      "showId": "7bfefe40",
+      "isoDate": "2002-10-12",
+      "venue": "Place des Arts",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/place-des-arts-montreal-qc-canada-7bfefe40.html"
+    },
+    "tKn1ljM2lW0": {
+      "showId": "7bfefe40",
+      "isoDate": "2002-10-12",
+      "venue": "Place des Arts",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/place-des-arts-montreal-qc-canada-7bfefe40.html"
+    },
+    "L8_8lpmm5VQ": {
+      "showId": "3bc25020",
+      "isoDate": "2002-10-20",
+      "venue": "House of Blues",
+      "city": "Lake Buena Vista",
+      "state": "FL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-lake-buena-vista-fl-3bc25020.html"
+    },
+    "pavfsbTbYF4": {
+      "showId": "bc561b2",
+      "isoDate": "2002-10-23",
+      "venue": "House of Blues",
+      "city": "New Orleans",
+      "state": "LA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/house-of-blues-new-orleans-la-bc561b2.html"
+    },
+    "wBtyqQNsDnA": {
+      "showId": "33ff0c15",
+      "isoDate": "2002-11-09",
+      "venue": "De Oosterpoort",
+      "city": "Groningen",
+      "state": "04",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/de-oosterpoort-groningen-netherlands-33ff0c15.html"
+    },
+    "v6UU8Th7WVU": {
+      "showId": "43db7feb",
+      "isoDate": "2003-09-06",
+      "venue": "Molson Park",
+      "city": "Barrie",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2003/molson-park-barrie-on-canada-43db7feb.html"
+    },
+    "nw-K0_SkyY4": {
+      "showId": "bff0d7a",
+      "isoDate": "2004-06-28",
+      "venue": "Mod Club Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/mod-club-theatre-toronto-on-canada-bff0d7a.html"
+    },
+    "ANTYYnGvyV4": {
+      "showId": "4bce0bca",
+      "isoDate": "2004-06-29",
+      "venue": "Mod Club Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/mod-club-theatre-toronto-on-canada-4bce0bca.html"
+    },
+    "6Cb2lyAOBNg": {
+      "showId": "3d5591f",
+      "isoDate": "2004-07-23",
+      "venue": "Darien Lake Performing Arts Center",
+      "city": "Darien Center",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/darien-lake-performing-arts-center-darien-center-ny-3d5591f.html"
+    },
+    "buS6rOgtXqs": {
+      "showId": "3d5591f",
+      "isoDate": "2004-07-23",
+      "venue": "Darien Lake Performing Arts Center",
+      "city": "Darien Center",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/darien-lake-performing-arts-center-darien-center-ny-3d5591f.html"
+    },
+    "gJ-25zYzXMo": {
+      "showId": "5bfcc76c",
+      "isoDate": "2004-09-19",
+      "venue": "The Odeon",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/the-odeon-cleveland-oh-5bfcc76c.html"
+    },
+    "AkPR_36MepA": {
+      "showId": "bff118a",
+      "isoDate": "2004-10-09",
+      "venue": "Aladdin Theater",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/aladdin-theater-portland-or-bff118a.html"
+    },
+    "OJT-m-H0ulQ": {
+      "showId": "13ff1975",
+      "isoDate": "2004-10-17",
+      "venue": "The Rock Club (Station Square)",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/the-rock-club-station-square-pittsburgh-pa-13ff1975.html"
+    },
+    "qwSiPq2xQYw": {
+      "showId": "5bd24f9c",
+      "isoDate": "2004-10-23",
+      "venue": "Capital Music Hall",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/capital-music-hall-ottawa-on-canada-5bd24f9c.html"
+    },
+    "yn5O_oPFMwQ": {
+      "showId": "23ff2457",
+      "isoDate": "2004-10-30",
+      "venue": "The Orbit Room",
+      "city": "Grand Rapids",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/the-orbit-room-grand-rapids-mi-23ff2457.html"
+    },
+    "pQkfWkupCNE": {
+      "showId": "6bfe9212",
+      "isoDate": "2004-12-04",
+      "venue": "Centre 200",
+      "city": "Sydney",
+      "state": "NS",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/centre-200-sydney-ns-canada-6bfe9212.html"
+    },
+    "1-VZDq9nu64": {
+      "showId": "6bff2ad6",
+      "isoDate": "2006-05-26",
+      "venue": "Commodore Ballroom",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/commodore-ballroom-vancouver-bc-canada-6bff2ad6.html"
+    },
+    "PSOj-1C4dYI": {
+      "showId": "53db8fa1",
+      "isoDate": "2006-06-16",
+      "venue": "Point State Park",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/point-state-park-pittsburgh-pa-53db8fa1.html"
+    },
+    "xVUGmlsTnRI": {
+      "showId": "53f12b15",
+      "isoDate": "2006-06-21",
+      "venue": "The Empire Theatre",
+      "city": "Belleville",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/the-empire-theatre-belleville-on-canada-53f12b15.html"
+    },
+    "_PGRe2k_6qg": {
+      "showId": "3decd4f",
+      "isoDate": "2006-06-23",
+      "venue": "Historic Fort York",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/historic-fort-york-toronto-on-canada-3decd4f.html"
+    },
+    "wof0_r79EjA": {
+      "showId": "33d64489",
+      "isoDate": "2006-06-24",
+      "venue": "Historic Fort York",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/historic-fort-york-toronto-on-canada-33d64489.html"
+    },
+    "0xIy7L9quEo": {
+      "showId": "73cbc699",
+      "isoDate": "2006-07-08",
+      "venue": "Minnewaterpark",
+      "city": "Bruges",
+      "state": "BE.WV",
+      "country": "BE",
+      "countryName": "Belgium",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/minnewaterpark-bruges-belgium-73cbc699.html"
+    },
+    "VPIQTn9lR5k": {
+      "showId": "3bdc2040",
+      "isoDate": "2006-07-09",
+      "venue": "Sportpark Boshoven",
+      "city": "Weert",
+      "state": "05",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/sportpark-boshoven-weert-netherlands-3bdc2040.html"
+    },
+    "WWSSo7l8rIQ": {
+      "showId": "6bd952c2",
+      "isoDate": "2006-07-11",
+      "venue": "Grote Zaal",
+      "city": "Amsterdam",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/grote-zaal-amsterdam-netherlands-6bd952c2.html"
+    },
+    "1LFfqzIb8zQ": {
+      "showId": "3cffd6b",
+      "isoDate": "2006-10-22",
+      "venue": "The Phoenix Concert Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/the-phoenix-concert-theatre-toronto-on-canada-3cffd6b.html"
+    },
+    "FJF-xIuvWjo": {
+      "showId": "1bcffd68",
+      "isoDate": "2006-10-23",
+      "venue": "The Phoenix Concert Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/the-phoenix-concert-theatre-toronto-on-canada-1bcffd68.html"
+    },
+    "w7Vp1VW17G8": {
+      "showId": "3bc570c4",
+      "isoDate": "2006-10-25",
+      "venue": "The Phoenix Concert Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/the-phoenix-concert-theatre-toronto-on-canada-3bc570c4.html"
+    },
+    "s78p9ONlA7A": {
+      "showId": "4bdb7fae",
+      "isoDate": "2006-10-26",
+      "venue": "The Phoenix Concert Theatre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/the-phoenix-concert-theatre-toronto-on-canada-4bdb7fae.html"
+    },
+    "N49syv6HTd4": {
+      "showId": "63c7fe0b",
+      "isoDate": "2006-10-28",
+      "venue": "MacEwan Hall, University of Calgary",
+      "city": "Calgary",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/macewan-hall-university-of-calgary-calgary-ab-canada-63c7fe0b.html"
+    },
+    "XCzyapriKGo": {
+      "showId": "7bc7fe14",
+      "isoDate": "2006-10-29",
+      "venue": "MacEwan Hall, University of Calgary",
+      "city": "Calgary",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/macewan-hall-university-of-calgary-calgary-ab-canada-7bc7fe14.html"
+    },
+    "YXk2TznueTw": {
+      "showId": "3cffd63",
+      "isoDate": "2006-10-30",
+      "venue": "MacEwan Hall, University of Calgary",
+      "city": "Calgary",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/macewan-hall-university-of-calgary-calgary-ab-canada-3cffd63.html"
+    },
+    "cFBoAgYl37I": {
+      "showId": "1bcffd60",
+      "isoDate": "2006-11-01",
+      "venue": "MacEwan Hall, University of Calgary",
+      "city": "Calgary",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/macewan-hall-university-of-calgary-calgary-ab-canada-1bcffd60.html"
+    },
+    "GL-1AiqdSzM": {
+      "showId": "23d748a7",
+      "isoDate": "2006-11-04",
+      "venue": "Commodore Ballroom",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/commodore-ballroom-vancouver-bc-canada-23d748a7.html"
+    },
+    "O-Xz-hQtJ9c": {
+      "showId": "43d33f3f",
+      "isoDate": "2006-11-06",
+      "venue": "Commodore Ballroom",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/commodore-ballroom-vancouver-bc-canada-43d33f3f.html"
+    },
+    "2IPv_b35p3o": {
+      "showId": "bcffd66",
+      "isoDate": "2006-11-07",
+      "venue": "Commodore Ballroom",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/commodore-ballroom-vancouver-bc-canada-bcffd66.html"
+    },
+    "kCeaCsivrOw": {
+      "showId": "13cffd65",
+      "isoDate": "2006-11-09",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/metropolis-montreal-qc-canada-13cffd65.html"
+    },
+    "7ub-6L7DXpk": {
+      "showId": "13cffd65",
+      "isoDate": "2006-11-09",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/metropolis-montreal-qc-canada-13cffd65.html"
+    },
+    "hPSE8VEvNSc": {
+      "showId": "1bcffd64",
+      "isoDate": "2006-11-10",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/metropolis-montreal-qc-canada-1bcffd64.html"
+    },
+    "t5a-W_EHogY": {
+      "showId": "6bff2afe",
+      "isoDate": "2006-12-31",
+      "venue": "House of Blues",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2006/house-of-blues-chicago-il-6bff2afe.html"
+    },
+    "xJCZlJJshOo": {
+      "showId": "23cee043",
+      "isoDate": "2007-01-08",
+      "venue": "Save-On-Foods Memorial Centre",
+      "city": "Victoria",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/save-on-foods-memorial-centre-victoria-bc-canada-23cee043.html"
+    },
+    "8PGCRa3ZzdY": {
+      "showId": "73fef235",
+      "isoDate": "2007-01-25",
+      "venue": "Barrie Molson Centre",
+      "city": "Barrie",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/barrie-molson-centre-barrie-on-canada-73fef235.html"
+    },
+    "TE29Hrgkq7U": {
+      "showId": "6bdcb6ce",
+      "isoDate": "2007-01-27",
+      "venue": "Sudbury Community Arena",
+      "city": "Greater Sudbury",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/sudbury-community-arena-greater-sudbury-on-canada-6bdcb6ce.html"
+    },
+    "1Anro3yzX_Y": {
+      "showId": "53da635d",
+      "isoDate": "2007-02-08",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/air-canada-centre-toronto-on-canada-53da635d.html"
+    },
+    "HbGbt9F5fU0": {
+      "showId": "3bff0474",
+      "isoDate": "2007-03-09",
+      "venue": "Town Ballroom",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/town-ballroom-buffalo-ny-3bff0474.html"
+    },
+    "xVAxaN3kL2I": {
+      "showId": "7be9fee8",
+      "isoDate": "2007-03-10",
+      "venue": "Town Ballroom",
+      "city": "Buffalo",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/town-ballroom-buffalo-ny-7be9fee8.html"
+    },
+    "IfUQmFUWoQ0": {
+      "showId": "3bc7c4a0",
+      "isoDate": "2007-03-15",
+      "venue": "Scout Bar",
+      "city": "Webster",
+      "state": "TX",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/scout-bar-webster-tx-3bc7c4a0.html"
+    },
+    "XFqnVjmNf0Q": {
+      "showId": "63d5baef",
+      "isoDate": "2007-04-13",
+      "venue": "State Theatre",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/state-theatre-detroit-mi-63d5baef.html"
+    },
+    "gItUknAmBtQ": {
+      "showId": "bff05c6",
+      "isoDate": "2007-04-16",
+      "venue": "Higher Ground Music Hall",
+      "city": "South Burlington",
+      "state": "VT",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/higher-ground-music-hall-south-burlington-vt-bff05c6.html"
+    },
+    "SRnplnKR3JU": {
+      "showId": "4bdccf22",
+      "isoDate": "2007-04-20",
+      "venue": "Avalon",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/avalon-boston-ma-4bdccf22.html"
+    },
+    "XyK92mZnwUs": {
+      "showId": "33cf4019",
+      "isoDate": "2007-04-27",
+      "venue": "House of Blues",
+      "city": "Atlantic City",
+      "state": "NJ",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/house-of-blues-atlantic-city-nj-33cf4019.html"
+    },
+    "YVLN2uq7eX8": {
+      "showId": "3ff05df",
+      "isoDate": "2007-05-14",
+      "venue": "First Avenue",
+      "city": "Minneapolis",
+      "state": "MN",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/first-avenue-minneapolis-mn-3ff05df.html"
+    },
+    "vs1nersx1Dk": {
+      "showId": "13d76151",
+      "isoDate": "2007-09-13",
+      "venue": "Halifax Metro Centre",
+      "city": "Halifax",
+      "state": "NS",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/halifax-metro-centre-halifax-ns-canada-13d76151.html"
+    },
+    "rGkIWG-zfbk": {
+      "showId": "735d1675",
+      "isoDate": "2007-09-27",
+      "venue": "NOB radiostudio (2 Meter Sessie)",
+      "city": "Hilversum",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/nob-radiostudio-2-meter-sessie-hilversum-netherlands-735d1675.html"
+    },
+    "LkBUQ83PnfY": {
+      "showId": "63ff0ac3",
+      "isoDate": "2007-10-15",
+      "venue": "Belly Up",
+      "city": "Aspen",
+      "state": "CO",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/belly-up-aspen-co-63ff0ac3.html"
+    },
+    "NnIaXUMAa1A": {
+      "showId": "23f1fcc7",
+      "isoDate": "2007-10-27",
+      "venue": "Orpheum Theatre",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/orpheum-theatre-boston-ma-23f1fcc7.html"
+    },
+    "jFQM62h8qCQ": {
+      "showId": "5bcf4320",
+      "isoDate": "2007-11-01",
+      "venue": "Landmark Theatre",
+      "city": "Syracuse",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/landmark-theatre-syracuse-ny-5bcf4320.html"
+    },
+    "yju8LYWsGLM": {
+      "showId": "bd625ee",
+      "isoDate": "2007-11-02",
+      "venue": "Auditorium Theatre",
+      "city": "Rochester",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/auditorium-theatre-rochester-ny-bd625ee.html"
+    },
+    "Q5_6Dhs8qL8": {
+      "showId": "7bd126d4",
+      "isoDate": "2008-07-03",
+      "venue": "LeBreton Flats Park",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2008/lebreton-flats-park-ottawa-on-canada-7bd126d4.html"
+    },
+    "liQQ7z2IcCw": {
+      "showId": "7bd5eadc",
+      "isoDate": "2009-04-24",
+      "venue": "Danforth Music Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/danforth-music-hall-toronto-on-canada-7bd5eadc.html"
+    },
+    "fl_rd6B7Oww": {
+      "showId": "2bca74f6",
+      "isoDate": "2009-05-01",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/metropolis-montreal-qc-canada-2bca74f6.html"
+    },
+    "ituQLcDKcA4": {
+      "showId": "53cbf3c1",
+      "isoDate": "2009-05-02",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/metropolis-montreal-qc-canada-53cbf3c1.html"
+    },
+    "EUc0Xp5RP_s": {
+      "showId": "53cbf3c1",
+      "isoDate": "2009-05-02",
+      "venue": "Metropolis",
+      "city": "Montreal",
+      "state": "QC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/metropolis-montreal-qc-canada-53cbf3c1.html"
+    },
+    "ZJ32nSweT08": {
+      "showId": "53ff039d",
+      "isoDate": "2009-05-07",
+      "venue": "The Theatre of Living Arts",
+      "city": "Philadelphia",
+      "state": "PA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-theatre-of-living-arts-philadelphia-pa-53ff039d.html"
+    },
+    "GIMEKdwvOL8": {
+      "showId": "73d5ead9",
+      "isoDate": "2009-05-11",
+      "venue": "Massey Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/massey-hall-toronto-on-canada-73d5ead9.html"
+    },
+    "c6IHfL-QL9M": {
+      "showId": "73d5ead9",
+      "isoDate": "2009-05-11",
+      "venue": "Massey Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/massey-hall-toronto-on-canada-73d5ead9.html"
+    },
+    "XaF83oB7GLw": {
+      "showId": "73df2e15",
+      "isoDate": "2009-05-14",
+      "venue": "Massey Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/massey-hall-toronto-on-canada-73df2e15.html"
+    },
+    "-AFfgQ7kbRs": {
+      "showId": "13e35925",
+      "isoDate": "2009-05-16",
+      "venue": "Massey Hall",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/massey-hall-toronto-on-canada-13e35925.html"
+    },
+    "ChXvVj-ADxc": {
+      "showId": "5b51c390",
+      "isoDate": "2009-05-27",
+      "venue": "Music Joint",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/music-joint-chicago-il-5b51c390.html"
+    },
+    "9fpuCIeAhz8": {
+      "showId": "2bd1482a",
+      "isoDate": "2009-05-29",
+      "venue": "The Fillmore Detroit",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-fillmore-detroit-detroit-mi-2bd1482a.html"
+    },
+    "ItkkLZTt9JA": {
+      "showId": "4bd1b36e",
+      "isoDate": "2009-05-30",
+      "venue": "The Fillmore Detroit",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-fillmore-detroit-detroit-mi-4bd1b36e.html"
+    },
+    "3y0cc95ePZY": {
+      "showId": "5bd883e4",
+      "isoDate": "2009-05-31",
+      "venue": "House of Blues",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/house-of-blues-cleveland-oh-5bd883e4.html"
+    },
+    "3fqdCC8DlzQ": {
+      "showId": "3cee193",
+      "isoDate": "2009-06-20",
+      "venue": "Save-On-Foods Memorial Centre",
+      "city": "Victoria",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/save-on-foods-memorial-centre-victoria-bc-canada-3cee193.html"
+    },
+    "Xoo6oDmgw1g": {
+      "showId": "5bd1a380",
+      "isoDate": "2009-06-22",
+      "venue": "The Orpheum",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-orpheum-vancouver-bc-canada-5bd1a380.html"
+    },
+    "TDC5-zu1fCI": {
+      "showId": "23d784af",
+      "isoDate": "2009-08-08",
+      "venue": "Abbotsford Centre",
+      "city": "Abbotsford",
+      "state": "BC",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/abbotsford-centre-abbotsford-bc-canada-23d784af.html"
+    },
+    "w30yJb0hfHk": {
+      "showId": "bd781a6",
+      "isoDate": "2009-09-26",
+      "venue": "Southam Hall, National Arts Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/southam-hall-national-arts-centre-ottawa-on-canada-bd781a6.html"
+    },
+    "T_-5IKHiCNE": {
+      "showId": "bd781a6",
+      "isoDate": "2009-09-26",
+      "venue": "Southam Hall, National Arts Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/southam-hall-national-arts-centre-ottawa-on-canada-bd781a6.html"
+    },
+    "D1tAqxjmMpk": {
+      "showId": "7bd78270",
+      "isoDate": "2009-09-28",
+      "venue": "Southam Hall, National Arts Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/southam-hall-national-arts-centre-ottawa-on-canada-7bd78270.html"
+    },
+    "leAM8l3wnJI": {
+      "showId": "7bd78270",
+      "isoDate": "2009-09-28",
+      "venue": "Southam Hall, National Arts Centre",
+      "city": "Ottawa",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/southam-hall-national-arts-centre-ottawa-on-canada-7bd78270.html"
+    },
+    "plzgKV05j7c": {
+      "showId": "6bd4b2e2",
+      "isoDate": "2009-09-30",
+      "venue": "Hamilton Place Theatre",
+      "city": "Hamilton",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/hamilton-place-theatre-hamilton-on-canada-6bd4b2e2.html"
+    },
+    "vnK6GWRwySE": {
+      "showId": "53d7ff1d",
+      "isoDate": "2009-10-02",
+      "venue": "Hamilton Place Theatre",
+      "city": "Hamilton",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/hamilton-place-theatre-hamilton-on-canada-53d7ff1d.html"
+    },
+    "IIlSgzcsb_w": {
+      "showId": "73fef231",
+      "isoDate": "2009-10-03",
+      "venue": "Hamilton Place Theatre",
+      "city": "Hamilton",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/hamilton-place-theatre-hamilton-on-canada-73fef231.html"
+    },
+    "e9K03Ss5_Rc": {
+      "showId": "43ff0323",
+      "isoDate": "2009-10-25",
+      "venue": "La Zona Rosa",
+      "city": "Austin",
+      "state": "TX",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/la-zona-rosa-austin-tx-43ff0323.html"
+    },
+    "sHXAcOzF3wg": {
+      "showId": "3d73523",
+      "isoDate": "2009-11-07",
+      "venue": "Landmark Theatre",
+      "city": "Syracuse",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/landmark-theatre-syracuse-ny-3d73523.html"
+    },
+    "rZRZXzgYmqw": {
+      "showId": "3d73523",
+      "isoDate": "2009-11-07",
+      "venue": "Landmark Theatre",
+      "city": "Syracuse",
+      "state": "NY",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "We Are The Same",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/landmark-theatre-syracuse-ny-3d73523.html"
+    },
+    "wXEVwJCV0D8": {
+      "showId": "23ff0467",
+      "isoDate": "2009-12-02",
+      "venue": "Manchester Academy 3, University of Manchester Students' Union",
+      "city": "Manchester",
+      "state": "ENG",
+      "country": "GB",
+      "countryName": "United Kingdom",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/manchester-academy-3-university-of-manchester-students-union-manchester-england-23ff0467.html"
+    },
+    "kJ_pIvuRguk": {
+      "showId": "4bd71b92",
+      "isoDate": "2009-12-03",
+      "venue": "The Garage",
+      "city": "Glasgow",
+      "state": "SCT",
+      "country": "GB",
+      "countryName": "United Kingdom",
+      "tour": "We Are The Same (Double set)",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-garage-glasgow-scotland-4bd71b92.html"
+    },
+    "zoiAdTWl0Iw": {
+      "showId": "33ff0461",
+      "isoDate": "2009-12-04",
+      "venue": "Tripod",
+      "city": "Dublin",
+      "state": "07",
+      "country": "IE",
+      "countryName": "Ireland",
+      "tour": "We Are The Same (Double set)",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/tripod-dublin-ireland-33ff0461.html"
+    },
+    "4yOtjy8wpN8": {
+      "showId": "33ff0461",
+      "isoDate": "2009-12-04",
+      "venue": "Tripod",
+      "city": "Dublin",
+      "state": "07",
+      "country": "IE",
+      "countryName": "Ireland",
+      "tour": "We Are The Same (Double set)",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/tripod-dublin-ireland-33ff0461.html"
+    },
+    "cvMc1fsEiFM": {
+      "showId": "3bd358fc",
+      "isoDate": "2011-07-07",
+      "venue": "Shaw Park",
+      "city": "Winnipeg",
+      "state": "MB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/shaw-park-winnipeg-mb-canada-3bd358fc.html"
+    },
+    "ABJ34-bQVH4": {
+      "showId": "3bd358fc",
+      "isoDate": "2011-07-07",
+      "venue": "Shaw Park",
+      "city": "Winnipeg",
+      "state": "MB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/shaw-park-winnipeg-mb-canada-3bd358fc.html"
+    },
+    "c2w5C0ftJeA": {
+      "showId": "53e08fad",
+      "isoDate": "2012-09-30",
+      "venue": "The Supermarket",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2012/the-supermarket-toronto-on-canada-53e08fad.html"
+    },
+    "Nkg_-Bclbx4": {
+      "showId": "1bdab9c4",
+      "isoDate": "2012-11-02",
+      "venue": "House of Blues",
+      "city": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2012/house-of-blues-cleveland-oh-1bdab9c4.html"
+    },
+    "oZJqu4ddPms": {
+      "showId": "13da39fd",
+      "isoDate": "2012-11-28",
+      "venue": "The Fillmore Detroit",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2012/the-fillmore-detroit-detroit-mi-13da39fd.html"
+    },
+    "i2WJvEW_KcU": {
+      "showId": "13da39fd",
+      "isoDate": "2012-11-28",
+      "venue": "The Fillmore Detroit",
+      "city": "Detroit",
+      "state": "MI",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2012/the-fillmore-detroit-detroit-mi-13da39fd.html"
+    },
+    "OGmpMaflR3g": {
+      "showId": "6bda22de",
+      "isoDate": "2012-12-01",
+      "venue": "Fargo Theatre",
+      "city": "Fargo",
+      "state": "ND",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2012/fargo-theatre-fargo-nd-6bda22de.html"
+    },
+    "exDW1P5kwb0": {
+      "showId": "bdbe122",
+      "isoDate": "2013-02-01",
+      "venue": "The Centre at Casino New Brunswick",
+      "city": "Moncton",
+      "state": "NB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/the-centre-at-casino-new-brunswick-moncton-nb-canada-bdbe122.html"
+    },
+    "MfVQgE9fDEs": {
+      "showId": "1bdbe1c4",
+      "isoDate": "2013-02-02",
+      "venue": "Halifax Metro Centre",
+      "city": "Halifax",
+      "state": "NS",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/halifax-metro-centre-halifax-ns-canada-1bdbe1c4.html"
+    },
+    "Ftkxg39bpAI": {
+      "showId": "1bdb3df4",
+      "isoDate": "2013-02-14",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/air-canada-centre-toronto-on-canada-1bdb3df4.html"
+    },
+    "dFeCiLZH49g": {
+      "showId": "7bd90a5c",
+      "isoDate": "2013-06-29",
+      "venue": "Grote Zaal",
+      "city": "Amsterdam",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": "Now For Plan A",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/grote-zaal-amsterdam-netherlands-7bd90a5c.html"
+    },
+    "kKwxtqwLWUA": {
+      "showId": "23f4f8db",
+      "isoDate": "2015-09-21",
+      "venue": "First Avenue",
+      "city": "Minneapolis",
+      "state": "MN",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "Fully and Completely North American Tour 2015",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2015/first-avenue-minneapolis-mn-23f4f8db.html"
+    }
+  }
+}

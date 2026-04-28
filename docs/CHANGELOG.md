@@ -1,5 +1,26 @@
 # Changelog
 
+## v3.6
+**Long Time Running** - April 28, 2026
+- **Cross-archive show ↔ video mapping**: built ISO-date join between Video For New Recruits' 380-video YouTube archive and About This Map's 1,358 shows
+- New build script `scripts/build-show-video-map.js` produces `data/show-videos.json` (bidirectional `byShow` / `byVideo` lookups, deterministic, re-runnable)
+- **226 of 232 ISO-dated videos matched** to **195 unique shows**; 30 of those shows have multiple recordings (SBD + FM simulcast + pro-shot, etc.)
+- 5 ambiguous date matches (multi-show days) auto-resolved by city tiebreaker
+- 148 videos skipped intentionally (101 undated rarities/compilations + 47 year-only) — Tier B fuzzy match deferred
+- **About This Map**: show detail panel now displays a "N YouTube recordings" thumbnail strip when a show has matched video, with primary tag (SBD/FM Simulcast/Pro-Shot/etc.), track count, and partial-tracklist flag
+- **Family Band setlist cards**: same thumbnail strip embedded inline, hidden silently for shows with no match
+- **Video For New Recruits**: each video card now shows a "View on Map →" back-link to the matched show, with venue + city in the aria-label
+- **Hash deep-link**: `tour-map.html#show=<id>` auto-opens that show's detail card and pans the map to its location
+
+---
+
+## v3.5.3
+**Born in the Water — Patch** - April 28, 2026
+- Pre-launch password gate countdown bumped from May 1 to **Monday May 11, 2026 at 8 PM ET** (matches new launch date)
+- Password unchanged: `roadapples`
+
+---
+
 ## v3.5.2
 **Born in the Water** - April 16, 2026
 - Random membersHIP number generator (server-side, Supabase): replaces sequential numbering with a uniformly random integer across 3 to 7 digits, equal odds per digit count, with collision retry
