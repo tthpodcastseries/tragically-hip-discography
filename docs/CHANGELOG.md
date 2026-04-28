@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.6.1
+**Long Time Running — Patch** - April 28, 2026
+- Removed "Leave A Tip" footer button site-wide (was linking to tthpods.kit.com/products/tipsforjd)
+- "Connect with jD" footer button retained
+
+---
+
 ## v3.6
 **Long Time Running** - April 28, 2026
 - **Cross-archive show ↔ video mapping**: built ISO-date join between Video For New Recruits' 380-video YouTube archive and About This Map's 1,358 shows
