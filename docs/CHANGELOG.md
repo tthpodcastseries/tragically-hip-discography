@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.7.1
+**Courage — Patch** - May 8, 2026
+- **Domain migration follow-up**: replaced all hardcoded `compendium.tthpods.com` URLs with `thehiphandbook.tthpods.com` across canonical URLs, og:url, og:image, sitemap.xml, and robots.txt
+- Updated `discography.html` Spotify OAuth redirect URI (requires matching update in the Spotify Developer dashboard)
+- Footer version label bumped to v3.7.1
+- 11 files touched: `404.html`, `discography.html`, `forum-invite.html`, `index.html`, `links.html`, `music-videos.html`, `robots.txt`, `sitemap.xml`, `tour-map.html`, `unplucked-gems.html`, `video-for-new-recruits.html`
+
+---
+
 ## v3.7
 **Courage** - May 8, 2026
 - **Brand rename**: "The Hip Compendium" → **"The Hip Handbook"** site-wide
