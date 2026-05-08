@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.7
+**Courage** - May 8, 2026
+- **Brand rename**: "The Hip Compendium" → **"The Hip Handbook"** site-wide
+- Updated all page titles, og:title, og:site_name, apple-mobile-web-app-title meta tags across 9 HTML files
+- Updated visible header wordmarks on index, discography, links, music-videos, video-for-new-recruits, unplucked-gems
+- Updated launch-gate H1 ("THE HIP HANDBOOK") and member-gate footer label
+- Updated forum-invite copy: "Hip Handbook" body text, "Unlock the Handbook" CTA
+- Updated `manifest.json` PWA `name` and `short_name`
+- Code comments and CSS header updated for consistency
+- Footer version label bumped to v3.7 (Courage)
+- Untouched: `package-lock.json` (internal Netlify Functions package id), the `compendium.tthpods.com` domain (DNS/canonical URL stays put — domain migration is a separate decision)
+
+---
+
 ## v3.6.1
 **Long Time Running — Patch** - April 28, 2026
 - Removed "Leave A Tip" footer button site-wide (was linking to tthpods.kit.com/products/tipsforjd)

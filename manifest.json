@@ -1,8 +1,8 @@
 {
   "lang": "en",
   "categories": ["music", "entertainment"],
-  "name": "The Hip Compendium",
-  "short_name": "Hip Compendium",
+  "name": "The Hip Handbook",
+  "short_name": "Hip Handbook",
   "description": "The complete Tragically Hip discography explorer - albums, streaming, lyrics, setlists, and tour map.",
   "start_url": "/",
   "display": "standalone",

@@ -1,6 +1,6 @@
 // /js/tth-launch-gate.js
 //
-// Pre-launch gate for The Hip Compendium.
+// Pre-launch gate for The Hip Handbook.
 //
 // Behavior:
 //   - Before LAUNCH_TIME: shows a password gate with a live countdown timer.
@@ -37,7 +37,7 @@
 
   var gateHtml = `
 <div id="passGate" style="display:flex;position:fixed;inset:0;z-index:100000;background:#0e0b16;font-family:Poppins,sans-serif;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:20px;box-sizing:border-box;">
-  <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;text-align:center;">THE HIP COMPENDIUM</h1>
+  <h1 style="color:#C8102E;font-size:1.4rem;letter-spacing:0.15em;margin:0;text-align:center;">THE HIP HANDBOOK</h1>
   <p style="color:#aaa;font-size:0.85rem;margin:0;text-align:center;max-width:300px;">This site is in pre-launch. Enter the password to continue.</p>
   <div id="countdown" style="display:flex;gap:18px;margin:8px 0 4px;flex-wrap:wrap;justify-content:center;">
     <div style="text-align:center;"><span id="cdDays" style="color:#C8102E;font-size:1.8rem;font-weight:700;display:block;">--</span><span style="color:#666;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;">Days</span></div>

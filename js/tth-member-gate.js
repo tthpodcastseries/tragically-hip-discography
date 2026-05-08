@@ -1,6 +1,6 @@
 // /js/tth-member-gate.js
 //
-// Member gate for The Hip Compendium.
+// Member gate for The Hip Handbook.
 //
 // Behavior:
 //   - Before any page content renders, checks localStorage for a valid member session.
@@ -215,7 +215,7 @@
     '<div class="mg-card">' +
       '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
       '<div class="mg-eyebrow">Members Only</div>' +
-      '<h1 class="mg-title">Yer <span>Compendium</span></h1>' +
+      '<h1 class="mg-title">Yer <span>Handbook</span></h1>' +
       '<p class="mg-sub">Enter yer first name and membersHIP number to unlock.<br>No number yet? <a href="/forum-invite.html">Grab one here.</a></p>' +
       '<form id="mg-form" novalidate autocomplete="on">' +
         '<div>' +
@@ -229,7 +229,7 @@
         '<div class="mg-err" id="mg-err" role="alert"></div>' +
         '<button id="mg-btn" type="submit">Unlock</button>' +
       '</form>' +
-      '<div class="mg-foot">The Hip Compendium</div>' +
+      '<div class="mg-foot">The Hip Handbook</div>' +
     '</div>';
 
   function mountGate() {
