@@ -14,6 +14,28 @@
 
 ---
 
+## v3.7.4
+**Courage — Patch** - May 12, 2026
+- Restored forum-portal root rewrite: added a host-prefixed rule to `_redirects` so `/` on `forum-portal.tthpods.com` serves `forum-invite.html` (the membersHIP claim flow). The v3.7.3 forum-portal CLI deploy had clobbered a Netlify dashboard redirect; this puts the rule in the repo so it survives future deploys.
+- Footer version label bumped to v3.7.4
+
+---
+
+## v3.7.3
+**Courage — Patch** - May 12, 2026
+- `forum-invite.html` now injects the Plausible script with a hostname-dynamic `data-domain` (`location.hostname`), so the same file attributes pageviews to the matching Plausible site whether served from `thehiphandbook.tthpods.com` or `forum-portal.tthpods.com`
+- Footer version label bumped to v3.7.3
+
+---
+
+## v3.7.2
+**Courage — Patch** - May 12, 2026
+- **Plausible analytics integration**: added the Plausible script (outbound-links + tagged-events variant) to all 9 HTML pages with `data-domain=thehiphandbook.tthpods.com`
+- Updated CSP in `_headers` to allow `https://plausible.io` in `script-src` and `connect-src`
+- Footer version label bumped to v3.7.2
+
+---
+
 ## v3.7.1
 **Courage — Patch** - May 8, 2026
 - **Domain migration follow-up**: replaced all hardcoded `compendium.tthpods.com` URLs with `thehiphandbook.tthpods.com` across canonical URLs, og:url, og:image, sitemap.xml, and robots.txt
