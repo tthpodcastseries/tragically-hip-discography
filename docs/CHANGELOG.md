@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.7.5
+**Courage — Patch** - May 21, 2026
+- **Singles data correction**: cross-checked every studio album's singles list against its Wikipedia album-page infobox and corrected 12 of 13 albums in `discography.html` (`studioAlbums`). We Are the Same fixed (Coffee Girl/Frozen in My Tracks → Morning Moon, Speed River); also Road Apples, Fully Completely, Day for Night, Trouble at the Henhouse, Phantom Power, Music @ Work, In Violet Light, In Between Evolution, World Container, Now for Plan A, Man Machine Poem. Up to Here was already correct. New non-TTHTop40 singles marked rank "Unranked".
+- Removed stale/incorrect "Tiger the Lion is also a Phantom Power single" code comment
+- **P0 accessibility pass**:
+  - Flip-card grids on Unplucked Gems + Video For New Recruits converted from `<div>` to `<button>` (keyboard-operable, `aria-label`, focus-visible ring, iOS appearance reset)
+  - Modal overlays (`show-detail`, `setlist`, era `expanded-panel`) now use `role="dialog"` + `aria-modal`, with Escape-to-close, Tab focus-trap, and focus return to the triggering element
+  - Touch targets raised to ≥44px: "I Was There" attendance toggle, streaming-service links, "Switch member" button (removed inline overrides shrinking streaming links to 0.65rem)
+- **Removed the pre-launch password gate** (`js/tth-launch-gate.js`) and its `<script>` tags from all 7 pages — launch date (May 11) has passed; the gate was already self-bypassing
+- Service worker cache bumped to `thc-v3.7.5`; footer version label bumped to v3.7.5
+- Added internal UI/UX audit report under `audits/`
+
+---
+
 ## v3.7.1
 **Courage — Patch** - May 8, 2026
 - **Domain migration follow-up**: replaced all hardcoded `compendium.tthpods.com` URLs with `thehiphandbook.tthpods.com` across canonical URLs, og:url, og:image, sitemap.xml, and robots.txt

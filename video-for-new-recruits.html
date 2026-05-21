@@ -90,7 +90,23 @@
       .album-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     }
 
-    .flip-card { cursor: pointer; }
+    .flip-card {
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: none;
+      font-family: inherit;
+      color: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .flip-card:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 10px;
+    }
     .flip-card-inner {
       position: relative;
       width: 100%;
@@ -464,7 +480,6 @@
   </style>
 </head>
 <body>
-<script src="/js/tth-launch-gate.js"></script>
 <script src="/js/tth-member-gate.js"></script>
 <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -559,6 +574,7 @@
   var currentPanel = null;
 
   function closeCurrentEra() {
+    var cardToRefocus = currentFlippedCard;
     if (currentFlippedCard) {
       currentFlippedCard.classList.remove('flipped');
       currentFlippedCard = null;
@@ -580,6 +596,7 @@
     }
     overlay.classList.remove('active');
     setStats(globalStats, '');
+    if (cardToRefocus) cardToRefocus.focus();
   }
 
   function tagClass(t) {
@@ -697,8 +714,10 @@
     var partialCount = era.videos.filter(function(v) { return v.partialTracklist; }).length;
 
     // --- Grid card ---
-    var card = document.createElement('div');
+    var card = document.createElement('button');
+    card.type = 'button';
     card.className = 'flip-card';
+    card.setAttribute('aria-label', 'Open ' + era.era + ' videos');
 
     var inner = document.createElement('div');
     inner.className = 'flip-card-inner';
@@ -721,6 +740,9 @@
     // --- Panel ---
     var panel = document.createElement('div');
     panel.className = 'expanded-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', era.era + ' videos');
     panel._activeFilter = 'all';
 
     var panelHeader = document.createElement('div');
@@ -831,8 +853,20 @@
 
   overlay.addEventListener('click', closeCurrentEra);
 
+  // Focus trap: keep Tab within the open dialog
+  function trapPanelFocus(e) {
+    var nodes = currentPanel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var focusables = Array.prototype.filter.call(nodes, function(el) { return !el.disabled && el.offsetParent !== null; });
+    if (!focusables.length) return;
+    var first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && currentPanel) closeCurrentEra();
+    if (!currentPanel) return;
+    if (e.key === 'Escape') closeCurrentEra();
+    else if (e.key === 'Tab') trapPanelFocus(e);
   });
 })();
 </script>

@@ -39,7 +39,7 @@
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
     .stream-links { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 16px; }
-    .stream-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; transition: background 0.15s, color 0.15s; border-width: 1.5px; border-style: solid; }
+    .stream-link { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.72rem; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 20px; text-decoration: none; transition: background 0.15s, color 0.15s; border-width: 1.5px; border-style: solid; }
     .stream-link-apple { color: var(--red); border-color: var(--red); }
     .stream-link-apple:hover, .stream-link-apple:focus { background: var(--red); color: #fff; }
     .stream-link-spotify { color: #1DB954; border-color: #1DB954; }
@@ -1090,7 +1090,6 @@
   </style>
 </head>
 <body>
-<script src="/js/tth-launch-gate.js"></script>
 <script src="/js/tth-member-gate.js"></script>
 
 <svg style="display:none">
@@ -1193,7 +1192,7 @@
       <p class="section-note">Your personal Tragically Hip concert history</p>
       <div class="section-line"></div>
       <div id="myShowsMemberHeader" style="margin-top:10px;font-family:Poppins,sans-serif;font-size:0.95rem;color:#d9d9d9;"></div>
-      <button id="myShowsSignOutBtn" type="button" onclick="if(window.TTHMember)window.TTHMember.signOut();" style="margin-top:8px;background:none;border:1px solid #b0b0b0;color:#b0b0b0;font-family:Poppins,sans-serif;font-size:0.72rem;padding:4px 10px;border-radius:4px;cursor:pointer;letter-spacing:0.04em;">Switch member</button>
+      <button id="myShowsSignOutBtn" type="button" onclick="if(window.TTHMember)window.TTHMember.signOut();" style="margin-top:8px;background:none;border:1px solid #b0b0b0;color:#b0b0b0;font-family:Poppins,sans-serif;font-size:0.72rem;min-height:44px;padding:10px 14px;border-radius:4px;cursor:pointer;letter-spacing:0.04em;">Switch member</button>
     </div>
     <div id="myShowsStats" class="profile-stats"></div>
     <div id="myShowsList" class="profile-show-list"></div>
@@ -1319,6 +1318,9 @@ const studioAlbums = [
       { title: 'Little Bones', rank: 'Top 40 #5' },
       { title: 'Three Pistols', rank: 'Top 40 #21' },
       { title: 'Twist My Arm', rank: 'Road #45' },
+      { title: 'Long Time Running', rank: 'Top 40 #22' },
+      { title: 'On the Verge', rank: 'Unranked' },
+      { title: 'Cordelia', rank: 'Top 40 #19' },
     ],
     tracks: ['Little Bones', 'Twist My Arm', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Bring It All Back', 'Three Pistols', 'Fight', 'On the Verge', 'Fiddler\'s Green', 'The Last of the Unplucked Gems'],
   },
@@ -1334,8 +1336,8 @@ const studioAlbums = [
       { title: 'Fifty-Mission Cap', rank: 'Top 40 #20' },
       { title: 'Courage (for Hugh MacLennan)', rank: 'Top 40 #10' },
       { title: 'At the Hundredth Meridian', rank: 'Top 40 #16' },
-      { title: 'Wheat Kings', rank: 'Top 40 #17' },
-      { title: 'The Wherewithal', rank: 'Road #139' },
+      { title: 'Looking for a Place to Happen', rank: 'Top 40 #35' },
+      { title: 'Fully Completely', rank: 'Top 40 #13' },
     ],
     tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go, Too', 'Fully Completely', 'Wheat Kings', 'Fifty-Mission Cap', 'The Wherewithal', 'Eldorado'],
   },
@@ -1348,11 +1350,11 @@ const studioAlbums = [
     bestRank: 1,
     singles: [
       { title: 'Grace, Too', rank: 'Top 40 #1' },
+      { title: 'Greasy Jungle', rank: 'Top 40 #36' },
       { title: 'Nautical Disaster', rank: 'Top 40 #7' },
       { title: 'So Hard Done By', rank: 'Road #43' },
+      { title: 'Scared', rank: 'Top 40 #28' },
       { title: 'Thugs', rank: 'Road #47' },
-      { title: 'Inevitability of Death', rank: 'Road #64' },
-      { title: 'Titanic Terrarium', rank: 'Road #133' },
     ],
     tracks: ['Grace, Too', 'Daredevil', 'Greasy Jungle', 'Yawning or Snarling', 'Fire in the Hole', 'So Hard Done By', 'Nautical Disaster', 'Thugs', 'Inevitability of Death', 'Scared', 'An Inch an Hour', 'Emergency', 'Titanic Terrarium', 'Impossibilium'],
   },
@@ -1366,8 +1368,10 @@ const studioAlbums = [
     bestRank: 2,
     singles: [
       { title: 'Ahead by a Century', rank: 'Top 40 #2' },
+      { title: 'Gift Shop', rank: 'Top 40 #12' },
+      { title: '700 Ft. Ceiling', rank: 'Unranked' },
+      { title: 'Flamenco', rank: 'Top 40 #27' },
       { title: 'Springtime in Vienna', rank: 'Top 40 #38' },
-      { title: 'Don\'t Wake Daddy', rank: 'Road #41' },
     ],
     tracks: ['Gift Shop', 'Springtime in Vienna', 'Ahead by a Century', 'Don\'t Wake Daddy', 'Flamenco', '700 Ft. Ceiling', 'Butts Wigglin\'', 'Apartment Song', 'Coconut Cream', 'Let\'s Stay Engaged', 'Sherpa', 'Put It Off'],
   },
@@ -1381,9 +1385,10 @@ const studioAlbums = [
     bestRank: 4,
     singles: [
       { title: 'Poets', rank: 'Top 40 #23' },
-      { title: 'Bobcaygeon', rank: 'Top 40 #4' },
+      { title: 'Something On', rank: 'Unranked' },
       { title: 'Fireworks', rank: 'Top 40 #15' },
-      { title: 'Membership', rank: 'Road #97' },
+      { title: 'Bobcaygeon', rank: 'Top 40 #4' },
+      { title: 'Escape Is at Hand for the Travellin\' Man', rank: 'Top 40 #14' },
     ],
     tracks: ['Poets', 'Something On', 'Save the Planet', 'Bobcaygeon', 'Thompson Girl', 'Membership', 'Fireworks', 'Vapour Trails', 'The Rules', 'Chagrin Falls', 'Escape Is at Hand for the Travellin\' Man', 'Emperor Penguin'],
   },
@@ -1397,11 +1402,11 @@ const studioAlbums = [
     bestRank: 24,
     singles: [
       { title: 'My Music at Work', rank: 'Top 40 #26' },
-      { title: 'Tiger the Lion', rank: 'Road #65' },
       { title: 'Lake Fever', rank: 'Top 40 #24' },
+      { title: 'The Completists', rank: 'Unranked' },
       { title: 'Freak Turbulence', rank: 'Road #124' },
     ],
-    tracks: ['My Music at Work', 'Tiger the Lion', /* also a Phantom Power single; included on international M@W editions */ 'Lake Fever', 'Putting Down', 'Stay', 'The Bastard', 'The Completists', 'Freak Turbulence', 'Sharks', 'Toronto #4', 'Wild Mountain Honey', 'Train Overnight', 'The Bear', 'As I Wind Down the Pines'],
+    tracks: ['My Music at Work', 'Tiger the Lion', 'Lake Fever', 'Putting Down', 'Stay', 'The Bastard', 'The Completists', 'Freak Turbulence', 'Sharks', 'Toronto #4', 'Wild Mountain Honey', 'Train Overnight', 'The Bear', 'As I Wind Down the Pines'],
   },
   {
     num: '08', title: 'In Violet Light', year: '2002', releaseDate: 'June 11, 2002', type: 'Studio', img: 'assets-optimized/studio-albums/In-Violet-Light.jpg',
@@ -1412,8 +1417,8 @@ const studioAlbums = [
     bestRank: 18,
     singles: [
       { title: 'It\'s a Good Life If You Don\'t Weaken', rank: 'Top 40 #18' },
-      { title: 'The Dark Canuck', rank: 'Road #49' },
       { title: 'Silver Jet', rank: 'Road #83' },
+      { title: 'The Darkest One', rank: 'Top 40 #30' },
     ],
     tracks: ['Are You Ready', 'Use It Up', 'The Darkest One', 'It\'s a Good Life If You Don\'t Weaken', 'Silver Jet', 'Throwing Off Glass', 'All Tore Up', 'Leave', 'A Beautiful Thing', 'The Dire Wolf', 'The Dark Canuck'],
   },
@@ -1426,7 +1431,7 @@ const studioAlbums = [
     bestRank: 31,
     singles: [
       { title: 'Vaccination Scar', rank: 'Road #66' },
-      { title: 'Summer\'s Killing Us', rank: 'Road #120' },
+      { title: 'It Can\'t Be Nashville Every Night', rank: 'Unranked' },
       { title: 'Gus: The Polar Bear from Central Park', rank: 'Top 40 #31' },
     ],
     tracks: ['Heaven Is a Better Place Today', 'Summer\'s Killing Us', 'Gus: The Polar Bear from Central Park', 'Vaccination Scar', 'It Can\'t Be Nashville Every Night', 'If New Orleans Is Beat', 'You\'re Everywhere', 'As Makeshift As We Are', 'Mean Streak', 'The Heart of the Melt', 'One Night in Copenhagen', 'Are We Family', 'Goodnight Josephine'],
@@ -1439,9 +1444,10 @@ const studioAlbums = [
     gradient: 'linear-gradient(145deg, #001530 0%, #003580 50%, #000C1A 100%)',
     bestRank: 39,
     singles: [
-      { title: 'Yer Not the Ocean', rank: 'Top 40 #39' },
       { title: 'In View', rank: 'Road #46' },
       { title: 'The Lonely End of the Rink', rank: 'Road #75' },
+      { title: 'Yer Not the Ocean', rank: 'Top 40 #39' },
+      { title: 'Family Band', rank: 'Unranked' },
     ],
     tracks: ['Yer Not the Ocean', 'The Lonely End of the Rink', 'In View', 'Fly', 'Luv (sic)', 'The Kids Don\'t Get It', 'Pretend', 'Last Night I Dreamed You Didn\'t Love Me', 'The Drop-Off', 'Family Band', 'World Container'],
   },
@@ -1454,8 +1460,8 @@ const studioAlbums = [
     bestRank: 34,
     singles: [
       { title: 'Love Is a First', rank: 'Road #145' },
-      { title: 'Coffee Girl', rank: 'Road #53' },
-      { title: 'Frozen in My Tracks', rank: 'Road #167' },
+      { title: 'Morning Moon', rank: 'Unranked' },
+      { title: 'Speed River', rank: 'Unranked' },
     ],
     tracks: ['Morning Moon', 'Honey, Please', 'The Last Recluse', 'Coffee Girl', 'Now the Struggle Has a Name', 'The Depression Suite', 'The Exact Feeling', 'Queen of the Furrows', 'Speed River', 'Frozen in My Tracks', 'Love Is a First', 'Country Day'],
   },
@@ -1469,7 +1475,6 @@ const studioAlbums = [
     singles: [
       { title: 'At Transformation', rank: 'Top 40 #33' },
       { title: 'Streets Ahead', rank: 'Unranked' },
-      { title: 'The Lookahead', rank: 'Road #113' },
     ],
     tracks: ['At Transformation', 'Man Machine Poem', 'The Lookahead', 'We Want to Be It', 'Streets Ahead', 'Now for Plan A', 'The Modern Spirit', 'About This Map', 'Take Forever', 'Done and Done', 'Goodnight Attawapiskat'],
   },
@@ -1484,6 +1489,7 @@ const studioAlbums = [
     singles: [
       { title: 'In a World Possessed by the Human Mind', rank: 'Top 40 #37' },
       { title: 'Tired as Fuck', rank: 'Road #58' },
+      { title: 'What Blue', rank: 'Unranked' },
     ],
     tracks: ['Man', 'In a World Possessed by the Human Mind', 'What Blue', 'In Sarnia', 'Here, in the Dark', 'Great Soul', 'Tired as Fuck', 'Hot Mic', 'Ocean Next', 'Machine'],
   },
@@ -2200,11 +2206,11 @@ function buildTrackStreamPanel(trackTitle, albumTitle) {
   const searchQ = encodeURIComponent(trackTitle + ' The Tragically Hip');
   const spotifyURL = spotifyTrackURLs[trackTitle] || `https://open.spotify.com/search/${searchQ}`;
   return `<div class="track-stream-panel">
-    <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
-    <a href="${spotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
-    <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
-    <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
-    <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
+    <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">Apple Music</a>
+    <a href="${spotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">Spotify</a>
+    <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>
+    <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube">YouTube Music</a>
+    <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon">Amazon Music</a>
   </div>`;
 }
 
@@ -3977,11 +3983,11 @@ beyondTop40.forEach(s => {
       <svg class="song-expand-icon" viewBox="0 0 24 24" fill="var(--muted2)"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
     <div class="song-stream-panel">
-      <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple" style="font-size:0.65rem;padding:4px 10px;">Apple Music</a>
-      <a href="${beyondSpotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify" style="font-size:0.65rem;padding:4px 10px;">Spotify</a>
-      <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal" style="font-size:0.65rem;padding:4px 10px;">Tidal</a>
-      <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube" style="font-size:0.65rem;padding:4px 10px;">YouTube Music</a>
-      <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon" style="font-size:0.65rem;padding:4px 10px;">Amazon Music</a>
+      <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">Apple Music</a>
+      <a href="${beyondSpotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">Spotify</a>
+      <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>
+      <a href="https://music.youtube.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-youtube">YouTube Music</a>
+      <a href="https://music.amazon.com/search/${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-amazon">Amazon Music</a>
     </div>
   `;
   const row = wrapper.querySelector('.song-row');
