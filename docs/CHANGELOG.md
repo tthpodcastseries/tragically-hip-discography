@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.2
+**Fully Completely — Update 2** - June 11, 2026
+- **Code extraction for cacheability** (audit P2): inline `<style>` blocks moved to per-page stylesheets - `css/discography.css`, `css/home.css`, `css/tour-map.css`, `css/unplucked-gems.css`, `css/video-for-new-recruits.css`. Discography's 3,091-line application script moved to `js/discography-app.js`. discography.html shrank from 4,400+ lines to 320; repeat visitors now cache CSS/JS instead of re-downloading them inside every HTML page.
+- **Brand hex codes tokenized** in the extracted stylesheets: `#C8102E` → `var(--red)`, `#CCA23C` → `var(--gold)`, `#0e0b16` → `var(--bg)` (153 replacements)
+- **Service worker install fixed**: `CORE_ASSETS` still listed `/js/tth-launch-gate.js`, deleted in v3.7.5 - the resulting 404 made `cache.addAll` reject, so SW installs had been silently failing since May 21. Removed the dead entry; added the new CSS/JS files, the two missing pages (music-videos, video-for-new-recruits), and `show-videos.json` to the precache list.
+- Inline `onclick=` attributes removed from discography markup (Switch member, Setlist Explorer empty-state link) - bound as listeners in `discography-app.js`
+- Tour map em dashes replaced with single dashes per brand rule: stats pill, year display/range, popup city line, playback labels (audit P1)
+- Service worker cache bumped to `thc-v4.2`; footer version label bumped to v4.2
+
+---
+
 ## v4.1
 **Fully Completely — Update 1** - June 11, 2026
 - **Song permalinks**: every song now has a shareable URL - `discography.html#song=<title>`. Loading one opens the aggregated song view (album appearances, TTHTop40 rank, setlist history, lyrics) directly. Selecting a song from search updates the URL; a "🔗 Copy link" button sits next to Clear search; titles resolve case-insensitively to the canonical song name. Back/forward now work across song views and category tabs (hashchange listener - first slice of the audit's popstate finding).
