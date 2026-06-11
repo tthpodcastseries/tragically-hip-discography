@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.0
+**Fully Completely** - June 11, 2026
+- **Home page overhaul**: the horizontal scrolling timeline is gone (markup, CSS, and ~140 lines of JS). The 11 identical stacked nav pills are replaced by grouped navigation cards under four headings - Listen, Live Shows, Watch, Dig Deeper - each card carrying a descriptive name with the Hip-song flavor name as a sub-label.
+- **Descriptive navigation names site-wide**: Music @ Work → "Browse the Discography", Poets → "Lyrics Search", Family Band → "Setlist Explorer", In View → "My Concert History", About This Map → "Interactive Tour Map", Top Forty Countdown → "Fan-Ranked Top 40", Unplucked Gems → "Unreleased Recordings", Video For New Recruits → "Live Concert Videos", They Shot A Movie Once → "Official Music Videos", Yer Hip Links → "Fan Community Links". Page H1s keep their Hip-song titles; only navigation chrome is renamed. 404 quick links updated to match.
+- **Search results fixed**: on discography.html, selecting a song now collapses the band photo, stats row, nav, and On This Day widget so results render directly beneath the search input instead of 2+ screens down. New "✕ Clear search" button restores the page. Hash deep links (`#cat=`) unchanged.
+- **Discography nav restructured**: in-page category tabs and cross-page links are now visually distinct - cross-page links (Home, Interactive Tour Map, Fan Community Links) use a gold-bordered `page-link` style with arrow affordances.
+- Tour map H1 em dash replaced with a single dash per brand rule
+- Home page meta/og descriptions updated (no longer reference the timeline)
+- Service worker cache bumped to `thc-v4.0`; footer version label bumped to v4.0
+
+---
+
 ## v3.7.5
 **Courage — Patch** - May 21, 2026
 - **Singles data correction**: cross-checked every studio album's singles list against its Wikipedia album-page infobox and corrected 12 of 13 albums in `discography.html` (`studioAlbums`). We Are the Same fixed (Coffee Girl/Frozen in My Tracks → Morning Moon, Speed River); also Road Apples, Fully Completely, Day for Night, Trouble at the Henhouse, Phantom Power, Music @ Work, In Violet Light, In Between Evolution, World Container, Now for Plan A, Man Machine Poem. Up to Here was already correct. New non-TTHTop40 singles marked rank "Unranked".

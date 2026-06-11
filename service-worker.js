@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v3.7.5';
+const CACHE_NAME = 'thc-v4.0';
 const CORE_ASSETS = [
   // HTML pages
   '/',

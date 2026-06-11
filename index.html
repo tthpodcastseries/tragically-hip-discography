@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hip Handbook - The Tragically Hip</title>
-  <meta name="description" content="The Hip Handbook - timeline, discography, setlists, and more for Canada's band, The Tragically Hip.">
+  <meta name="description" content="The Hip Handbook - discography, setlists, tour map, lyrics, and more for Canada's band, The Tragically Hip.">
   <meta property="og:title" content="The Hip Handbook - The Tragically Hip">
-  <meta property="og:description" content="Explore the complete Tragically Hip discography timeline - 35 releases from 1987 to 2024.">
+  <meta property="og:description" content="Explore the complete Tragically Hip catalogue - 35 releases, 1,358 live shows, lyrics, and more.">
   <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thehiphandbook.tthpods.com/">
@@ -98,48 +98,6 @@
     .stats-row { padding: 24px 16px; }
     .stat { min-width: 80px; }
 
-    /* NAV BUTTONS - matches index.html category-nav exactly */
-    .category-nav {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 28px;
-      flex-wrap: nowrap;
-      flex-direction: column;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 16px 32px;
-    }
-    .nav-row { display: flex; justify-content: center; gap: 10px; width: 100%; flex-shrink: 0; }
-    .category-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 22px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      font-family: inherit;
-      text-decoration: none;
-      text-align: center;
-    }
-    .category-btn:hover {
-      border-color: var(--red);
-      color: var(--text);
-    }
-    .random-song-btn {
-      background: var(--red);
-      border-color: var(--red);
-      color: #fff;
-      font-weight: 700;
-    }
-    .random-song-btn:hover { background: #a00d24; border-color: #a00d24; }
-
     /* SONG SEARCH */
     .song-search-autocomplete { position: relative; max-width: 480px; margin: 24px auto 20px; }
     .song-search-input { width: 100%; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.25); background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
@@ -214,34 +172,26 @@
     .setlist-credit a:hover { color:var(--gold); text-decoration:underline; }
     .setlist-empty { color:var(--muted); font-size:0.82rem; font-style:italic; }
 
-    /* TIMELINE */
-    .timeline-section { padding: 0 0 24px; }
-    .timeline-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; cursor: grab; padding: 12px 40px 0; scrollbar-width: thin; scrollbar-color: var(--accent-scroll) transparent; }
-    .timeline-track { position: relative; min-width: max-content; height: 200px; }
-    .timeline-axis { position: absolute; bottom: 28px; left: 0; right: 0; height: 2px; background: var(--border); }
-    .timeline-year-mark { position: absolute; bottom: 0; text-align: center; transform: translateX(-50%); font-size: 0.6rem; color: var(--muted2); white-space: nowrap; }
-    .timeline-year-mark::before { content: ''; display: block; width: 1px; height: 10px; background: var(--border); margin: 0 auto 4px; }
-    .timeline-item { position: absolute; top: 0; bottom: 36px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; width: 80px; }
-    .timeline-item:hover { transform: translateY(-4px); }
-    .timeline-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 8px; }
-    .tl-art { width: 60px; height: 60px; border-radius: 6px; overflow: hidden; border: 2px solid var(--border); transition: border-color 0.15s; flex-shrink: 0; }
-    .tl-art img { width: 100%; height: 100%; object-fit: cover; }
-    .timeline-item:hover .tl-art { border-color: var(--red); }
-    .tl-title { font-size: 0.58rem; color: var(--text); text-align: center; max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; line-height: 1.2; }
-    .tl-connector { width: 1px; flex: 1; min-height: 8px; }
-    .tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .timeline-milestone { position: absolute; bottom: 34px; transform: translateX(-50%); z-index: 2; }
-    .tl-ms-label { font-size: 0.55rem; font-weight: 700; color: var(--gold); white-space: nowrap; padding: 2px 8px; border: 1px solid var(--gold); border-radius: 4px; background: rgba(212,160,23,0.12); text-align: center; }
-    .tl-ms-line { width: 1px; background: var(--gold); opacity: 0.3; height: 100%; position: absolute; bottom: 100%; left: 50%; }
-    .timeline-legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 10px 16px; font-size: 0.68rem; color: var(--muted); }
-    .timeline-hint { text-align: center; font-size: 0.62rem; color: var(--muted2); margin-bottom: 6px; letter-spacing: 0.04em; }
+    /* NAV GROUPS */
+    .nav-groups { max-width: 640px; margin: 0 auto; padding: 8px 16px 40px; }
+    .nav-group { margin-top: 28px; }
+    .nav-group-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 12px; }
+    .nav-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .nav-card { display: flex; flex-direction: column; justify-content: center; gap: 3px; text-align: center; padding: 16px 18px; min-height: 64px; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 14px; text-decoration: none; transition: border-color 0.18s ease, background 0.18s ease; }
+    .nav-card:hover { border-color: var(--red); background: rgba(200, 16, 46, 0.07); }
+    .nav-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .nav-card-name { font-size: 0.88rem; font-weight: 700; color: var(--text); letter-spacing: 0.01em; }
+    .nav-card-sub { font-size: 0.72rem; font-style: italic; color: var(--gold); }
+    .nav-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .nav-card-cta { grid-column: 1 / -1; background: var(--red); border-color: var(--red); }
+    .nav-card-cta:hover { background: #a00d24; border-color: #a00d24; }
+    .nav-card-cta .nav-card-name { color: #fff; }
+    .nav-card-cta .nav-card-sub { color: rgba(255, 255, 255, 0.85); }
 
     @media (max-width: 500px) {
-      .tl-art { width: 46px; height: 46px; }
-      .tl-title { font-size: 0.5rem; max-width: 60px; }
-      .timeline-scroll { padding: 12px 16px 0; }
-      .category-nav { gap: 8px; }
-      .category-btn { padding: 10px 20px; font-size: 0.72rem; }
+      .nav-cards { gap: 10px; }
+      .nav-card { padding: 14px 12px; min-height: 56px; }
+      .nav-card-name { font-size: 0.8rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -275,34 +225,47 @@
   </div>
 </header>
 
-<div class="stats-row">
-  <div class="stat"><div class="stat-num">35</div><div class="stat-lbl">Official Releases</div></div>
-  <div class="stat"><div class="stat-num">1984-2016</div><div class="stat-lbl">Active Years</div></div>
-  <div class="stat"><div class="stat-num">Kingston</div><div class="stat-lbl">Ontario</div></div>
-  <div class="stat"><div class="stat-num">Canada's</div><div class="stat-lbl">Band</div></div>
-</div>
-
-<nav aria-label="Main navigation" class="category-nav">
-  <div class="nav-row" role="none"><a href="discography.html#randomSong" class="category-btn random-song-btn" style="flex:1;max-width:480px;">Random Hip Song</a></div>
-  <div class="nav-row"><a href="discography.html" class="category-btn" style="flex:1;max-width:480px;">Music @ Work</a></div>
-  <div class="nav-row"><a href="discography.html#cat=lyrics" class="category-btn" style="flex:1;max-width:480px;">Poets</a></div>
-  <div class="nav-row"><a href="discography.html#cat=setlists" class="category-btn" style="flex:1;max-width:480px;">Family Band</a></div>
-  <div class="nav-row"><a href="discography.html#cat=myshows" class="category-btn" style="flex:1;max-width:480px;">In View</a></div>
-  <div class="nav-row"><a href="tour-map.html" class="category-btn" style="flex:1;max-width:480px;">About This Map</a></div>
-  <div class="nav-row"><a href="discography.html#cat=top40" class="category-btn" style="flex:1;max-width:480px;">Top Forty Countdown</a></div>
-  <div class="nav-row"><a href="unplucked-gems.html" class="category-btn" style="flex:1;max-width:480px;">Unplucked Gems</a></div>
-  <div class="nav-row"><a href="video-for-new-recruits.html" class="category-btn" style="flex:1;max-width:480px;">Video For New Recruits</a></div>
-  <div class="nav-row"><a href="music-videos.html" class="category-btn" style="flex:1;max-width:480px;">They Shot A Movie Once</a></div>
-  <div class="nav-row"><a href="links.html" class="category-btn" style="flex:1;max-width:480px;">Yer Hip Links</a></div>
-</nav>
-
 <main id="main-content">
-  <div class="timeline-section">
-    <div class="timeline-scroll" id="timelineScroll">
-      <div class="timeline-track" id="timelineTrack"></div>
-    </div>
-    <div class="timeline-legend" id="timelineLegend"></div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">35</div><div class="stat-lbl">Official Releases</div></div>
+    <div class="stat"><div class="stat-num">1984-2016</div><div class="stat-lbl">Active Years</div></div>
+    <div class="stat"><div class="stat-num">Kingston</div><div class="stat-lbl">Ontario</div></div>
+    <div class="stat"><div class="stat-num">Canada's</div><div class="stat-lbl">Band</div></div>
   </div>
+
+  <nav aria-label="Main navigation" class="nav-groups">
+    <section class="nav-group" aria-labelledby="navGroupListen">
+      <h2 class="nav-group-title" id="navGroupListen">Listen</h2>
+      <div class="nav-cards">
+        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-sub">Spin one from the catalogue</span></a>
+        <a href="discography.html" class="nav-card"><span class="nav-card-name">Browse the Discography</span><span class="nav-card-sub">Music @ Work</span></a>
+        <a href="discography.html#cat=top40" class="nav-card"><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-sub">TTHTop40 Countdown</span></a>
+        <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-sub">Unplucked Gems</span></a>
+      </div>
+    </section>
+    <section class="nav-group" aria-labelledby="navGroupLive">
+      <h2 class="nav-group-title" id="navGroupLive">Live Shows</h2>
+      <div class="nav-cards">
+        <a href="tour-map.html" class="nav-card"><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-sub">About This Map</span></a>
+        <a href="discography.html#cat=setlists" class="nav-card"><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-sub">Family Band</span></a>
+        <a href="discography.html#cat=myshows" class="nav-card"><span class="nav-card-name">My Concert History</span><span class="nav-card-sub">In View</span></a>
+      </div>
+    </section>
+    <section class="nav-group" aria-labelledby="navGroupWatch">
+      <h2 class="nav-group-title" id="navGroupWatch">Watch</h2>
+      <div class="nav-cards">
+        <a href="video-for-new-recruits.html" class="nav-card"><span class="nav-card-name">Live Concert Videos</span><span class="nav-card-sub">Video For New Recruits</span></a>
+        <a href="music-videos.html" class="nav-card"><span class="nav-card-name">Official Music Videos</span><span class="nav-card-sub">They Shot A Movie Once</span></a>
+      </div>
+    </section>
+    <section class="nav-group" aria-labelledby="navGroupDig">
+      <h2 class="nav-group-title" id="navGroupDig">Dig Deeper</h2>
+      <div class="nav-cards">
+        <a href="discography.html#cat=lyrics" class="nav-card"><span class="nav-card-name">Lyrics Search</span><span class="nav-card-sub">Poets</span></a>
+        <a href="links.html" class="nav-card"><span class="nav-card-name">Fan Community Links</span><span class="nav-card-sub">Yer Hip Links</span></a>
+      </div>
+    </section>
+  </nav>
 </main>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
@@ -429,145 +392,6 @@
     }).join('');
   }
   wrapper.style.display = 'block';
-
-  // ─── Timeline ───
-  const typeColors = {
-    'Studio':      '#C8102E',
-    'Live':        '#1DB954',
-    'Compilation': '#9B59B6',
-    'Box Set':     '#D4A017',
-    'EP':          '#E67E22',
-    'Video':       '#3498DB'
-  };
-
-  const track = document.getElementById('timelineTrack');
-  const legend = document.getElementById('timelineLegend');
-
-  // Sort albums by year then type
-  const sorted = albums.slice().sort(function(a, b) {
-    var yA = parseInt(a.year), yB = parseInt(b.year);
-    if (yA !== yB) return yA - yB;
-    var order = ['Studio','EP','Live','Compilation','Box Set','Video'];
-    return order.indexOf(a.type) - order.indexOf(b.type);
-  });
-
-  var itemW = 88, gap = 8, pxPerYear = 110;
-  var firstYear = 1984;
-  var lastYear = Math.max(parseInt(sorted[sorted.length - 1].year), 2024);
-
-  var cursor = 0;
-  var placements = [];
-  sorted.forEach(function(a) {
-    var yearX = (parseInt(a.year) - firstYear) * pxPerYear;
-    var x = Math.max(cursor, yearX);
-    placements.push({ title: a.title, year: a.year, type: a.type, category: a.category, img: a.img, gradient: a.gradient, x: x });
-    cursor = x + itemW + gap;
-  });
-
-  var trackWidth = cursor + 60;
-  track.innerHTML = '';
-  track.style.width = trackWidth + 'px';
-
-  // Year axis marks
-  var axis = document.createElement('div');
-  axis.className = 'timeline-axis';
-  for (var y = firstYear; y <= lastYear + 1; y++) {
-    var mark = document.createElement('div');
-    mark.className = 'timeline-year-mark';
-    mark.style.left = ((y - firstYear) * pxPerYear) + 'px';
-    mark.textContent = y;
-    axis.appendChild(mark);
-  }
-  track.appendChild(axis);
-
-  // Timeline milestones
-  var tlMilestones = [
-    { year: 1984, label: 'Band Formed', sub: 'Kingston, ON' },
-    { year: 2016, label: 'The Final Show', sub: 'Aug 20 - Kingston' },
-    { year: 2017, label: "Gord's Passing", sub: 'Oct 17, 2017' }
-  ];
-  tlMilestones.forEach(function(m) {
-    var el = document.createElement('div');
-    el.className = 'timeline-milestone';
-    el.style.left = ((m.year - firstYear) * pxPerYear) + 'px';
-    el.innerHTML = '<div class="tl-ms-label">' + m.label + '<br><small>' + m.sub + '</small></div>';
-    track.appendChild(el);
-  });
-
-  // Album items
-  placements.forEach(function(a) {
-    var el = document.createElement('div');
-    el.className = 'timeline-item';
-    el.style.left = (a.x + itemW / 2) + 'px';
-    var color = typeColors[a.type] || '#aaa';
-
-    el.innerHTML =
-      '<div class="tl-art" style="border-color:' + color + '">' +
-        (a.img ? '<img src="' + a.img + '" alt="' + a.title + '">' : '<div style="width:100%;height:100%;background:' + a.gradient + ';border-radius:4px"></div>') +
-      '</div>' +
-      '<div class="tl-title">' + a.title + '<br><small style="color:' + color + '">' + a.type + ' - ' + a.year + '</small></div>' +
-      '<div class="tl-connector" style="background:' + color + '"></div>' +
-      '<div class="tl-dot" style="background:' + color + '"></div>';
-
-    el.setAttribute('role', 'button');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', a.title + ' (' + a.year + ')');
-
-    var openFn = (function(album) {
-      return function() {
-        window.location.href = 'discography.html#cat=' + encodeURIComponent(album.category) + '&album=' + encodeURIComponent(album.title);
-      };
-    })(a);
-
-    el.addEventListener('click', openFn);
-    el.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFn(); } });
-
-    track.appendChild(el);
-  });
-
-  // Legend
-  legend.innerHTML = '';
-  var typeOrder = ['Studio','EP','Live','Compilation','Box Set','Video'];
-  var typeAbbrev = { 'Studio': 'S', 'EP': 'E', 'Live': 'L', 'Compilation': 'C', 'Box Set': 'B', 'Video': 'V' };
-  typeOrder.forEach(function(type) {
-    var dot = document.createElement('span');
-    dot.style.cssText = 'display:inline-flex;align-items:center;gap:6px;margin-right:16px;font-size:0.75rem;color:var(--muted);';
-    dot.innerHTML = '<span style="width:10px;height:10px;border-radius:50%;background:' + typeColors[type] + ';display:inline-block"></span>' + type + ' <span style="font-size:0.6rem;opacity:0.7;">(' + typeAbbrev[type] + ')</span>';
-    legend.appendChild(dot);
-  });
-
-  // Scroll hint
-  var hint = document.createElement('div');
-  hint.className = 'timeline-hint';
-  hint.textContent = 'Scroll or drag to explore the timeline';
-  legend.parentElement.insertBefore(hint, legend);
-
-  // Drag-to-scroll
-  var scroll = document.getElementById('timelineScroll');
-  var isDown = false, startX, scrollLeft;
-  scroll.addEventListener('mousedown', function(e) {
-    if (e.target.closest('.timeline-item')) return;
-    isDown = true; scroll.style.cursor = 'grabbing';
-    startX = e.pageX - scroll.offsetLeft;
-    scrollLeft = scroll.scrollLeft;
-  });
-  scroll.addEventListener('mouseleave', function() { isDown = false; scroll.style.cursor = 'grab'; });
-  scroll.addEventListener('mouseup', function() { isDown = false; scroll.style.cursor = 'grab'; });
-  scroll.addEventListener('mousemove', function(e) {
-    if (!isDown) return; e.preventDefault();
-    var x = e.pageX - scroll.offsetLeft;
-    scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
-  });
-  // Touch support
-  scroll.addEventListener('touchstart', function(e) {
-    if (e.target.closest('.timeline-item')) return;
-    startX = e.touches[0].pageX - scroll.offsetLeft;
-    scrollLeft = scroll.scrollLeft;
-  }, { passive: true });
-  scroll.addEventListener('touchmove', function(e) {
-    var x = e.touches[0].pageX - scroll.offsetLeft;
-    scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
-  }, { passive: true });
 
   // ─── Universal Search (albums, songs, lyrics, shows) ───
   var albumIndex = albums.map(function(a) {

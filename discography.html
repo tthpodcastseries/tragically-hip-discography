@@ -135,6 +135,34 @@
       border-color: var(--red);
       color: #fff;
     }
+    .category-btn.page-link {
+      border-color: rgba(204, 162, 60, 0.45);
+      color: var(--gold);
+      text-decoration: none;
+      text-align: center;
+    }
+    .category-btn.page-link:hover {
+      border-color: var(--gold);
+      background: rgba(204, 162, 60, 0.08);
+      color: var(--gold);
+    }
+    .search-clear-btn {
+      display: block;
+      margin: 0 auto 18px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .search-clear-btn:hover { border-color: var(--red); color: var(--text); }
+    .search-clear-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
     /* ─── RANDOM SONG ─── */
     .random-song-wrap {
@@ -1107,7 +1135,7 @@
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search for a Hip song..." autocomplete="off" aria-label="Search for a song" style="width:100%;">
     <div class="song-search-dropdown" id="songSearchDropdown"></div>
   </div>
-  <div style="max-width:600px;margin:20px auto 8px;">
+  <div id="headerPhoto" style="max-width:600px;margin:20px auto 8px;">
     <img src="assets-optimized/band/band-photo-5.jpg" alt="The Tragically Hip - band photo 5" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
     <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
   </div>
@@ -1118,16 +1146,15 @@
     <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
   </div>
   <nav><div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
-    <div class="nav-row"><a href="index.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">← Home</a></div>
+    <div class="nav-row"><a href="index.html" class="category-btn page-link" style="flex:1;max-width:480px;">← Home</a></div>
     <div class="nav-row" role="none"><button class="category-btn random-song-btn" id="randomSongBtn" style="flex:1;max-width:480px;">Random Hip Song</button></div>
     <div class="nav-row"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
     <div class="nav-row"><button class="category-btn" data-category="live" role="tab" aria-selected="false" aria-controls="albumsGrid">Live</button><button class="category-btn" data-category="compilations" role="tab" aria-selected="false" aria-controls="albumsGrid">Compilations</button></div>
     <div class="nav-row"><button class="category-btn" data-category="boxsets" role="tab" aria-selected="false" aria-controls="albumsGrid">Box Sets</button><button class="category-btn" data-category="video" role="tab" aria-selected="false" aria-controls="albumsGrid">Video</button></div>
-    <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Poets</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Family Band</button></div>
-    <div class="nav-row"><a href="tour-map.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">About This Map</a></div>
-    <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid" style="flex:1;max-width:480px;font-size:0.78rem;padding:8px 22px;">Top Forty Countdown</button></div>
-    <div class="nav-row"><button class="category-btn" data-category="myshows" role="tab" aria-selected="false" aria-controls="myShowsSection" style="flex:1;max-width:480px;">In View</button></div>
-    <div class="nav-row"><a href="links.html" class="category-btn" style="text-decoration:none;flex:1;max-width:480px;">Yer Hip Links</a></div>
+    <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlist Explorer</button></div>
+    <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid" style="flex:1;max-width:480px;font-size:0.78rem;padding:8px 22px;">Fan-Ranked Top 40</button></div>
+    <div class="nav-row"><button class="category-btn" data-category="myshows" role="tab" aria-selected="false" aria-controls="myShowsSection" style="flex:1;max-width:480px;">My Concert History</button></div>
+    <div class="nav-row"><a href="tour-map.html" class="category-btn page-link">Interactive Tour Map →</a><a href="links.html" class="category-btn page-link">Fan Community Links →</a></div>
   </div></nav>
 </header>
 
@@ -1197,7 +1224,7 @@
     <div id="myShowsStats" class="profile-stats"></div>
     <div id="myShowsList" class="profile-show-list"></div>
     <div id="myShowsEmpty" class="profile-empty">
-      You haven't marked any shows yet. Head to the <button onclick="document.querySelector('[data-category=setlists]').click()" style="background:none;border:none;color:var(--gold);font-family:Poppins,sans-serif;font-size:inherit;cursor:pointer;text-decoration:underline;">Family Band</button> and tap "I Was There" on shows you attended.
+      You haven't marked any shows yet. Head to the <button onclick="document.querySelector('[data-category=setlists]').click()" style="background:none;border:none;color:var(--gold);font-family:Poppins,sans-serif;font-size:inherit;cursor:pointer;text-decoration:underline;">Setlist Explorer</button> and tap "I Was There" on shows you attended.
     </div>
   </div>
 
@@ -3451,6 +3478,30 @@ function findSongLyrics(songTitle) {
 
 const setlistMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+function setSearchModeChrome(active) {
+  // In search mode, collapse everything between the search input and the
+  // results so results render directly beneath the input.
+  const photo = document.getElementById('headerPhoto');
+  const stats = document.querySelector('.stats-row');
+  const nav = document.getElementById('categoryNav');
+  const otd = document.getElementById('onThisDay');
+  if (photo) photo.style.display = active ? 'none' : '';
+  if (stats) stats.style.display = active ? 'none' : '';
+  if (nav) nav.style.display = active ? 'none' : '';
+  if (otd) otd.style.display = active ? 'none' : '';
+}
+
+function clearSongSearch() {
+  const resultsEl = document.getElementById('songSearchResults');
+  resultsEl.style.display = 'none';
+  resultsEl.innerHTML = '';
+  const input = document.getElementById('songSearchInput');
+  if (input) input.value = '';
+  setSearchModeChrome(false);
+  renderCategory(currentCategory || 'studio');
+  if (input) input.focus();
+}
+
 function renderSongResults(songTitle) {
   const resultsEl = document.getElementById('songSearchResults');
   resultsEl.innerHTML = '';
@@ -3462,12 +3513,20 @@ function renderSongResults(songTitle) {
   document.getElementById('setlistSection').style.display = 'none';
   document.getElementById('soloSection').style.display = 'none';
   resultsEl.style.display = '';
+  setSearchModeChrome(true);
 
   // Deactivate all category buttons
   document.querySelectorAll('.category-btn').forEach(btn => {
     btn.classList.remove('active');
     btn.setAttribute('aria-selected', 'false');
   });
+
+  // Clear-search affordance at the top of results
+  const clearBtn = document.createElement('button');
+  clearBtn.className = 'search-clear-btn';
+  clearBtn.textContent = '✕ Clear search';
+  clearBtn.addEventListener('click', clearSongSearch);
+  resultsEl.appendChild(clearBtn);
 
   // 1. Album appearances
   const albums = findSongAcrossAlbums(songTitle);
@@ -3635,9 +3694,9 @@ async function initSongSearch() {
     input.value = title;
     dropdown.classList.remove('open');
     renderSongResults(title);
-    const resultsEl = document.getElementById('songSearchResults');
+    // Results now render directly beneath the search input - just surface the top of the page
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: resultsEl.offsetTop - 20, behavior: reducedMotion ? 'auto' : 'smooth' });
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
     input.blur();
   }
 
@@ -3718,8 +3777,9 @@ function renderCategory(category) {
   // Show/hide Top 40 section
   document.getElementById('top40Section').style.display = category === 'top40' ? '' : 'none';
 
-  // Hide song search results when switching categories
+  // Hide song search results and restore header chrome when switching categories
   document.getElementById('songSearchResults').style.display = 'none';
+  setSearchModeChrome(false);
 
   // Show/hide Lyrics Search section
   const lyricsEl = document.getElementById('lyricsSection');
