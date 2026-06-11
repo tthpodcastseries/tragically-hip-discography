@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.0.1
+**Fully Completely — Patch** - June 11, 2026
+- **Cross-page UI consistency pass** (follow-up to the v4.0 overhaul):
+  - Discography nav now grouped with gold uppercase headings ("Albums & Releases", "Explore") matching the home page pattern; Fan-Ranked Top 40 and My Concert History paired into one row instead of two mismatched full-width pills
+  - `.back-link` in shared.css restyled to the gold page-link pill - one cross-page link style everywhere; tour-map's plain-text override removed
+  - Back-link label standardized to "← Home" on all pages
+  - Destination pages now confirm where you landed: subtitles show the descriptive nav name above the Hip-song H1 (Unplucked Gems → "Unreleased Recordings", Video For New Recruits → "Live Concert Videos", They Shot A Movie Once → "Official Music Videos", Yer Hip Links → "Fan Community Links - Yer Hip Links")
+  - `.nav-group-title` promoted to shared.css (deduped from index.html)
+- Service worker cache bumped to `thc-v4.0.1`; footer version label bumped to v4.0.1
+
+---
+
 ## v4.0
 **Fully Completely** - June 11, 2026
 - **Home page overhaul**: the horizontal scrolling timeline is gone (markup, CSS, and ~140 lines of JS). The 11 identical stacked nav pills are replaced by grouped navigation cards under four headings - Listen, Live Shows, Watch, Dig Deeper - each card carrying a descriptive name with the Hip-song flavor name as a sub-label.

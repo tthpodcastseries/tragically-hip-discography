@@ -62,13 +62,7 @@ body {
   color: var(--white);
 }
 .map-header h1 span.the { color: var(--red); }
-.map-header .back-link {
-  color: var(--gold);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-.map-header .back-link:hover { text-decoration: underline; }
+.map-header .back-link { flex-shrink: 0; }
 
 /* CONTROLS BAR */
 .controls {
@@ -928,7 +922,7 @@ input[type="range"]::-moz-range-track {
 
 <div class="map-header">
   <h1><span class="the">THE</span> TRAGICALLY HIP - About This Map</h1>
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <a href="index.html" class="back-link">← Home</a>
 </div>
 
 <div class="otd-banner" id="otdBanner">

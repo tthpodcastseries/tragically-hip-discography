@@ -49,21 +49,32 @@ body {
 }
 .skip-link:focus { left: 16px; top: 16px; }
 
-/* Back link button */
+/* Back link button - gold page-link style, shared by all cross-page pills */
 .back-link {
   display: inline-block;
-  color: var(--muted);
+  color: var(--gold);
   text-decoration: none;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(204, 162, 60, 0.45);
   border-radius: 30px;
   transition: all 0.18s ease;
 }
-.back-link:hover { border-color: var(--red); color: var(--text); }
+.back-link:hover { border-color: var(--gold); background: rgba(204, 162, 60, 0.08); color: var(--gold); }
+
+/* Gold uppercase group heading used by grouped navigation (home + discography) */
+.nav-group-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 12px;
+}
 
 /* Stats row */
 .stats-row {
