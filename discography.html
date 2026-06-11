@@ -1108,7 +1108,11 @@
     .on-this-day-header svg { flex-shrink: 0; }
     .otd-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; }
     .otd-event { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-    .otd-event:first-of-type { border-top: none; padding-top: 0; }
+    .otd-event:first-child { border-top: none; padding-top: 0; }
+    a.otd-event { text-decoration: none; color: inherit; cursor: pointer; transition: background 0.15s ease; }
+    a.otd-event:hover { background: rgba(255,255,255,0.05); }
+    a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+    .otd-view { color: var(--gold); font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
     .otd-year { font-weight: 700; font-size: 0.85rem; color: var(--red); min-width: 42px; flex-shrink: 0; }
     .otd-desc { font-size: 0.82rem; color: var(--text); line-height: 1.5; }
     .otd-desc .otd-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 6px; border-radius: 4px; margin-right: 4px; vertical-align: 1px; }
@@ -4375,18 +4379,30 @@ overlay.addEventListener('keydown', e => {
       if (setData && setData.setlists) {
         var dayStr = String(todayDay).padStart(2, '0');
         var monthStr = String(todayMonth).padStart(2, '0');
-        for (var k = 0; k < setData.setlists.length; k++) {
-          var s = setData.setlists[k];
+        var matches = setData.setlists.filter(function(s) {
           var parts = s.date.split('-');
-          if (parts[0] === dayStr && parts[1] === monthStr) {
-            var yr = parseInt(parts[2]);
-            var venue = s.venue || 'Unknown venue';
-            var loc = [s.city || '', s.state || '', s.country].filter(Boolean).join(', ');
-            var songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
-            var tourInfo = s.tour ? ' (' + s.tour + ')' : '';
-            var noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
-            events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + venue + '</b>, ' + loc + tourInfo + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist });
-          }
+          return parts[0] === dayStr && parts[1] === monthStr;
+        });
+        // Video availability for today's shows - only fetch the map when there are matches
+        var videoByShow = {};
+        if (matches.length) {
+          try {
+            var vResp = await fetch('data/show-videos.json');
+            if (vResp.ok) { var vData = await vResp.json(); videoByShow = (vData && vData.byShow) || {}; }
+          } catch (e2) { /* video map optional */ }
+        }
+        for (var k = 0; k < matches.length; k++) {
+          var s = matches[k];
+          var yr = parseInt(s.date.split('-')[2]);
+          var venue = s.venue || 'Unknown venue';
+          var loc = [s.city || '', s.state || '', s.country].filter(Boolean).join(', ');
+          var songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
+          var tourInfo = s.tour ? ' (' + s.tour + ')' : '';
+          var noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
+          var hasVideo = !!videoByShow[s.id];
+          // Only link when the tour map can actually show something (gigs span 1985-2016)
+          var linkable = !!s.id && yr >= 1985 && yr <= 2016 && (songCount > 0 || hasVideo);
+          events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + venue + '</b>, ' + loc + tourInfo + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist, showId: linkable ? s.id : null, hasVideo: hasVideo });
         }
       }
     }
@@ -4403,7 +4419,11 @@ overlay.addEventListener('keydown', e => {
     container.innerHTML = '<div class="otd-empty">No known Hip events on this date.</div>';
   } else {
     container.innerHTML = events.map(function(e) {
-      return '<div class="otd-event"><span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + '</span></div>';
+      var inner = '<span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + (e.showId ? ' <span class="otd-view">' + (e.hasVideo ? '🎬 ' : '') + 'View show →</span>' : '') + '</span>';
+      if (e.showId) {
+        return '<a class="otd-event" href="tour-map.html#show=' + e.showId + '" title="Open this show on the Interactive Tour Map">' + inner + '</a>';
+      }
+      return '<div class="otd-event">' + inner + '</div>';
     }).join('');
   }
   wrapper.style.display = 'block';

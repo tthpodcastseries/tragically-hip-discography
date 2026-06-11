@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.0.2
+**Fully Completely — Patch** - June 11, 2026
+- **On This Day shows are now clickable** (index, discography, links): show events link to `tour-map.html#show=<id>`, which opens that show's panel on the Interactive Tour Map (setlist, matched videos, audio playback where available). A gold "View show →" affordance appears on linkable rows, with a 🎬 marker when the show has matched YouTube video.
+- Rows only become links when there is actually something to open: show id present, year within the tour data range (1985-2016), and a setlist or matched video on file. Releases and milestones stay non-clickable.
+- `show-videos.json` is fetched lazily, and only on days that actually have show matches
+- `.otd-event:first-of-type` corrected to `:first-child` so mixed link/non-link rows keep correct borders
+- Service worker cache bumped to `thc-v4.0.2`; footer version label bumped to v4.0.2
+
+---
+
 ## v4.0.1
 **Fully Completely — Patch** - June 11, 2026
 - **Cross-page UI consistency pass** (follow-up to the v4.0 overhaul):
