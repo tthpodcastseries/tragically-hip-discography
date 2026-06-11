@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.1
+**Fully Completely — Update 1** - June 11, 2026
+- **Song permalinks**: every song now has a shareable URL - `discography.html#song=<title>`. Loading one opens the aggregated song view (album appearances, TTHTop40 rank, setlist history, lyrics) directly. Selecting a song from search updates the URL; a "🔗 Copy link" button sits next to Clear search; titles resolve case-insensitively to the canonical song name. Back/forward now work across song views and category tabs (hashchange listener - first slice of the audit's popstate finding).
+- **Random Live Show**: new home page card (Listen group) linking to `tour-map.html#play=random`, which picks a random show from the 625 playable Hip Archive recordings and starts the in-app audio player.
+- **Fixed broken deep link**: tour-map.html had no `#play=<id>` handler, so the "🎧 Play this show" buttons on index.html's show/setlist cards opened the map but never started playback. The new handler fixes those links too.
+- Service worker cache bumped to `thc-v4.1`; footer version label bumped to v4.1
+
+---
+
 ## v4.0.2
 **Fully Completely — Patch** - June 11, 2026
 - **On This Day shows are now clickable** (index, discography, links): show events link to `tour-map.html#show=<id>`, which opens that show's panel on the Interactive Tour Map (setlist, matched videos, audio playback where available). A gold "View show →" affordance appears on linkable rows, with a 🎬 marker when the show has matched YouTube video.

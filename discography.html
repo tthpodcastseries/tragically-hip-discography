@@ -3389,6 +3389,7 @@ async function startBuildIndex() {
 
 // ─── Song Search ───
 let songSearchInitialized = false;
+let currentSongView = null;
 let songIndex = []; // { title, album, albumYear, type, trackNum }
 
 function buildSongIndex() {
@@ -3502,9 +3503,29 @@ function clearSongSearch() {
   resultsEl.innerHTML = '';
   const input = document.getElementById('songSearchInput');
   if (input) input.value = '';
+  currentSongView = null;
+  if (/(^|[#&])song=/.test(location.hash)) {
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+  }
   setSearchModeChrome(false);
   renderCategory(currentCategory || 'studio');
   if (input) input.focus();
+}
+
+// Open a song's aggregate view from a #song=<title> permalink
+function openSongPermalink(rawTitle) {
+  buildSongIndex();
+  loadSetlistData();
+  let canonical = rawTitle;
+  const exact = songIndex.find(s => s.baseTitle.toLowerCase() === rawTitle.toLowerCase());
+  if (exact) canonical = exact.baseTitle;
+  else {
+    const sugg = getSongSearchSuggestions(rawTitle);
+    if (sugg.length) canonical = sugg[0].title;
+  }
+  const input = document.getElementById('songSearchInput');
+  if (input) input.value = canonical;
+  renderSongResults(canonical);
 }
 
 function renderSongResults(songTitle) {
@@ -3526,12 +3547,35 @@ function renderSongResults(songTitle) {
     btn.setAttribute('aria-selected', 'false');
   });
 
-  // Clear-search affordance at the top of results
+  // Clear-search + copy-link affordances at the top of results
+  const actionsRow = document.createElement('div');
+  actionsRow.style.cssText = 'display:flex;gap:10px;justify-content:center;margin-bottom:18px;';
   const clearBtn = document.createElement('button');
   clearBtn.className = 'search-clear-btn';
+  clearBtn.style.margin = '0';
   clearBtn.textContent = '✕ Clear search';
   clearBtn.addEventListener('click', clearSongSearch);
-  resultsEl.appendChild(clearBtn);
+  actionsRow.appendChild(clearBtn);
+  const copyBtn = document.createElement('button');
+  copyBtn.className = 'search-clear-btn';
+  copyBtn.style.margin = '0';
+  copyBtn.textContent = '🔗 Copy link';
+  copyBtn.addEventListener('click', function() {
+    const url = location.origin + location.pathname + '#song=' + encodeURIComponent(songTitle);
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function() {
+      copyBtn.textContent = '✓ Link copied';
+      setTimeout(function() { copyBtn.textContent = '🔗 Copy link'; }, 2000);
+    }).catch(function() { window.prompt('Copy this link:', url); });
+  });
+  actionsRow.appendChild(copyBtn);
+  resultsEl.appendChild(actionsRow);
+
+  // Keep the URL shareable: #song=<title> is this song's permalink
+  currentSongView = songTitle;
+  const wantHash = '#song=' + encodeURIComponent(songTitle);
+  if (location.hash !== wantHash) {
+    try { history.pushState(null, '', wantHash); } catch (e) { location.hash = wantHash; }
+  }
 
   // 1. Album appearances
   const albums = findSongAcrossAlbums(songTitle);
@@ -3785,6 +3829,7 @@ function renderCategory(category) {
   // Hide song search results and restore header chrome when switching categories
   document.getElementById('songSearchResults').style.display = 'none';
   setSearchModeChrome(false);
+  currentSongView = null;
 
   // Show/hide Lyrics Search section
   const lyricsEl = document.getElementById('lyricsSection');
@@ -3901,7 +3946,11 @@ try {
   const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
   const catParam = params.get('cat') || hashParams.get('cat');
   const albumParam = params.get('album') || hashParams.get('album');
-  if (catParam === 'songsearch') {
+  const songParam = params.get('song') || hashParams.get('song');
+  if (songParam) {
+    renderCategory('studio');
+    setTimeout(() => { openSongPermalink(songParam); }, 50);
+  } else if (catParam === 'songsearch') {
     renderCategory('studio');
     const qParam = params.get('q') || hashParams.get('q');
     setTimeout(() => {
@@ -3939,6 +3988,26 @@ try {
 
 // Initialize song search (input is always in header)
 initSongSearch();
+
+// History navigation: handle #song= / #cat= changes (back/forward + external links)
+window.addEventListener('hashchange', function() {
+  const hp = new URLSearchParams(location.hash.replace(/^#/, ''));
+  const song = hp.get('song');
+  const cat = hp.get('cat');
+  if (song) {
+    if (song !== currentSongView) openSongPermalink(song);
+  } else if (currentSongView) {
+    // Navigated back out of a song view - restore the page
+    currentSongView = null;
+    const input = document.getElementById('songSearchInput');
+    if (input) input.value = '';
+    document.getElementById('songSearchResults').style.display = 'none';
+    setSearchModeChrome(false);
+    renderCategory(cat && categoryData[cat] ? cat : (currentCategory || 'studio'));
+  } else if (cat && categoryData[cat] && cat !== currentCategory) {
+    renderCategory(cat);
+  }
+});
 
 // Handle #randomSong hash from index.html
 if (location.hash === '#randomSong') {

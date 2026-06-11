@@ -1798,6 +1798,30 @@ input[type="range"]::-moz-range-track {
   handleShowHash();
   window.addEventListener('hashchange', handleShowHash);
 
+  // Deep-link: tour-map.html#play=<id> starts playback of that show's recording;
+  // #play=random picks a random show with playable Hip Archive audio.
+  function handlePlayHash() {
+    const m = (location.hash || '').match(/play=([A-Za-z0-9_-]+)/);
+    if (!m) return;
+    let g = null;
+    if (m[1] === 'random') {
+      const playable = allGigs.filter(x => x.tracks && x.tracks.length);
+      if (!playable.length) return;
+      g = playable[Math.floor(Math.random() * playable.length)];
+    } else {
+      g = allGigs.find(x => String(x.id) === m[1]);
+    }
+    if (!g || !g.tracks || !g.tracks.length) return;
+    if (g.lat && g.lng) {
+      try { map.setView([g.lat, g.lng], 12, { animate: true }); } catch (_) { /* noop */ }
+    }
+    window._gigLookup = window._gigLookup || {};
+    window._gigLookup[g.id] = g;
+    if (window.playGig) window.playGig(g.id);
+  }
+  handlePlayHash();
+  window.addEventListener('hashchange', handlePlayHash);
+
 })();
 </script>
 
