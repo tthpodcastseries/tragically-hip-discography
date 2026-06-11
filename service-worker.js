@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v4.2';
+const CACHE_NAME = 'thc-v4.3';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   '/unplucked-gems.html',
   '/video-for-new-recruits.html',
   '/music-videos.html',
+  '/live-stats.html',
   '/forum-invite.html',
   '/404.html',
   // CSS
@@ -18,9 +19,11 @@ const CORE_ASSETS = [
   '/css/tour-map.css',
   '/css/unplucked-gems.css',
   '/css/video-for-new-recruits.css',
+  '/css/live-stats.css',
   // JS
   '/js/shared-footer.js',
   '/js/discography-app.js',
+  '/js/live-stats.js',
   '/js/tth-member-gate.js',
   '/js/supabase.min.js',
   // Data

@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.3
+**Fully Completely — Update 3** - June 11, 2026
+- **New page: Live Show Stats** (`live-stats.html`, H1 "38 Years Old") - trivia computed client-side from the 1,091 shows with setlists: Most Played Live (top 20 with bars - New Orleans Is Sinking leads at 831), most common openers and closers (Grace, Too opened 192 shows), 26 one-timers each linking to their show on the tour map, longest shelvings (top gap 16.9 years), top covers, and the catalogue songs never played live (per setlist.fm data), each linking to its song permalink
+- Home page: "Live Show Stats" card added to the Live Shows group
+- Sitemap updated: live-stats, video-for-new-recruits, and music-videos pages were missing
+- Service worker precaches the new page, stylesheet, and script; cache bumped to `thc-v4.3`; footer version label bumped to v4.3
+
+---
+
 ## v4.2
 **Fully Completely — Update 2** - June 11, 2026
 - **Code extraction for cacheability** (audit P2): inline `<style>` blocks moved to per-page stylesheets - `css/discography.css`, `css/home.css`, `css/tour-map.css`, `css/unplucked-gems.css`, `css/video-for-new-recruits.css`. Discography's 3,091-line application script moved to `js/discography-app.js`. discography.html shrank from 4,400+ lines to 320; repeat visitors now cache CSS/JS instead of re-downloading them inside every HTML page.

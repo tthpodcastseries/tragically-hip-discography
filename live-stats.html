@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>38 Years Old - The Hip Handbook</title>
+  <meta name="description" content="Live show statistics from 1,358 Tragically Hip setlists - most played songs, one-timers, longest gaps, openers, closers, and the songs that never made the stage.">
+  <meta property="og:title" content="38 Years Old - The Hip Handbook">
+  <meta property="og:description" content="Live show statistics from 1,358 Tragically Hip setlists - most played, rarities, openers, closers, and more.">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/live-stats.html">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/live-stats.html">
+  <script defer data-domain="thehiphandbook.tthpods.com" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/live-stats.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header>
+  <span class="maple" aria-hidden="true" style="font-size:2rem;display:block;margin-bottom:12px;">🍁</span>
+  <div class="subtitle">Live Show Stats</div>
+  <h1>38 Years Old</h1>
+  <p class="header-desc">What 1,358 setlists tell us - the most played songs, the one-timers, the longest shelvings, the openers and closers, and the songs that never made the stage. Setlist data from setlist.fm.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="statShows">-</div><div class="stat-lbl">Shows With Setlists</div></div>
+    <div class="stat"><div class="stat-num" id="statSongs">-</div><div class="stat-lbl">Unique Songs Played</div></div>
+    <div class="stat"><div class="stat-num" id="statPerfs">-</div><div class="stat-lbl">Total Performances</div></div>
+    <div class="stat"><div class="stat-num" id="statCovers">-</div><div class="stat-lbl">Covers Played</div></div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="stats-loading" id="statsLoading">Crunching 1,358 setlists...</div>
+  <div class="stats-error" id="statsError">Failed to load setlist data. Please refresh to try again.</div>
+
+  <div id="statsContent" style="display:none;">
+    <section class="stat-section">
+      <h2 class="section-label">Most Played Live</h2>
+      <p class="section-note">Top 20 by total performances</p>
+      <div class="section-line"></div>
+      <ol class="rank-list" id="mostPlayed"></ol>
+    </section>
+
+    <section class="stat-section">
+      <h2 class="section-label">First Song In, Last Song Out</h2>
+      <p class="section-note">The most common show openers and closers</p>
+      <div class="section-line"></div>
+      <div class="two-col">
+        <div><h3>Openers</h3><ol class="rank-list" id="topOpeners"></ol></div>
+        <div><h3>Closers</h3><ol class="rank-list" id="topClosers"></ol></div>
+      </div>
+    </section>
+
+    <section class="stat-section">
+      <h2 class="section-label">One-Timers</h2>
+      <p class="section-note"><span id="oneTimerCount">-</span> songs played live exactly once - click through to the show</p>
+      <div class="section-line"></div>
+      <ul class="detail-list" id="oneTimers"></ul>
+      <button class="show-more-btn" id="oneTimersMore" style="display:none;">Show all one-timers</button>
+    </section>
+
+    <section class="stat-section">
+      <h2 class="section-label">Longest Time On The Shelf</h2>
+      <p class="section-note">Biggest gaps between live performances of the same song</p>
+      <div class="section-line"></div>
+      <ul class="detail-list" id="longestGaps"></ul>
+    </section>
+
+    <section class="stat-section">
+      <h2 class="section-label">Top Covers</h2>
+      <p class="section-note">Other artists' songs The Hip played most</p>
+      <div class="section-line"></div>
+      <ol class="rank-list" id="topCovers"></ol>
+    </section>
+
+    <section class="stat-section" id="neverSection" style="display:none;">
+      <h2 class="section-label">Never Played Live</h2>
+      <p class="section-note"><span id="neverCount">-</span> catalogue songs with no known live performance, per setlist.fm data</p>
+      <div class="section-line"></div>
+      <div class="never-grid" id="neverPlayed"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/live-stats.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

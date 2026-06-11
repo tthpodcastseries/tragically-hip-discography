@@ -26,6 +26,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://thehiphandbook.tthpods.com/video-for-new-recruits.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/music-videos.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/live-stats.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://thehiphandbook.tthpods.com/forum-invite.html</loc>
     <lastmod>2026-04-12</lastmod>
     <priority>0.6</priority>
