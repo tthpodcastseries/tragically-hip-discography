@@ -199,7 +199,8 @@
     maxClusterRadius: 40,
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
-    zoomToBoundsOnClick: true
+    zoomToBoundsOnClick: true,
+    chunkedLoading: true
   });
   map.addLayer(clusterGroup);
 
@@ -253,14 +254,27 @@
   }
 
   // Render markers
+  // Markers are created once per gig and reused across filter changes;
+  // popup HTML is built lazily on first open instead of for all 1,358 gigs up front
+  const markerCache = new Map();
+  function getGigMarker(g) {
+    let m = markerCache.get(g.id);
+    if (!m) {
+      m = L.marker([g.lat, g.lng], { icon: redIcon });
+      m.bindPopup(() => popupHTML(g), { maxWidth: 280 });
+      markerCache.set(g.id, m);
+    }
+    return m;
+  }
+
   function renderGigs(gigs) {
     clusterGroup.clearLayers();
+    const markers = [];
     gigs.forEach(g => {
       if (!g.lat || !g.lng) return;
-      const marker = L.marker([g.lat, g.lng], { icon: redIcon });
-      marker.bindPopup(popupHTML(g), { maxWidth: 280 });
-      clusterGroup.addLayer(marker);
+      markers.push(getGigMarker(g));
     });
+    clusterGroup.addLayers(markers);
     document.getElementById('statsPill').textContent =
       `${gigs.length.toLocaleString()} gigs - ${[...new Set(gigs.map(g => g.city))].length} cities - ${[...new Set(gigs.map(g => g.countryName))].length} countries`;
   }
@@ -323,8 +337,19 @@
   // Event listeners
   tourSelect.addEventListener('change', () => applyFilters(true));
   countrySelect.addEventListener('change', () => applyFilters(true));
-  document.getElementById('yearMin').addEventListener('input', applyFilters);
-  document.getElementById('yearMax').addEventListener('input', applyFilters);
+  // Year sliders: update the track/label instantly, but debounce the marker
+  // re-render so dragging stays smooth (and never pass the event as fitMap)
+  let yearDebounce = null;
+  function onYearInput() {
+    updateSliderTrack();
+    const lo = Math.min(parseInt(document.getElementById('yearMin').value), parseInt(document.getElementById('yearMax').value));
+    const hi = Math.max(parseInt(document.getElementById('yearMin').value), parseInt(document.getElementById('yearMax').value));
+    document.getElementById('yearDisplay').textContent = lo === hi ? `${lo}` : `${lo} - ${hi}`;
+    clearTimeout(yearDebounce);
+    yearDebounce = setTimeout(() => applyFilters(), 120);
+  }
+  document.getElementById('yearMin').addEventListener('input', onYearInput);
+  document.getElementById('yearMax').addEventListener('input', onYearInput);
 
   document.getElementById('resetBtn').addEventListener('click', () => {
     tourSelect.value = 'all';

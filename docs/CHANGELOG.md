@@ -1,5 +1,20 @@
 # Changelog
 
+## v4.3.1
+**Looking For A Place To Happen** - July 16, 2026
+- **Top 169 data repair**: corrected the `beyondTop40` list in `js/discography-app.js` against the TTHTop40 master tally (source: `TTH Top 40.numbers` in the podcast Documents folder)
+  - 11 wrong songs fixed, including Everytime You Go (was #59, correctly #94) and Get Back Again restored at #59
+  - Removed 5 songs that never received votes: Take Forever, Coconut Cream, Streets Ahead, Release, Wild Mountain Honey
+  - Restored 6 missing voted songs: Are We Family (#50), Sherpa (#84), Goodnight Josephine (#110), Luv (sic) (#134), Train Overnight (#164), Poets (Super Farmer Nano Baby Version) (#169)
+  - Fixed 7 point values (#44, #47, #48, #64, #76, #151, #162); removed duplicate entries for Vapour Trails and You're Everywhere
+- **Universal search fix**: `data/discography.json` now includes full track lists for all 31 audio releases - the Songs category of home-page search returned nothing before because the data had no tracks
+- **Lyrics deep link fix**: search results linking to `discography.html#cat=lyrics&q=...` now auto-run the query once the lyrics index is ready (previously the query was dropped)
+- **Tour Map performance**: dragging the year slider was rebuilding all 1,358 markers (plus their popup HTML) on every tick and re-zooming the map each time (~3.4s of jank per drag, measured). Markers are now created once and reused, popups build lazily on first open, marker adds use chunked bulk loading, and slider re-renders are debounced (track/label still update instantly). Measured drag cost after: ~1ms
+- Release note: this was briefly deployed as "v4.2.1" from a stale local checkout that predated the v4.x line; renumbered to v4.3.1 and rebuilt on top of v4.3
+- Service worker cache bumped to `thc-v4.3.1`; footer version label bumped to v4.3.1
+
+---
+
 ## v4.3
 **Fully Completely — Update 3** - June 11, 2026
 - **New page: Live Show Stats** (`live-stats.html`, H1 "38 Years Old") - trivia computed client-side from the 1,091 shows with setlists: Most Played Live (top 20 with bars - New Orleans Is Sinking leads at 831), most common openers and closers (Grace, Too opened 192 shows), 26 one-timers each linking to their show on the tour map, longest shelvings (top gap 16.9 years), top covers, and the catalogue songs never played live (per setlist.fm data), each linking to its song permalink

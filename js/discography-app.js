@@ -1149,13 +1149,13 @@ const beyondTop40 = [
   { rank: 41, title: "Don't Wake Daddy", album: 'Trouble at the Henhouse', points: 265 },
   { rank: 42, title: 'The Dire Wolf', album: 'In Violet Light', points: 260 },
   { rank: 43, title: 'So Hard Done By', album: 'Day for Night', points: 255 },
-  { rank: 44, title: 'Eldorado', album: 'Fully Completely', points: 249 },
+  { rank: 44, title: 'Eldorado', album: 'Fully Completely', points: 248 },
   { rank: 45, title: 'Twist My Arm', album: 'Road Apples', points: 245 },
   { rank: 46, title: 'In View', album: 'World Container', points: 241 },
-  { rank: 47, title: 'Thugs', album: 'Day for Night', points: 237 },
-  { rank: 48, title: 'Opiated', album: 'Up to Here', points: 236 },
+  { rank: 47, title: 'Thugs', album: 'Day for Night', points: 231 },
+  { rank: 48, title: 'Opiated', album: 'Up to Here', points: 228 },
   { rank: 49, title: 'The Dark Canuck', album: 'In Violet Light', points: 226 },
-  { rank: 50, title: 'As I Wind Down the Pines', album: 'Music @ Work', points: 226 },
+  { rank: 50, title: 'Are We Family', album: 'In Between Evolution', points: 226 },
   { rank: 51, title: 'Another Midnight', album: 'Up to Here', points: 225 },
   { rank: 52, title: "It Can't Be Nashville Every Night", album: 'In Between Evolution', points: 222 },
   { rank: 53, title: 'Coffee Girl', album: 'We Are the Same', points: 220 },
@@ -1164,12 +1164,12 @@ const beyondTop40 = [
   { rank: 56, title: 'Now for Plan A', album: 'Now for Plan A', points: 212 },
   { rank: 57, title: 'An Inch an Hour', album: 'Day for Night', points: 202 },
   { rank: 58, title: 'Tired as Fuck', album: 'Man Machine Poem', points: 201 },
-  { rank: 59, title: 'Everytime You Go', album: 'Up to Here', points: 200 },
+  { rank: 59, title: 'Get Back Again', album: 'Up to Here', points: 200 },
   { rank: 60, title: 'Highway Girl', album: 'The Tragically Hip', points: 197 },
   { rank: 61, title: 'Something On', album: 'Phantom Power', points: 190 },
   { rank: 62, title: 'A Beautiful Thing', album: 'In Violet Light', points: 189 },
   { rank: 63, title: 'Stay', album: 'Music @ Work', points: 184 },
-  { rank: 64, title: 'Inevitability of Death', album: 'Day for Night', points: 179 },
+  { rank: 64, title: 'Inevitability of Death', album: 'Day for Night', points: 178 },
   { rank: 65, title: 'Tiger the Lion', album: 'Music @ Work', points: 175 },
   { rank: 66, title: 'Vaccination Scar', album: 'In Between Evolution', points: 169 },
   { rank: 67, title: 'The Luxury', album: 'Road Apples', points: 169 },
@@ -1181,7 +1181,7 @@ const beyondTop40 = [
   { rank: 73, title: 'Morning Moon', album: 'We Are the Same', points: 151 },
   { rank: 74, title: 'Last American Exit', album: 'The Tragically Hip', points: 151 },
   { rank: 75, title: 'The Lonely End of the Rink', album: 'World Container', points: 150 },
-  { rank: 76, title: '700 Ft. Ceiling', album: 'Trouble at the Henhouse', points: 140 },
+  { rank: 76, title: '700 Ft. Ceiling', album: 'Trouble at the Henhouse', points: 146 },
   { rank: 77, title: 'Leave', album: 'In Violet Light', points: 136 },
   { rank: 78, title: 'Fire in the Hole', album: 'Day for Night', points: 135 },
   { rank: 79, title: 'Thompson Girl', album: 'Phantom Power', points: 134 },
@@ -1189,7 +1189,7 @@ const beyondTop40 = [
   { rank: 81, title: 'Bring It All Back', album: 'Road Apples', points: 132 },
   { rank: 82, title: 'Apartment Song', album: 'Trouble at the Henhouse', points: 130 },
   { rank: 83, title: 'Silver Jet', album: 'In Violet Light', points: 126 },
-  { rank: 84, title: 'Coconut Cream', album: 'Trouble at the Henhouse', points: 125 },
+  { rank: 84, title: 'Sherpa', album: 'Trouble at the Henhouse', points: 125 },
   { rank: 85, title: 'No Threat', album: 'Yer Favourites', points: 121 },
   { rank: 86, title: 'Daredevil', album: 'Day for Night', points: 121 },
   { rank: 87, title: 'Throwing Off Glass', album: 'In Violet Light', points: 120 },
@@ -1199,12 +1199,12 @@ const beyondTop40 = [
   { rank: 91, title: 'On the Verge', album: 'Road Apples', points: 119 },
   { rank: 92, title: 'Lionized', album: 'Fully Completely', points: 118 },
   { rank: 93, title: 'When the Weight Comes Down', album: 'Up to Here', points: 116 },
-  { rank: 94, title: 'Take Forever', album: 'Up to Here', points: 116 },
+  { rank: 94, title: 'Everytime You Go', album: 'Up to Here', points: 116 },
   { rank: 95, title: 'Heaven Is a Better Place Today', album: 'In Between Evolution', points: 106 },
   { rank: 96, title: 'All Canadian Surf Club', album: 'The Tragically Hip', points: 97 },
   { rank: 97, title: 'Membership', album: 'Phantom Power', points: 96 },
   { rank: 98, title: 'Born in the Water', album: 'Road Apples', points: 96 },
-  { rank: 99, title: 'Toronto #4', album: 'Music @ Work', points: 94 },
+  { rank: 99, title: 'As I Wind Down the Pines', album: 'Music @ Work', points: 94 },
   { rank: 100, title: 'The Last Recluse', album: 'We Are the Same', points: 93 },
   { rank: 101, title: 'The Bear', album: 'Music @ Work', points: 93 },
   { rank: 102, title: 'In Sarnia', album: 'Man Machine Poem', points: 93 },
@@ -1215,11 +1215,11 @@ const beyondTop40 = [
   { rank: 107, title: "Butts Wigglin'", album: 'Trouble at the Henhouse', points: 89 },
   { rank: 108, title: 'Country Day', album: 'We Are the Same', points: 84 },
   { rank: 109, title: 'If New Orleans Is Beat', album: 'In Between Evolution', points: 82 },
-  { rank: 110, title: "You're Everywhere", album: 'In Between Evolution', points: 82 },
+  { rank: 110, title: 'Goodnight Josephine', album: 'In Between Evolution', points: 82 },
   { rank: 111, title: "The Kids Don't Get It", album: 'World Container', points: 80 },
   { rank: 112, title: 'Cemetery Sideroad', album: 'The Tragically Hip', points: 79 },
   { rank: 113, title: 'The Lookahead', album: 'Now for Plan A', points: 77 },
-  { rank: 114, title: 'Streets Ahead', album: 'Now for Plan A', points: 71 },
+  { rank: 114, title: 'Toronto #4', album: 'Music @ Work', points: 71 },
   { rank: 115, title: 'Fly', album: 'World Container', points: 71 },
   { rank: 116, title: 'The Completists', album: 'Music @ Work', points: 66 },
   { rank: 117, title: 'Are You Ready', album: 'In Violet Light', points: 64 },
@@ -1239,7 +1239,7 @@ const beyondTop40 = [
   { rank: 131, title: 'Songwriters Cabal', album: 'Phantom Power', points: 50 },
   { rank: 132, title: 'Ocean Next', album: 'Man Machine Poem', points: 49 },
   { rank: 133, title: 'Titanic Terrarium', album: 'Day for Night', points: 48 },
-  { rank: 134, title: 'Pretend', album: 'World Container', points: 46 },
+  { rank: 134, title: 'Luv (sic)', album: 'World Container', points: 46 },
   { rank: 135, title: 'What Blue', album: 'Man Machine Poem', points: 45 },
   { rank: 136, title: 'Save the Planet', album: 'Phantom Power', points: 45 },
   { rank: 137, title: 'Emergency', album: 'Day for Night', points: 45 },
@@ -1255,8 +1255,8 @@ const beyondTop40 = [
   { rank: 147, title: 'Insomniacs', album: 'Phantom Power', points: 31 },
   { rank: 148, title: 'Here, in the Dark', album: 'Man Machine Poem', points: 31 },
   { rank: 149, title: 'Killing Time', album: 'The Tragically Hip', points: 30 },
-  { rank: 150, title: 'Release', album: 'World Container', points: 29 },
-  { rank: 151, title: 'You\'re Everywhere', album: 'In Between Evolution', points: 29 },
+  { rank: 150, title: 'Pretend', album: 'World Container', points: 29 },
+  { rank: 151, title: 'You\'re Everywhere', album: 'In Between Evolution', points: 28 },
   { rank: 152, title: 'The Modern Spirit', album: 'Now for Plan A', points: 27 },
   { rank: 153, title: 'Mean Streak', album: 'In Between Evolution', points: 26 },
   { rank: 154, title: "We'll Go, Too", album: 'Fully Completely', points: 23 },
@@ -1267,14 +1267,14 @@ const beyondTop40 = [
   { rank: 159, title: 'The Heart of the Melt', album: 'In Between Evolution', points: 17 },
   { rank: 160, title: 'Hot Mic', album: 'Man Machine Poem', points: 17 },
   { rank: 161, title: 'Speed River', album: 'We Are the Same', points: 16 },
-  { rank: 162, title: 'Honey, Please', album: 'We Are the Same', points: 16 },
+  { rank: 162, title: 'Honey, Please', album: 'We Are the Same', points: 15 },
   { rank: 163, title: 'Mystery', album: 'Phantom Power', points: 14 },
-  { rank: 164, title: 'Wild Mountain Honey', album: 'Music @ Work', points: 12 },
+  { rank: 164, title: 'Train Overnight', album: 'Music @ Work', points: 12 },
   { rank: 165, title: 'The Exact Feeling', album: 'We Are the Same', points: 9 },
   { rank: 166, title: 'One Night in Copenhagen', album: 'In Between Evolution', points: 8 },
   { rank: 167, title: 'Frozen in My Tracks', album: 'We Are the Same', points: 6 },
   { rank: 168, title: 'Vegas Strip', album: 'Phantom Power', points: 4 },
-  { rank: 169, title: 'Vapour Trails', album: 'Phantom Power', points: 4 },
+  { rank: 169, title: 'Poets (Super Farmer Nano Baby Version)', album: 'Phantom Power (Deluxe)', points: 4 },
 ];
 
 // Build TTH Top 40 lookup map: track title → rank (includes ALL 169 voted songs)
@@ -2661,6 +2661,22 @@ try {
     }, 100);
   } else if (catParam && categoryData[catParam]) {
     renderCategory(catParam);
+    const lyricsQ = params.get('q') || hashParams.get('q');
+    if (catParam === 'lyrics' && lyricsQ) {
+      // Wait for the lyrics index to finish building, then run the query
+      const tryLyricsQuery = (attempts) => {
+        const input = document.getElementById('lyricsSearchInput');
+        const btn = document.getElementById('lyricsSearchBtn');
+        if (input && btn && !input.disabled) {
+          input.value = lyricsQ;
+          btn.click();
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (attempts > 0) {
+          setTimeout(() => tryLyricsQuery(attempts - 1), 300);
+        }
+      };
+      setTimeout(() => tryLyricsQuery(100), 200);
+    }
     if (albumParam) {
       setTimeout(() => {
         const idx = categoryData[catParam].findIndex(a => a.title === albumParam);

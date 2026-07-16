@@ -289,9 +289,10 @@
       var seenSongs = new Set();
       albumsList.forEach(function(a) {
         if (a.tracks) a.tracks.forEach(function(t) {
-          if (t.title && t.title.toLowerCase().includes(q) && !seenSongs.has(t.title)) {
-            seenSongs.add(t.title);
-            results.songs.push({ title: t.title, album: a.title, category: a.category });
+          var name = typeof t === 'string' ? t : (t && t.title);
+          if (name && name.toLowerCase().includes(q) && !seenSongs.has(name)) {
+            seenSongs.add(name);
+            results.songs.push({ title: name, album: a.title, category: a.category });
           }
         });
       });
