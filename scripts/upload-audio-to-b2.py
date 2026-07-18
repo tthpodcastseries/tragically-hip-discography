@@ -114,6 +114,11 @@ def extract_zip(zip_path, extract_dir):
             for info in entries:
                 if info.is_dir():
                     continue
+                # Skip macOS AppleDouble metadata (._foo.mp3, __MACOSX/) —
+                # they carry audio extensions but contain no audio (caused
+                # 740 phantom tracks cleaned up in v4.3.3)
+                if os.path.basename(info.filename).startswith('._') or '__MACOSX' in info.filename:
+                    continue
                 ext = os.path.splitext(info.filename)[1].lower()
                 if ext in audio_exts:
                     track_num += 1

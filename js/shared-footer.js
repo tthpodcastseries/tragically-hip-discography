@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v4.3.3 (Looking For A Place To Happen - Patch)';
+  var version = 'v4.3.4 (Looking For A Place To Happen - Patch)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
@@ -26,4 +26,24 @@
       navigator.serviceWorker.register('/service-worker.js');
     });
   }
+
+  // JS error reporting via Plausible (max 3 per page view to avoid spam)
+  var errorsSent = 0;
+  function reportError(message, source) {
+    if (errorsSent >= 3 || !message) return;
+    errorsSent++;
+    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    window.plausible('JS Error', { props: {
+      message: String(message).slice(0, 150),
+      source: String(source || '').slice(0, 100),
+      page: location.pathname
+    } });
+  }
+  window.addEventListener('error', function(e) {
+    reportError(e.message, (e.filename || '') + ':' + (e.lineno || ''));
+  });
+  window.addEventListener('unhandledrejection', function(e) {
+    var r = e.reason;
+    reportError((r && r.message) || String(r), 'unhandledrejection');
+  });
 })();

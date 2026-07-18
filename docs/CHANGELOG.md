@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.3.4
+**Looking For A Place To Happen - Patch** - July 18, 2026
+- **Repo audit tooling**: new `scripts/audit-site.js` (no dependencies) checks internal links/assets on every page, service worker precache, manifest icons, sitemap, data cross-references (junk tracks, orphaned video mappings, empty lyrics, gem images), and all external links in page chrome. Run manually with `node scripts/audit-site.js` (`--no-network` to skip external checks).
+- **Weekly CI audit**: GitHub Action (`.github/workflows/site-audit.yml`) runs the audit every Monday 9am Toronto and on demand; GitHub emails on failure, so dead links get caught within a week instead of whenever someone notices
+- **B2 uploader hardened**: `upload-audio-to-b2.py` now skips macOS AppleDouble files (`._*`, `__MACOSX/`) inside zips - the source of the 740 phantom tracks removed in v4.3.3
+- **JS error tracking**: `shared-footer.js` reports uncaught errors and unhandled promise rejections to Plausible as "JS Error" events (message, source, page; capped at 3 per page view) - real-visitor errors are now visible in the dashboard
+- Deploys are now GitHub-linked (auto-publish from `main`); manual CLI deploys retired
+- Service worker cache bumped to `thc-v4.3.4`; footer version label bumped to v4.3.4
+
+---
+
 ## v4.3.3
 **Looking For A Place To Happen - Patch** - July 18, 2026
 - Full-site audit (all pages, internal links, assets, service worker precache, manifest, sitemap, redirects, external links, data cross-references):
