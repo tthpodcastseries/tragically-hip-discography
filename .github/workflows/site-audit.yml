@@ -1,0 +1,18 @@
+name: Weekly site audit
+
+on:
+  schedule:
+    # Mondays 9am Toronto (13:00 UTC)
+    - cron: '0 13 * * 1'
+  workflow_dispatch: {}
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run site audit (links, assets, data integrity)
+        run: node scripts/audit-site.js
