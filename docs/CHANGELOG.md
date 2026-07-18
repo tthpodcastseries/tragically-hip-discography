@@ -1,5 +1,13 @@
 # Changelog
 
+## v4.3.2
+**Looking For A Place To Happen - Patch** - July 18, 2026
+- **Unplucked Gems broken images fixed**: all 15 era cards showed broken album covers - `data/unplucked-gems.json` carried pre-v3.3 space-based filenames (`Up to Here.jpg`) from the TrackerHub import, while the actual files use hyphens (`Up-to-Here.jpg`). All 15 `imagePath` values corrected and verified against the files on disk.
+- `unplucked-gems.html` now prefers its local `imageMap` over imported `imagePath` values, so future tracker reimports can't reintroduce stale filenames
+- Service worker cache bumped to `thc-v4.3.2`; footer version label bumped to v4.3.2
+
+---
+
 ## v4.3.1
 **Looking For A Place To Happen** - July 16, 2026
 - **Top 169 data repair**: corrected the `beyondTop40` list in `js/discography-app.js` against the TTHTop40 master tally (source: `TTH Top 40.numbers` in the podcast Documents folder)

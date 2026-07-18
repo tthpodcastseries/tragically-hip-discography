@@ -162,7 +162,8 @@
 
   // Build each album card + panel
   data.eras.forEach(function(era, idx) {
-    var imagePath = era.imagePath || imageMap[era.era] || '';
+    // Prefer the local imageMap - imported tracker data has carried stale filenames before
+    var imagePath = imageMap[era.era] || era.imagePath || '';
 
     // Count availability
     var eraAvailable = 0;
