@@ -1,3 +1,7 @@
+# Static site - publish the repo root as-is, no build step
+[build]
+  publish = "."
+
 [[redirects]]
   from = "/scripts/*"
   to = "/404.html"
