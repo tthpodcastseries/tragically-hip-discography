@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.3.3
+**Looking For A Place To Happen - Patch** - July 18, 2026
+- Full-site audit (all pages, internal links, assets, service worker precache, manifest, sitemap, redirects, external links, data cross-references):
+- **Official site link fixed**: links.html pointed at `tragicallyhip.com`, whose DNS no longer resolves - now points to `thehip.com` (the band's live official site)
+- **740 macOS junk audio tracks removed** from `tth-tour-data.json`: AppleDouble `._*` metadata files had been uploaded to Backblaze alongside the real recordings and indexed as playable tracks across 92 shows - they appeared as duplicate tracks that played nothing. Every removed entry had its real counterpart present; all 625 playable shows remain playable. File shrank 138 KB.
+- Verified clean: internal links/assets on all 10 pages, SW precache list, manifest icons, sitemap, pretty-URL redirects, setlist.fm/Spotify/kite.link/YouTube link samples, show-video mappings (195, no orphans), lyrics (169/169 non-empty)
+- Service worker cache bumped to `thc-v4.3.3`; footer version label bumped to v4.3.3
+
+---
+
 ## v4.3.2
 **Looking For A Place To Happen - Patch** - July 18, 2026
 - **Unplucked Gems broken images fixed**: all 15 era cards showed broken album covers - `data/unplucked-gems.json` carried pre-v3.3 space-based filenames (`Up to Here.jpg`) from the TrackerHub import, while the actual files use hyphens (`Up-to-Here.jpg`). All 15 `imagePath` values corrected and verified against the files on disk.

@@ -148,11 +148,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 1985 07 01 Bath, ON",
-        "url": "1985-07-01-Bath-ON/._Tragically Hip - 1985-07-01 - Bath, ON.mp3",
-        "filename": "._Tragically Hip - 1985-07-01 - Bath, ON.mp3"
-      },
-      {
         "name": "Tragically Hip 1985 07 01 Bath, ON",
         "url": "1985-07-01-Bath-ON/Tragically Hip - 1985-07-01 - Bath, ON.mp3",
         "filename": "Tragically Hip - 1985-07-01 - Bath, ON.mp3"
@@ -943,7 +938,7 @@
     "date": "17-03-1988",
     "isoDate": "1988-03-17",
     "tour": null,
-    "venue": "Reggie T\u2019s",
+    "venue": "Reggie T’s",
     "venueId": "3d181db",
     "city": "Winnipeg",
     "state": "MB",
@@ -959,7 +954,7 @@
     "date": "18-03-1988",
     "isoDate": "1988-03-18",
     "tour": null,
-    "venue": "Reggie T\u2019s",
+    "venue": "Reggie T’s",
     "venueId": "3d181db",
     "city": "Winnipeg",
     "state": "MB",
@@ -1103,7 +1098,7 @@
     "date": "16-06-1988",
     "isoDate": "1988-06-16",
     "tour": null,
-    "venue": "Les Foufounes \u00c9lectriques",
+    "venue": "Les Foufounes Électriques",
     "venueId": "53d6d3f5",
     "city": "Montreal",
     "state": "QC",
@@ -1370,7 +1365,7 @@
     "date": "11-08-1988",
     "isoDate": "1988-08-11",
     "tour": null,
-    "venue": "Nervous Harold\u2019s",
+    "venue": "Nervous Harold’s",
     "venueId": "3d181d7",
     "city": "Saskatoon",
     "state": "SK",
@@ -2701,7 +2696,7 @@
     "date": "21-03-1990",
     "isoDate": "1990-03-21",
     "tour": null,
-    "venue": "Rascal\u2019s Cabaret",
+    "venue": "Rascal’s Cabaret",
     "venueId": "1bd36184",
     "city": "Nanaimo",
     "state": "BC",
@@ -2825,11 +2820,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-03-30-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 1990 03 30 The Concert Hall, Toronto, ON",
-        "url": "1990-03-30-Toronto-ON/._Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3",
-        "filename": "._Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3"
-      },
       {
         "name": "Tragically Hip 1990 03 30 The Concert Hall, Toronto, ON",
         "url": "1990-03-30-Toronto-ON/Tragically Hip - 1990-03-30 - The Concert Hall, Toronto, ON.mp3",
@@ -2962,7 +2952,7 @@
         "filename": "tth1990-04-11d02t01.mp3"
       },
       {
-        "name": "I\u2019m a Werewolf, Baby",
+        "name": "I’m a Werewolf, Baby",
         "url": "1990-04-11-Montreal-QC/tth1990-04-11d02t02.mp3",
         "filename": "tth1990-04-11d02t02.mp3"
       }
@@ -3769,76 +3759,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1991-03-01-Vancouver-BC-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Little Bones",
-        "url": "1991-03-01-Vancouver-BC/._01 Little Bones.m4a",
-        "filename": "._01 Little Bones.m4a"
-      },
-      {
-        "name": ". 02 She Didn't Know",
-        "url": "1991-03-01-Vancouver-BC/._02 She Didn't Know.m4a",
-        "filename": "._02 She Didn't Know.m4a"
-      },
-      {
-        "name": ". 03 Twist My Arm",
-        "url": "1991-03-01-Vancouver-BC/._03 Twist My Arm.m4a",
-        "filename": "._03 Twist My Arm.m4a"
-      },
-      {
-        "name": ". 04 Highway Girl",
-        "url": "1991-03-01-Vancouver-BC/._04 Highway Girl.m4a",
-        "filename": "._04 Highway Girl.m4a"
-      },
-      {
-        "name": ". 05 The Luxury",
-        "url": "1991-03-01-Vancouver-BC/._05 The Luxury.m4a",
-        "filename": "._05 The Luxury.m4a"
-      },
-      {
-        "name": ". 06 Evertime You Go",
-        "url": "1991-03-01-Vancouver-BC/._06 Evertime You Go.m4a",
-        "filename": "._06 Evertime You Go.m4a"
-      },
-      {
-        "name": ". 07 Bring It All Back",
-        "url": "1991-03-01-Vancouver-BC/._07 Bring It All Back.m4a",
-        "filename": "._07 Bring It All Back.m4a"
-      },
-      {
-        "name": ". 08 I'll Believe in You",
-        "url": "1991-03-01-Vancouver-BC/._08 I'll Believe in You.m4a",
-        "filename": "._08 I'll Believe in You.m4a"
-      },
-      {
-        "name": ". 09 38 Years Old",
-        "url": "1991-03-01-Vancouver-BC/._09 38 Years Old.m4a",
-        "filename": "._09 38 Years Old.m4a"
-      },
-      {
-        "name": ". 10 Three Pistols",
-        "url": "1991-03-01-Vancouver-BC/._10 Three Pistols.m4a",
-        "filename": "._10 Three Pistols.m4a"
-      },
-      {
-        "name": ". 11 Trickle Down",
-        "url": "1991-03-01-Vancouver-BC/._11 Trickle Down.m4a",
-        "filename": "._11 Trickle Down.m4a"
-      },
-      {
-        "name": ". 12 Boots or Hearts",
-        "url": "1991-03-01-Vancouver-BC/._12 Boots or Hearts.m4a",
-        "filename": "._12 Boots or Hearts.m4a"
-      },
-      {
-        "name": ". 13 Cordelia",
-        "url": "1991-03-01-Vancouver-BC/._13 Cordelia.m4a",
-        "filename": "._13 Cordelia.m4a"
-      },
-      {
-        "name": ". 14 New Orleans is Sinking",
-        "url": "1991-03-01-Vancouver-BC/._14 New Orleans is Sinking.m4a",
-        "filename": "._14 New Orleans is Sinking.m4a"
-      },
       {
         "name": "Little Bones",
         "url": "1991-03-01-Vancouver-BC/01 Little Bones.m4a",
@@ -6546,101 +6466,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Intro",
-        "url": "1991-12-31-Ottawa-ON/._01 Intro.m4a",
-        "filename": "._01 Intro.m4a"
-      },
-      {
-        "name": ". 02 Three Pistols",
-        "url": "1991-12-31-Ottawa-ON/._02 Three Pistols.m4a",
-        "filename": "._02 Three Pistols.m4a"
-      },
-      {
-        "name": ". 03 So Hard Done By",
-        "url": "1991-12-31-Ottawa-ON/._03 So Hard Done By.m4a",
-        "filename": "._03 So Hard Done By.m4a"
-      },
-      {
-        "name": ". 04 Twist My Arm",
-        "url": "1991-12-31-Ottawa-ON/._04 Twist My Arm.m4a",
-        "filename": "._04 Twist My Arm.m4a"
-      },
-      {
-        "name": ". 05 Montreal",
-        "url": "1991-12-31-Ottawa-ON/._05 Montreal.m4a",
-        "filename": "._05 Montreal.m4a"
-      },
-      {
-        "name": ". 06 Everytime You Go",
-        "url": "1991-12-31-Ottawa-ON/._06 Everytime You Go.m4a",
-        "filename": "._06 Everytime You Go.m4a"
-      },
-      {
-        "name": ". 07 Fight",
-        "url": "1991-12-31-Ottawa-ON/._07 Fight.m4a",
-        "filename": "._07 Fight.m4a"
-      },
-      {
-        "name": ". 08 Locked in the Trunk of a Car",
-        "url": "1991-12-31-Ottawa-ON/._08 Locked in the Trunk of a Car.m4a",
-        "filename": "._08 Locked in the Trunk of a Car.m4a"
-      },
-      {
-        "name": ". 09 New Orleans is Sinking",
-        "url": "1991-12-31-Ottawa-ON/._09 New Orleans is Sinking.m4a",
-        "filename": "._09 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 10 The Last of the Unplucked Gems",
-        "url": "1991-12-31-Ottawa-ON/._10 The Last of the Unplucked Gems.m4a",
-        "filename": "._10 The Last of the Unplucked Gems.m4a"
-      },
-      {
-        "name": ". 11 At the Hundredth Meridian",
-        "url": "1991-12-31-Ottawa-ON/._11 At the Hundredth Meridian.m4a",
-        "filename": "._11 At the Hundredth Meridian.m4a"
-      },
-      {
-        "name": ". 12 Cordelia",
-        "url": "1991-12-31-Ottawa-ON/._12 Cordelia.m4a",
-        "filename": "._12 Cordelia.m4a"
-      },
-      {
-        "name": ". 13 Bring It All Back",
-        "url": "1991-12-31-Ottawa-ON/._13 Bring It All Back.m4a",
-        "filename": "._13 Bring It All Back.m4a"
-      },
-      {
-        "name": ". 14 Fully Completely",
-        "url": "1991-12-31-Ottawa-ON/._14 Fully Completely.m4a",
-        "filename": "._14 Fully Completely.m4a"
-      },
-      {
-        "name": ". 15 Blow at High Dough",
-        "url": "1991-12-31-Ottawa-ON/._15 Blow at High Dough.m4a",
-        "filename": "._15 Blow at High Dough.m4a"
-      },
-      {
-        "name": ". 16 Little Bones",
-        "url": "1991-12-31-Ottawa-ON/._16 Little Bones.m4a",
-        "filename": "._16 Little Bones.m4a"
-      },
-      {
-        "name": ". 17 Long Time Running",
-        "url": "1991-12-31-Ottawa-ON/._17 Long Time Running.m4a",
-        "filename": "._17 Long Time Running.m4a"
-      },
-      {
-        "name": ". 18 On The Verge",
-        "url": "1991-12-31-Ottawa-ON/._18 On The Verge.m4a",
-        "filename": "._18 On The Verge.m4a"
-      },
-      {
-        "name": ". 19 The Luxury",
-        "url": "1991-12-31-Ottawa-ON/._19 The Luxury.m4a",
-        "filename": "._19 The Luxury.m4a"
-      },
-      {
         "name": "Intro",
         "url": "1991-12-31-Ottawa-ON/01 Intro.m4a",
         "filename": "01 Intro.m4a"
@@ -7215,7 +7040,7 @@
     "date": "14-11-1992",
     "isoDate": "1992-11-14",
     "tour": null,
-    "venue": "Universit\u00e9 de Montr\u00e9al CEPSUM",
+    "venue": "Université de Montréal CEPSUM",
     "venueId": "3bd6d8a8",
     "city": "Montreal",
     "state": "QC",
@@ -7696,31 +7521,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": "Fully Completely",
-        "url": "1993-02-06-Hilversum-07/._tth1993-02-06d01t01.mp3",
-        "filename": "._tth1993-02-06d01t01.mp3"
-      },
-      {
-        "name": "Courage (for Hugh MacLennan)",
-        "url": "1993-02-06-Hilversum-07/._tth1993-02-06d01t02.mp3",
-        "filename": "._tth1993-02-06d01t02.mp3"
-      },
-      {
-        "name": "Pigeon Camera",
-        "url": "1993-02-06-Hilversum-07/._tth1993-02-06d01t03.mp3",
-        "filename": "._tth1993-02-06d01t03.mp3"
-      },
-      {
-        "name": "We'll Go Too",
-        "url": "1993-02-06-Hilversum-07/._tth1993-02-06d01t04.mp3",
-        "filename": "._tth1993-02-06d01t04.mp3"
-      },
-      {
-        "name": ". tth1993 02 06d01t05",
-        "url": "1993-02-06-Hilversum-07/._tth1993-02-06d01t05.mp3",
-        "filename": "._tth1993-02-06d01t05.mp3"
-      },
-      {
         "name": "tth1993 02 06d01t01",
         "url": "1993-02-06-Hilversum-07/tth1993-02-06d01t01.mp3",
         "filename": "tth1993-02-06d01t01.mp3"
@@ -7765,31 +7565,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1993-02-06-Amsterdam-Netherlands-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". tth1993 02 06d01t01",
-        "url": "1993-02-06-Amsterdam-07/._tth1993-02-06d01t01.mp3",
-        "filename": "._tth1993-02-06d01t01.mp3"
-      },
-      {
-        "name": ". tth1993 02 06d01t02",
-        "url": "1993-02-06-Amsterdam-07/._tth1993-02-06d01t02.mp3",
-        "filename": "._tth1993-02-06d01t02.mp3"
-      },
-      {
-        "name": ". tth1993 02 06d01t03",
-        "url": "1993-02-06-Amsterdam-07/._tth1993-02-06d01t03.mp3",
-        "filename": "._tth1993-02-06d01t03.mp3"
-      },
-      {
-        "name": ". tth1993 02 06d01t04",
-        "url": "1993-02-06-Amsterdam-07/._tth1993-02-06d01t04.mp3",
-        "filename": "._tth1993-02-06d01t04.mp3"
-      },
-      {
-        "name": ". tth1993 02 06d01t05",
-        "url": "1993-02-06-Amsterdam-07/._tth1993-02-06d01t05.mp3",
-        "filename": "._tth1993-02-06d01t05.mp3"
-      },
       {
         "name": "tth1993 02 06d01t01",
         "url": "1993-02-06-Amsterdam-07/tth1993-02-06d01t01.mp3",
@@ -8992,96 +8767,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 1 01 Locked In The Trunk Of A Car",
-        "url": "1993-07-24-Markham-ON/._1-01 Locked In The Trunk Of A Car.mp3",
-        "filename": "._1-01 Locked In The Trunk Of A Car.mp3"
-      },
-      {
-        "name": ". 1 02 Twist My Arm",
-        "url": "1993-07-24-Markham-ON/._1-02 Twist My Arm.mp3",
-        "filename": "._1-02 Twist My Arm.mp3"
-      },
-      {
-        "name": ". 1 03 Courage",
-        "url": "1993-07-24-Markham-ON/._1-03 Courage.mp3",
-        "filename": "._1-03 Courage.mp3"
-      },
-      {
-        "name": ". 1 04 Fifty Mission Cap",
-        "url": "1993-07-24-Markham-ON/._1-04 Fifty-Mission Cap.mp3",
-        "filename": "._1-04 Fifty-Mission Cap.mp3"
-      },
-      {
-        "name": ". 1 05 Eldorado",
-        "url": "1993-07-24-Markham-ON/._1-05 Eldorado.mp3",
-        "filename": "._1-05 Eldorado.mp3"
-      },
-      {
-        "name": ". 1 06 The Last Of The Unplucked Gems",
-        "url": "1993-07-24-Markham-ON/._1-06 The Last Of The Unplucked Gems.mp3",
-        "filename": "._1-06 The Last Of The Unplucked Gems.mp3"
-      },
-      {
-        "name": ". 1 07 Lionized",
-        "url": "1993-07-24-Markham-ON/._1-07 Lionized.mp3",
-        "filename": "._1-07 Lionized.mp3"
-      },
-      {
-        "name": ". 1 08 Thugs",
-        "url": "1993-07-24-Markham-ON/._1-08 Thugs.mp3",
-        "filename": "._1-08 Thugs.mp3"
-      },
-      {
-        "name": ". 1 09 Cordelia",
-        "url": "1993-07-24-Markham-ON/._1-09 Cordelia.mp3",
-        "filename": "._1-09 Cordelia.mp3"
-      },
-      {
-        "name": ". 1 10 Wheat Kings",
-        "url": "1993-07-24-Markham-ON/._1-10 Wheat Kings.mp3",
-        "filename": "._1-10 Wheat Kings.mp3"
-      },
-      {
-        "name": ". 2 01 New Orleans Is Sinking",
-        "url": "1993-07-24-Markham-ON/._2-01 New Orleans Is Sinking.mp3",
-        "filename": "._2-01 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 2 02 Fully Completely",
-        "url": "1993-07-24-Markham-ON/._2-02 Fully Completely.mp3",
-        "filename": "._2-02 Fully Completely.mp3"
-      },
-      {
-        "name": ". 2 03 Pigeon Camera",
-        "url": "1993-07-24-Markham-ON/._2-03 Pigeon Camera.mp3",
-        "filename": "._2-03 Pigeon Camera.mp3"
-      },
-      {
-        "name": ". 2 04 38 Years Old",
-        "url": "1993-07-24-Markham-ON/._2-04 38 Years Old.mp3",
-        "filename": "._2-04 38 Years Old.mp3"
-      },
-      {
-        "name": ". 2 05 Three Pistols",
-        "url": "1993-07-24-Markham-ON/._2-05 Three Pistols.mp3",
-        "filename": "._2-05 Three Pistols.mp3"
-      },
-      {
-        "name": ". 2 06 At The Hundredth Meridian",
-        "url": "1993-07-24-Markham-ON/._2-06 At The Hundredth Meridian.mp3",
-        "filename": "._2-06 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 2 07 Little Bones",
-        "url": "1993-07-24-Markham-ON/._2-07 Little Bones.mp3",
-        "filename": "._2-07 Little Bones.mp3"
-      },
-      {
-        "name": ". 2 08 Get Back Again",
-        "url": "1993-07-24-Markham-ON/._2-08 Get Back Again.mp3",
-        "filename": "._2-08 Get Back Again.mp3"
-      },
-      {
         "name": "01 Locked In The Trunk Of A Car",
         "url": "1993-07-24-Markham-ON/1-01 Locked In The Trunk Of A Car.mp3",
         "filename": "1-01 Locked In The Trunk Of A Car.mp3"
@@ -9530,56 +9215,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Fifty MIssion Cap",
-        "url": "1993-09-10-Chicago-IL/._01 Fifty MIssion Cap.mp3",
-        "filename": "._01 Fifty MIssion Cap.mp3"
-      },
-      {
-        "name": ". 01 Tragically Hip, The Locked in the Trunk of a Car",
-        "url": "1993-09-10-Chicago-IL/._01 Tragically Hip, The - Locked in the Trunk of a Car.flac",
-        "filename": "._01 Tragically Hip, The - Locked in the Trunk of a Car.flac"
-      },
-      {
-        "name": ". 02 Locked in the Trunk of a Car",
-        "url": "1993-09-10-Chicago-IL/._02 Locked in the Trunk of a Car.mp3",
-        "filename": "._02 Locked in the Trunk of a Car.mp3"
-      },
-      {
-        "name": ". 02 Tragically Hip, The At the Hunderedth Meridian",
-        "url": "1993-09-10-Chicago-IL/._02 Tragically Hip, The - At the Hunderedth Meridian.flac",
-        "filename": "._02 Tragically Hip, The - At the Hunderedth Meridian.flac"
-      },
-      {
-        "name": ". 03 Courage",
-        "url": "1993-09-10-Chicago-IL/._03 Courage.mp3",
-        "filename": "._03 Courage.mp3"
-      },
-      {
-        "name": ". 04 Eldorado",
-        "url": "1993-09-10-Chicago-IL/._04 Eldorado.mp3",
-        "filename": "._04 Eldorado.mp3"
-      },
-      {
-        "name": ". 05 At the Hundredth Meridian",
-        "url": "1993-09-10-Chicago-IL/._05 At the Hundredth Meridian.mp3",
-        "filename": "._05 At the Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 06 Little Bones",
-        "url": "1993-09-10-Chicago-IL/._06 Little Bones.mp3",
-        "filename": "._06 Little Bones.mp3"
-      },
-      {
-        "name": ". 07 Pigeon Camera",
-        "url": "1993-09-10-Chicago-IL/._07 Pigeon Camera.mp3",
-        "filename": "._07 Pigeon Camera.mp3"
-      },
-      {
-        "name": ". 08 On the Verge",
-        "url": "1993-09-10-Chicago-IL/._08 On the Verge.mp3",
-        "filename": "._08 On the Verge.mp3"
-      },
-      {
         "name": "Fifty MIssion Cap",
         "url": "1993-09-10-Chicago-IL/01 Fifty MIssion Cap.mp3",
         "filename": "01 Fifty MIssion Cap.mp3"
@@ -9739,11 +9374,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1993-10-19-Washington-DC-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 1993 10 12 The Bayou, Washington, DC",
-        "url": "1993-10-19-Washington-DC/._Tragically Hip - 1993-10-12 - The Bayou, Washington, DC.mp3",
-        "filename": "._Tragically Hip - 1993-10-12 - The Bayou, Washington, DC.mp3"
-      },
       {
         "name": "Tragically Hip 1993 10 12 The Bayou, Washington, DC",
         "url": "1993-10-19-Washington-DC/Tragically Hip - 1993-10-12 - The Bayou, Washington, DC.mp3",
@@ -10171,11 +9801,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 1994 08 08 Club Met, Harrisburg, PA",
-        "url": "1994-08-08-Harrisburg-PA/._Tragically Hip - 1994-08-08 - Club Met, Harrisburg, PA.mp3",
-        "filename": "._Tragically Hip - 1994-08-08 - Club Met, Harrisburg, PA.mp3"
-      },
-      {
         "name": "Tragically Hip 1994 08 08 Club Met, Harrisburg, PA",
         "url": "1994-08-08-Harrisburg-PA/Tragically Hip - 1994-08-08 - Club Met, Harrisburg, PA.mp3",
         "filename": "Tragically Hip - 1994-08-08 - Club Met, Harrisburg, PA.mp3"
@@ -10481,96 +10106,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1994-10-16-Albuquerque-NM-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 1 Intro",
-        "url": "1994-10-16-Albuquerque-NM/._1 Intro.mp3",
-        "filename": "._1 Intro.mp3"
-      },
-      {
-        "name": ". 10 Yawning Or Snarling",
-        "url": "1994-10-16-Albuquerque-NM/._10 Yawning Or Snarling.mp3",
-        "filename": "._10 Yawning Or Snarling.mp3"
-      },
-      {
-        "name": ". 11 At The Hundredth Meridian",
-        "url": "1994-10-16-Albuquerque-NM/._11 At The Hundredth Meridian.mp3",
-        "filename": "._11 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 12 Titanic Terrarium",
-        "url": "1994-10-16-Albuquerque-NM/._12 Titanic Terrarium.mp3",
-        "filename": "._12 Titanic Terrarium.mp3"
-      },
-      {
-        "name": ". 13 Fifty Mission Cap",
-        "url": "1994-10-16-Albuquerque-NM/._13 Fifty-Mission Cap.mp3",
-        "filename": "._13 Fifty-Mission Cap.mp3"
-      },
-      {
-        "name": ". 14 New Orleans Is Sinking",
-        "url": "1994-10-16-Albuquerque-NM/._14 New Orleans Is Sinking.mp3",
-        "filename": "._14 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 15 Fire In The Hole",
-        "url": "1994-10-16-Albuquerque-NM/._15 Fire In The Hole.mp3",
-        "filename": "._15 Fire In The Hole.mp3"
-      },
-      {
-        "name": ". 16 Locked In The Trunk Of A Car",
-        "url": "1994-10-16-Albuquerque-NM/._16 Locked In The Trunk Of A Car.mp3",
-        "filename": "._16 Locked In The Trunk Of A Car.mp3"
-      },
-      {
-        "name": ". 17 Thugs",
-        "url": "1994-10-16-Albuquerque-NM/._17 Thugs.mp3",
-        "filename": "._17 Thugs.mp3"
-      },
-      {
-        "name": ". 18 Courage (For Hugh Maclennan)",
-        "url": "1994-10-16-Albuquerque-NM/._18 Courage (For Hugh Maclennan).mp3",
-        "filename": "._18 Courage (For Hugh Maclennan).mp3"
-      },
-      {
-        "name": ". 2 Grace, Too",
-        "url": "1994-10-16-Albuquerque-NM/._2 Grace, Too.mp3",
-        "filename": "._2 Grace, Too.mp3"
-      },
-      {
-        "name": ". 3 Fully Completely",
-        "url": "1994-10-16-Albuquerque-NM/._3 Fully Completely.mp3",
-        "filename": "._3 Fully Completely.mp3"
-      },
-      {
-        "name": ". 4 Nautical Disaster",
-        "url": "1994-10-16-Albuquerque-NM/._4 Nautical Disaster.mp3",
-        "filename": "._4 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 5 We ll Go Too",
-        "url": "1994-10-16-Albuquerque-NM/._5 We_ll Go Too.mp3",
-        "filename": "._5 We_ll Go Too.mp3"
-      },
-      {
-        "name": ". 6 Daredevil",
-        "url": "1994-10-16-Albuquerque-NM/._6 Daredevil.mp3",
-        "filename": "._6 Daredevil.mp3"
-      },
-      {
-        "name": ". 7 The Last Of The Unplucked Gems",
-        "url": "1994-10-16-Albuquerque-NM/._7 The Last Of The Unplucked Gems.mp3",
-        "filename": "._7 The Last Of The Unplucked Gems.mp3"
-      },
-      {
-        "name": ". 8 Greasy Jungle",
-        "url": "1994-10-16-Albuquerque-NM/._8 Greasy Jungle.mp3",
-        "filename": "._8 Greasy Jungle.mp3"
-      },
-      {
-        "name": ". 9 Impossibilium",
-        "url": "1994-10-16-Albuquerque-NM/._9 Impossibilium.mp3",
-        "filename": "._9 Impossibilium.mp3"
-      },
       {
         "name": "Intro",
         "url": "1994-10-16-Albuquerque-NM/1 Intro.mp3",
@@ -11268,7 +10803,7 @@
     "date": "05-02-1995",
     "isoDate": "1995-02-05",
     "tour": "Day For Night",
-    "venue": "Forum de Montr\u00e9al",
+    "venue": "Forum de Montréal",
     "venueId": "bd3a18e",
     "city": "Montreal",
     "state": "QC",
@@ -13174,101 +12709,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Grace, Too",
-        "url": "1995-05-18-West-Hollywood-CA/._01 Grace, Too.mp3",
-        "filename": "._01 Grace, Too.mp3"
-      },
-      {
-        "name": ". 02 Locked In The Trunk Of A Car",
-        "url": "1995-05-18-West-Hollywood-CA/._02 Locked In The Trunk Of A Car.mp3",
-        "filename": "._02 Locked In The Trunk Of A Car.mp3"
-      },
-      {
-        "name": ". 03 Inevitability Of Death",
-        "url": "1995-05-18-West-Hollywood-CA/._03 Inevitability Of Death.mp3",
-        "filename": "._03 Inevitability Of Death.mp3"
-      },
-      {
-        "name": ". 04 Daredevil",
-        "url": "1995-05-18-West-Hollywood-CA/._04 Daredevil.mp3",
-        "filename": "._04 Daredevil.mp3"
-      },
-      {
-        "name": ". 05 Pigeon Camera",
-        "url": "1995-05-18-West-Hollywood-CA/._05 Pigeon Camera.mp3",
-        "filename": "._05 Pigeon Camera.mp3"
-      },
-      {
-        "name": ". 06 Greasy Jungle",
-        "url": "1995-05-18-West-Hollywood-CA/._06 Greasy Jungle.mp3",
-        "filename": "._06 Greasy Jungle.mp3"
-      },
-      {
-        "name": ". 07 The Last Of The Unplucked Gems",
-        "url": "1995-05-18-West-Hollywood-CA/._07 The Last Of The Unplucked Gems.mp3",
-        "filename": "._07 The Last Of The Unplucked Gems.mp3"
-      },
-      {
-        "name": ". 08 Springtime In Vienna",
-        "url": "1995-05-18-West-Hollywood-CA/._08 Springtime In Vienna.mp3",
-        "filename": "._08 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 09 At The Hundredth Meridian",
-        "url": "1995-05-18-West-Hollywood-CA/._09 At The Hundredth Meridian.mp3",
-        "filename": "._09 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 10 Yawning Or Snarling",
-        "url": "1995-05-18-West-Hollywood-CA/._10 Yawning Or Snarling.mp3",
-        "filename": "._10 Yawning Or Snarling.mp3"
-      },
-      {
-        "name": ". 11 The Wherewithal",
-        "url": "1995-05-18-West-Hollywood-CA/._11 The Wherewithal.mp3",
-        "filename": "._11 The Wherewithal.mp3"
-      },
-      {
-        "name": ". 12 Fully Completely",
-        "url": "1995-05-18-West-Hollywood-CA/._12 Fully Completely.mp3",
-        "filename": "._12 Fully Completely.mp3"
-      },
-      {
-        "name": ". 13 Scared",
-        "url": "1995-05-18-West-Hollywood-CA/._13 Scared.mp3",
-        "filename": "._13 Scared.mp3"
-      },
-      {
-        "name": ". 14 Thugs",
-        "url": "1995-05-18-West-Hollywood-CA/._14 Thugs.mp3",
-        "filename": "._14 Thugs.mp3"
-      },
-      {
-        "name": ". 15 Nautical Disaster",
-        "url": "1995-05-18-West-Hollywood-CA/._15 Nautical Disaster.mp3",
-        "filename": "._15 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 16 New Orleans Is Sinking",
-        "url": "1995-05-18-West-Hollywood-CA/._16 New Orleans Is Sinking.mp3",
-        "filename": "._16 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 17 Fire In The Hole",
-        "url": "1995-05-18-West-Hollywood-CA/._17 Fire In The Hole.mp3",
-        "filename": "._17 Fire In The Hole.mp3"
-      },
-      {
-        "name": ". 18 So Hard Done By",
-        "url": "1995-05-18-West-Hollywood-CA/._18 So Hard Done By.mp3",
-        "filename": "._18 So Hard Done By.mp3"
-      },
-      {
-        "name": ". 19 Fifty Mission Cap",
-        "url": "1995-05-18-West-Hollywood-CA/._19 Fifty-Mission Cap.mp3",
-        "filename": "._19 Fifty-Mission Cap.mp3"
-      },
-      {
         "name": "Grace, Too",
         "url": "1995-05-18-West-Hollywood-CA/01 Grace, Too.mp3",
         "filename": "01 Grace, Too.mp3"
@@ -13514,16 +12954,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": "Grace, Too",
-        "url": "1995-06-05-Landgraaf-05/._tth1995-06-05 - Landgraaf, NL01.mp3",
-        "filename": "._tth1995-06-05 - Landgraaf, NL01.mp3"
-      },
-      {
-        "name": "Fully Completely",
-        "url": "1995-06-05-Landgraaf-05/._tth1995-06-05 - Landgraaf, NL02.mp3",
-        "filename": "._tth1995-06-05 - Landgraaf, NL02.mp3"
-      },
-      {
         "name": "Inevitability of Death",
         "url": "1995-06-05-Landgraaf-05/tth1995-06-05 - Landgraaf, NL01.mp3",
         "filename": "tth1995-06-05 - Landgraaf, NL01.mp3"
@@ -13575,7 +13005,7 @@
     "date": "20-06-1995",
     "isoDate": "1995-06-20",
     "tour": "Day For Night",
-    "venue": "M\u00fcngersdorfer Stadion",
+    "venue": "Müngersdorfer Stadion",
     "venueId": "73d63e25",
     "city": "Cologne",
     "state": "07",
@@ -14183,11 +13613,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 1995 07 20 Cayuga Speedway, Cayuga, ON",
-        "url": "1995-07-20-Hagersville-ON/._Tragically Hip - 1995-07-20 - Cayuga Speedway, Cayuga, ON.mp3",
-        "filename": "._Tragically Hip - 1995-07-20 - Cayuga Speedway, Cayuga, ON.mp3"
-      },
-      {
         "name": "Tragically Hip 1995 07 20 Cayuga Speedway, Cayuga, ON",
         "url": "1995-07-20-Hagersville-ON/Tragically Hip - 1995-07-20 - Cayuga Speedway, Cayuga, ON.mp3",
         "filename": "Tragically Hip - 1995-07-20 - Cayuga Speedway, Cayuga, ON.mp3"
@@ -14554,81 +13979,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1995-08-10-Houston-TX-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Grace, Too",
-        "url": "1995-08-10-Houston-TX/._01 Grace, Too.mp3",
-        "filename": "._01 Grace, Too.mp3"
-      },
-      {
-        "name": ". 02 Fully Completely",
-        "url": "1995-08-10-Houston-TX/._02 Fully Completely.mp3",
-        "filename": "._02 Fully Completely.mp3"
-      },
-      {
-        "name": ". 03 Locked in the Trunk of a Car",
-        "url": "1995-08-10-Houston-TX/._03 Locked in the Trunk of a Car.mp3",
-        "filename": "._03 Locked in the Trunk of a Car.mp3"
-      },
-      {
-        "name": ". 04 So Hard Done By",
-        "url": "1995-08-10-Houston-TX/._04 So Hard Done By.mp3",
-        "filename": "._04 So Hard Done By.mp3"
-      },
-      {
-        "name": ". 05 Greasy Jungle",
-        "url": "1995-08-10-Houston-TX/._05 Greasy Jungle.mp3",
-        "filename": "._05 Greasy Jungle.mp3"
-      },
-      {
-        "name": ". 06 At the Hundredth Meridian",
-        "url": "1995-08-10-Houston-TX/._06 At the Hundredth Meridian.mp3",
-        "filename": "._06 At the Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 07 Gift Shop",
-        "url": "1995-08-10-Houston-TX/._07 Gift Shop.mp3",
-        "filename": "._07 Gift Shop.mp3"
-      },
-      {
-        "name": ". 08 Fifty Mission Cap",
-        "url": "1995-08-10-Houston-TX/._08 Fifty-Mission Cap.mp3",
-        "filename": "._08 Fifty-Mission Cap.mp3"
-      },
-      {
-        "name": ". 09 Sherpa",
-        "url": "1995-08-10-Houston-TX/._09 Sherpa.mp3",
-        "filename": "._09 Sherpa.mp3"
-      },
-      {
-        "name": ". 10 Fight",
-        "url": "1995-08-10-Houston-TX/._10 Fight.mp3",
-        "filename": "._10 Fight.mp3"
-      },
-      {
-        "name": ". 11 Springtime in Vienna",
-        "url": "1995-08-10-Houston-TX/._11 Springtime in Vienna.mp3",
-        "filename": "._11 Springtime in Vienna.mp3"
-      },
-      {
-        "name": ". 12 Nautical Disaster",
-        "url": "1995-08-10-Houston-TX/._12 Nautical Disaster.mp3",
-        "filename": "._12 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 13 New Orleans Is Sinking",
-        "url": "1995-08-10-Houston-TX/._13 New Orleans Is Sinking.mp3",
-        "filename": "._13 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 14 Fire in the Hole",
-        "url": "1995-08-10-Houston-TX/._14 Fire in the Hole.mp3",
-        "filename": "._14 Fire in the Hole.mp3"
-      },
-      {
-        "name": ". 15 Blow at High Dough",
-        "url": "1995-08-10-Houston-TX/._15 Blow at High Dough.mp3",
-        "filename": "._15 Blow at High Dough.mp3"
-      },
       {
         "name": "Grace, Too",
         "url": "1995-08-10-Houston-TX/01 Grace, Too.mp3",
@@ -15299,11 +14649,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 1995 10 27 Madison Square Garden, New York, NY",
-        "url": "1995-10-27-New-York-NY/._Tragically Hip - 1995-10-27 - Madison Square Garden, New York, NY.mp3",
-        "filename": "._Tragically Hip - 1995-10-27 - Madison Square Garden, New York, NY.mp3"
-      },
-      {
         "name": "Tragically Hip 1995 10 27 Madison Square Garden, New York, NY",
         "url": "1995-10-27-New-York-NY/Tragically Hip - 1995-10-27 - Madison Square Garden, New York, NY.mp3",
         "filename": "Tragically Hip - 1995-10-27 - Madison Square Garden, New York, NY.mp3"
@@ -15328,96 +14673,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1995-10-28-NewYork-NY-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 19951028t01",
-        "url": "1995-10-28-New-York-NY/._19951028t01.mp3",
-        "filename": "._19951028t01.mp3"
-      },
-      {
-        "name": ". 19951028t02",
-        "url": "1995-10-28-New-York-NY/._19951028t02.mp3",
-        "filename": "._19951028t02.mp3"
-      },
-      {
-        "name": ". 19951028t03",
-        "url": "1995-10-28-New-York-NY/._19951028t03.mp3",
-        "filename": "._19951028t03.mp3"
-      },
-      {
-        "name": ". 19951028t04",
-        "url": "1995-10-28-New-York-NY/._19951028t04.mp3",
-        "filename": "._19951028t04.mp3"
-      },
-      {
-        "name": ". 19951028t05",
-        "url": "1995-10-28-New-York-NY/._19951028t05.mp3",
-        "filename": "._19951028t05.mp3"
-      },
-      {
-        "name": ". 19951028t06",
-        "url": "1995-10-28-New-York-NY/._19951028t06.mp3",
-        "filename": "._19951028t06.mp3"
-      },
-      {
-        "name": ". 19951028t07",
-        "url": "1995-10-28-New-York-NY/._19951028t07.mp3",
-        "filename": "._19951028t07.mp3"
-      },
-      {
-        "name": ". 19951028t08",
-        "url": "1995-10-28-New-York-NY/._19951028t08.mp3",
-        "filename": "._19951028t08.mp3"
-      },
-      {
-        "name": ". 19951028t09",
-        "url": "1995-10-28-New-York-NY/._19951028t09.mp3",
-        "filename": "._19951028t09.mp3"
-      },
-      {
-        "name": ". 19951028t10",
-        "url": "1995-10-28-New-York-NY/._19951028t10.mp3",
-        "filename": "._19951028t10.mp3"
-      },
-      {
-        "name": ". 19951028t11",
-        "url": "1995-10-28-New-York-NY/._19951028t11.mp3",
-        "filename": "._19951028t11.mp3"
-      },
-      {
-        "name": ". 19951028t12",
-        "url": "1995-10-28-New-York-NY/._19951028t12.mp3",
-        "filename": "._19951028t12.mp3"
-      },
-      {
-        "name": ". 19951028t13",
-        "url": "1995-10-28-New-York-NY/._19951028t13.mp3",
-        "filename": "._19951028t13.mp3"
-      },
-      {
-        "name": ". 19951028t14",
-        "url": "1995-10-28-New-York-NY/._19951028t14.mp3",
-        "filename": "._19951028t14.mp3"
-      },
-      {
-        "name": ". 19951028t15",
-        "url": "1995-10-28-New-York-NY/._19951028t15.mp3",
-        "filename": "._19951028t15.mp3"
-      },
-      {
-        "name": ". 19951028t16",
-        "url": "1995-10-28-New-York-NY/._19951028t16.mp3",
-        "filename": "._19951028t16.mp3"
-      },
-      {
-        "name": ". 19951028t17",
-        "url": "1995-10-28-New-York-NY/._19951028t17.mp3",
-        "filename": "._19951028t17.mp3"
-      },
-      {
-        "name": ". 19951028t18",
-        "url": "1995-10-28-New-York-NY/._19951028t18.mp3",
-        "filename": "._19951028t18.mp3"
-      },
       {
         "name": "19951028t01",
         "url": "1995-10-28-New-York-NY/19951028t01.mp3",
@@ -15898,76 +15153,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Giftshop",
-        "url": "1996-05-27-Columbia-SC/._01 Giftshop.mp3",
-        "filename": "._01 Giftshop.mp3"
-      },
-      {
-        "name": ". 02 Springtime In Vienna",
-        "url": "1996-05-27-Columbia-SC/._02 Springtime In Vienna.mp3",
-        "filename": "._02 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 03 Grace, Too",
-        "url": "1996-05-27-Columbia-SC/._03 Grace, Too.mp3",
-        "filename": "._03 Grace, Too.mp3"
-      },
-      {
-        "name": ". 04 Flamenco",
-        "url": "1996-05-27-Columbia-SC/._04 Flamenco.mp3",
-        "filename": "._04 Flamenco.mp3"
-      },
-      {
-        "name": ". 05 At The Hundredth Meridian",
-        "url": "1996-05-27-Columbia-SC/._05 At The Hundredth Meridian.mp3",
-        "filename": "._05 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 06 Don't Wake Daddy",
-        "url": "1996-05-27-Columbia-SC/._06 Don't Wake Daddy.mp3",
-        "filename": "._06 Don't Wake Daddy.mp3"
-      },
-      {
-        "name": ". 07 Fully Completely",
-        "url": "1996-05-27-Columbia-SC/._07 Fully Completely.mp3",
-        "filename": "._07 Fully Completely.mp3"
-      },
-      {
-        "name": ". 08 Ahead By A Century",
-        "url": "1996-05-27-Columbia-SC/._08 Ahead By A Century.mp3",
-        "filename": "._08 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 09 700 Foot Ceiling",
-        "url": "1996-05-27-Columbia-SC/._09 700 Foot Ceiling.mp3",
-        "filename": "._09 700 Foot Ceiling.mp3"
-      },
-      {
-        "name": ". 10 Sherpa",
-        "url": "1996-05-27-Columbia-SC/._10 Sherpa.mp3",
-        "filename": "._10 Sherpa.mp3"
-      },
-      {
-        "name": ". 11 New Orleans Is Sinking",
-        "url": "1996-05-27-Columbia-SC/._11 New Orleans Is Sinking.mp3",
-        "filename": "._11 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 12 Put It Off",
-        "url": "1996-05-27-Columbia-SC/._12 Put It Off.mp3",
-        "filename": "._12 Put It Off.mp3"
-      },
-      {
-        "name": ". 13 We'll Go Too",
-        "url": "1996-05-27-Columbia-SC/._13 We'll Go Too.mp3",
-        "filename": "._13 We'll Go Too.mp3"
-      },
-      {
-        "name": ". 14 Little Bones",
-        "url": "1996-05-27-Columbia-SC/._14 Little Bones.mp3",
-        "filename": "._14 Little Bones.mp3"
-      },
-      {
         "name": "Giftshop",
         "url": "1996-05-27-Columbia-SC/01 Giftshop.mp3",
         "filename": "01 Giftshop.mp3"
@@ -16057,91 +15242,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-05-29-Washington-DC-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Intro by Johnny Fay",
-        "url": "1996-05-29-Washington-DC/._01 Intro by Johnny Fay.m4a",
-        "filename": "._01 Intro by Johnny Fay.m4a"
-      },
-      {
-        "name": ". 02 Gift Shop (promo)",
-        "url": "1996-05-29-Washington-DC/._02 Gift Shop (promo).m4a",
-        "filename": "._02 Gift Shop (promo).m4a"
-      },
-      {
-        "name": ". 03 Springtime in Vienna",
-        "url": "1996-05-29-Washington-DC/._03 Springtime in Vienna.m4a",
-        "filename": "._03 Springtime in Vienna.m4a"
-      },
-      {
-        "name": ". 04 Grace, Too",
-        "url": "1996-05-29-Washington-DC/._04 Grace, Too.m4a",
-        "filename": "._04 Grace, Too.m4a"
-      },
-      {
-        "name": ". 05 Flamenco (promo)",
-        "url": "1996-05-29-Washington-DC/._05 Flamenco (promo).m4a",
-        "filename": "._05 Flamenco (promo).m4a"
-      },
-      {
-        "name": ". 06 At the Hundredth Meridian",
-        "url": "1996-05-29-Washington-DC/._06 At the Hundredth Meridian.m4a",
-        "filename": "._06 At the Hundredth Meridian.m4a"
-      },
-      {
-        "name": ". 07 Don't Wake Daddy",
-        "url": "1996-05-29-Washington-DC/._07 Don't Wake Daddy.m4a",
-        "filename": "._07 Don't Wake Daddy.m4a"
-      },
-      {
-        "name": ". 08 Fully Completely",
-        "url": "1996-05-29-Washington-DC/._08 Fully Completely.m4a",
-        "filename": "._08 Fully Completely.m4a"
-      },
-      {
-        "name": ". 09 Ahead by a Century",
-        "url": "1996-05-29-Washington-DC/._09 Ahead by a Century.m4a",
-        "filename": "._09 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 10 700 Ft. Ceiling",
-        "url": "1996-05-29-Washington-DC/._10 700 Ft. Ceiling.m4a",
-        "filename": "._10 700 Ft. Ceiling.m4a"
-      },
-      {
-        "name": ". 11 Fire in the Hole",
-        "url": "1996-05-29-Washington-DC/._11 Fire in the Hole.m4a",
-        "filename": "._11 Fire in the Hole.m4a"
-      },
-      {
-        "name": ". 12 Sherpa",
-        "url": "1996-05-29-Washington-DC/._12 Sherpa.m4a",
-        "filename": "._12 Sherpa.m4a"
-      },
-      {
-        "name": ". 13 New Orleans is Sinking",
-        "url": "1996-05-29-Washington-DC/._13 New Orleans is Sinking.m4a",
-        "filename": "._13 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 14 Put It Off",
-        "url": "1996-05-29-Washington-DC/._14 Put It Off.m4a",
-        "filename": "._14 Put It Off.m4a"
-      },
-      {
-        "name": ". 15 We'll Go, Too",
-        "url": "1996-05-29-Washington-DC/._15 We'll Go, Too.m4a",
-        "filename": "._15 We'll Go, Too.m4a"
-      },
-      {
-        "name": ". 16 The Apartment Song",
-        "url": "1996-05-29-Washington-DC/._16 The Apartment Song.m4a",
-        "filename": "._16 The Apartment Song.m4a"
-      },
-      {
-        "name": ". 17 Little Bones",
-        "url": "1996-05-29-Washington-DC/._17 Little Bones.m4a",
-        "filename": "._17 Little Bones.m4a"
-      },
       {
         "name": "Intro by Johnny Fay",
         "url": "1996-05-29-Washington-DC/01 Intro by Johnny Fay.m4a",
@@ -16280,111 +15380,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Gift Shop",
-        "url": "1996-06-01-New-York-NY/._01 Gift Shop.m4a",
-        "filename": "._01 Gift Shop.m4a"
-      },
-      {
-        "name": ". 02 Grace, Too",
-        "url": "1996-06-01-New-York-NY/._02 Grace, Too.m4a",
-        "filename": "._02 Grace, Too.m4a"
-      },
-      {
-        "name": ". 03 We'll Go, Too",
-        "url": "1996-06-01-New-York-NY/._03 We'll Go, Too.m4a",
-        "filename": "._03 We'll Go, Too.m4a"
-      },
-      {
-        "name": ". 04 Springtime in Vienna",
-        "url": "1996-06-01-New-York-NY/._04 Springtime in Vienna.m4a",
-        "filename": "._04 Springtime in Vienna.m4a"
-      },
-      {
-        "name": ". 05 The Inevitability of Death",
-        "url": "1996-06-01-New-York-NY/._05 The Inevitability of Death.m4a",
-        "filename": "._05 The Inevitability of Death.m4a"
-      },
-      {
-        "name": ". 06 700 Ft. Ceiling",
-        "url": "1996-06-01-New-York-NY/._06 700 Ft. Ceiling.m4a",
-        "filename": "._06 700 Ft. Ceiling.m4a"
-      },
-      {
-        "name": ". 07 Pigeon Camera",
-        "url": "1996-06-01-New-York-NY/._07 Pigeon Camera.m4a",
-        "filename": "._07 Pigeon Camera.m4a"
-      },
-      {
-        "name": ". 08 Fully Completely",
-        "url": "1996-06-01-New-York-NY/._08 Fully Completely.m4a",
-        "filename": "._08 Fully Completely.m4a"
-      },
-      {
-        "name": ". 09 Flamenco",
-        "url": "1996-06-01-New-York-NY/._09 Flamenco.m4a",
-        "filename": "._09 Flamenco.m4a"
-      },
-      {
-        "name": ". 10 At the Hundredth Meridian",
-        "url": "1996-06-01-New-York-NY/._10 At the Hundredth Meridian.m4a",
-        "filename": "._10 At the Hundredth Meridian.m4a"
-      },
-      {
-        "name": ". 11 Coconut Cream",
-        "url": "1996-06-01-New-York-NY/._11 Coconut Cream.m4a",
-        "filename": "._11 Coconut Cream.m4a"
-      },
-      {
-        "name": ". 12 Ahead by a Century",
-        "url": "1996-06-01-New-York-NY/._12 Ahead by a Century.m4a",
-        "filename": "._12 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 13 Butts Wigglin",
-        "url": "1996-06-01-New-York-NY/._13 Butts Wigglin.m4a",
-        "filename": "._13 Butts Wigglin.m4a"
-      },
-      {
-        "name": ". 14 Nautical Disaster",
-        "url": "1996-06-01-New-York-NY/._14 Nautical Disaster.m4a",
-        "filename": "._14 Nautical Disaster.m4a"
-      },
-      {
-        "name": ". 15 The Wherewithal",
-        "url": "1996-06-01-New-York-NY/._15 The Wherewithal.m4a",
-        "filename": "._15 The Wherewithal.m4a"
-      },
-      {
-        "name": ". 16 Hiccups Daredevil",
-        "url": "1996-06-01-New-York-NY/._16 Hiccups_Daredevil.m4a",
-        "filename": "._16 Hiccups_Daredevil.m4a"
-      },
-      {
-        "name": ". 17 The Apartment Song",
-        "url": "1996-06-01-New-York-NY/._17 The Apartment Song.m4a",
-        "filename": "._17 The Apartment Song.m4a"
-      },
-      {
-        "name": ". 18 Fire in the Hole",
-        "url": "1996-06-01-New-York-NY/._18 Fire in the Hole.m4a",
-        "filename": "._18 Fire in the Hole.m4a"
-      },
-      {
-        "name": ". 19 New Orleans is Sinking",
-        "url": "1996-06-01-New-York-NY/._19 New Orleans is Sinking.m4a",
-        "filename": "._19 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 20 Don't Wake Daddy",
-        "url": "1996-06-01-New-York-NY/._20 Don't Wake Daddy.m4a",
-        "filename": "._20 Don't Wake Daddy.m4a"
-      },
-      {
-        "name": ". 21 Locked in the Trunk of a Car",
-        "url": "1996-06-01-New-York-NY/._21 Locked in the Trunk of a Car.m4a",
-        "filename": "._21 Locked in the Trunk of a Car.m4a"
-      },
-      {
         "name": "Gift Shop",
         "url": "1996-06-01-New-York-NY/01 Gift Shop.m4a",
         "filename": "01 Gift Shop.m4a"
@@ -16509,116 +15504,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-06-11-Rochester-NY-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Gift Shop",
-        "url": "1996-06-11-Rochester-NY/._01 - Gift Shop.mp3",
-        "filename": "._01 - Gift Shop.mp3"
-      },
-      {
-        "name": ". 02 Grace, Too",
-        "url": "1996-06-11-Rochester-NY/._02 - Grace, Too.mp3",
-        "filename": "._02 - Grace, Too.mp3"
-      },
-      {
-        "name": ". 03 Springtime in Vienna",
-        "url": "1996-06-11-Rochester-NY/._03 - Springtime in Vienna.mp3",
-        "filename": "._03 - Springtime in Vienna.mp3"
-      },
-      {
-        "name": ". 04 Nautical Disaster",
-        "url": "1996-06-11-Rochester-NY/._04 - Nautical Disaster.mp3",
-        "filename": "._04 - Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 05 Coconut Cream",
-        "url": "1996-06-11-Rochester-NY/._05 - Coconut Cream.mp3",
-        "filename": "._05 - Coconut Cream.mp3"
-      },
-      {
-        "name": ". 06 Hiccups",
-        "url": "1996-06-11-Rochester-NY/._06 - Hiccups.mp3",
-        "filename": "._06 - Hiccups.mp3"
-      },
-      {
-        "name": ". 07 Daredevil",
-        "url": "1996-06-11-Rochester-NY/._07 - Daredevil.mp3",
-        "filename": "._07 - Daredevil.mp3"
-      },
-      {
-        "name": ". 08 Flamenco",
-        "url": "1996-06-11-Rochester-NY/._08 - Flamenco.mp3",
-        "filename": "._08 - Flamenco.mp3"
-      },
-      {
-        "name": ". 09 At the Hundredth Meridian",
-        "url": "1996-06-11-Rochester-NY/._09 - At the Hundredth Meridian.mp3",
-        "filename": "._09 - At the Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 10 Don't Wake Daddy",
-        "url": "1996-06-11-Rochester-NY/._10 - Don't Wake Daddy.mp3",
-        "filename": "._10 - Don't Wake Daddy.mp3"
-      },
-      {
-        "name": ". 11 Fully Completely",
-        "url": "1996-06-11-Rochester-NY/._11 - Fully Completely.mp3",
-        "filename": "._11 - Fully Completely.mp3"
-      },
-      {
-        "name": ". 12 Butts Wigglin'",
-        "url": "1996-06-11-Rochester-NY/._12 - Butts Wigglin'.mp3",
-        "filename": "._12 - Butts Wigglin'.mp3"
-      },
-      {
-        "name": ". 13 Ahead by a Century",
-        "url": "1996-06-11-Rochester-NY/._13 - Ahead by a Century.mp3",
-        "filename": "._13 - Ahead by a Century.mp3"
-      },
-      {
-        "name": ". 14 Locked in the Trunk of a Car",
-        "url": "1996-06-11-Rochester-NY/._14 - Locked in the Trunk of a Car.mp3",
-        "filename": "._14 - Locked in the Trunk of a Car.mp3"
-      },
-      {
-        "name": ". 15 700 Ft. Ceiling",
-        "url": "1996-06-11-Rochester-NY/._15 - 700 Ft. Ceiling.mp3",
-        "filename": "._15 - 700 Ft. Ceiling.mp3"
-      },
-      {
-        "name": ". 16 Fire in the Hole",
-        "url": "1996-06-11-Rochester-NY/._16 - Fire in the Hole.mp3",
-        "filename": "._16 - Fire in the Hole.mp3"
-      },
-      {
-        "name": ". 17 Sherpa",
-        "url": "1996-06-11-Rochester-NY/._17 - Sherpa.mp3",
-        "filename": "._17 - Sherpa.mp3"
-      },
-      {
-        "name": ". 18 New Orleans is Sinking",
-        "url": "1996-06-11-Rochester-NY/._18 - New Orleans is Sinking.mp3",
-        "filename": "._18 - New Orleans is Sinking.mp3"
-      },
-      {
-        "name": ". 19 Put it Off",
-        "url": "1996-06-11-Rochester-NY/._19 - Put it Off.mp3",
-        "filename": "._19 - Put it Off.mp3"
-      },
-      {
-        "name": ". 20 Pigeon Camera",
-        "url": "1996-06-11-Rochester-NY/._20 - Pigeon Camera.mp3",
-        "filename": "._20 - Pigeon Camera.mp3"
-      },
-      {
-        "name": ". 21 Apartment Song",
-        "url": "1996-06-11-Rochester-NY/._21 - Apartment Song.mp3",
-        "filename": "._21 - Apartment Song.mp3"
-      },
-      {
-        "name": ". 22 The Wherewithal",
-        "url": "1996-06-11-Rochester-NY/._22 - The Wherewithal.mp3",
-        "filename": "._22 - The Wherewithal.mp3"
-      },
       {
         "name": "Gift Shop",
         "url": "1996-06-11-Rochester-NY/01 - Gift Shop.mp3",
@@ -17085,11 +15970,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-06-25-StLouis-MO-3SBD-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 1996 06 25 Mississippi Nights, St. Louis, MO (3 From St. Louis 1996 SBD)",
-        "url": "1996-06-25-St.-Louis-MO/._Tragically Hip - 1996-06-25 - Mississippi Nights, St. Louis, MO (3 From St. Louis 1996-SBD).mp3",
-        "filename": "._Tragically Hip - 1996-06-25 - Mississippi Nights, St. Louis, MO (3 From St. Louis 1996-SBD).mp3"
-      },
       {
         "name": "Tragically Hip 1996 06 25 Mississippi Nights, St. Louis, MO (3 From St. Louis 1996 SBD)",
         "url": "1996-06-25-St.-Louis-MO/Tragically Hip - 1996-06-25 - Mississippi Nights, St. Louis, MO (3 From St. Louis 1996-SBD).mp3",
@@ -18431,11 +17311,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 1996 09 11 Fremont Street Experience, Las Vegas, NV (4 from Las Vegas SBD)",
-        "url": "1996-09-11-Las-Vegas-NV/._Tragically Hip - 1996-09-11 - Fremont Street Experience, Las Vegas, NV (4 from Las Vegas - SBD).mp3",
-        "filename": "._Tragically Hip - 1996-09-11 - Fremont Street Experience, Las Vegas, NV (4 from Las Vegas - SBD).mp3"
-      },
-      {
         "name": "Tragically Hip 1996 09 11 Fremont Street Experience, Las Vegas, NV (4 from Las Vegas SBD)",
         "url": "1996-09-11-Las-Vegas-NV/Tragically Hip - 1996-09-11 - Fremont Street Experience, Las Vegas, NV (4 from Las Vegas - SBD).mp3",
         "filename": "Tragically Hip - 1996-09-11 - Fremont Street Experience, Las Vegas, NV (4 from Las Vegas - SBD).mp3"
@@ -19400,111 +18275,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 96 11 13 1 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_1-a.mp3",
-        "filename": "._96_11_13_1-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 10 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_10-a.mp3",
-        "filename": "._96_11_13_10-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 11 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_11-a.mp3",
-        "filename": "._96_11_13_11-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 12 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_12-a.mp3",
-        "filename": "._96_11_13_12-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 13 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_13-a.mp3",
-        "filename": "._96_11_13_13-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 14 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_14-a.mp3",
-        "filename": "._96_11_13_14-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 15 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_15-a.mp3",
-        "filename": "._96_11_13_15-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 16 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_16-a.mp3",
-        "filename": "._96_11_13_16-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 17 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_17-a.mp3",
-        "filename": "._96_11_13_17-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 18 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_18-a.mp3",
-        "filename": "._96_11_13_18-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 19 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_19-a.mp3",
-        "filename": "._96_11_13_19-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 2 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_2-a.mp3",
-        "filename": "._96_11_13_2-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 20 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_20-a.mp3",
-        "filename": "._96_11_13_20-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 21 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_21-a.mp3",
-        "filename": "._96_11_13_21-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 3 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_3-a.mp3",
-        "filename": "._96_11_13_3-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 4 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_4-a.mp3",
-        "filename": "._96_11_13_4-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 5 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_5-a.mp3",
-        "filename": "._96_11_13_5-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 6 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_6-a.mp3",
-        "filename": "._96_11_13_6-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 7 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_7-a.mp3",
-        "filename": "._96_11_13_7-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 8 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_8-a.mp3",
-        "filename": "._96_11_13_8-a.mp3"
-      },
-      {
-        "name": ". 96 11 13 9 a",
-        "url": "1996-11-13-Edmonton-AB/._96_11_13_9-a.mp3",
-        "filename": "._96_11_13_9-a.mp3"
-      },
-      {
         "name": "11 13 1 a",
         "url": "1996-11-13-Edmonton-AB/96_11_13_1-a.mp3",
         "filename": "96_11_13_1-a.mp3"
@@ -20129,7 +18899,7 @@
     "date": "30-11-1996",
     "isoDate": "1996-11-30",
     "tour": "Trouble at the Henhouse",
-    "venue": "Colis\u00e9e de Qu\u00e9bec",
+    "venue": "Colisée de Québec",
     "venueId": "63d62a87",
     "city": "Quebec City",
     "state": "QC",
@@ -20795,106 +19565,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Giftshop",
-        "url": "1997-05-03-Brussels-BE-BRU/._01 Giftshop.mp3",
-        "filename": "._01 Giftshop.mp3"
-      },
-      {
-        "name": ". 02 Fully Completely",
-        "url": "1997-05-03-Brussels-BE-BRU/._02 Fully Completely.mp3",
-        "filename": "._02 Fully Completely.mp3"
-      },
-      {
-        "name": ". 03 Grace, Too",
-        "url": "1997-05-03-Brussels-BE-BRU/._03 Grace, Too.mp3",
-        "filename": "._03 Grace, Too.mp3"
-      },
-      {
-        "name": ". 04 Springtime In Vienna",
-        "url": "1997-05-03-Brussels-BE-BRU/._04 Springtime In Vienna.mp3",
-        "filename": "._04 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 05 The Luxury",
-        "url": "1997-05-03-Brussels-BE-BRU/._05 The Luxury.mp3",
-        "filename": "._05 The Luxury.mp3"
-      },
-      {
-        "name": ". 06 Ahead By A Century",
-        "url": "1997-05-03-Brussels-BE-BRU/._06 Ahead By A Century.mp3",
-        "filename": "._06 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 07 700 ft. Ceiling",
-        "url": "1997-05-03-Brussels-BE-BRU/._07 700 ft. Ceiling.mp3",
-        "filename": "._07 700 ft. Ceiling.mp3"
-      },
-      {
-        "name": ". 08 Vapour Trails",
-        "url": "1997-05-03-Brussels-BE-BRU/._08 Vapour Trails.mp3",
-        "filename": "._08 Vapour Trails.mp3"
-      },
-      {
-        "name": ". 09 Courage",
-        "url": "1997-05-03-Brussels-BE-BRU/._09 Courage.mp3",
-        "filename": "._09 Courage.mp3"
-      },
-      {
-        "name": ". 10 Don't Wake Daddy",
-        "url": "1997-05-03-Brussels-BE-BRU/._10 Don't Wake Daddy.mp3",
-        "filename": "._10 Don't Wake Daddy.mp3"
-      },
-      {
-        "name": ". 11 Flamenco",
-        "url": "1997-05-03-Brussels-BE-BRU/._11 Flamenco.mp3",
-        "filename": "._11 Flamenco.mp3"
-      },
-      {
-        "name": ". 12 Locked In The Trunk Of A Car",
-        "url": "1997-05-03-Brussels-BE-BRU/._12 Locked In The Trunk Of A Car.mp3",
-        "filename": "._12 Locked In The Trunk Of A Car.mp3"
-      },
-      {
-        "name": ". 13 Fireworks",
-        "url": "1997-05-03-Brussels-BE-BRU/._13 Fireworks.mp3",
-        "filename": "._13 Fireworks.mp3"
-      },
-      {
-        "name": ". 14 Scared",
-        "url": "1997-05-03-Brussels-BE-BRU/._14 Scared.mp3",
-        "filename": "._14 Scared.mp3"
-      },
-      {
-        "name": ". 15 New Orleans Is Sinking",
-        "url": "1997-05-03-Brussels-BE-BRU/._15 New Orleans Is Sinking.mp3",
-        "filename": "._15 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 16 Nautical Disaster",
-        "url": "1997-05-03-Brussels-BE-BRU/._16 Nautical Disaster.mp3",
-        "filename": "._16 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 17 Coconut Cream",
-        "url": "1997-05-03-Brussels-BE-BRU/._17 Coconut Cream.mp3",
-        "filename": "._17 Coconut Cream.mp3"
-      },
-      {
-        "name": ". 18 Daredevil Intro",
-        "url": "1997-05-03-Brussels-BE-BRU/._18 Daredevil Intro.mp3",
-        "filename": "._18 Daredevil Intro.mp3"
-      },
-      {
-        "name": ". 19 Daredevil",
-        "url": "1997-05-03-Brussels-BE-BRU/._19 Daredevil.mp3",
-        "filename": "._19 Daredevil.mp3"
-      },
-      {
-        "name": ". 20 Blow At High Dough",
-        "url": "1997-05-03-Brussels-BE-BRU/._20 Blow At High Dough.mp3",
-        "filename": "._20 Blow At High Dough.mp3"
-      },
-      {
         "name": "Giftshop",
         "url": "1997-05-03-Brussels-BE-BRU/01 Giftshop.mp3",
         "filename": "01 Giftshop.mp3"
@@ -21368,9 +20038,9 @@
     "date": "16-05-1997",
     "isoDate": "1997-05-16",
     "tour": null,
-    "venue": "N\u00fcrburgring",
+    "venue": "Nürburgring",
     "venueId": "73d786a5",
-    "city": "N\u00fcrburg",
+    "city": "Nürburg",
     "state": "08",
     "country": "DE",
     "countryName": "Germany",
@@ -21383,7 +20053,7 @@
     "tracks": [
       {
         "name": "Tragically Hip 3 from Berlin 1997",
-        "url": "1997-05-16-N\u00fcrburg-08/Tragically Hip - 3 from Berlin 1997.mp3",
+        "url": "1997-05-16-Nürburg-08/Tragically Hip - 3 from Berlin 1997.mp3",
         "filename": "Tragically Hip - 3 from Berlin 1997.mp3"
       }
     ]
@@ -22460,76 +21130,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Poets",
-        "url": "1998-07-07-London-ON/._01 - Poets.mp3",
-        "filename": "._01 - Poets.mp3"
-      },
-      {
-        "name": ". 02 Something On",
-        "url": "1998-07-07-London-ON/._02 - Something On.mp3",
-        "filename": "._02 - Something On.mp3"
-      },
-      {
-        "name": ". 03 Bobcaygeon",
-        "url": "1998-07-07-London-ON/._03 - Bobcaygeon.mp3",
-        "filename": "._03 - Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 04 Thompson Girl",
-        "url": "1998-07-07-London-ON/._04 - Thompson Girl.mp3",
-        "filename": "._04 - Thompson Girl.mp3"
-      },
-      {
-        "name": ". 05 Fireworks",
-        "url": "1998-07-07-London-ON/._05 - Fireworks.mp3",
-        "filename": "._05 - Fireworks.mp3"
-      },
-      {
-        "name": ". 06 Vapour Trails",
-        "url": "1998-07-07-London-ON/._06 - Vapour Trails.mp3",
-        "filename": "._06 - Vapour Trails.mp3"
-      },
-      {
-        "name": ". 07 At the Hundredth Meridian",
-        "url": "1998-07-07-London-ON/._07 - At the Hundredth Meridian.mp3",
-        "filename": "._07 - At the Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 08 Membership",
-        "url": "1998-07-07-London-ON/._08 - Membership.mp3",
-        "filename": "._08 - Membership.mp3"
-      },
-      {
-        "name": ". 09 Ahead by a Century",
-        "url": "1998-07-07-London-ON/._09 - Ahead by a Century.mp3",
-        "filename": "._09 - Ahead by a Century.mp3"
-      },
-      {
-        "name": ". 10 Escape is at Hand for the Travellin Man",
-        "url": "1998-07-07-London-ON/._10 - Escape is at Hand for the Travellin_ Man.mp3",
-        "filename": "._10 - Escape is at Hand for the Travellin_ Man.mp3"
-      },
-      {
-        "name": ". 11 New Orleans is Sinking",
-        "url": "1998-07-07-London-ON/._11 - New Orleans is Sinking.mp3",
-        "filename": "._11 - New Orleans is Sinking.mp3"
-      },
-      {
-        "name": ". 12 Grace, Too",
-        "url": "1998-07-07-London-ON/._12 - Grace, Too.mp3",
-        "filename": "._12 - Grace, Too.mp3"
-      },
-      {
-        "name": ". 13 Springtime in Vienna",
-        "url": "1998-07-07-London-ON/._13 - Springtime in Vienna.mp3",
-        "filename": "._13 - Springtime in Vienna.mp3"
-      },
-      {
-        "name": ". 14 Little Bones",
-        "url": "1998-07-07-London-ON/._14 - Little Bones.mp3",
-        "filename": "._14 - Little Bones.mp3"
-      },
-      {
         "name": "Poets",
         "url": "1998-07-07-London-ON/01 - Poets.mp3",
         "filename": "01 - Poets.mp3"
@@ -23539,11 +22139,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 1998 08 03 Chicago IL mp3 JGM",
-        "url": "1998-08-03-Chicago-IL/._1998-08-03-Chicago-IL-mp3-JGM.mp3",
-        "filename": "._1998-08-03-Chicago-IL-mp3-JGM.mp3"
-      },
-      {
         "name": "Chicago IL mp3 JGM",
         "url": "1998-08-03-Chicago-IL/1998-08-03-Chicago-IL-mp3-JGM.mp3",
         "filename": "1998-08-03-Chicago-IL-mp3-JGM.mp3"
@@ -23815,91 +22410,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-08-10-Boston-MA-V2-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Save the Planet",
-        "url": "1998-08-10-Boston-MA/._01 - Save the Planet.mp3",
-        "filename": "._01 - Save the Planet.mp3"
-      },
-      {
-        "name": ". 02 Gift Shop",
-        "url": "1998-08-10-Boston-MA/._02 - Gift Shop.mp3",
-        "filename": "._02 - Gift Shop.mp3"
-      },
-      {
-        "name": ". 03 Poets",
-        "url": "1998-08-10-Boston-MA/._03 - Poets.mp3",
-        "filename": "._03 - Poets.mp3"
-      },
-      {
-        "name": ". 04 Twist My Arm",
-        "url": "1998-08-10-Boston-MA/._04 - Twist My Arm.mp3",
-        "filename": "._04 - Twist My Arm.mp3"
-      },
-      {
-        "name": ". 05 Thompson Girl",
-        "url": "1998-08-10-Boston-MA/._05 - Thompson Girl.mp3",
-        "filename": "._05 - Thompson Girl.mp3"
-      },
-      {
-        "name": ". 06 Nautical Disaster",
-        "url": "1998-08-10-Boston-MA/._06 - Nautical Disaster.mp3",
-        "filename": "._06 - Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 07 Fireworks",
-        "url": "1998-08-10-Boston-MA/._07 - Fireworks.mp3",
-        "filename": "._07 - Fireworks.mp3"
-      },
-      {
-        "name": ". 08 Ahead by a Century",
-        "url": "1998-08-10-Boston-MA/._08 - Ahead by a Century.mp3",
-        "filename": "._08 - Ahead by a Century.mp3"
-      },
-      {
-        "name": ". 09 Something On",
-        "url": "1998-08-10-Boston-MA/._09 - Something On.mp3",
-        "filename": "._09 - Something On.mp3"
-      },
-      {
-        "name": ". 10 Eldorado",
-        "url": "1998-08-10-Boston-MA/._10 - Eldorado.mp3",
-        "filename": "._10 - Eldorado.mp3"
-      },
-      {
-        "name": ". 11 Vapour Trails",
-        "url": "1998-08-10-Boston-MA/._11 - Vapour Trails.mp3",
-        "filename": "._11 - Vapour Trails.mp3"
-      },
-      {
-        "name": ". 12 New Orleans is Sinking",
-        "url": "1998-08-10-Boston-MA/._12 - New Orleans is Sinking.mp3",
-        "filename": "._12 - New Orleans is Sinking.mp3"
-      },
-      {
-        "name": ". 13 Chagrin Falls",
-        "url": "1998-08-10-Boston-MA/._13 - Chagrin Falls.mp3",
-        "filename": "._13 - Chagrin Falls.mp3"
-      },
-      {
-        "name": ". 14 Fire in the Hole",
-        "url": "1998-08-10-Boston-MA/._14 - Fire in the Hole.mp3",
-        "filename": "._14 - Fire in the Hole.mp3"
-      },
-      {
-        "name": ". 15 Grace, Too",
-        "url": "1998-08-10-Boston-MA/._15 - Grace, Too.mp3",
-        "filename": "._15 - Grace, Too.mp3"
-      },
-      {
-        "name": ". 16 The Rules",
-        "url": "1998-08-10-Boston-MA/._16 - The Rules.mp3",
-        "filename": "._16 - The Rules.mp3"
-      },
-      {
-        "name": ". 17 Little Bones",
-        "url": "1998-08-10-Boston-MA/._17 - Little Bones.mp3",
-        "filename": "._17 - Little Bones.mp3"
-      },
       {
         "name": "Save the Planet",
         "url": "1998-08-10-Boston-MA/01 - Save the Planet.mp3",
@@ -24668,96 +23178,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-08-29-Warren-VT-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Save The Planet",
-        "url": "1998-08-29-Warren-VT/._01 Save The Planet.mp3",
-        "filename": "._01 Save The Planet.mp3"
-      },
-      {
-        "name": ". 02 Twist My Arm",
-        "url": "1998-08-29-Warren-VT/._02 Twist My Arm.mp3",
-        "filename": "._02 Twist My Arm.mp3"
-      },
-      {
-        "name": ". 03 Poets",
-        "url": "1998-08-29-Warren-VT/._03 Poets.mp3",
-        "filename": "._03 Poets.mp3"
-      },
-      {
-        "name": ". 04 Bobcaygeon",
-        "url": "1998-08-29-Warren-VT/._04 Bobcaygeon.mp3",
-        "filename": "._04 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 05 Nautical Disaster",
-        "url": "1998-08-29-Warren-VT/._05 Nautical Disaster.mp3",
-        "filename": "._05 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 06 Ahead By A Century",
-        "url": "1998-08-29-Warren-VT/._06 Ahead By A Century.mp3",
-        "filename": "._06 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 07 Scared",
-        "url": "1998-08-29-Warren-VT/._07 Scared.mp3",
-        "filename": "._07 Scared.mp3"
-      },
-      {
-        "name": ". 08 Something On",
-        "url": "1998-08-29-Warren-VT/._08 Something On.mp3",
-        "filename": "._08 Something On.mp3"
-      },
-      {
-        "name": ". 09 Courage",
-        "url": "1998-08-29-Warren-VT/._09 Courage.mp3",
-        "filename": "._09 Courage.mp3"
-      },
-      {
-        "name": ". 10 Fireworks",
-        "url": "1998-08-29-Warren-VT/._10 Fireworks.mp3",
-        "filename": "._10 Fireworks.mp3"
-      },
-      {
-        "name": ". 11 Giftshop",
-        "url": "1998-08-29-Warren-VT/._11 Giftshop.mp3",
-        "filename": "._11 Giftshop.mp3"
-      },
-      {
-        "name": ". 12 Springtime In Vienna",
-        "url": "1998-08-29-Warren-VT/._12 Springtime In Vienna.mp3",
-        "filename": "._12 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 13 New Orleans Is Sinking",
-        "url": "1998-08-29-Warren-VT/._13 New Orleans Is Sinking.mp3",
-        "filename": "._13 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 14 Emperor Penguin",
-        "url": "1998-08-29-Warren-VT/._14 Emperor Penguin.mp3",
-        "filename": "._14 Emperor Penguin.mp3"
-      },
-      {
-        "name": ". 15 Chagrin Falls",
-        "url": "1998-08-29-Warren-VT/._15 Chagrin Falls.mp3",
-        "filename": "._15 Chagrin Falls.mp3"
-      },
-      {
-        "name": ". 16 Fire In The Hole",
-        "url": "1998-08-29-Warren-VT/._16 Fire In The Hole.mp3",
-        "filename": "._16 Fire In The Hole.mp3"
-      },
-      {
-        "name": ". 17 Escape Is At Hand For The Travellin' Man",
-        "url": "1998-08-29-Warren-VT/._17 Escape Is At Hand For The Travellin' Man.mp3",
-        "filename": "._17 Escape Is At Hand For The Travellin' Man.mp3"
-      },
-      {
-        "name": ". 18 At The Hundredth Meridian",
-        "url": "1998-08-29-Warren-VT/._18 At The Hundredth Meridian.mp3",
-        "filename": "._18 At The Hundredth Meridian.mp3"
-      },
       {
         "name": "Save The Planet",
         "url": "1998-08-29-Warren-VT/01 Save The Planet.mp3",
@@ -25605,96 +24025,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 1 save the planet",
-        "url": "1998-10-02-Pittsburgh-PA/._1 save the planet.mp3",
-        "filename": "._1 save the planet.mp3"
-      },
-      {
-        "name": ". 10 courage",
-        "url": "1998-10-02-Pittsburgh-PA/._10 courage.mp3",
-        "filename": "._10 courage.mp3"
-      },
-      {
-        "name": ". 11 fireworks",
-        "url": "1998-10-02-Pittsburgh-PA/._11 fireworks.mp3",
-        "filename": "._11 fireworks.mp3"
-      },
-      {
-        "name": ". 12 springtime in vienna",
-        "url": "1998-10-02-Pittsburgh-PA/._12 springtime in vienna.mp3",
-        "filename": "._12 springtime in vienna.mp3"
-      },
-      {
-        "name": ". 13 chagrin falls",
-        "url": "1998-10-02-Pittsburgh-PA/._13 chagrin falls.mp3",
-        "filename": "._13 chagrin falls.mp3"
-      },
-      {
-        "name": ". 14 new orleans is sinking",
-        "url": "1998-10-02-Pittsburgh-PA/._14 new orleans is sinking.mp3",
-        "filename": "._14 new orleans is sinking.mp3"
-      },
-      {
-        "name": ". 15 grace, too",
-        "url": "1998-10-02-Pittsburgh-PA/._15 grace, too.mp3",
-        "filename": "._15 grace, too.mp3"
-      },
-      {
-        "name": ". 16 grace, too",
-        "url": "1998-10-02-Pittsburgh-PA/._16 grace, too.mp3",
-        "filename": "._16 grace, too.mp3"
-      },
-      {
-        "name": ". 17 escape is at hand, for the travelin man",
-        "url": "1998-10-02-Pittsburgh-PA/._17 escape is at hand, for the travelin_ man.mp3",
-        "filename": "._17 escape is at hand, for the travelin_ man.mp3"
-      },
-      {
-        "name": ". 18 at the hundredth meridian",
-        "url": "1998-10-02-Pittsburgh-PA/._18 at the hundredth meridian.mp3",
-        "filename": "._18 at the hundredth meridian.mp3"
-      },
-      {
-        "name": ". 2 twist my arm",
-        "url": "1998-10-02-Pittsburgh-PA/._2 twist my arm.mp3",
-        "filename": "._2 twist my arm.mp3"
-      },
-      {
-        "name": ". 3 poets",
-        "url": "1998-10-02-Pittsburgh-PA/._3 poets.mp3",
-        "filename": "._3 poets.mp3"
-      },
-      {
-        "name": ". 4 gift shop",
-        "url": "1998-10-02-Pittsburgh-PA/._4 gift shop.mp3",
-        "filename": "._4 gift shop.mp3"
-      },
-      {
-        "name": ". 5 bobcaygeon",
-        "url": "1998-10-02-Pittsburgh-PA/._5 bobcaygeon.mp3",
-        "filename": "._5 bobcaygeon.mp3"
-      },
-      {
-        "name": ". 6 nautical disaster",
-        "url": "1998-10-02-Pittsburgh-PA/._6 nautical disaster.mp3",
-        "filename": "._6 nautical disaster.mp3"
-      },
-      {
-        "name": ". 7 ahead by a century",
-        "url": "1998-10-02-Pittsburgh-PA/._7 ahead by a century.mp3",
-        "filename": "._7 ahead by a century.mp3"
-      },
-      {
-        "name": ". 8 the luxury",
-        "url": "1998-10-02-Pittsburgh-PA/._8 the luxury.mp3",
-        "filename": "._8 the luxury.mp3"
-      },
-      {
-        "name": ". 9 something on",
-        "url": "1998-10-02-Pittsburgh-PA/._9 something on.mp3",
-        "filename": "._9 something on.mp3"
-      },
-      {
         "name": "save the planet",
         "url": "1998-10-02-Pittsburgh-PA/1 save the planet.mp3",
         "filename": "1 save the planet.mp3"
@@ -26380,11 +24710,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 19 Fire in the Hole",
-        "url": "1998-10-29-Austin-TX/._19 Fire in the Hole.flac",
-        "filename": "._19 Fire in the Hole.flac"
-      },
-      {
         "name": "Grace Too",
         "url": "1998-10-29-Austin-TX/01 Grace Too.mp3",
         "filename": "01 Grace Too.mp3"
@@ -26505,101 +24830,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Grace, Too",
-        "url": "1998-10-31-Atlanta-GA/._01 Grace, Too.m4a",
-        "filename": "._01 Grace, Too.m4a"
-      },
-      {
-        "name": ". 02 Poets",
-        "url": "1998-10-31-Atlanta-GA/._02 Poets.m4a",
-        "filename": "._02 Poets.m4a"
-      },
-      {
-        "name": ". 03 Fully Completely",
-        "url": "1998-10-31-Atlanta-GA/._03 Fully Completely.m4a",
-        "filename": "._03 Fully Completely.m4a"
-      },
-      {
-        "name": ". 04 Gift Shop",
-        "url": "1998-10-31-Atlanta-GA/._04 Gift Shop.m4a",
-        "filename": "._04 Gift Shop.m4a"
-      },
-      {
-        "name": ". 05 Membership",
-        "url": "1998-10-31-Atlanta-GA/._05 Membership.m4a",
-        "filename": "._05 Membership.m4a"
-      },
-      {
-        "name": ". 06 Ahead by a Century",
-        "url": "1998-10-31-Atlanta-GA/._06 Ahead by a Century.m4a",
-        "filename": "._06 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 07 Don't Wake Daddy",
-        "url": "1998-10-31-Atlanta-GA/._07 Don't Wake Daddy.m4a",
-        "filename": "._07 Don't Wake Daddy.m4a"
-      },
-      {
-        "name": ". 08 Escape is at Hand",
-        "url": "1998-10-31-Atlanta-GA/._08 Escape is at Hand.m4a",
-        "filename": "._08 Escape is at Hand.m4a"
-      },
-      {
-        "name": ". 09 Courage",
-        "url": "1998-10-31-Atlanta-GA/._09 Courage.m4a",
-        "filename": "._09 Courage.m4a"
-      },
-      {
-        "name": ". 10 Flamenco",
-        "url": "1998-10-31-Atlanta-GA/._10 Flamenco.m4a",
-        "filename": "._10 Flamenco.m4a"
-      },
-      {
-        "name": ". 11 Vapour Trails",
-        "url": "1998-10-31-Atlanta-GA/._11 Vapour Trails.m4a",
-        "filename": "._11 Vapour Trails.m4a"
-      },
-      {
-        "name": ". 12 Springtime in Vienna",
-        "url": "1998-10-31-Atlanta-GA/._12 Springtime in Vienna.m4a",
-        "filename": "._12 Springtime in Vienna.m4a"
-      },
-      {
-        "name": ". 13 Fireworks",
-        "url": "1998-10-31-Atlanta-GA/._13 Fireworks.m4a",
-        "filename": "._13 Fireworks.m4a"
-      },
-      {
-        "name": ". 14 At the Hundredth Meridian",
-        "url": "1998-10-31-Atlanta-GA/._14 At the Hundredth Meridian.m4a",
-        "filename": "._14 At the Hundredth Meridian.m4a"
-      },
-      {
-        "name": ". 15 Something On",
-        "url": "1998-10-31-Atlanta-GA/._15 Something On.m4a",
-        "filename": "._15 Something On.m4a"
-      },
-      {
-        "name": ". 16 Bobcaygeon",
-        "url": "1998-10-31-Atlanta-GA/._16 Bobcaygeon.m4a",
-        "filename": "._16 Bobcaygeon.m4a"
-      },
-      {
-        "name": ". 17 New Orleans is Sinking",
-        "url": "1998-10-31-Atlanta-GA/._17 New Orleans is Sinking.m4a",
-        "filename": "._17 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 18 Chagrin Falls",
-        "url": "1998-10-31-Atlanta-GA/._18 Chagrin Falls.m4a",
-        "filename": "._18 Chagrin Falls.m4a"
-      },
-      {
-        "name": ". 19 Blow at High Dough",
-        "url": "1998-10-31-Atlanta-GA/._19 Blow at High Dough.m4a",
-        "filename": "._19 Blow at High Dough.m4a"
-      },
-      {
         "name": "Grace, Too",
         "url": "1998-10-31-Atlanta-GA/01 Grace, Too.m4a",
         "filename": "01 Grace, Too.m4a"
@@ -26714,81 +24944,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-11-02-Athens-GA-V2-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Save the Planet",
-        "url": "1998-11-02-Athens-GA/._01 Save the Planet.mp3",
-        "filename": "._01 Save the Planet.mp3"
-      },
-      {
-        "name": ". 02 Gift Shop",
-        "url": "1998-11-02-Athens-GA/._02 Gift Shop.mp3",
-        "filename": "._02 Gift Shop.mp3"
-      },
-      {
-        "name": ". 03 Something On",
-        "url": "1998-11-02-Athens-GA/._03 Something On.mp3",
-        "filename": "._03 Something On.mp3"
-      },
-      {
-        "name": ". 04 The Luxury",
-        "url": "1998-11-02-Athens-GA/._04 The Luxury.mp3",
-        "filename": "._04 The Luxury.mp3"
-      },
-      {
-        "name": ". 05 Thompson Girl",
-        "url": "1998-11-02-Athens-GA/._05 Thompson Girl.mp3",
-        "filename": "._05 Thompson Girl.mp3"
-      },
-      {
-        "name": ". 06 Ahead by a Century",
-        "url": "1998-11-02-Athens-GA/._06 Ahead by a Century.mp3",
-        "filename": "._06 Ahead by a Century.mp3"
-      },
-      {
-        "name": ". 07 Lionized",
-        "url": "1998-11-02-Athens-GA/._07 Lionized.mp3",
-        "filename": "._07 Lionized.mp3"
-      },
-      {
-        "name": ". 08 Grace, Too",
-        "url": "1998-11-02-Athens-GA/._08 Grace, Too.mp3",
-        "filename": "._08 Grace, Too.mp3"
-      },
-      {
-        "name": ". 09 Membership",
-        "url": "1998-11-02-Athens-GA/._09 Membership.mp3",
-        "filename": "._09 Membership.mp3"
-      },
-      {
-        "name": ". 10 Scared",
-        "url": "1998-11-02-Athens-GA/._10 Scared.mp3",
-        "filename": "._10 Scared.mp3"
-      },
-      {
-        "name": ". 11 Escape is at Hand",
-        "url": "1998-11-02-Athens-GA/._11 Escape is at Hand.mp3",
-        "filename": "._11 Escape is at Hand.mp3"
-      },
-      {
-        "name": ". 12 Emperor Penguin",
-        "url": "1998-11-02-Athens-GA/._12 Emperor Penguin.mp3",
-        "filename": "._12 Emperor Penguin.mp3"
-      },
-      {
-        "name": ". 13 Fire in the Hole",
-        "url": "1998-11-02-Athens-GA/._13 Fire in the Hole.mp3",
-        "filename": "._13 Fire in the Hole.mp3"
-      },
-      {
-        "name": ". 14 Fireworks",
-        "url": "1998-11-02-Athens-GA/._14 Fireworks.mp3",
-        "filename": "._14 Fireworks.mp3"
-      },
-      {
-        "name": ". 15 At the Hundredth Meridian",
-        "url": "1998-11-02-Athens-GA/._15 At the Hundredth Meridian.mp3",
-        "filename": "._15 At the Hundredth Meridian.mp3"
-      },
       {
         "name": "Save the Planet",
         "url": "1998-11-02-Athens-GA/01 Save the Planet.mp3",
@@ -28353,11 +26508,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": "Save the Planet",
-        "url": "1999-02-02-Halifax-NS/._tth1999-02-02t01.mp3",
-        "filename": "._tth1999-02-02t01.mp3"
-      },
-      {
         "name": "Grace, Too",
         "url": "1999-02-02-Halifax-NS/tth1999-02-02t01.mp3",
         "filename": "tth1999-02-02t01.mp3"
@@ -28630,7 +26780,7 @@
     "date": "06-02-1999",
     "isoDate": "1999-02-06",
     "tour": "Phantom Power Tour",
-    "venue": "Colis\u00e9e de Qu\u00e9bec",
+    "venue": "Colisée de Québec",
     "venueId": "63d62a87",
     "city": "Quebec City",
     "state": "QC",
@@ -29033,26 +27183,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1999-02-10-Buffalo-NY-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": "Save the Planet",
-        "url": "1999-02-10-Buffalo-NY/._tth1999-02-10d01t02.mp3",
-        "filename": "._tth1999-02-10d01t02.mp3"
-      },
-      {
-        "name": "Twist My Arm",
-        "url": "1999-02-10-Buffalo-NY/._tth1999-02-10d01t04.mp3",
-        "filename": "._tth1999-02-10d01t04.mp3"
-      },
-      {
-        "name": "Nautical Disaster",
-        "url": "1999-02-10-Buffalo-NY/._tth1999-02-10d01t05.mp3",
-        "filename": "._tth1999-02-10d01t05.mp3"
-      },
-      {
-        "name": "Bobcaygeon",
-        "url": "1999-02-10-Buffalo-NY/._tth1999-02-10d01t06.mp3",
-        "filename": "._tth1999-02-10d01t06.mp3"
-      },
       {
         "name": "Lionized",
         "url": "1999-02-10-Buffalo-NY/tth1999-02-10d01t01.mp3",
@@ -29679,11 +27809,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1999-02-18-Hamilton-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 1 Save The Planet",
-        "url": "1999-02-18-Hamilton-ON/._1-Save The Planet.mp3",
-        "filename": "._1-Save The Planet.mp3"
-      },
       {
         "name": "Save The Planet",
         "url": "1999-02-18-Hamilton-ON/1-Save The Planet.mp3",
@@ -31346,36 +29471,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". tth1999 04 03t02",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t02.mp3",
-        "filename": "._tth1999-04-03t02.mp3"
-      },
-      {
-        "name": ". tth1999 04 03t03",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t03.mp3",
-        "filename": "._tth1999-04-03t03.mp3"
-      },
-      {
-        "name": ". tth1999 04 03t04",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t04.mp3",
-        "filename": "._tth1999-04-03t04.mp3"
-      },
-      {
-        "name": ". tth1999 04 03t05",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t05.mp3",
-        "filename": "._tth1999-04-03t05.mp3"
-      },
-      {
-        "name": ". tth1999 04 03t06",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t06.mp3",
-        "filename": "._tth1999-04-03t06.mp3"
-      },
-      {
-        "name": ". tth1999 04 03t07",
-        "url": "1999-04-03-Spokane-WA/._tth1999-04-03t07.mp3",
-        "filename": "._tth1999-04-03t07.mp3"
-      },
-      {
         "name": "tth1999 04 03t01",
         "url": "1999-04-03-Spokane-WA/tth1999-04-03t01.mp3",
         "filename": "tth1999-04-03t01.mp3"
@@ -32552,146 +30647,6 @@
     "archiveFormat": "m4a",
     "tracks": [
       {
-        "name": ". 01 Intro",
-        "url": "1999-07-24-Rome-NY/._01 Intro.flac",
-        "filename": "._01 Intro.flac"
-      },
-      {
-        "name": ". 01 Intro",
-        "url": "1999-07-24-Rome-NY/._01 Intro.m4a",
-        "filename": "._01 Intro.m4a"
-      },
-      {
-        "name": ". 02 Grace, too",
-        "url": "1999-07-24-Rome-NY/._02 Grace, too.flac",
-        "filename": "._02 Grace, too.flac"
-      },
-      {
-        "name": ". 02 Grace, too",
-        "url": "1999-07-24-Rome-NY/._02 Grace, too.m4a",
-        "filename": "._02 Grace, too.m4a"
-      },
-      {
-        "name": ". 03 Fully Completely",
-        "url": "1999-07-24-Rome-NY/._03 Fully Completely.flac",
-        "filename": "._03 Fully Completely.flac"
-      },
-      {
-        "name": ". 03 Fully Completely",
-        "url": "1999-07-24-Rome-NY/._03 Fully Completely.m4a",
-        "filename": "._03 Fully Completely.m4a"
-      },
-      {
-        "name": ". 04 Fireworks",
-        "url": "1999-07-24-Rome-NY/._04 Fireworks.flac",
-        "filename": "._04 Fireworks.flac"
-      },
-      {
-        "name": ". 04 Fireworks",
-        "url": "1999-07-24-Rome-NY/._04 Fireworks.m4a",
-        "filename": "._04 Fireworks.m4a"
-      },
-      {
-        "name": ". 05 Gift Shop",
-        "url": "1999-07-24-Rome-NY/._05 Gift Shop.flac",
-        "filename": "._05 Gift Shop.flac"
-      },
-      {
-        "name": ". 05 Gift Shop",
-        "url": "1999-07-24-Rome-NY/._05 Gift Shop.m4a",
-        "filename": "._05 Gift Shop.m4a"
-      },
-      {
-        "name": ". 06 Springtime in Vienna",
-        "url": "1999-07-24-Rome-NY/._06 Springtime in Vienna.flac",
-        "filename": "._06 Springtime in Vienna.flac"
-      },
-      {
-        "name": ". 06 Springtime in Vienna",
-        "url": "1999-07-24-Rome-NY/._06 Springtime in Vienna.m4a",
-        "filename": "._06 Springtime in Vienna.m4a"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "1999-07-24-Rome-NY/._07 Bobcaygeon.flac",
-        "filename": "._07 Bobcaygeon.flac"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "1999-07-24-Rome-NY/._07 Bobcaygeon.m4a",
-        "filename": "._07 Bobcaygeon.m4a"
-      },
-      {
-        "name": ". 08 Nautical Disaster",
-        "url": "1999-07-24-Rome-NY/._08 Nautical Disaster.flac",
-        "filename": "._08 Nautical Disaster.flac"
-      },
-      {
-        "name": ". 08 Nautical Disaster",
-        "url": "1999-07-24-Rome-NY/._08 Nautical Disaster.m4a",
-        "filename": "._08 Nautical Disaster.m4a"
-      },
-      {
-        "name": ". 09 Poets",
-        "url": "1999-07-24-Rome-NY/._09 Poets.flac",
-        "filename": "._09 Poets.flac"
-      },
-      {
-        "name": ". 09 Poets",
-        "url": "1999-07-24-Rome-NY/._09 Poets.m4a",
-        "filename": "._09 Poets.m4a"
-      },
-      {
-        "name": ". 10 Courage",
-        "url": "1999-07-24-Rome-NY/._10 Courage.flac",
-        "filename": "._10 Courage.flac"
-      },
-      {
-        "name": ". 10 Courage",
-        "url": "1999-07-24-Rome-NY/._10 Courage.m4a",
-        "filename": "._10 Courage.m4a"
-      },
-      {
-        "name": ". 11 Ahead by a Century",
-        "url": "1999-07-24-Rome-NY/._11 Ahead by a Century.flac",
-        "filename": "._11 Ahead by a Century.flac"
-      },
-      {
-        "name": ". 11 Ahead by a Century",
-        "url": "1999-07-24-Rome-NY/._11 Ahead by a Century.m4a",
-        "filename": "._11 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 12 New Orleans is Sinking",
-        "url": "1999-07-24-Rome-NY/._12 New Orleans is Sinking.flac",
-        "filename": "._12 New Orleans is Sinking.flac"
-      },
-      {
-        "name": ". 12 New Orleans is Sinking",
-        "url": "1999-07-24-Rome-NY/._12 New Orleans is Sinking.m4a",
-        "filename": "._12 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 13 Fire in the Hole",
-        "url": "1999-07-24-Rome-NY/._13 Fire in the Hole.flac",
-        "filename": "._13 Fire in the Hole.flac"
-      },
-      {
-        "name": ". 13 Fire in the Hole",
-        "url": "1999-07-24-Rome-NY/._13 Fire in the Hole.m4a",
-        "filename": "._13 Fire in the Hole.m4a"
-      },
-      {
-        "name": ". 14 Announcements",
-        "url": "1999-07-24-Rome-NY/._14 Announcements.flac",
-        "filename": "._14 Announcements.flac"
-      },
-      {
-        "name": ". 14 Announcements",
-        "url": "1999-07-24-Rome-NY/._14 Announcements.m4a",
-        "filename": "._14 Announcements.m4a"
-      },
-      {
         "name": "Intro",
         "url": "1999-07-24-Rome-NY/01 Intro.flac",
         "filename": "01 Intro.flac"
@@ -33143,11 +31098,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2000-01-01-Toronto-ON-V2-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 2000 01 01 Toronto ON mp3 JGM",
-        "url": "2000-01-01-Toronto-ON/._2000-01-01-Toronto-ON-mp3-JGM.mp3",
-        "filename": "._2000-01-01-Toronto-ON-mp3-JGM.mp3"
-      },
       {
         "name": "Toronto ON mp3 JGM",
         "url": "2000-01-01-Toronto-ON/2000-01-01-Toronto-ON-mp3-JGM.mp3",
@@ -33778,7 +31728,7 @@
     "date": "20-06-2000",
     "isoDate": "2000-06-20",
     "tour": "Music @ Work",
-    "venue": "Th\u00e9\u00e2tre St-Denis",
+    "venue": "Théâtre St-Denis",
     "venueId": "73d63a8d",
     "city": "Montreal",
     "state": "QC",
@@ -34121,41 +32071,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2000-06-24-Toronto-ON-Incomplete-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 1",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 1.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 1.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 2",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 2.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 2.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 3",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 3.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 3.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 4",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 4.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 4.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 5",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 5.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 5.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 6",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 6.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 6.mp3"
-      },
-      {
-        "name": ". The Tragically Hip (Live @ Much Music June 2000) Set 7",
-        "url": "2000-06-24-Toronto-ON/._The Tragically Hip (Live @ Much Music June 2000) - Set 7.mp3",
-        "filename": "._The Tragically Hip (Live @ Much Music June 2000) - Set 7.mp3"
-      },
       {
         "name": "The Tragically Hip (Live @ Much Music June 2000) Set 1",
         "url": "2000-06-24-Toronto-ON/The Tragically Hip (Live @ Much Music June 2000) - Set 1.mp3",
@@ -35949,106 +33864,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2000-08-03-Wantaugh-NY-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 01 Grace, Too",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 01 Grace, Too.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 01 Grace, Too.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 02 My Music At Work",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 02 My Music At Work.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 02 My Music At Work.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 03 Something On",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 03 Something On.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 03 Something On.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 04 So Hard Done By",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 04 So Hard Done By.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 04 So Hard Done By.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 05 Puttin Down",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 05 Puttin Down.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 05 Puttin Down.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 06 Giftshop",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 06 Giftshop.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 06 Giftshop.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 07 Yawning Or Snarling",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 07 Yawning Or Snarling.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 07 Yawning Or Snarling.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 08 Springtime In Vienna",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 08 Springtime In Vienna.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 08 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 09 Train Overnight",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 09 Train Overnight.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 09 Train Overnight.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 10 Ahead By A Century",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 10 Ahead By A Century.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 10 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 11 Lake Fever",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 11 Lake Fever.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 11 Lake Fever.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 12 Fireworks",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 12 Fireworks.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 12 Fireworks.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 13 Don't Wake Daddy",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 13 Don't Wake Daddy.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 13 Don't Wake Daddy.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 14 Bobcaygeon",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 14 Bobcaygeon.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 14 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 15 Freak Turbulence",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 15 Freak Turbulence.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 15 Freak Turbulence.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 16 New Orleans Is Sinking",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 16 New Orleans Is Sinking.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 16 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 17 Save The Planet",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 17 Save The Planet.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 17 Save The Planet.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 18 Poets",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 18 Poets.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 18 Poets.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 19 Long Time Running",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 19 Long Time Running.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 19 Long Time Running.mp3"
-      },
-      {
-        "name": ". The Tragically Hip Wantaugh, NY 2000 08 03 20 Little Bones",
-        "url": "2000-08-03-Wantagh-NY/._The Tragically Hip - Wantaugh, NY - 2000-08-03 20 Little Bones.mp3",
-        "filename": "._The Tragically Hip - Wantaugh, NY - 2000-08-03 20 Little Bones.mp3"
-      },
       {
         "name": "The Tragically Hip Wantaugh, NY 2000 08 03 01 Grace, Too",
         "url": "2000-08-03-Wantagh-NY/The Tragically Hip - Wantaugh, NY - 2000-08-03 01 Grace, Too.mp3",
@@ -37995,11 +35810,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": "Something On",
-        "url": "2000-10-25-San-Francisco-CA/._tth2000-10-25SAMPLE.mp3",
-        "filename": "._tth2000-10-25SAMPLE.mp3"
-      },
-      {
         "name": "Courage (for Hugh MacLennan)",
         "url": "2000-10-25-San-Francisco-CA/tth2000-10-25SAMPLE.mp3",
         "filename": "tth2000-10-25SAMPLE.mp3"
@@ -38749,11 +36559,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2000 11 16 Pacific Coliseum, Vancouver, BC",
-        "url": "2000-11-16-Vancouver-BC/._Tragically Hip - 2000-11-16 - Pacific Coliseum, Vancouver, BC.mp3",
-        "filename": "._Tragically Hip - 2000-11-16 - Pacific Coliseum, Vancouver, BC.mp3"
-      },
-      {
         "name": "Tragically Hip 2000 11 16 Pacific Coliseum, Vancouver, BC",
         "url": "2000-11-16-Vancouver-BC/Tragically Hip - 2000-11-16 - Pacific Coliseum, Vancouver, BC.mp3",
         "filename": "Tragically Hip - 2000-11-16 - Pacific Coliseum, Vancouver, BC.mp3"
@@ -39066,11 +36871,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Tiger the Lion",
-        "url": "2000-12-01-Chicago-IL/._01 Tiger the Lion.mp3",
-        "filename": "._01 Tiger the Lion.mp3"
-      },
-      {
         "name": "Tiger the Lion",
         "url": "2000-12-01-Chicago-IL/01 Tiger the Lion.mp3",
         "filename": "01 Tiger the Lion.mp3"
@@ -39235,11 +37035,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2000-12-02-Detroit-MI-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 1 01 My Music At Work",
-        "url": "2000-12-02-Detroit-MI/._1-01 My Music At Work.mp3",
-        "filename": "._1-01 My Music At Work.mp3"
-      },
       {
         "name": "01 My Music At Work",
         "url": "2000-12-02-Detroit-MI/1-01 My Music At Work.mp3",
@@ -39581,11 +37376,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2000 12 05 Sudbury Arena, Sudbury, ON (8 from Sudbury SBD)",
-        "url": "2000-12-05-Greater-Sudbury-ON/._Tragically Hip - 2000-12-05 - Sudbury Arena, Sudbury, ON (8 from Sudbury - SBD).mp3",
-        "filename": "._Tragically Hip - 2000-12-05 - Sudbury Arena, Sudbury, ON (8 from Sudbury - SBD).mp3"
-      },
-      {
         "name": "Tragically Hip 2000 12 05 Sudbury Arena, Sudbury, ON (8 from Sudbury SBD)",
         "url": "2000-12-05-Greater-Sudbury-ON/Tragically Hip - 2000-12-05 - Sudbury Arena, Sudbury, ON (8 from Sudbury - SBD).mp3",
         "filename": "Tragically Hip - 2000-12-05 - Sudbury Arena, Sudbury, ON (8 from Sudbury - SBD).mp3"
@@ -39610,11 +37400,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2000-12-06-Kanata-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": "My Music at Work",
-        "url": "2000-12-06-Ottawa-ON/._tth2000-12-06SAMPLE.mp3",
-        "filename": "._tth2000-12-06SAMPLE.mp3"
-      },
       {
         "name": "Grace, Too",
         "url": "2000-12-06-Ottawa-ON/tth2000-12-06SAMPLE.mp3",
@@ -41147,101 +38932,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Intro",
-        "url": "2002-06-12-Toronto-ON/._01 Intro.mp3",
-        "filename": "._01 Intro.mp3"
-      },
-      {
-        "name": ". 02 Use It Up",
-        "url": "2002-06-12-Toronto-ON/._02 Use It Up.mp3",
-        "filename": "._02 Use It Up.mp3"
-      },
-      {
-        "name": ". 03 It's A Good Life If You Don't Weaken",
-        "url": "2002-06-12-Toronto-ON/._03 It's A Good Life If You Don't Weaken.mp3",
-        "filename": "._03 It's A Good Life If You Don't Weaken.mp3"
-      },
-      {
-        "name": ". 04 Interview 1",
-        "url": "2002-06-12-Toronto-ON/._04 Interview 1.mp3",
-        "filename": "._04 Interview 1.mp3"
-      },
-      {
-        "name": ". 05 Are You Ready",
-        "url": "2002-06-12-Toronto-ON/._05 Are You Ready.mp3",
-        "filename": "._05 Are You Ready.mp3"
-      },
-      {
-        "name": ". 06 Silver Jet",
-        "url": "2002-06-12-Toronto-ON/._06 Silver Jet.mp3",
-        "filename": "._06 Silver Jet.mp3"
-      },
-      {
-        "name": ". 07 Interview 2",
-        "url": "2002-06-12-Toronto-ON/._07 Interview 2.mp3",
-        "filename": "._07 Interview 2.mp3"
-      },
-      {
-        "name": ". 08 Throwing Off Glass",
-        "url": "2002-06-12-Toronto-ON/._08 Throwing Off Glass.mp3",
-        "filename": "._08 Throwing Off Glass.mp3"
-      },
-      {
-        "name": ". 09 Interview 3",
-        "url": "2002-06-12-Toronto-ON/._09 Interview 3.mp3",
-        "filename": "._09 Interview 3.mp3"
-      },
-      {
-        "name": ". 10 The Dire Wolf",
-        "url": "2002-06-12-Toronto-ON/._10 The Dire Wolf.mp3",
-        "filename": "._10 The Dire Wolf.mp3"
-      },
-      {
-        "name": ". 11 Interview 4",
-        "url": "2002-06-12-Toronto-ON/._11 Interview 4.mp3",
-        "filename": "._11 Interview 4.mp3"
-      },
-      {
-        "name": ". 12 Leave",
-        "url": "2002-06-12-Toronto-ON/._12 Leave.mp3",
-        "filename": "._12 Leave.mp3"
-      },
-      {
-        "name": ". 13 The Darkest One",
-        "url": "2002-06-12-Toronto-ON/._13 The Darkest One.mp3",
-        "filename": "._13 The Darkest One.mp3"
-      },
-      {
-        "name": ". 14 Interview 5",
-        "url": "2002-06-12-Toronto-ON/._14 Interview 5.mp3",
-        "filename": "._14 Interview 5.mp3"
-      },
-      {
-        "name": ". 15 A Beautiful Thing",
-        "url": "2002-06-12-Toronto-ON/._15 A Beautiful Thing.mp3",
-        "filename": "._15 A Beautiful Thing.mp3"
-      },
-      {
-        "name": ". 16 Interview 6",
-        "url": "2002-06-12-Toronto-ON/._16 Interview 6.mp3",
-        "filename": "._16 Interview 6.mp3"
-      },
-      {
-        "name": ". 17 The Dark Canuck",
-        "url": "2002-06-12-Toronto-ON/._17 The Dark Canuck.mp3",
-        "filename": "._17 The Dark Canuck.mp3"
-      },
-      {
-        "name": ". 18 Interview 7",
-        "url": "2002-06-12-Toronto-ON/._18 Interview 7.mp3",
-        "filename": "._18 Interview 7.mp3"
-      },
-      {
-        "name": ". 19 All Tore Up",
-        "url": "2002-06-12-Toronto-ON/._19 All Tore Up.mp3",
-        "filename": "._19 All Tore Up.mp3"
-      },
-      {
         "name": "Intro",
         "url": "2002-06-12-Toronto-ON/01 Intro.mp3",
         "filename": "01 Intro.mp3"
@@ -41581,7 +39271,7 @@
     "tour": "In Violet Light",
     "venue": "Bourbon Street North",
     "venueId": "3d4b9a3",
-    "city": "Sainte-Ad\u00e8le",
+    "city": "Sainte-Adèle",
     "state": "QC",
     "country": "CA",
     "countryName": "Canada",
@@ -41594,97 +39284,97 @@
     "tracks": [
       {
         "name": "tth2002 06 22d1t01",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t01.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t01.mp3",
         "filename": "tth2002-06-22d1t01.mp3"
       },
       {
         "name": "tth2002 06 22d1t02",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t02.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t02.mp3",
         "filename": "tth2002-06-22d1t02.mp3"
       },
       {
         "name": "tth2002 06 22d1t03",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t03.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t03.mp3",
         "filename": "tth2002-06-22d1t03.mp3"
       },
       {
         "name": "tth2002 06 22d1t04",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t04.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t04.mp3",
         "filename": "tth2002-06-22d1t04.mp3"
       },
       {
         "name": "tth2002 06 22d1t05",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t05.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t05.mp3",
         "filename": "tth2002-06-22d1t05.mp3"
       },
       {
         "name": "tth2002 06 22d1t06",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t06.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t06.mp3",
         "filename": "tth2002-06-22d1t06.mp3"
       },
       {
         "name": "tth2002 06 22d1t07",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t07.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t07.mp3",
         "filename": "tth2002-06-22d1t07.mp3"
       },
       {
         "name": "tth2002 06 22d1t08",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t08.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t08.mp3",
         "filename": "tth2002-06-22d1t08.mp3"
       },
       {
         "name": "tth2002 06 22d1t09",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t09.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t09.mp3",
         "filename": "tth2002-06-22d1t09.mp3"
       },
       {
         "name": "tth2002 06 22d1t10",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t10.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t10.mp3",
         "filename": "tth2002-06-22d1t10.mp3"
       },
       {
         "name": "tth2002 06 22d1t11",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t11.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t11.mp3",
         "filename": "tth2002-06-22d1t11.mp3"
       },
       {
         "name": "tth2002 06 22d1t12",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t12.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t12.mp3",
         "filename": "tth2002-06-22d1t12.mp3"
       },
       {
         "name": "tth2002 06 22d1t13",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t13.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t13.mp3",
         "filename": "tth2002-06-22d1t13.mp3"
       },
       {
         "name": "tth2002 06 22d1t14",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t14.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t14.mp3",
         "filename": "tth2002-06-22d1t14.mp3"
       },
       {
         "name": "tth2002 06 22d1t15",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t15.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t15.mp3",
         "filename": "tth2002-06-22d1t15.mp3"
       },
       {
         "name": "tth2002 06 22d1t16",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t16.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t16.mp3",
         "filename": "tth2002-06-22d1t16.mp3"
       },
       {
         "name": "tth2002 06 22d1t17",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d1t17.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d1t17.mp3",
         "filename": "tth2002-06-22d1t17.mp3"
       },
       {
         "name": "tth2002 06 22d2t01",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d2t01.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d2t01.mp3",
         "filename": "tth2002-06-22d2t01.mp3"
       },
       {
         "name": "tth2002 06 22d2t02",
-        "url": "2002-06-22-Sainte-Ad\u00e8le-QC/tth2002-06-22d2t02.mp3",
+        "url": "2002-06-22-Sainte-Adèle-QC/tth2002-06-22d2t02.mp3",
         "filename": "tth2002-06-22d2t02.mp3"
       }
     ]
@@ -42078,106 +39768,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2002-07-02-StJohns-NF-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Use It Up",
-        "url": "2002-07-02-St.-John's-NL/._01 Use It Up.mp3",
-        "filename": "._01 Use It Up.mp3"
-      },
-      {
-        "name": ". 02 My Music At Work",
-        "url": "2002-07-02-St.-John's-NL/._02 My Music At Work.mp3",
-        "filename": "._02 My Music At Work.mp3"
-      },
-      {
-        "name": ". 03 New Orleans Is Sinking",
-        "url": "2002-07-02-St.-John's-NL/._03 New Orleans Is Sinking.mp3",
-        "filename": "._03 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 04 Chagrin Falls",
-        "url": "2002-07-02-St.-John's-NL/._04 Chagrin Falls.mp3",
-        "filename": "._04 Chagrin Falls.mp3"
-      },
-      {
-        "name": ". 05 Daredevil",
-        "url": "2002-07-02-St.-John's-NL/._05 Daredevil.mp3",
-        "filename": "._05 Daredevil.mp3"
-      },
-      {
-        "name": ". 06 Silver Jet",
-        "url": "2002-07-02-St.-John's-NL/._06 Silver Jet.mp3",
-        "filename": "._06 Silver Jet.mp3"
-      },
-      {
-        "name": ". 07 Courage",
-        "url": "2002-07-02-St.-John's-NL/._07 Courage.mp3",
-        "filename": "._07 Courage.mp3"
-      },
-      {
-        "name": ". 08 Fireworks",
-        "url": "2002-07-02-St.-John's-NL/._08 Fireworks.mp3",
-        "filename": "._08 Fireworks.mp3"
-      },
-      {
-        "name": ". 09 It's A Good Life If You Don't Weaken",
-        "url": "2002-07-02-St.-John's-NL/._09 It's A Good Life If You Don't Weaken.mp3",
-        "filename": "._09 It's A Good Life If You Don't Weaken.mp3"
-      },
-      {
-        "name": ". 10 At The Hundredth Meridian",
-        "url": "2002-07-02-St.-John's-NL/._10 At The Hundredth Meridian.mp3",
-        "filename": "._10 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 11 Springtime In Vienna",
-        "url": "2002-07-02-St.-John's-NL/._11 Springtime In Vienna.mp3",
-        "filename": "._11 Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 12 Wheat Kings",
-        "url": "2002-07-02-St.-John's-NL/._12 Wheat Kings.mp3",
-        "filename": "._12 Wheat Kings.mp3"
-      },
-      {
-        "name": ". 13 The Dire Wolf",
-        "url": "2002-07-02-St.-John's-NL/._13 The Dire Wolf.mp3",
-        "filename": "._13 The Dire Wolf.mp3"
-      },
-      {
-        "name": ". 14 Gift Shop",
-        "url": "2002-07-02-St.-John's-NL/._14 Gift Shop.mp3",
-        "filename": "._14 Gift Shop.mp3"
-      },
-      {
-        "name": ". 15 Poets",
-        "url": "2002-07-02-St.-John's-NL/._15 Poets.mp3",
-        "filename": "._15 Poets.mp3"
-      },
-      {
-        "name": ". 16 Are You Ready",
-        "url": "2002-07-02-St.-John's-NL/._16 Are You Ready.mp3",
-        "filename": "._16 Are You Ready.mp3"
-      },
-      {
-        "name": ". 17 Little Bones",
-        "url": "2002-07-02-St.-John's-NL/._17 Little Bones.mp3",
-        "filename": "._17 Little Bones.mp3"
-      },
-      {
-        "name": ". 18 Grace, Too",
-        "url": "2002-07-02-St.-John's-NL/._18 Grace, Too.mp3",
-        "filename": "._18 Grace, Too.mp3"
-      },
-      {
-        "name": ". 19 Bobcaygeon",
-        "url": "2002-07-02-St.-John's-NL/._19 Bobcaygeon.mp3",
-        "filename": "._19 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 20 Nautical Disaster",
-        "url": "2002-07-02-St.-John's-NL/._20 Nautical Disaster.mp3",
-        "filename": "._20 Nautical Disaster.mp3"
-      },
       {
         "name": "Use It Up",
         "url": "2002-07-02-St.-John's-NL/01 Use It Up.mp3",
@@ -43435,106 +41025,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 1 Intro",
-        "url": "2002-07-26-Somerville-MA/._1 Intro.mp3",
-        "filename": "._1 Intro.mp3"
-      },
-      {
-        "name": ". 10 Poets",
-        "url": "2002-07-26-Somerville-MA/._10 Poets.mp3",
-        "filename": "._10 Poets.mp3"
-      },
-      {
-        "name": ". 11 Putting Down",
-        "url": "2002-07-26-Somerville-MA/._11 Putting Down.mp3",
-        "filename": "._11 Putting Down.mp3"
-      },
-      {
-        "name": ". 12 The Dark Canuck",
-        "url": "2002-07-26-Somerville-MA/._12 The Dark Canuck.mp3",
-        "filename": "._12 The Dark Canuck.mp3"
-      },
-      {
-        "name": ". 13 At The Hundredth Meridian",
-        "url": "2002-07-26-Somerville-MA/._13 At The Hundredth Meridian.mp3",
-        "filename": "._13 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 15 Ahead By A Century",
-        "url": "2002-07-26-Somerville-MA/._15 Ahead By A Century.mp3",
-        "filename": "._15 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 15 The Dire Wolf",
-        "url": "2002-07-26-Somerville-MA/._15 The Dire Wolf.mp3",
-        "filename": "._15 The Dire Wolf.mp3"
-      },
-      {
-        "name": ". 16 Gift Shop",
-        "url": "2002-07-26-Somerville-MA/._16 Gift Shop.mp3",
-        "filename": "._16 Gift Shop.mp3"
-      },
-      {
-        "name": ". 17 Blow At High Dough",
-        "url": "2002-07-26-Somerville-MA/._17 Blow At High Dough.mp3",
-        "filename": "._17 Blow At High Dough.mp3"
-      },
-      {
-        "name": ". 18 Lake Fever",
-        "url": "2002-07-26-Somerville-MA/._18 Lake Fever.mp3",
-        "filename": "._18 Lake Fever.mp3"
-      },
-      {
-        "name": ". 19 Are You Ready",
-        "url": "2002-07-26-Somerville-MA/._19 Are You Ready.mp3",
-        "filename": "._19 Are You Ready.mp3"
-      },
-      {
-        "name": ". 2 Use It Up",
-        "url": "2002-07-26-Somerville-MA/._2 Use It Up.mp3",
-        "filename": "._2 Use It Up.mp3"
-      },
-      {
-        "name": ". 20 Three Pistols",
-        "url": "2002-07-26-Somerville-MA/._20 Three Pistols.mp3",
-        "filename": "._20 Three Pistols.mp3"
-      },
-      {
-        "name": ". 3 New Orleans Is Sinking",
-        "url": "2002-07-26-Somerville-MA/._3 New Orleans Is Sinking.mp3",
-        "filename": "._3 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 4 Fully Completely",
-        "url": "2002-07-26-Somerville-MA/._4 Fully Completely.mp3",
-        "filename": "._4 Fully Completely.mp3"
-      },
-      {
-        "name": ". 5 Eldorado",
-        "url": "2002-07-26-Somerville-MA/._5 Eldorado.mp3",
-        "filename": "._5 Eldorado.mp3"
-      },
-      {
-        "name": ". 6 Silver Jet",
-        "url": "2002-07-26-Somerville-MA/._6 Silver Jet.mp3",
-        "filename": "._6 Silver Jet.mp3"
-      },
-      {
-        "name": ". 7 Inevitability Of Death",
-        "url": "2002-07-26-Somerville-MA/._7 Inevitability Of Death.mp3",
-        "filename": "._7 Inevitability Of Death.mp3"
-      },
-      {
-        "name": ". 8 Courage (For Hugh Maclennan)",
-        "url": "2002-07-26-Somerville-MA/._8 Courage (For Hugh Maclennan).mp3",
-        "filename": "._8 Courage (For Hugh Maclennan).mp3"
-      },
-      {
-        "name": ". 9 It's A Good Life If You Don't Weaken",
-        "url": "2002-07-26-Somerville-MA/._9 It's A Good Life If You Don't Weaken.mp3",
-        "filename": "._9 It's A Good Life If You Don't Weaken.mp3"
-      },
-      {
         "name": "Intro",
         "url": "2002-07-26-Somerville-MA/1 Intro.mp3",
         "filename": "1 Intro.mp3"
@@ -44180,11 +41670,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2002-08-07-Denver-CO-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2002 08 07 Gothic Theatre, Denver, CO",
-        "url": "2002-08-07-Englewood-CO/._Tragically Hip - 2002-08-07 - Gothic Theatre, Denver, CO.mp3",
-        "filename": "._Tragically Hip - 2002-08-07 - Gothic Theatre, Denver, CO.mp3"
-      },
       {
         "name": "Tragically Hip 2002 08 07 Gothic Theatre, Denver, CO",
         "url": "2002-08-07-Englewood-CO/Tragically Hip - 2002-08-07 - Gothic Theatre, Denver, CO.mp3",
@@ -45182,21 +42667,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 07 Courage ( for Hugh MacLennan)",
-        "url": "2002-08-30-Cleveland-OH/._07 - Courage ( for Hugh MacLennan).mp3",
-        "filename": "._07 - Courage ( for Hugh MacLennan).mp3"
-      },
-      {
-        "name": ". 08 Inevitability of Death",
-        "url": "2002-08-30-Cleveland-OH/._08 - Inevitability of Death.mp3",
-        "filename": "._08 - Inevitability of Death.mp3"
-      },
-      {
-        "name": ". 09 It's a Good Life if You Don't Weaken",
-        "url": "2002-08-30-Cleveland-OH/._09 - It's a Good Life if You Don't Weaken.mp3",
-        "filename": "._09 - It's a Good Life if You Don't Weaken.mp3"
-      },
-      {
         "name": "Silver Jet",
         "url": "2002-08-30-Cleveland-OH/01 - Silver Jet.mp3",
         "filename": "01 - Silver Jet.mp3"
@@ -46007,11 +43477,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2002-09-23-Calgary-AB-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 2002 09 23 Calgary AB mp3",
-        "url": "2002-09-23-Calgary-AB/._2002-09-23-Calgary-AB-mp3.mp3",
-        "filename": "._2002-09-23-Calgary-AB-mp3.mp3"
-      },
       {
         "name": "Calgary AB mp3",
         "url": "2002-09-23-Calgary-AB/2002-09-23-Calgary-AB-mp3.mp3",
@@ -47416,96 +44881,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Use it Up",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._01 Use it Up.mp3",
-        "filename": "._01 Use it Up.mp3"
-      },
-      {
-        "name": ". 02 Music at Work",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._02 Music at Work.mp3",
-        "filename": "._02 Music at Work.mp3"
-      },
-      {
-        "name": ". 03 New Orleans is Sinking",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._03 New Orleans is Sinking.mp3",
-        "filename": "._03 New Orleans is Sinking.mp3"
-      },
-      {
-        "name": ". 04 Fully Completely",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._04 Fully Completely.mp3",
-        "filename": "._04 Fully Completely.mp3"
-      },
-      {
-        "name": ". 05 Grace, Too",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._05 Grace, Too.mp3",
-        "filename": "._05 Grace, Too.mp3"
-      },
-      {
-        "name": ". 06 Escape is at Hand for the Travelling Man",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._06 Escape is at Hand for the Travelling Man.mp3",
-        "filename": "._06 Escape is at Hand for the Travelling Man.mp3"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._07 Bobcaygeon.mp3",
-        "filename": "._07 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 08 Silver Jet",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._08 Silver Jet.mp3",
-        "filename": "._08 Silver Jet.mp3"
-      },
-      {
-        "name": ". 09 Courage",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._09 Courage.mp3",
-        "filename": "._09 Courage.mp3"
-      },
-      {
-        "name": ". 10 It s a Good Life if You Don t Weaken",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._10 It_s a Good Life if You Don_t Weaken.mp3",
-        "filename": "._10 It_s a Good Life if You Don_t Weaken.mp3"
-      },
-      {
-        "name": ". 11 At the Hundredth Meridian",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._11 At the Hundredth Meridian.mp3",
-        "filename": "._11 At the Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 12 Gift Shop",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._12 Gift Shop.mp3",
-        "filename": "._12 Gift Shop.mp3"
-      },
-      {
-        "name": ". 13 The Dire Wolf",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._13 The Dire Wolf.mp3",
-        "filename": "._13 The Dire Wolf.mp3"
-      },
-      {
-        "name": ". 14 Poets",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._14 Poets.mp3",
-        "filename": "._14 Poets.mp3"
-      },
-      {
-        "name": ". 15 Ahead by a Century",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._15 Ahead by a Century.mp3",
-        "filename": "._15 Ahead by a Century.mp3"
-      },
-      {
-        "name": ". 16 Little Bones",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._16 Little Bones.mp3",
-        "filename": "._16 Little Bones.mp3"
-      },
-      {
-        "name": ". 17 Are You Ready",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._17 Are You Ready.mp3",
-        "filename": "._17 Are You Ready.mp3"
-      },
-      {
-        "name": ". 18 Fire in the Hole",
-        "url": "2002-10-20-Lake-Buena-Vista-FL/._18 Fire in the Hole.mp3",
-        "filename": "._18 Fire in the Hole.mp3"
-      },
-      {
         "name": "Use it Up",
         "url": "2002-10-20-Lake-Buena-Vista-FL/01 Use it Up.mp3",
         "filename": "01 Use it Up.mp3"
@@ -48244,11 +45619,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2002 11 10 Tivoli, Utrecht, Netherlands",
-        "url": "2002-11-10-Utrecht-09/._Tragically Hip - 2002-11-10 - Tivoli, Utrecht, Netherlands.mp3",
-        "filename": "._Tragically Hip - 2002-11-10 - Tivoli, Utrecht, Netherlands.mp3"
-      },
-      {
         "name": "Tragically Hip 2002 11 10 Tivoli, Utrecht, Netherlands",
         "url": "2002-11-10-Utrecht-09/Tragically Hip - 2002-11-10 - Tivoli, Utrecht, Netherlands.mp3",
         "filename": "Tragically Hip - 2002-11-10 - Tivoli, Utrecht, Netherlands.mp3"
@@ -48273,11 +45643,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2002-11-11-Tilburg-NL-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 2002 11 11 Tilburg Netherlands mp3",
-        "url": "2002-11-11-Tilburg-06/._2002-11-11-Tilburg-Netherlands-mp3.mp3",
-        "filename": "._2002-11-11-Tilburg-Netherlands-mp3.mp3"
-      },
       {
         "name": "Tilburg Netherlands mp3",
         "url": "2002-11-11-Tilburg-06/2002-11-11-Tilburg-Netherlands-mp3.mp3",
@@ -48735,11 +46100,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 2002 12 31 Hamilton ON mp3",
-        "url": "2002-12-31-Hamilton-ON/._2002-12-31-Hamilton-ON-mp3.mp3",
-        "filename": "._2002-12-31-Hamilton-ON-mp3.mp3"
-      },
-      {
         "name": "Hamilton ON mp3",
         "url": "2002-12-31-Hamilton-ON/2002-12-31-Hamilton-ON-mp3.mp3",
         "filename": "2002-12-31-Hamilton-ON-mp3.mp3"
@@ -48780,91 +46140,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2003-06-21-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Introduction",
-        "url": "2003-06-21-Toronto-ON/._01 Introduction.mp3",
-        "filename": "._01 Introduction.mp3"
-      },
-      {
-        "name": ". 02 Grace, Too",
-        "url": "2003-06-21-Toronto-ON/._02 Grace, Too.mp3",
-        "filename": "._02 Grace, Too.mp3"
-      },
-      {
-        "name": ". 03 New Orleans Is Sinking",
-        "url": "2003-06-21-Toronto-ON/._03 New Orleans Is Sinking.mp3",
-        "filename": "._03 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 04 The Darkest One",
-        "url": "2003-06-21-Toronto-ON/._04 The Darkest One.mp3",
-        "filename": "._04 The Darkest One.mp3"
-      },
-      {
-        "name": ". 05 Bobcaygeon",
-        "url": "2003-06-21-Toronto-ON/._05 Bobcaygeon.mp3",
-        "filename": "._05 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 06 Courage",
-        "url": "2003-06-21-Toronto-ON/._06 Courage.mp3",
-        "filename": "._06 Courage.mp3"
-      },
-      {
-        "name": ". 07 Twist My Arm",
-        "url": "2003-06-21-Toronto-ON/._07 Twist My Arm.mp3",
-        "filename": "._07 Twist My Arm.mp3"
-      },
-      {
-        "name": ". 08 Poets",
-        "url": "2003-06-21-Toronto-ON/._08 Poets.mp3",
-        "filename": "._08 Poets.mp3"
-      },
-      {
-        "name": ". 09 Fireworks",
-        "url": "2003-06-21-Toronto-ON/._09 Fireworks.mp3",
-        "filename": "._09 Fireworks.mp3"
-      },
-      {
-        "name": ". 10 At The Hundredth Meridian",
-        "url": "2003-06-21-Toronto-ON/._10 At The Hundredth Meridian.mp3",
-        "filename": "._10 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 11 It's A Good Life If You Don't Wea",
-        "url": "2003-06-21-Toronto-ON/._11 It's A Good Life If You Don't Wea.mp3",
-        "filename": "._11 It's A Good Life If You Don't Wea.mp3"
-      },
-      {
-        "name": ". 12 My Music At Work",
-        "url": "2003-06-21-Toronto-ON/._12 My Music At Work.mp3",
-        "filename": "._12 My Music At Work.mp3"
-      },
-      {
-        "name": ". 13 Blow At High Dough",
-        "url": "2003-06-21-Toronto-ON/._13 Blow At High Dough.mp3",
-        "filename": "._13 Blow At High Dough.mp3"
-      },
-      {
-        "name": ". 14 Ahead by A Century",
-        "url": "2003-06-21-Toronto-ON/._14 Ahead by A Century.mp3",
-        "filename": "._14 Ahead by A Century.mp3"
-      },
-      {
-        "name": ". 15 Little Bones",
-        "url": "2003-06-21-Toronto-ON/._15 Little Bones.mp3",
-        "filename": "._15 Little Bones.mp3"
-      },
-      {
-        "name": ". bobcageon Skydome June2003 Labatts cd",
-        "url": "2003-06-21-Toronto-ON/._bobcageon_Skydome_June2003_Labatts_cd.wav",
-        "filename": "._bobcageon_Skydome_June2003_Labatts_cd.wav"
-      },
-      {
-        "name": ". music@work live Skydome June2003 Labatts cd",
-        "url": "2003-06-21-Toronto-ON/._music@work_live_Skydome_June2003_Labatts_cd.wav",
-        "filename": "._music@work_live_Skydome_June2003_Labatts_cd.wav"
-      },
       {
         "name": "Introduction",
         "url": "2003-06-21-Toronto-ON/01 Introduction.mp3",
@@ -49426,101 +46701,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": "Vaccination Scar",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t1.mp3",
-        "filename": "._hip20040629t1.mp3"
-      },
-      {
-        "name": "Summer's Killing Us",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t10.mp3",
-        "filename": "._hip20040629t10.mp3"
-      },
-      {
-        "name": "Goodnight Josephine",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t11.mp3",
-        "filename": "._hip20040629t11.mp3"
-      },
-      {
-        "name": "It Can't Be Nashville Every Night",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t12.mp3",
-        "filename": "._hip20040629t12.mp3"
-      },
-      {
-        "name": "Gus: The Polar Bear from Central Park",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t13.mp3",
-        "filename": "._hip20040629t13.mp3"
-      },
-      {
-        "name": "You're Everywhere",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t14.mp3",
-        "filename": "._hip20040629t14.mp3"
-      },
-      {
-        "name": "As Makeshift as We Are",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t15.mp3",
-        "filename": "._hip20040629t15.mp3"
-      },
-      {
-        "name": "Mean Streak",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t16.mp3",
-        "filename": "._hip20040629t16.mp3"
-      },
-      {
-        "name": "One Night in Copenhagen",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t17.mp3",
-        "filename": "._hip20040629t17.mp3"
-      },
-      {
-        "name": "The Heart of the Melt",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t18.mp3",
-        "filename": "._hip20040629t18.mp3"
-      },
-      {
-        "name": "Are We Family",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t19.mp3",
-        "filename": "._hip20040629t19.mp3"
-      },
-      {
-        "name": "Heaven Is a Better Place Today",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t2.mp3",
-        "filename": "._hip20040629t2.mp3"
-      },
-      {
-        "name": "Grace, Too",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t3.mp3",
-        "filename": "._hip20040629t3.mp3"
-      },
-      {
-        "name": "My Music at Work",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t4.mp3",
-        "filename": "._hip20040629t4.mp3"
-      },
-      {
-        "name": "If New Orleans Is Beat",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t5.mp3",
-        "filename": "._hip20040629t5.mp3"
-      },
-      {
-        "name": "New Orleans Is Sinking",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t6.mp3",
-        "filename": "._hip20040629t6.mp3"
-      },
-      {
-        "name": "Courage (for Hugh MacLennan)",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t7.mp3",
-        "filename": "._hip20040629t7.mp3"
-      },
-      {
-        "name": "Springtime in Vienna",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t8.mp3",
-        "filename": "._hip20040629t8.mp3"
-      },
-      {
-        "name": "Fully Completely",
-        "url": "2004-06-29-Toronto-ON/._hip20040629t9.mp3",
-        "filename": "._hip20040629t9.mp3"
-      },
-      {
         "name": "hip20040629t1",
         "url": "2004-06-29-Toronto-ON/hip20040629t1.mp3",
         "filename": "hip20040629t1.mp3"
@@ -49787,11 +46967,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2004 07 11 Wasaga Beach Bluesfest, Wasaga Beach, ON",
-        "url": "2004-07-11-Wasaga-Beach-ON/._Tragically Hip - 2004-07-11 - Wasaga Beach Bluesfest, Wasaga Beach, ON.mp3",
-        "filename": "._Tragically Hip - 2004-07-11 - Wasaga Beach Bluesfest, Wasaga Beach, ON.mp3"
-      },
-      {
         "name": "Tragically Hip 2004 07 11 Wasaga Beach Bluesfest, Wasaga Beach, ON",
         "url": "2004-07-11-Wasaga-Beach-ON/Tragically Hip - 2004-07-11 - Wasaga Beach Bluesfest, Wasaga Beach, ON.mp3",
         "filename": "Tragically Hip - 2004-07-11 - Wasaga Beach Bluesfest, Wasaga Beach, ON.mp3"
@@ -49816,16 +46991,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2004-07-17-Sarnia-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": "Vaccination Scar",
-        "url": "2004-07-17-Sarnia-ON/._tth2004-07-17d1t14.mp3",
-        "filename": "._tth2004-07-17d1t14.mp3"
-      },
-      {
-        "name": "Grace, Too",
-        "url": "2004-07-17-Sarnia-ON/._tth2004-07-17d2t8.mp3",
-        "filename": "._tth2004-07-17d2t8.mp3"
-      },
       {
         "name": "It Can't Be Nashville Every Night",
         "url": "2004-07-17-Sarnia-ON/tth2004-07-17d1t1.mp3",
@@ -51119,116 +48284,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 Vaccination Scar",
-        "url": "2004-10-10-Seattle-WA/._01 Vaccination Scar.m4a",
-        "filename": "._01 Vaccination Scar.m4a"
-      },
-      {
-        "name": ". 02 Grace, Too",
-        "url": "2004-10-10-Seattle-WA/._02 Grace, Too.m4a",
-        "filename": "._02 Grace, Too.m4a"
-      },
-      {
-        "name": ". 03 My Music at Work",
-        "url": "2004-10-10-Seattle-WA/._03 My Music at Work.m4a",
-        "filename": "._03 My Music at Work.m4a"
-      },
-      {
-        "name": ". 04 Ahead by a Century",
-        "url": "2004-10-10-Seattle-WA/._04 Ahead by a Century.m4a",
-        "filename": "._04 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 05 Something On",
-        "url": "2004-10-10-Seattle-WA/._05 Something On.m4a",
-        "filename": "._05 Something On.m4a"
-      },
-      {
-        "name": ". 06 Summer's Killing Us",
-        "url": "2004-10-10-Seattle-WA/._06 Summer's Killing Us.m4a",
-        "filename": "._06 Summer's Killing Us.m4a"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "2004-10-10-Seattle-WA/._07 Bobcaygeon.m4a",
-        "filename": "._07 Bobcaygeon.m4a"
-      },
-      {
-        "name": ". 08 Nautical Disaster",
-        "url": "2004-10-10-Seattle-WA/._08 Nautical Disaster.m4a",
-        "filename": "._08 Nautical Disaster.m4a"
-      },
-      {
-        "name": ". 09 Gus The Polar Bear From Central",
-        "url": "2004-10-10-Seattle-WA/._09 Gus_ The Polar Bear From Central.m4a",
-        "filename": "._09 Gus_ The Polar Bear From Central.m4a"
-      },
-      {
-        "name": ". 10 Courage",
-        "url": "2004-10-10-Seattle-WA/._10 Courage.m4a",
-        "filename": "._10 Courage.m4a"
-      },
-      {
-        "name": ". 11 It Can't be Nashville Every Night",
-        "url": "2004-10-10-Seattle-WA/._11 It Can't be Nashville Every Night.m4a",
-        "filename": "._11 It Can't be Nashville Every Night.m4a"
-      },
-      {
-        "name": ". 12 At the Hundredth Meridian",
-        "url": "2004-10-10-Seattle-WA/._12 At the Hundredth Meridian.m4a",
-        "filename": "._12 At the Hundredth Meridian.m4a"
-      },
-      {
-        "name": ". 13 Mean Streak",
-        "url": "2004-10-10-Seattle-WA/._13 Mean Streak.m4a",
-        "filename": "._13 Mean Streak.m4a"
-      },
-      {
-        "name": ". 14 Poets",
-        "url": "2004-10-10-Seattle-WA/._14 Poets.m4a",
-        "filename": "._14 Poets.m4a"
-      },
-      {
-        "name": ". 15 The Inevitability of Death",
-        "url": "2004-10-10-Seattle-WA/._15 The Inevitability of Death.m4a",
-        "filename": "._15 The Inevitability of Death.m4a"
-      },
-      {
-        "name": ". 16 Goodnight Josephine",
-        "url": "2004-10-10-Seattle-WA/._16 Goodnight Josephine.m4a",
-        "filename": "._16 Goodnight Josephine.m4a"
-      },
-      {
-        "name": ". 17 New Orleans is Sinking",
-        "url": "2004-10-10-Seattle-WA/._17 New Orleans is Sinking.m4a",
-        "filename": "._17 New Orleans is Sinking.m4a"
-      },
-      {
-        "name": ". 18 Heaven is a Better Place Today",
-        "url": "2004-10-10-Seattle-WA/._18 Heaven is a Better Place Today.m4a",
-        "filename": "._18 Heaven is a Better Place Today.m4a"
-      },
-      {
-        "name": ". 19 It's a Good Life if You Don't Wea",
-        "url": "2004-10-10-Seattle-WA/._19 It's a Good Life if You Don't Wea.m4a",
-        "filename": "._19 It's a Good Life if You Don't Wea.m4a"
-      },
-      {
-        "name": ". 20 Blow at High Dough",
-        "url": "2004-10-10-Seattle-WA/._20 Blow at High Dough.m4a",
-        "filename": "._20 Blow at High Dough.m4a"
-      },
-      {
-        "name": ". 21 Are We Family",
-        "url": "2004-10-10-Seattle-WA/._21 Are We Family.m4a",
-        "filename": "._21 Are We Family.m4a"
-      },
-      {
-        "name": ". 22 Fireworks",
-        "url": "2004-10-10-Seattle-WA/._22 Fireworks.m4a",
-        "filename": "._22 Fireworks.m4a"
-      },
-      {
         "name": "Vaccination Scar",
         "url": "2004-10-10-Seattle-WA/01 Vaccination Scar.m4a",
         "filename": "01 Vaccination Scar.m4a"
@@ -51358,11 +48413,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2004-10-11-Spokane-WA-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2004 10 11 Big Easy, Spokane, WA",
-        "url": "2004-10-11-Spokane-WA/._Tragically Hip - 2004-10-11 - Big Easy, Spokane, WA.mp3",
-        "filename": "._Tragically Hip - 2004-10-11 - Big Easy, Spokane, WA.mp3"
-      },
       {
         "name": "Tragically Hip 2004 10 11 Big Easy, Spokane, WA",
         "url": "2004-10-11-Spokane-WA/Tragically Hip - 2004-10-11 - Big Easy, Spokane, WA.mp3",
@@ -52282,11 +49332,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2004 11 15 SkyReach Place, Kelowna, BC",
-        "url": "2004-11-15-Kelowna-BC/._Tragically Hip - 2004-11-15 - SkyReach Place, Kelowna, BC.mp3",
-        "filename": "._Tragically Hip - 2004-11-15 - SkyReach Place, Kelowna, BC.mp3"
-      },
-      {
         "name": "Tragically Hip 2004 11 15 SkyReach Place, Kelowna, BC",
         "url": "2004-11-15-Kelowna-BC/Tragically Hip - 2004-11-15 - SkyReach Place, Kelowna, BC.mp3",
         "filename": "Tragically Hip - 2004-11-15 - SkyReach Place, Kelowna, BC.mp3"
@@ -52498,136 +49543,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2004-11-23-Winnipeg-MB-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 1 Intro",
-        "url": "2004-11-23-Winnipeg-MB/._1 Intro.mp3",
-        "filename": "._1 Intro.mp3"
-      },
-      {
-        "name": ". 10 Bobcaygeon",
-        "url": "2004-11-23-Winnipeg-MB/._10 Bobcaygeon.mp3",
-        "filename": "._10 Bobcaygeon.mp3"
-      },
-      {
-        "name": ". 11 Nautical Disaster",
-        "url": "2004-11-23-Winnipeg-MB/._11 Nautical Disaster.mp3",
-        "filename": "._11 Nautical Disaster.mp3"
-      },
-      {
-        "name": ". 12 Gus The Polar Bear From Central Park",
-        "url": "2004-11-23-Winnipeg-MB/._12 Gus The Polar Bear From Central Park.mp3",
-        "filename": "._12 Gus The Polar Bear From Central Park.mp3"
-      },
-      {
-        "name": ". 13 Escape Is At Hand For The Travellin' Man",
-        "url": "2004-11-23-Winnipeg-MB/._13 Escape Is At Hand For The Travellin' Man.mp3",
-        "filename": "._13 Escape Is At Hand For The Travellin' Man.mp3"
-      },
-      {
-        "name": ". 14 At The Hundredth Meridian",
-        "url": "2004-11-23-Winnipeg-MB/._14 At The Hundredth Meridian.mp3",
-        "filename": "._14 At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 15 It Can't Be Nashville Everynight",
-        "url": "2004-11-23-Winnipeg-MB/._15 It Can't Be Nashville Everynight.mp3",
-        "filename": "._15 It Can't Be Nashville Everynight.mp3"
-      },
-      {
-        "name": ". 16 My Music At Work",
-        "url": "2004-11-23-Winnipeg-MB/._16 My Music At Work.mp3",
-        "filename": "._16 My Music At Work.mp3"
-      },
-      {
-        "name": ". 17 New Orleans Is Sinking",
-        "url": "2004-11-23-Winnipeg-MB/._17 New Orleans Is Sinking.mp3",
-        "filename": "._17 New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 18 Break",
-        "url": "2004-11-23-Winnipeg-MB/._18 Break.mp3",
-        "filename": "._18 Break.mp3"
-      },
-      {
-        "name": ". 19 Heaven Is A Better Place Today",
-        "url": "2004-11-23-Winnipeg-MB/._19 Heaven Is A Better Place Today.mp3",
-        "filename": "._19 Heaven Is A Better Place Today.mp3"
-      },
-      {
-        "name": ". 2 Vaccination Scar",
-        "url": "2004-11-23-Winnipeg-MB/._2 Vaccination Scar.mp3",
-        "filename": "._2 Vaccination Scar.mp3"
-      },
-      {
-        "name": ". 20 It's A Good Life If You Don't Weaken",
-        "url": "2004-11-23-Winnipeg-MB/._20 It's A Good Life If You Don't Weaken.mp3",
-        "filename": "._20 It's A Good Life If You Don't Weaken.mp3"
-      },
-      {
-        "name": ". 21 Little Bones",
-        "url": "2004-11-23-Winnipeg-MB/._21 Little Bones.mp3",
-        "filename": "._21 Little Bones.mp3"
-      },
-      {
-        "name": ". 22 As Makeshift As You Are",
-        "url": "2004-11-23-Winnipeg-MB/._22 As Makeshift As You Are.mp3",
-        "filename": "._22 As Makeshift As You Are.mp3"
-      },
-      {
-        "name": ". 23 Wheat Kings",
-        "url": "2004-11-23-Winnipeg-MB/._23 Wheat Kings.mp3",
-        "filename": "._23 Wheat Kings.mp3"
-      },
-      {
-        "name": ". 24 Three Pistols",
-        "url": "2004-11-23-Winnipeg-MB/._24 Three Pistols.mp3",
-        "filename": "._24 Three Pistols.mp3"
-      },
-      {
-        "name": ". 25 Boots Or Hearts",
-        "url": "2004-11-23-Winnipeg-MB/._25 Boots Or Hearts.mp3",
-        "filename": "._25 Boots Or Hearts.mp3"
-      },
-      {
-        "name": ". 26 Blow At High Dough",
-        "url": "2004-11-23-Winnipeg-MB/._26 Blow At High Dough.mp3",
-        "filename": "._26 Blow At High Dough.mp3"
-      },
-      {
-        "name": ". 3 Grace, Too",
-        "url": "2004-11-23-Winnipeg-MB/._3 Grace, Too.mp3",
-        "filename": "._3 Grace, Too.mp3"
-      },
-      {
-        "name": ". 4 Poets",
-        "url": "2004-11-23-Winnipeg-MB/._4 Poets.mp3",
-        "filename": "._4 Poets.mp3"
-      },
-      {
-        "name": ". 5 Summer's Killing Us",
-        "url": "2004-11-23-Winnipeg-MB/._5 Summer's Killing Us.mp3",
-        "filename": "._5 Summer's Killing Us.mp3"
-      },
-      {
-        "name": ". 6 Ahead By A Century",
-        "url": "2004-11-23-Winnipeg-MB/._6 Ahead By A Century.mp3",
-        "filename": "._6 Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 7 Silver Jet",
-        "url": "2004-11-23-Winnipeg-MB/._7 Silver Jet.mp3",
-        "filename": "._7 Silver Jet.mp3"
-      },
-      {
-        "name": ". 8 You're Everywhere",
-        "url": "2004-11-23-Winnipeg-MB/._8 You're Everywhere.mp3",
-        "filename": "._8 You're Everywhere.mp3"
-      },
-      {
-        "name": ". 9 Courage (For Hugh Maclennan)",
-        "url": "2004-11-23-Winnipeg-MB/._9 Courage (For Hugh Maclennan).mp3",
-        "filename": "._9 Courage (For Hugh Maclennan).mp3"
-      },
       {
         "name": "Intro",
         "url": "2004-11-23-Winnipeg-MB/1 Intro.mp3",
@@ -55367,7 +52282,7 @@
     "tour": null,
     "venue": "Bourbon Street North",
     "venueId": "3d4b9a3",
-    "city": "Sainte-Ad\u00e8le",
+    "city": "Sainte-Adèle",
     "state": "QC",
     "country": "CA",
     "countryName": "Canada",
@@ -55671,7 +52586,7 @@
         "filename": "TTH2006-10-17D2T03 - IAGLIYDW.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-10-17-Toronto-ON/TTH2006-10-17D2T04 - NOIS.mp3",
         "filename": "TTH2006-10-17D2T04 - NOIS.mp3"
       },
@@ -55725,11 +52640,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2006-10-22-Toronto-ON-V4-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2006 10 22 Phoenix Theatre, Toronto, ON (11 from Toronto SBD)",
-        "url": "2006-10-22-Toronto-ON/._Tragically Hip - 2006-10-22 - Phoenix Theatre, Toronto, ON (11 from Toronto - SBD).mp3",
-        "filename": "._Tragically Hip - 2006-10-22 - Phoenix Theatre, Toronto, ON (11 from Toronto - SBD).mp3"
-      },
       {
         "name": "Tragically Hip 2006 10 22 Phoenix Theatre, Toronto, ON (11 from Toronto SBD)",
         "url": "2006-10-22-Toronto-ON/Tragically Hip - 2006-10-22 - Phoenix Theatre, Toronto, ON (11 from Toronto - SBD).mp3",
@@ -55856,7 +52766,7 @@
         "filename": "tth2006-10-23_t20.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-10-23-Toronto-ON/tth2006-10-23_t21.mp3",
         "filename": "tth2006-10-23_t21.mp3"
       },
@@ -56396,7 +53306,7 @@
         "filename": "tth2006-10-29neumannkm184t19.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-10-29-Calgary-AB/tth2006-10-29neumannkm184t20.mp3",
         "filename": "tth2006-10-29neumannkm184t20.mp3"
       },
@@ -56886,7 +53796,7 @@
         "filename": "tth2006-11-04neumannkm184t06.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-11-04-Vancouver-BC/tth2006-11-04neumannkm184t07.mp3",
         "filename": "tth2006-11-04neumannkm184t07.mp3"
       },
@@ -57066,7 +53976,7 @@
         "filename": "tth2006-11-06neumannkm184t14.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-11-06-Vancouver-BC/tth2006-11-06neumannkm184t15.mp3",
         "filename": "tth2006-11-06neumannkm184t15.mp3"
       },
@@ -57461,7 +54371,7 @@
         "filename": "tth2006-11-10neumannkm184t10.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2006-11-10-Montreal-QC/tth2006-11-10neumannkm184t11.mp3",
         "filename": "tth2006-11-10neumannkm184t11.mp3"
       },
@@ -57625,11 +54535,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2006-12-31-Chicago-IL-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2006 12 31 House of Blues, Chicago, IL",
-        "url": "2006-12-31-Chicago-IL/._Tragically Hip - 2006-12-31 - House of Blues, Chicago, IL.mp3",
-        "filename": "._Tragically Hip - 2006-12-31 - House of Blues, Chicago, IL.mp3"
-      },
       {
         "name": "Tragically Hip 2006 12 31 House of Blues, Chicago, IL",
         "url": "2006-12-31-Chicago-IL/Tragically Hip - 2006-12-31 - House of Blues, Chicago, IL.mp3",
@@ -57918,11 +54823,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-01-22-ThunderBay-ON-mp3-11SBD.zip",
     "archiveFormat": "11SBD",
     "tracks": [
-      {
-        "name": ". The Tragically Hip 11 from Thunder Bay 2007 SBD",
-        "url": "2007-01-22-Thunder-Bay-ON/._The Tragically Hip - 11 from Thunder Bay 2007 SBD.mp3",
-        "filename": "._The Tragically Hip - 11 from Thunder Bay 2007 SBD.mp3"
-      },
       {
         "name": "The Tragically Hip 11 from Thunder Bay 2007 SBD",
         "url": "2007-01-22-Thunder-Bay-ON/The Tragically Hip - 11 from Thunder Bay 2007 SBD.mp3",
@@ -59720,7 +56620,7 @@
         "filename": "tth2007-03-13-d01t06.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2007-03-13-Atlanta-GA/tth2007-03-13-d01t07.mp3",
         "filename": "tth2007-03-13-d01t07.mp3"
       },
@@ -60247,9 +57147,9 @@
         "filename": "(03)_[The_Tragically_Hip]_Yer_Not_The_Ocean.mp3"
       },
       {
-        "name": "(04) [The Tragically Hip] \u252c\u00e6It\u252c\u00c6s A Good Life If You Don\u252c\u00c6t Weaken\u252c\u00c6",
-        "url": "2007-03-23-Anaheim-CA/(04)_[The_Tragically_Hip]_\u252c\u00e6It\u252c\u00c6s_A_Good_Life_If_You_Don\u252c\u00c6t_Weaken\u252c\u00c6.mp3",
-        "filename": "(04)_[The_Tragically_Hip]_\u252c\u00e6It\u252c\u00c6s_A_Good_Life_If_You_Don\u252c\u00c6t_Weaken\u252c\u00c6.mp3"
+        "name": "(04) [The Tragically Hip] ┬æIt┬Æs A Good Life If You Don┬Æt Weaken┬Æ",
+        "url": "2007-03-23-Anaheim-CA/(04)_[The_Tragically_Hip]_┬æIt┬Æs_A_Good_Life_If_You_Don┬Æt_Weaken┬Æ.mp3",
+        "filename": "(04)_[The_Tragically_Hip]_┬æIt┬Æs_A_Good_Life_If_You_Don┬Æt_Weaken┬Æ.mp3"
       },
       {
         "name": "(05) [The Tragically Hip] Family Band",
@@ -60297,9 +57197,9 @@
         "filename": "(13)_[The_Tragically_Hip]_Sherpa.mp3"
       },
       {
-        "name": "(14) [The Tragically Hip] The Kids Don\u252c\u00c6t Get It",
-        "url": "2007-03-23-Anaheim-CA/(14)_[The_Tragically_Hip]_The_Kids_Don\u252c\u00c6t_Get_It.mp3",
-        "filename": "(14)_[The_Tragically_Hip]_The_Kids_Don\u252c\u00c6t_Get_It.mp3"
+        "name": "(14) [The Tragically Hip] The Kids Don┬Æt Get It",
+        "url": "2007-03-23-Anaheim-CA/(14)_[The_Tragically_Hip]_The_Kids_Don┬Æt_Get_It.mp3",
+        "filename": "(14)_[The_Tragically_Hip]_The_Kids_Don┬Æt_Get_It.mp3"
       },
       {
         "name": "(15) [The Tragically Hip] Grace, Too",
@@ -61109,11 +58009,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2007 04 17 Egan Media Studios, Burlington, VT",
-        "url": "2007-04-17-Burlington-VT/._Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3",
-        "filename": "._Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3"
-      },
-      {
         "name": "Tragically Hip 2007 04 17 Egan Media Studios, Burlington, VT",
         "url": "2007-04-17-Burlington-VT/Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3",
         "filename": "Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3"
@@ -61138,11 +58033,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-04-17-Burlington-VT-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2007 04 17 Egan Media Studios, Burlington, VT",
-        "url": "2007-04-17-South-Burlington-VT/._Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3",
-        "filename": "._Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3"
-      },
       {
         "name": "Tragically Hip 2007 04 17 Egan Media Studios, Burlington, VT",
         "url": "2007-04-17-South-Burlington-VT/Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3",
@@ -61456,11 +58346,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-04-25-NewYork-NY-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2007 04 25 Irving Plaza, New York, NY (6 From New York City 2007 SBD)",
-        "url": "2007-04-25-New-York-NY/._Tragically Hip - 2007-04-25 - Irving Plaza, New York, NY (6 From New York City 2007 - SBD).mp3",
-        "filename": "._Tragically Hip - 2007-04-25 - Irving Plaza, New York, NY (6 From New York City 2007 - SBD).mp3"
-      },
       {
         "name": "Tragically Hip 2007 04 25 Irving Plaza, New York, NY (6 From New York City 2007 SBD)",
         "url": "2007-04-25-New-York-NY/Tragically Hip - 2007-04-25 - Irving Plaza, New York, NY (6 From New York City 2007 - SBD).mp3",
@@ -61816,11 +58701,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2007 05 14 First Avenue, Minneapolis, MN",
-        "url": "2007-05-14-Minneapolis-MN/._Tragically Hip - 2007-05-14 - First Avenue, Minneapolis, MN.mp3",
-        "filename": "._Tragically Hip - 2007-05-14 - First Avenue, Minneapolis, MN.mp3"
-      },
-      {
         "name": "Tragically Hip 2007 05 14 First Avenue, Minneapolis, MN",
         "url": "2007-05-14-Minneapolis-MN/Tragically Hip - 2007-05-14 - First Avenue, Minneapolis, MN.mp3",
         "filename": "Tragically Hip - 2007-05-14 - First Avenue, Minneapolis, MN.mp3"
@@ -62117,7 +58997,7 @@
         "filename": "tth2007-05-19d01t04.mp3"
       },
       {
-        "name": "Last Night I Dreamed You Didn\u2019t Love Me",
+        "name": "Last Night I Dreamed You Didn’t Love Me",
         "url": "2007-05-19-Towson-MD/tth2007-05-19d01t05.mp3",
         "filename": "tth2007-05-19d01t05.mp3"
       },
@@ -62198,9 +59078,9 @@
     "date": "29-06-2007",
     "isoDate": "2007-06-29",
     "tour": "World Container Tour",
-    "venue": "Sc\u00e8ne Molson Dry",
+    "venue": "Scène Molson Dry",
     "venueId": "2bd7206a",
-    "city": "Saint-\u00c9phrem-de-Beauce",
+    "city": "Saint-Éphrem-de-Beauce",
     "state": "QC",
     "country": "CA",
     "countryName": "Canada",
@@ -62706,7 +59586,7 @@
     "tour": "World Container Tour",
     "venue": "Stade Municipal",
     "venueId": "43d707af",
-    "city": "Trois-Rivi\u00e8res",
+    "city": "Trois-Rivières",
     "state": "QC",
     "country": "CA",
     "countryName": "Canada",
@@ -62919,9 +59799,9 @@
         "filename": "(13)_ahead_by_a_century.mp3"
       },
       {
-        "name": "(14) the kids don\u0393\u00c7\u00d6t get it",
-        "url": "2007-07-11-Redmond-WA/(14)_the_kids_don\u0393\u00c7\u00d6t_get_it.mp3",
-        "filename": "(14)_the_kids_don\u0393\u00c7\u00d6t_get_it.mp3"
+        "name": "(14) the kids donΓÇÖt get it",
+        "url": "2007-07-11-Redmond-WA/(14)_the_kids_donΓÇÖt_get_it.mp3",
+        "filename": "(14)_the_kids_donΓÇÖt_get_it.mp3"
       },
       {
         "name": "(15) fully completely",
@@ -62989,9 +59869,9 @@
         "filename": "(03)_my_music_at_work.mp3"
       },
       {
-        "name": "(04) it\u252c\u00c6s a good life if you don\u252c\u00c6t weaken",
-        "url": "2007-07-12-Vancouver-BC/(04)_it\u252c\u00c6s_a_good_life_if_you_don\u252c\u00c6t_weaken.mp3",
-        "filename": "(04)_it\u252c\u00c6s_a_good_life_if_you_don\u252c\u00c6t_weaken.mp3"
+        "name": "(04) it┬Æs a good life if you don┬Æt weaken",
+        "url": "2007-07-12-Vancouver-BC/(04)_it┬Æs_a_good_life_if_you_don┬Æt_weaken.mp3",
+        "filename": "(04)_it┬Æs_a_good_life_if_you_don┬Æt_weaken.mp3"
       },
       {
         "name": "(05) family band",
@@ -63044,9 +59924,9 @@
         "filename": "(14)_bobcaygeon.mp3"
       },
       {
-        "name": "(15) the kids don\u252c\u00c6t get it",
-        "url": "2007-07-12-Vancouver-BC/(15)_the_kids_don\u252c\u00c6t_get_it.mp3",
-        "filename": "(15)_the_kids_don\u252c\u00c6t_get_it.mp3"
+        "name": "(15) the kids don┬Æt get it",
+        "url": "2007-07-12-Vancouver-BC/(15)_the_kids_don┬Æt_get_it.mp3",
+        "filename": "(15)_the_kids_don┬Æt_get_it.mp3"
       },
       {
         "name": "(16) fully, completely",
@@ -64170,41 +61050,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-09-27-Hilversum-Netherlands-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Announcement Jan Douwe Kroeske",
-        "url": "2007-09-27-Hilversum-07/._01 Announcement - Jan Douwe Kroeske.mp3",
-        "filename": "._01 Announcement - Jan Douwe Kroeske.mp3"
-      },
-      {
-        "name": ". 02 Yer Not The Ocean",
-        "url": "2007-09-27-Hilversum-07/._02 Yer Not The Ocean.mp3",
-        "filename": "._02 Yer Not The Ocean.mp3"
-      },
-      {
-        "name": ". 03 Family Band",
-        "url": "2007-09-27-Hilversum-07/._03 Family Band.mp3",
-        "filename": "._03 Family Band.mp3"
-      },
-      {
-        "name": ". 04 In View",
-        "url": "2007-09-27-Hilversum-07/._04 In View.mp3",
-        "filename": "._04 In View.mp3"
-      },
-      {
-        "name": ". 05 World Container",
-        "url": "2007-09-27-Hilversum-07/._05 World Container.mp3",
-        "filename": "._05 World Container.mp3"
-      },
-      {
-        "name": ". 06 The Kids Don't Get It",
-        "url": "2007-09-27-Hilversum-07/._06 The Kids Don't Get It.mp3",
-        "filename": "._06 The Kids Don't Get It.mp3"
-      },
-      {
-        "name": ". 07 The Lonely End of the Rink",
-        "url": "2007-09-27-Hilversum-07/._07 The Lonely End of the Rink.mp3",
-        "filename": "._07 The Lonely End of the Rink.mp3"
-      },
       {
         "name": "Announcement Jan Douwe Kroeske",
         "url": "2007-09-27-Hilversum-07/01 Announcement - Jan Douwe Kroeske.mp3",
@@ -67014,7 +63859,7 @@
     "date": "04-05-2009",
     "isoDate": "2009-05-04",
     "tour": null,
-    "venue": "Le Capitole de Qu\u00e9bec",
+    "venue": "Le Capitole de Québec",
     "venueId": "63d62a27",
     "city": "Quebec City",
     "state": "QC",
@@ -69383,11 +66228,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2009 06 09 & 10 The Troubadour, Los Angeles, CA",
-        "url": "2009-06-09-West-Hollywood-CA/._Tragically Hip - 2009-06-09 & 10 - The Troubadour, Los Angeles, CA.mp3",
-        "filename": "._Tragically Hip - 2009-06-09 & 10 - The Troubadour, Los Angeles, CA.mp3"
-      },
-      {
         "name": "Tragically Hip 2009 06 09 & 10 The Troubadour, Los Angeles, CA",
         "url": "2009-06-09-West-Hollywood-CA/Tragically Hip - 2009-06-09 & 10 - The Troubadour, Los Angeles, CA.mp3",
         "filename": "Tragically Hip - 2009-06-09 & 10 - The Troubadour, Los Angeles, CA.mp3"
@@ -69444,11 +66284,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-06-13-SanFrancisco-CA-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2009 06 13 The Fillmore, San Francisco, CA (6 from San Francisco SBD)",
-        "url": "2009-06-13-San-Francisco-CA/._Tragically Hip - 2009-06-13 - The Fillmore, San Francisco, CA (6 from San Francisco - SBD).mp3",
-        "filename": "._Tragically Hip - 2009-06-13 - The Fillmore, San Francisco, CA (6 from San Francisco - SBD).mp3"
-      },
       {
         "name": "Tragically Hip 2009 06 13 The Fillmore, San Francisco, CA (6 from San Francisco SBD)",
         "url": "2009-06-13-San-Francisco-CA/Tragically Hip - 2009-06-13 - The Fillmore, San Francisco, CA (6 from San Francisco - SBD).mp3",
@@ -69625,11 +66460,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2009 06 16 Wonder Ballroom, Portland, OR",
-        "url": "2009-06-16-Portland-OR/._Tragically Hip - 2009-06-16 - Wonder Ballroom, Portland, OR.mp3",
-        "filename": "._Tragically Hip - 2009-06-16 - Wonder Ballroom, Portland, OR.mp3"
-      },
-      {
         "name": "Tragically Hip 2009 06 16 Wonder Ballroom, Portland, OR",
         "url": "2009-06-16-Portland-OR/Tragically Hip - 2009-06-16 - Wonder Ballroom, Portland, OR.mp3",
         "filename": "Tragically Hip - 2009-06-16 - Wonder Ballroom, Portland, OR.mp3"
@@ -69654,41 +66484,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-06-17-Seattle-WA-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Introduction",
-        "url": "2009-06-17-Seattle-WA/._01 - Introduction.mp3",
-        "filename": "._01 - Introduction.mp3"
-      },
-      {
-        "name": ". 02 Morning Moon (False Start)",
-        "url": "2009-06-17-Seattle-WA/._02 - Morning Moon (False Start).mp3",
-        "filename": "._02 - Morning Moon (False Start).mp3"
-      },
-      {
-        "name": ". 03 Morning Moon",
-        "url": "2009-06-17-Seattle-WA/._03 - Morning Moon.mp3",
-        "filename": "._03 - Morning Moon.mp3"
-      },
-      {
-        "name": ". 04 Interview 1",
-        "url": "2009-06-17-Seattle-WA/._04 - Interview 1.mp3",
-        "filename": "._04 - Interview 1.mp3"
-      },
-      {
-        "name": ". 05 Coffee Girl",
-        "url": "2009-06-17-Seattle-WA/._05 - Coffee Girl.mp3",
-        "filename": "._05 - Coffee Girl.mp3"
-      },
-      {
-        "name": ". 06 Interview 2",
-        "url": "2009-06-17-Seattle-WA/._06 - Interview 2.mp3",
-        "filename": "._06 - Interview 2.mp3"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "2009-06-17-Seattle-WA/._07 - Bobcaygeon.mp3",
-        "filename": "._07 - Bobcaygeon.mp3"
-      },
       {
         "name": "Introduction",
         "url": "2009-06-17-Seattle-WA/01 - Introduction.mp3",
@@ -69744,41 +66539,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-06-17-Seattle-WA-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Introduction",
-        "url": "2009-06-17-Seattle-WA/._01 - Introduction.mp3",
-        "filename": "._01 - Introduction.mp3"
-      },
-      {
-        "name": ". 02 Morning Moon (False Start)",
-        "url": "2009-06-17-Seattle-WA/._02 - Morning Moon (False Start).mp3",
-        "filename": "._02 - Morning Moon (False Start).mp3"
-      },
-      {
-        "name": ". 03 Morning Moon",
-        "url": "2009-06-17-Seattle-WA/._03 - Morning Moon.mp3",
-        "filename": "._03 - Morning Moon.mp3"
-      },
-      {
-        "name": ". 04 Interview 1",
-        "url": "2009-06-17-Seattle-WA/._04 - Interview 1.mp3",
-        "filename": "._04 - Interview 1.mp3"
-      },
-      {
-        "name": ". 05 Coffee Girl",
-        "url": "2009-06-17-Seattle-WA/._05 - Coffee Girl.mp3",
-        "filename": "._05 - Coffee Girl.mp3"
-      },
-      {
-        "name": ". 06 Interview 2",
-        "url": "2009-06-17-Seattle-WA/._06 - Interview 2.mp3",
-        "filename": "._06 - Interview 2.mp3"
-      },
-      {
-        "name": ". 07 Bobcaygeon",
-        "url": "2009-06-17-Seattle-WA/._07 - Bobcaygeon.mp3",
-        "filename": "._07 - Bobcaygeon.mp3"
-      },
       {
         "name": "Introduction",
         "url": "2009-06-17-Seattle-WA/01 - Introduction.mp3",
@@ -72198,11 +68958,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2009 10 15 Empire Center at the Egg, Albany, NY",
-        "url": "2009-10-15-Albany-NY/._Tragically Hip - 2009-10-15 - Empire Center at the Egg, Albany, NY.mp3",
-        "filename": "._Tragically Hip - 2009-10-15 - Empire Center at the Egg, Albany, NY.mp3"
-      },
-      {
         "name": "Tragically Hip 2009 10 15 Empire Center at the Egg, Albany, NY",
         "url": "2009-10-15-Albany-NY/Tragically Hip - 2009-10-15 - Empire Center at the Egg, Albany, NY.mp3",
         "filename": "Tragically Hip - 2009-10-15 - Empire Center at the Egg, Albany, NY.mp3"
@@ -72965,11 +69720,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2009 11 26 Tivoli, Utrecht, Netherlands",
-        "url": "2009-11-26-Utrecht-09/._Tragically Hip - 2009-11-26 - Tivoli, Utrecht, Netherlands.mp3",
-        "filename": "._Tragically Hip - 2009-11-26 - Tivoli, Utrecht, Netherlands.mp3"
-      },
-      {
         "name": "Tragically Hip 2009 11 26 Tivoli, Utrecht, Netherlands",
         "url": "2009-11-26-Utrecht-09/Tragically Hip - 2009-11-26 - Tivoli, Utrecht, Netherlands.mp3",
         "filename": "Tragically Hip - 2009-11-26 - Tivoli, Utrecht, Netherlands.mp3"
@@ -73678,11 +70428,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2011 07 01 Downsview Park, Toronto, ON",
-        "url": "2011-07-01-Toronto-ON/._Tragically Hip - 2011-07-01 - Downsview Park, Toronto, ON.mp3",
-        "filename": "._Tragically Hip - 2011-07-01 - Downsview Park, Toronto, ON.mp3"
-      },
-      {
         "name": "Tragically Hip 2011 07 01 Downsview Park, Toronto, ON",
         "url": "2011-07-01-Toronto-ON/Tragically Hip - 2011-07-01 - Downsview Park, Toronto, ON.mp3",
         "filename": "Tragically Hip - 2011-07-01 - Downsview Park, Toronto, ON.mp3"
@@ -74332,7 +71077,7 @@
     "date": "30-06-2012",
     "isoDate": "2012-06-30",
     "tour": null,
-    "venue": "The Commons at Butler\u2019s Barracks Historic Site",
+    "venue": "The Commons at Butler’s Barracks Historic Site",
     "venueId": "53d71751",
     "city": "Niagara-on-the-Lake",
     "state": "ON",
@@ -74348,7 +71093,7 @@
     "date": "01-07-2012",
     "isoDate": "2012-07-01",
     "tour": null,
-    "venue": "Burl\u2019s Creek Event Grounds",
+    "venue": "Burl’s Creek Event Grounds",
     "venueId": "2bd5a0ae",
     "city": "Oro-Medonte",
     "state": "ON",
@@ -74361,11 +71106,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2012-07-01-Oro-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2012 07 01 Burl's Creek, Oro, ON",
-        "url": "2012-07-01-Oro-Medonte-ON/._Tragically Hip - 2012-07-01 - Burl's Creek, Oro, ON.mp3",
-        "filename": "._Tragically Hip - 2012-07-01 - Burl's Creek, Oro, ON.mp3"
-      },
       {
         "name": "Tragically Hip 2012 07 01 Burl's Creek, Oro, ON",
         "url": "2012-07-01-Oro-Medonte-ON/Tragically Hip - 2012-07-01 - Burl's Creek, Oro, ON.mp3",
@@ -74847,66 +71587,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". 01 At Transformation",
-        "url": "2012-10-02-Toronto-ON/._01 At Transformation.m4a",
-        "filename": "._01 At Transformation.m4a"
-      },
-      {
-        "name": ". 02 Grace, Too",
-        "url": "2012-10-02-Toronto-ON/._02 Grace, Too.m4a",
-        "filename": "._02 Grace, Too.m4a"
-      },
-      {
-        "name": ". 03 Man Machine Poem",
-        "url": "2012-10-02-Toronto-ON/._03 Man Machine Poem.m4a",
-        "filename": "._03 Man Machine Poem.m4a"
-      },
-      {
-        "name": ". 04 The Modern Spirit",
-        "url": "2012-10-02-Toronto-ON/._04 The Modern Spirit.m4a",
-        "filename": "._04 The Modern Spirit.m4a"
-      },
-      {
-        "name": ". 05 The Lookahead",
-        "url": "2012-10-02-Toronto-ON/._05 The Lookahead.m4a",
-        "filename": "._05 The Lookahead.m4a"
-      },
-      {
-        "name": ". 06 Ahead by a Century",
-        "url": "2012-10-02-Toronto-ON/._06 Ahead by a Century.m4a",
-        "filename": "._06 Ahead by a Century.m4a"
-      },
-      {
-        "name": ". 07 Streets Ahead",
-        "url": "2012-10-02-Toronto-ON/._07 Streets Ahead.m4a",
-        "filename": "._07 Streets Ahead.m4a"
-      },
-      {
-        "name": ". 08 We Want To Be It",
-        "url": "2012-10-02-Toronto-ON/._08 We Want To Be It.m4a",
-        "filename": "._08 We Want To Be It.m4a"
-      },
-      {
-        "name": ". 09 Take Forever",
-        "url": "2012-10-02-Toronto-ON/._09 Take Forever.m4a",
-        "filename": "._09 Take Forever.m4a"
-      },
-      {
-        "name": ". 10 Bobcaygeon",
-        "url": "2012-10-02-Toronto-ON/._10 Bobcaygeon.m4a",
-        "filename": "._10 Bobcaygeon.m4a"
-      },
-      {
-        "name": ". 11 Goodnight Attawapiskat",
-        "url": "2012-10-02-Toronto-ON/._11 Goodnight Attawapiskat.m4a",
-        "filename": "._11 Goodnight Attawapiskat.m4a"
-      },
-      {
-        "name": ". 12 My Music at Work",
-        "url": "2012-10-02-Toronto-ON/._12 My Music at Work.m4a",
-        "filename": "._12 My Music at Work.m4a"
-      },
-      {
         "name": "At Transformation",
         "url": "2012-10-02-Toronto-ON/01 At Transformation.m4a",
         "filename": "01 At Transformation.m4a"
@@ -75142,11 +71822,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2012-11-03-Chicago-IL-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2012 11 03 Riviera Theatre, Chicago, IL (Six Songs)",
-        "url": "2012-11-03-Chicago-IL/._Tragically Hip - 2012-11-03 - Riviera Theatre, Chicago, IL (Six Songs).mp3",
-        "filename": "._Tragically Hip - 2012-11-03 - Riviera Theatre, Chicago, IL (Six Songs).mp3"
-      },
       {
         "name": "Tragically Hip 2012 11 03 Riviera Theatre, Chicago, IL (Six Songs)",
         "url": "2012-11-03-Chicago-IL/Tragically Hip - 2012-11-03 - Riviera Theatre, Chicago, IL (Six Songs).mp3",
@@ -75972,126 +72647,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2012-12-15-LasVegas-NV-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 At Transformation and Grace, Too Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._01 At Transformation and Grace, Too - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._01 At Transformation and Grace, Too - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 02 Escape is at Hand for the Travellin' Man Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._02 Escape is at Hand for the Travellin' Man - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._02 Escape is at Hand for the Travellin' Man - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 03 In View Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._03 In View - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._03 In View - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 04 Ahead by a Century Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._04 Ahead by a Century - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._04 Ahead by a Century - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 05 Man Machine Poem Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._05 Man Machine Poem - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._05 Man Machine Poem - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 06 Last of the Unplucked Gems Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._06 Last of the Unplucked Gems - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._06 Last of the Unplucked Gems - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 07 Gift Shop Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._07 Gift Shop - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._07 Gift Shop - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 08 The Modern Spirit Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._08 The Modern Spirit - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._08 The Modern Spirit - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 09 Poets Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._09 Poets- Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._09 Poets- Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 10 Flamenco Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._10 Flamenco - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._10 Flamenco - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 11 The Streets Ahead Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._11 The Streets Ahead - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._11 The Streets Ahead - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 12 Bobcaygeon Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._12 Bobcaygeon - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._12 Bobcaygeon - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 13 We Want It To Be Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._13 We Want It To Be - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._13 We Want It To Be - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 14 Fully Completely Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._14 Fully Completely - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._14 Fully Completely - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 15 Fire in the Hole Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._15 Fire in the Hole - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._15 Fire in the Hole - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 16 Good Night, Attawapiskat Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._16 Good Night, Attawapiskat - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._16 Good Night, Attawapiskat - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 17 Blow at High Dough Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._17 Blow at High Dough - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._17 Blow at High Dough - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 18 Lionized Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._18 Lionized - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._18 Lionized - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 19 Fiddlers Green Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._19 Fiddlers Green - Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._19 Fiddlers Green - Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 20 Fiddlers Green pt 2 Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._20 Fiddlers Green pt 2 Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._20 Fiddlers Green pt 2 Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 21 Spingtime in Vienna Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._21 Spingtime in Vienna Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._21 Spingtime in Vienna Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 22 Courage Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._22 Courage Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._22 Courage Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 23 Little Bones Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._23 Little Bones Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._23 Little Bones Tragically Hip Las Vegas December 15 2012.mp3"
-      },
-      {
-        "name": ". 24 Floor Crowd Tragically Hip Las Vegas December 15 2012",
-        "url": "2012-12-15-Las-Vegas-NV/._24 Floor Crowd Tragically Hip Las Vegas December 15 2012.mp3",
-        "filename": "._24 Floor Crowd Tragically Hip Las Vegas December 15 2012.mp3"
-      },
       {
         "name": "At Transformation and Grace, Too Tragically Hip Las Vegas December 15 2012",
         "url": "2012-12-15-Las-Vegas-NV/01 At Transformation and Grace, Too - Tragically Hip Las Vegas December 15 2012.mp3",
@@ -77493,11 +74048,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2013 02 11 Sudbury Community Arena, Sudbury, ON",
-        "url": "2013-02-11-Greater-Sudbury-ON/._Tragically Hip - 2013-02-11 - Sudbury Community Arena, Sudbury, ON.mp3",
-        "filename": "._Tragically Hip - 2013-02-11 - Sudbury Community Arena, Sudbury, ON.mp3"
-      },
-      {
         "name": "Tragically Hip 2013 02 11 Sudbury Community Arena, Sudbury, ON",
         "url": "2013-02-11-Greater-Sudbury-ON/Tragically Hip - 2013-02-11 - Sudbury Community Arena, Sudbury, ON.mp3",
         "filename": "Tragically Hip - 2013-02-11 - Sudbury Community Arena, Sudbury, ON.mp3"
@@ -78349,11 +74899,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2013-07-11-Ottawa-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2013 07 11 Lebreton Flats Park, Ottawa, ON",
-        "url": "2013-07-11-Ottawa-ON/._Tragically Hip - 2013-07-11 - Lebreton Flats Park, Ottawa, ON.mp3",
-        "filename": "._Tragically Hip - 2013-07-11 - Lebreton Flats Park, Ottawa, ON.mp3"
-      },
       {
         "name": "Tragically Hip 2013 07 11 Lebreton Flats Park, Ottawa, ON",
         "url": "2013-07-11-Ottawa-ON/Tragically Hip - 2013-07-11 - Lebreton Flats Park, Ottawa, ON.mp3",
@@ -79642,11 +76187,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2015 02 04 Memorial Centre, Victoria, BC",
-        "url": "2015-02-04-Victoria-BC/._Tragically Hip - 2015-02-04 - Memorial Centre, Victoria, BC.mp3",
-        "filename": "._Tragically Hip - 2015-02-04 - Memorial Centre, Victoria, BC.mp3"
-      },
-      {
         "name": "Tragically Hip 2015 02 04 Memorial Centre, Victoria, BC",
         "url": "2015-02-04-Victoria-BC/Tragically Hip - 2015-02-04 - Memorial Centre, Victoria, BC.mp3",
         "filename": "Tragically Hip - 2015-02-04 - Memorial Centre, Victoria, BC.mp3"
@@ -80462,11 +77002,6 @@
     "archiveFormat": "mp3",
     "tracks": [
       {
-        "name": ". Tragically Hip 2015 04 10 Casino New Brunswick, Moncton, NB",
-        "url": "2015-04-10-Moncton-NB/._Tragically Hip - 2015-04-10 - Casino New Brunswick, Moncton, NB.mp3",
-        "filename": "._Tragically Hip - 2015-04-10 - Casino New Brunswick, Moncton, NB.mp3"
-      },
-      {
         "name": "Tragically Hip 2015 04 10 Casino New Brunswick, Moncton, NB",
         "url": "2015-04-10-Moncton-NB/Tragically Hip - 2015-04-10 - Casino New Brunswick, Moncton, NB.mp3",
         "filename": "Tragically Hip - 2015-04-10 - Casino New Brunswick, Moncton, NB.mp3"
@@ -81124,7 +77659,7 @@
     "date": "04-07-2015",
     "isoDate": "2015-07-04",
     "tour": "Fully and Completely North American Tour 2015",
-    "venue": "Constellation Brands \u2013 Marvin Sands Performing Arts Center",
+    "venue": "Constellation Brands – Marvin Sands Performing Arts Center",
     "venueId": "63d4320f",
     "city": "Canandaigua",
     "state": "NY",
@@ -81169,111 +77704,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2015-07-17-Ottawa-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01 Grace, Too",
-        "url": "2015-07-17-Ottawa-ON/._01 - Grace, Too.mp3",
-        "filename": "._01 - Grace, Too.mp3"
-      },
-      {
-        "name": ". 02 At Transformation",
-        "url": "2015-07-17-Ottawa-ON/._02 - At Transformation.mp3",
-        "filename": "._02 - At Transformation.mp3"
-      },
-      {
-        "name": ". 03 In View",
-        "url": "2015-07-17-Ottawa-ON/._03 - In View.mp3",
-        "filename": "._03 - In View.mp3"
-      },
-      {
-        "name": ". 04 Ahead By A Century",
-        "url": "2015-07-17-Ottawa-ON/._04 - Ahead By A Century.mp3",
-        "filename": "._04 - Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 05 New Orleans Is Sinking",
-        "url": "2015-07-17-Ottawa-ON/._05 - New Orleans Is Sinking.mp3",
-        "filename": "._05 - New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 06 Courage",
-        "url": "2015-07-17-Ottawa-ON/._06 - Courage.mp3",
-        "filename": "._06 - Courage.mp3"
-      },
-      {
-        "name": ". 07 Looking For A Place To Happen",
-        "url": "2015-07-17-Ottawa-ON/._07 - Looking For A Place To Happen.mp3",
-        "filename": "._07 - Looking For A Place To Happen.mp3"
-      },
-      {
-        "name": ". 08 At The Hundredth Meridian",
-        "url": "2015-07-17-Ottawa-ON/._08 - At The Hundredth Meridian.mp3",
-        "filename": "._08 - At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 09 Pigeon Camera",
-        "url": "2015-07-17-Ottawa-ON/._09 - Pigeon Camera.mp3",
-        "filename": "._09 - Pigeon Camera.mp3"
-      },
-      {
-        "name": ". 10 Lionized",
-        "url": "2015-07-17-Ottawa-ON/._10 - Lionized.mp3",
-        "filename": "._10 - Lionized.mp3"
-      },
-      {
-        "name": ". 11 Locked In The Trunk Of A Car",
-        "url": "2015-07-17-Ottawa-ON/._11 - Locked In The Trunk Of A Car.mp3",
-        "filename": "._11 - Locked In The Trunk Of A Car.mp3"
-      },
-      {
-        "name": ". 12 We ll Go Too",
-        "url": "2015-07-17-Ottawa-ON/._12 - We_ll Go Too.mp3",
-        "filename": "._12 - We_ll Go Too.mp3"
-      },
-      {
-        "name": ". 13 Fully Completely",
-        "url": "2015-07-17-Ottawa-ON/._13 - Fully Completely.mp3",
-        "filename": "._13 - Fully Completely.mp3"
-      },
-      {
-        "name": ". 14 Fifty Mission Cap",
-        "url": "2015-07-17-Ottawa-ON/._14 - Fifty-Mission Cap.mp3",
-        "filename": "._14 - Fifty-Mission Cap.mp3"
-      },
-      {
-        "name": ". 15 Wheat Kings",
-        "url": "2015-07-17-Ottawa-ON/._15 - Wheat Kings.mp3",
-        "filename": "._15 - Wheat Kings.mp3"
-      },
-      {
-        "name": ". 16 The Wherewithal",
-        "url": "2015-07-17-Ottawa-ON/._16 - The Wherewithal.mp3",
-        "filename": "._16 - The Wherewithal.mp3"
-      },
-      {
-        "name": ". 17 Eldorado",
-        "url": "2015-07-17-Ottawa-ON/._17 - Eldorado.mp3",
-        "filename": "._17 - Eldorado.mp3"
-      },
-      {
-        "name": ". 18 My Music At Work",
-        "url": "2015-07-17-Ottawa-ON/._18 - My Music At Work.mp3",
-        "filename": "._18 - My Music At Work.mp3"
-      },
-      {
-        "name": ". 19 Long Time Running",
-        "url": "2015-07-17-Ottawa-ON/._19 - Long Time Running.mp3",
-        "filename": "._19 - Long Time Running.mp3"
-      },
-      {
-        "name": ". 20 Poets",
-        "url": "2015-07-17-Ottawa-ON/._20 - Poets.mp3",
-        "filename": "._20 - Poets.mp3"
-      },
-      {
-        "name": ". 21 Blow At High Dough",
-        "url": "2015-07-17-Ottawa-ON/._21 - Blow At High Dough.mp3",
-        "filename": "._21 - Blow At High Dough.mp3"
-      },
       {
         "name": "Grace, Too",
         "url": "2015-07-17-Ottawa-ON/01 - Grace, Too.mp3",
@@ -81828,11 +78258,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2015-10-03-LasVegas-NV-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". Tragically Hip 2015 10 03 House of Blues, Las Vegas, NV",
-        "url": "2015-10-03-Las-Vegas-NV/._Tragically Hip - 2015-10-03 - House of Blues, Las Vegas, NV.mp3",
-        "filename": "._Tragically Hip - 2015-10-03 - House of Blues, Las Vegas, NV.mp3"
-      },
       {
         "name": "Tragically Hip 2015 10 03 House of Blues, Las Vegas, NV",
         "url": "2015-10-03-Las-Vegas-NV/Tragically Hip - 2015-10-03 - House of Blues, Las Vegas, NV.mp3",
@@ -82602,131 +79027,6 @@
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-07-30-Edmonton-AB-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
-      {
-        "name": ". 01. Blow At High Dough",
-        "url": "2016-07-30-Edmonton-AB/._01. Blow At High Dough.mp3",
-        "filename": "._01. Blow At High Dough.mp3"
-      },
-      {
-        "name": ". 02. Opiated",
-        "url": "2016-07-30-Edmonton-AB/._02. Opiated.mp3",
-        "filename": "._02. Opiated.mp3"
-      },
-      {
-        "name": ". 03. Boots Or Hearts",
-        "url": "2016-07-30-Edmonton-AB/._03. Boots Or Hearts.mp3",
-        "filename": "._03. Boots Or Hearts.mp3"
-      },
-      {
-        "name": ". 04. New Orleans Is Sinking",
-        "url": "2016-07-30-Edmonton-AB/._04. New Orleans Is Sinking.mp3",
-        "filename": "._04. New Orleans Is Sinking.mp3"
-      },
-      {
-        "name": ". 05. In A World Possessed By The Human Mind",
-        "url": "2016-07-30-Edmonton-AB/._05. In A World Possessed By The Human Mind.mp3",
-        "filename": "._05. In A World Possessed By The Human Mind.mp3"
-      },
-      {
-        "name": ". 06. Tired As Fuck",
-        "url": "2016-07-30-Edmonton-AB/._06. Tired As Fuck.mp3",
-        "filename": "._06. Tired As Fuck.mp3"
-      },
-      {
-        "name": ". 07. What Blue",
-        "url": "2016-07-30-Edmonton-AB/._07. What Blue.mp3",
-        "filename": "._07. What Blue.mp3"
-      },
-      {
-        "name": ". 08. Machine",
-        "url": "2016-07-30-Edmonton-AB/._08. Machine.mp3",
-        "filename": "._08. Machine.mp3"
-      },
-      {
-        "name": ". 09. Now The Struggle Has A Name",
-        "url": "2016-07-30-Edmonton-AB/._09. Now The Struggle Has A Name.mp3",
-        "filename": "._09. Now The Struggle Has A Name.mp3"
-      },
-      {
-        "name": ". 10. The Last Recluse",
-        "url": "2016-07-30-Edmonton-AB/._10. The Last Recluse.mp3",
-        "filename": "._10. The Last Recluse.mp3"
-      },
-      {
-        "name": ". 11. Coffee Girl",
-        "url": "2016-07-30-Edmonton-AB/._11. Coffee Girl.mp3",
-        "filename": "._11. Coffee Girl.mp3"
-      },
-      {
-        "name": ". 12. Morning Moon",
-        "url": "2016-07-30-Edmonton-AB/._12. Morning Moon.mp3",
-        "filename": "._12. Morning Moon.mp3"
-      },
-      {
-        "name": ". 13. Courage",
-        "url": "2016-07-30-Edmonton-AB/._13. Courage.mp3",
-        "filename": "._13. Courage.mp3"
-      },
-      {
-        "name": ". 14. At The Hundredth Meridian",
-        "url": "2016-07-30-Edmonton-AB/._14. At The Hundredth Meridian.mp3",
-        "filename": "._14. At The Hundredth Meridian.mp3"
-      },
-      {
-        "name": ". 15. Wheat Kings",
-        "url": "2016-07-30-Edmonton-AB/._15. Wheat Kings.mp3",
-        "filename": "._15. Wheat Kings.mp3"
-      },
-      {
-        "name": ". 16. Fifty Mission Cap",
-        "url": "2016-07-30-Edmonton-AB/._16. Fifty-Mission Cap.mp3",
-        "filename": "._16. Fifty-Mission Cap.mp3"
-      },
-      {
-        "name": ". 17. Gift Shop",
-        "url": "2016-07-30-Edmonton-AB/._17. Gift Shop.mp3",
-        "filename": "._17. Gift Shop.mp3"
-      },
-      {
-        "name": ". 18. Don't Wake Daddy",
-        "url": "2016-07-30-Edmonton-AB/._18. Don't Wake Daddy.mp3",
-        "filename": "._18. Don't Wake Daddy.mp3"
-      },
-      {
-        "name": ". 19. Springtime In Vienna",
-        "url": "2016-07-30-Edmonton-AB/._19. Springtime In Vienna.mp3",
-        "filename": "._19. Springtime In Vienna.mp3"
-      },
-      {
-        "name": ". 20. Ahead By A Century",
-        "url": "2016-07-30-Edmonton-AB/._20. Ahead By A Century.mp3",
-        "filename": "._20. Ahead By A Century.mp3"
-      },
-      {
-        "name": ". 21. Greasy Jungle",
-        "url": "2016-07-30-Edmonton-AB/._21. Greasy Jungle.mp3",
-        "filename": "._21. Greasy Jungle.mp3"
-      },
-      {
-        "name": ". 22. Scared",
-        "url": "2016-07-30-Edmonton-AB/._22. Scared.mp3",
-        "filename": "._22. Scared.mp3"
-      },
-      {
-        "name": ". 23. Grace, Too",
-        "url": "2016-07-30-Edmonton-AB/._23. Grace, Too.mp3",
-        "filename": "._23. Grace, Too.mp3"
-      },
-      {
-        "name": ". 24. Fireworks",
-        "url": "2016-07-30-Edmonton-AB/._24. Fireworks.mp3",
-        "filename": "._24. Fireworks.mp3"
-      },
-      {
-        "name": ". 25. Bobcaygeon",
-        "url": "2016-07-30-Edmonton-AB/._25. Bobcaygeon.mp3",
-        "filename": "._25. Bobcaygeon.mp3"
-      },
       {
         "name": "Blow At High Dough",
         "url": "2016-07-30-Edmonton-AB/01. Blow At High Dough.mp3",
