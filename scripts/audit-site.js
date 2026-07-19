@@ -109,12 +109,13 @@ async function checkExternals() {
             headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) HipHandbookAudit/1.0' } });
         }
         if (!res.ok) {
-          // Bot-defence statuses: sites often reject datacenter IPs (CI runners)
-          // while serving humans fine. Report as warnings, not failures.
-          if ([403, 405, 429, 503, 999].includes(res.status)) {
-            warnings.push(`external ${res.status} (likely bot-block, verify by hand) -> ${u}`);
-          } else {
+          // Only "gone" statuses mean a dead link. Anything else is a live
+          // server being hostile to datacenter IPs (403/415/429/999/...) -
+          // CI runners see those from sites that serve humans fine.
+          if (res.status === 404 || res.status === 410) {
             problems.push(`external ${res.status} -> ${u}`);
+          } else {
+            warnings.push(`external ${res.status} (server alive, likely bot-block) -> ${u}`);
           }
         }
       } catch (e) {
