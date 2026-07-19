@@ -1,0 +1,26 @@
+{
+  "note": "Songs in the 214-song canon that have no lyrics yet. Powers the 'Help Complete the Archive' crowdsourcing call-out on the Lyrics Search tab. Edit freely - remove a song once its lyrics are added to lyrics.json, or add one that's missing. Omitted here (they reuse a covered song's lyrics): 'Just Another Midnight (1988 Demo)' = Another Midnight, 'Angst on the Planks' = Cordelia, 'Super Farmer Nano Baby' = Poets.",
+  "songs": [
+    { "title": "She's Got What It Takes", "context": "Up to Here-era B-side" },
+    { "title": "Get Back Again", "context": "Up to Here-era B-side" },
+    { "title": "Rain, Hearts and Fire", "context": "Up to Here-era B-side" },
+    { "title": "Hailstone Hands of God", "context": "early rarity" },
+    { "title": "Wait So Long", "context": "early rarity" },
+    { "title": "If You Lived Here", "context": "unreleased (June 1990 demo)" },
+    { "title": "Radio Show", "context": "Fully Completely box" },
+    { "title": "Day for Night", "context": "rarity" },
+    { "title": "Dare Devil (Reprise)", "context": "rarity" },
+    { "title": "Bumblebee", "context": "Phantom Power box" },
+    { "title": "Insomniacs", "context": "Phantom Power box" },
+    { "title": "Songwriters Cabal", "context": "Phantom Power box" },
+    { "title": "Vegas Strip", "context": "Phantom Power box" },
+    { "title": "Mystery", "context": "Phantom Power box" },
+    { "title": "Ultra Mundane", "context": "rarity" },
+    { "title": "Problem Bears", "context": "rarity" },
+    { "title": "Forest Edge", "context": "rarity" },
+    { "title": "No Threat", "context": "Yer Favourites bonus" },
+    { "title": "The New Maybe", "context": "Yer Favourites bonus" },
+    { "title": "Skeleton Park", "context": "We Are the Same" },
+    { "title": "Hush", "context": "rarity" }
+  ]
+}

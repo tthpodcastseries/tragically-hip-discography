@@ -1967,9 +1967,59 @@ async function autoLoadLyrics(onComplete) {
   }
 }
 
+// ─── Lyrics crowdsourcing (community submissions for songs no API carries) ───
+const LYRICS_EMAIL = 'jd@tthpods.com';
+const LYRICS_SUBJECT = 'Lyrics for The Hip Handbook';
+function lyricsMailto(songTitle) {
+  const body =
+    'Song: ' + (songTitle || '') + '\n\n' +
+    'Lyrics:\n\n\n' +
+    'Source (optional - liner notes, where you got them):\n\n' +
+    'Credit (optional - how you\'d like to be thanked):';
+  return `mailto:${LYRICS_EMAIL}?subject=${encodeURIComponent(LYRICS_SUBJECT)}&body=${encodeURIComponent(body)}`;
+}
+
+let missingLyricsData = null;
+let missingLyricsSet = null;
+async function loadMissingLyrics() {
+  if (missingLyricsData) return missingLyricsData;
+  try {
+    const r = await fetch('data/missing-lyrics.json');
+    missingLyricsData = r.ok ? await r.json() : { songs: [] };
+  } catch { missingLyricsData = { songs: [] }; }
+  missingLyricsSet = new Set((missingLyricsData.songs || []).map(s => s.title.toLowerCase()));
+  return missingLyricsData;
+}
+
+async function renderLyricsCrowdsource() {
+  const el = document.getElementById('lyricsCrowdsource');
+  if (!el) return;
+  const songs = (await loadMissingLyrics()).songs || [];
+  if (!songs.length) { el.hidden = true; return; }
+  const listId = 'lyricsCsList';
+  el.innerHTML =
+    `<h3>🎤 Help Complete the Archive</h3>` +
+    `<p>${songs.length} songs from the Hip's deep catalogue - B-sides, box-set rarities and unreleased demos - aren't carried by any lyrics site, so search can't include them yet. Know the words to any of these? Send them in and we'll add them.</p>` +
+    `<a class="lyrics-cs-email" href="${lyricsMailto('')}">📧 Email jD the lyrics</a>` +
+    `<button class="lyrics-cs-toggle" id="lyricsCsToggle" aria-expanded="false" aria-controls="${listId}">See the ${songs.length} songs</button>` +
+    `<ul class="lyrics-cs-list" id="${listId}" hidden>` +
+      songs.map(s => `<li><a href="${lyricsMailto(s.title)}" aria-label="Email lyrics for ${escapeHtml(s.title)}"><span>${escapeHtml(s.title)}${s.context ? ` <span class="lyrics-cs-ctx">${escapeHtml(s.context)}</span>` : ''}</span><span class="lyrics-cs-send">send &rarr;</span></a></li>`).join('') +
+    `</ul>`;
+  el.hidden = false;
+  const toggle = document.getElementById('lyricsCsToggle');
+  const list = document.getElementById(listId);
+  toggle.addEventListener('click', () => {
+    const open = list.hidden;
+    list.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Hide the list' : `See the ${songs.length} songs`;
+  });
+}
+
 function initLyricsSearch() {
-  if (lyricsSearchInitialized) { updateLyricsCacheStatus(); return; }
+  if (lyricsSearchInitialized) { updateLyricsCacheStatus(); renderLyricsCrowdsource(); return; }
   lyricsSearchInitialized = true;
+  renderLyricsCrowdsource();
 
   const input = document.getElementById('lyricsSearchInput');
   const btn = document.getElementById('lyricsSearchBtn');
@@ -2386,6 +2436,20 @@ function renderSongResults(songTitle) {
     item.innerHTML = `<div class="song-result-lyric-snippet">${snippet.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
+  } else {
+    // No lyrics on file. If this is a known deep-cut we're crowdsourcing,
+    // invite a submission (rendered async once the missing list loads).
+    const group = document.createElement('div');
+    group.className = 'song-result-group';
+    resultsEl.appendChild(group);
+    loadMissingLyrics().then(() => {
+      if (missingLyricsSet && missingLyricsSet.has(songTitle.toLowerCase())) {
+        group.innerHTML = `<div class="song-result-group-label">Lyrics</div>` +
+          `<div class="song-result-item"><div class="song-lyrics-missing">No lyrics on file for this one yet - it's not carried by any lyrics site. Know the words? <a href="${lyricsMailto(songTitle)}">Email them to jD</a> and we'll add them.</div></div>`;
+      } else {
+        group.remove();
+      }
+    });
   }
 
   // No results at all

@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.5
+**Lionized** - July 19, 2026
+- **Lyrics crowdsourcing**: the Lyrics Search tab now has a "Help Complete the Archive" call-out. 21 songs from the deep catalogue (B-sides, Phantom Power box-set tracks, Yer Favourites bonus cuts, unreleased demos) have no lyrics on any lyrics site, so they can't be searched. The panel invites fans to submit them via an "Email jD the lyrics" button (`mailto:jd@tthpods.com`, subject "Lyrics for The Hip Handbook", with a fill-in body template). An expandable list shows every missing song, each linking to a submission email pre-filled with that song's title.
+  - Individual song views (`#song=<title>`) also show an inline "know the words? email them" call-out when a crowdsourced song has no lyrics yet.
+  - Driven by `data/missing-lyrics.json` - remove a song from that file once its lyrics land in `lyrics.json`; no code change needed.
+- Context: audited the site's lyrics coverage against jD's 214-song canonical list. 169 already have lyrics, 21 are alternate versions/demos that reuse a covered song's words, and 24 are genuinely missing. Of those, 3 are demos of already-covered songs (reuse the parent's lyrics); the remaining 21 are the crowdsource targets. The lyrics.ovh API carries none of them (confirmed by test), which is why community submission is the path.
+- Service worker cache bumped to `thc-v4.5`; footer version label bumped to v4.5
+
+---
+
 ## v4.4
 **Pigeon Camera** - July 19, 2026
 - **YouTube archive rot-watch**: new `scripts/check-youtube-videos.js` verifies every YouTube video the site links to is still live - 440 unique targets across the fan concert archive (Video For New Recruits), tour-map show-video mappings, official music videos, and the 26 Road to the Top 40 episodes.

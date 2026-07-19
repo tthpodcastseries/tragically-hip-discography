@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v4.4';
+const CACHE_NAME = 'thc-v4.5';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -34,6 +34,7 @@ const CORE_ASSETS = [
   '/data/unplucked-gems.json',
   '/data/live-play-counts-merged.json',
   '/data/show-videos.json',
+  '/data/missing-lyrics.json',
   // Other
   '/manifest.json'
 ];

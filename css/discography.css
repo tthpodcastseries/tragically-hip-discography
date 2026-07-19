@@ -621,6 +621,20 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .lyrics-result-lines { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
 .lyrics-result-lines mark { background: rgba(212,160,23,0.25); color: var(--gold); border-radius: 2px; padding: 0 2px; }
 .lyrics-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
+.lyrics-crowdsource { max-width: 640px; margin: 8px auto 0; padding: 20px 22px; border: 1px solid rgba(204,162,60,0.35); border-radius: 14px; background: rgba(204,162,60,0.05); }
+.lyrics-crowdsource h3 { font-size: 0.95rem; font-weight: 800; color: var(--gold); margin: 0 0 6px; }
+.lyrics-crowdsource p { font-size: 0.82rem; color: var(--muted2); line-height: 1.5; margin: 0 0 14px; }
+.lyrics-cs-email { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 22px; background: var(--gold); color: #1a1205; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.03em; text-decoration: none; transition: filter 0.15s; }
+.lyrics-cs-email:hover, .lyrics-cs-email:focus { filter: brightness(1.1); }
+.lyrics-cs-toggle { display: inline-block; margin-left: 12px; font-size: 0.75rem; color: var(--gold); background: none; border: none; cursor: pointer; text-decoration: underline; font-family: 'Poppins', sans-serif; }
+.lyrics-cs-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 4px 16px; }
+.lyrics-cs-list li { font-size: 0.78rem; color: var(--text); padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.lyrics-cs-list li a { color: var(--text); text-decoration: none; display: flex; justify-content: space-between; gap: 8px; }
+.lyrics-cs-list li a:hover .lyrics-cs-send { color: var(--gold); }
+.lyrics-cs-list .lyrics-cs-ctx { color: var(--muted2); font-size: 0.68rem; }
+.lyrics-cs-send { color: var(--muted2); font-size: 0.68rem; white-space: nowrap; }
+.song-lyrics-missing { font-size: 0.82rem; color: var(--muted2); line-height: 1.5; }
+.song-lyrics-missing a { color: var(--gold); font-weight: 700; }
 .lyrics-cache-actions { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
 .lyrics-cache-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: var(--muted); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
 .lyrics-cache-btn:hover { border-color: var(--red); color: var(--text); }
