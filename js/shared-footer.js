@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v4.3.4 (Looking For A Place To Happen - Patch)';
+  var version = 'v4.3.5 (Looking For A Place To Happen - Patch)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
@@ -27,17 +27,23 @@
     });
   }
 
-  // JS error reporting via Plausible (max 3 per page view to avoid spam)
+  // Analytics events via Umami (script tag lives in each page's <head>)
+  function trackEvent(name, data) {
+    if (window.umami && typeof window.umami.track === 'function') {
+      window.umami.track(name, data);
+    }
+  }
+
+  // JS error reporting (max 3 per page view to avoid spam)
   var errorsSent = 0;
   function reportError(message, source) {
     if (errorsSent >= 3 || !message) return;
     errorsSent++;
-    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
-    window.plausible('JS Error', { props: {
+    trackEvent('JS Error', {
       message: String(message).slice(0, 150),
       source: String(source || '').slice(0, 100),
       page: location.pathname
-    } });
+    });
   }
   window.addEventListener('error', function(e) {
     reportError(e.message, (e.filename || '') + ':' + (e.lineno || ''));
@@ -46,4 +52,12 @@
     var r = e.reason;
     reportError((r && r.message) || String(r), 'unhandledrejection');
   });
+
+  // Outbound link tracking (Plausible did this automatically; Umami's script doesn't)
+  document.addEventListener('click', function(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || !/^https?:/.test(a.href)) return;
+    if (a.hostname === location.hostname) return;
+    trackEvent('Outbound Link', { url: a.href.slice(0, 200), page: location.pathname });
+  }, true);
 })();

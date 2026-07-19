@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.3.5
+**Looking For A Place To Happen - Patch** - July 19, 2026
+- **Analytics migrated: Plausible → Umami Cloud** (free tier). Plausible's trial expired ~mid-June and events had been going nowhere since.
+  - All 10 pages now load the Umami script (website ID `5a328248-...`, `data-domains` limited to the two production hostnames so localhost/preview traffic is ignored)
+  - forum-invite.html's hostname-dynamic Plausible injector replaced with the same static tag - Umami records hostname per event, so forum-portal.tthpods.com traffic is filterable in the one dashboard (Umami free tier allows a single website)
+  - JS error reporting rewired to `umami.track('JS Error', ...)` in shared-footer.js
+  - New "Outbound Link" event tracking in shared-footer.js (Plausible's script did this automatically; Umami's doesn't)
+  - CSP updated in `_headers`: plausible.io removed; `cloud.umami.is` (script-src) and `gateway.umami.is` (connect-src) allowed
+- Service worker cache bumped to `thc-v4.3.5`; footer version label bumped to v4.3.5
+
+---
+
 ## v4.3.4
 **Looking For A Place To Happen - Patch** - July 18, 2026
 - **Repo audit tooling**: new `scripts/audit-site.js` (no dependencies) checks internal links/assets on every page, service worker precache, manifest icons, sitemap, data cross-references (junk tracks, orphaned video mappings, empty lyrics, gem images), and all external links in page chrome. Run manually with `node scripts/audit-site.js` (`--no-network` to skip external checks).
