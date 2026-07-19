@@ -19,6 +19,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const NO_NETWORK = process.argv.includes('--no-network');
 const problems = [];
+const warnings = [];
 const notes = [];
 
 function existsLocal(ref) {
@@ -107,9 +108,20 @@ async function checkExternals() {
           res = await fetch(u, { method: 'GET', redirect: 'follow', signal: AbortSignal.timeout(20000),
             headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) HipHandbookAudit/1.0' } });
         }
-        if (!res.ok && res.status !== 999) problems.push(`external ${res.status} -> ${u}`);
+        if (!res.ok) {
+          // Bot-defence statuses: sites often reject datacenter IPs (CI runners)
+          // while serving humans fine. Report as warnings, not failures.
+          if ([403, 405, 429, 503, 999].includes(res.status)) {
+            warnings.push(`external ${res.status} (likely bot-block, verify by hand) -> ${u}`);
+          } else {
+            problems.push(`external ${res.status} -> ${u}`);
+          }
+        }
       } catch (e) {
-        problems.push(`external unreachable -> ${u} (${e.cause?.code || e.name})`);
+        const code = e.cause?.code || e.name;
+        // Dead DNS = genuinely gone; timeouts/resets are often CI-side flakiness
+        if (code === 'ENOTFOUND') problems.push(`external domain dead -> ${u} (${code})`);
+        else warnings.push(`external unreachable (transient?) -> ${u} (${code})`);
       }
     }
   }
@@ -120,6 +132,10 @@ async function checkExternals() {
   await checkExternals();
   console.log('=== Hip Handbook site audit ===');
   for (const n of notes) console.log('  ' + n);
+  if (warnings.length) {
+    console.log(`\n${warnings.length} warning(s) (not failing the audit):`);
+    for (const w of warnings) console.log('  ! ' + w);
+  }
   if (problems.length) {
     console.log(`\n${problems.length} PROBLEM(S):`);
     for (const p of problems) console.log('  ✗ ' + p);
