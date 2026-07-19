@@ -16,3 +16,20 @@ jobs:
           node-version: '22'
       - name: Run site audit (links, assets, data integrity)
         run: node scripts/audit-site.js
+
+  youtube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Check YouTube video liveness (archive, show videos, music videos, Road episodes)
+        run: node scripts/check-youtube-videos.js --json youtube-report.json
+      - name: Upload dead-video report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-report
+          path: youtube-report.json
+          if-no-files-found: ignore

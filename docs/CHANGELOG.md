@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.4
+**Pigeon Camera** - July 19, 2026
+- **YouTube archive rot-watch**: new `scripts/check-youtube-videos.js` verifies every YouTube video the site links to is still live - 440 unique targets across the fan concert archive (Video For New Recruits), tour-map show-video mappings, official music videos, and the 26 Road to the Top 40 episodes.
+  - Keyless liveness via YouTube's oembed endpoint: a confirmed 404 (removed / channel deleted / copyright strike) fails the run; embedding-disabled (401) is treated as live because the site links out to youtube.com/watch and never embeds inline.
+  - Chose oembed-only over scraping the watch page for `playabilityStatus`: YouTube serves consent-wall/degraded pages to concurrent CI requests, which produced bogus "unplayable" results that would flap the weekly job red. oembed is not bot-walled and gave identical results across repeated runs. Trade-off documented in the script: a video set to *private* (rare vs. outright removed) reads as live.
+  - Runs as a second job in the weekly Monday audit workflow (`.github/workflows/site-audit.yml`); dead videos fail the run (→ email) and a `youtube-report.json` artifact lists them. Current state: all 440 live.
+- Service worker cache bumped to `thc-v4.4`; footer version label bumped to v4.4
+
+---
+
 ## v4.3.6
 **Looking For A Place To Happen - Patch** - July 19, 2026
 - **Road to the Top 40 episode links**: every song ranked #41-#169 now links to the YouTube episode where it was counted down (26 episodes, playlist `PLn39xJKACVcuypC-EBgd5H7OZXBxHeJNZ`)
