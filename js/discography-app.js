@@ -2327,7 +2327,8 @@ function renderSongResults(songTitle) {
     const item = document.createElement('div');
     item.className = 'song-result-item';
     const rankLabel = top40.rank <= 40 ? 'TTHTop40 Countdown' : 'Full 169 Fan Vote';
-    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--gold);font-weight:800;">#${top40.rank}</span></div><div class="item-sub">From ${top40.album} (${top40.year})${top40.points ? ' &middot; ' + top40.points + ' points' : ''}</div>`;
+    const road = top40.rank > 40 ? roadEpisodeForRank(top40.rank) : null;
+    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--gold);font-weight:800;">#${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
   }
@@ -2767,6 +2768,25 @@ document.getElementById('soloBackBtn').addEventListener('click', () => {
 });
 
 // Kitelink podcast episode URLs for TTHTop40 Countdown
+// Road to the Top 40: 26 YouTube episodes covering ranks #169 down to #41
+// (5 ranks per episode from #169; episode 26 covers #44-#41). Source:
+// TTH Top 40.numbers episode markers + youtube.com playlist PLn39xJKACVcuypC-EBgd5H7OZXBxHeJNZ
+const ROAD_PLAYLIST = 'PLn39xJKACVcuypC-EBgd5H7OZXBxHeJNZ';
+const roadToTop40Videos = {
+  1: 'vl5M0S4c5ww', 2: '0zkCFHOJCoM', 3: '4YwbxYdnUow', 4: 'ySRGFyAIbiQ', 5: '8ro97jndlT0',
+  6: 'bPpzDPQAljk', 7: 'sN7djxeNy9k', 8: 'ZAY8YJwC5ts', 9: 'MQSZMm-Assw', 10: 'fv8PhznNAk0',
+  11: 'uZrgjQqeBKU', 12: '4jYCXNvArjM', 13: '0G_XG0m0asU', 14: 'i2S0LFo6Yao', 15: 'JhdHXBVQoZU',
+  16: 'MGVisL8d9K4', 17: 'nBuCZO73Tc4', 18: 'YDHyKbtLoN0', 19: 'EAasxG8SF9o', 20: 'CK4dnXf4exo',
+  21: '9lSd9v7O3ws', 22: '9-eN62-spOk', 23: 'Z95EsVeQCaI', 24: 'n2Wd83_UubI', 25: '22MrVTgOqiU',
+  26: '_Exw6Obk5pw'
+};
+function roadEpisodeForRank(rank) {
+  if (rank < 41 || rank > 169) return null;
+  const ep = rank <= 44 ? 26 : 25 - Math.floor((rank - 45) / 5);
+  const videoId = roadToTop40Videos[ep];
+  return videoId ? { ep, url: `https://www.youtube.com/watch?v=${videoId}&list=${ROAD_PLAYLIST}` } : null;
+}
+
 const top40PodcastURLs = {
   1: 'song1', 2: 'song2', 3: 'song3', 4: 'song4', 5: 'song5',
   6: 'song6', 7: 'song7', 8: 'song8', 9: 'song9', 10: 'song10',
@@ -2819,6 +2839,7 @@ beyondTop40.forEach(s => {
       <svg class="song-expand-icon" viewBox="0 0 24 24" fill="var(--muted2)"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
     <div class="song-stream-panel">
+      ${(() => { const road = roadEpisodeForRank(s.rank); return road ? `<a href="${road.url}" target="_blank" rel="noopener noreferrer" class="stream-link" style="flex-basis:100%;color:var(--gold);border-color:var(--gold);font-weight:600;" aria-label="Hear ${s.title} discussed on The Road to the Top 40, episode ${road.ep}">🎙 Road to the Top 40 - Episode ${road.ep}</a>` : ''; })()}
       <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">Apple Music</a>
       <a href="${beyondSpotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">Spotify</a>
       <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>

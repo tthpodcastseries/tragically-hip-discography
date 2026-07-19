@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.3.6
+**Looking For A Place To Happen - Patch** - July 19, 2026
+- **Road to the Top 40 episode links**: every song ranked #41-#169 now links to the YouTube episode where it was counted down (26 episodes, playlist `PLn39xJKACVcuypC-EBgd5H7OZXBxHeJNZ`)
+  - Beyond-Top-40 list: each song's expandable panel leads with a gold "🎙 Road to the Top 40 - Episode N" link
+  - Song permalink view: the Fan Rankings item adds a "Hear it on Road to the Top 40 - Ep N" link for ranks 41-169
+  - Rank→episode mapping derived from the TTH Top 40.numbers episode markers (5 ranks per episode from #169; episode 26 covers #44-#41); boundaries verified in-browser
+- Fixed "(undefined)" year showing in the song permalink Fan Rankings line for ranks 41-169 (no year field on beyond-40 entries)
+- Service worker cache bumped to `thc-v4.3.6`; footer version label bumped to v4.3.6
+
+---
+
 ## v4.3.5
 **Looking For A Place To Happen - Patch** - July 19, 2026
 - **Analytics migrated: Plausible → Umami Cloud** (free tier). Plausible's trial expired ~mid-June and events had been going nowhere since.
