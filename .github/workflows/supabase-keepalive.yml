@@ -1,0 +1,44 @@
+name: Supabase keepalive
+
+# Supabase pauses free-tier projects after 7 days without API activity,
+# which locks members out of the gate until someone restores it by hand.
+# This pings the database twice a week so the project never counts as idle.
+#
+# The anon key below is NOT a secret - it ships in the site's public JS
+# (js/tth-member-gate.js) and is safe by design; row-level security and
+# the RPC signatures are the actual protection.
+#
+# If this job FAILS, the project is unreachable - almost certainly paused.
+# Restore it at https://supabase.com/dashboard (project deqslacywpwnjjckdygp
+# -> Restore), then re-run this workflow to confirm it's back.
+
+on:
+  schedule:
+    # Tuesdays and Fridays 9am Toronto (13:00 UTC) - well inside the 7-day idle window
+    - cron: '0 13 * * 2,5'
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase (touches the database so the project registers activity)
+        run: |
+          URL="https://deqslacywpwnjjckdygp.supabase.co"
+          KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM"
+          STATUS=$(curl -s -o /tmp/resp.txt -w "%{http_code}" --max-time 30 \
+            -X POST "$URL/rest/v1/rpc/unlock_member" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"p_first_name":"keepalive_ping","p_number":0}') || STATUS="000"
+          echo "HTTP status: $STATUS"
+          head -c 300 /tmp/resp.txt || true; echo
+          # Any real HTTP answer (2xx-4xx) means the database was reached and
+          # activity registered. Connection failure (000) or 5xx means the
+          # project is paused or down.
+          if [ "$STATUS" = "000" ] || [ "$STATUS" -ge 500 ]; then
+            echo "::error::Supabase unreachable (status $STATUS) - project is likely PAUSED."
+            echo "::error::Restore it: https://supabase.com/dashboard -> project -> Restore, then re-run this workflow."
+            exit 1
+          fi
+          echo "Supabase is awake - activity registered."
