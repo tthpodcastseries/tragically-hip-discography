@@ -2,7 +2,7 @@ name: Supabase keepalive
 
 # Supabase pauses free-tier projects after 7 days without API activity,
 # which locks members out of the gate until someone restores it by hand.
-# This pings the database twice a week so the project never counts as idle.
+# This pings the database four times a week so the project never counts as idle.
 #
 # The anon key below is NOT a secret - it ships in the site's public JS
 # (js/tth-member-gate.js) and is safe by design; row-level security and
@@ -14,8 +14,8 @@ name: Supabase keepalive
 
 on:
   schedule:
-    # Tuesdays and Fridays 9am Toronto (13:00 UTC) - well inside the 7-day idle window
-    - cron: '0 13 * * 2,5'
+    # Mon/Wed/Fri/Sun 9am Toronto (13:00 UTC) - never more than 2 days between pings
+    - cron: '0 13 * * 0,1,3,5'
   workflow_dispatch: {}
 
 jobs:
