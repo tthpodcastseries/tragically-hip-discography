@@ -169,8 +169,11 @@
   window.TTHMember = TTHMember;
 
   // On local dev, inject a stub session so pages work without hitting Supabase.
+  // Marked guest so persistRemote() stays local-only — otherwise every toggle
+  // fires an RPC as ('dev', 0), which the function rejects with
+  // invalid_credentials and the caller silently rolls back.
   if (isLocal && !session) {
-    session = { memberNumber: 0, firstName: 'dev', attendedShows: [], unlockedAt: Date.now() };
+    session = { memberNumber: 0, firstName: 'dev', attendedShows: [], unlockedAt: Date.now(), guest: true };
   }
 
   // If we have a session, we're done. Page renders normally.
@@ -207,7 +210,11 @@
     '#tth-member-gate button:hover:not(:disabled) { background:#a60d26; }',
     '#tth-member-gate button:disabled { opacity:0.6; cursor:not-allowed; }',
     '#tth-member-gate .mg-err { color:#ff6b6b; font-size:0.85rem; min-height:1.2em; text-align:center; }',
-    '#tth-member-gate .mg-foot { margin-top:1.5rem; font-size:0.72rem; color:#707070; letter-spacing:0.08em; text-transform:uppercase; }'
+    '#tth-member-gate .mg-foot { margin-top:1.5rem; font-size:0.72rem; color:#707070; letter-spacing:0.08em; text-transform:uppercase; }',
+    '#tth-member-gate .mg-divider { display:flex; align-items:center; gap:1rem; margin:1.25rem 0 0.25rem; color:#707070; font-size:0.75rem; text-transform:uppercase; letter-spacing:1.5px; }',
+    '#tth-member-gate .mg-divider::before, #tth-member-gate .mg-divider::after { content:""; flex:1; height:1px; background:#2a2a2a; }',
+    '#tth-member-gate .mg-guest-btn { width:100%; padding:0.9rem 1rem; background:transparent; color:#b0b0b0; border:1px solid #2a2a2a; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:border-color 0.15s, color 0.15s; }',
+    '#tth-member-gate .mg-guest-btn:hover { border-color:#CCA23C; color:#CCA23C; }'
   ].join('\n');
 
   var gateHtml =
@@ -229,6 +236,8 @@
         '<div class="mg-err" id="mg-err" role="alert"></div>' +
         '<button id="mg-btn" type="submit">Unlock</button>' +
       '</form>' +
+      '<div class="mg-divider">or</div>' +
+      '<button id="mg-guest-btn" class="mg-guest-btn" type="button">Browse as Guest</button>' +
       '<div class="mg-foot">The Hip Handbook</div>' +
     '</div>';
 
@@ -270,6 +279,18 @@
     } else {
       setTimeout(function () { try { firstEl.focus(); } catch (e) {} }, 60);
     }
+
+    document.getElementById('mg-guest-btn').addEventListener('click', function () {
+      session = {
+        memberNumber: GUEST_NUMBER,
+        firstName: GUEST_FIRST_NAME,
+        attendedShows: [],
+        unlockedAt: Date.now(),
+        guest: true
+      };
+      persistLocal();
+      location.reload();
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
