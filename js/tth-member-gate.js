@@ -16,7 +16,7 @@
 //   <script src="/js/tth-member-gate.js"></script>
 //
 // Public API (window.TTHMember):
-//   getSession()              -> { memberNumber, firstName, attendedShows } | null
+//   getSession()              -> { memberNumber, firstName, attendedShows, guest } | null
 //   isUnlocked()              -> boolean
 //   signOut()                 -> clears local session and reloads
 //   hasShow(id)               -> boolean
@@ -124,7 +124,9 @@
       return {
         memberNumber: session.memberNumber,
         firstName: session.firstName,
-        attendedShows: session.attendedShows.slice()
+        attendedShows: session.attendedShows.slice(),
+        // Guest sessions are local-only; the Passport needs to tell them apart (v5)
+        guest: !!session.guest
       };
     },
     isUnlocked: function () { return !!session; },

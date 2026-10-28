@@ -10,10 +10,12 @@ const CORE_ASSETS = [
   '/video-for-new-recruits.html',
   '/music-videos.html',
   '/live-stats.html',
+  '/passport.html',
   '/forum-invite.html',
   '/404.html',
   // CSS
   '/css/shared.css',
+  '/css/passport.css',
   '/css/home.css',
   '/css/discography.css',
   '/css/tour-map.css',
@@ -24,6 +26,7 @@ const CORE_ASSETS = [
   '/js/shared-footer.js',
   '/js/discography-app.js',
   '/js/live-stats.js',
+  '/js/passport.js',
   '/js/tth-member-gate.js',
   '/js/supabase.min.js',
   // Data

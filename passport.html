@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In View - Yer Hip Passport - The Hip Handbook</title>
+  <meta name="description" content="Mark the Tragically Hip shows you were at and watch yer concert history add up - the songs you heard, the rarities you caught, and how much of the catalogue you've seen live.">
+  <meta property="og:title" content="In View - Yer Hip Passport - The Hip Handbook">
+  <meta property="og:description" content="Build yer own Tragically Hip concert history - shows, songs, rarities, and a shareable card.">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/my-shows">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/my-shows">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/passport.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="page-header">
+  <div class="subtitle">Yer Hip Passport</div>
+  <h1>In View</h1>
+  <p class="header-desc">Mark the Hip shows you were at and watch yer concert history add up: the songs you heard, the rarities you caught, and how much of the catalogue you've seen live.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+</header>
+
+<main id="main-content" class="pp">
+  <div class="pp-who">
+    <div id="ppMember" class="pp-member" hidden></div>
+    <button id="ppSwitch" class="pp-switch" type="button" hidden>Switch member</button>
+  </div>
+  <p id="ppGuestNote" class="pp-guest" hidden>You're browsing as a guest, so these shows are only saved on this device. <a href="/forum-invite.html">Get a free membersHIP number</a> to keep them on every phone and computer.</p>
+
+  <div id="ppLoading" class="pp-loading">Stamping yer passport...</div>
+  <div id="ppError" class="pp-error" hidden>Couldn't load the show data. Check yer connection and refresh.</div>
+
+  <div id="ppEmpty" class="pp-empty" hidden>
+    <p class="pp-empty-title">No shows stamped yet.</p>
+    <p>Head to the <a href="/setlists">Setlist Explorer</a>, find a show you were at, and tap <strong>I Was There</strong>. Yer passport fills in as you go: songs heard, rarities caught, a map of yer venues, and a card you can share.</p>
+    <a class="pp-cta" href="/setlists">Find yer shows</a>
+  </div>
+
+  <div id="ppBody" hidden>
+    <section class="pp-stats" id="ppStats" aria-label="Yer totals"></section>
+    <p class="pp-span" id="ppSpan"></p>
+    <p class="pp-note" id="ppNoSetlist" hidden></p>
+
+    <section class="pp-section" id="ppRaritySection">
+      <h2 class="pp-h2">Rarities you caught</h2>
+      <p class="pp-sub">Songs played live fewer than 10 times ever, per setlist.fm</p>
+      <div id="ppRarities" class="pp-chips"></div>
+    </section>
+
+    <section class="pp-section" id="ppTopSection">
+      <h2 class="pp-h2">Songs you heard most</h2>
+      <ol id="ppTop" class="pp-top"></ol>
+    </section>
+
+    <section class="pp-section">
+      <h2 class="pp-h2">Yer Hip checklist</h2>
+      <p class="pp-sub" id="ppCheckSub"></p>
+      <div class="pp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="ppBar"><span id="ppBarFill"></span></div>
+      <button id="ppMissingBtn" class="pp-toggle" type="button" aria-pressed="false">Show only what I'm missing</button>
+      <div id="ppChecklist" class="pp-check"></div>
+      <p class="pp-note" id="ppNeverLive"></p>
+    </section>
+
+    <section class="pp-section">
+      <h2 class="pp-h2">Where you saw them</h2>
+      <div id="ppMap" class="pp-map" role="img" aria-label="Map of the venues you saw the Hip at"></div>
+    </section>
+
+    <section class="pp-section pp-share">
+      <h2 class="pp-h2">Share yer passport</h2>
+      <p class="pp-sub">A card for Facebook and Instagram, with yer first name only.</p>
+      <button id="ppMakeCard" class="pp-cta" type="button">Make my card</button>
+      <div id="ppCardWrap" hidden>
+        <img id="ppCardImg" class="pp-card-img" alt="Yer Hip Passport share card">
+        <div class="pp-card-actions">
+          <button id="ppShareBtn" class="pp-cta" type="button" hidden>Share</button>
+          <button id="ppSaveBtn" class="pp-cta pp-cta-alt" type="button">Save image</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="pp-section">
+      <h2 class="pp-h2">Yer shows</h2>
+      <div id="ppShows"></div>
+      <button id="ppMoreBtn" class="pp-toggle" type="button" hidden>Show all shows</button>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="/js/passport.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

@@ -2,8 +2,9 @@
 [build]
   publish = "."
 
-# Feature pages (v4.7) - served by discography.html, which switches into the
-# matching view from the path
+# Feature pages (v4.7) - /lyrics, /setlists and /top-40 are served by
+# discography.html, which switches into the matching view from the path;
+# /my-shows is the Yer Hip Passport (passport.html, v5)
 [[redirects]]
   from = "/lyrics"
   to = "/discography.html"
@@ -21,7 +22,7 @@
 
 [[redirects]]
   from = "/my-shows"
-  to = "/discography.html"
+  to = "/passport.html"
   status = 200
 
 [[redirects]]
