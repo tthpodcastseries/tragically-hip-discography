@@ -290,9 +290,22 @@
   var tourData = null;
   var setlistData = null;
   var setlistLookup = {};
+  var songPages = null; // title key -> { s: slug, t: title }, from data/song-index.json (v5.1 song pages)
   var searchDebounce = null;
+  var songKey = function(t) { return String(t).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, ''); };
+  // The local preview server has no rewrites, so there song.html takes ?s=<slug>
+  var songHref = function(slug) { return ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) >= 0 ? '/song?s=' + slug : '/song/' + slug; };
 
   async function loadSearchData() {
+    if (!songPages) {
+      try {
+        const r = await fetch('data/song-index.json');
+        if (r.ok) {
+          songPages = {};
+          (await r.json()).songs.forEach(function(s) { songPages[songKey(s.t)] = s; });
+        }
+      } catch(e) {}
+    }
     if (!lyricsData) {
       try { const r = await fetch('data/lyrics.json'); if (r.ok) lyricsData = await r.json(); } catch(e) {}
     }
@@ -336,8 +349,13 @@
         if (a.tracks) a.tracks.forEach(function(t) {
           var name = typeof t === 'string' ? t : (t && t.title);
           if (name && name.toLowerCase().includes(q) && !seenSongs.has(name)) {
+            // A song with its own page appears once, however many releases and versions it is on
+            var page = songPages && songPages[songKey(name.replace(/\s*\((Live|Demo|Alternate Version)\)\s*$/i, ''))];
+            var dedupeKey = page ? 'page:' + page.s : name;
+            if (seenSongs.has(dedupeKey)) return;
             seenSongs.add(name);
-            results.songs.push({ title: name, album: a.title, category: a.category });
+            seenSongs.add(dedupeKey);
+            results.songs.push(page ? { title: page.t, album: a.title, category: a.category, slug: page.s } : { title: name, album: a.title, category: a.category });
           }
         });
       });
@@ -421,7 +439,7 @@
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
         opt.innerHTML = '<span class="opt-song">' + s.title + '</span><span class="opt-album">' + s.album + '</span>';
-        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'discography.html#cat=' + encodeURIComponent(s.category) + '&album=' + encodeURIComponent(s.album); });
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = s.slug ? songHref(s.slug) : 'discography.html#cat=' + encodeURIComponent(s.category) + '&album=' + encodeURIComponent(s.album); });
         searchDropdown.appendChild(opt);
       });
     }

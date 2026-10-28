@@ -82,7 +82,6 @@
     ['Country', () => countryName(show.co)],
     ['Tour', () => show.t || 'none listed'],
     ['City', () => show.st ? show.c + ', ' + show.st : show.c],
-    ['Month', () => MONTHS[+parts[1] - 1]],
   ];
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);

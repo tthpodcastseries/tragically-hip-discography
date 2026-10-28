@@ -1,6 +1,6 @@
 # The Hip Handbook - Overview
 
-How the site works, how it should work, and where the two differ. Written 2026-10-28 against v5.1 "Grace, Too" (`main` at `f93a8aa`).
+How the site works, how it should work, and where the two differ. Written 2026-10-28 against v5.1.1 "Grace, Too - Patch".
 
 > Internal notes. `/docs/*` returns 404 on the live site, but this repo is public on GitHub, so keep secrets out of this file and everything near it.
 
@@ -89,7 +89,7 @@ Every page loads `js/tth-member-gate.js` first. With no saved session it shows a
 ### 4.2 Home
 Welcome note in jD's voice ("Hey, it's jD here."), a universal search box, then the **Today band**: **On This Day** (Hip shows played on today's date) and **Show of the Day** (one recorded show, the same for everyone; if the Archive has a recording played on today's date it uses that, otherwise a fixed rotation). Then the menu in groups: Shuffle (Random Hip Song, Random Live Show), Play, Listen, Live Shows, Watch, Dig Deeper. Each card shows the Hip-song name as a gold label, the plain name, and one line of what is inside, with counts pulled from the site's own data.
 
-Search covers albums, songs, lyrics, live shows, and live performances of a song.
+Search covers albums, songs, lyrics, live shows, and live performances of a song. A song result opens that song's page (`/song/<slug>`), once per song however many releases or versions it is on.
 
 ### 4.3 Discography, Top 40, Lyrics, Setlist Explorer
 One 3,200-line script (`js/discography-app.js`) drives four views from one file, because they share modals and the song view. Albums grid (studio, EPs, solo projects, live, compilations, box sets, video) opens modals with tracklists, streaming links (Apple Music, Spotify, Tidal, YouTube Music, Amazon) and buy links. The Top 40 shows all 169 voted songs; ranks 1-40 link their TTHTop40 Countdown episode, ranks 41-169 link their Road to the Top 40 episode. Lyrics Search works over `data/lyrics.json`. The Setlist Explorer filters 1,091 setlists, and each show has an **I Was There** button.
@@ -104,7 +104,7 @@ Built from the shows a person ticked with **I Was There**. Totals (shows, songs 
 One page per song on jD's official list (191). Shows times played live, live debut and latest performance (each linking to the show), a tappable plays-by-year chart, albums (first release, then "Also on"), fan ranking with podcast link, every Hip Archive recording with a Play link, and all live performances by year. Built from `data/song-index.json`, so phones never download the 2 MB setlist file. Songs with no live plays say so. `/song` lists all songs with a filter box. Debut and latest dates are setlist.fm's and can be wrong if its data is incomplete; the page says so.
 
 ### 4.7 Bring It All Back (daily game)
-One real setlist a day, the same for everyone, from a pool of 971 shows (1985-2016, 10+ songs, fixed-seed order). Guess the year in five tries. Each miss says Earlier or Later, adds a coloured square (exact, within 2, within 5, farther) and unlocks a hint in order: country, tour, city and state, month. Result screen reveals the show, links to play it or see it on the map, and shows played, win %, streak, best, and the guess distribution, with a no-spoiler share text and a countdown to the next puzzle. State lives only in the visitor's `localStorage` (`tth_bia_v1`). Puzzle #1 is **2026-10-30**; before that the page says when it opens. `?day=N` and `?reset=1` work on localhost only.
+One real setlist a day, the same for everyone, from a pool of 971 shows (1985-2016, 10+ songs, fixed-seed order). Guess the year in five tries. Each miss says Earlier or Later, adds a coloured square (exact, within 2, within 5, farther) and unlocks a hint in order: country, tour, then city and state. Result screen reveals the show, links to play it or see it on the map, and shows played, win %, streak, best, and the guess distribution, with a no-spoiler share text and a countdown to the next puzzle. State lives only in the visitor's `localStorage` (`tth_bia_v1`). Puzzle #1 is **2026-10-30**; before that the page says when it opens. `?day=N` and `?reset=1` work on localhost only.
 
 ### 4.8 Live Show Stats, Unplucked Gems, videos, links
 - **38 Years Old**: most-played songs, openers and closers, one-timers, longest shelvings, songs never played live, all from setlist data.
@@ -179,7 +179,7 @@ Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.
 - **Before shipping:** run `node scripts/audit-site.js`, load every page at phone width (375x812) and laptop width, check the console, and test with the live headers in mind (see below).
 - **Local preview quirks:** the preview server (`npx serve`, port 8765, `hip-webapp` in `.claude/launch.json`) ignores `_headers` and `_redirects` and strips query strings when it redirects `.html` to the clean URL. Use `/page?x=1`, not `/page.html?x=1`. The gate is skipped on localhost; open `http://[::1]:8765/` to see it.
 - **Testing members:** use guest sessions (`guest: true`). A non-guest test session sends real writes to the live database.
-- **Git on this Mac:** `git push` works from the shell only with the sandbox off (macOS keychain). A stray ref named `refs/heads/main 2` makes `git fetch` fail; use `git ls-remote` to check the remote, or delete that ref.
+- **Git on this Mac:** `git push` works from the shell only with the sandbox off (macOS keychain). (A pair of stray `main 2` refs that broke `git fetch` was removed on 2026-10-28.)
 
 ---
 
@@ -208,22 +208,20 @@ Umami, cookieless, events by name only. Current events: `Gate - Shown`, `Gate - 
 5. **Every claim on a page is true to the data.** Counts come from the data files, not typed in.
 6. **Shows are the unit.** Setlist.fm ids join every feature.
 
-### Known problems and gaps (found 2026-10-28)
-1. **Passport share card preview is broken on the live site.** The CSP `img-src` does not allow `blob:`, so the generated card image is blocked. Console: "Loading the image 'blob:...' violates the following Content Security Policy directive". **Fix prepared in the working tree (`_headers`), not pushed.** `audit-site.js` now also fails if a script makes blob images while the CSP blocks them.
-2. **Home search results are clipped.** `header { overflow: hidden }` cuts off the dropdown so only the first line or two shows on a phone. Present since at least v4.8. **Fix prepared (`css/home.css`: `overflow-x: clip`), not pushed.**
-3. Home search "Songs" results still open the discography album view, not the new song page.
-4. The home "Bring It All Back" card says "A new show every day" but the game does not open until 2026-10-30.
-5. Copy says "1985 to 2016" in places, but the data runs to 2022 (two later shows: 2021-06-06 Massey Hall, 2022-09-16 National Arts Centre).
-6. 22 official songs never appear in any setlist and 'Dare Devil (Reprise)' has no plays, so 23 can never be ticked in the Passport. This may be setlist.fm gaps.
-7. 15 songs have no album shown on their song page because the discography data does not list them (for example 'Hush', 'Skeleton Park').
-8. The Google Form behind the song list has no "Choose yer number 3" question, lists 'Lake Fever' twice, and lacks 'Apartment Song'.
-9. Dead code: the old My Shows section and `FEATURE_VIEWS['my-shows']` in `discography.html` and `discography-app.js` only forward old links now. `gate` comments still mention a removed `tth-launch-gate.js`.
-10. `package-lock.json` (named `thc-compendium-functions`, left from an old experiment) is served publicly. Harmless, but unused.
-11. The Supabase table and function definitions are not stored in the repo.
-12. The game's 4th-miss month hint was added without jD's explicit approval.
+### Known problems and gaps (as of 2026-10-28)
+Fixed on 2026-10-28 and live in v5.1.1: the Passport share card being blocked by the CSP, and home search results being clipped.
+
+1. The home "Bring It All Back" card says "A new show every day" but the game does not open until 2026-10-30. jD is fine with this.
+2. Copy says "1985 to 2016" in places, but the data runs to 2022 (two later shows: 2021-06-06 Massey Hall, 2022-09-16 National Arts Centre).
+3. 22 official songs never appear in any setlist and 'Dare Devil (Reprise)' has no plays, so 23 can never be ticked in the Passport. This may be setlist.fm gaps.
+4. 15 songs have no album shown on their song page because the discography data does not list them (for example 'Hush', 'Skeleton Park').
+5. The Google Form behind the song list has no "Choose yer number 3" question, lists 'Lake Fever' twice, and lacks 'Apartment Song'.
+6. Dead code: the old My Shows section and `FEATURE_VIEWS['my-shows']` in `discography.html` and `discography-app.js` only forward old links now. Comments in `tth-member-gate.js` still mention a removed `tth-launch-gate.js`.
+7. `package-lock.json` (named `thc-compendium-functions`, left from an old experiment) is served publicly. Harmless, but unused.
+8. The Supabase table and function definitions are not stored in the repo.
 
 ### Risks to decide on
-- **Lyrics are copyrighted.** The site stores and displays the full lyrics for 169 songs. jD should decide whether that is acceptable or whether to move to snippets, links, or a licence.
+- **Lyrics are copyrighted and published in full.** `data/lyrics.json` holds the complete words to 169 songs (about 169,000 characters), pulled on 2026-03-19 from the lyrics.ovh service by `scripts/build-lyrics.js`. The pages only show excerpts (up to three matching lines per song in Lyrics Search, the first 400 characters in the old song view), but the whole file is a public download at `/data/lyrics.json`, sits in the public GitHub repo and its history, and is copied into every visitor's browser. The site also asks fans to email in missing lyrics. Nothing in the repo shows a licence for any of it. jD should decide whether to keep it, replace it with search-only plus links to licensed lyric sites, or license it. Removing the file now would not remove it from git history or forks.
 - **Weak identity.** Name plus number lets anyone impersonate a member. Do not build anything on it that needs trust.
 - **Third parties can break pages:** CARTO tiles (need a key), Backblaze B2 audio, setlist.fm, Hipbase, the Hip Archive, YouTube, Umami, Supabase. The weekly audit and YouTube check catch some of this.
 - **Setlist.fm is community data** and can be incomplete. Debuts, last plays and "never played" claims inherit that.

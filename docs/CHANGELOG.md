@@ -1,5 +1,16 @@
 # Changelog
 
+## v5.1.1
+**Grace, Too - Patch** - October 28, 2026
+- **Fixed: Passport share card preview was blocked on the live site.** The Content Security Policy did not allow `blob:` images, so the generated card never showed. `blob:` added to `img-src` in `_headers`. `audit-site.js` now fails if a script builds blob image URLs while the CSP blocks them (the local preview server ignores `_headers`, so this only ever showed live).
+- **Fixed: home search results were cut off.** The header's `overflow: hidden` clipped the dropdown to its first line or two on a phone; it is now `overflow-x: clip`.
+- **Home search songs open the song page**: a song result goes to `/song/<slug>` instead of the discography album view, and a song on several releases or versions shows once.
+- **'Bring It All Back': removed the month hint.** Hints are now country, tour, then city and state (three hints; the 4th and 5th misses add none).
+- Added `docs/The Hip Handbook - Overview.md`.
+- Cache bumped to `thc-v5.1.1` (the CSS fix above shipped without a bump, so returning visitors could still hold the old `home.css`); footer label bumped to v5.1.1
+
+---
+
 ## v5.1
 **Grace, Too** - October 28, 2026
 - **Song pages** (`/song/<slug>`, e.g. `/song/grace-too`): every song on the official list gets its own page, built from `data/song-index.json` so a phone never downloads the 2 MB setlist file.
@@ -29,7 +40,7 @@
 - **Today band on home**: On This Day first after the header, then **Show of the Day** (one recorded show per day, the same for everyone; "Play this show" opens the archive player). New Play menu group. Hero photo cropped to a banner so On This Day starts on the first phone screen.
 - **'Bring It All Back'** (`/bring-it-all-back`, the Daily Setlist Game): one real Hip setlist a day from a pool of 971 shows (1985-2016, 10+ songs). Guess the year in five tries.
   - Each miss says Earlier or Later and adds a coloured square (right year, within 2, within 5, farther)
-  - Hints unlock one per miss: country, tour, city and state, then month
+  - Hints unlock one per miss: country, tour, then city and state
   - End screen reveals the show with "Play this show" (when recorded) and "View on map", plus played, win %, streak, best, guess distribution, and a countdown to the next puzzle
   - "Copy my score" (and Share where the phone supports it) with no spoilers
   - Saved on the device only (`tth_bia_v1`); anonymous Umami events `Game - Started`, `Game - Won`, `Game - Lost`, `Game - Shared`
