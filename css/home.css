@@ -9,7 +9,7 @@ header {
   text-align: center;
   padding: 40px 24px 28px;
   border-bottom: 1px solid var(--border);
-  overflow: hidden;
+  overflow-x: clip; /* not hidden: the search dropdown hangs below the header */
   background: var(--bg);
 }
 header::before {

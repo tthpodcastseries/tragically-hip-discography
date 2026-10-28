@@ -138,6 +138,11 @@ for (const f of imgScanFiles) {
 for (const [host, f] of imgHosts) {
   if (!imgAllowed(host)) problems.push(`_headers CSP img-src: ${host} not allowed (images from it are blocked live; first seen in ${f})`);
 }
+// Images made in the browser (canvas -> blob URL, like the Passport share card) need blob:
+if (!imgSrc.includes('blob:')) {
+  const blobUsers = imgScanFiles.filter(f => f.endsWith('.js') && /createObjectURL/.test(fs.readFileSync(path.join(ROOT, f), 'utf8')));
+  if (blobUsers.length) problems.push(`_headers CSP img-src: blob: not allowed, but ${blobUsers.join(', ')} builds blob: image URLs (blocked live)`);
+}
 notes.push(`CSP img-src: ${imgHosts.size} external image host(s) checked`);
 
 // ---- 6. External links (page chrome only) ----
