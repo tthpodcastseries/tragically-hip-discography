@@ -26,7 +26,9 @@ The security header in `_headers` doesn't allow images from `i.ytimg.com`, so ev
 ### 1.4 The tour map's background tiles need an API key (found while fixing 1.1)
 CARTO's `dark_all` basemap (`tour-map.html:174`) now serves every tile as a grey "API KEY REQUIRED" image, no matter which site asks. The markers, clusters, and popups still work, but there's no actual map under them. The tiles return HTTP 200, so the audit can't see this.
 
-**Fix needs a call from jD:** either get a CARTO API key, or switch to another dark map provider (most need a free account tied to the domain). I haven't checked each provider's current free-tier terms.
+**Fixed in v4.5.2:** got a free non-commercial CARTO key and added it to the tile URL.
+
+**Status:** 1.1-1.3 fixed in v4.5.1, 1.4 in v4.5.2.
 
 ---
 

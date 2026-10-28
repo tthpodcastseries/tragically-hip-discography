@@ -171,7 +171,10 @@
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  // CARTO basemaps need a key since Sept 2026 (free non-commercial tier, 5M tiles/month).
+  // Public by design - it ships in every tile URL. Manage at dashboard.basemaps.carto.com (jd@tthpods.com).
+  const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY, {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase.com</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Hip Archive</a> (Darrin Cappe)',
     subdomains: 'abcd',
     maxZoom: 18

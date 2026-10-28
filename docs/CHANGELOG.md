@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.5.2
+**Lionized - Patch** - October 28, 2026
+- **Tour map background restored**: CARTO began requiring an API key for its basemap tiles in September 2026, and without one every `dark_all` tile came back as a grey "API KEY REQUIRED" image - markers and clusters floated over an empty grid. Requested a free non-commercial CARTO Basemaps key (5M tiles/month, registered to jd@tthpods.com) and appended it to the tile URL as `?key=` in `tour-map.html`. Same Dark Matter style as before, no new dependencies, no CSP change.
+  - The key is public by design (it rides on every tile request), like the Supabase anon key. It's unrestricted so localhost previews work; it can be locked to the production domain from dashboard.basemaps.carto.com.
+  - Why CARTO over a keyless provider: OpenFreeMap's dark style is vector-only and would need MapLibre GL plus the maplibre-gl-leaflet bridge (about 1 MB more JS, worker CSP changes, slower interaction per the plugin's own docs) on a map carrying 1,358 markers.
+- Service worker cache bumped to `thc-v4.5.2`; footer version label bumped to v4.5.2
+
+---
+
 ## v4.5.1
 **Lionized - Patch** - October 28, 2026
 - **Tour map visible again on phones and short screens**: the page was locked to exactly one screen tall (`body { overflow: hidden; height: 100vh }`), so once the header, On This Day banner, filters, year slider, and footer took their space, `#map` got what was left - 0px on a 375x812 phone, 171px on a 1024x768 laptop. The page now scrolls, and the map holds at least 70% of the screen (60% on phones), with the footer below it.
