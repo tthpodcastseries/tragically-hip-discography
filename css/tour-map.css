@@ -6,9 +6,12 @@
   --bg3: #1a1a1a;
   --muted: #888;
 }
+/* Page scrolls so the map keeps real height on short screens - a locked
+   100vh body squeezed #map to 0px on phones once header, controls, slider
+   and footer took the space (v4.5.1) */
 body {
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: var(--text);
@@ -188,7 +191,8 @@ input[type="range"]::-moz-range-track {
 
 /* MAP */
 #map {
-  flex: 1;
+  flex: 1 0 auto;
+  min-height: 70vh;
   z-index: 1;
 }
 
@@ -879,6 +883,7 @@ input[type="range"]::-moz-range-track {
   .search-wrap input { width: 160px; }
   .search-results { width: calc(100vw - 28px); left: auto; right: -14px; }
   .year-slider-container { padding: 6px 14px 10px; }
+  #map { min-height: 60vh; }
   .ap-volume { display: none; }
   .ap-main { gap: 8px; padding: 8px 12px; }
   .ap-tracklist { max-height: 180px; }

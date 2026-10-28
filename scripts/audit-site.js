@@ -9,6 +9,9 @@
 //   5. Data cross-references: show-video orphans, AppleDouble junk tracks,
 //      empty lyrics, unplucked-gems imagePaths
 //   6. External links in page chrome respond (skipped with --no-network)
+//   7. Every external image host used by pages/scripts/data is allowed by
+//      the CSP img-src in _headers (localhost ignores _headers, so a
+//      missing host only breaks on the live site)
 //
 // Usage: node scripts/audit-site.js [--no-network]
 // Exit code 0 = clean, 1 = problems found.
@@ -89,6 +92,33 @@ for (const era of ug.eras) {
   }
 }
 notes.push(`data cross-refs: ${tour.length} shows, ${Object.keys(sv.byShow || {}).length} video mappings, ${Object.keys(lyrics.songs).length} lyrics, ${ug.eras.length} gem eras`);
+
+// ---- 7. CSP img-src covers every external image host ----
+const SITE_HOST = 'thehiphandbook.tthpods.com';
+const headersSrc = fs.readFileSync(path.join(ROOT, '_headers'), 'utf8');
+const imgSrc = ((headersSrc.match(/img-src([^;]*)/) || [])[1] || '').trim().split(/\s+/);
+const imgAllowed = host => imgSrc.some(s => {
+  const h = s.replace(/^https?:\/\//, '');
+  return h.startsWith('*.') ? host.endsWith(h.slice(1)) : host === h;
+});
+const imgScanFiles = [
+  ...pages,
+  ...fs.readdirSync(path.join(ROOT, 'js')).filter(f => f.endsWith('.js') && !f.endsWith('.min.js')).map(f => 'js/' + f),
+  ...fs.readdirSync(path.join(ROOT, 'css')).filter(f => f.endsWith('.css')).map(f => 'css/' + f),
+  ...fs.readdirSync(path.join(ROOT, 'data')).filter(f => f.endsWith('.json')).map(f => 'data/' + f),
+];
+const imgHosts = new Map(); // host -> first file seen in
+for (const f of imgScanFiles) {
+  const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  for (const m of src.matchAll(/https:\/\/([a-z0-9.-]+)\/[^"'\s)]*\.(?:jpe?g|png|webp|gif|svg)\b/gi)) {
+    const host = m[1].toLowerCase();
+    if (host !== SITE_HOST && !imgHosts.has(host)) imgHosts.set(host, f);
+  }
+}
+for (const [host, f] of imgHosts) {
+  if (!imgAllowed(host)) problems.push(`_headers CSP img-src: ${host} not allowed (images from it are blocked live; first seen in ${f})`);
+}
+notes.push(`CSP img-src: ${imgHosts.size} external image host(s) checked`);
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {

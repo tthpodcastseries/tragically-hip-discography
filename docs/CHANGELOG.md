@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.5.1
+**Lionized - Patch** - October 28, 2026
+- **Tour map visible again on phones and short screens**: the page was locked to exactly one screen tall (`body { overflow: hidden; height: 100vh }`), so once the header, On This Day banner, filters, year slider, and footer took their space, `#map` got what was left - 0px on a 375x812 phone, 171px on a 1024x768 laptop. The page now scrolls, and the map holds at least 70% of the screen (60% on phones), with the footer below it.
+- **YouTube thumbnails unblocked on the live site**: the CSP `img-src` in `_headers` never allowed `i.ytimg.com`, so every YouTube thumbnail (all 36 on They Shot A Movie Once, plus the concert video and show-video thumbnails) was blocked in production - 200+ console errors. Localhost ignores `_headers`, which is why it never showed up in testing. Added `https://i.ytimg.com` to `img-src`.
+- **Audit catches CSP image gaps**: `scripts/audit-site.js` gains check 7 - every external image host found in pages, scripts, stylesheets, and data files must be allowed by `img-src` in `_headers`. Confirmed it fails against the v4.5 headers and passes now, so the weekly CI audit would have caught the thumbnail bug.
+- **Internal files no longer public**: `/audits/*` and `/docs/*` (UI/UX audits, this changelog) now 404 on the live site, matching the existing `/scripts/*` rule in both `_redirects` and `netlify.toml`
+- Service worker cache bumped to `thc-v4.5.1`; footer version label bumped to v4.5.1
+
+---
+
 ## v4.5
 **Lionized** - July 19, 2026
 - **Lyrics crowdsourcing**: the Lyrics Search tab now has a "Help Complete the Archive" call-out. 21 songs from the deep catalogue (B-sides, Phantom Power box-set tracks, Yer Favourites bonus cuts, unreleased demos) have no lyrics on any lyrics site, so they can't be searched. The panel invites fans to submit them via an "Email jD the lyrics" button (`mailto:jd@tthpods.com`, subject "Lyrics for The Hip Handbook", with a fill-in body template). An expandable list shows every missing song, each linking to a submission email pre-filled with that song's title.
