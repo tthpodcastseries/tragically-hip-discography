@@ -1,7 +1,7 @@
 # Changelog
 
 ## v5.1
-**Grace, Too** - not yet released (local `v5-day-for-night` branch, on top of v5.0)
+**Grace, Too** - October 28, 2026
 - **Song pages** (`/song/<slug>`, e.g. `/song/grace-too`): every song on the official list gets its own page, built from `data/song-index.json` so a phone never downloads the 2 MB setlist file.
   - Story strip: times played live, live debut and latest performance (each linking to the show on the tour map), and how many Hip Archive recordings include the song
   - Plays by year (tap a bar for a year), albums (first release, then "Also on" with the live albums, compilations, box sets and videos), fan ranking with its podcast episode link, and every recording with a Play link
@@ -20,7 +20,7 @@
 ---
 
 ## v5.0
-**Day for Night** - not yet released (local `v5-day-for-night` branch)
+**Day for Night** - October 28, 2026 ('Bring It All Back' opens October 30)
 - **Yer Hip Passport** (`/my-shows`, label "In View"): the old My Concert History is now its own page (`passport.html`). Totals, rarities (songs played live under 10 times), most-heard songs, a Leaflet map of venues, the show list with remove buttons, and a checklist against the official song list (191 songs, 168 played live per setlist.fm).
   - Old `#cat=myshows` links still forward to `/my-shows`
   - `getSession()` in `tth-member-gate.js` now returns a `guest` flag
@@ -33,7 +33,7 @@
   - End screen reveals the show with "Play this show" (when recorded) and "View on map", plus played, win %, streak, best, guess distribution, and a countdown to the next puzzle
   - "Copy my score" (and Share where the phone supports it) with no spoilers
   - Saved on the device only (`tth_bia_v1`); anonymous Umami events `Game - Started`, `Game - Won`, `Game - Lost`, `Game - Shared`
-  - Puzzle #1 date is `EPOCH` in `js/bring-it-all-back.js` - set to launch day before shipping
+  - Opens **October 30, 2026** (puzzle #1; `EPOCH` in `js/bring-it-all-back.js`). Until then the page says when it opens instead of showing a puzzle, and puzzle numbers count up from that day.
   - `?day=N` and `?reset=1` work on local addresses only
 - **Data scripts**: `build-canonical-songs.js`, `build-show-index.js`, `build-game-pool.js`
 - Service worker cache bumped to `thc-v5.0` and precaches the game; sitemap lists `/bring-it-all-back`; footer version label bumped to v5.0

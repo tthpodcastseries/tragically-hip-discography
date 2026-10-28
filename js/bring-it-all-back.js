@@ -6,9 +6,9 @@
   const $ = id => document.getElementById(id);
   const track = name => { try { if (window.umami && window.umami.track) window.umami.track(name); } catch (e) { /* analytics optional */ } };
 
-  // Date of puzzle #1. Set to the real launch day before shipping.
-  // Before this date every day shows puzzle #1.
-  const EPOCH = '2026-11-01';
+  // Date of puzzle #1 - the game opens this day (local time). Before it the page
+  // says when the game opens instead of showing a puzzle.
+  const EPOCH = '2026-10-30';
   const MAX_GUESSES = 5;
   const STORE_KEY = 'tth_bia_v1';
   const SHARE_URL = 'thehiphandbook.tthpods.com/bring-it-all-back';
@@ -35,11 +35,18 @@
 
   // ─── Which puzzle is today ───
   const localDayNumber = d => Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
-  const naturalPuzzleNo = () => {
-    const p = EPOCH.split('-');
-    return Math.max(1, localDayNumber(new Date()) - Math.floor(Date.UTC(+p[0], +p[1] - 1, +p[2]) / 86400000) + 1);
-  };
+  const epochParts = EPOCH.split('-');
+  const epochDay = Math.floor(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]) / 86400000);
+  const naturalPuzzleNo = () => Math.max(1, localDayNumber(new Date()) - epochDay + 1);
   const puzzleNo = forcedDay || naturalPuzzleNo();
+
+  // Not open yet: say when, and open itself when the day arrives
+  if (!forcedDay && localDayNumber(new Date()) < epochDay) {
+    $('biaLoading').textContent = 'Bring It All Back opens ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One real Hip setlist a day - come back then.';
+    const now = new Date();
+    setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
+    return;
+  }
 
   // ─── Load the pool ───
   let pool;
