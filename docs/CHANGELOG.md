@@ -1,5 +1,25 @@
 # Changelog
 
+## v4.8
+**Fully Completely** - October 28, 2026
+- **Friendlier member gate, ahead of the Oct 29 promo**: Umami showed 88% of visitors on home (where the gate sits) and a 58% bounce rate. The gate read like a paywall: "Members Only", a login form first, and Browse as Guest as a faint button below the fold on phones.
+  - Now guest-first: "Free for every Hip fan" / Yer Handbook / "Every release, 1,358 live shows, lyrics, and rare recordings. No account needed." with a big **Start exploring** button at the top
+  - membersHIP sign-in sits below as an option: first name and number side by side, an "Unlock yer shows" button, "No number yet? Get one free - takes 10 seconds.", and a one-line "Why grab one?"
+  - "No email. No password. Nothing to buy." - all true: the claim form asks for name and favourite song only, and Umami is cookieless
+  - Whole gate fits one phone screen (375x812); no more auto-focus popping the keyboard over the Start button (it still focuses the number field when arriving with a name pre-filled)
+- **Claim page** (`forum-invite.html`):
+  - Opens with "Hey, it's jD here." The "You've been invited" eyebrow and "early access" line are gone, since the promo is public.
+  - Says plainly that the Handbook is free without a number
+  - Last name is now "Last Name or Initial"
+  - Button reads "Get my number"
+  - New note on what's kept: "All I keep is yer name, yer favourite song if you share it, and yer number. No email, no password, no spam."
+  - "Fully Completely" now in album quotes, not italics
+- **Claiming a number signs you in**: the claim page writes the same session the gate does, so "Start exploring" opens the Handbook directly - no retyping the number. Shows collected while browsing as a guest carry over to the new number (saved via `update_attended_shows`).
+- **Gate analytics** (anonymous Umami events, names only - never names or numbers): `Gate - Shown`, `Gate - Start exploring`, `Gate - Member unlock`, `Gate - Unlock failed`, `Gate - Claim click`, `Claim - Number claimed`. Redirect events wait up to 800ms for Umami so the reload never hangs.
+- Service worker cache bumped to `thc-v4.8`; footer version label bumped to v4.8
+
+---
+
 ## v4.7
 **We'll Go, Too** - October 28, 2026
 - **Four features get their own pages**: Lyrics Search, Setlist Explorer, the Fan-Ranked Top 40, and My Concert History each have a clean address and a standard page header, showing only that feature:

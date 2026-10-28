@@ -172,6 +172,12 @@
       margin-top: 0.5rem;
       min-height: 1.2em;
     }
+    .privacy-note {
+      font-size: 0.75rem;
+      color: #909090;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+    }
 
     /* --- REVEAL SCREEN --- */
     .membership-number {
@@ -244,15 +250,14 @@
 
   <!-- SCREEN 1: Welcome + Form -->
   <div id="screen-welcome" class="screen active">
-    <div class="eyebrow">You've been invited</div>
+    <div class="eyebrow">Free for every Hip fan</div>
     <h1>Claim Yer <span>membersHIP</span></h1>
 
     <div class="welcome-text">
-      <p>Hey man, thanks for being here.</p>
-      <p>The <strong>Hip Handbook</strong> is the fan-built home for everything Tragically Hip - the discography, the live tour archive, unplucked gems, video archives, lyrics, all of it.</p>
-      <p>Whether you've been listening since '89 or you just discovered <em>Fully Completely</em> last week, you belong here.</p>
-      <p>To unlock it, you'll need a <strong>membersHIP</strong> number. Drop yer name below and I'll set you up.</p>
-      <p>You're getting early access. Not everybody has this link yet.</p>
+      <p>Hey, it's jD here. Thanks for being here.</p>
+      <p>The <strong>Hip Handbook</strong> is the fan-built home for everything Tragically Hip - the discography, the live tour archive, unplucked gems, video archives, lyrics, all of it. It's free, and you can explore every bit of it without a number.</p>
+      <p>Whether you've been listening since '89 or you just discovered "Fully Completely" last week, you belong here.</p>
+      <p>A <strong>membersHIP</strong> number lets you save the Hip shows you were at and build yer own concert history, on any device. Drop yer name below and I'll set you up.</p>
     </div>
 
     <div class="form-row">
@@ -261,8 +266,8 @@
         <input type="text" id="first-name" placeholder="Gord" required>
       </div>
       <div class="form-group">
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" placeholder="Downie" required>
+        <label for="last-name">Last Name or Initial</label>
+        <input type="text" id="last-name" placeholder="D." required>
       </div>
     </div>
 
@@ -271,11 +276,12 @@
         <label for="fav-song">Yer Favourite Song</label>
         <span class="skip-hint">Optional - skip if you can't pick just one</span>
       </div>
-      <input type="text" id="fav-song" placeholder="Ahead By A Century">
+      <input type="text" id="fav-song" placeholder="Ahead by a Century">
     </div>
 
-    <button class="btn-connect" id="btn-connect" onclick="handleConnect()">Connect</button>
+    <button class="btn-connect" id="btn-connect" onclick="handleConnect()">Get my number</button>
     <div class="error-msg" id="error-msg"></div>
+    <p class="privacy-note">All I keep is yer name, yer favourite song if you share it, and yer number. No email, no password, no spam.</p>
   </div>
 
   <!-- SCREEN 2: Reveal -->
@@ -286,11 +292,11 @@
     <div class="reveal-greeting" id="reveal-greeting">Yer in, friend.</div>
 
     <div class="welcome-text">
-      <p>That number's yours. You're one of the first people through the door and that's not nothing.</p>
-      <p><strong>Screenshot this page or write it down.</strong> You'll need yer first name and this number every time you unlock the Handbook.</p>
+      <p>That number's yours, and you're already signed in on this device.</p>
+      <p><strong>Keep it handy.</strong> You'll need yer first name and this number to sign in on another phone or computer.</p>
     </div>
 
-    <a class="btn-connect" id="btn-unlock" href="/">Unlock the Handbook &rarr;</a>
+    <a class="btn-connect" id="btn-unlock" href="/">Start exploring &rarr;</a>
 
     <div class="signoff">
       <strong>- jD</strong><br>
@@ -321,12 +327,12 @@
     errEl.textContent = '';
 
     if (!firstName || !lastName) {
-      errEl.textContent = 'First and last name are required.';
+      errEl.textContent = 'Add yer first name and a last name or initial.';
       return;
     }
 
     btn.disabled = true;
-    btn.textContent = 'Connecting...';
+    btn.textContent = 'Getting yer number...';
 
     try {
       if (!sb) throw new Error('Still loading - try again in a sec.');
@@ -349,11 +355,29 @@
       document.getElementById('reveal-greeting').textContent =
         "Yer in, " + firstName + ". You're membersHIP #" + num + ".";
 
-      // Pre-fill the gate with their first name so they only have to type the number.
-      document.getElementById('btn-unlock').setAttribute(
-        'href',
-        '/?first=' + encodeURIComponent(firstName)
-      );
+      // Sign them straight in (v4.8) - same session shape tth-member-gate.js
+      // writes on unlock, so the Handbook opens without retyping the number.
+      // Shows they collected as a guest carry over to the new number.
+      var guestShows = [];
+      try {
+        var prev = JSON.parse(localStorage.getItem('tth_member_session') || 'null');
+        if (prev && prev.guest && Array.isArray(prev.attendedShows)) guestShows = prev.attendedShows.map(String);
+      } catch (e2) { /* no prior session */ }
+      try {
+        localStorage.setItem('tth_member_session', JSON.stringify({
+          memberNumber: num,
+          firstName: firstName,
+          attendedShows: guestShows,
+          unlockedAt: Date.now()
+        }));
+      } catch (e3) { /* storage blocked - they can still sign in with the number */ }
+      if (guestShows.length) {
+        sb.rpc('update_attended_shows', { p_first_name: firstName, p_number: num, p_shows: guestShows })
+          .then(function () {}, function () {});
+      }
+      if (window.umami && typeof window.umami.track === 'function') {
+        try { window.umami.track('Claim - Number claimed'); } catch (e4) {}
+      }
 
       document.getElementById('screen-welcome').classList.remove('active');
       document.getElementById('screen-reveal').classList.add('active');
@@ -362,7 +386,7 @@
     } catch (e) {
       errEl.textContent = e.message || 'Something went wrong. Try again.';
       btn.disabled = false;
-      btn.textContent = 'Connect';
+      btn.textContent = 'Get my number';
     }
   }
 </script>

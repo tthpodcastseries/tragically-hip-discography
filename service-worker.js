@@ -1,5 +1,4 @@
-// -r2: v4.7 renamed to We'll Go, Too - bump so cached visitors get the new footer label
-const CACHE_NAME = 'thc-v4.7-r2';
+const CACHE_NAME = 'thc-v4.8';
 const CORE_ASSETS = [
   // HTML pages
   '/',

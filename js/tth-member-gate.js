@@ -191,71 +191,93 @@
   (document.head || document.documentElement).appendChild(hideStyle);
 
   var gateCss = [
-    '#tth-member-gate { position:fixed; inset:0; z-index:2147483647; background:#0e0b16; display:flex; align-items:center; justify-content:center; padding:2rem 1rem; font-family:Poppins,sans-serif; overflow-y:auto; visibility:visible !important; }',
+    '#tth-member-gate { position:fixed; inset:0; z-index:2147483647; background:#0e0b16; display:flex; align-items:flex-start; justify-content:center; padding:2rem 1rem; font-family:Poppins,sans-serif; overflow-y:auto; visibility:visible !important; }',
     '#tth-member-gate::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%); pointer-events:none; }',
-    '#tth-member-gate .mg-card { position:relative; max-width:460px; width:100%; text-align:center; }',
-    '#tth-member-gate .mg-maple { font-size:2rem; display:block; margin-bottom:14px; }',
-    '#tth-member-gate .mg-eyebrow { text-transform:uppercase; font-size:0.7rem; font-weight:600; letter-spacing:3px; color:#C8102E; margin-bottom:0.75rem; }',
-    '#tth-member-gate .mg-title { font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#fff; line-height:1.15; margin:0 0 0.75rem; }',
+    '#tth-member-gate .mg-card { position:relative; max-width:440px; width:100%; text-align:center; margin:auto 0; }',
+    '#tth-member-gate .mg-maple { font-size:2rem; display:block; margin-bottom:12px; }',
+    '#tth-member-gate .mg-eyebrow { text-transform:uppercase; font-size:0.7rem; font-weight:600; letter-spacing:3px; color:#CCA23C; margin-bottom:0.6rem; }',
+    '#tth-member-gate .mg-title { font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#fff; line-height:1.15; margin:0 0 0.6rem; }',
     '#tth-member-gate .mg-title span { color:#C8102E; }',
-    '#tth-member-gate .mg-sub { font-size:0.9rem; line-height:1.6; color:#b0b0b0; margin:0 0 1.75rem; }',
-    '#tth-member-gate .mg-sub a { color:#CCA23C; text-decoration:none; font-weight:600; }',
-    '#tth-member-gate .mg-sub a:hover { text-decoration:underline; }',
-    '#tth-member-gate form { display:flex; flex-direction:column; gap:1rem; text-align:left; }',
-    '#tth-member-gate label { font-size:0.7rem; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:#d9d9d9; margin-bottom:0.4rem; display:block; }',
-    '#tth-member-gate label.mg-label-cased { text-transform:none; letter-spacing:0.5px; font-size:0.75rem; }',
-    '#tth-member-gate input { width:100%; padding:0.9rem 1rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
-    '#tth-member-gate input:focus { outline:none; border-color:#CCA23C; }',
-    '#tth-member-gate button { width:100%; padding:1rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; transition:background 0.15s; margin-top:0.5rem; }',
+    '#tth-member-gate .mg-sub { font-size:0.92rem; line-height:1.6; color:#d9d9d9; margin:0 0 1.4rem; }',
+    '#tth-member-gate a { color:#CCA23C; text-decoration:none; font-weight:600; }',
+    '#tth-member-gate a:hover { text-decoration:underline; }',
+    '#tth-member-gate button { width:100%; padding:1rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; transition:background 0.15s, border-color 0.15s, color 0.15s; }',
     '#tth-member-gate button:hover:not(:disabled) { background:#a60d26; }',
     '#tth-member-gate button:disabled { opacity:0.6; cursor:not-allowed; }',
+    '#tth-member-gate .mg-start { font-size:1.05rem; padding:1.1rem; }',
+    '#tth-member-gate .mg-member { margin-top:1.75rem; padding-top:1.4rem; border-top:1px solid #2a2a2a; text-align:left; }',
+    // No uppercase on these - it would flatten the membersHIP brand casing
+    '#tth-member-gate .mg-member-title { font-size:0.95rem; font-weight:700; color:#fff; margin:0 0 0.85rem; text-align:center; }',
+    '#tth-member-gate form { display:flex; flex-direction:column; gap:0.75rem; }',
+    '#tth-member-gate .mg-fields { display:flex; gap:0.6rem; }',
+    '#tth-member-gate .mg-fields > div { flex:1; min-width:0; }',
+    '#tth-member-gate label { font-size:0.72rem; font-weight:500; letter-spacing:0.5px; color:#d9d9d9; margin-bottom:0.35rem; display:block; }',
+    '#tth-member-gate input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
+    '#tth-member-gate input:focus { outline:none; border-color:#CCA23C; }',
+    '#tth-member-gate .mg-unlock { background:transparent; color:#CCA23C; border:1px solid rgba(204,162,60,0.6); font-size:0.85rem; padding:0.85rem; }',
+    '#tth-member-gate .mg-unlock:hover:not(:disabled) { background:rgba(204,162,60,0.1); border-color:#CCA23C; }',
     '#tth-member-gate .mg-err { color:#ff6b6b; font-size:0.85rem; min-height:1.2em; text-align:center; }',
-    '#tth-member-gate .mg-foot { margin-top:1.5rem; font-size:0.72rem; color:#707070; letter-spacing:0.08em; text-transform:uppercase; }',
-    '#tth-member-gate .mg-divider { display:flex; align-items:center; gap:1rem; margin:1.25rem 0 0.25rem; color:#707070; font-size:0.75rem; text-transform:uppercase; letter-spacing:1.5px; }',
-    '#tth-member-gate .mg-divider::before, #tth-member-gate .mg-divider::after { content:""; flex:1; height:1px; background:#2a2a2a; }',
-    '#tth-member-gate .mg-guest-btn { width:100%; padding:0.9rem 1rem; background:transparent; color:#b0b0b0; border:1px solid #2a2a2a; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:border-color 0.15s, color 0.15s; }',
-    '#tth-member-gate .mg-guest-btn:hover { border-color:#CCA23C; color:#CCA23C; }',
-    '#tth-member-gate .mg-why { text-align:left; background:#141414; border:1px solid #2a2a2a; border-radius:10px; padding:1rem 1.1rem; margin:0 0 1.5rem; }',
-    // No uppercase here - it would flatten the membersHIP brand casing
-    '#tth-member-gate .mg-why-title { font-size:0.82rem; font-weight:700; letter-spacing:0.3px; color:#CCA23C; margin:0 0 0.6rem; }',
-    '#tth-member-gate .mg-why ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.55rem; }',
-    '#tth-member-gate .mg-why li { font-size:0.82rem; line-height:1.5; color:#b0b0b0; }',
-    '#tth-member-gate .mg-why li b { color:#fff; font-weight:600; }'
+    '#tth-member-gate .mg-claim { font-size:0.85rem; color:#b0b0b0; text-align:center; margin:0.25rem 0 0; }',
+    '#tth-member-gate .mg-why { font-size:0.8rem; line-height:1.55; color:#b0b0b0; background:#141414; border:1px solid #2a2a2a; border-radius:10px; padding:0.85rem 1rem; margin:1rem 0 0; }',
+    '#tth-member-gate .mg-why b { color:#fff; font-weight:600; }',
+    '#tth-member-gate .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1.25rem; text-align:center; }'
   ].join('\n');
 
+  // Guest-first layout (v4.8): the big button lets anyone straight in; the
+  // membersHIP sign-in sits below it as an option, never a wall.
   var gateHtml =
     '<style>' + gateCss + '</style>' +
     '<div class="mg-card">' +
       '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
-      '<div class="mg-eyebrow">Members Only</div>' +
+      '<div class="mg-eyebrow">Free for every Hip fan</div>' +
       '<h1 class="mg-title">Yer <span>Handbook</span></h1>' +
-      '<p class="mg-sub">Enter yer first name and membersHIP number to unlock.<br>No number yet? <a href="/forum-invite.html">Grab one here.</a></p>' +
-      // Why a number beats Browse as Guest - members' shows sync via
-      // update_attended_shows; guest shows never leave the device (v4.6)
-      '<div class="mg-why">' +
-        '<p class="mg-why-title">Why get a membersHIP number?</p>' +
-        '<ul>' +
-          '<li><b>Collect yer shows.</b> Tick off every Hip gig you were at and build yer own concert history.</li>' +
-          '<li><b>They\'re saved to yer number.</b> Yer shows follow you to any phone, tablet, or computer.</li>' +
-          '<li><b>Guests start from scratch.</b> Browsing as a guest works, but any shows you collect stay on this one device and are gone if you clear yer browser or sign out.</li>' +
-        '</ul>' +
+      '<p class="mg-sub">Every release, 1,358 live shows, lyrics, and rare recordings. No account needed.</p>' +
+      '<button id="mg-guest-btn" class="mg-start" type="button">Start exploring</button>' +
+      '<div class="mg-member">' +
+        '<p class="mg-member-title">Got a membersHIP number?</p>' +
+        '<form id="mg-form" novalidate autocomplete="on">' +
+          '<div class="mg-fields">' +
+            '<div>' +
+              '<label for="mg-first">First name</label>' +
+              '<input id="mg-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required>' +
+            '</div>' +
+            '<div>' +
+              '<label for="mg-num">membersHIP number</label>' +
+              '<input id="mg-num" name="member_number" type="text" inputmode="numeric" pattern="[0-9]{1,7}" maxlength="7" autocomplete="off" required>' +
+            '</div>' +
+          '</div>' +
+          '<div class="mg-err" id="mg-err" role="alert"></div>' +
+          '<button id="mg-btn" class="mg-unlock" type="submit">Unlock yer shows</button>' +
+        '</form>' +
+        '<p class="mg-claim">No number yet? <a id="mg-claim-link" href="/forum-invite.html">Get one free - takes 10 seconds.</a></p>' +
+        // Members' shows sync via update_attended_shows; guest shows never leave the device
+        '<p class="mg-why"><b>Why grab one?</b> Save the Hip shows you were at and build yer own concert history, on any device. As a guest, yer shows stay on this one device.</p>' +
       '</div>' +
-      '<form id="mg-form" novalidate autocomplete="on">' +
-        '<div>' +
-          '<label for="mg-first">First name</label>' +
-          '<input id="mg-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required>' +
-        '</div>' +
-        '<div>' +
-          '<label for="mg-num" class="mg-label-cased">membersHIP number</label>' +
-          '<input id="mg-num" name="member_number" type="text" inputmode="numeric" pattern="[0-9]{1,7}" maxlength="7" autocomplete="off" required>' +
-        '</div>' +
-        '<div class="mg-err" id="mg-err" role="alert"></div>' +
-        '<button id="mg-btn" type="submit">Unlock</button>' +
-      '</form>' +
-      '<div class="mg-divider">or</div>' +
-      '<button id="mg-guest-btn" class="mg-guest-btn" type="button">Browse as Guest</button>' +
-      '<div class="mg-foot">The Hip Handbook</div>' +
+      '<p class="mg-privacy">No email. No password. Nothing to buy.</p>' +
     '</div>';
+
+  // Anonymous Umami events (v4.8) so we can see where visitors drop off at the
+  // gate. Event names only - never names or numbers. Umami loads deferred, so
+  // wait for it briefly; resolves within 800ms either way so redirects never hang.
+  function track(name) {
+    return new Promise(function (resolve) {
+      var done = false;
+      function finish() { if (!done) { done = true; resolve(); } }
+      setTimeout(finish, 800);
+      (function attempt(tries) {
+        if (window.umami && typeof window.umami.track === 'function') {
+          try {
+            var p = window.umami.track(name);
+            if (p && typeof p.then === 'function') p.then(finish, finish); else finish();
+          } catch (e) { finish(); }
+        } else if (tries > 0) {
+          setTimeout(function () { attempt(tries - 1); }, 100);
+        } else {
+          finish();
+        }
+      })(50);
+    });
+  }
 
   function mountGate() {
     if (!document.body) {
@@ -289,14 +311,19 @@
       }
     } catch (e) { /* ignore */ }
 
+    // Only jump into the form for someone arriving with a name to finish -
+    // auto-focusing it for everyone popped the phone keyboard over the
+    // Start exploring button (v4.8)
     if (prefillFirst) {
       firstEl.value = prefillFirst;
       setTimeout(function () { try { numEl.focus(); } catch (e) {} }, 60);
-    } else {
-      setTimeout(function () { try { firstEl.focus(); } catch (e) {} }, 60);
     }
 
-    document.getElementById('mg-guest-btn').addEventListener('click', function () {
+    track('Gate - Shown');
+
+    var guestBtn = document.getElementById('mg-guest-btn');
+    guestBtn.addEventListener('click', function () {
+      guestBtn.disabled = true;
       session = {
         memberNumber: GUEST_NUMBER,
         firstName: GUEST_FIRST_NAME,
@@ -305,7 +332,13 @@
         guest: true
       };
       persistLocal();
-      location.reload();
+      track('Gate - Start exploring').then(function () { location.reload(); });
+    });
+
+    document.getElementById('mg-claim-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = this.href;
+      track('Gate - Claim click').then(function () { location.href = href; });
     });
 
     form.addEventListener('submit', function (e) {
@@ -353,11 +386,12 @@
         };
         persistLocal();
         // Reload so the rest of the page boots with the session in place.
-        location.reload();
+        track('Gate - Member unlock').then(function () { location.reload(); });
       }).catch(function (err) {
         errEl.textContent = (err && err.message) || 'Something went wrong. Try again.';
         btn.disabled = false;
-        btn.textContent = 'Unlock';
+        btn.textContent = 'Unlock yer shows';
+        track('Gate - Unlock failed');
       });
     });
   }
