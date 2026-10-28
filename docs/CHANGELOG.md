@@ -1,8 +1,27 @@
 # Changelog
 
+## v5.1
+**Grace, Too** - not yet released (local `v5-day-for-night` branch, on top of v5.0)
+- **Song pages** (`/song/<slug>`, e.g. `/song/grace-too`): every song on the official list gets its own page, built from `data/song-index.json` so a phone never downloads the 2 MB setlist file.
+  - Story strip: times played live, live debut and latest performance (each linking to the show on the tour map), and how many Hip Archive recordings include the song
+  - Plays by year (tap a bar for a year), albums (first release, then "Also on" with the live albums, compilations, box sets and videos), fan ranking with its podcast episode link, and every recording with a Play link
+  - All live performances grouped by year, each linking to the tour map
+  - Copy-link button; page title, description and canonical address are set per song
+  - Songs with no live plays on record say so rather than showing an empty page
+  - `/song` with no slug (or an unknown one) lists all 191 songs with a filter box
+  - Setlist numbers are setlist.fm's and can be incomplete; the page says so
+- **Podcast links** come from the data already on the site: ranks 1-40 link their TTHTop40 Countdown episode, ranks 41-169 link their Road to the Top 40 episode. No other songs have an episode link yet - that needs a mapping from jD.
+- **Links in**: Passport checklist songs link to their pages; old `discography.html#song=<title>` links forward to the song page; the discography song view gets a "Full song page" button
+- **Fixed: 'Dare Devil (Reprise)' claimed every play of 'Daredevil'** in `build-canonical-songs.js` (it stripped the bracket, landing on 'Daredevil's setlist key). It now has no live plays, so the Passport checklist is 168 songs, not 169, and ticking a 'Daredevil' show no longer ticks both. `data/canonical-songs.json` patched to match.
+- Routing: `/song` and `/song/*` rewrite to `song.html` in `_redirects` and `netlify.toml`. `audit-site.js` now understands `/*` rewrites. Locally (no rewrites) use `/song?s=<slug>`.
+- `scripts/build-song-index.js` writes `data/song-index.json` and the song block in `sitemap.xml` (191 URLs, between `songs:start` and `songs:end` markers). It checks every song's play count against `canonical-songs.json`.
+- Service worker cache bumped to `thc-v5.1`, precaches the song page and index, and serves `song.html` for an unvisited `/song/<slug>` when offline; footer version label bumped to v5.1
+
+---
+
 ## v5.0
 **Day for Night** - not yet released (local `v5-day-for-night` branch)
-- **Yer Hip Passport** (`/my-shows`, label "In View"): the old My Concert History is now its own page (`passport.html`). Totals, rarities (songs played live under 10 times), most-heard songs, a Leaflet map of venues, the show list with remove buttons, and a checklist against the official song list (191 songs, 169 played live per setlist.fm).
+- **Yer Hip Passport** (`/my-shows`, label "In View"): the old My Concert History is now its own page (`passport.html`). Totals, rarities (songs played live under 10 times), most-heard songs, a Leaflet map of venues, the show list with remove buttons, and a checklist against the official song list (191 songs, 168 played live per setlist.fm).
   - Old `#cat=myshows` links still forward to `/my-shows`
   - `getSession()` in `tth-member-gate.js` now returns a `guest` flag
 - **Share card in three sizes**: Facebook 1200x630, Instagram post 1080x1350, Instagram story 1080x1920, with a size picker

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songs - The Hip Handbook</title>
+  <meta name="description" content="Every Tragically Hip song on an official release: live debut, latest performance, plays by year, albums, and every recording in the Hip Archive.">
+  <meta property="og:title" content="Songs - The Hip Handbook">
+  <meta property="og:description" content="Live debut, latest performance, plays by year, and every Hip Archive recording for every Hip song.">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/song">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/song">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/song.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="page-header">
+  <div class="subtitle" id="spLabel">Song</div>
+  <h1 id="spTitle">Songs</h1>
+  <p class="header-desc" id="spDesc">Every Hip song on an official release.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+</header>
+
+<main id="main-content" class="sp">
+  <div id="spLoading" class="sp-note">Dropping the needle...</div>
+  <div id="spError" class="sp-note sp-error" hidden>Couldn't load the song data. Check yer connection and refresh.</div>
+
+  <div id="spSong" hidden>
+    <section id="spStats" class="sp-stats" aria-label="Live history"></section>
+    <p id="spNever" class="sp-card sp-never" hidden>No live performances on record for this one. setlist.fm has no setlist with it, so it may never have been played live, or the setlists may be incomplete.</p>
+
+    <section id="spYearsCard" class="sp-card" hidden aria-labelledby="spYearsH">
+      <h2 class="sp-h2" id="spYearsH">Plays by year</h2>
+      <div id="spYears" class="sp-years"></div>
+      <p id="spYearNote" class="sp-yearnote" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="spReleaseCard" class="sp-card" hidden aria-labelledby="spReleaseH">
+      <h2 class="sp-h2" id="spReleaseH">On record</h2>
+      <div id="spRelease"></div>
+    </section>
+
+    <section id="spRankCard" class="sp-card" hidden aria-labelledby="spRankH">
+      <h2 class="sp-h2" id="spRankH">Fan ranking</h2>
+      <div id="spRank"></div>
+    </section>
+
+    <section id="spRecCard" class="sp-card" hidden aria-labelledby="spRecH">
+      <h2 class="sp-h2" id="spRecH">Hip Archive recordings</h2>
+      <p id="spRecIntro" class="sp-sub"></p>
+      <ul id="spRec" class="sp-list"></ul>
+      <button id="spRecMore" class="sp-more" type="button" hidden></button>
+    </section>
+
+    <details id="spAll" class="sp-card sp-all" hidden>
+      <summary id="spAllSummary"></summary>
+      <div id="spAllBody"></div>
+    </details>
+
+    <div class="sp-actions">
+      <button id="spCopy" class="sp-btn" type="button">Copy link to this song</button>
+      <a class="sp-btn sp-btn-alt" href="/song">All songs</a>
+    </div>
+    <p class="sp-links">More: <a href="/setlists">Setlist Explorer</a> &middot; <a href="tour-map.html">Tour Map</a> &middot; <a href="/lyrics">Lyrics Search</a> &middot; <a href="/top-40">Fan-Ranked Top 40</a></p>
+    <p class="sp-source">Setlists from <a href="https://www.setlist.fm" target="_blank" rel="noopener noreferrer">setlist.fm</a>, which can be incomplete - a debut or latest play here may not be the true first or last. A song in a medley counts for each song. Recordings from <a href="https://www.thehiparchive.com" target="_blank" rel="noopener noreferrer">The Hip Archive</a> (Darrin Cappe).</p>
+  </div>
+
+  <div id="spIndex" hidden>
+    <p id="spIndexMsg" class="sp-card sp-never" hidden></p>
+    <label class="sp-filter" for="spFilter">Find a song</label>
+    <input id="spFilter" class="sp-input" type="search" autocomplete="off" placeholder="Start typing a title...">
+    <ul id="spIndexList" class="sp-index"></ul>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/song.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

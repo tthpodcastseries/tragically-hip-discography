@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.0 (Day for Night)';
+  var version = 'v5.1 (Grace, Too)';
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {

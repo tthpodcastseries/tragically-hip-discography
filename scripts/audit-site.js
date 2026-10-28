@@ -28,15 +28,21 @@ const notes = [];
 // 200 rewrites in _redirects (e.g. /setlists -> /discography.html) count as
 // real pages as long as their destination file exists (v4.7)
 const rewrites = new Map();
+const wildcardRewrites = []; // [prefix, destination], e.g. /song/* -> /song.html (v5.1)
 for (const line of fs.readFileSync(path.join(ROOT, '_redirects'), 'utf8').split('\n')) {
   const [from, to, status] = line.trim().split(/\s+/);
-  if (from && from.startsWith('/') && status === '200' && !from.includes('*')) rewrites.set(from, to);
+  if (!from || !from.startsWith('/') || status !== '200') continue;
+  if (!from.includes('*')) rewrites.set(from, to);
+  else if (from.endsWith('/*')) wildcardRewrites.push([from.slice(0, -1), to]);
 }
+const wildcardTarget = pathname => { const w = wildcardRewrites.find(([prefix]) => pathname.startsWith(prefix)); return w ? w[1] : null; };
 
 function existsLocal(ref) {
   const clean = decodeURIComponent(ref.split('#')[0].split('?')[0]).replace(/^\//, '');
   if (!clean) return true;
   if (rewrites.has('/' + clean)) return fs.existsSync(path.join(ROOT, rewrites.get('/' + clean).replace(/^\//, '')));
+  const wild = wildcardTarget('/' + clean);
+  if (wild) return fs.existsSync(path.join(ROOT, wild.replace(/^\//, '')));
   return fs.existsSync(path.join(ROOT, clean));
 }
 
@@ -75,7 +81,7 @@ for (const icon of manifest.icons || []) {
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 for (const m of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const pathname = new URL(m[1]).pathname;
-  if (rewrites.has(pathname)) {
+  if (rewrites.has(pathname) || wildcardTarget(pathname)) {
     if (!existsLocal(pathname)) problems.push(`sitemap.xml: rewrite target missing for -> ${m[1]}`);
     continue;
   }

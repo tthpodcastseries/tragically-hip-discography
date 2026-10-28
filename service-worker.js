@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v5.0';
+const CACHE_NAME = 'thc-v5.1';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -12,12 +12,14 @@ const CORE_ASSETS = [
   '/live-stats.html',
   '/passport.html',
   '/bring-it-all-back.html',
+  '/song.html',
   '/forum-invite.html',
   '/404.html',
   // CSS
   '/css/shared.css',
   '/css/passport.css',
   '/css/bring-it-all-back.css',
+  '/css/song.css',
   '/css/home.css',
   '/css/discography.css',
   '/css/tour-map.css',
@@ -30,10 +32,12 @@ const CORE_ASSETS = [
   '/js/live-stats.js',
   '/js/passport.js',
   '/js/bring-it-all-back.js',
+  '/js/song.js',
   '/js/tth-member-gate.js',
   '/js/supabase.min.js',
   // Data
   '/data/discography.json',
+  '/data/song-index.json',
   '/data/lyrics.json',
   '/data/setlists.min.json',
   '/data/tth-tour-data.json',
@@ -79,7 +83,10 @@ self.addEventListener('fetch', event => {
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           return response;
         })
-        .catch(() => caches.match(event.request).then(r => r || caches.match('/404.html')))
+        .catch(() => caches.match(event.request)
+          // Offline on a song page not visited yet: song.html reads the slug from the address
+          .then(r => r || (url.pathname.startsWith('/song/') ? caches.match('/song.html') : null))
+          .then(r => r || caches.match('/404.html')))
     );
     return;
   }

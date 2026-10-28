@@ -2251,6 +2251,22 @@ function clearSongSearch() {
 }
 
 // Open a song's aggregate view from a #song=<title> permalink
+// Song pages (v5.1): every song on the official list has its own page at
+// /song/<slug>. data/song-index.json is loaded on demand to find a title's slug.
+let songPageIndex = null;
+function findSongPage(title) {
+  if (!songPageIndex) songPageIndex = fetch('data/song-index.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  const key = s => String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+  return songPageIndex.then(idx => {
+    const hit = idx && idx.songs.find(s => key(s.t) === key(title));
+    return hit ? hit.s : null;
+  });
+}
+// The local preview server has no rewrites, so there song.html takes ?s=<slug>
+function songPagePath(slug) {
+  return ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) ? '/song?s=' + slug : '/song/' + slug;
+}
+
 function openSongPermalink(rawTitle) {
   buildSongIndex();
   loadSetlistData();
@@ -2306,6 +2322,15 @@ function renderSongResults(songTitle) {
     }).catch(function() { window.prompt('Copy this link:', url); });
   });
   actionsRow.appendChild(copyBtn);
+  findSongPage(songTitle).then(function(slug) {
+    if (!slug) return;
+    const pageLink = document.createElement('a');
+    pageLink.className = 'search-clear-btn';
+    pageLink.style.cssText = 'margin:0;text-decoration:none;';
+    pageLink.href = songPagePath(slug);
+    pageLink.textContent = 'Full song page \u2192';
+    actionsRow.appendChild(pageLink);
+  });
   resultsEl.appendChild(actionsRow);
 
   // Keep the URL shareable: #song=<title> is this song's permalink
@@ -2744,7 +2769,11 @@ try {
   const songParam = params.get('song') || hashParams.get('song');
   if (songParam) {
     renderCategory(activeView ? activeView.category : 'studio');
-    setTimeout(() => { openSongPermalink(songParam); }, 50);
+    // Old #song=<title> permalinks forward to the song's own page when it has one
+    findSongPage(songParam).then(slug => {
+      if (slug) location.replace(songPagePath(slug));
+      else openSongPermalink(songParam);
+    });
   } else if (catParam === 'songsearch') {
     renderCategory('studio');
     const qParam = params.get('q') || hashParams.get('q');

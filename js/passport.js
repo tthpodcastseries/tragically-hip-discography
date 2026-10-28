@@ -23,6 +23,10 @@
   const M = window.TTHMember;
   if (!M || !M.getSession || !M.getSession()) return; // member gate is showing
 
+  // Same slug rule as scripts/build-song-index.js - every checklist song has a page at /song/<slug>
+  const songSlug = t => t.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/['\u2019]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
   const dateKey = d => { const p = d.split('-'); return p[2] + p[1] + p[0]; };
   const fmtDate = d => { const p = d.split('-'); return new Date(+p[2], +p[1] - 1, +p[0]).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' }); };
   const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
@@ -168,7 +172,7 @@
     $('ppCheckSub').textContent = 'You\'ve seen ' + d.seenPlayable + ' of ' + playable.length + ' songs live (' + pct + '%).';
     $('ppBarFill').style.width = pct + '%';
     $('ppBar').setAttribute('aria-valuenow', String(pct));
-    $('ppChecklist').innerHTML = playable.map(i => '<span class="pp-song' + (d.seen.has(i) ? ' seen' : '') + '">' + esc(songs[i].title) + '</span>').join('');
+    $('ppChecklist').innerHTML = playable.map(i => '<a class="pp-song' + (d.seen.has(i) ? ' seen' : '') + '" href="/song/' + songSlug(songs[i].title) + '">' + esc(songs[i].title) + '</a>').join('');
     $('ppChecklist').classList.toggle('only-missing', onlyMissing);
     $('ppNeverLive').textContent = neverLive + ' more songs on the official list have never been played live, per setlist.fm, so there\'s nothing to catch.';
 

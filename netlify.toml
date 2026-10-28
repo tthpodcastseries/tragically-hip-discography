@@ -25,6 +25,17 @@
   to = "/passport.html"
   status = 200
 
+# Song pages (v5.1) - /song/<slug> is served by song.html, which reads the slug
+[[redirects]]
+  from = "/song"
+  to = "/song.html"
+  status = 200
+
+[[redirects]]
+  from = "/song/*"
+  to = "/song.html"
+  status = 200
+
 [[redirects]]
   from = "/scripts/*"
   to = "/404.html"

@@ -97,7 +97,11 @@ async function main() {
   const out = [];
   const claimed = new Set();
   for (const [key, song] of songs) {
-    const keys = new Set([key, norm(song.title.replace(/\s*\(.*\)\s*$/, ''))]);
+    // The title before its bracket, unless that is another song's own title:
+    // 'Dare Devil (Reprise)' must not claim every play of 'Daredevil'
+    const stripped = norm(song.title.replace(/\s*\(.*\)\s*$/, ''));
+    const keys = new Set([key]);
+    if (stripped === key || !songs.has(stripped)) keys.add(stripped);
     const setlistKeys = [...keys].filter(k => playCount.has(k));
     setlistKeys.forEach(k => claimed.add(k));
     out.push({
