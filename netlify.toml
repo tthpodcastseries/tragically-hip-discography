@@ -2,6 +2,28 @@
 [build]
   publish = "."
 
+# Feature pages (v4.7) - served by discography.html, which switches into the
+# matching view from the path
+[[redirects]]
+  from = "/lyrics"
+  to = "/discography.html"
+  status = 200
+
+[[redirects]]
+  from = "/setlists"
+  to = "/discography.html"
+  status = 200
+
+[[redirects]]
+  from = "/top-40"
+  to = "/discography.html"
+  status = 200
+
+[[redirects]]
+  from = "/my-shows"
+  to = "/discography.html"
+  status = 200
+
 [[redirects]]
   from = "/scripts/*"
   to = "/404.html"

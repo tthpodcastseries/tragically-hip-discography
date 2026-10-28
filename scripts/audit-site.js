@@ -25,9 +25,18 @@ const problems = [];
 const warnings = [];
 const notes = [];
 
+// 200 rewrites in _redirects (e.g. /setlists -> /discography.html) count as
+// real pages as long as their destination file exists (v4.7)
+const rewrites = new Map();
+for (const line of fs.readFileSync(path.join(ROOT, '_redirects'), 'utf8').split('\n')) {
+  const [from, to, status] = line.trim().split(/\s+/);
+  if (from && from.startsWith('/') && status === '200' && !from.includes('*')) rewrites.set(from, to);
+}
+
 function existsLocal(ref) {
   const clean = decodeURIComponent(ref.split('#')[0].split('?')[0]).replace(/^\//, '');
   if (!clean) return true;
+  if (rewrites.has('/' + clean)) return fs.existsSync(path.join(ROOT, rewrites.get('/' + clean).replace(/^\//, '')));
   return fs.existsSync(path.join(ROOT, clean));
 }
 
@@ -65,7 +74,12 @@ for (const icon of manifest.icons || []) {
 // ---- 4. Sitemap ----
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 for (const m of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
-  let p = new URL(m[1]).pathname.replace(/^\//, '') || 'index.html';
+  const pathname = new URL(m[1]).pathname;
+  if (rewrites.has(pathname)) {
+    if (!existsLocal(pathname)) problems.push(`sitemap.xml: rewrite target missing for -> ${m[1]}`);
+    continue;
+  }
+  let p = pathname.replace(/^\//, '') || 'index.html';
   if (!p.endsWith('.html')) p += '.html';
   if (!fs.existsSync(path.join(ROOT, p))) problems.push(`sitemap.xml: no local page for -> ${m[1]}`);
 }

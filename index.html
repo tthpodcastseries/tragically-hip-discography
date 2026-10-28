@@ -57,7 +57,7 @@
       <h2 class="nav-group-title" id="navGroupListen">Listen</h2>
       <div class="nav-cards">
         <a href="discography.html" class="nav-card"><span class="nav-card-sub">Music @ Work</span><span class="nav-card-name">The Discography</span><span class="nav-card-desc">All 35 releases - studio albums, EPs, live records, box sets, and solo projects</span></a>
-        <a href="discography.html#cat=top40" class="nav-card"><span class="nav-card-sub">TTHTop40 Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from #1 to #169</span></a>
+        <a href="/top-40" class="nav-card"><span class="nav-card-sub">TTHTop40 Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from #1 to #169</span></a>
         <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-sub">Unplucked Gems</span><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-desc">545 demos, outtakes, and alternate versions from the vault</span></a>
       </div>
     </section>
@@ -65,8 +65,8 @@
       <h2 class="nav-group-title" id="navGroupLive">Live Shows</h2>
       <div class="nav-cards">
         <a href="tour-map.html" class="nav-card"><span class="nav-card-sub">About This Map</span><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-desc">Every gig from 1985 to 2016 on one map, with 625 shows you can play</span></a>
-        <a href="discography.html#cat=setlists" class="nav-card"><span class="nav-card-sub">Family Band</span><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-desc">Search 1,091 setlists by song, venue, city, or date</span></a>
-        <a href="discography.html#cat=myshows" class="nav-card"><span class="nav-card-sub">In View</span><span class="nav-card-name">My Concert History</span><span class="nav-card-desc">Mark the shows you were at and build your own Hip history</span></a>
+        <a href="/setlists" class="nav-card"><span class="nav-card-sub">Family Band</span><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-desc">Search 1,091 setlists by song, venue, city, or date</span></a>
+        <a href="/my-shows" class="nav-card"><span class="nav-card-sub">In View</span><span class="nav-card-name">My Concert History</span><span class="nav-card-desc">Mark the shows you were at and build your own Hip history</span></a>
         <a href="live-stats.html" class="nav-card"><span class="nav-card-sub">38 Years Old</span><span class="nav-card-name">Live Show Stats</span><span class="nav-card-desc">Most-played songs, openers and closers, one-timers, and the songs never played live</span></a>
       </div>
     </section>
@@ -80,7 +80,7 @@
     <section class="nav-group" aria-labelledby="navGroupDig">
       <h2 class="nav-group-title" id="navGroupDig">Dig Deeper</h2>
       <div class="nav-cards">
-        <a href="discography.html#cat=lyrics" class="nav-card"><span class="nav-card-sub">Poets</span><span class="nav-card-name">Lyrics Search</span><span class="nav-card-desc">Find any song by a line you remember</span></a>
+        <a href="/lyrics" class="nav-card"><span class="nav-card-sub">Poets</span><span class="nav-card-name">Lyrics Search</span><span class="nav-card-desc">Find any song by a line you remember</span></a>
         <a href="links.html" class="nav-card"><span class="nav-card-sub">Yer Hip Links</span><span class="nav-card-name">Fan Community Links</span><span class="nav-card-desc">Fan sites, podcasts, and the TTH community</span></a>
       </div>
     </section>
@@ -395,7 +395,7 @@
         opt.className = 'song-search-option';
         var highlighted = l.snippet.replace(new RegExp('(' + l.query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong style="color:var(--gold)">$1</strong>');
         opt.innerHTML = '<span class="opt-song">' + l.song + '</span><span class="opt-album">' + l.album + '</span><span class="opt-lyric">' + highlighted + '</span>';
-        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = 'discography.html#cat=lyrics&q=' + encodeURIComponent(l.query); });
+        opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = '/lyrics?q=' + encodeURIComponent(l.query); });
         searchDropdown.appendChild(opt);
       });
     }

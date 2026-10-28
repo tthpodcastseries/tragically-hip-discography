@@ -26,6 +26,19 @@ body { color: var(--text); }
 
 /* ─── HEADER ─── */
 /* Page header comes from .page-header in shared.css (v4.6) */
+
+/* Feature pages (v4.7): /lyrics, /setlists, /top-40, /my-shows show one
+   feature under its own header - hide the album chrome, and the in-section
+   title that would repeat the header */
+body.view-mode .page-header .song-search-autocomplete,
+body.view-mode .page-header .stats-row,
+body.view-mode .page-header nav,
+body.view-mode .section-label,
+body.view-mode .section-note,
+body.view-mode .section-line,
+body.view-mode #albumsGrid { display: none; }
+body.view-mode main { padding-top: 32px; }
+body.view-mode .section-header { margin-bottom: 0; }
 .stats-row { gap: 40px; margin-top: 32px; padding: 0; max-width: none; }
 .stat-num { font-size: 1.6rem; font-weight: 800; }
 .stat-lbl { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; }

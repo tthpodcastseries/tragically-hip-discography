@@ -2693,17 +2693,57 @@ catBtns.forEach((btn, idx) => {
   });
 });
 
+// Feature pages (v4.7): /lyrics, /setlists, /top-40 and /my-shows are Netlify
+// rewrites of this page (see _redirects). On those paths - or with ?view=<key>
+// for local testing - the page shows only that feature under its own header.
+const FEATURE_VIEWS = {
+  'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
+    desc: 'Search the lyrics of 169 Tragically Hip songs by a word or phrase you remember - and help complete the archive.' },
+  'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
+    desc: 'Browse all 1,358 live shows from 1985 to 2016 - 1,091 with full setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
+  'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'TTHTop40 Countdown',
+    desc: 'The songs fans voted the best in the 2024-25 countdown, with every ranking from #1 to #169.' },
+  'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',
+    desc: 'Mark the Hip shows you were at and build yer own concert history.' },
+};
+const featureByCategory = {};
+Object.keys(FEATURE_VIEWS).forEach(k => { featureByCategory[FEATURE_VIEWS[k].category] = FEATURE_VIEWS[k]; });
+
+const activeView = (() => {
+  const fromPath = location.pathname.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+  const fromParam = new URLSearchParams(location.search).get('view');
+  return FEATURE_VIEWS[fromPath] || FEATURE_VIEWS[fromParam] || null;
+})();
+
+if (activeView) {
+  document.body.classList.add('view-mode');
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  setText('pageSubtitle', activeView.label);
+  setText('pageTitle', activeView.title);
+  setText('pageDesc', activeView.desc);
+  document.title = activeView.title + ' - ' + activeView.label + ' - The Hip Handbook';
+  const canonical = document.querySelector('link[rel=canonical]');
+  if (canonical) canonical.href = 'https://thehiphandbook.tthpods.com' + activeView.path;
+}
+
 // Initial render
 // Default to studio, or handle deep links from index.html
 try {
   // Check both query params and hash params (hash survives pretty-URL redirects)
   const params = new URLSearchParams(window.location.search);
   const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-  const catParam = params.get('cat') || hashParams.get('cat');
+  const rawCatParam = params.get('cat') || hashParams.get('cat');
+  // Old links (discography.html#cat=setlists etc.) forward to the feature's own page
+  if (!activeView && featureByCategory[rawCatParam]) {
+    const q = params.get('q') || hashParams.get('q');
+    location.replace(featureByCategory[rawCatParam].path + (q ? '?q=' + encodeURIComponent(q) : ''));
+    throw new Error('redirecting');
+  }
+  const catParam = activeView ? activeView.category : rawCatParam;
   const albumParam = params.get('album') || hashParams.get('album');
   const songParam = params.get('song') || hashParams.get('song');
   if (songParam) {
-    renderCategory('studio');
+    renderCategory(activeView ? activeView.category : 'studio');
     setTimeout(() => { openSongPermalink(songParam); }, 50);
   } else if (catParam === 'songsearch') {
     renderCategory('studio');
@@ -2752,21 +2792,10 @@ try {
         if (idx >= 0) { currentAlbums = categoryData[catParam]; openModal(idx); }
       }, 50);
     }
-    // Home's Explore cards link here by #cat= - land on the feature itself,
-    // not the page header above it (v4.6)
-    const exploreSections = { lyrics: 'lyricsSection', setlists: 'setlistSection', myshows: 'myShowsSection', top40: 'top40Section' };
-    if (exploreSections[catParam] && !lyricsQ && !albumParam) {
-      setTimeout(() => {
-        const el = document.getElementById(exploreSections[catParam]);
-        // 'instant', not 'auto': html has scroll-behavior: smooth, and a smooth
-        // scroll this early gets cancelled while the page is still loading
-        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'instant' });
-      }, 300);
-    }
   } else {
     renderCategory('studio');
   }
-} catch(e) { console.error('Failed to render initial category:', e); }
+} catch(e) { if (e.message !== 'redirecting') console.error('Failed to render initial category:', e); }
 
 // Initialize song search (input is always in header)
 initSongSearch();
@@ -2786,6 +2815,8 @@ window.addEventListener('hashchange', function() {
     document.getElementById('songSearchResults').style.display = 'none';
     setSearchModeChrome(false);
     renderCategory(cat && categoryData[cat] ? cat : (currentCategory || 'studio'));
+  } else if (!activeView && featureByCategory[cat]) {
+    location.href = featureByCategory[cat].path;
   } else if (cat && categoryData[cat] && cat !== currentCategory) {
     renderCategory(cat);
   }
@@ -3213,7 +3244,7 @@ overlay.addEventListener('keydown', e => {
   if (signOut) signOut.addEventListener('click', () => { if (window.TTHMember) window.TTHMember.signOut(); });
   const goSetlists = document.getElementById('myShowsGotoSetlists');
   if (goSetlists) goSetlists.addEventListener('click', () => {
-    const btn = document.querySelector('[data-category=setlists]');
-    if (btn) btn.click();
+    // Setlist Explorer has its own page since v4.7
+    location.href = FEATURE_VIEWS['setlists'].path;
   });
 })();

@@ -1,5 +1,27 @@
 # Changelog
 
+## v4.7
+**Locked in the Trunk of a Car** - October 28, 2026
+- **Four features get their own pages**: Lyrics Search, Setlist Explorer, the Fan-Ranked Top 40, and My Concert History each have a clean address and a standard page header, showing only that feature:
+
+  | Address | Label | Title |
+  |---|---|---|
+  | `/lyrics` | Lyrics Search | Poets |
+  | `/setlists` | Setlist Explorer | Family Band |
+  | `/top-40` | Fan-Ranked Top 40 | TTHTop40 Countdown |
+  | `/my-shows` | My Concert History | In View |
+
+  - Built as Netlify 200 rewrites to `discography.html` (`_redirects` + `netlify.toml`). The script reads the path - or `?view=<key>` for local testing - and switches into that view: it swaps the header text, browser-tab title, and canonical URL, and hides the album chrome and repeated section titles (`body.view-mode`). This avoided splitting the 3,200-line discography script, whose features depend on shared modals, song views, and Random Hip Song.
+  - Old links forward: `discography.html#cat=lyrics|setlists|top40|myshows` replaces itself with the new address, carrying a lyrics `q=` search along
+  - My Concert History's "Setlist Explorer" button now links to `/setlists`
+- **Discography is albums only**: Studio, EPs, Solo Projects, Live, Compilations, Box Sets, and Video. The Explore tabs are gone (home's menu covers them), and the description now covers the albums only.
+- Home's Top 40, Setlist Explorer, My Concert History, and Lyrics Search cards, plus home-search lyrics results, point to the new addresses
+- Sitemap lists the four new addresses; `audit-site.js` now reads 200 rewrites from `_redirects` and treats them as real pages when their destination exists
+- Release names follow the "Fully Completely" track list in order: v4.6 used track 3 out of sequence; this one picks up after 'Lionized' (track 5)
+- Service worker cache bumped to `thc-v4.7`; footer version label bumped to v4.7
+
+---
+
 ## v4.6
 **At the Hundredth Meridian** - October 28, 2026
 - **Home page rebuilt as the front door**: title, the Kingston 2016 photo, a short welcome note from jD, search, then the menu. The menu used to start two screens down on a phone; it now starts on the first.

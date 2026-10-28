@@ -42,9 +42,10 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <header class="page-header">
-  <div class="subtitle">The Discography</div>
-  <h1>Music @ Work</h1>
-  <p class="header-desc">All 35 official releases - studio albums, EPs, live records, box sets, and solo projects - plus lyrics, setlists, the fan-ranked Top 40, and your own concert history.</p>
+  <!-- ids let the feature pages (/lyrics, /setlists, /top-40, /my-shows) swap in their own header (v4.7) -->
+  <div class="subtitle" id="pageSubtitle">The Discography</div>
+  <h1 id="pageTitle">Music @ Work</h1>
+  <p class="header-desc" id="pageDesc">All 35 official releases - studio albums, EPs, live records, box sets, and solo projects. Tap any album for its tracks, producer, and where to stream it.</p>
   <a href="index.html" class="back-link">&larr; Home</a>
   <div class="song-search-autocomplete" style="max-width:480px;margin:20px auto 0;">
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search for a Hip song..." autocomplete="off" aria-label="Search for a song" style="width:100%;">
@@ -62,9 +63,6 @@
     <div class="nav-row"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
     <div class="nav-row"><button class="category-btn" data-category="live" role="tab" aria-selected="false" aria-controls="albumsGrid">Live</button><button class="category-btn" data-category="compilations" role="tab" aria-selected="false" aria-controls="albumsGrid">Compilations</button></div>
     <div class="nav-row"><button class="category-btn" data-category="boxsets" role="tab" aria-selected="false" aria-controls="albumsGrid">Box Sets</button><button class="category-btn" data-category="video" role="tab" aria-selected="false" aria-controls="albumsGrid">Video</button></div>
-    <h2 class="nav-group-title" style="margin:20px 0 2px;">Explore</h2>
-    <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlist Explorer</button></div>
-    <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid">Fan-Ranked Top 40</button><button class="category-btn" data-category="myshows" role="tab" aria-selected="false" aria-controls="myShowsSection">My Concert History</button></div>
   </div></nav>
 </header>
 
