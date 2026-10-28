@@ -77,7 +77,7 @@ Show of the Day (in `index.html`'s inline script): picks one recorded show per d
 - `service-worker.js`: add `/bring-it-all-back.html`, `/css/bring-it-all-back.css`, `/js/bring-it-all-back.js` to `CORE_ASSETS` (the passport files are already there).
 - `sitemap.xml`: add `/bring-it-all-back`.
 - Add `data/game-pool.json` handling check: the service worker caches `/data/*.json` network-first, so nothing extra is needed.
-- Run `node scripts/audit-site.js --no-network` (must pass).
+- Run `node scripts/audit-site.js --no-network` (must pass). **Right now it fails on one line, `bring-it-all-back.html: missing internal ref -> /js/bring-it-all-back.js`** - that's expected until the game script exists, and it's the only failure.
 
 ### C. Test (phone 375x812 and laptop 1280x800)
 - Game: win on guess 1, win on guess 3, lose after 5; hint order; duplicate and out-of-range guesses; reload mid-game keeps state; stats and streak; copy/share text; countdown. Use `?day=N` on localhost.
