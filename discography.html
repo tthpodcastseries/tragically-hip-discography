@@ -41,16 +41,14 @@
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-<header>
-  <span class="maple" aria-hidden="true">🍁</span>
-  <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">HANDBOOK</span></h1>
-  <div class="song-search-autocomplete" style="max-width:480px;margin:12px auto 0;">
+<header class="page-header">
+  <div class="subtitle">The Discography</div>
+  <h1>Music @ Work</h1>
+  <p class="header-desc">All 35 official releases - studio albums, EPs, live records, box sets, and solo projects - plus lyrics, setlists, the fan-ranked Top 40, and your own concert history.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+  <div class="song-search-autocomplete" style="max-width:480px;margin:20px auto 0;">
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search for a Hip song..." autocomplete="off" aria-label="Search for a song" style="width:100%;">
     <div class="song-search-dropdown" id="songSearchDropdown"></div>
-  </div>
-  <div id="headerPhoto" style="max-width:600px;margin:20px auto 8px;">
-    <img src="assets-optimized/band/band-photo-5.jpg" alt="The Tragically Hip - band photo 5" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
-    <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
   </div>
   <div class="stats-row">
     <div class="stat"><div class="stat-num" id="statNum1"></div><div class="stat-lbl" id="statLbl1"></div></div>
@@ -59,7 +57,6 @@
     <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
   </div>
   <nav><div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
-    <div class="nav-row"><a href="index.html" class="category-btn page-link" style="flex:1;max-width:480px;">← Home</a></div>
     <div class="nav-row" role="none"><button class="category-btn random-song-btn" id="randomSongBtn" style="flex:1;max-width:480px;">Random Hip Song</button></div>
     <h2 class="nav-group-title" style="margin:20px 0 2px;">Albums &amp; Releases</h2>
     <div class="nav-row"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
@@ -68,17 +65,9 @@
     <h2 class="nav-group-title" style="margin:20px 0 2px;">Explore</h2>
     <div class="nav-row"><button class="category-btn" data-category="lyrics" role="tab" aria-selected="false" aria-controls="lyricsSection">Lyrics Search</button><button class="category-btn" data-category="setlists" role="tab" aria-selected="false" aria-controls="setlistSection">Setlist Explorer</button></div>
     <div class="nav-row"><button class="category-btn" data-category="top40" role="tab" aria-selected="false" aria-controls="albumsGrid">Fan-Ranked Top 40</button><button class="category-btn" data-category="myshows" role="tab" aria-selected="false" aria-controls="myShowsSection">My Concert History</button></div>
-    <div class="nav-row" style="margin-top:20px;"><a href="tour-map.html" class="category-btn page-link">Interactive Tour Map →</a><a href="links.html" class="category-btn page-link">Fan Community Links →</a></div>
   </div></nav>
 </header>
 
-<div class="on-this-day" id="onThisDay">
-  <div class="on-this-day-header">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-    <span id="onThisDayTitle">On This Day in Hip History</span>
-  </div>
-  <div id="onThisDayEvents"></div>
-</div>
 
 <main id="main-content">
   <div class="albums-grid" id="albumsGrid" role="tabpanel" aria-label="Album grid"></div>
@@ -223,99 +212,6 @@
 <footer id="site-footer"></footer>
 
 <script src="/js/discography-app.js"></script>
-<script>
-(async function() {
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var now = new Date();
-  var todayMonth = now.getMonth() + 1;
-  var todayDay = now.getDate();
-  var events = [];
-
-  try {
-    var resp = await fetch('data/discography.json');
-    if (!resp.ok) return;
-    var disc = await resp.json();
-
-    for (var i = 0; i < disc.albums.length; i++) {
-      var a = disc.albums[i];
-      if (!a.releaseDate) continue;
-      var match = a.releaseDate.match(/^(\w+)\s+(\d+),\s+(\d{4})$/);
-      if (match) {
-        var mIdx = MONTHS.indexOf(match[1]) + 1;
-        var d = parseInt(match[2]);
-        if (mIdx === todayMonth && d === todayDay) {
-          events.push({ year: parseInt(match[3]), tag: 'release', desc: '<b>' + a.title + '</b> (' + a.type + ') released.' });
-        }
-      }
-    }
-
-    if (disc.milestones) {
-      for (var j = 0; j < disc.milestones.length; j++) {
-        var m = disc.milestones[j];
-        if (m.month === todayMonth && m.day === todayDay) {
-          events.push({ year: m.year, tag: 'milestone', desc: m.desc });
-        }
-      }
-    }
-  } catch (e) { /* discography data unavailable */ }
-
-  try {
-    var setResp = await fetch('data/setlists.min.json');
-    if (setResp.ok) {
-      var setData = await setResp.json();
-      if (setData && setData.setlists) {
-        var dayStr = String(todayDay).padStart(2, '0');
-        var monthStr = String(todayMonth).padStart(2, '0');
-        var matches = setData.setlists.filter(function(s) {
-          var parts = s.date.split('-');
-          return parts[0] === dayStr && parts[1] === monthStr;
-        });
-        // Video availability for today's shows - only fetch the map when there are matches
-        var videoByShow = {};
-        if (matches.length) {
-          try {
-            var vResp = await fetch('data/show-videos.json');
-            if (vResp.ok) { var vData = await vResp.json(); videoByShow = (vData && vData.byShow) || {}; }
-          } catch (e2) { /* video map optional */ }
-        }
-        for (var k = 0; k < matches.length; k++) {
-          var s = matches[k];
-          var yr = parseInt(s.date.split('-')[2]);
-          var venue = s.venue || 'Unknown venue';
-          var loc = [s.city || '', s.state || '', s.country].filter(Boolean).join(', ');
-          var songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
-          var tourInfo = s.tour ? ' (' + s.tour + ')' : '';
-          var noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
-          var hasVideo = !!videoByShow[s.id];
-          // Only link when the tour map can actually show something (gigs span 1985-2016)
-          var linkable = !!s.id && yr >= 1985 && yr <= 2016 && (songCount > 0 || hasVideo);
-          events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + venue + '</b>, ' + loc + tourInfo + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist, showId: linkable ? s.id : null, hasVideo: hasVideo });
-        }
-      }
-    }
-  } catch (e) { /* setlist data unavailable */ }
-
-  events.sort(function(a, b) { return a.year - b.year; });
-
-  var container = document.getElementById('onThisDayEvents');
-  var wrapper = document.getElementById('onThisDay');
-  var titleEl = document.getElementById('onThisDayTitle');
-  titleEl.textContent = 'On This Day - ' + MONTHS[todayMonth - 1] + ' ' + todayDay;
-
-  if (events.length === 0) {
-    container.innerHTML = '<div class="otd-empty">No known Hip events on this date.</div>';
-  } else {
-    container.innerHTML = events.map(function(e) {
-      var inner = '<span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + (e.showId ? ' <span class="otd-view">' + (e.hasVideo ? '🎬 ' : '') + 'View show →</span>' : '') + '</span>';
-      if (e.showId) {
-        return '<a class="otd-event" href="tour-map.html#show=' + e.showId + '" title="Open this show on the Interactive Tour Map">' + inner + '</a>';
-      }
-      return '<div class="otd-event">' + inner + '</div>';
-    }).join('');
-  }
-  wrapper.style.display = 'block';
-})();
-</script>
 <script src="/js/shared-footer.js"></script>
 </body>
 </html>

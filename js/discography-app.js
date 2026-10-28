@@ -473,6 +473,8 @@ const categoryData = {
   solo: [],
   lyrics: [],
   setlists: [],
+  // Without this, home's #cat=myshows link fell back to Studio (fixed v4.6)
+  myshows: [],
 };
 
 const categoryStats = {
@@ -2655,7 +2657,9 @@ function renderCategory(category) {
 }
 
 // Category button click handlers + roving tabindex
-const catBtns = Array.from(document.querySelectorAll('.category-btn'));
+// [data-category] only: Random Hip Song shares the .category-btn style but
+// isn't a tab - clicking it used to call renderCategory(undefined) and throw
+const catBtns = Array.from(document.querySelectorAll('.category-btn[data-category]'));
 catBtns.forEach((btn, idx) => {
   btn.setAttribute('tabindex', idx === 0 ? '0' : '-1');
   btn.addEventListener('click', () => {
@@ -2747,6 +2751,17 @@ try {
         const idx = categoryData[catParam].findIndex(a => a.title === albumParam);
         if (idx >= 0) { currentAlbums = categoryData[catParam]; openModal(idx); }
       }, 50);
+    }
+    // Home's Explore cards link here by #cat= - land on the feature itself,
+    // not the page header above it (v4.6)
+    const exploreSections = { lyrics: 'lyricsSection', setlists: 'setlistSection', myshows: 'myShowsSection', top40: 'top40Section' };
+    if (exploreSections[catParam] && !lyricsQ && !albumParam) {
+      setTimeout(() => {
+        const el = document.getElementById(exploreSections[catParam]);
+        // 'instant', not 'auto': html has scroll-behavior: smooth, and a smooth
+        // scroll this early gets cancelled while the page is still loading
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'instant' });
+      }, 300);
     }
   } else {
     renderCategory('studio');

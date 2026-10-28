@@ -35,64 +35,66 @@
 <header>
   <span class="maple" aria-hidden="true">🍁</span>
   <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">HANDBOOK</span></h1>
+  <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
+  <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 8px;font-style:italic;">Photo: David Bastedo</p>
+  <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,358 live shows, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
   <div class="song-search-autocomplete">
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search songs, lyrics, shows..." autocomplete="off" aria-label="Search songs, lyrics, and shows">
     <div class="song-search-dropdown" id="songSearchDropdown"></div>
   </div>
-  <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
-  <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 8px;font-style:italic;">Photo: David Bastedo</p>
-  <div class="on-this-day" id="onThisDay">
-    <div class="on-this-day-header">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-      <span id="onThisDayTitle">On This Day in Hip History</span>
-    </div>
-    <div id="onThisDayEvents"></div>
-  </div>
 </header>
 
 <main id="main-content">
-  <div class="stats-row">
-    <div class="stat"><div class="stat-num">35</div><div class="stat-lbl">Official Releases</div></div>
-    <div class="stat"><div class="stat-num">1984-2016</div><div class="stat-lbl">Active Years</div></div>
-    <div class="stat"><div class="stat-num">Kingston</div><div class="stat-lbl">Ontario</div></div>
-    <div class="stat"><div class="stat-num">Canada's</div><div class="stat-lbl">Band</div></div>
-  </div>
-
   <nav aria-label="Main navigation" class="nav-groups">
+    <section class="nav-group" aria-labelledby="navGroupShuffle">
+      <h2 class="nav-group-title" id="navGroupShuffle">Shuffle</h2>
+      <div class="shuffle-row">
+        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
+        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 625 Hip Archive recordings</span></a>
+      </div>
+    </section>
     <section class="nav-group" aria-labelledby="navGroupListen">
       <h2 class="nav-group-title" id="navGroupListen">Listen</h2>
       <div class="nav-cards">
-        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-sub">Spin one from the catalogue</span></a>
-        <a href="discography.html" class="nav-card"><span class="nav-card-name">Browse the Discography</span><span class="nav-card-sub">Music @ Work</span></a>
-        <a href="discography.html#cat=top40" class="nav-card"><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-sub">TTHTop40 Countdown</span></a>
-        <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-sub">Unplucked Gems</span></a>
-        <a href="tour-map.html#play=random" class="nav-card"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-sub">One of 625 Hip Archive recordings</span></a>
+        <a href="discography.html" class="nav-card"><span class="nav-card-sub">Music @ Work</span><span class="nav-card-name">The Discography</span><span class="nav-card-desc">All 35 releases - studio albums, EPs, live records, box sets, and solo projects</span></a>
+        <a href="discography.html#cat=top40" class="nav-card"><span class="nav-card-sub">TTHTop40 Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from #1 to #169</span></a>
+        <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-sub">Unplucked Gems</span><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-desc">545 demos, outtakes, and alternate versions from the vault</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupLive">
       <h2 class="nav-group-title" id="navGroupLive">Live Shows</h2>
       <div class="nav-cards">
-        <a href="tour-map.html" class="nav-card"><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-sub">About This Map</span></a>
-        <a href="discography.html#cat=setlists" class="nav-card"><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-sub">Family Band</span></a>
-        <a href="discography.html#cat=myshows" class="nav-card"><span class="nav-card-name">My Concert History</span><span class="nav-card-sub">In View</span></a>
-        <a href="live-stats.html" class="nav-card"><span class="nav-card-name">Live Show Stats</span><span class="nav-card-sub">38 Years Old</span></a>
+        <a href="tour-map.html" class="nav-card"><span class="nav-card-sub">About This Map</span><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-desc">Every gig from 1985 to 2016 on one map, with 625 shows you can play</span></a>
+        <a href="discography.html#cat=setlists" class="nav-card"><span class="nav-card-sub">Family Band</span><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-desc">Search 1,091 setlists by song, venue, city, or date</span></a>
+        <a href="discography.html#cat=myshows" class="nav-card"><span class="nav-card-sub">In View</span><span class="nav-card-name">My Concert History</span><span class="nav-card-desc">Mark the shows you were at and build your own Hip history</span></a>
+        <a href="live-stats.html" class="nav-card"><span class="nav-card-sub">38 Years Old</span><span class="nav-card-name">Live Show Stats</span><span class="nav-card-desc">Most-played songs, openers and closers, one-timers, and the songs never played live</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupWatch">
       <h2 class="nav-group-title" id="navGroupWatch">Watch</h2>
       <div class="nav-cards">
-        <a href="video-for-new-recruits.html" class="nav-card"><span class="nav-card-name">Live Concert Videos</span><span class="nav-card-sub">Video For New Recruits</span></a>
-        <a href="music-videos.html" class="nav-card"><span class="nav-card-name">Official Music Videos</span><span class="nav-card-sub">They Shot A Movie Once</span></a>
+        <a href="video-for-new-recruits.html" class="nav-card"><span class="nav-card-sub">Video For New Recruits</span><span class="nav-card-name">Live Concert Videos</span><span class="nav-card-desc">380 fan-shot shows, soundboards, and broadcasts, sorted by era</span></a>
+        <a href="music-videos.html" class="nav-card"><span class="nav-card-sub">They Shot A Movie Once</span><span class="nav-card-name">Official Music Videos</span><span class="nav-card-desc">All 36 official videos, from 1987 to 2024</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupDig">
       <h2 class="nav-group-title" id="navGroupDig">Dig Deeper</h2>
       <div class="nav-cards">
-        <a href="discography.html#cat=lyrics" class="nav-card"><span class="nav-card-name">Lyrics Search</span><span class="nav-card-sub">Poets</span></a>
-        <a href="links.html" class="nav-card"><span class="nav-card-name">Fan Community Links</span><span class="nav-card-sub">Yer Hip Links</span></a>
+        <a href="discography.html#cat=lyrics" class="nav-card"><span class="nav-card-sub">Poets</span><span class="nav-card-name">Lyrics Search</span><span class="nav-card-desc">Find any song by a line you remember</span></a>
+        <a href="links.html" class="nav-card"><span class="nav-card-sub">Yer Hip Links</span><span class="nav-card-name">Fan Community Links</span><span class="nav-card-desc">Fan sites, podcasts, and the TTH community</span></a>
       </div>
     </section>
   </nav>
+
+  <div class="otd-wrap">
+    <div class="on-this-day" id="onThisDay">
+      <div class="on-this-day-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+        <span id="onThisDayTitle">On This Day in Hip History</span>
+      </div>
+      <div id="onThisDayEvents"></div>
+    </div>
+  </div>
 </main>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">

@@ -70,9 +70,12 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 .otd-tag-show { background: var(--red); color: #fff; }
 .otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }
 
-/* STATS (overrides for index) */
-.stats-row { padding: 24px 16px; }
-.stat { min-width: 80px; }
+/* WELCOME NOTE (v4.6) */
+.welcome { max-width: 560px; margin: 12px auto 0; font-size: 0.95rem; line-height: 1.65; color: #d9d9d9; }
+
+/* On This Day sits below the menu, outside the header (v4.6) */
+.otd-wrap { padding: 0 16px 8px; }
+.otd-wrap .on-this-day { margin-top: 8px; }
 
 /* SONG SEARCH */
 .song-search-autocomplete { position: relative; max-width: 480px; margin: 24px auto 20px; }
@@ -156,17 +159,25 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 .nav-card:hover { border-color: var(--red); background: rgba(200, 16, 46, 0.07); }
 .nav-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .nav-card-name { font-size: 0.88rem; font-weight: 700; color: var(--text); letter-spacing: 0.01em; }
-.nav-card-sub { font-size: 0.72rem; font-style: italic; color: var(--gold); }
+/* Hip-song name as a small gold eyebrow above the plain name (v4.6) */
+.nav-card-sub { font-size: 0.68rem; font-weight: 600; font-style: italic; color: var(--gold); letter-spacing: 0.02em; }
+.nav-card-desc { font-size: 0.74rem; color: var(--muted2); line-height: 1.45; margin-top: 2px; }
 .nav-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
-.nav-card-cta { grid-column: 1 / -1; background: var(--red); border-color: var(--red); }
+.shuffle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nav-card-cta { background: var(--red); border-color: var(--red); }
 .nav-card-cta:hover { background: #a00d24; border-color: #a00d24; }
 .nav-card-cta .nav-card-name { color: #fff; }
-.nav-card-cta .nav-card-sub { color: rgba(255, 255, 255, 0.85); }
+.nav-card-cta .nav-card-desc { color: rgba(255, 255, 255, 0.85); }
 
+/* Phones: one card per row so the descriptions have room to breathe */
 @media (max-width: 500px) {
-  .nav-cards { gap: 10px; }
-  .nav-card { padding: 14px 12px; min-height: 56px; }
-  .nav-card-name { font-size: 0.8rem; }
+  .nav-cards { grid-template-columns: 1fr; gap: 10px; }
+  .shuffle-row { gap: 10px; }
+  .nav-card { padding: 14px 16px; min-height: 56px; }
+  .nav-card-name { font-size: 0.86rem; }
+  .shuffle-row .nav-card { padding: 14px 10px; }
+  .shuffle-row .nav-card-name { font-size: 0.8rem; }
+  .welcome { font-size: 0.9rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

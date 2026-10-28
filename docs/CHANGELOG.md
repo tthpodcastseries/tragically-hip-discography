@@ -1,5 +1,25 @@
 # Changelog
 
+## v4.6
+**At the Hundredth Meridian** - October 28, 2026
+- **Home page rebuilt as the front door**: title, the Kingston 2016 photo, a short welcome note from jD, search, then the menu. The menu used to start two screens down on a phone; it now starts on the first.
+  - New **Shuffle** row up top: Random Hip Song and Random Live Show side by side
+  - Every menu card now reads: the Hip-song name as a small gold label, the plain name in bold, and one line on what's inside (all numbers pulled from the site's own data). One card per row on phones so the descriptions fit.
+  - Stats row removed (two of its four "stats" were Kingston / Ontario and Canada's / Band)
+  - On This Day stays on home, now below the menu
+- **One page header for every subpage**: `.page-header` in `shared.css` - gold plain-name label, Hip-song title, one-line description, ← Home. Matches the header Unplucked Gems, Video For New Recruits, They Shot A Movie Once, and Live Show Stats already used.
+- **Discography is its own page again**: header is now The Discography / Music @ Work. Removed the duplicate THE HIP HANDBOOK title, band photo, On This Day box, and the Tour Map / Fan Links buttons that made it look like a second home page. Album grid now starts about 1,000px from the top on a phone instead of about 2,500px.
+  - Home's Lyrics Search, Setlist Explorer, Top 40, and My Concert History cards now land on that feature instead of the top of the page
+  - **Fixed: My Concert History link from home opened Studio albums**: `myshows` was missing from `categoryData`, so `#cat=myshows` silently fell back to Studio
+  - **Fixed: Random Hip Song threw a console error on every click**: it shares the `.category-btn` style, so the tab handler called `renderCategory(undefined)`. Tab handlers now bind to `.category-btn[data-category]` only.
+  - Lyrics, Setlists, Top 40, and My Concert History stay as tabs here until they get their own pages
+- **Fan Community Links**: standard header (Fan Community Links / Yer Hip Links) with a description; its copy of On This Day removed
+- **Member gate explains why a membersHIP number beats Browse as Guest**: collect yer shows, saved to yer number across devices, versus guest shows that stay on one device and vanish if the browser is cleared. Heading kept in normal case so the membersHIP casing survives.
+- Removed the now-unused header and On This Day styles from `discography.css` and `links.html`
+- Service worker cache bumped to `thc-v4.6`; footer version label bumped to v4.6
+
+---
+
 ## v4.5.2
 **Lionized - Patch** - October 28, 2026
 - **Tour map background restored**: CARTO began requiring an API key for its basemap tiles in September 2026, and without one every `dark_all` tile came back as a grey "API KEY REQUIRED" image - markers and clusters floated over an empty grid. Requested a free non-commercial CARTO Basemaps key (5M tiles/month, registered to jd@tthpods.com) and appended it to the tile URL as `?key=` in `tour-map.html`. Same Dark Matter style as before, no new dependencies, no CSP change.

@@ -25,45 +25,7 @@ body { color: var(--text); }
 .stream-link.preferred, .stream-btn.preferred { ring: none; box-shadow: 0 0 0 2px currentColor; opacity: 1; }
 
 /* ─── HEADER ─── */
-header {
-  position: relative;
-  text-align: center;
-  padding: 72px 24px 56px;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  background: var(--bg);
-}
-header::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%);
-  pointer-events: none;
-}
-.maple { font-size: 2rem; margin-bottom: 16px; display: block; }
-h1 {
-  font-size: clamp(2.2rem, 7vw, 5rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  line-height: 1;
-  color: #fff;
-}
-.sub-header {
-  font-size: clamp(1.4rem, 4.5vw, 3.25rem);
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 8px;
-  line-height: 1.1;
-}
-.tagline {
-  margin-top: 14px;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+/* Page header comes from .page-header in shared.css (v4.6) */
 .stats-row { gap: 40px; margin-top: 32px; padding: 0; max-width: none; }
 .stat-num { font-size: 1.6rem; font-weight: 800; }
 .stat-lbl { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; }
@@ -1086,20 +1048,3 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
   .category-btn { padding: 10px 20px; font-size: 0.72rem; }
 }
 
-/* ON THIS DAY */
-.on-this-day { max-width: 600px; margin: 24px auto 0; padding: 16px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; display: none; }
-.on-this-day-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; font-size: 0.82rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; }
-.on-this-day-header svg { flex-shrink: 0; }
-.otd-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; }
-.otd-event { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-.otd-event:first-child { border-top: none; padding-top: 0; }
-a.otd-event { text-decoration: none; color: inherit; cursor: pointer; transition: background 0.15s ease; }
-a.otd-event:hover { background: rgba(255,255,255,0.05); }
-a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
-.otd-view { color: var(--gold); font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
-.otd-year { font-weight: 700; font-size: 0.85rem; color: var(--red); min-width: 42px; flex-shrink: 0; }
-.otd-desc { font-size: 0.82rem; color: var(--text); line-height: 1.5; }
-.otd-desc .otd-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 6px; border-radius: 4px; margin-right: 4px; vertical-align: 1px; }
-.otd-tag-release { background: var(--gold); color: #000; }
-.otd-tag-show { background: var(--red); color: #fff; }
-.otd-tag-milestone { background: rgba(255,255,255,0.15); color: var(--text); }

@@ -214,7 +214,13 @@
     '#tth-member-gate .mg-divider { display:flex; align-items:center; gap:1rem; margin:1.25rem 0 0.25rem; color:#707070; font-size:0.75rem; text-transform:uppercase; letter-spacing:1.5px; }',
     '#tth-member-gate .mg-divider::before, #tth-member-gate .mg-divider::after { content:""; flex:1; height:1px; background:#2a2a2a; }',
     '#tth-member-gate .mg-guest-btn { width:100%; padding:0.9rem 1rem; background:transparent; color:#b0b0b0; border:1px solid #2a2a2a; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:border-color 0.15s, color 0.15s; }',
-    '#tth-member-gate .mg-guest-btn:hover { border-color:#CCA23C; color:#CCA23C; }'
+    '#tth-member-gate .mg-guest-btn:hover { border-color:#CCA23C; color:#CCA23C; }',
+    '#tth-member-gate .mg-why { text-align:left; background:#141414; border:1px solid #2a2a2a; border-radius:10px; padding:1rem 1.1rem; margin:0 0 1.5rem; }',
+    // No uppercase here - it would flatten the membersHIP brand casing
+    '#tth-member-gate .mg-why-title { font-size:0.82rem; font-weight:700; letter-spacing:0.3px; color:#CCA23C; margin:0 0 0.6rem; }',
+    '#tth-member-gate .mg-why ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.55rem; }',
+    '#tth-member-gate .mg-why li { font-size:0.82rem; line-height:1.5; color:#b0b0b0; }',
+    '#tth-member-gate .mg-why li b { color:#fff; font-weight:600; }'
   ].join('\n');
 
   var gateHtml =
@@ -224,6 +230,16 @@
       '<div class="mg-eyebrow">Members Only</div>' +
       '<h1 class="mg-title">Yer <span>Handbook</span></h1>' +
       '<p class="mg-sub">Enter yer first name and membersHIP number to unlock.<br>No number yet? <a href="/forum-invite.html">Grab one here.</a></p>' +
+      // Why a number beats Browse as Guest - members' shows sync via
+      // update_attended_shows; guest shows never leave the device (v4.6)
+      '<div class="mg-why">' +
+        '<p class="mg-why-title">Why get a membersHIP number?</p>' +
+        '<ul>' +
+          '<li><b>Collect yer shows.</b> Tick off every Hip gig you were at and build yer own concert history.</li>' +
+          '<li><b>They\'re saved to yer number.</b> Yer shows follow you to any phone, tablet, or computer.</li>' +
+          '<li><b>Guests start from scratch.</b> Browsing as a guest works, but any shows you collect stay on this one device and are gone if you clear yer browser or sign out.</li>' +
+        '</ul>' +
+      '</div>' +
       '<form id="mg-form" novalidate autocomplete="on">' +
         '<div>' +
           '<label for="mg-first">First name</label>' +
