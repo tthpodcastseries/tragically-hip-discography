@@ -1,7 +1,7 @@
 # Changelog
 
 ## v4.7
-**Locked in the Trunk of a Car** - October 28, 2026
+**We'll Go, Too** - October 28, 2026
 - **Four features get their own pages**: Lyrics Search, Setlist Explorer, the Fan-Ranked Top 40, and My Concert History each have a clean address and a standard page header, showing only that feature:
 
   | Address | Label | Title |
@@ -17,13 +17,13 @@
 - **Discography is albums only**: Studio, EPs, Solo Projects, Live, Compilations, Box Sets, and Video. The Explore tabs are gone (home's menu covers them), and the description now covers the albums only.
 - Home's Top 40, Setlist Explorer, My Concert History, and Lyrics Search cards, plus home-search lyrics results, point to the new addresses
 - Sitemap lists the four new addresses; `audit-site.js` now reads 200 rewrites from `_redirects` and treats them as real pages when their destination exists
-- Release names follow the "Fully Completely" track list in order: v4.6 used track 3 out of sequence; this one picks up after 'Lionized' (track 5)
+- Release names follow the "Fully Completely" track list in order. v4.6 shipped as "At the Hundredth Meridian" (track 3, out of sequence) and was renamed to the track after 'Lionized', 'Locked in the Trunk of a Car'; this release takes the next one, 'We'll Go, Too' (track 7). Footer label updated to match.
 - Service worker cache bumped to `thc-v4.7`; footer version label bumped to v4.7
 
 ---
 
 ## v4.6
-**At the Hundredth Meridian** - October 28, 2026
+**Locked in the Trunk of a Car** - October 28, 2026
 - **Home page rebuilt as the front door**: title, the Kingston 2016 photo, a short welcome note from jD, search, then the menu. The menu used to start two screens down on a phone; it now starts on the first.
   - New **Shuffle** row up top: Random Hip Song and Random Live Show side by side
   - Every menu card now reads: the Hip-song name as a small gold label, the plain name in bold, and one line on what's inside (all numbers pulled from the site's own data). One card per row on phones so the descriptions fit.

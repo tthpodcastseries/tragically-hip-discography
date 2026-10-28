@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v4.7 (Locked in the Trunk of a Car)';
+  var version = "v4.7 (We'll Go, Too)";
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
