@@ -1,5 +1,26 @@
 # Changelog
 
+## v5.0
+**Day for Night** - not yet released (local `v5-day-for-night` branch)
+- **Yer Hip Passport** (`/my-shows`, label "In View"): the old My Concert History is now its own page (`passport.html`). Totals, rarities (songs played live under 10 times), most-heard songs, a Leaflet map of venues, the show list with remove buttons, and a checklist against the official song list (191 songs, 169 played live per setlist.fm).
+  - Old `#cat=myshows` links still forward to `/my-shows`
+  - `getSession()` in `tth-member-gate.js` now returns a `guest` flag
+- **Share card in three sizes**: Facebook 1200x630, Instagram post 1080x1350, Instagram story 1080x1920, with a size picker
+- **Song checklist**: counts against jD's official song list. 'Apartment Song' added (`EXTRA_SONGS` in `scripts/build-canonical-songs.js`); versions fold into their parent song
+- **Today band on home**: On This Day first after the header, then **Show of the Day** (one recorded show per day, the same for everyone; "Play this show" opens the archive player). New Play menu group. Hero photo cropped to a banner so On This Day starts on the first phone screen.
+- **'Bring It All Back'** (`/bring-it-all-back`, the Daily Setlist Game): one real Hip setlist a day from a pool of 971 shows (1985-2016, 10+ songs). Guess the year in five tries.
+  - Each miss says Earlier or Later and adds a coloured square (right year, within 2, within 5, farther)
+  - Hints unlock one per miss: country, tour, city and state, then month
+  - End screen reveals the show with "Play this show" (when recorded) and "View on map", plus played, win %, streak, best, guess distribution, and a countdown to the next puzzle
+  - "Copy my score" (and Share where the phone supports it) with no spoilers
+  - Saved on the device only (`tth_bia_v1`); anonymous Umami events `Game - Started`, `Game - Won`, `Game - Lost`, `Game - Shared`
+  - Puzzle #1 date is `EPOCH` in `js/bring-it-all-back.js` - set to launch day before shipping
+  - `?day=N` and `?reset=1` work on local addresses only
+- **Data scripts**: `build-canonical-songs.js`, `build-show-index.js`, `build-game-pool.js`
+- Service worker cache bumped to `thc-v5.0` and precaches the game; sitemap lists `/bring-it-all-back`; footer version label bumped to v5.0
+
+---
+
 ## v4.8
 **Fully Completely** - October 28, 2026
 - **Friendlier member gate, ahead of the Oct 29 promo**: Umami showed 88% of visitors on home (where the gate sits) and a 58% bounce rate. The gate read like a paywall: "Members Only", a login form first, and Browse as Guest as a faint button below the fold on phones.

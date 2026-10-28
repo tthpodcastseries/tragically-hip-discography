@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v4.8';
+const CACHE_NAME = 'thc-v5.0';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -11,11 +11,13 @@ const CORE_ASSETS = [
   '/music-videos.html',
   '/live-stats.html',
   '/passport.html',
+  '/bring-it-all-back.html',
   '/forum-invite.html',
   '/404.html',
   // CSS
   '/css/shared.css',
   '/css/passport.css',
+  '/css/bring-it-all-back.css',
   '/css/home.css',
   '/css/discography.css',
   '/css/tour-map.css',
@@ -27,6 +29,7 @@ const CORE_ASSETS = [
   '/js/discography-app.js',
   '/js/live-stats.js',
   '/js/passport.js',
+  '/js/bring-it-all-back.js',
   '/js/tth-member-gate.js',
   '/js/supabase.min.js',
   // Data
