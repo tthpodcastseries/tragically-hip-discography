@@ -7,7 +7,7 @@
 header {
   position: relative;
   text-align: center;
-  padding: 72px 24px 56px;
+  padding: 40px 24px 28px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   background: var(--bg);
@@ -18,7 +18,7 @@ header::before {
   background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%);
   pointer-events: none;
 }
-.maple { font-size: 2rem; margin-bottom: 16px; display: block; }
+.maple { font-size: 2rem; margin-bottom: 8px; display: block; }
 header h1 {
   font-size: clamp(2.2rem, 7vw, 5rem);
   font-weight: 900;
@@ -26,11 +26,15 @@ header h1 {
   text-transform: uppercase;
   line-height: 1;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
+/* Banner crop (v5) so Today lands near the top of the first screen */
 .hero-img {
   max-width: 600px;
   width: 100%;
+  aspect-ratio: 2.3 / 1;
+  object-fit: cover;
+  object-position: 50% 28%;
   border-radius: 12px;
   border: 3px solid rgba(255,255,255,0.18);
   box-shadow: 0 4px 24px rgba(0,0,0,0.4);
@@ -73,9 +77,19 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 /* WELCOME NOTE (v4.6) */
 .welcome { max-width: 560px; margin: 12px auto 0; font-size: 0.95rem; line-height: 1.65; color: #d9d9d9; }
 
-/* On This Day sits below the menu, outside the header (v4.6) */
-.otd-wrap { padding: 0 16px 8px; }
-.otd-wrap .on-this-day { margin-top: 8px; }
+/* Today band (v5): On This Day + Show of the Day, first content after the header */
+.today { max-width: 640px; margin: 0 auto; padding: 24px 16px 0; }
+.today .on-this-day { margin: 0 auto; }
+
+.sotd { max-width: 600px; margin: 14px auto 0; padding: 16px 20px; border-radius: 12px; background: rgba(200, 16, 46, 0.1); border: 1px solid rgba(200, 16, 46, 0.45); text-align: center; }
+.sotd[hidden] { display: none; }
+.sotd-label { font-size: 0.82rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; }
+.sotd-venue { margin-top: 8px; font-size: 1.15rem; font-weight: 800; color: #fff; }
+.sotd-meta { margin-top: 2px; font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.sotd-why { margin-top: 6px; font-size: 0.78rem; font-style: italic; color: var(--gold); }
+.sotd-play { display: inline-block; margin-top: 12px; padding: 10px 26px; background: var(--red); border-radius: 30px; color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.15s; }
+.sotd-play:hover { background: #a00d24; }
+.sotd-play:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* SONG SEARCH */
 .song-search-autocomplete { position: relative; max-width: 480px; margin: 24px auto 20px; }

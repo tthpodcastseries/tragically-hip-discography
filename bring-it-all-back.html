@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bring It All Back - Daily Setlist Game - The Hip Handbook</title>
+  <meta name="description" content="A new real Tragically Hip setlist every day. Guess the year of the show in five tries - each miss gives you a hint - then share yer score.">
+  <meta property="og:title" content="Bring It All Back - Daily Setlist Game">
+  <meta property="og:description" content="One real Tragically Hip setlist a day. Can you guess the year in five tries?">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/bring-it-all-back">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/bring-it-all-back">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hip Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/bring-it-all-back.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="page-header">
+  <div class="subtitle">Daily Setlist Game</div>
+  <h1>Bring It All Back</h1>
+  <p class="header-desc">One real Hip setlist a day, the same for everyone. Guess the year of the show in five tries - every miss gives you a hint.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+</header>
+
+<main id="main-content" class="bia">
+  <div id="biaLoading" class="bia-note">Cueing up today's show...</div>
+  <div id="biaError" class="bia-note bia-error" hidden>Couldn't load today's puzzle. Check yer connection and refresh.</div>
+
+  <div id="biaGame" hidden>
+    <div class="bia-top">
+      <span id="biaNo" class="bia-no"></span>
+      <span id="biaTries" class="bia-tries"></span>
+    </div>
+
+    <section class="bia-card" aria-labelledby="biaSetlistTitle">
+      <h2 class="bia-h2" id="biaSetlistTitle">Today's setlist</h2>
+      <div id="biaSetlist"></div>
+    </section>
+
+    <form id="biaForm" class="bia-form" novalidate>
+      <label for="biaInput">What year was this show?</label>
+      <div class="bia-row">
+        <input id="biaInput" type="number" inputmode="numeric" autocomplete="off" required>
+        <button id="biaGuess" class="bia-btn" type="submit">Guess</button>
+      </div>
+    </form>
+    <div id="biaMsg" class="bia-msg" role="status" aria-live="polite"></div>
+
+    <ol id="biaGuesses" class="bia-guesses" aria-label="Yer guesses"></ol>
+    <ul id="biaHints" class="bia-hints" aria-label="Hints"></ul>
+
+    <section id="biaEnd" class="bia-card bia-end" hidden aria-labelledby="biaResult">
+      <h2 class="bia-result" id="biaResult"></h2>
+      <div id="biaReveal" class="bia-reveal"></div>
+      <div id="biaLinks" class="bia-links"></div>
+      <pre id="biaShareText" class="bia-sharetext"></pre>
+      <div class="bia-actions">
+        <button id="biaCopy" class="bia-btn" type="button">Copy my score</button>
+        <button id="biaShare" class="bia-btn bia-btn-alt" type="button" hidden>Share</button>
+      </div>
+      <div id="biaStats" class="bia-stats"></div>
+      <p class="bia-next">Next puzzle in <b id="biaCountdown">--:--:--</b></p>
+    </section>
+
+    <details class="bia-how">
+      <summary>How it works</summary>
+      <ul>
+        <li>Everyone gets the same real Hip setlist each day.</li>
+        <li>Guess the year the show was played, 1985 to 2016. You have five tries.</li>
+        <li>Every miss says whether the show was earlier or later, and unlocks a hint: the country, the tour, the city, then the month.</li>
+        <li>Squares show how close each guess was: &#129001; right year, &#129000; within 2, &#129003; within 5, &#128997; farther.</li>
+      </ul>
+    </details>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/bring-it-all-back.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

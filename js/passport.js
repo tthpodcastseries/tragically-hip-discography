@@ -234,60 +234,103 @@
   }
 
   // ─── Share card ───
+  // Facebook link-card size, Instagram feed portrait (4:5), Instagram Story (9:16)
+  const FORMATS = {
+    facebook: { w: 1200, h: 630, file: 'facebook' },
+    instagram: { w: 1080, h: 1350, file: 'instagram' },
+    story: { w: 1080, h: 1920, file: 'instagram-story' },
+  };
+  let cardFormat = 'facebook';
   let lastStats = null;
+
   async function makeCard() {
     const { shows, d, firstYear } = lastStats;
+    const fmt = FORMATS[cardFormat];
+    const landscape = fmt.w > fmt.h;
     const sess = M.getSession();
     const name = sess && !sess.guest && sess.firstName ? String(sess.firstName).trim().slice(0, 20) : '';
     try {
       await Promise.all(['900 300px Poppins', '700 48px Poppins', '600 40px Poppins'].map(f => document.fonts.load(f)));
     } catch (e) { /* fall back to the default sans-serif */ }
 
-    const W = 1080, H = 1350;
+    const W = fmt.w, H = fmt.h;
     const c = document.createElement('canvas');
     c.width = W; c.height = H;
     const x = c.getContext('2d');
     x.fillStyle = '#0e0b16';
     x.fillRect(0, 0, W, H);
     x.strokeStyle = 'rgba(204,162,60,0.45)';
-    x.lineWidth = 6;
-    x.strokeRect(36, 36, W - 72, H - 72);
-    x.textAlign = 'center';
+    x.lineWidth = landscape ? 4 : 6;
+    const inset = landscape ? 24 : 36;
+    x.strokeRect(inset, inset, W - inset * 2, H - inset * 2);
     x.textBaseline = 'alphabetic';
 
-    const put = (str, y, weight, size, color, spacing, maxW) => {
+    // Draw text at (cx, y); align 'center' or 'left'. Shrinks to fit maxW.
+    const put = (str, cx, y, weight, size, color, spacing, maxW, align) => {
       let px = size;
+      x.textAlign = align || 'center';
       x.font = weight + ' ' + px + 'px Poppins, sans-serif';
       if ('letterSpacing' in x) x.letterSpacing = spacing || '0px';
-      while (maxW && x.measureText(str).width > maxW && px > 24) { px -= 2; x.font = weight + ' ' + px + 'px Poppins, sans-serif'; }
+      while (maxW && x.measureText(str).width > maxW && px > 20) { px -= 2; x.font = weight + ' ' + px + 'px Poppins, sans-serif'; }
       x.fillStyle = color;
-      x.fillText(str, W / 2, y);
+      x.fillText(str, cx, y);
     };
 
-    put('\u{1F341}', 190, '700', 96, '#ffffff');
-    put('YER HIP PASSPORT', 272, '700', 38, '#CCA23C', '10px');
-    put(name ? name + ' has seen The Hip live' : 'Seen The Hip live', 384, '700', 54, '#ffffff', '0px', W - 160);
-    put(String(shows.length), 760, '900', shows.length > 99 ? 300 : 360, '#C8102E');
-    put(shows.length === 1 ? 'SHOW' : 'SHOWS', 856, '700', 64, '#CCA23C', '12px');
+    const headline = name ? name + ' has seen The Hip live' : 'Seen The Hip live';
+    const numSize = shows.length > 99 ? 0.82 : 1;
+    const label = shows.length === 1 ? 'SHOW' : 'SHOWS';
+    const siteText = 'thehiphandbook.tthpods.com';
 
-    const lines = [
-      d.songsHeard.toLocaleString('en-CA') + ' songs heard live',
-      d.seenPlayable + ' of ' + playable.length + ' songs on the checklist',
-    ];
-    if (d.rarities.length) lines.push(plural(d.rarities.length, 'rarity', 'rarities') + ' caught');
-    lines.push('First show: ' + firstYear);
-    lines.forEach((ln, i) => put(ln, 972 + i * 70, '600', 44, '#d9d9d9', '0px', W - 160));
-
-    put('thehiphandbook.tthpods.com', 1262, '600', 36, '#b0b0b0', '2px');
+    if (landscape) {
+      // Number on the left, the details on the right
+      put('\u{1F341}', 330, 150, '700', 70, '#ffffff');
+      put('YER HIP PASSPORT', 330, 212, '700', 28, '#CCA23C', '8px');
+      put(String(shows.length), 330, 410, '900', 230 * numSize, '#C8102E');
+      put(label, 330, 486, '700', 50, '#CCA23C', '10px');
+      x.strokeStyle = 'rgba(204,162,60,0.3)';
+      x.lineWidth = 2;
+      x.beginPath(); x.moveTo(650, 120); x.lineTo(650, 520); x.stroke();
+      const lines = [
+        d.songsHeard.toLocaleString('en-CA') + ' songs heard live',
+        d.seenPlayable + ' of ' + playable.length + ' songs seen',
+      ];
+      if (d.rarities.length) lines.push(plural(d.rarities.length, 'rarity', 'rarities') + ' caught');
+      lines.push('First show: ' + firstYear);
+      put(headline, 690, 190, '700', 40, '#ffffff', '0px', 460, 'left');
+      lines.forEach((ln, i) => put(ln, 690, 280 + i * 62, '600', 34, '#d9d9d9', '0px', 460, 'left'));
+      put(siteText, W / 2, 585, '600', 26, '#b0b0b0', '2px');
+    } else {
+      // Portrait. Stories keep content inside the safe zone (Instagram covers
+      // roughly the top and bottom 250px with its own interface).
+      const story = H > 1500;
+      const y = story
+        ? { maple: 340, label: 440, head: 570, num: 1030, lbl: 1150, lines: 1290, gap: 80, site: 1650 }
+        : { maple: 190, label: 272, head: 384, num: 760, lbl: 856, lines: 972, gap: 70, site: 1262 };
+      put('\u{1F341}', W / 2, y.maple, '700', story ? 110 : 96, '#ffffff');
+      put('YER HIP PASSPORT', W / 2, y.label, '700', 38, '#CCA23C', '10px');
+      put(headline, W / 2, y.head, '700', story ? 58 : 54, '#ffffff', '0px', W - 160);
+      put(String(shows.length), W / 2, y.num, '900', (story ? 420 : 360) * numSize, '#C8102E');
+      put(label, W / 2, y.lbl, '700', story ? 72 : 64, '#CCA23C', '12px');
+      const lines = [
+        d.songsHeard.toLocaleString('en-CA') + ' songs heard live',
+        d.seenPlayable + ' of ' + playable.length + ' songs on the checklist',
+      ];
+      if (d.rarities.length) lines.push(plural(d.rarities.length, 'rarity', 'rarities') + ' caught');
+      lines.push('First show: ' + firstYear);
+      lines.forEach((ln, i) => put(ln, W / 2, y.lines + i * y.gap, '600', story ? 48 : 44, '#d9d9d9', '0px', W - 160));
+      put(siteText, W / 2, y.site, '600', 36, '#b0b0b0', '2px');
+    }
 
     const blob = await new Promise(res => c.toBlob(res, 'image/png'));
     if (currentCard) URL.revokeObjectURL(currentCard.url);
-    currentCard = { blob, url: URL.createObjectURL(blob) };
-    $('ppCardImg').src = currentCard.url;
+    currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
+    const img = $('ppCardImg');
+    img.src = currentCard.url;
+    img.className = 'pp-card-img pp-card-' + cardFormat;
     $('ppCardWrap').hidden = false;
-    const file = new File([blob], 'my-hip-passport.png', { type: 'image/png' });
+    const file = new File([blob], 'my-hip-passport-' + fmt.file + '.png', { type: 'image/png' });
     $('ppShareBtn').hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
-    track('Passport - Card made');
+    track('Passport - Card made - ' + cardFormat);
   }
 
   // ─── Wiring ───
@@ -307,17 +350,22 @@
     render();
   });
   $('ppMakeCard').addEventListener('click', () => { if (lastStats) makeCard(); });
+  document.querySelectorAll('.pp-fmt').forEach(btn => btn.addEventListener('click', () => {
+    cardFormat = btn.dataset.format;
+    document.querySelectorAll('.pp-fmt').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    if (lastStats && currentCard) makeCard(); // already showing a card: redraw in the new size
+  }));
   $('ppSaveBtn').addEventListener('click', () => {
     if (!currentCard) return;
     const a = document.createElement('a');
     a.href = currentCard.url;
-    a.download = 'my-hip-passport.png';
+    a.download = 'my-hip-passport-' + FORMATS[currentCard.format].file + '.png';
     document.body.appendChild(a); a.click(); a.remove();
     track('Passport - Card saved');
   });
   $('ppShareBtn').addEventListener('click', async () => {
     if (!currentCard || !lastStats) return;
-    const file = new File([currentCard.blob], 'my-hip-passport.png', { type: 'image/png' });
+    const file = new File([currentCard.blob], 'my-hip-passport-' + FORMATS[currentCard.format].file + '.png', { type: 'image/png' });
     const n = lastStats.shows.length;
     try {
       await navigator.share({ files: [file], title: 'Yer Hip Passport', text: 'I\'ve been to ' + plural(n, 'Hip show', 'Hip shows') + '. Build yer own passport at thehiphandbook.tthpods.com/my-shows' });

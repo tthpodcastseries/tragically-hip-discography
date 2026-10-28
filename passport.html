@@ -87,7 +87,12 @@
 
     <section class="pp-section pp-share">
       <h2 class="pp-h2">Share yer passport</h2>
-      <p class="pp-sub">A card for Facebook and Instagram, with yer first name only.</p>
+      <p class="pp-sub">A card for Facebook or Instagram, with yer first name only.</p>
+      <div class="pp-formats" role="group" aria-label="Card size">
+        <button class="pp-fmt" type="button" data-format="facebook" aria-pressed="true">Facebook<small>1200 x 630</small></button>
+        <button class="pp-fmt" type="button" data-format="instagram" aria-pressed="false">Instagram post<small>1080 x 1350</small></button>
+        <button class="pp-fmt" type="button" data-format="story" aria-pressed="false">Instagram story<small>1080 x 1920</small></button>
+      </div>
       <button id="ppMakeCard" class="pp-cta" type="button">Make my card</button>
       <div id="ppCardWrap" hidden>
         <img id="ppCardImg" class="pp-card-img" alt="Yer Hip Passport share card">

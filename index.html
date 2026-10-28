@@ -36,7 +36,7 @@
   <span class="maple" aria-hidden="true">🍁</span>
   <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">HANDBOOK</span></h1>
   <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
-  <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 8px;font-style:italic;">Photo: David Bastedo</p>
+  <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 4px;font-style:italic;">Photo: David Bastedo</p>
   <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,358 live shows, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
   <div class="song-search-autocomplete">
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search songs, lyrics, shows..." autocomplete="off" aria-label="Search songs, lyrics, and shows">
@@ -45,12 +45,36 @@
 </header>
 
 <main id="main-content">
+  <!-- Today (v5): On This Day and Show of the Day are the first real content, ahead of the menu -->
+  <div class="today">
+    <div class="on-this-day" id="onThisDay">
+      <div class="on-this-day-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+        <span id="onThisDayTitle">On This Day in Hip History</span>
+      </div>
+      <div id="onThisDayEvents"></div>
+    </div>
+    <section class="sotd" id="sotd" aria-labelledby="sotdLabel" hidden>
+      <div class="sotd-label" id="sotdLabel">&#127911; Show of the Day</div>
+      <div class="sotd-venue" id="sotdVenue"></div>
+      <div class="sotd-meta" id="sotdMeta"></div>
+      <div class="sotd-why" id="sotdWhy"></div>
+      <a class="sotd-play" id="sotdPlay" href="tour-map.html#play=random">Play this show</a>
+    </section>
+  </div>
+
   <nav aria-label="Main navigation" class="nav-groups">
     <section class="nav-group" aria-labelledby="navGroupShuffle">
       <h2 class="nav-group-title" id="navGroupShuffle">Shuffle</h2>
       <div class="shuffle-row">
         <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
         <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 625 Hip Archive recordings</span></a>
+      </div>
+    </section>
+    <section class="nav-group" aria-labelledby="navGroupPlay">
+      <h2 class="nav-group-title" id="navGroupPlay">Play</h2>
+      <div class="nav-cards">
+        <a href="bring-it-all-back.html" class="nav-card"><span class="nav-card-sub">Bring It All Back</span><span class="nav-card-name">Daily Setlist Game</span><span class="nav-card-desc">Guess the year from a real Hip setlist. A new show every day - share yer score.</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupListen">
@@ -86,15 +110,6 @@
     </section>
   </nav>
 
-  <div class="otd-wrap">
-    <div class="on-this-day" id="onThisDay">
-      <div class="on-this-day-header">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-        <span id="onThisDayTitle">On This Day in Hip History</span>
-      </div>
-      <div id="onThisDayEvents"></div>
-    </div>
-  </div>
 </main>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
@@ -158,6 +173,7 @@
   const todayMonth = now.getMonth() + 1;
   const todayDay = now.getDate();
   const events = [];
+  let allSetlists = []; // kept for Show of the Day
 
   // Check album release dates
   for (const a of albums) {
@@ -185,6 +201,7 @@
     if (setResp.ok) {
       const setData = await setResp.json();
       if (setData && setData.setlists) {
+        allSetlists = setData.setlists;
         const dayStr = String(todayDay).padStart(2, '0');
         const monthStr = String(todayMonth).padStart(2, '0');
         const matches = setData.setlists.filter(function(s) {
@@ -236,6 +253,32 @@
     }).join('');
   }
   wrapper.style.display = 'block';
+
+  // ─── Show of the Day (v5) ───
+  // One recorded show per day, the same for everyone: a show played on today's
+  // date if the Hip Archive has one, otherwise a stepped walk through all of
+  // the recordings so consecutive days jump around without repeating for ~625 days.
+  try {
+    const idxResp = await fetch('data/show-index.json');
+    const idx = idxResp.ok ? await idxResp.json() : {};
+    const recorded = allSetlists.filter(function(s) { return idx[s.id] && idx[s.id][2]; })
+      .sort(function(a, b) { return a.id < b.id ? -1 : 1; });
+    if (recorded.length) {
+      const dayNumber = Math.floor(Date.UTC(now.getFullYear(), todayMonth - 1, todayDay) / 86400000);
+      const dd = String(todayDay).padStart(2, '0'), mm = String(todayMonth).padStart(2, '0');
+      const onThisDate = recorded.filter(function(s) { const p = s.date.split('-'); return p[0] === dd && p[1] === mm; })
+        .sort(function(a, b) { return a.date.split('-')[2] - b.date.split('-')[2]; });
+      const pick = onThisDate.length ? onThisDate[dayNumber % onThisDate.length] : recorded[(dayNumber * 7919) % recorded.length];
+      const pp = pick.date.split('-');
+      const songCount = (pick.songs || []).filter(function(x) { return !x.tape && x.name; }).length;
+      const loc = [pick.city, pick.state, pick.country].filter(Boolean).join(', ');
+      document.getElementById('sotdVenue').textContent = pick.venue || 'A Hip show';
+      document.getElementById('sotdMeta').textContent = [new Date(+pp[2], +pp[1] - 1, +pp[0]).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' }), loc, pick.tour, songCount ? songCount + ' songs' : ''].filter(Boolean).join(' \u00b7 ');
+      document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from the Hip Archive.';
+      document.getElementById('sotdPlay').href = 'tour-map.html#play=' + encodeURIComponent(pick.id);
+      document.getElementById('sotd').hidden = false;
+    }
+  } catch (e) { /* Show of the Day is optional */ }
 
   // ─── Universal Search (albums, songs, lyrics, shows) ───
   var albumIndex = albums.map(function(a) {

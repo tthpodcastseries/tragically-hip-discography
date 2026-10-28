@@ -31,8 +31,12 @@ const RENAMED_VERSIONS = {
   'super farmer nano baby': 'Poets',
 };
 
-// setlist.fm spells some titles differently from the official list. Unconfirmed
-// aliases are flagged in the changelog so jD can check them.
+// Songs on official releases that the Google Form list leaves out (jD confirmed
+// 2026-10-28). 'Apartment Song' is on Trouble at the Henhouse.
+const EXTRA_SONGS = ['Apartment Song'];
+
+// setlist.fm spells some titles differently from the official list (jD confirmed
+// 'It's Just as Well' is 'Just As Well').
 const SETLIST_ALIASES = {
   [''.concat('itsjustaswell')]: 'Just As Well',
 };
@@ -59,6 +63,8 @@ async function main() {
 
   const titles = [...new Set(raw.map(stripFormQuotes))];
   console.log(`form: ${raw.length} options, ${titles.length} unique`);
+  for (const t of EXTRA_SONGS) if (!titles.includes(t)) titles.push(t);
+  console.log(`plus ${EXTRA_SONGS.length} extra song(s) not on the form: ${EXTRA_SONGS.join(', ')}`);
 
   // Fold versions into their parent song
   const songs = new Map(); // norm(base) -> { title, versions: [] }

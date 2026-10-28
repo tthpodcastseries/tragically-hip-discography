@@ -1,0 +1,71 @@
+/* bring-it-all-back.html - the daily setlist game (v5) */
+[hidden] { display: none !important; }
+
+.bia { max-width: 560px; margin: 0 auto; padding: 20px 16px 56px; }
+.bia-note { text-align: center; color: var(--muted2); padding: 40px 12px; font-size: 0.88rem; }
+.bia-error { color: #ff6b6b; }
+
+.bia-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.bia-no { font-size: 0.8rem; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; }
+.bia-tries { font-size: 0.78rem; color: var(--muted2); }
+
+.bia-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-top: 12px; }
+.bia-h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+
+.bia-set-label { margin: 12px 0 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+.bia-songs { list-style: none; counter-reset: song var(--start, 0); }
+.bia-songs li { counter-increment: song; display: flex; gap: 10px; padding: 3px 0; font-size: 0.9rem; color: var(--text); line-height: 1.4; }
+.bia-songs li::before { content: counter(song); min-width: 22px; text-align: right; color: var(--muted2); font-size: 0.74rem; padding-top: 2px; }
+
+.bia-form { margin-top: 18px; }
+.bia-form label { display: block; font-size: 0.82rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.bia-row { display: flex; gap: 10px; }
+.bia-row input { flex: 1; min-width: 0; padding: 13px 14px; background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; color: #fff; font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; }
+.bia-row input:focus { outline: none; border-color: var(--gold); }
+.bia-row input:disabled { opacity: 0.5; }
+.bia-btn { padding: 12px 22px; background: var(--red); border: 1px solid var(--red); border-radius: 10px; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background 0.15s; }
+.bia-btn:hover:not(:disabled) { background: #a00d24; }
+.bia-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.bia-btn-alt { background: transparent; color: var(--gold); border-color: rgba(204, 162, 60, 0.6); }
+.bia-btn-alt:hover:not(:disabled) { background: rgba(204, 162, 60, 0.1); }
+.bia-msg { min-height: 1.3em; margin-top: 8px; font-size: 0.8rem; color: #ff6b6b; }
+
+.bia-guesses { list-style: none; margin-top: 4px; display: flex; flex-direction: column; gap: 6px; }
+.bia-guess { display: flex; align-items: center; gap: 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 9px 14px; }
+.bia-guess-year { font-weight: 800; font-size: 1.05rem; color: #fff; min-width: 52px; }
+.bia-guess-dir { flex: 1; font-size: 0.82rem; color: var(--muted); }
+.bia-guess-sq { font-size: 1.2rem; }
+.bia-guess.hit { border-color: rgba(204, 162, 60, 0.6); }
+
+.bia-hints { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.bia-hints li { font-size: 0.84rem; color: var(--text); background: rgba(204, 162, 60, 0.1); border: 1px solid rgba(204, 162, 60, 0.35); border-radius: 10px; padding: 8px 14px; }
+.bia-hints b { color: var(--gold); font-weight: 700; margin-right: 6px; }
+
+.bia-end { text-align: center; margin-top: 18px; }
+.bia-result { font-size: 1.4rem; font-weight: 900; color: #fff; }
+.bia-reveal { margin-top: 12px; line-height: 1.5; }
+.bia-reveal .when { font-size: 0.82rem; color: var(--gold); font-weight: 700; }
+.bia-reveal .where { font-size: 1.1rem; font-weight: 800; color: #fff; margin-top: 2px; }
+.bia-reveal .meta { font-size: 0.8rem; color: var(--muted); }
+.bia-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: 0.8rem; }
+.bia-links a { color: var(--gold); font-weight: 600; text-decoration: none; }
+.bia-links a:hover { text-decoration: underline; }
+.bia-sharetext { margin: 16px auto 0; white-space: pre-wrap; text-align: left; display: block; max-width: 340px; background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; padding: 12px 14px; font-family: 'Poppins', sans-serif; font-size: 0.84rem; line-height: 1.6; color: #d9d9d9; }
+.bia-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+.bia-stats { margin-top: 22px; text-align: left; }
+.bia-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; }
+.bia-stat-row div { background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; padding: 10px 4px; }
+.bia-stat-row b { display: block; font-size: 1.3rem; font-weight: 900; color: var(--gold); line-height: 1.1; }
+.bia-stat-row span { font-size: 0.62rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
+.bia-dist { margin-top: 12px; display: flex; flex-direction: column; gap: 4px; }
+.bia-dist-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); }
+.bia-dist-row > span:first-child { width: 12px; text-align: right; }
+.bia-dist-bar { height: 18px; min-width: 22px; background: #2a2a2a; border-radius: 4px; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0 8px; display: flex; align-items: center; justify-content: flex-end; }
+.bia-dist-bar.today { background: var(--red); }
+.bia-next { margin-top: 18px; font-size: 0.8rem; color: var(--muted2); }
+.bia-next b { color: #fff; font-variant-numeric: tabular-nums; }
+
+.bia-how { margin-top: 24px; font-size: 0.82rem; color: var(--muted); }
+.bia-how summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+.bia-how ul { margin: 10px 0 0 18px; display: flex; flex-direction: column; gap: 6px; line-height: 1.5; }
