@@ -80,7 +80,8 @@
   };
   const hints = [
     ['Country', () => countryName(show.co)],
-    ['Tour', () => show.t || 'none listed'],
+    // Drop a trailing year ('Another Roadside Attraction 1997') so the hint doesn't give the answer away
+    ['Tour', () => show.t ? show.t.replace(/\s+(19|20)\d\d$/, '') : 'none listed'],
     ['City', () => show.st ? show.c + ', ' + show.st : show.c],
   ];
   const el = (tag, cls, text) => {

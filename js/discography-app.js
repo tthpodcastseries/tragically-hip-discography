@@ -569,7 +569,7 @@ const spotifyAlbumURLs = {
   'From The Vault: Vol. 4 - Brussels 1994': 'https://open.spotify.com/album/2Ckj5o0evvJE0oimf3Tvj4',
   'From The Vault: Vol. 5 - Los Angeles 2004': 'https://open.spotify.com/album/0Ef5LyxsEYepSROsnutNLz',
   'From The Vault: Vol. 6 - Cleveland 1996': 'https://open.spotify.com/album/2jfMAO4b28AFjEQJaRMvYy',
-  'That Night in Toronto': 'https://open.spotify.com/album/6cUEjW9uMfewWYDl46waFn',
+  'That Night in Toronto': 'https://open.spotify.com/album/2FI07Cg55A8xTuowS3uprb',
   'Yer Favourites': 'https://open.spotify.com/album/6tcv9H1TNubc9o0gy2eIAG',
   'Fully Completely Box Set': 'https://open.spotify.com/album/6dWzo61hYvRtiKDblfwU4C',
   'Road Apples Box Set': 'https://open.spotify.com/album/6DZzcs4OnSsyUWIWb3TnSA',

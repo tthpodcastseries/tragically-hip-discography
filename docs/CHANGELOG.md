@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.1.2
+**Grace, Too - Patch** - October 28, 2026
+- **Fixed: 'Toronto #4' would not play in 10 recorded shows** (2000 tour: Montreal x2, Somerville, Tucson, Fort Collins, Portland, Brandon, Detroit, Buffalo, Toronto). The tour map player built audio URLs without encoding them, so the browser read `#4.mp3` as a page anchor and asked Backblaze for `.../09 Toronto ` (404). Each path part is now encoded.
+- **Fixed: 'Bring It All Back' tour hint gave the answer away** in 75 of 971 puzzles, where the tour name ends in the year (Another Roadside Attraction 1993 / 1995 / 1997, Summer Tour 2011, Fully and Completely North American Tour 2015). The hint now drops a trailing year; the result screen still shows the full tour name.
+- **Fixed: dead Spotify link for "That Night in Toronto".** Now points at "That Night In Toronto (Live)" (`2FI07Cg55A8xTuowS3uprb`, matched to the site's Apple Music ID through MusicBrainz).
+- `scripts/check-spotify-urls.js` rewritten. The old version checked a v2-era placeholder list with no URLs in it (always "0 broken") and wrote its report into `data/`. It now finds every Spotify link in `js/`, the pages and `data/`, checks each through Spotify's oembed (a plain request returns 200 even for dead IDs), and only writes a file with `--json <path>`. `--titles` lists each label next to Spotify's title to catch wrong-release IDs. Note: the script is in `.gitignore`, so it is local only.
+- Cache bumped to `thc-v5.1.2` (the game and discography scripts are cached cache-first); footer label bumped to v5.1.2
+
+---
+
 ## v5.1.1
 **Grace, Too - Patch** - October 28, 2026
 - **Fixed: Passport share card preview was blocked on the live site.** The Content Security Policy did not allow `blob:` images, so the generated card never showed. `blob:` added to `img-src` in `_headers`. `audit-site.js` now fails if a script builds blob image URLs while the CSP blocks them (the local preview server ignores `_headers`, so this only ever showed live).
