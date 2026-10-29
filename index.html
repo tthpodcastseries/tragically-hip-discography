@@ -6,7 +6,7 @@
   <title>The Hip Handbook - The Tragically Hip</title>
   <meta name="description" content="The Hip Handbook - discography, setlists, tour map, lyrics, and more for Canada's band, The Tragically Hip.">
   <meta property="og:title" content="The Hip Handbook - The Tragically Hip">
-  <meta property="og:description" content="Explore the complete Tragically Hip catalogue - 35 releases, 1,358 live shows, lyrics, and more.">
+  <meta property="og:description" content="Explore the complete Tragically Hip catalogue - 36 releases, 1,355 live shows, lyrics, and more.">
   <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thehiphandbook.tthpods.com/">
@@ -37,7 +37,7 @@
   <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">HANDBOOK</span></h1>
   <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
   <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 4px;font-style:italic;">Photo: David Bastedo</p>
-  <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,358 live shows, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
+  <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,355 live shows, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
   <div class="song-search-autocomplete">
     <input type="text" class="song-search-input" id="songSearchInput" placeholder="Search songs, lyrics, shows..." autocomplete="off" aria-label="Search songs, lyrics, and shows">
     <div class="song-search-dropdown" id="songSearchDropdown"></div>
@@ -68,7 +68,7 @@
       <h2 class="nav-group-title" id="navGroupShuffle">Shuffle</h2>
       <div class="shuffle-row">
         <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
-        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 625 Hip Archive recordings</span></a>
+        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 614 Hip Archive recordings</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupPlay">
@@ -80,7 +80,7 @@
     <section class="nav-group" aria-labelledby="navGroupListen">
       <h2 class="nav-group-title" id="navGroupListen">Listen</h2>
       <div class="nav-cards">
-        <a href="discography.html" class="nav-card"><span class="nav-card-sub">Music @ Work</span><span class="nav-card-name">The Discography</span><span class="nav-card-desc">All 35 releases - studio albums, EPs, live records, box sets, and solo projects</span></a>
+        <a href="discography.html" class="nav-card"><span class="nav-card-sub">Music @ Work</span><span class="nav-card-name">The Discography</span><span class="nav-card-desc">All 36 releases - studio albums, EPs, live records, box sets, and solo projects</span></a>
         <a href="/top-40" class="nav-card"><span class="nav-card-sub">TTHTop40 Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from #1 to #169</span></a>
         <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-sub">Unplucked Gems</span><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-desc">545 demos, outtakes, and alternate versions from the vault</span></a>
       </div>
@@ -88,8 +88,8 @@
     <section class="nav-group" aria-labelledby="navGroupLive">
       <h2 class="nav-group-title" id="navGroupLive">Live Shows</h2>
       <div class="nav-cards">
-        <a href="tour-map.html" class="nav-card"><span class="nav-card-sub">About This Map</span><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-desc">Every gig from 1985 to 2016 on one map, with 625 shows you can play</span></a>
-        <a href="/setlists" class="nav-card"><span class="nav-card-sub">Family Band</span><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-desc">Search 1,091 setlists by song, venue, city, or date</span></a>
+        <a href="tour-map.html" class="nav-card"><span class="nav-card-sub">About This Map</span><span class="nav-card-name">Interactive Tour Map</span><span class="nav-card-desc">Every gig from 1985 to 2016 on one map, with 614 shows you can play</span></a>
+        <a href="/setlists" class="nav-card"><span class="nav-card-sub">Family Band</span><span class="nav-card-name">Setlist Explorer</span><span class="nav-card-desc">Search 1,089 setlists by song, venue, city, or date</span></a>
         <a href="/my-shows" class="nav-card"><span class="nav-card-sub">In View</span><span class="nav-card-name">Yer Hip Passport</span><span class="nav-card-desc">Mark the shows you were at - see the songs you heard, the rarities you caught, and share yer card</span></a>
         <a href="live-stats.html" class="nav-card"><span class="nav-card-sub">38 Years Old</span><span class="nav-card-name">Live Show Stats</span><span class="nav-card-desc">Most-played songs, openers and closers, one-timers, and the songs never played live</span></a>
       </div>
@@ -206,7 +206,8 @@
         const monthStr = String(todayMonth).padStart(2, '0');
         const matches = setData.setlists.filter(function(s) {
           const parts = s.date.split('-');
-          return parts[0] === dayStr && parts[1] === monthStr;
+          // Shows flagged in data/setlist-corrections.json have a guessed date
+          return parts[0] === dayStr && parts[1] === monthStr && !s.dateNote;
         });
         // Video availability for today's shows - only fetch the map when there are matches
         let videoByShow = {};
@@ -257,11 +258,11 @@
   // ─── Show of the Day (v5) ───
   // One recorded show per day, the same for everyone: a show played on today's
   // date if the Hip Archive has one, otherwise a stepped walk through all of
-  // the recordings so consecutive days jump around without repeating for ~625 days.
+  // the recordings so consecutive days jump around without repeating for ~614 days.
   try {
     const idxResp = await fetch('data/show-index.json');
     const idx = idxResp.ok ? await idxResp.json() : {};
-    const recorded = allSetlists.filter(function(s) { return idx[s.id] && idx[s.id][2]; })
+    const recorded = allSetlists.filter(function(s) { return idx[s.id] && idx[s.id][2] && !s.dateNote; })
       .sort(function(a, b) { return a.id < b.id ? -1 : 1; });
     if (recorded.length) {
       const dayNumber = Math.floor(Date.UTC(now.getFullYear(), todayMonth - 1, todayDay) / 86400000);

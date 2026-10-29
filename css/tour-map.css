@@ -211,6 +211,7 @@ input[type="range"]::-moz-range-track {
 .popup-venue { color: var(--white); font-weight: 500; margin: 2px 0; }
 .popup-city { color: var(--muted); font-size: 0.75rem; }
 .popup-tour { color: var(--red); font-size: 0.7rem; font-weight: 500; margin-top: 4px; }
+.popup-date-note { color: var(--muted); font-size: 0.65rem; font-style: italic; margin-top: 2px; }
 .popup-songs { color: var(--muted); font-size: 0.7rem; }
 .popup-link { display: inline-block; margin-top: 6px; color: var(--gold); text-decoration: none; font-size: 0.7rem; font-weight: 500; }
 .popup-link:hover { text-decoration: underline; }

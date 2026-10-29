@@ -233,7 +233,7 @@
       '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
       '<div class="mg-eyebrow">Free for every Hip fan</div>' +
       '<h1 class="mg-title">Yer <span>Handbook</span></h1>' +
-      '<p class="mg-sub">Every release, 1,358 live shows, lyrics, and rare recordings. No account needed.</p>' +
+      '<p class="mg-sub">Every release, 1,355 live shows, lyrics, and rare recordings. No account needed.</p>' +
       '<button id="mg-guest-btn" class="mg-start" type="button">Start exploring</button>' +
       '<div class="mg-member">' +
         '<p class="mg-member-title">Got a membersHIP number?</p>' +

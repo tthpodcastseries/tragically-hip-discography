@@ -1,6 +1,6 @@
 {
   "description": "ISO-date match between data/youtube-videos.json and data/tth-tour-data.json. Used by tour-map.html, discography.html (Family Band), and video-for-new-recruits.html for bidirectional show ↔ video links.",
-  "lastUpdated": "2026-04-28",
+  "lastUpdated": "2026-10-29",
   "summary": {
     "totalShowsWithVideo": 195,
     "totalVideosMatched": 226,
@@ -3265,7 +3265,7 @@
       "state": "OR",
       "country": "US",
       "countryName": "United States",
-      "tour": null,
+      "tour": "Day For Night",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/roseland-theater-portland-or-5bfe037c.html"
     },
     "Ge2a-gvl3HU": {
@@ -3276,7 +3276,7 @@
       "state": "NM",
       "country": "US",
       "countryName": "United States",
-      "tour": null,
+      "tour": "Day For Night",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/el-rey-theater-albuquerque-nm-53fe0369.html"
     },
     "-w6oidsszjc": {
@@ -3287,7 +3287,7 @@
       "state": "MA",
       "country": "US",
       "countryName": "United States",
-      "tour": null,
+      "tour": "Day For Night",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/orpheum-theatre-boston-ma-7bfe0210.html"
     },
     "w1UnjTl2mCg": {
@@ -3298,7 +3298,7 @@
       "state": "26",
       "country": "SE",
       "countryName": "Sweden",
-      "tour": null,
+      "tour": "Day For Night",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1994/gino-stockholm-sweden-7bcf82c0.html"
     },
     "obOiLUDLZkE": {

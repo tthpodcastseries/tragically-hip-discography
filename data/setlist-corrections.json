@@ -1,0 +1,47 @@
+{
+  "note": "Hand-checked fixes layered on top of the setlist.fm pull (data/setlists.min.json) and the tour map data (data/tth-tour-data.json). Applied by scripts/apply-setlist-corrections.js, which is safe to re-run and should be re-run after any fresh setlist.fm fetch. Source notes: audits/The Hip Handbook - Data Fact Check - October 2026.md.",
+  "updated": "2026-10-29",
+  "remove": {
+    "bc6516e": "Duplicate of bc64de6 (Shaw Millennium Park, Calgary, Sept 7, 2013) with no setlist.",
+    "13c6fd91": "Duplicate of 53fc0721 (Molson Park, Barrie, July 1, 1989), same 9-song setlist.",
+    "4bc40f2a": "Duplicate of 6bfe9212 (Centre 200, Sydney NS, Dec 4, 2004) filed under a Jan 1, 2004 placeholder date."
+  },
+  "keepSongs": {
+    "bdbbde2": {
+      "songs": ["Blow at High Dough", "Twist My Arm", "Little Bones"],
+      "why": "Pinkpop, May 20, 1991. setlist.fm added Nautical Disaster, Ahead by a Century, and Fire in the Hole (1994-96 songs, copied from Pinkpop 1995). The Hip Archive recording of the 1991 set has only these three."
+    }
+  },
+  "dateUncertain": {
+    "13b05dd1": "Lux Steakhouse, Edmonton, 'Feb 27, 2007' - sits between Long Beach (Feb 26) and Phoenix (Feb 28), and the setlist includes Ocean Next (2016).",
+    "bf0adca": "Quidi Vidi Park, St. John's, 'July 1, 1992' - the Hip played Molson Park, Barrie that afternoon (Canada Day 125) and Thunderbird Stadium, Vancouver that night (soundboard video and bootleg both dated July 1, 1992). No setlist.",
+    "63c4da8f": "86 Street Music Hall, Vancouver, 'Dec 31, 1989' - setlist is a copy of The Spectrum, Toronto (Dec 19, 1989), and Club Soda, Montreal is listed the same night.",
+    "73e3c601": "Club Soda, Montreal, 'Dec 31, 1989' - Vancouver is listed the same night. No setlist.",
+    "4bd7178e": "Air Canada Centre, Toronto, 'Jan 1, 2000' - placeholder date. The setlist has Music @ Work songs (Lake Fever, The Bastard, Freak Turbulence), so it is a 2000 show; the New Year's Eve 1999 show is 6bd5ead6.",
+    "7bfe7ec0": "Kingston, 'Jan 1, 1995' - placeholder date, no venue.",
+    "63fe0a1f": "Alfie's, Kingston, 'Jan 1, 1988' - placeholder date."
+  },
+  "tour": {
+    "Day For Night": {
+      "ids": ["63fe7223", "73ca8e15", "5bfe037c", "6bfe722e", "73fe7229", "53fe0369", "4bfe0352", "5bf2934c", "7bfe0210", "73fe02f1", "4bcf4352", "73fe02d1", "6bd952c6", "73f5deb5", "43c1e313", "4bc1e312", "7bf5deb4", "63f5deab", "33d100cd", "7bcf82c0", "1bc6ddd8"],
+      "why": "Oct-Dec 1994 North American and European legs of the Day for Night tour. Some were untagged, and the five Netherlands shows were tagged Fully Completely Tour."
+    }
+  },
+  "removeRecording": {
+    "bff811a": "1989-07-01 recording belongs to Molson Park, Barrie (53fc0721).",
+    "3cc3d17": "1992-07-01 recording is the Molson Park, Barrie set (73d95e89).",
+    "bf0adca": "1992-07-01 recording is the Molson Park, Barrie set (73d95e89).",
+    "63d952bf": "1998-08-12 radio recording is the Haverhill session (2bffc89a), not Bill's Bar.",
+    "6bcc36fe": "1999-03-30 Seattle radio recording is the KMTT session (73cc36e9), not the Paramount show.",
+    "7be9fee8": "2007-03-10 early recording is the McKinley Mall F.Y.E. in-store (4bd54fbe), not the Town Ballroom show.",
+    "3ff05c7": "2007-04-17 recording is the Egan Media Studios session (535d170d), not Higher Ground.",
+    "43d8eb8b": "2009-05-27 recording is the Music Joint in-store (5b51c390), not the Vic Theatre show.",
+    "4bd33f36": "2009-06-17 recording is the KMTT radio session (3b5d5810), not the Moore Theatre show.",
+    "33ffc899": "1998-08-06 'Day' recording is the Martyrs' daytime interview set (135e4de9), not the evening show."
+  },
+  "renameSongs": {
+    "Raining Hearts of Fire": "Rain, Hearts and Fire",
+    "She's Got All It Takes": "She's Got What It Takes"
+  },
+  "dropSongsMatching": "^\\s*$|^(Interview( pt)? ?\\d*|Show Intro|Show Outro|Band Intro|Introduction|Jamming)$"
+}

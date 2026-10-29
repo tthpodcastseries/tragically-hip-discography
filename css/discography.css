@@ -643,6 +643,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .setlist-venue { font-size: 0.78rem; color: var(--text); }
 .setlist-city { font-size: 0.72rem; color: var(--muted); }
 .setlist-tour { display: inline-block; font-size: 0.62rem; color: var(--red); border: 1px solid var(--red); border-radius: 12px; padding: 1px 8px; margin-bottom: 6px; }
+.date-note { font-size: 0.68rem; font-style: italic; color: var(--muted2); margin-bottom: 6px; }
 .setlist-songs { font-size: 0.75rem; color: var(--muted); line-height: 1.8; }
 .setlist-songs .encore-label { color: var(--gold); font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 6px; }
 .setlist-songs .song-name { color: var(--text); }

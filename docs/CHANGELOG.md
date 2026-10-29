@@ -1,5 +1,39 @@
 # Changelog
 
+## v5.1.5
+**Grace, Too - Patch** - October 29, 2026
+Data fact check. Full findings and sources: `audits/The Hip Handbook - Data Fact Check - October 2026.md`.
+- **Fully Completely track order fixed**: Fifty Mission Cap is track 9 and Wheat Kings is track 10 (album page and `data/discography.json`).
+- **Box sets rebuilt from MusicBrainz.** The Road Apples, Phantom Power, and Up to Here track lists were mostly wrong (missing album tracks, songs from other albums, made-up live and demo discs). Fully Completely's live disc is now the real Live at the Horseshoe Tavern (Sept 13, 1992). Each box description now names its actual discs. Road Apples box date: November 12, 2021 (was October 15).
+- **On This Day milestones**: removed the Rock and Roll Hall of Fame induction (no record of it), the placeholder Jan 1, 1984 formation date, and the Feb 5, 1986 "first gig" (the setlist data has 1985 gigs). Canadian Music Hall of Fame moved to April 3, 2005 (Junos, Winnipeg), and the Canadian Songwriters Hall of Fame to September 26, 2026 (Toronto).
+- **Album facts**:
+  - Live Between Us: May 20, 1997 and 4x Platinum (was November 18 and 6x).
+  - Yer Favourites: #1 and Diamond (was #8).
+  - Up to Here: peaked at #9 (was #13).
+  - Saskadelphia: recorded at Kingsway Studio (was "Barris Studios"), and the #66 is now labelled as Billboard's Top Current Albums chart.
+  - Trouble at the Henhouse: added Group of the Year (1997).
+  - Hipeponymous: Junos are CD/DVD Artwork Design and Music DVD of the Year (2006).
+  - Away Is Mine: dropped the unsourced producer credit.
+  - Mercury Sea: "Bottrill" spelling fixed.
+  - Vault Vol. 5 and A National Celebration: "My Music at Work" spelling fixed.
+- **New release: Live July 22 - August 20, 2016** (August 21, 2026, #46 in Canada), with 29 tracks. Live category stats now read 9 albums, latest 2026. No cover art yet, so the card shows its gradient.
+- **Top 40**:
+  - Countdown year is 2025 (was 2024).
+  - #155 The Drop-Off is now tagged World Container.
+  - Nine singles marked "Unranked" now show their Road rank (On the Verge, 700 Ft. Ceiling, Something On, The Completists, It Can't Be Nashville Every Night, Family Band, Morning Moon, Speed River, What Blue).
+- **Setlist corrections layer**: new `data/setlist-corrections.json` with `scripts/apply-setlist-corrections.js`. The script is safe to re-run; run it after any setlist.fm refresh. It:
+  - removes 3 duplicate shows (Calgary 2013, Barrie 1989, and a "Jan 1, 2004" Sydney copy of Dec 4, 2004)
+  - trims the 1991 Pinkpop set to the three songs on the recording (setlist.fm had added three 1995 songs)
+  - flags 7 shows with guessed or impossible dates, which now show "Date unconfirmed" and are skipped by On This Day, Show of the Day, and the daily game
+  - moves the Oct-Dec 1994 shows to the Day For Night tour (21 shows)
+  - detaches 10 Hip Archive recordings that were matched to the wrong show on the same date
+  - drops 46 blank or non-song entries (interviews, intros), including the blank one that made the final Kingston show read 31 songs
+  - fixes 2 song-name typos
+- Counts updated across pages and docs: 1,355 shows, 1,089 setlists, 614 playable recordings, 36 releases. Rebuilt the show index, canonical songs, song index and sitemap, show-video map, and game pool (967 puzzles, rebuilt before the October 30 launch).
+- Cache bumped to `thc-v5.1.5`; footer label bumped to v5.1.5
+
+---
+
 ## v5.1.4
 **Grace, Too - Patch** - October 29, 2026
 - **'Bring It All Back' score card.** After a game, players can make a share image in three sizes (Facebook 1200x630, Instagram post 1080x1350, Instagram story 1080x1920) with the puzzle number, score, one coloured tile per guess, streak, and win rate, then Share it (where the phone can share images) or Save it. A signed-in member's first name is used; guests get none. No spoilers: the card never shows the show, the date, or the years guessed.

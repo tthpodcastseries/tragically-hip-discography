@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About This Map - The Tragically Hip Live</title>
-<meta name="description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
+<meta name="description" content="Interactive map of all 1,355 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
 <meta property="og:title" content="About This Map - The Tragically Hip Live">
-<meta property="og:description" content="Interactive map of all 1,358 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
+<meta property="og:description" content="Interactive map of all 1,355 Tragically Hip live shows from 1985 to 2016. Filter by tour, country, and year.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
 <meta property="og:url" content="https://thehiphandbook.tthpods.com/tour-map.html">
@@ -242,6 +242,7 @@
     html += `<div class="popup-venue">${g.venue || 'Unknown venue'}</div>`;
     html += `<div class="popup-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' - ' + g.countryName : ''}</div>`;
     if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
+    if (g.dateNote) html += `<div class="popup-date-note">Date unconfirmed</div>`;
     if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
     if (g.tracks && g.tracks.length) {
       window._gigLookup = window._gigLookup || {};
@@ -258,7 +259,7 @@
 
   // Render markers
   // Markers are created once per gig and reused across filter changes;
-  // popup HTML is built lazily on first open instead of for all 1,358 gigs up front
+  // popup HTML is built lazily on first open instead of for all 1,355 gigs up front
   const markerCache = new Map();
   function getGigMarker(g) {
     let m = markerCache.get(g.id);
@@ -880,7 +881,7 @@
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   const todaySuffix = `-${mm}-${dd}`;
-  const otdGigs = allGigs.filter(g => g.isoDate?.endsWith(todaySuffix));
+  const otdGigs = allGigs.filter(g => g.isoDate?.endsWith(todaySuffix) && !g.dateNote);
 
   if (otdGigs.length > 0) {
     const banner = document.getElementById('otdBanner');

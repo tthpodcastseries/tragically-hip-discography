@@ -17,16 +17,16 @@ You are helping jD (Jamie Dew, host of the TTH Podcast Series) write social post
 
 ## 1. What it is (in plain words)
 
-The Hip Handbook is a **free fan archive for The Tragically Hip**. Every official release, 1,358 live shows, lyrics, setlists, and hundreds of rare recordings, all in one place. No account is needed. No email, no password, nothing to buy.
+The Hip Handbook is a **free fan archive for The Tragically Hip**. Every official release, 1,355 live shows, lyrics, setlists, and hundreds of rare recordings, all in one place. No account is needed. No email, no password, nothing to buy.
 
 - **Address:** thehiphandbook.tthpods.com
 - **Made by:** jD, with data and recordings from fan communities (credits in section 7)
 - **It is a fan project.** It is not official and is not affiliated with the band or their management. Never imply it is.
 - **Works on phones.** It can be added to a home screen like an app.
 
-**One-line pitch:** "A free fan archive for The Tragically Hip - every release, 1,358 shows, 625 you can play, lyrics, setlists, and more."
+**One-line pitch:** "A free fan archive for The Tragically Hip - every release, 1,355 shows, 614 you can play, lyrics, setlists, and more."
 
-**Two-line pitch:** "The Hip Handbook is a free fan archive for The Tragically Hip. Dig through every release, search 1,358 shows, play 625 full recordings, and find a song by a line you remember."
+**Two-line pitch:** "The Hip Handbook is a free fan archive for The Tragically Hip. Dig through every release, search 1,355 shows, play 614 full recordings, and find a song by a line you remember."
 
 ---
 
@@ -34,9 +34,9 @@ The Hip Handbook is a **free fan archive for The Tragically Hip**. Every officia
 
 | Number | What it is | Where it comes from |
 |---|---|---|
-| **1,358** | Live shows in the archive (1985 onward) | setlist.fm |
-| **1,091** | Of those, shows with a full setlist | setlist.fm |
-| **625** | Shows with a full recording you can play in the browser | The Hip Archive |
+| **1,355** | Live shows in the archive (1985 onward) | setlist.fm |
+| **1,089** | Of those, shows with a full setlist | setlist.fm |
+| **614** | Shows with a full recording you can play in the browser | The Hip Archive |
 | **35** | Releases in the discography | The site's own data |
 | **191** | Songs with their own page (every song on jD's official song list) | jD's official list plus setlist.fm |
 | **168** | Songs from that list that have been played live | setlist.fm |
@@ -45,10 +45,10 @@ The Hip Handbook is a **free fan archive for The Tragically Hip**. Every officia
 | **545** | Known unreleased recordings, demos, outtakes and alternates tracked in Unplucked Gems (only a minority are known to be fully available) | The Unplucked Gems tracker |
 | **380** | Fan-shot concerts, soundboards and broadcasts on video (96 are soundboards) | Curated YouTube archive |
 | **36** | Official music videos | The site |
-| **971** | Shows in the daily game's puzzle pool | setlist.fm |
+| **967** | Shows in the daily game's puzzle pool | setlist.fm |
 
 **Careful:**
-- "Every gig from 1985 to 2016" is the site's own wording in places, but the data includes two later shows (June 6, 2021 at Massey Hall and September 16, 2022 at the National Arts Centre). Safer to say **"1,358 shows"** and skip the year range.
+- "Every gig from 1985 to 2016" is the site's own wording in places, but the data includes two later shows (June 6, 2021 at Massey Hall and September 16, 2022 at the National Arts Centre). Safer to say **"1,355 shows"** and skip the year range.
 - Song counts depend on setlist.fm, which is community data and can be incomplete. A "first played" or "never played" claim is "per setlist.fm", not a proven fact.
 - Two pages can show slightly different counts for the same song because medleys are counted differently. Example: 'New Orleans Is Sinking' shows **831** on the Live Show Stats page and **881** on its song page (the song page counts it inside medleys too). For "most played" claims, use the **Live Show Stats** numbers in section 5 and say "per setlist.fm".
 - "Never played live" is **10** on the Live Show Stats page (catalogue songs) but **23** in the Passport (the bigger official song list). Do not mix them.
@@ -66,7 +66,7 @@ Each feature has a plain name and a Hip-song name (the Hip-song name is a small 
 - **Search:** one box searches albums, songs, lyrics, and live shows. Picking a song opens that song's page.
 
 **The Discography** - *Music @ Work* (`/discography`)
-All 35 releases with tracklists, album art, and streaming links.
+All 36 releases with tracklists, album art, and streaming links.
 
 **Fan-Ranked Top 40** - *TTHTop40 Countdown* (`/top-40`)
 The songs fans voted best, with every ranking from #1 to #169. Each ranked song links to its podcast episode (the TTHTop40 Countdown for #1-40, The Road to the Top 40 for #41-169).
@@ -78,7 +78,7 @@ Find a song by a line you remember. (Do not quote lyrics in posts.)
 Search shows by song, venue, city, year, or tour. Every show has an **I Was There** button.
 
 **Interactive Tour Map** - *About This Map* (`/tour-map`)
-Every gig on one map. Filter by tour or country, drag a year slider, or watch the tour play through the years. 625 shows have a full recording that plays right there in the browser.
+Every gig on one map. Filter by tour or country, drag a year slider, or watch the tour play through the years. 614 shows have a full recording that plays right there in the browser.
 
 **Live Show Stats** - *38 Years Old* (`/live-stats`)
 Most-played songs, openers and closers, songs played only once, the longest gaps between plays, top covers, and songs never played live. All from setlist.fm data.
@@ -124,7 +124,7 @@ thehiphandbook.tthpods.com/bring-it-all-back
 ```
 
 - Puzzle #1 is October 30, then a new one every day.
-- Pool: 971 real shows from 1985 to 2016.
+- Pool: 967 real shows from 1985 to 2016.
 
 ---
 
@@ -182,7 +182,7 @@ Use these for "did you know" posts. Always say **"per setlist.fm"**.
 
 ## 8. Post angles that work (starting points, not finished posts)
 
-1. **Launch the Handbook:** "Hey, it's jD here. I built a free home for everything Hip..." Lead with 1,358 shows and 625 you can play. Link the home page.
+1. **Launch the Handbook:** "Hey, it's jD here. I built a free home for everything Hip..." Lead with 1,355 shows and 614 you can play. Link the home page.
 2. **Today's show:** Show of the Day or On This Day. "On this day in 1995 the Hip played Irving Plaza in New York" - check the site for the date you are posting.
 3. **The game:** teasers before October 30, then daily results ("Got it in 3 today"). Link `/bring-it-all-back`.
 4. **Find yer shows:** the Passport. "Tap I Was There on every show you've seen and the Handbook builds yer concert history." Show the share card.

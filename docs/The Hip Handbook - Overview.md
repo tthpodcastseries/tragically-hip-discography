@@ -15,8 +15,8 @@ What is checked and what is inferred: statements about the live site were tested
 It puts the whole catalogue in one place:
 
 - Every official release (35 entries in `discography.json`: studio albums, EPs, live records, compilations, box sets, videos), plus a section for solo records and side projects
-- 1,358 live shows from setlist.fm, with 1,091 having a full setlist
-- 625 shows with full audio you can play in the browser, from The Hip Archive
+- 1,355 live shows from setlist.fm, with 1,089 having a full setlist
+- 614 shows with full audio you can play in the browser, from The Hip Archive
 - Lyrics for 169 songs, the fan-voted Top 40 (all 169 voted songs), unreleased recordings, fan concert videos, official music videos
 - Personal features on top: a concert-history Passport, song pages, and a daily setlist game
 
@@ -35,7 +35,7 @@ Cost model: free to every visitor. No account is needed. No email, no password, 
 | Config | `_headers` (security headers and the CSP), `_redirects` and `netlify.toml` (rewrites and blocks; both are kept in step). |
 | Type and colour | Poppins only. Background `#0e0b16`, text `#d9d9d9`, gold `#CCA23C`, red `#C8102E`. No gradients except the approved soft red glow behind the home header. |
 | Maps | Leaflet with marker clustering (tour map) and Leaflet in the Passport. Basemap tiles from CARTO (needs a free non-commercial API key, which lives in the tile URL in code). |
-| Audio | 625 show recordings hosted on Backblaze B2 (`AUDIO_BASE` in `tour-map.html`), played by a custom player on the tour map. |
+| Audio | 614 show recordings hosted on Backblaze B2 (`AUDIO_BASE` in `tour-map.html`), played by a custom player on the tour map. |
 | Members | Supabase (Postgres). Called straight from the browser with the public anon key. See section 6. |
 | Analytics | Umami Cloud, cookieless. Events are names only, never names or numbers. See section 9. |
 | Offline | A service worker (`service-worker.js`) makes the site installable and mostly usable offline. See section 7. |
@@ -92,10 +92,10 @@ Welcome note in jD's voice ("Hey, it's jD here."), a universal search box, then 
 Search covers albums, songs, lyrics, live shows, and live performances of a song. A song result opens that song's page (`/song/<slug>`), once per song however many releases or versions it is on.
 
 ### 4.3 Discography, Top 40, Lyrics, Setlist Explorer
-One 3,200-line script (`js/discography-app.js`) drives four views from one file, because they share modals and the song view. Albums grid (studio, EPs, solo projects, live, compilations, box sets, video) opens modals with tracklists, streaming links (Apple Music, Spotify, Tidal, YouTube Music, Amazon) and buy links. The Top 40 shows all 169 voted songs; ranks 1-40 link their TTHTop40 Countdown episode, ranks 41-169 link their Road to the Top 40 episode. Lyrics Search works over `data/lyrics.json`. The Setlist Explorer filters 1,091 setlists, and each show has an **I Was There** button.
+One 3,200-line script (`js/discography-app.js`) drives four views from one file, because they share modals and the song view. Albums grid (studio, EPs, solo projects, live, compilations, box sets, video) opens modals with tracklists, streaming links (Apple Music, Spotify, Tidal, YouTube Music, Amazon) and buy links. The Top 40 shows all 169 voted songs; ranks 1-40 link their TTHTop40 Countdown episode, ranks 41-169 link their Road to the Top 40 episode. Lyrics Search works over `data/lyrics.json`. The Setlist Explorer filters 1,089 setlists, and each show has an **I Was There** button.
 
 ### 4.4 Tour map and the audio player
-All 1,358 gigs on a Leaflet map with tour and country filters, a year-range slider, search, an animated "play through the years" mode, an On This Day banner, and per-show popups (setlist, recording, I Was There). Shows with a recording open the player: the track list streams from B2, with a progress bar, previous/next and volume. Deep links: `tour-map.html#show=<id>` opens a show; `#play=<id>` starts its recording; `#play=random` picks a random recorded show.
+All 1,355 gigs on a Leaflet map with tour and country filters, a year-range slider, search, an animated "play through the years" mode, an On This Day banner, and per-show popups (setlist, recording, I Was There). Shows with a recording open the player: the track list streams from B2, with a progress bar, previous/next and volume. Deep links: `tour-map.html#show=<id>` opens a show; `#play=<id>` starts its recording; `#play=random` picks a random recorded show.
 
 ### 4.5 Yer Hip Passport (`/my-shows`)
 Built from the shows a person ticked with **I Was There**. Totals (shows, songs heard, cities, years), first and latest show, rarities caught (songs played live under 10 times ever), most-heard songs, a Leaflet map of their venues, a checklist against the official song list (168 songs ever played live), the show list with remove buttons, and a share card in three sizes (Facebook 1200x630, Instagram post 1080x1350, Instagram story 1080x1920) made on a canvas. Everything is computed in the browser. Guests see a note that shows are saved on this device only.
@@ -104,7 +104,7 @@ Built from the shows a person ticked with **I Was There**. Totals (shows, songs 
 One page per song on jD's official list (191). Shows times played live, live debut and latest performance (each linking to the show), a tappable plays-by-year chart, albums (first release, then "Also on"), fan ranking with podcast link, every Hip Archive recording with a Play link, and all live performances by year. Built from `data/song-index.json`, so phones never download the 2 MB setlist file. Songs with no live plays say so. `/song` lists all songs with a filter box. Debut and latest dates are setlist.fm's and can be wrong if its data is incomplete; the page says so.
 
 ### 4.7 Bring It All Back (daily game)
-One real setlist a day, the same for everyone, from a pool of 971 shows (1985-2016, 10+ songs, fixed-seed order). Guess the month and year in five tries; both must be right to win. Each miss says only whether the year and the month are right (no Earlier or Later), adds a coloured square (month and year, right year only, within 2 years, farther) and unlocks a hint in order: country, tour, then city and state. Result screen reveals the show, links to play it or see it on the map, and shows the game's points (100 for the first guess, then 80, 60, 40, 20; a miss is 0), played, win %, streak, best, total points, and the guess distribution, with a no-spoiler share text, a no-spoiler score card image (Facebook, Instagram post, Instagram story), and a countdown to the next puzzle. State lives only in the visitor's `localStorage` (`tth_bia_v2`). Puzzle #1 is **2026-10-30**; before that the page says when it opens. `?day=N` and `?reset=1` work on localhost only.
+One real setlist a day, the same for everyone, from a pool of 967 shows (1985-2016, 10+ songs, fixed-seed order). Guess the month and year in five tries; both must be right to win. Each miss says only whether the year and the month are right (no Earlier or Later), adds a coloured square (month and year, right year only, within 2 years, farther) and unlocks a hint in order: country, tour, then city and state. Result screen reveals the show, links to play it or see it on the map, and shows the game's points (100 for the first guess, then 80, 60, 40, 20; a miss is 0), played, win %, streak, best, total points, and the guess distribution, with a no-spoiler share text, a no-spoiler score card image (Facebook, Instagram post, Instagram story), and a countdown to the next puzzle. State lives only in the visitor's `localStorage` (`tth_bia_v2`). Puzzle #1 is **2026-10-30**; before that the page says when it opens. `?day=N` and `?reset=1` work on localhost only.
 
 ### 4.8 Live Show Stats, Unplucked Gems, videos, links
 - **38 Years Old**: most-played songs, openers and closers, one-timers, longest shelvings, songs never played live, all from setlist data.
@@ -121,9 +121,9 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 
 | File | What | Used by |
 |---|---|---|
-| `discography.json` | 35 releases and tracklists | discography, song pages |
-| `setlists.min.json` | 1,358 setlists, 1,091 with songs (1985-2022) | explorer, stats, home, Passport |
-| `tth-tour-data.json` | 1,358 gigs with coordinates, Archive links and track lists (2.6 MB) | tour map |
+| `discography.json` | 36 releases and tracklists | discography, song pages |
+| `setlists.min.json` | 1,355 setlists, 1,089 with songs (1985-2022) | explorer, stats, home, Passport |
+| `tth-tour-data.json` | 1,355 gigs with coordinates, Archive links and track lists (2.6 MB) | tour map |
 | `show-index.json` | Slim per-show lookup: coordinates and has-recording flag | Passport |
 | `show-videos.json`, `youtube-videos.json`, `music-videos.json` | Video data and the show-to-video join | video pages, tour map |
 | `lyrics.json` | Lyrics for 169 songs | lyrics search |
@@ -131,7 +131,7 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 | `*-play-counts*.json`, `live-play-counts-merged.json` | Hipbase and setlist.fm play counts, merged | stats |
 | `canonical-songs.json` | jD's official song list (191 songs, versions folded in), with each song's setlist spellings and live-play count | Passport, song index |
 | `song-index.json` | Per-song debut, last, plays, recordings, albums, ranking | song pages |
-| `game-pool.json` | The 971 puzzle shows in fixed order | game |
+| `game-pool.json` | The 967 puzzle shows in fixed order | game |
 
 **The official song list** is the 214 options in jD's public Google Form, plus 'Apartment Song' (jD confirmed it belongs). Demos, outtakes and alternate versions fold into their parent song, giving 191. 168 have been played live per setlist.fm; 23 have never appeared in a setlist.
 

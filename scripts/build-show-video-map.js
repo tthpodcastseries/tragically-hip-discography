@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // build-show-video-map.js
 // Joins data/youtube-videos.json (380 Hip videos) against
-// data/tth-tour-data.json (1,358 shows) by ISO date.
+// data/tth-tour-data.json (1,355 shows) by ISO date.
 // Produces data/show-videos.json with bidirectional lookups:
 //   byShow:  showId  -> [video refs]
 //   byVideo: videoId -> show ref

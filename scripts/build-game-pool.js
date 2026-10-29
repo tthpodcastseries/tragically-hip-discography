@@ -38,6 +38,8 @@ function rng(seed) {
 
 const shows = [];
 for (const s of setlists) {
+  // A show whose date is a guess (data/setlist-corrections.json) can't be a puzzle answer
+  if (s.dateNote) continue;
   const songs = (s.songs || []).filter(x => !x.tape && x.name && x.name.trim());
   if (songs.length < MIN_SONGS) continue;
   // setlist.fm set labels are messy ('Set #3', 'post-broadcast set', '"Fully

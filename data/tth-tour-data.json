@@ -215,7 +215,7 @@
     "countryName": "Canada",
     "lat": 44.2297640782947,
     "lng": -76.4809799194336,
-    "songCount": 21,
+    "songCount": 20,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1985/copper-penny-restaurant-kingston-on-canada-53c4e3b9.html"
   },
   {
@@ -645,7 +645,8 @@
     "lat": 44.2297640782947,
     "lng": -76.4809799194336,
     "songCount": 1,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/alfies-pub-kingston-on-canada-63fe0a1f.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/alfies-pub-kingston-on-canada-63fe0a1f.html",
+    "dateNote": "Alfie's, Kingston, 'Jan 1, 1988' - placeholder date."
   },
   {
     "id": "1bb9e95c",
@@ -1074,7 +1075,7 @@
     "countryName": "Canada",
     "lat": 45.4209405046496,
     "lng": -75.6902861595154,
-    "songCount": 18,
+    "songCount": 16,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/barrymores-music-hall-ottawa-on-canada-3cce197.html"
   },
   {
@@ -1421,7 +1422,7 @@
     "countryName": "Canada",
     "lat": 45.4209405046496,
     "lng": -75.6902861595154,
-    "songCount": 20,
+    "songCount": 19,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/barrymores-music-hall-ottawa-on-canada-6bc4da92.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1988-09-30-Ottawa-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -1682,70 +1683,9 @@
     "lng": -75.6902861595154,
     "songCount": 0,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/grandstand-at-lansdowne-park-ottawa-on-canada-bff811a.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1989-07-01-London-ON-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "She Didn t Know",
-        "url": "1989-07-01-Ottawa-ON/01-She Didn_t Know.mp3",
-        "filename": "01-She Didn_t Know.mp3"
-      },
-      {
-        "name": "Highway Girl",
-        "url": "1989-07-01-Ottawa-ON/02-Highway Girl.mp3",
-        "filename": "02-Highway Girl.mp3"
-      },
-      {
-        "name": "All Canadian Surf Club",
-        "url": "1989-07-01-Ottawa-ON/03-All Canadian Surf Club.mp3",
-        "filename": "03-All Canadian Surf Club.mp3"
-      },
-      {
-        "name": "I Can Only Give You Everything",
-        "url": "1989-07-01-Ottawa-ON/04-I Can Only Give You Everything.mp3",
-        "filename": "04-I Can Only Give You Everything.mp3"
-      },
-      {
-        "name": "Opiated",
-        "url": "1989-07-01-Ottawa-ON/05-Opiated.mp3",
-        "filename": "05-Opiated.mp3"
-      },
-      {
-        "name": "Baby Please Don t Go",
-        "url": "1989-07-01-Ottawa-ON/06-Baby Please Don_t Go.mp3",
-        "filename": "06-Baby Please Don_t Go.mp3"
-      },
-      {
-        "name": "Three Pistols",
-        "url": "1989-07-01-Ottawa-ON/07-Three Pistols.mp3",
-        "filename": "07-Three Pistols.mp3"
-      },
-      {
-        "name": "Everytime You Go",
-        "url": "1989-07-01-Ottawa-ON/08-Everytime You Go.mp3",
-        "filename": "08-Everytime You Go.mp3"
-      },
-      {
-        "name": "Boots or Hearts",
-        "url": "1989-07-01-Ottawa-ON/09-Boots or Hearts.mp3",
-        "filename": "09-Boots or Hearts.mp3"
-      },
-      {
-        "name": "Last American Exit",
-        "url": "1989-07-01-Ottawa-ON/10-Last American Exit.mp3",
-        "filename": "10-Last American Exit.mp3"
-      },
-      {
-        "name": "Blow At High Dough",
-        "url": "1989-07-01-Ottawa-ON/11-Blow At High Dough.mp3",
-        "filename": "11-Blow At High Dough.mp3"
-      },
-      {
-        "name": "I ll Believe In You",
-        "url": "1989-07-01-Ottawa-ON/12-I_ll Believe In You.mp3",
-        "filename": "12-I_ll Believe In You.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "53fc0721",
@@ -1762,86 +1702,6 @@
     "lng": -77.116136712,
     "songCount": 9,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/molson-park-barrie-on-canada-53fc0721.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1989-07-01-London-ON-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "She Didn t Know",
-        "url": "1989-07-01-Barrie-ON/01-She Didn_t Know.mp3",
-        "filename": "01-She Didn_t Know.mp3"
-      },
-      {
-        "name": "Highway Girl",
-        "url": "1989-07-01-Barrie-ON/02-Highway Girl.mp3",
-        "filename": "02-Highway Girl.mp3"
-      },
-      {
-        "name": "All Canadian Surf Club",
-        "url": "1989-07-01-Barrie-ON/03-All Canadian Surf Club.mp3",
-        "filename": "03-All Canadian Surf Club.mp3"
-      },
-      {
-        "name": "I Can Only Give You Everything",
-        "url": "1989-07-01-Barrie-ON/04-I Can Only Give You Everything.mp3",
-        "filename": "04-I Can Only Give You Everything.mp3"
-      },
-      {
-        "name": "Opiated",
-        "url": "1989-07-01-Barrie-ON/05-Opiated.mp3",
-        "filename": "05-Opiated.mp3"
-      },
-      {
-        "name": "Baby Please Don t Go",
-        "url": "1989-07-01-Barrie-ON/06-Baby Please Don_t Go.mp3",
-        "filename": "06-Baby Please Don_t Go.mp3"
-      },
-      {
-        "name": "Three Pistols",
-        "url": "1989-07-01-Barrie-ON/07-Three Pistols.mp3",
-        "filename": "07-Three Pistols.mp3"
-      },
-      {
-        "name": "Everytime You Go",
-        "url": "1989-07-01-Barrie-ON/08-Everytime You Go.mp3",
-        "filename": "08-Everytime You Go.mp3"
-      },
-      {
-        "name": "Boots or Hearts",
-        "url": "1989-07-01-Barrie-ON/09-Boots or Hearts.mp3",
-        "filename": "09-Boots or Hearts.mp3"
-      },
-      {
-        "name": "Last American Exit",
-        "url": "1989-07-01-Barrie-ON/10-Last American Exit.mp3",
-        "filename": "10-Last American Exit.mp3"
-      },
-      {
-        "name": "Blow At High Dough",
-        "url": "1989-07-01-Barrie-ON/11-Blow At High Dough.mp3",
-        "filename": "11-Blow At High Dough.mp3"
-      },
-      {
-        "name": "I ll Believe In You",
-        "url": "1989-07-01-Barrie-ON/12-I_ll Believe In You.mp3",
-        "filename": "12-I_ll Believe In You.mp3"
-      }
-    ]
-  },
-  {
-    "id": "13c6fd91",
-    "date": "01-07-1989",
-    "isoDate": "1989-07-01",
-    "tour": null,
-    "venue": "Molson Park",
-    "venueId": "7bd6ca58",
-    "city": "Barrie",
-    "state": "ON",
-    "country": "CA",
-    "countryName": "Canada",
-    "lat": 44.883420505,
-    "lng": -77.116136712,
-    "songCount": 9,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/molson-park-barrie-on-canada-13c6fd91.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1989-07-01-London-ON-mp3.zip",
     "archiveFormat": "mp3",
     "tracks": [
@@ -2460,7 +2320,8 @@
     "lat": 45.5088375,
     "lng": -73.587809,
     "songCount": 0,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/club-soda-montreal-qc-canada-73e3c601.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/club-soda-montreal-qc-canada-73e3c601.html",
+    "dateNote": "Club Soda, Montreal, 'Dec 31, 1989' - Vancouver is listed the same night. No setlist."
   },
   {
     "id": "63c4da8f",
@@ -2476,7 +2337,8 @@
     "lat": 49.249657393,
     "lng": -123.119340403,
     "songCount": 11,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/86-street-music-hall-vancouver-bc-canada-63c4da8f.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/86-street-music-hall-vancouver-bc-canada-63c4da8f.html",
+    "dateNote": "86 Street Music Hall, Vancouver, 'Dec 31, 1989' - setlist is a copy of The Spectrum, Toronto (Dec 19, 1989), and Club Soda, Montreal is listed the same night."
   },
   {
     "id": "3b98a4d0",
@@ -4386,7 +4248,7 @@
     "countryName": "Netherlands",
     "lat": 50.9070922400953,
     "lng": 6.02715969085693,
-    "songCount": 6,
+    "songCount": 3,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1991/draf-en-renbaan-limburg-landgraaf-netherlands-bdbbde2.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1991-05-20-Landgraaf-ND-mp3.zip",
     "archiveFormat": "mp3",
@@ -6821,45 +6683,10 @@
     "lng": -52.707222,
     "songCount": 0,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1992/quidi-vidi-park-st-johns-nl-canada-bf0adca.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1992-07-01-Barrie-ON-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "tth1992 07 01d01t01",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t01.mp3",
-        "filename": "tth1992-07-01d01t01.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t02",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t02.mp3",
-        "filename": "tth1992-07-01d01t02.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t03",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t03.mp3",
-        "filename": "tth1992-07-01d01t03.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t04",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t04.mp3",
-        "filename": "tth1992-07-01d01t04.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t05",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t05.mp3",
-        "filename": "tth1992-07-01d01t05.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t06",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t06.mp3",
-        "filename": "tth1992-07-01d01t06.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t07",
-        "url": "1992-07-01-St.-John's-NL/tth1992-07-01d01t07.mp3",
-        "filename": "tth1992-07-01d01t07.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": [],
+    "dateNote": "Quidi Vidi Park, St. John's, 'July 1, 1992' - the Hip played Molson Park, Barrie that afternoon (Canada Day 125) and Thunderbird Stadium, Vancouver that night (soundboard video and bootleg both dated July 1, 1992). No setlist."
   },
   {
     "id": "73d95e89",
@@ -6931,45 +6758,9 @@
     "lng": -123.119340403,
     "songCount": 13,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1992/thunderbird-stadium-vancouver-bc-canada-3cc3d17.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1992-07-01-Barrie-ON-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "tth1992 07 01d01t01",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t01.mp3",
-        "filename": "tth1992-07-01d01t01.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t02",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t02.mp3",
-        "filename": "tth1992-07-01d01t02.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t03",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t03.mp3",
-        "filename": "tth1992-07-01d01t03.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t04",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t04.mp3",
-        "filename": "tth1992-07-01d01t04.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t05",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t05.mp3",
-        "filename": "tth1992-07-01d01t05.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t06",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t06.mp3",
-        "filename": "tth1992-07-01d01t06.mp3"
-      },
-      {
-        "name": "tth1992 07 01d01t07",
-        "url": "1992-07-01-Vancouver-BC/tth1992-07-01d01t07.mp3",
-        "filename": "tth1992-07-01d01t07.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "5bbd0f7c",
@@ -8630,7 +8421,7 @@
     "countryName": "Canada",
     "lat": 42.883418999,
     "lng": -79.032864019,
-    "songCount": 17,
+    "songCount": 16,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/big-thunder-thunder-bay-on-canada-1bd21ddc.html"
   },
   {
@@ -9923,7 +9714,7 @@
     "id": "63fe7223",
     "date": "04-10-1994",
     "isoDate": "1994-10-04",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Under the Rail",
     "venueId": "bd2615a",
     "city": "Seattle",
@@ -9939,7 +9730,7 @@
     "id": "73ca8e15",
     "date": "06-10-1994",
     "isoDate": "1994-10-06",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Metropolitan Performing Arts Center",
     "venueId": "4bd04fc6",
     "city": "Spokane",
@@ -9955,7 +9746,7 @@
     "id": "5bfe037c",
     "date": "07-10-1994",
     "isoDate": "1994-10-07",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Roseland Theater",
     "venueId": "3bd63c38",
     "city": "Portland",
@@ -10060,7 +9851,7 @@
     "id": "6bfe722e",
     "date": "08-10-1994",
     "isoDate": "1994-10-08",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Soreng Theater",
     "venueId": "4bd33b66",
     "city": "Eugene",
@@ -10076,7 +9867,7 @@
     "id": "73fe7229",
     "date": "12-10-1994",
     "isoDate": "1994-10-12",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Dream Street",
     "venueId": "63d762fb",
     "city": "San Diego",
@@ -10092,7 +9883,7 @@
     "id": "53fe0369",
     "date": "16-10-1994",
     "isoDate": "1994-10-16",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "El Rey Theater",
     "venueId": "53d2d3dd",
     "city": "Albuquerque",
@@ -10202,7 +9993,7 @@
     "id": "4bfe0352",
     "date": "22-10-1994",
     "isoDate": "1994-10-22",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "The Odeon",
     "venueId": "73d5968d",
     "city": "Cleveland",
@@ -10218,7 +10009,7 @@
     "id": "5bf2934c",
     "date": "07-11-1994",
     "isoDate": "1994-11-07",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Globe Theater",
     "venueId": "33d6c031",
     "city": "Norwalk",
@@ -10313,7 +10104,7 @@
     "id": "7bfe0210",
     "date": "10-11-1994",
     "isoDate": "1994-11-10",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Orpheum Theatre",
     "venueId": "13d63981",
     "city": "Boston",
@@ -10383,7 +10174,7 @@
     "id": "73fe02f1",
     "date": "11-11-1994",
     "isoDate": "1994-11-11",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "The Sting",
     "venueId": "53d6274d",
     "city": "New Britain",
@@ -10399,7 +10190,7 @@
     "id": "4bcf4352",
     "date": "12-11-1994",
     "isoDate": "1994-11-12",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Tower Theatre",
     "venueId": "5bd63b70",
     "city": "Upper Darby",
@@ -10415,7 +10206,7 @@
     "id": "73fe02d1",
     "date": "22-11-1994",
     "isoDate": "1994-11-22",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Batschkapp",
     "venueId": "53d6c729",
     "city": "Frankfurt",
@@ -10515,7 +10306,7 @@
     "id": "6bd952c6",
     "date": "27-11-1994",
     "isoDate": "1994-11-27",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Noorderligt",
     "venueId": "33d63021",
     "city": "Tilburg",
@@ -10531,7 +10322,7 @@
     "id": "73f5deb5",
     "date": "28-11-1994",
     "isoDate": "1994-11-28",
-    "tour": "Fully Completely Tour",
+    "tour": "Day For Night",
     "venue": "Nighttown",
     "venueId": "5bd62b88",
     "city": "Rotterdam",
@@ -10547,7 +10338,7 @@
     "id": "43c1e313",
     "date": "29-11-1994",
     "isoDate": "1994-11-29",
-    "tour": "Fully Completely Tour",
+    "tour": "Day For Night",
     "venue": "Grote Zaal",
     "venueId": "6bd26236",
     "city": "Amsterdam",
@@ -10563,7 +10354,7 @@
     "id": "4bc1e312",
     "date": "30-11-1994",
     "isoDate": "1994-11-30",
-    "tour": "Fully Completely Tour",
+    "tour": "Day For Night",
     "venue": "Grote Zaal",
     "venueId": "6bd26236",
     "city": "Amsterdam",
@@ -10579,7 +10370,7 @@
     "id": "7bf5deb4",
     "date": "03-12-1994",
     "isoDate": "1994-12-03",
-    "tour": "Fully Completely Tour",
+    "tour": "Day For Night",
     "venue": "Tivoli",
     "venueId": "3bd49848",
     "city": "Utrecht",
@@ -10595,7 +10386,7 @@
     "id": "63f5deab",
     "date": "04-12-1994",
     "isoDate": "1994-12-04",
-    "tour": "Fully Completely Tour",
+    "tour": "Day For Night",
     "venue": "Tivoli",
     "venueId": "3bd49848",
     "city": "Utrecht",
@@ -10611,7 +10402,7 @@
     "id": "33d100cd",
     "date": "05-12-1994",
     "isoDate": "1994-12-05",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Luna Theater",
     "venueId": "7bd7026c",
     "city": "Brussels",
@@ -10627,7 +10418,7 @@
     "id": "7bcf82c0",
     "date": "07-12-1994",
     "isoDate": "1994-12-07",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Gino",
     "venueId": "7bd65644",
     "city": "Stockholm",
@@ -10722,7 +10513,7 @@
     "id": "1bc6ddd8",
     "date": "09-12-1994",
     "isoDate": "1994-12-09",
-    "tour": null,
+    "tour": "Day For Night",
     "venue": "Shepherd's Bush Empire",
     "venueId": "73d6cac1",
     "city": "London",
@@ -10748,7 +10539,8 @@
     "lat": 44.2297640782947,
     "lng": -76.4809799194336,
     "songCount": 1,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/unknown-venue-kingston-on-canada-7bfe7ec0.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/unknown-venue-kingston-on-canada-7bfe7ec0.html",
+    "dateNote": "Kingston, 'Jan 1, 1995' - placeholder date, no venue."
   },
   {
     "id": "53da1f21",
@@ -11901,7 +11693,7 @@
     "countryName": "United States",
     "lat": 41.850033,
     "lng": -87.6500523,
-    "songCount": 16,
+    "songCount": 15,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/metro-chicago-il-1bfe6d30.html"
   },
   {
@@ -14888,7 +14680,7 @@
     "countryName": "Canada",
     "lat": 43.700113788,
     "lng": -79.416304194,
-    "songCount": 6,
+    "songCount": 5,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/horseshoe-tavern-toronto-on-canada-23ca74fb.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-05-07-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -15099,7 +14891,7 @@
     "countryName": "United States",
     "lat": 36.1,
     "lng": -80.244,
-    "songCount": 22,
+    "songCount": 20,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/ziggys-winston-salem-nc-7bfcf650.html"
   },
   {
@@ -17535,7 +17327,7 @@
     "countryName": "United States",
     "lat": 38.895,
     "lng": -77.036,
-    "songCount": 16,
+    "songCount": 15,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/930-club-washington-dc-23fcf4e7.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-09-30-Washington-DC-mp3.zip",
     "archiveFormat": "mp3",
@@ -17625,7 +17417,7 @@
     "countryName": "United States",
     "lat": 40.0378755,
     "lng": -76.3055144,
-    "songCount": 16,
+    "songCount": 15,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/the-chameleon-club-lancaster-pa-3bfcf4dc.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-10-01-Lancaster-PA-mp3.zip",
     "archiveFormat": "mp3",
@@ -22174,7 +21966,7 @@
     "countryName": "United States",
     "lat": 41.850033,
     "lng": -87.6500523,
-    "songCount": 19,
+    "songCount": 18,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/martyrs-chicago-il-3bffc898.html"
   },
   {
@@ -22192,50 +21984,9 @@
     "lng": -87.6500523,
     "songCount": 17,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/martyrs-chicago-il-33ffc899.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-08-06-Chicago-IL-Day-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "Show Intro",
-        "url": "1998-08-06-Chicago-IL/01 Show Intro.mp3",
-        "filename": "01 Show Intro.mp3"
-      },
-      {
-        "name": "Band Intro",
-        "url": "1998-08-06-Chicago-IL/02 Band Intro.mp3",
-        "filename": "02 Band Intro.mp3"
-      },
-      {
-        "name": "Interview pt 1",
-        "url": "1998-08-06-Chicago-IL/03 Interview pt 1.mp3",
-        "filename": "03 Interview pt 1.mp3"
-      },
-      {
-        "name": "Fireworks",
-        "url": "1998-08-06-Chicago-IL/04 Fireworks.mp3",
-        "filename": "04 Fireworks.mp3"
-      },
-      {
-        "name": "Ahead by a Century",
-        "url": "1998-08-06-Chicago-IL/05 Ahead by a Century.mp3",
-        "filename": "05 Ahead by a Century.mp3"
-      },
-      {
-        "name": "Interview pt 2",
-        "url": "1998-08-06-Chicago-IL/06 Interview pt 2.mp3",
-        "filename": "06 Interview pt 2.mp3"
-      },
-      {
-        "name": "Thompson Girl",
-        "url": "1998-08-06-Chicago-IL/07 Thompson Girl.mp3",
-        "filename": "07 Thompson Girl.mp3"
-      },
-      {
-        "name": "Show Outro",
-        "url": "1998-08-06-Chicago-IL/08 Show Outro.mp3",
-        "filename": "08 Show Outro.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "135e4de9",
@@ -22250,7 +22001,7 @@
     "countryName": "United States",
     "lat": 41.850033,
     "lng": -87.6500523,
-    "songCount": 8,
+    "songCount": 3,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/martyrs-chicago-il-135e4de9.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-08-06-Chicago-IL-Day-mp3.zip",
     "archiveFormat": "mp3",
@@ -22617,25 +22368,9 @@
     "lng": -71.0597732,
     "songCount": 17,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/bills-bar-boston-ma-63d952bf.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-08-12-Haverhill-MA-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "tth1998 08 12radio",
-        "url": "1998-08-12-Boston-MA/01-tth1998-08-12radio.mp3",
-        "filename": "01-tth1998-08-12radio.mp3"
-      },
-      {
-        "name": "tth1998 08 12radio",
-        "url": "1998-08-12-Boston-MA/02-tth1998-08-12radio.mp3",
-        "filename": "02-tth1998-08-12radio.mp3"
-      },
-      {
-        "name": "tth998 08 12radio",
-        "url": "1998-08-12-Boston-MA/03-tth998-08-12radio.mp3",
-        "filename": "03-tth998-08-12radio.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "2bffc89a",
@@ -29380,45 +29115,9 @@
     "lng": -122.3320708,
     "songCount": 18,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/paramount-theatre-seattle-wa-6bcc36fe.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1999-03-30-Seattle-WA-Radio-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "tth1999 03 30t01",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t01.mp3",
-        "filename": "tth1999-03-30t01.mp3"
-      },
-      {
-        "name": "tth1999 03 30t02",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t02.mp3",
-        "filename": "tth1999-03-30t02.mp3"
-      },
-      {
-        "name": "tth1999 03 30t03",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t03.mp3",
-        "filename": "tth1999-03-30t03.mp3"
-      },
-      {
-        "name": "tth1999 03 30t04",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t04.mp3",
-        "filename": "tth1999-03-30t04.mp3"
-      },
-      {
-        "name": "tth1999 03 30t05",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t05.mp3",
-        "filename": "tth1999-03-30t05.mp3"
-      },
-      {
-        "name": "tth1999 03 30t06",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t06.mp3",
-        "filename": "tth1999-03-30t06.mp3"
-      },
-      {
-        "name": "tth1999 03 30t07",
-        "url": "1999-03-30-Seattle-WA/tth1999-03-30t07.mp3",
-        "filename": "tth1999-03-30t07.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "63cc36db",
@@ -31103,7 +30802,8 @@
         "url": "2000-01-01-Toronto-ON/2000-01-01-Toronto-ON-mp3-JGM.mp3",
         "filename": "2000-01-01-Toronto-ON-mp3-JGM.mp3"
       }
-    ]
+    ],
+    "dateNote": "Air Canada Centre, Toronto, 'Jan 1, 2000' - placeholder date. The setlist has Music @ Work songs (Lake Fever, The Bastard, Freak Turbulence), so it is a 2000 show; the New Year's Eve 1999 show is 6bd5ead6."
   },
   {
     "id": "4bff0b26",
@@ -35267,7 +34967,7 @@
     "countryName": "United States",
     "lat": 33.4483771,
     "lng": -112.0740373,
-    "songCount": 25,
+    "songCount": 23,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2000/web-theatre-phoenix-az-33cf40e5.html"
   },
   {
@@ -46371,24 +46071,8 @@
     "countryName": "Canada",
     "lat": 50.099696344,
     "lng": -123.002768893,
-    "songCount": 21,
+    "songCount": 16,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2003/boot-pub-whistler-bc-canada-1bff0d38.html"
-  },
-  {
-    "id": "4bc40f2a",
-    "date": "01-01-2004",
-    "isoDate": "2004-01-01",
-    "tour": "In Between Evolution",
-    "venue": "Centre 200",
-    "venueId": "1bd6c128",
-    "city": "Sydney",
-    "state": "NS",
-    "country": "CA",
-    "countryName": "Canada",
-    "lat": 46.1351,
-    "lng": -60.1831,
-    "songCount": 19,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/centre-200-sydney-ns-canada-4bc40f2a.html"
   },
   {
     "id": "2bff5052",
@@ -56086,7 +55770,8 @@
     "lat": 53.550135939,
     "lng": -113.468712219,
     "songCount": 11,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/lux-steakhouse-edmonton-ab-canada-13b05dd1.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/lux-steakhouse-edmonton-ab-canada-13b05dd1.html",
+    "dateNote": "Lux Steakhouse, Edmonton, 'Feb 27, 2007' - sits between Long Beach (Feb 26) and Phoenix (Feb 28), and the setlist includes Ocean Next (2016)."
   },
   {
     "id": "63ff2e63",
@@ -56496,35 +56181,9 @@
     "lng": -78.8783689,
     "songCount": 23,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/town-ballroom-buffalo-ny-7be9fee8.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-03-10-Hamburg-NY-V2-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "hip2007 03 10early t01",
-        "url": "2007-03-10-Buffalo-NY/hip2007-03-10early_t01.mp3",
-        "filename": "hip2007-03-10early_t01.mp3"
-      },
-      {
-        "name": "hip2007 03 10early t02",
-        "url": "2007-03-10-Buffalo-NY/hip2007-03-10early_t02.mp3",
-        "filename": "hip2007-03-10early_t02.mp3"
-      },
-      {
-        "name": "hip2007 03 10early t03",
-        "url": "2007-03-10-Buffalo-NY/hip2007-03-10early_t03.mp3",
-        "filename": "hip2007-03-10early_t03.mp3"
-      },
-      {
-        "name": "hip2007 03 10early t04",
-        "url": "2007-03-10-Buffalo-NY/hip2007-03-10early_t04.mp3",
-        "filename": "hip2007-03-10early_t04.mp3"
-      },
-      {
-        "name": "hip2007 03 10early t05",
-        "url": "2007-03-10-Buffalo-NY/hip2007-03-10early_t05.mp3",
-        "filename": "hip2007-03-10early_t05.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "4bd54fbe",
@@ -58030,15 +57689,9 @@
     "lng": -73.1709604,
     "songCount": 20,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/higher-ground-music-hall-south-burlington-vt-3ff05c7.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2007-04-17-Burlington-VT-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "Tragically Hip 2007 04 17 Egan Media Studios, Burlington, VT",
-        "url": "2007-04-17-South-Burlington-VT/Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3",
-        "filename": "Tragically Hip - 2007-04-17 - Egan Media Studios, Burlington, VT.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "23dd5c97",
@@ -65275,7 +64928,7 @@
     "countryName": "United States",
     "lat": 41.850033,
     "lng": -87.6500523,
-    "songCount": 9,
+    "songCount": 5,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/music-joint-chicago-il-5b51c390.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-05-27-Chicago-IL-mp3.zip",
     "archiveFormat": "mp3",
@@ -65352,65 +65005,9 @@
     "lng": -87.6500523,
     "songCount": 8,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/vic-theatre-chicago-il-43d8eb8b.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-05-27-Chicago-IL-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "Courage (for Hugh MacLennan)",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t01.mp3",
-        "filename": "tth2009-05-27d01t01.mp3"
-      },
-      {
-        "name": "Honey, Please",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t02.mp3",
-        "filename": "tth2009-05-27d01t02.mp3"
-      },
-      {
-        "name": "In View",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t03.mp3",
-        "filename": "tth2009-05-27d01t03.mp3"
-      },
-      {
-        "name": "New Orleans Is Sinking",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t04.mp3",
-        "filename": "tth2009-05-27d01t04.mp3"
-      },
-      {
-        "name": "Twist My Arm",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t05.mp3",
-        "filename": "tth2009-05-27d01t05.mp3"
-      },
-      {
-        "name": "At the Hundredth Meridian",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t06.mp3",
-        "filename": "tth2009-05-27d01t06.mp3"
-      },
-      {
-        "name": "It's a Good Life if You Don't Weaken",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t07.mp3",
-        "filename": "tth2009-05-27d01t07.mp3"
-      },
-      {
-        "name": "Blow at High Dough",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t08.mp3",
-        "filename": "tth2009-05-27d01t08.mp3"
-      },
-      {
-        "name": "tth2009 05 27d01t09",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t09.mp3",
-        "filename": "tth2009-05-27d01t09.mp3"
-      },
-      {
-        "name": "tth2009 05 27d01t10",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t10.mp3",
-        "filename": "tth2009-05-27d01t10.mp3"
-      },
-      {
-        "name": "tth2009 05 27d01t11",
-        "url": "2009-05-27-Chicago-IL/tth2009-05-27d01t11.mp3",
-        "filename": "tth2009-05-27d01t11.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "2bd1482a",
@@ -66481,45 +66078,9 @@
     "lng": -122.3320708,
     "songCount": 24,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/the-moore-theatre-seattle-wa-4bd33f36.html",
-    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-06-17-Seattle-WA-mp3.zip",
-    "archiveFormat": "mp3",
-    "tracks": [
-      {
-        "name": "Introduction",
-        "url": "2009-06-17-Seattle-WA/01 - Introduction.mp3",
-        "filename": "01 - Introduction.mp3"
-      },
-      {
-        "name": "Morning Moon (False Start)",
-        "url": "2009-06-17-Seattle-WA/02 - Morning Moon (False Start).mp3",
-        "filename": "02 - Morning Moon (False Start).mp3"
-      },
-      {
-        "name": "Morning Moon",
-        "url": "2009-06-17-Seattle-WA/03 - Morning Moon.mp3",
-        "filename": "03 - Morning Moon.mp3"
-      },
-      {
-        "name": "Interview 1",
-        "url": "2009-06-17-Seattle-WA/04 - Interview 1.mp3",
-        "filename": "04 - Interview 1.mp3"
-      },
-      {
-        "name": "Coffee Girl",
-        "url": "2009-06-17-Seattle-WA/05 - Coffee Girl.mp3",
-        "filename": "05 - Coffee Girl.mp3"
-      },
-      {
-        "name": "Interview 2",
-        "url": "2009-06-17-Seattle-WA/06 - Interview 2.mp3",
-        "filename": "06 - Interview 2.mp3"
-      },
-      {
-        "name": "Bobcaygeon",
-        "url": "2009-06-17-Seattle-WA/07 - Bobcaygeon.mp3",
-        "filename": "07 - Bobcaygeon.mp3"
-      }
-    ]
+    "archiveUrl": null,
+    "archiveFormat": null,
+    "tracks": []
   },
   {
     "id": "3b5d5810",
@@ -66534,7 +66095,7 @@
     "countryName": "United States",
     "lat": 47.6062095,
     "lng": -122.3320708,
-    "songCount": 6,
+    "songCount": 3,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2009/kmtt-radio-studios-seattle-wa-3b5d5810.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2009-06-17-Seattle-WA-mp3.zip",
     "archiveFormat": "mp3",
@@ -74987,22 +74548,6 @@
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/mosaic-place-moose-jaw-sk-canada-13c65119.html"
   },
   {
-    "id": "bc6516e",
-    "date": "07-09-2013",
-    "isoDate": "2013-09-07",
-    "tour": null,
-    "venue": "Shaw Millennium Park",
-    "venueId": "63d636c3",
-    "city": "Calgary",
-    "state": "AB",
-    "country": "CA",
-    "countryName": "Canada",
-    "lat": 51.050112282,
-    "lng": -114.085285152,
-    "songCount": 0,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2013/shaw-millennium-park-calgary-ab-canada-bc6516e.html"
-  },
-  {
     "id": "bc64de6",
     "date": "07-09-2013",
     "isoDate": "2013-09-07",
@@ -76705,7 +76250,7 @@
     "countryName": "Canada",
     "lat": 43.700113788,
     "lng": -79.416304194,
-    "songCount": 23,
+    "songCount": 22,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2015/air-canada-centre-toronto-on-canada-53ca6331.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2015-02-19-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -78342,7 +77887,7 @@
     "countryName": "Canada",
     "lat": 48.432935738,
     "lng": -123.369299678,
-    "songCount": 27,
+    "songCount": 26,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/save-on-foods-memorial-centre-victoria-bc-canada-4bff077e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-07-22-Victoria-BC-mp3.zip",
     "archiveFormat": "mp3",
@@ -78687,7 +78232,7 @@
     "countryName": "Canada",
     "lat": 49.249657393,
     "lng": -123.119340403,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/rogers-arena-vancouver-bc-canada-23ff640f.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-07-26-Vancouver-BC-mp3.zip",
     "archiveFormat": "mp3",
@@ -78857,7 +78402,7 @@
     "countryName": "Canada",
     "lat": 53.550135939,
     "lng": -113.468712219,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/rexall-place-edmonton-ab-canada-2bff5ce6.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-07-28-Edmonton-AB-mp3.zip",
     "archiveFormat": "mp3",
@@ -79022,7 +78567,7 @@
     "countryName": "Canada",
     "lat": 53.550135939,
     "lng": -113.468712219,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/rexall-place-edmonton-ab-canada-4bff4f1e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-07-30-Edmonton-AB-mp3.zip",
     "archiveFormat": "mp3",
@@ -79167,7 +78712,7 @@
     "countryName": "Canada",
     "lat": 51.050112282,
     "lng": -114.085285152,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/scotiabank-saddledome-calgary-ab-canada-3bff40cc.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-01-Calgary-AB-mp3.zip",
     "archiveFormat": "mp3",
@@ -79332,7 +78877,7 @@
     "countryName": "Canada",
     "lat": 51.050112282,
     "lng": -114.085285152,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/scotiabank-saddledome-calgary-ab-canada-13fcb1d9.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-03-Calgary-AB-mp3.zip",
     "archiveFormat": "mp3",
@@ -79497,7 +79042,7 @@
     "countryName": "Canada",
     "lat": 49.884398624,
     "lng": -97.147044715,
-    "songCount": 27,
+    "songCount": 26,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/mts-centre-winnipeg-mb-canada-23fca8b7.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-05-Winnipeg-MB-mp3.zip",
     "archiveFormat": "mp3",
@@ -79662,7 +79207,7 @@
     "countryName": "Canada",
     "lat": 42.983389283,
     "lng": -81.233042387,
-    "songCount": 25,
+    "songCount": 24,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/budweiser-gardens-london-on-canada-13fc956d.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-08-London-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -79837,7 +79382,7 @@
     "countryName": "Canada",
     "lat": 43.700113788,
     "lng": -79.416304194,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/air-canada-centre-toronto-on-canada-bfc894e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-10-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -80007,7 +79552,7 @@
     "countryName": "Canada",
     "lat": 43.700113788,
     "lng": -79.416304194,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/air-canada-centre-toronto-on-canada-13fcfd6d.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-12-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -80177,7 +79722,7 @@
     "countryName": "Canada",
     "lat": 43.700113788,
     "lng": -79.416304194,
-    "songCount": 27,
+    "songCount": 26,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/air-canada-centre-toronto-on-canada-2bfcf02e.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-14-Toronto-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -80357,7 +79902,7 @@
     "countryName": "Canada",
     "lat": 43.233408354,
     "lng": -79.949639869,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/firstontario-centre-hamilton-on-canada-7bfce2c8.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-16-Hamilton-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -80507,7 +80052,7 @@
     "countryName": "Canada",
     "lat": 45.4209405046496,
     "lng": -75.6902861595154,
-    "songCount": 26,
+    "songCount": 25,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/canadian-tire-centre-ottawa-on-canada-33fcd805.html",
     "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2016-08-18-Ottawa-ON-mp3.zip",
     "archiveFormat": "mp3",
@@ -80677,7 +80222,7 @@
     "countryName": "Canada",
     "lat": 44.2297640782947,
     "lng": -76.4809799194336,
-    "songCount": 31,
+    "songCount": 30,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2016/rogers-k-rock-centre-kingston-on-canada-43fccf3b.html"
   },
   {

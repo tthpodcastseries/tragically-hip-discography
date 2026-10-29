@@ -2,7 +2,7 @@
 // Turns the shows a member ticked off with "I Was There" into stats, rarities,
 // a checklist against the official song list, a map, and a share card.
 // Everything is worked out in the browser from data the site already ships:
-//   data/setlists.min.json     setlist.fm data for all 1,358 shows
+//   data/setlists.min.json     setlist.fm data for all 1,355 shows
 //   data/canonical-songs.json  jD's official song list (scripts/build-canonical-songs.js)
 //   data/show-index.json       map coordinates + "has a recording" (scripts/build-show-index.js)
 (async function () {
