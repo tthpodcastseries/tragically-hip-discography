@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.1.4
+**Grace, Too - Patch** - October 29, 2026
+- **'Bring It All Back' score card.** After a game, players can make a share image in three sizes (Facebook 1200x630, Instagram post 1080x1350, Instagram story 1080x1920) with the puzzle number, score, one coloured tile per guess, streak, and win rate, then Share it (where the phone can share images) or Save it. A signed-in member's first name is used; guests get none. No spoilers: the card never shows the show, the date, or the years guessed.
+- **Points.** Fewer guesses score higher: 100 for the first guess, then 80, 60, 40, 20; a miss is 0. Points replace the old "3/5" score (which read backwards: a 5-guess win showed as 5/5) on the result screen, the share text, and the card. Stats add a running points total, worked out from the guess distribution so earlier games count. The total also shows under the result ("Yer total: 120 points from 2 games") and on the card.
+- **No more Earlier/Later clues.** Each guess now says only Right/Wrong year and Right/Wrong month; the country, tour, and city hints do the narrowing.
+- Cache bumped to `thc-v5.1.4`; footer label bumped to v5.1.4
+
+---
+
 ## v5.1.3
 **Grace, Too - Patch** - October 29, 2026
 - **'Bring It All Back' now needs the month and the year.** A guess is a month (dropdown) plus a year, and a game is only won when both match. Each guess says Earlier or Later for the year and for the month separately, so both can be worked out at once. Still five tries; hints unchanged (country, tour, city).

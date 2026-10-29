@@ -110,15 +110,16 @@ See below.
 
 - **Opens October 30, 2026.** Before that, the page says when it opens.
 - Every day there is **one real Hip setlist, the same for everyone**. Guess the **month and year** the show was played, in **five tries**. You need both right to win.
-- Every wrong guess tells you **Earlier** or **Later** for the year and for the month, and shows a coloured square: green is the right month and year, yellow is the right year but the wrong month, orange is within 2 years, red is farther.
+- Every wrong guess tells you whether you got the **year** and the **month** right (it never says earlier or later), and shows a coloured square: green is the right month and year, yellow is the right year but the wrong month, orange is within 2 years, red is farther.
 - Each miss also unlocks a hint, in this order: **the country, the tour, then the city**.
+- **Points:** fewer guesses score more. 100 for the first guess, then 80, 60, 40, and 20. A miss is 0. Points add up over every game.
 - After you win or run out of guesses, it reveals the show (date, venue, city, tour) with a link to **play the recording** (when one exists) and **see it on the map**.
 - It tracks your **streak**, win percentage, and how many guesses you usually need. This is saved on your own device only.
 - **Share your score** without spoilers. The share text looks like this:
 
 ```
-🍁 Bring It All Back #1 3/5
-🟧🟧🟩
+🍁 Bring It All Back #1 - 60 points
+🟧🟨🟩
 thehiphandbook.tthpods.com/bring-it-all-back
 ```
 

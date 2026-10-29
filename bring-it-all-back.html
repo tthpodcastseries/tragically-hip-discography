@@ -82,12 +82,29 @@
 
     <section id="biaEnd" class="bia-card bia-end" hidden aria-labelledby="biaResult">
       <h2 class="bia-result" id="biaResult"></h2>
+      <p id="biaTotal" class="bia-total"></p>
       <div id="biaReveal" class="bia-reveal"></div>
       <div id="biaLinks" class="bia-links"></div>
       <pre id="biaShareText" class="bia-sharetext"></pre>
       <div class="bia-actions">
         <button id="biaCopy" class="bia-btn" type="button">Copy my score</button>
         <button id="biaShare" class="bia-btn bia-btn-alt" type="button" hidden>Share</button>
+      </div>
+      <div class="bia-cardshare">
+        <h3 class="bia-h2">Share a card</h3>
+        <div class="bia-formats" role="group" aria-label="Card size">
+          <button class="bia-fmt" type="button" data-format="facebook" aria-pressed="true">Facebook<small>1200 x 630</small></button>
+          <button class="bia-fmt" type="button" data-format="instagram" aria-pressed="false">Instagram post<small>1080 x 1350</small></button>
+          <button class="bia-fmt" type="button" data-format="story" aria-pressed="false">Instagram story<small>1080 x 1920</small></button>
+        </div>
+        <button id="biaMakeCard" class="bia-btn" type="button">Make my card</button>
+        <div id="biaCardWrap" hidden>
+          <img id="biaCardImg" class="bia-card-img" alt="Bring It All Back score card">
+          <div class="bia-actions">
+            <button id="biaCardShare" class="bia-btn" type="button" hidden>Share card</button>
+            <button id="biaCardSave" class="bia-btn bia-btn-alt" type="button">Save image</button>
+          </div>
+        </div>
       </div>
       <div id="biaStats" class="bia-stats"></div>
       <p class="bia-next">Next puzzle in <b id="biaCountdown">--:--:--</b></p>
@@ -98,7 +115,8 @@
       <ul>
         <li>Everyone gets the same real Hip setlist each day.</li>
         <li>Guess the month and year the show was played, 1985 to 2016. You need both right to win, and you have five tries.</li>
-        <li>Every miss says whether the year and the month were earlier or later, and unlocks a hint: the country, the tour, then the city.</li>
+        <li>Every miss tells you whether you got the year and the month right, and unlocks a hint: the country, the tour, then the city.</li>
+        <li>Fewer guesses score more: 100 points for the first guess, then 80, 60, 40, and 20. A miss scores 0. Yer points add up over every game you play.</li>
         <li>Squares show how close each guess was: &#129001; right month and year, &#129000; right year, wrong month, &#128999; within 2 years, &#128997; farther.</li>
       </ul>
     </details>

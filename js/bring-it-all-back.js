@@ -116,11 +116,11 @@
     today.guesses.forEach(g => {
       const li = el('li', 'bia-guess' + (isHit(g) ? ' hit' : ''));
       li.appendChild(el('span', 'bia-guess-year', shortMonth(g.m) + ' ' + g.y));
-      // Year and month are judged separately, so both can be worked out at once
+      // Right or wrong only - no earlier/later, so the hints do the narrowing
       const dir = el('span', 'bia-guess-dir');
       const yearOk = g.y === answer, monthOk = g.m === answerMonth;
-      dir.appendChild(el('span', yearOk ? 'ok' : '', yearOk ? 'Right year' : g.y < answer ? 'Year: after ' + g.y : 'Year: before ' + g.y));
-      dir.appendChild(el('span', monthOk ? 'ok' : '', monthOk ? 'Right month' : g.m < answerMonth ? 'Month: after ' + MONTHS[g.m - 1] : 'Month: before ' + MONTHS[g.m - 1]));
+      dir.appendChild(el('span', yearOk ? 'ok' : '', yearOk ? 'Right year' : 'Wrong year'));
+      dir.appendChild(el('span', monthOk ? 'ok' : '', monthOk ? 'Right month' : 'Wrong month'));
       li.appendChild(dir);
       li.appendChild(el('span', 'bia-guess-sq', squareFor(g)));
       list.appendChild(li);
@@ -143,8 +143,14 @@
     $('biaTries').textContent = today.done ? '' : left + (left === 1 ? ' guess left' : ' guesses left');
   }
 
+  // Fewer guesses score higher: 100 for the first guess, then 80, 60, 40, 20; a miss is 0
+  const pointsFor = guesses => (MAX_GUESSES - guesses + 1) * 20;
+  const todayPoints = () => today.won ? pointsFor(today.guesses.length) : 0;
+  // Worked out from the guess distribution, so games played before points existed still count
+  const totalPoints = () => store.stats.dist.reduce((sum, wins, i) => sum + wins * pointsFor(i + 1), 0);
+
   const shareText = () =>
-    '\u{1F341} Bring It All Back #' + puzzleNo + ' ' + (today.won ? today.guesses.length : 'X') + '/' + MAX_GUESSES + '\n' +
+    '\u{1F341} Bring It All Back #' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
     today.guesses.map(squareFor).join('') + '\n' + SHARE_URL;
 
   function shownStreak() {
@@ -162,9 +168,10 @@
       [s.played ? Math.round(100 * s.won / s.played) : 0, 'Win %'],
       [shownStreak(), 'Streak'],
       [s.best, 'Best'],
+      [totalPoints().toLocaleString('en-CA'), 'Points'],
     ].forEach(c => {
       const cell = el('div');
-      cell.appendChild(el('b', '', c[0]));
+      cell.appendChild(el('b', String(c[0]).length > 4 ? 'long' : '', c[0])); // a big points total shrinks to fit
       cell.appendChild(el('span', '', c[1]));
       row.appendChild(cell);
     });
@@ -188,8 +195,12 @@
     $('biaMsg').textContent = '';
     $('biaEnd').hidden = false;
     $('biaResult').textContent = today.won
-      ? (today.guesses.length === 1 ? 'First try. Bang on.' : 'Got it in ' + today.guesses.length + '!')
-      : 'Not today - it was ' + MONTHS[answerMonth - 1] + ' ' + answer + '.';
+      ? (today.guesses.length === 1 ? 'First try. Bang on. 100 points!' : 'Got it in ' + today.guesses.length + ' - ' + todayPoints() + ' points!')
+      : 'Not today - it was ' + MONTHS[answerMonth - 1] + ' ' + answer + '. 0 points.';
+    const total = $('biaTotal');
+    total.textContent = 'Yer total: ';
+    total.appendChild(el('b', '', totalPoints().toLocaleString('en-CA') + ' points'));
+    total.appendChild(document.createTextNode(' from ' + store.stats.played + (store.stats.played === 1 ? ' game' : ' games')));
 
     const d = new Date(Date.UTC(+parts[2], +parts[1] - 1, +parts[0]));
     const reveal = $('biaReveal');
@@ -293,6 +304,145 @@
       navigator.share({ text: shareText() }).then(() => track('Game - Shared')).catch(() => { /* cancelled */ });
     });
   }
+
+  // ─── Score card (image) ───
+  // Same three sizes as the Passport card. No spoilers: never the show, the date,
+  // or the years guessed - people post it before their friends have played.
+  const FORMATS = {
+    facebook: { w: 1200, h: 630, file: 'facebook' },
+    instagram: { w: 1080, h: 1350, file: 'instagram' },
+    story: { w: 1080, h: 1920, file: 'instagram-story' },
+  };
+  // The emoji squares' colours, so the card matches the text share
+  const TILE = { '\u{1F7E9}': '#4CAF50', '\u{1F7E8}': '#F2C94C', '\u{1F7E7}': '#F2994A', '\u{1F7E5}': '#C8102E' };
+  let cardFormat = 'facebook';
+  let currentCard = null; // { blob, url, format }
+  const cardFile = () => 'bring-it-all-back-' + puzzleNo + '-' + FORMATS[cardFormat].file + '.png';
+
+  async function makeCard() {
+    const fmt = FORMATS[cardFormat];
+    const W = fmt.w, H = fmt.h, landscape = W > H, story = H > 1500;
+    let name = '';
+    try {
+      const sess = window.TTHMember && window.TTHMember.getSession();
+      if (sess && !sess.guest && sess.firstName) name = String(sess.firstName).trim().slice(0, 20);
+    } catch (e) { /* no name then */ }
+    try {
+      await Promise.all(['900 300px Poppins', '700 48px Poppins', '600 40px Poppins'].map(f => document.fonts.load(f)));
+    } catch (e) { /* fall back to the default sans-serif */ }
+
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0e0b16';
+    x.fillRect(0, 0, W, H);
+    x.strokeStyle = 'rgba(204,162,60,0.45)';
+    x.lineWidth = landscape ? 4 : 6;
+    const inset = landscape ? 24 : 36;
+    x.strokeRect(inset, inset, W - inset * 2, H - inset * 2);
+    x.textBaseline = 'alphabetic';
+
+    // Draw text at (cx, y); align 'center' or 'left'. Shrinks to fit maxW.
+    const put = (str, cx, y, weight, size, color, spacing, maxW, align) => {
+      let px = size;
+      x.textAlign = align || 'center';
+      x.font = weight + ' ' + px + 'px Poppins, sans-serif';
+      if ('letterSpacing' in x) x.letterSpacing = spacing || '0px';
+      while (maxW && x.measureText(str).width > maxW && px > 20) { px -= 2; x.font = weight + ' ' + px + 'px Poppins, sans-serif'; }
+      x.fillStyle = color;
+      x.fillText(str, cx, y);
+    };
+    // One tile per guess; unused tries show as empty outlines
+    const tiles = (left, top, size, gap) => {
+      for (let i = 0; i < MAX_GUESSES; i++) {
+        const tx = left + i * (size + gap), g = today.guesses[i];
+        x.beginPath();
+        if (x.roundRect) x.roundRect(tx, top, size, size, size * 0.14); else x.rect(tx, top, size, size);
+        if (g) { x.fillStyle = TILE[squareFor(g)]; x.fill(); }
+        else { x.strokeStyle = 'rgba(255,255,255,0.18)'; x.lineWidth = 3; x.stroke(); }
+      }
+    };
+
+    const n = today.guesses.length;
+    const score = String(todayPoints());
+    const result = today.won
+      ? (n === 1 ? (name ? name + ' got it first try' : 'First try. Bang on.') : (name ? name + ' got it in ' + n : 'Got it in ' + n))
+      : (name ? name + ' was stumped today' : 'Stumped today');
+    const s = store.stats;
+    const statLine = 'Streak ' + shownStreak() + '   |   Win rate ' + (s.played ? Math.round(100 * s.won / s.played) : 0) + '%';
+    const totalLine = 'Total: ' + totalPoints().toLocaleString('en-CA') + ' points';
+    const siteText = SHARE_URL;
+
+    if (landscape) {
+      // Score on the left, the details on the right
+      put('\u{1F341}', 330, 130, '700', 60, '#ffffff');
+      put('BRING IT ALL BACK', 330, 186, '700', 28, '#CCA23C', '8px', 520);
+      put('PUZZLE #' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
+      put(score, 330, 420, '900', 190, '#C8102E', '0px', 540);
+      put('POINTS', 330, 492, '700', 40, '#CCA23C', '10px');
+      x.strokeStyle = 'rgba(204,162,60,0.3)';
+      x.lineWidth = 2;
+      x.beginPath(); x.moveTo(650, 120); x.lineTo(650, 520); x.stroke();
+      put(result, 690, 210, '700', 42, '#ffffff', '0px', 460, 'left');
+      tiles(690, 255, 76, 16);
+      put(totalLine, 690, 395, '700', 34, '#CCA23C', '0px', 460, 'left');
+      put(statLine, 690, 445, '600', 28, '#d9d9d9', '0px', 460, 'left');
+      put('Guess the month and year of a real Hip setlist', 690, 492, '600', 24, '#b0b0b0', '0px', 460, 'left');
+      put(siteText, W / 2, 585, '600', 24, '#b0b0b0', '2px', W - 120);
+    } else {
+      // Portrait. Stories keep content inside the safe zone (Instagram covers
+      // roughly the top and bottom 250px with its own interface).
+      const y = story
+        ? { maple: 360, label: 450, no: 525, score: 880, pts: 970, result: 1090, tiles: 1150, size: 150, total: 1395, stats: 1465, blurb: 1530, site: 1640 }
+        : { maple: 160, label: 232, no: 290, score: 590, pts: 668, result: 768, tiles: 806, size: 140, total: 1036, stats: 1100, blurb: 1160, site: 1250 };
+      const gap = 24, rowW = MAX_GUESSES * y.size + (MAX_GUESSES - 1) * gap;
+      put('\u{1F341}', W / 2, y.maple, '700', story ? 110 : 96, '#ffffff');
+      put('BRING IT ALL BACK', W / 2, y.label, '700', 40, '#CCA23C', '10px', W - 160);
+      put('PUZZLE #' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
+      put(score, W / 2, y.score, '900', story ? 330 : 290, '#C8102E', '0px', W - 160);
+      put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#CCA23C', '12px');
+      put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
+      tiles((W - rowW) / 2, y.tiles, y.size, gap);
+      put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#CCA23C', '0px', W - 160);
+      put(statLine, W / 2, y.stats, '600', story ? 42 : 38, '#d9d9d9', '0px', W - 160);
+      put('Guess the month and year of a real Hip setlist', W / 2, y.blurb, '600', story ? 34 : 30, '#b0b0b0', '0px', W - 160);
+      put(siteText, W / 2, y.site, '600', 32, '#b0b0b0', '2px', W - 140);
+    }
+
+    const blob = await new Promise(res => c.toBlob(res, 'image/png'));
+    if (currentCard) URL.revokeObjectURL(currentCard.url);
+    currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
+    const img = $('biaCardImg');
+    img.src = currentCard.url;
+    img.className = 'bia-card-img bia-card-' + cardFormat;
+    $('biaCardWrap').hidden = false;
+    const file = new File([blob], cardFile(), { type: 'image/png' });
+    $('biaCardShare').hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+    track('Game - Card made - ' + cardFormat);
+  }
+
+  $('biaMakeCard').addEventListener('click', () => { if (today.done) makeCard(); });
+  document.querySelectorAll('.bia-fmt').forEach(btn => btn.addEventListener('click', () => {
+    cardFormat = btn.dataset.format;
+    document.querySelectorAll('.bia-fmt').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    if (today.done && currentCard) makeCard(); // already showing a card: redraw in the new size
+  }));
+  $('biaCardSave').addEventListener('click', () => {
+    if (!currentCard) return;
+    const a = el('a');
+    a.href = currentCard.url;
+    a.download = cardFile();
+    document.body.appendChild(a); a.click(); a.remove();
+    track('Game - Card saved');
+  });
+  $('biaCardShare').addEventListener('click', async () => {
+    if (!currentCard) return;
+    const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
+    try {
+      await navigator.share({ files: [file], title: 'Bring It All Back #' + puzzleNo, text: shareText() });
+      track('Game - Card shared');
+    } catch (e) { /* cancelled */ }
+  });
 
   // ─── Countdown to the next puzzle ───
   let timer = null;
