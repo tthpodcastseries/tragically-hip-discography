@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bring It All Back - Daily Setlist Game - The Hip Handbook</title>
-  <meta name="description" content="A new real Tragically Hip setlist every day. Guess the year of the show in five tries - each miss gives you a hint - then share yer score.">
+  <meta name="description" content="A new real Tragically Hip setlist every day. Guess the month and year of the show in five tries - each miss gives you a hint - then share yer score.">
   <meta property="og:title" content="Bring It All Back - Daily Setlist Game">
-  <meta property="og:description" content="One real Tragically Hip setlist a day. Can you guess the year in five tries?">
+  <meta property="og:description" content="One real Tragically Hip setlist a day. Can you guess the month and year in five tries?">
   <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thehiphandbook.tthpods.com/bring-it-all-back">
@@ -34,7 +34,7 @@
 <header class="page-header">
   <div class="subtitle">Daily Setlist Game</div>
   <h1>Bring It All Back</h1>
-  <p class="header-desc">One real Hip setlist a day, the same for everyone. Guess the year of the show in five tries - every miss gives you a hint.</p>
+  <p class="header-desc">One real Hip setlist a day, the same for everyone. Guess the month and year of the show in five tries - every miss gives you a hint.</p>
   <a href="index.html" class="back-link">&larr; Home</a>
 </header>
 
@@ -54,9 +54,24 @@
     </section>
 
     <form id="biaForm" class="bia-form" novalidate>
-      <label for="biaInput">What year was this show?</label>
+      <label for="biaMonth">When was this show?</label>
       <div class="bia-row">
-        <input id="biaInput" type="number" inputmode="numeric" autocomplete="off" required>
+        <select id="biaMonth" aria-label="Month" required>
+          <option value="">Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <input id="biaInput" type="number" inputmode="numeric" autocomplete="off" placeholder="Year" aria-label="Year" required>
         <button id="biaGuess" class="bia-btn" type="submit">Guess</button>
       </div>
     </form>
@@ -82,9 +97,9 @@
       <summary>How it works</summary>
       <ul>
         <li>Everyone gets the same real Hip setlist each day.</li>
-        <li>Guess the year the show was played, 1985 to 2016. You have five tries.</li>
-        <li>Every miss says whether the show was earlier or later, and unlocks a hint: the country, the tour, then the city.</li>
-        <li>Squares show how close each guess was: &#129001; right year, &#129000; within 2, &#129003; within 5, &#128997; farther.</li>
+        <li>Guess the month and year the show was played, 1985 to 2016. You need both right to win, and you have five tries.</li>
+        <li>Every miss says whether the year and the month were earlier or later, and unlocks a hint: the country, the tour, then the city.</li>
+        <li>Squares show how close each guess was: &#129001; right month and year, &#129000; right year, wrong month, &#128999; within 2 years, &#128997; farther.</li>
       </ul>
     </details>
   </div>

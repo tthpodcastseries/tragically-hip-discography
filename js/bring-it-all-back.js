@@ -1,5 +1,5 @@
 // bring-it-all-back.js - 'Bring It All Back', the daily setlist game (v5)
-// One real Hip setlist a day, the same for everyone. Guess the year in five tries.
+// One real Hip setlist a day, the same for everyone. Guess the month and year in five tries.
 // Everything runs in the browser from data/game-pool.json (scripts/build-game-pool.js);
 // there is no server and nothing is sent anywhere except anonymous Umami event names.
 (async function () {
@@ -10,7 +10,8 @@
   // says when the game opens instead of showing a puzzle.
   const EPOCH = '2026-10-30';
   const MAX_GUESSES = 5;
-  const STORE_KEY = 'tth_bia_v1';
+  // v2: a guess became { y, m } (month and year); v1 saves held bare years
+  const STORE_KEY = 'tth_bia_v2';
   const SHARE_URL = 'thehiphandbook.tthpods.com/bring-it-all-back';
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -61,6 +62,7 @@
   const show = pool.shows[(puzzleNo - 1) % pool.shows.length];
   const parts = show.d.split('-'); // dd-mm-yyyy
   const answer = +parts[2];
+  const answerMonth = +parts[1];
   const minYear = pool.minYear, maxYear = pool.maxYear;
 
   // Saved game belongs to a different puzzle (or is missing): start today's fresh
@@ -70,11 +72,14 @@
   const today = store.today;
 
   // ─── Pieces ───
-  const missCount = () => today.guesses.filter(g => g !== answer).length;
+  const isHit = g => g.y === answer && g.m === answerMonth;
+  const missCount = () => today.guesses.filter(g => !isHit(g)).length;
+  // Green: month and year. Yellow: right year, wrong month. Orange: within 2 years. Red: farther.
   const squareFor = g => {
-    const diff = Math.abs(g - answer);
-    return diff === 0 ? '\u{1F7E9}' : diff <= 2 ? '\u{1F7E8}' : diff <= 5 ? '\u{1F7E7}' : '\u{1F7E5}';
+    const diff = Math.abs(g.y - answer);
+    return isHit(g) ? '\u{1F7E9}' : diff === 0 ? '\u{1F7E8}' : diff <= 2 ? '\u{1F7E7}' : '\u{1F7E5}';
   };
+  const shortMonth = m => MONTHS[m - 1].slice(0, 3);
   const countryName = code => {
     try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code; } catch (e) { return code; }
   };
@@ -109,10 +114,14 @@
     const list = $('biaGuesses');
     list.textContent = '';
     today.guesses.forEach(g => {
-      const hit = g === answer;
-      const li = el('li', 'bia-guess' + (hit ? ' hit' : ''));
-      li.appendChild(el('span', 'bia-guess-year', g));
-      li.appendChild(el('span', 'bia-guess-dir', hit ? 'Right year' : g < answer ? 'Later - the show was after ' + g : 'Earlier - the show was before ' + g));
+      const li = el('li', 'bia-guess' + (isHit(g) ? ' hit' : ''));
+      li.appendChild(el('span', 'bia-guess-year', shortMonth(g.m) + ' ' + g.y));
+      // Year and month are judged separately, so both can be worked out at once
+      const dir = el('span', 'bia-guess-dir');
+      const yearOk = g.y === answer, monthOk = g.m === answerMonth;
+      dir.appendChild(el('span', yearOk ? 'ok' : '', yearOk ? 'Right year' : g.y < answer ? 'Year: after ' + g.y : 'Year: before ' + g.y));
+      dir.appendChild(el('span', monthOk ? 'ok' : '', monthOk ? 'Right month' : g.m < answerMonth ? 'Month: after ' + MONTHS[g.m - 1] : 'Month: before ' + MONTHS[g.m - 1]));
+      li.appendChild(dir);
       li.appendChild(el('span', 'bia-guess-sq', squareFor(g)));
       list.appendChild(li);
     });
@@ -180,7 +189,7 @@
     $('biaEnd').hidden = false;
     $('biaResult').textContent = today.won
       ? (today.guesses.length === 1 ? 'First try. Bang on.' : 'Got it in ' + today.guesses.length + '!')
-      : 'Not today - it was ' + answer + '.';
+      : 'Not today - it was ' + MONTHS[answerMonth - 1] + ' ' + answer + '.';
 
     const d = new Date(Date.UTC(+parts[2], +parts[1] - 1, +parts[0]));
     const reveal = $('biaReveal');
@@ -238,15 +247,18 @@
     e.preventDefault();
     if (today.done) return;
     const msg = $('biaMsg');
+    const m = +$('biaMonth').value;
     const raw = $('biaInput').value.trim();
-    const g = /^\d{4}$/.test(raw) ? +raw : NaN;
-    if (isNaN(g) || g < minYear || g > maxYear) { msg.textContent = 'Pick a year from ' + minYear + ' to ' + maxYear + '.'; return; }
-    if (today.guesses.includes(g)) { msg.textContent = 'Already guessed ' + g + '. Try another year.'; return; }
+    const y = /^\d{4}$/.test(raw) ? +raw : NaN;
+    if (!m) { msg.textContent = 'Pick a month.'; return; }
+    if (isNaN(y) || y < minYear || y > maxYear) { msg.textContent = 'Pick a year from ' + minYear + ' to ' + maxYear + '.'; return; }
+    if (today.guesses.some(g => g.y === y && g.m === m)) { msg.textContent = 'Already guessed ' + MONTHS[m - 1] + ' ' + y + '. Try another.'; return; }
     msg.textContent = '';
     if (!today.guesses.length) track('Game - Started');
+    const g = { y, m };
     today.guesses.push(g);
-    $('biaInput').value = '';
-    if (g === answer) finish(true);
+    // Both fields stay filled, so a player can change just the part that was wrong
+    if (isHit(g)) finish(true);
     else if (today.guesses.length >= MAX_GUESSES) finish(false);
     save();
     renderGuesses();

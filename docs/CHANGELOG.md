@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.1.3
+**Grace, Too - Patch** - October 29, 2026
+- **'Bring It All Back' now needs the month and the year.** A guess is a month (dropdown) plus a year, and a game is only won when both match. Each guess says Earlier or Later for the year and for the month separately, so both can be worked out at once. Still five tries; hints unchanged (country, tour, city).
+- New squares: 🟩 month and year, 🟨 right year but wrong month, 🟧 within 2 years, 🟥 farther. (The old "How it works" list showed a brown square for "within 5" while the game used orange; fixed with the new list.)
+- Saved games moved to `tth_bia_v2` (a guess is now `{ y, m }`), so test stats from before launch reset.
+- Home card, page header, and share descriptions now say "month and year".
+- Cache bumped to `thc-v5.1.3`; footer label bumped to v5.1.3
+
+---
+
 ## v5.1.2
 **Grace, Too - Patch** - October 28, 2026
 - **Fixed: 'Toronto #4' would not play in 10 recorded shows** (2000 tour: Montreal x2, Somerville, Tucson, Fort Collins, Portland, Brandon, Detroit, Buffalo, Toronto). The tour map player built audio URLs without encoding them, so the browser read `#4.mp3` as a page anchor and asked Backblaze for `.../09 Toronto ` (404). Each path part is now encoded.
