@@ -4,6 +4,7 @@ https://forum-portal.tthpods.com/  /forum-invite.html  200!
 /setlists  /discography.html  200
 /top-40  /discography.html  200
 /my-shows  /passport.html  200
+/song/just-another-midnight  /song/another-midnight  301!
 /song  /song.html  200
 /song/*  /song.html  200
 /scripts/*  /404.html  404!

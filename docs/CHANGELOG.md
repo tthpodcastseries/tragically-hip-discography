@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.1.6
+**Grace, Too - Patch** - October 30, 2026
+Lyrics archive pass, cross-checked against the 214 options on the official song list (Google Form).
+- **16 new lyrics** (169 -> 185 songs): the five Up to Here box set rarities, If You Lived Here, Radio Show, the five Phantom Power box set songs, No Threat, The New Maybe, Hush, and Skeleton Park. The "Help Complete the Archive" list is down to 5 (Day for Night, Dare Devil (Reprise), Ultra Mundane, Problem Bears, Forest Edge).
+- **Lyrics search covers every song in `data/lyrics.json`**, not just studio album and EP tracks, so the box set and Yer Favourites songs are searchable. The browser lyrics cache key is now `tth_lyrics_cache_v2`, so returning visitors reload once. Counts read 185 songs and 20 albums.
+- **We Are the Same**: Hush and Skeleton Park added as bonus tracks 13 and 14.
+- **Just Another Midnight (1988 Demo)** is folded under Another Midnight (`scripts/build-canonical-songs.js`); canon is 190 songs. `/song/just-another-midnight` redirects to `/song/another-midnight`.
+- **Song pages now list demos released under another name**: Another Midnight (Up To Here Box Set demo), Cordelia (Angst on the Planks demo), and Poets (Super Farmer Nano Baby Version) (`scripts/build-song-index.js`).
+
 ## v5.1.5
 **Grace, Too - Patch** - October 29, 2026
 Data fact check. Full findings and sources: `audits/The Hip Handbook - Data Fact Check - October 2026.md`.

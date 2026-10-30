@@ -30,7 +30,7 @@ const read = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 const norm = s => String(s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
 const NOT_SONGS = /^\s*(interview|introduction|intro|outro)\b/i;
-const VERSION_NOTE = /\s*\((Live|Demo|Alternate Version)\)\s*$/i;
+const VERSION_NOTE = /\s*\((Live|Demo|Alternate Version|Super Farmer Nano Baby Version)\)\s*$/i;
 
 const canon = JSON.parse(read('data/canonical-songs.json'));
 const aliases = canon.aliases || {};
@@ -56,7 +56,10 @@ const slugOf = t => t.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
 
 const songs = canon.songs.map(c => ({
   s: slugOf(c.title), t: c.title, keys: new Set(c.setlistKeys),
-  titleKeys: new Set([norm(c.title), ...c.versions.map(norm)]),
+  // A version's own name too, for demos released under another title
+  // ('Angst on the Planks (Demo)' is Cordelia)
+  titleKeys: new Set([norm(c.title), ...c.versions.map(norm),
+    ...c.versions.map(v => norm(v.replace(/\s*\(.*\)\s*$/, '')))]),
   p: [], r: [], a: [], k: null, livePlays: c.livePlays,
 }));
 const slugs = new Set(songs.map(x => x.s));

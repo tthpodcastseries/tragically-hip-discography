@@ -181,7 +181,7 @@ const studioAlbums = [
       { title: 'Morning Moon', rank: 'Road #73' },
       { title: 'Speed River', rank: 'Road #161' },
     ],
-    tracks: ['Morning Moon', 'Honey, Please', 'The Last Recluse', 'Coffee Girl', 'Now the Struggle Has a Name', 'The Depression Suite', 'The Exact Feeling', 'Queen of the Furrows', 'Speed River', 'Frozen in My Tracks', 'Love Is a First', 'Country Day'],
+    tracks: ['Morning Moon', 'Honey, Please', 'The Last Recluse', 'Coffee Girl', 'Now the Struggle Has a Name', 'The Depression Suite', 'The Exact Feeling', 'Queen of the Furrows', 'Speed River', 'Frozen in My Tracks', 'Love Is a First', 'Country Day', 'Hush', 'Skeleton Park'],
   },
   {
     num: '12', title: 'Now for Plan A', year: '2012', releaseDate: 'October 2, 2012', type: 'Studio', img: 'assets-optimized/studio-albums/Now-for-Plan-A.jpg',
@@ -532,8 +532,8 @@ const categoryStats = {
     { num: '2026', lbl: 'Latest Release' },
   ],
   lyrics: [
-    { num: '15', lbl: 'Albums Indexed' },
-    { num: '169', lbl: 'Songs Searchable' },
+    { num: '20', lbl: 'Albums Indexed' },
+    { num: '185', lbl: 'Songs Searchable' },
     { num: '0', lbl: 'Cached Songs' },
     { num: 'API', lbl: 'lyrics.ovh' },
   ],
@@ -1706,7 +1706,9 @@ async function initSetlistExplorer() {
 }
 
 // ─── Lyrics Search Engine ───
-const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v1';
+// Bump the version when lyrics.json gains songs, so returning visitors reload it
+const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v2';
+try { localStorage.removeItem('tth_lyrics_cache_v1'); } catch {}
 let lyricsSearchInitialized = false;
 
 function getLyricsCache() {
@@ -1745,6 +1747,15 @@ function getAllSongsForLyrics() {
         songs.push({ song: clean, album: a.title, year: a.year });
       });
     });
+  });
+  // Plus songs with lyrics that aren't on a studio album or EP (box set and Yer Favourites tracks)
+  const have = new Set(songs.map(s => `${s.album}|||${s.song}`));
+  const allAlbums = [...studioAlbums, ...epAlbums, ...liveAlbums, ...compilationAlbums, ...boxSetAlbums, ...videoAlbums];
+  Object.keys(getLyricsCache()).forEach(key => {
+    if (have.has(key)) return;
+    const [album, song] = key.split('|||');
+    const a = allAlbums.find(x => x.title === album);
+    songs.push({ song, album, year: a ? a.year : '' });
   });
   return songs;
 }
@@ -1949,7 +1960,7 @@ async function autoLoadLyrics(onComplete) {
   statusEl.innerHTML = `
     <div class="lyrics-loading-state">
       <div class="lyrics-loading-title">Building Lyrics Index</div>
-      <div class="lyrics-loading-subtitle">Loading lyrics for all 169 songs...</div>
+      <div class="lyrics-loading-subtitle">Loading lyrics for all 185 songs...</div>
       <div class="lyrics-progress-bar"><div class="lyrics-progress-fill" id="lyricsAutoFill"></div></div>
       <div class="lyrics-progress-song" id="lyricsAutoSong"></div>
     </div>`;

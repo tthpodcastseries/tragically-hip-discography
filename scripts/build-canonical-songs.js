@@ -29,6 +29,7 @@ const VERSION_NOTE = /\s*\((?:[^)]*\b(?:demo|outtake|alternate|mix|live|original
 const RENAMED_VERSIONS = {
   'angst on the planks': 'Cordelia',
   'super farmer nano baby': 'Poets',
+  'just another midnight': 'Another Midnight',
 };
 
 // Songs on official releases that the Google Form list leaves out (jD confirmed
