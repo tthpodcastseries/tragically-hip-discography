@@ -263,11 +263,11 @@
     <div class="form-row">
       <div class="form-group">
         <label for="first-name">First Name</label>
-        <input type="text" id="first-name" placeholder="Gord" required>
+        <input type="text" id="first-name" placeholder="Gord" maxlength="50" required>
       </div>
       <div class="form-group">
         <label for="last-name">Last Name or Initial</label>
-        <input type="text" id="last-name" placeholder="D." required>
+        <input type="text" id="last-name" placeholder="D." maxlength="50" required>
       </div>
     </div>
 
@@ -276,7 +276,7 @@
         <label for="fav-song">Yer Favourite Song</label>
         <span class="skip-hint">Optional - skip if you can't pick just one</span>
       </div>
-      <input type="text" id="fav-song" placeholder="Ahead by a Century">
+      <input type="text" id="fav-song" placeholder="Ahead by a Century" maxlength="200">
     </div>
 
     <button class="btn-connect" id="btn-connect" onclick="handleConnect()">Get my number</button>
@@ -337,19 +337,18 @@
     try {
       if (!sb) throw new Error('Still loading - try again in a sec.');
 
-      var { data, error } = await sb
-        .from('forum_members')
-        .insert({
-          first_name: firstName,
-          last_name: lastName,
-          favourite_song: favSong || null
-        })
-        .select('membership_number')
-        .single();
+      // claim_member saves the row and returns only the new number - the
+      // public key can't read or write forum_members directly (v5.4.6)
+      var { data, error } = await sb.rpc('claim_member', {
+        p_first_name: firstName,
+        p_last_name: lastName,
+        p_favourite_song: favSong || null
+      });
 
       if (error) throw error;
+      if (data == null) throw new Error('Something went wrong. Try again.');
 
-      var num = data.membership_number;
+      var num = data;
 
       document.getElementById('membership-num').textContent = '#' + num;
       document.getElementById('reveal-greeting').textContent =

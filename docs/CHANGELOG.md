@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.4.6
+**Yawning or Snarling - Patch** - October 31, 2026
+Member details are private again.
+- **Fixed: membersHIP details were readable with the site's public key.** The `forum_members` table is now closed to the public key. The site reaches it only through three database functions: `claim_member` (new - saves a new member and returns just the number), `unlock_member`, and `update_attended_shows` (both already ran with the owner's rights, unchanged).
+- "Get my number" (`forum-invite.html`) calls `claim_member` instead of writing to the table. First and last name fields cap at 50 characters, favourite song at 200, matching the function.
+- The database change is `docs/The Hip Handbook - Member Data Lockdown.sql`, run by hand in the Supabase SQL Editor: Part 1 before this deploy, Part 2 after.
+- Cache bumped to `thc-v5.4.6`; footer label bumped to v5.4.6
+
 ## v5.4.5
 **Yawning or Snarling - Patch** - October 31, 2026
 The lyrics archive is complete: every song in the Handbook now has its words.
