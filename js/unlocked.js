@@ -14,7 +14,14 @@
   const WORDS = 5;
   // Points: 100 to start; each word unscrambled -10, revealed -20, each wrong guess -10. 0 is a loss.
   const START = 100, COST_SOLVED = 10, COST_REVEALED = 20, COST_WRONG = 10;
-  const STORE_KEY = 'tth_unlocked_v1';
+  // ?practice: a warm-up puzzle that isn't in the schedule (Morning Moon sits out of
+  // the game), playable any time, with its own save and no stats, streak or sharing
+  const PRACTICE = {
+    s: 'morning-moon', t: 'Morning Moon', sp: '', lv: '4bff4f1e',
+    w: [['mirror', 'RIMORR'], ['somebody', 'YDBOOMSE'], ['paying', 'GIYANP'], ['plume', 'MUELP'], ['reactor', 'OTRCREA']],
+  };
+  const practice = new URLSearchParams(location.search).has('practice');
+  const STORE_KEY = practice ? 'tth_unlocked_practice' : 'tth_unlocked_v1';
   const SHARE_URL = 'thehiphandbook.tthpods.com/unlocked';
   const NAME = '(Un)Locked in the Trunk of a Car';
   const SHORT = '(Un)Locked';
@@ -47,12 +54,18 @@
   const epochParts = EPOCH.split('-');
   const epochDay = Math.floor(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]) / 86400000);
   const naturalPuzzleNo = () => Math.max(1, localDayNumber(new Date()) - epochDay + 1);
-  const puzzleNo = forcedDay || naturalPuzzleNo();
+  const puzzleNo = practice ? 0 : forcedDay || naturalPuzzleNo();
 
-  // Not open yet: say when, and open itself when the day arrives
-  if (!forcedDay && localDayNumber(new Date()) < epochDay) {
+  // Not open yet: say when, offer the practice puzzle, and open itself when the day arrives
+  if (!practice && !forcedDay && localDayNumber(new Date()) < epochDay) {
     const opens = new Date(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]));
-    $('ulLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One Hip song a day - come back then.';
+    const msg = $('ulLoading');
+    msg.textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One Hip song a day - come back then. ';
+    const tryIt = document.createElement('a');
+    tryIt.href = '?practice';
+    tryIt.textContent = 'Try a practice puzzle';
+    tryIt.className = 'ul-practice-link';
+    msg.appendChild(tryIt);
     const now = new Date();
     setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
     return;
@@ -68,7 +81,7 @@
     $('ulError').hidden = false;
     return;
   }
-  const puzzle = pool.puzzles[(puzzleNo - 1) % pool.puzzles.length];
+  const puzzle = practice ? PRACTICE : pool.puzzles[(puzzleNo - 1) % pool.puzzles.length];
   const words = puzzle.w.map(w => w[0]);
   const scrambles = puzzle.w.map(w => w[1]);
 
@@ -251,6 +264,7 @@
   function finish(won) {
     today.done = true;
     today.won = won;
+    if (practice) { track(won ? 'Unlocked - Practice won' : 'Unlocked - Practice lost'); return; }
     const s = store.stats;
     s.played++;
     if (won) {
@@ -322,13 +336,17 @@
     $('ulEnd').hidden = false;
     $('ulResult').textContent = resultLine();
     const total = $('ulTotal');
-    total.textContent = 'Yer total: ';
-    total.appendChild(el('b', '', store.stats.points.toLocaleString('en-CA') + ' points'));
-    total.appendChild(document.createTextNode(' from ' + store.stats.played + (store.stats.played === 1 ? ' game' : ' games')));
+    if (practice) {
+      total.textContent = "Practice puzzles don't count toward yer stats.";
+    } else {
+      total.textContent = 'Yer total: ';
+      total.appendChild(el('b', '', store.stats.points.toLocaleString('en-CA') + ' points'));
+      total.appendChild(document.createTextNode(' from ' + store.stats.played + (store.stats.played === 1 ? ' game' : ' games')));
+    }
 
     const reveal = $('ulReveal');
     reveal.textContent = '';
-    reveal.appendChild(el('div', 'when', "Today's song"));
+    reveal.appendChild(el('div', 'when', practice ? 'The practice song' : "Today's song"));
     reveal.appendChild(el('div', 'where', puzzle.t));
 
     // Play it: a direct Spotify track where we have one, search links elsewhere,
@@ -363,13 +381,29 @@
     lyr.addEventListener('click', () => track('Unlocked - Song page'));
     links.appendChild(lyr);
 
+    if (practice) {
+      // No sharing, stats or countdown - a way back to the real game instead
+      $('ulShareBox').hidden = true;
+      $('ulPracticeEnd').hidden = false;
+      $('ulPracticeNote').textContent = localDayNumber(new Date()) < epochDay
+        ? 'The real game opens Wednesday, November 4 - a new Hip song every day.'
+        : "Ready for the real thing? There's a new Hip song every day.";
+      return;
+    }
     $('ulShareText').textContent = shareText();
     renderStats();
     startCountdown();
   }
 
+  if (practice) {
+    $('ulAgain').addEventListener('click', () => {
+      try { localStorage.removeItem(STORE_KEY); } catch (e) { /* nothing saved */ }
+      location.reload();
+    });
+  }
+
   function renderAll() {
-    $('ulNo').textContent = 'Puzzle #' + puzzleNo;
+    $('ulNo').textContent = practice ? 'Practice puzzle' : 'Puzzle #' + puzzleNo;
     $('ulPoints').textContent = today.done ? todayPoints() : points();
     renderWords();
     renderWrong();
@@ -559,7 +593,7 @@
 
   // Phone left open overnight: new day, new puzzle
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && !forcedDay && naturalPuzzleNo() !== puzzleNo) location.reload();
+    if (!document.hidden && !practice && !forcedDay && naturalPuzzleNo() !== puzzleNo) location.reload();
   });
 
   renderAll();

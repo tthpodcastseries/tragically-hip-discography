@@ -53,6 +53,11 @@
 .ul-play-apple { background: var(--red); border-color: var(--red); }
 .ul-play-live { background: transparent; color: var(--gold); border-color: rgba(204, 162, 60, 0.6); }
 
+/* Practice puzzle (?practice) */
+.ul-practice-link { display: inline-block; margin-top: 10px; color: var(--gold); font-weight: 700; }
+.ul-practice-end { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.86rem; color: var(--muted); }
+.ul-practice-end .bia-btn { text-decoration: none; display: inline-block; }
+
 .ul-dist-h { margin-top: 14px; font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
 
 @media (max-width: 380px) {

@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.4.2
+**Yawning or Snarling - Patch** - October 31, 2026
+- **Practice puzzle for (Un)Locked** at `/unlocked?practice`, playable any time (including before the game opens November 4). It uses Morning Moon, one of the songs that sit out of the schedule, so it spoils no real day. It saves separately and doesn't touch stats, streaks, or sharing, and ends with "Play today's puzzle" and "Practise again".
+- The "opens November 4" message now links to the practice puzzle.
+
 ## v5.4.1
 **Yawning or Snarling - Patch** - October 31, 2026 (before the game opens November 4)
 A bigger (Un)Locked schedule, so the game runs well past its first few months.
