@@ -165,9 +165,13 @@ Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.
 
 ## 7. Caching and offline
 
-`service-worker.js` precaches the core pages, CSS, JS and key data files (`CORE_ASSETS`). HTML pages and `/data/*.json` are network-first with a cache fallback, so updates reach people. Other assets are cache-first. An unvisited `/song/<slug>` offline falls back to `song.html`. The worker file itself is served `no-cache`.
+`service-worker.js` precaches the small shell (`CORE_ASSETS`): pages, CSS, page scripts, `discography.json`, `missing-lyrics.json` and the manifest. Big data files and `supabase.min.js` are cached the first time a page uses them (`scripts/audit-site.js` fails on any precached file over 250 KB). HTML pages, `/css/`, `/js/`, `/data/*.json` and the manifest are network-first with a cache fallback, so every release reaches people on their next page load. Images and other files are stale-while-revalidate (saved copy first, refreshed in the background). An unvisited `/song/<slug>` offline falls back to `song.html`. The worker file itself is served `no-cache`. Since v5.4.11.
 
-**Every release must bump `CACHE_NAME`** (`thc-v5.1` today) or returning visitors keep stale JS and CSS. New pages, scripts and styles must be added to `CORE_ASSETS`. When testing, unregister the worker and delete all caches between checks or you will see old files.
+Bump `CACHE_NAME` (`hh-v5.4.11` today) with the footer version each release; `scripts/audit-site.js` checks they match. Forgetting it no longer strands fans on old code: saved files are refreshed one by one as pages use them. New pages, scripts and styles should be added to `CORE_ASSETS` so they work offline. Never rename the cache prefix back to `thc-`: a `thc-` cache tells the worker it is moving a phone off the old cache-first worker, and it reloads open pages once. When testing, unregister the worker and delete all caches between checks.
+
+Browser caching (`_headers`): images and icons keep for a week, so replace an image under a new file name rather than overwriting it. Everything else is checked every time.
+
+Lyrics: the copy saved in browser storage (`tth_lyrics_cache_v4`) carries a fingerprint of the `lyrics.json` text and refreshes itself when the file changes, by script or by hand. No key bump needed.
 
 ---
 
@@ -247,4 +251,4 @@ Fixed on 2026-10-28 and live in v5.1.1: the Passport share card being blocked by
 | Rebuild song pages and sitemap song block | `node scripts/build-song-index.js` |
 | Rebuild the official song list | `node scripts/build-canonical-songs.js` |
 | Local preview | `hip-webapp` in `.claude/launch.json` (`npx serve`, port 8765) |
-| Publish | Merge to `main` and push. Bump `CACHE_NAME` and the footer version first. |
+| Publish | Merge to `main` and push. Bump `CACHE_NAME` and the footer version first (`scripts/audit-site.js` checks they match). |

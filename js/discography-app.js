@@ -1714,8 +1714,16 @@ async function initSetlistExplorer() {
 }
 
 // ─── Lyrics Search Engine ───
-// Bump the version when lyrics.json gains songs, so returning visitors reload it
+// The saved copy carries a fingerprint of the lyrics.json text it came from; when the
+// live file's fingerprint differs (any edit, by script or by hand), the copy is replaced,
+// so no key bump is needed. js/song.js uses the same key, fingerprint and format.
 const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v4';
+const LYRICS_STAMP_KEY = 'tth_lyrics_stamp';
+function lyricsStamp(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619);
+  return text.length + '-' + (h >>> 0).toString(36);
+}
 try { localStorage.removeItem('tth_lyrics_cache_v1'); localStorage.removeItem('tth_lyrics_cache_v2'); localStorage.removeItem('tth_lyrics_cache_v3'); } catch {}
 let lyricsSearchInitialized = false;
 
@@ -1728,6 +1736,7 @@ function saveLyricsCache(cache) {
   try {
     const json = JSON.stringify(cache);
     localStorage.setItem(LYRICS_CACHE_KEY, json);
+    return true;
   } catch (e) {
     // Quota exceeded - trim empty entries and retry
     if (e.name === 'QuotaExceededError' || e.code === 22) {
@@ -1737,11 +1746,13 @@ function saveLyricsCache(cache) {
           if (v && v.length > 0) trimmed[k] = v;
         }
         localStorage.setItem(LYRICS_CACHE_KEY, JSON.stringify(trimmed));
+        return true;
       } catch {
         console.warn('Lyrics cache: localStorage full, cache not saved');
       }
     }
   }
+  return false;
 }
 
 function getAllSongsForLyrics() {
@@ -1785,7 +1796,8 @@ async function loadLyricsFromStatic(onProgress) {
   try {
     const resp = await fetch('data/lyrics.json');
     if (!resp.ok) throw new Error('Failed to load lyrics data');
-    const data = await resp.json();
+    const text = await resp.text();
+    const data = JSON.parse(text);
     const entries = Object.entries(data.songs);
     const total = entries.length;
     const cache = {};
@@ -1798,7 +1810,7 @@ async function loadLyricsFromStatic(onProgress) {
         await new Promise(r => setTimeout(r, 0));
       }
     }
-    saveLyricsCache(cache);
+    if (saveLyricsCache(cache)) try { localStorage.setItem(LYRICS_STAMP_KEY, lyricsStamp(text)); } catch {}
     return cache;
   } catch (e) {
     console.warn('Static lyrics load failed:', e);
@@ -2070,6 +2082,7 @@ function initLyricsSearch() {
   if (cached > 0) {
     enableLyricsSearch();
     updateLyricsCacheStatus();
+    refreshLyricsIfChanged();
   } else {
     autoLoadLyrics(enableLyricsSearch);
   }
@@ -2087,6 +2100,22 @@ function countLyricWords(cache) {
   });
   lyricWordCount = { songs: texts.length, unique: unique.size, total };
   return lyricWordCount;
+}
+
+// Search starts on the saved copy; this swaps in lyrics.json if it has changed since
+async function refreshLyricsIfChanged() {
+  try {
+    const resp = await fetch('data/lyrics.json');
+    if (!resp.ok) return;
+    const text = await resp.text();
+    const stamp = lyricsStamp(text);
+    let saved = null;
+    try { saved = localStorage.getItem(LYRICS_STAMP_KEY); } catch {}
+    if (stamp === saved) return;
+    if (!saveLyricsCache({ ...JSON.parse(text).songs })) return;
+    try { localStorage.setItem(LYRICS_STAMP_KEY, stamp); } catch {}
+    updateLyricsCacheStatus();
+  } catch { /* offline: keep the saved copy */ }
 }
 
 function updateLyricsCacheStatus() {

@@ -219,19 +219,38 @@
     $('spRecCard').hidden = false;
   }
 
-  // Lyrics: fetched only when the card is opened. Reuses the copy lyrics search saves
-  // (same key and format as js/discography-app.js), and saves one for it.
+  // Lyrics: fetched only when the card is opened, falling back to the copy lyrics search
+  // saves when offline. Refreshes that copy when lyrics.json has changed (same key,
+  // fingerprint and format as js/discography-app.js).
   const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v4';
+  const LYRICS_STAMP_KEY = 'tth_lyrics_stamp';
+  function lyricsStamp(text) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619);
+    return text.length + '-' + (h >>> 0).toString(36);
+  }
   const lyricsMailto = title => 'mailto:jd@tthpods.com?subject=' + encodeURIComponent('Lyrics for The Hip Handbook') +
     '&body=' + encodeURIComponent('Song: ' + title + '\n\nLyrics:\n\n\nSource (optional - liner notes, where you got them):\n\nCredit (optional - how you\'d like to be thanked):');
 
   async function lyricsFor(key) {
+    let text;
     try {
-      const cache = JSON.parse(localStorage.getItem(LYRICS_CACHE_KEY));
-      if (cache && cache[key]) return cache[key];
-    } catch (e) { /* no saved copy */ }
-    const all = await fetch('/data/lyrics.json').then(r => { if (!r.ok) throw new Error('lyrics'); return r.json(); });
-    try { localStorage.setItem(LYRICS_CACHE_KEY, JSON.stringify(all.songs)); } catch (e) { /* storage full or blocked */ }
+      text = await fetch('/data/lyrics.json').then(r => { if (!r.ok) throw new Error('lyrics'); return r.text(); });
+    } catch (err) {
+      try {
+        const cache = JSON.parse(localStorage.getItem(LYRICS_CACHE_KEY));
+        if (cache && cache[key]) return cache[key];
+      } catch (e) { /* no saved copy */ }
+      throw err;
+    }
+    const all = JSON.parse(text);
+    try {
+      const stamp = lyricsStamp(text);
+      if (localStorage.getItem(LYRICS_STAMP_KEY) !== stamp) {
+        localStorage.setItem(LYRICS_CACHE_KEY, JSON.stringify(all.songs));
+        localStorage.setItem(LYRICS_STAMP_KEY, stamp);
+      }
+    } catch (e) { /* storage full or blocked */ }
     return all.songs[key];
   }
 

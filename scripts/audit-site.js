@@ -3,7 +3,8 @@
 //
 // Checks (no external dependencies, Node 18+):
 //   1. Internal links/assets referenced by every HTML page exist on disk
-//   2. Service worker CORE_ASSETS all exist
+//   2. Service worker CORE_ASSETS all exist, none over 250 KB (first-visit
+//      download), and CACHE_NAME matches the footer version
 //   3. manifest.json icons exist
 //   4. sitemap.xml entries map to real pages
 //   5. Data cross-references: show-video orphans, AppleDouble junk tracks,
@@ -13,6 +14,8 @@
 //   7. Every external image host used by pages/scripts/data is allowed by
 //      the CSP img-src in _headers (localhost ignores _headers, so a
 //      missing host only breaks on the live site)
+//   8. Every page has the home-screen tags (mobile-web-app-capable, and a
+//      status bar that doesn't draw the page under the iPhone clock)
 //
 // Usage: node scripts/audit-site.js [--no-network]
 // Exit code 0 = clean, 1 = problems found.
@@ -70,7 +73,11 @@ const sw = fs.readFileSync(path.join(ROOT, 'service-worker.js'), 'utf8');
 const coreBlock = sw.slice(0, sw.indexOf('];'));
 for (const m of coreBlock.matchAll(/'(\/[^']+)'/g)) {
   if (m[1] !== '/' && !existsLocal(m[1])) problems.push(`service-worker CORE_ASSETS: missing -> ${m[1]}`);
+  else if (m[1] !== '/' && fs.statSync(path.join(ROOT, m[1])).size > 250 * 1024) problems.push(`service-worker CORE_ASSETS: ${m[1]} is over 250 KB (every first visit downloads it; let the page cache it on use)`);
 }
+const swVersion = (sw.match(/CACHE_NAME = '[a-z]+-(v[\d.]+)'/) || [])[1];
+const footerVersion = (fs.readFileSync(path.join(ROOT, 'js/shared-footer.js'), 'utf8').match(/var version = '(v[\d.]+)/) || [])[1];
+if (!swVersion || swVersion !== footerVersion) problems.push(`service-worker CACHE_NAME version (${swVersion}) doesn't match the footer version in js/shared-footer.js (${footerVersion})`);
 
 // ---- 3. Manifest icons ----
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8'));
@@ -153,6 +160,13 @@ if (!imgSrc.includes('blob:')) {
   if (blobUsers.length) problems.push(`_headers CSP img-src: blob: not allowed, but ${blobUsers.join(', ')} builds blob: image URLs (blocked live)`);
 }
 notes.push(`CSP img-src: ${imgHosts.size} external image host(s) checked`);
+
+// ---- 8. Home-screen tags ----
+for (const page of pages) {
+  const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+  if (!/<meta name="mobile-web-app-capable" content="yes">/.test(html)) problems.push(`${page}: missing <meta name="mobile-web-app-capable" content="yes">`);
+  if (/black-translucent/.test(html)) problems.push(`${page}: status bar style black-translucent puts the page under the iPhone clock in the home-screen app (use "black")`);
+}
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {

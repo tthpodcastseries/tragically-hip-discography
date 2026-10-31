@@ -1,5 +1,20 @@
 # Changelog
 
+## v5.4.11
+**Yawning or Snarling - Patch** - October 31, 2026
+Make sure every deploy reaches returning fans, home-screen app included (pre-relaunch audit Batch 5: FUNC-03, PERF-02, FUNC-11, PERF-09, DEV-01, FUNC-15).
+- **Fixed: fans could be stuck on old CSS and JS after a release.** The service worker used to serve CSS and JS from the phone's copy and only refreshed them when `CACHE_NAME` was bumped by hand (four past releases missed it). Pages, CSS, JS, data and the manifest are now all network-first: the phone asks the server every time (a quick "not modified" when nothing changed) and only uses its copy when offline. A release now arrives even if the bump is forgotten (tested: a changed footer with an unchanged `service-worker.js` showed on the first open). Images and other files show the saved copy and refresh it in the background.
+- **Moving off the old worker:** the first page a fan opens after this deploy is still served by the old worker (new page, old CSS/JS). The new worker spots the old `thc-` caches, deletes them, and reloads the open page once, so the mix lasts a couple of seconds. This happens once per device; later releases never reload. Cache names are now `hh-v...`. Tested in Chrome: an installed v5.4.10 moved to v5.4.11 about 2.5 seconds after opening, with only the new cache left. Older iPhones may not support the automatic reload; if not, the next page they open is fully new.
+- The service worker install no longer fails as a whole when one file can't be fetched (each file is cached on its own), so a missing file can't leave a phone on the old worker.
+- **First visit downloads much less.** The precache is the small shell only (pages, CSS, page scripts, `discography.json`, `missing-lyrics.json`, manifest). Setlists, tour data, lyrics, the song index, Unplucked Gems, show videos and the Supabase library are cached the first time a page uses them. Trade-off: a data-heavy page never opened before won't work offline.
+- Responses are only cached when complete (status 200); audio/video range requests are left alone.
+- **Fixed: lyrics corrections never reached returning fans.** The saved lyrics copy now carries a fingerprint of the `lyrics.json` text it came from. Lyrics search starts on the saved copy, checks in the background and swaps in the new file when it differs; song pages fetch fresh and fall back to the copy offline. Hand edits count too (the file's `generated` date doesn't change on hand edits, so it isn't used). `tth_lyrics_cache_v4` no longer needs bumping.
+- `_headers`: images (`/assets-optimized/*`) and icons (`/icons/*`) are kept by browsers for a week. Pages, CSS, JS and data stay "check every time". Replace an image under a new file name, never overwrite it.
+- **Fixed: in the iPhone home-screen app the top of each page sat under the clock and notch.** The status bar style is now `black` instead of `black-translucent` on all 14 pages, so pages start below it. Not checked on a real iPhone yet; an icon added before this may need removing and re-adding.
+- Added `<meta name="mobile-web-app-capable" content="yes">` next to the Apple tag on all 14 pages (clears the deprecation warning).
+- `scripts/audit-site.js` now fails if a precached file is over 250 KB, if `CACHE_NAME` and the footer version differ, or if a page is missing the home-screen tags.
+- Cache bumped to `hh-v5.4.11`; footer label bumped to v5.4.11
+
 ## v5.4.10
 **Yawning or Snarling - Patch** - October 31, 2026
 Data and link fixes fans will notice (pre-relaunch audit Batch 4: DATA-01, DATA-02, DATA-03, DATA-05, DATA-06, DATA-07, DATA-08, DATA-12, DATA-16, LINK-02, LINK-03, LINK-04, GAME-06, GAME-07, GAME-08). jD made the calls on 2026-10-31.

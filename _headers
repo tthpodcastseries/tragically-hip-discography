@@ -13,3 +13,12 @@
 
 /manifest.json
   Cache-Control: max-age=3600
+
+# Images keep for a week. Replace an image under a new file name, never overwrite it.
+# Pages, CSS, JS and data keep Netlify's default (check for changes every time),
+# because their file names never change between releases.
+/assets-optimized/*
+  Cache-Control: public, max-age=604800
+
+/icons/*
+  Cache-Control: public, max-age=604800
