@@ -9,14 +9,20 @@
 //   { built, shows: [ [id, 'yyyy-mm-dd', venue, city, state, country, tour, hasRecording] ... ],
 //     songs: [ { s: slug, t: title, p: [showIdx ...], r: [[showIdx, trackNo] ...],
 //                a: [[album, year, category, trackNo, versionNote] ...],
-//                k: { rank, pts, url, ep } | null } ... ] }
+//                k: { rank, pts, url, ep } | null, l: lyricsKey (only if it has lyrics) } ... ] }
 //   shows are sorted oldest first, so p[0] is the live debut and p[p.length - 1] the
 //   latest performance. p matches livePlays in canonical-songs.json (medleys count
 //   for both songs, covers and tape are skipped) - the script checks this.
 //   r lists the Hip Archive recordings of the song: the show, and the track number
 //   in that recording.
 //
+//   l is the song's key in data/lyrics.json ('Album|||Song'). The song page fetches
+//   the lyrics only when someone opens its Lyrics card.
+//
 // Also rewrites the song block between the markers in sitemap.xml.
+//
+// When lyrics.json gains songs, re-run this script too, and bump LYRICS_CACHE_KEY
+// and the lyrics counts in js/discography-app.js and discography.html.
 //
 // Usage: node scripts/build-song-index.js
 
@@ -120,6 +126,16 @@ for (const v of [...top40, ...beyond]) {
   else if (road) { so.k.url = road.url; so.k.ep = 'Road to the Top 40 - Episode ' + road.ep; }
 }
 
+// Lyrics: the key in lyrics.json, matched on title ('Montreal (Live)' is Montreal)
+const lyrics = JSON.parse(read('data/lyrics.json')).songs;
+const unmatchedLyrics = [];
+for (const key of Object.keys(lyrics)) {
+  const t = key.split('|||')[1];
+  const so = byTitle.get(norm(t)) || byTitle.get(norm(t.replace(VERSION_NOTE, '')));
+  if (!so) { unmatchedLyrics.push(t); continue; }
+  if (!so.l) so.l = key;
+}
+
 // ─── Checks ───
 const mismatched = songs.filter(so => so.p.length !== so.livePlays);
 if (mismatched.length) throw new Error('Play counts differ from canonical-songs.json: ' + mismatched.map(m => `${m.t} (${m.p.length} vs ${m.livePlays})`).join(', '));
@@ -128,7 +144,7 @@ if (mismatched.length) throw new Error('Play counts differ from canonical-songs.
 const out = {
   built: new Date().toISOString().slice(0, 10),
   shows: shows.map(x => [x.id, x.iso, x.s.venue || '', x.s.city || '', x.s.state || '', x.s.country || '', x.s.tour || '', x.rec ? 1 : 0]),
-  songs: songs.map(so => ({ s: so.s, t: so.t, p: so.p, r: so.r, a: so.a, k: so.k })),
+  songs: songs.map(so => ({ s: so.s, t: so.t, p: so.p, r: so.r, a: so.a, k: so.k, ...(so.l ? { l: so.l } : {}) })),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'song-index.json'), JSON.stringify(out) + '\n');
 
@@ -149,5 +165,7 @@ console.log(`  ${songs.filter(s => s.p.length).length} played live, ${songs.filt
 console.log(`  recording tracks matched to a song: ${trackHits} of ${trackHits + trackMisses}`);
 const noAlbum = songs.filter(s => !s.a.length).map(s => s.t);
 if (noAlbum.length) console.log(`  no album found for: ${noAlbum.join(', ')}`);
+console.log(`  with lyrics: ${songs.filter(s => s.l).length}; without: ${songs.filter(s => !s.l).map(s => s.t).join(', ') || 'none'}`);
+if (unmatchedLyrics.length) console.log(`  lyrics titles not matched to a song: ${unmatchedLyrics.join(', ')}`);
 if (unvoted.length) console.log(`  fan-vote titles not matched to a song: ${unvoted.join(', ')}`);
 console.log(`updated ${songs.length} song entries in sitemap.xml`);

@@ -2,6 +2,7 @@
 // Live debut and latest play, plays by year, albums, fan ranking, every Hip Archive
 // recording, and every performance - all from data/song-index.json
 // (scripts/build-song-index.js), so phones skip the 2 MB setlist file.
+// Lyrics (v5.1.7) load from data/lyrics.json only when the Lyrics card is opened.
 // /song with no slug (or an unknown one) shows the list of all songs.
 (async function () {
   const $ = id => document.getElementById(id);
@@ -106,6 +107,7 @@
 
     renderYears(plays);
     renderRelease(origin, sorted);
+    renderLyrics();
     renderRank();
     renderRecordings(recs);
     renderAll(plays);
@@ -215,6 +217,53 @@
       more.addEventListener('click', () => { draw(true); more.hidden = true; });
     }
     $('spRecCard').hidden = false;
+  }
+
+  // Lyrics: fetched only when the card is opened. Reuses the copy lyrics search saves
+  // (same key and format as js/discography-app.js), and saves one for it.
+  const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v2';
+  const lyricsMailto = title => 'mailto:jd@tthpods.com?subject=' + encodeURIComponent('Lyrics for The Hip Handbook') +
+    '&body=' + encodeURIComponent('Song: ' + title + '\n\nLyrics:\n\n\nSource (optional - liner notes, where you got them):\n\nCredit (optional - how you\'d like to be thanked):');
+
+  async function lyricsFor(key) {
+    try {
+      const cache = JSON.parse(localStorage.getItem(LYRICS_CACHE_KEY));
+      if (cache && cache[key]) return cache[key];
+    } catch (e) { /* no saved copy */ }
+    const all = await fetch('/data/lyrics.json').then(r => { if (!r.ok) throw new Error('lyrics'); return r.json(); });
+    try { localStorage.setItem(LYRICS_CACHE_KEY, JSON.stringify(all.songs)); } catch (e) { /* storage full or blocked */ }
+    return all.songs[key];
+  }
+
+  function renderLyrics() {
+    if (!song.l) {
+      $('spLyricsSend').href = lyricsMailto(song.t);
+      $('spLyricsNone').hidden = false;
+      return;
+    }
+    const det = $('spLyrics');
+    const body = $('spLyricsBody');
+    det.hidden = false;
+    let state = 'none';
+    det.addEventListener('toggle', async () => {
+      if (!det.open || state === 'loading' || state === 'done') return;
+      state = 'loading';
+      track('Song - Open lyrics');
+      body.replaceChildren(el('p', 'sp-sub', 'Loading the lyrics...'));
+      let text;
+      try { text = await lyricsFor(song.l); } catch (e) { /* offline */ }
+      if (!text) {
+        state = 'none';
+        body.replaceChildren(el('p', 'sp-sub sp-error', "Couldn't load the lyrics. Check yer connection, then close and reopen this."));
+        return;
+      }
+      state = 'done';
+      body.replaceChildren();
+      text.split(/\n\s*\n/).forEach(v => body.appendChild(el('p', 'sp-verse', v.trim())));
+      const fix = el('p', 'sp-lyrics-note', 'Spot a mistake? ');
+      fix.appendChild(link('Send jD a fix', lyricsMailto(song.t)));
+      body.appendChild(fix);
+    });
   }
 
   function renderAll(plays) {

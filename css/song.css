@@ -55,6 +55,13 @@
 
 .sp-all summary { cursor: pointer; color: var(--gold); font-weight: 700; font-size: 0.86rem; }
 .sp-all[open] summary { margin-bottom: 8px; }
+/* Lyrics */
+.sp-verse { white-space: pre-line; font-size: 0.92rem; line-height: 1.75; color: var(--text); }
+.sp-verse + .sp-verse { margin-top: 1.1em; }
+.sp-lyrics-note { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 0.74rem; color: var(--muted2); }
+.sp-lyrics-note a, .sp-never a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.sp-lyrics-note a:hover, .sp-never a:hover { text-decoration: underline; }
+
 .sp-year-h { margin: 14px 0 2px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; color: #fff; }
 
 .sp-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }

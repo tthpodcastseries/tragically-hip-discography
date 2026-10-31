@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.1.7
+**Grace, Too - Patch** - October 31, 2026
+Lyrics on the song pages.
+- **New Lyrics card** on every song page with lyrics (185 of 190), under "On record". It's closed by default and fetches `data/lyrics.json` only when opened, reusing the copy lyrics search saves (`tth_lyrics_cache_v2`) and saving one for it. The lyrics are marked `data-nosnippet`, so Google won't quote them in search results. A "Send jD a fix" link sits under them.
+- **Songs without lyrics** (Day for Night, Dare Devil (Reprise), Ultra Mundane, Problem Bears, Forest Edge) show "No lyrics for this one yet" with an email link instead.
+- **`scripts/build-song-index.js`** now matches each song to its `lyrics.json` key (`l` in `data/song-index.json`), so 'Montreal (Live)' lyrics land on Montreal. Re-run it whenever `lyrics.json` gains songs.
+
 ## v5.1.6
 **Grace, Too - Patch** - October 30, 2026
 Lyrics archive pass, cross-checked against the 214 options on the official song list (Google Form).
