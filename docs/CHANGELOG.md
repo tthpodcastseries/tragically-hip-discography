@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.4
+**Yawning or Snarling** - October 31, 2026 (game opens Wednesday, November 4)
+A second daily game. v5.2 and v5.3 stay reserved for listening paths and fan voting.
+- **(Un)Locked in the Trunk of a Car** at `/unlocked`: one Hip song a day, locked behind five scrambled words from its lyrics. The words run from the vaguest (shared with a few other songs) at the top to the biggest giveaway at the bottom, and unlock in that order. Tap the letter tiles or type to unscramble; name the song at any time from a title list.
+- **Points**: 100 for naming the song with no words unlocked. Each word unscrambled costs 10, a revealed word 20, and each wrong guess 10. Wrong unscrambles are free. At 0 the trunk stays locked. Streak, win rate, total points, and a words-unlocked chart, like Bring It All Back.
+- **Play it** after the reveal: Spotify (a direct track link for 62 songs, search for the rest), Apple Music, YouTube Music, and the latest Hip Archive show with the song (158 of 176). Refreshed each build; the words and order aren't.
+- **Sharing**: text squares (green unscrambled, yellow revealed, black never needed, red per wrong guess) and the same three score card sizes. Neither shows the song or its words.
+- **`scripts/build-trunk-pool.js`** builds `data/trunk-pool.json`: 176 puzzles (about six months), shuffled once and locked - songs that gain lyrics later join the end, so no day's puzzle changes after launch. Each word appears in 6 or fewer songs, isn't a title word, and has no other anagram in the dictionary. Two spellings in `lyrics.json` are skipped until checked ('Northhumberland' in Silver Jet, 'Forksake' in New Orleans Is Sinking). Nine songs have too few usable words and sit out.
+- Home page: a card in the Play group beside Bring It All Back.
+
 ## v5.1.7
 **Grace, Too - Patch** - October 31, 2026
 Lyrics on the song pages.

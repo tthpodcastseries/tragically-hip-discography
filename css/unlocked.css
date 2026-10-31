@@ -1,0 +1,60 @@
+/* unlocked.html - '(Un)Locked in the Trunk of a Car', the daily lyrics game (v5.4).
+   Builds on bring-it-all-back.css (loaded first); only what's new lives here. */
+
+.ul-points { font-size: 0.78rem; color: var(--muted2); }
+.ul-points b { color: var(--gold); font-size: 1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* The five words */
+.ul-words { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.ul-word { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; min-height: 52px; }
+.ul-num { flex: 0 0 18px; font-size: 0.74rem; font-weight: 700; color: var(--muted2); text-align: right; }
+.ul-tiles { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.ul-tile { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 34px; border-radius: 6px; background: #141414; border: 1px solid #2a2a2a; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 800; padding: 0; }
+.ul-lock { flex: 0 0 auto; font-size: 0.85rem; opacity: 0.6; }
+.ul-word.locked { opacity: 0.75; min-height: 40px; padding: 6px 10px; }
+/* Locked words stay compact so a 10-letter word fits one line on a phone; the active word gets big tap targets */
+.ul-word.locked .ul-tiles { gap: 3px; }
+.ul-word.locked .ul-tile { width: 21px; height: 26px; font-size: 0.78rem; border-radius: 5px; }
+.ul-word.active { border-color: rgba(204, 162, 60, 0.6); background: rgba(204, 162, 60, 0.06); }
+.ul-word.active .ul-tile { background: #1d1a26; border-color: rgba(204, 162, 60, 0.5); color: #fff; cursor: pointer; }
+.ul-word.active .ul-tile:hover:not(:disabled) { border-color: var(--gold); }
+.ul-word.active .ul-tile:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.ul-word.active .ul-tile.used { opacity: 0.25; cursor: default; }
+.ul-answer { flex: 1; min-width: 0; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.12em; color: #fff; overflow-wrap: anywhere; }
+.ul-tag { flex: 0 0 auto; font-size: 0.68rem; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
+.ul-word.solved { border-color: rgba(76, 175, 80, 0.55); }
+.ul-word.solved .ul-tag { color: #4CAF50; }
+.ul-word.revealed { border-color: rgba(242, 201, 76, 0.55); }
+.ul-word.revealed .ul-tag { color: #F2C94C; }
+
+.ul-wordform { margin-top: 14px; }
+.ul-wordform label { display: block; font-size: 0.82rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.ul-wordform input { text-transform: uppercase; letter-spacing: 0.12em; }
+.ul-wordtools { display: flex; justify-content: space-between; margin-top: 8px; }
+.ul-link { background: none; border: 0; padding: 4px 0; color: var(--gold); font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
+.ul-link:hover { text-decoration: underline; }
+
+/* Song guess */
+.ul .bia-row input[type="text"] { font-size: 1rem; }
+.ul-suggest { list-style: none; margin-top: 6px; background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; overflow: hidden; }
+.ul-option { display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid #2a2a2a; padding: 11px 14px; color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+.ul-suggest li:first-child .ul-option { border-top: 0; }
+.ul-option:hover:not(:disabled), .ul-option:focus-visible { background: rgba(204, 162, 60, 0.1); color: var(--gold); outline: none; }
+.ul-option:disabled { color: var(--muted2); cursor: default; }
+.ul-wrong { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.ul-wrong li { font-size: 0.8rem; color: #ff6b6b; background: rgba(200, 16, 46, 0.1); border: 1px solid rgba(200, 16, 46, 0.4); border-radius: 999px; padding: 4px 12px; }
+
+/* Play it, after the reveal */
+.ul-play { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
+.ul-play-h { flex-basis: 100%; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.ul-play-btn { display: inline-block; padding: 9px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none; color: #fff; background: #2a2a2a; border: 1px solid #2a2a2a; }
+.ul-play-btn:hover { filter: brightness(1.15); }
+.ul-play-spotify { background: #1DB954; border-color: #1DB954; }
+.ul-play-apple { background: var(--red); border-color: var(--red); }
+.ul-play-live { background: transparent; color: var(--gold); border-color: rgba(204, 162, 60, 0.6); }
+
+.ul-dist-h { margin-top: 14px; font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 380px) {
+  .ul-word.active .ul-tile { width: 27px; height: 34px; font-size: 0.88rem; }
+}
