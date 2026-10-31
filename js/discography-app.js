@@ -533,7 +533,7 @@ const categoryStats = {
   ],
   lyrics: [
     { num: '20', lbl: 'Albums Indexed' },
-    { num: '185', lbl: 'Songs Searchable' },
+    { num: '188', lbl: 'Songs Searchable' },
     { num: '0', lbl: 'Cached Songs' },
     { num: 'API', lbl: 'lyrics.ovh' },
   ],
@@ -1707,8 +1707,8 @@ async function initSetlistExplorer() {
 
 // ─── Lyrics Search Engine ───
 // Bump the version when lyrics.json gains songs, so returning visitors reload it
-const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v2';
-try { localStorage.removeItem('tth_lyrics_cache_v1'); } catch {}
+const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v3';
+try { localStorage.removeItem('tth_lyrics_cache_v1'); localStorage.removeItem('tth_lyrics_cache_v2'); } catch {}
 let lyricsSearchInitialized = false;
 
 function getLyricsCache() {
@@ -1960,7 +1960,7 @@ async function autoLoadLyrics(onComplete) {
   statusEl.innerHTML = `
     <div class="lyrics-loading-state">
       <div class="lyrics-loading-title">Building Lyrics Index</div>
-      <div class="lyrics-loading-subtitle">Loading lyrics for all 185 songs...</div>
+      <div class="lyrics-loading-subtitle">Loading lyrics for all 188 songs...</div>
       <div class="lyrics-progress-bar"><div class="lyrics-progress-fill" id="lyricsAutoFill"></div></div>
       <div class="lyrics-progress-song" id="lyricsAutoSong"></div>
     </div>`;
@@ -2741,7 +2741,7 @@ catBtns.forEach((btn, idx) => {
 // for local testing - the page shows only that feature under its own header.
 const FEATURE_VIEWS = {
   'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
-    desc: 'Search the lyrics of 169 Tragically Hip songs by a word or phrase you remember - and help complete the archive.' },
+    desc: 'Search the lyrics of 188 Tragically Hip songs by a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
     desc: 'Browse all 1,355 live shows from 1985 to 2016 - 1,089 with full setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
   'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'TTHTop40 Countdown',

@@ -36,6 +36,10 @@ const RENAMED_VERSIONS = {
 // 2026-10-28). 'Apartment Song' is on Trouble at the Henhouse.
 const EXTRA_SONGS = ['Apartment Song'];
 
+// Form options that aren't songs (jD confirmed 2026-10-31). 'Day for Night' is
+// the album, not a track.
+const NOT_ON_RELEASES = ['Day for Night'];
+
 // setlist.fm spells some titles differently from the official list (jD confirmed
 // 'It's Just as Well' is 'Just As Well').
 const SETLIST_ALIASES = {
@@ -62,8 +66,8 @@ async function main() {
   const firstPick = items.find(it => it[4] && it[4][0] && it[4][0][1]);
   const raw = firstPick[4][0][1].map(o => o[0]).filter(Boolean);
 
-  const titles = [...new Set(raw.map(stripFormQuotes))];
-  console.log(`form: ${raw.length} options, ${titles.length} unique`);
+  const titles = [...new Set(raw.map(stripFormQuotes))].filter(t => !NOT_ON_RELEASES.includes(t));
+  console.log(`form: ${raw.length} options, ${titles.length} unique, less ${NOT_ON_RELEASES.length} not a song: ${NOT_ON_RELEASES.join(', ')}`);
   for (const t of EXTRA_SONGS) if (!titles.includes(t)) titles.push(t);
   console.log(`plus ${EXTRA_SONGS.length} extra song(s) not on the form: ${EXTRA_SONGS.join(', ')}`);
 

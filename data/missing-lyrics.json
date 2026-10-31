@@ -1,10 +1,4 @@
 {
-  "note": "Songs in the 214-song canon that have no lyrics yet. Powers the 'Help Complete the Archive' crowdsourcing call-out on the Lyrics Search tab. Edit freely - remove a song once its lyrics are added to lyrics.json, or add one that's missing. Omitted here (they reuse a covered song's lyrics): 'Just Another Midnight (1988 Demo)' = Another Midnight, 'Angst on the Planks' = Cordelia, 'Super Farmer Nano Baby' = Poets.",
-  "songs": [
-    { "title": "Day for Night", "context": "rarity" },
-    { "title": "Dare Devil (Reprise)", "context": "rarity" },
-    { "title": "Ultra Mundane", "context": "rarity" },
-    { "title": "Problem Bears", "context": "rarity" },
-    { "title": "Forest Edge", "context": "rarity" }
-  ]
+  "note": "Songs in the 214-song canon that have no lyrics yet. Powers the 'Help Complete the Archive' crowdsourcing call-out on the Lyrics Search tab. Edit freely - remove a song once its lyrics are added to lyrics.json, or add one that's missing. Omitted here (they reuse a covered song's lyrics): 'Just Another Midnight (1988 Demo)' = Another Midnight, 'Angst on the Planks' = Cordelia, 'Super Farmer Nano Baby' = Poets, 'Dare Devil (Reprise)' = Daredevil.",
+  "songs": []
 }

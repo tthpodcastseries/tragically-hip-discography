@@ -221,7 +221,7 @@
 
   // Lyrics: fetched only when the card is opened. Reuses the copy lyrics search saves
   // (same key and format as js/discography-app.js), and saves one for it.
-  const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v2';
+  const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v3';
   const lyricsMailto = title => 'mailto:jd@tthpods.com?subject=' + encodeURIComponent('Lyrics for The Hip Handbook') +
     '&body=' + encodeURIComponent('Song: ' + title + '\n\nLyrics:\n\n\nSource (optional - liner notes, where you got them):\n\nCredit (optional - how you\'d like to be thanked):');
 

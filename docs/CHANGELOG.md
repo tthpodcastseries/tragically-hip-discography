@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.4.5
+**Yawning or Snarling - Patch** - October 31, 2026
+The lyrics archive is complete: every song in the Handbook now has its words.
+- **Three new lyrics**: 'Ultra Mundane', 'Problem Bears', and 'Forest Edge', the fan-club bonus tracks from "In Violet Light". Lyrics search now covers 188 songs, and the "Help Complete the Archive" call-out retires itself now that nothing is missing.
+- **'Dare Devil (Reprise)'** shows the 'Daredevil' lyrics on its song page. It gets no (Un)Locked puzzle, since its words would point at 'Daredevil'.
+- **'Day for Night' comes off the song list**: it's the album, not a track. The official list is now 189 songs, and its song page and sitemap entry are gone.
+- (Un)Locked keeps all 404 puzzles in place and adds the three new songs at the end (puzzles 405 to 407).
+- Returning visitors reload the lyrics (cache key v3), and the lyrics counts on the site read 188.
+
 ## v5.4.4
 **Yawning or Snarling - Patch** - October 31, 2026
 (Un)Locked moves to a points ladder, so guessing along the way always pays and holding back never does.

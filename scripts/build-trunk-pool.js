@@ -171,8 +171,13 @@ const rand = rng(SEED + puzzles.length);
 
 const skipped = [];
 const songs = []; // { s, t, versions: [[word x5] ...] }
+// A song sung to another song's lyrics ('Dare Devil (Reprise)' is Daredevil's) gets
+// no puzzle: its words would point at the other song
+const lyricsTitle = key => plain(key.split('|||')[1]).toLowerCase().replace(/[^a-z0-9]/g, '');
+const borrowed = so => plain(so.t).toLowerCase().replace(/[^a-z0-9]/g, '') !== lyricsTitle(so.l) &&
+  index.some(o => o !== so && o.l === so.l);
 for (const so of index) {
-  if (!so.l || have.has(so.s)) continue;
+  if (!so.l || have.has(so.s) || borrowed(so)) continue;
   const versions = pickVersions(so.l, so.t);
   if (!versions.length) { skipped.push(so.t); continue; }
   // Added after launch: first version only (see the note at the top)

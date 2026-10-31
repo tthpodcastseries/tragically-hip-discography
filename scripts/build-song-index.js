@@ -135,6 +135,12 @@ for (const key of Object.keys(lyrics)) {
   if (!so) { unmatchedLyrics.push(t); continue; }
   if (!so.l) so.l = key;
 }
+// Songs sung to another song's lyrics (jD confirmed 2026-10-31)
+const SHARED_LYRICS = { 'Dare Devil (Reprise)': 'Daredevil' };
+for (const [title, from] of Object.entries(SHARED_LYRICS)) {
+  const so = byTitle.get(norm(title)), src = byTitle.get(norm(from));
+  if (so && src && src.l && !so.l) so.l = src.l;
+}
 
 // ─── Checks ───
 const mismatched = songs.filter(so => so.p.length !== so.livePlays);
