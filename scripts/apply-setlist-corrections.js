@@ -7,7 +7,8 @@
 // then rebuild the derived files:
 //   node scripts/build-show-index.js && node scripts/build-canonical-songs.js &&
 //   node scripts/build-song-index.js && node scripts/build-show-video-map.js &&
-//   node scripts/build-game-pool.js
+//   node scripts/build-game-pool.js && node scripts/check-game-schedule.js
+// (build-game-pool.js keeps every scheduled puzzle in place since v5.4.9)
 //
 // Fix types (see the file for the why of each one):
 //   remove           duplicate entries, dropped from both files

@@ -141,12 +141,12 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 
 **Refresh scripts** (each is Node or Python with no dependencies beyond the standard library; the order below is **(inferred)** from their inputs and outputs):
 
-1. `fetch-setlist-data.js` -> `tth-tour-data.json`; `fetch-setlists.js` -> `setlists.json` (full copy, gitignored; the minified `setlists.min.json` is made from it, but the minify step is not in `scripts/`)
+1. `fetch-setlist-data.js` -> `tth-tour-data.json` (**do not run without jD**: it would wipe the recordings, so it refuses unless given `--force`); `fetch-setlists.js` -> `setlists.json` (full copy, gitignored; the minified `setlists.min.json` is made from it, but the minify step is not in `scripts/`)
 2. `fetch-setlistfm.js` + `scrape-hipbase.js` -> play counts, then `merge-live-counts.js` -> `live-play-counts-merged.json`
 3. `scrape-archive.js`, `upload-audio-to-b2.py`, `run-upload-workers.sh`, `fix-track-names.py` -> recordings and track lists
-4. `build-lyrics.js`, `build-missing-lyrics-doc.js` -> lyrics
+4. `build-lyrics.js`, `build-missing-lyrics-doc.js` -> lyrics (`build-lyrics.js` is retired: `lyrics.json` is now edited by hand, so it refuses unless given `--force`)
 5. `parse-sessions-csv.js` (reads the TrackerHub sessions CSV) -> `unplucked-gems.json`; `build-youtube-videos.js` then `build-show-video-map.js` -> video data
-6. v5, run in this order when setlist data changes: `build-canonical-songs.js` (needs network, reads the Google Form), `build-show-index.js`, `build-game-pool.js`, `build-song-index.js` (also rewrites the song block in `sitemap.xml`)
+6. v5, run in this order when setlist data changes: `build-canonical-songs.js` (needs network, reads the Google Form), `build-show-index.js`, `build-game-pool.js`, `build-song-index.js` (also rewrites the song block in `sitemap.xml`), then `build-trunk-pool.js`. Both game builders are append-only: scheduled puzzles never move (v5.4.9). Check with `node scripts/check-game-schedule.js` before committing
 7. Always finish with `node scripts/audit-site.js`
 
 Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.

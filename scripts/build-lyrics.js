@@ -2,9 +2,25 @@
 // build-lyrics.js — Fetches lyrics for all TTH songs and saves to data/lyrics.json
 // Usage: node build-lyrics.js
 // Requires: Node 18+ (built-in fetch)
+//
+// DO NOT RUN without jD (v5.4.9, audit REL-06). data/lyrics.json has since been
+// completed and corrected by hand; this would replace it with whatever lyrics.ovh
+// returns for the old list below. It refuses to start while that file exists
+// unless given --force. Fix lyrics by editing data/lyrics.json directly.
 
 const fs = require('fs');
 const path = require('path');
+
+const OUT_PATH = path.join(__dirname, '..', 'data', 'lyrics.json');
+if (fs.existsSync(OUT_PATH) && !process.argv.includes('--force')) {
+  const have = Object.values(JSON.parse(fs.readFileSync(OUT_PATH, 'utf8')).songs || {}).filter(v => v && v.trim()).length;
+  console.error('STOPPED - nothing fetched, nothing saved.');
+  console.error(`data/lyrics.json already exists (${have} songs with lyrics, checked and corrected by hand).`);
+  console.error('This script would replace all of it with whatever lyrics.ovh returns for its old list of songs,');
+  console.error('losing every correction and every song added since. Fix lyrics by editing data/lyrics.json directly.');
+  console.error('Only if you really mean to throw the current file away, run: node scripts/build-lyrics.js --force');
+  process.exit(1);
+}
 
 const ARTIST = 'The Tragically Hip';
 const DELAY_MS = 300;
@@ -239,7 +255,7 @@ async function main() {
   }
 
   const output = { version: 1, generated: new Date().toISOString(), songs: result };
-  const outPath = path.join(__dirname, '..', 'data', 'lyrics.json');
+  const outPath = OUT_PATH;
   fs.writeFileSync(outPath, JSON.stringify(output, null, 0));
 
   const size = (fs.statSync(outPath).size / 1024).toFixed(1);

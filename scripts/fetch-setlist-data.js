@@ -1,8 +1,27 @@
 // TTH Discography Web App - v2.9 Daredevil
 // setlist.fm API Data Pull - The Tragically Hip Tour Map Dataset
 // No external dependencies - Node v22
+//
+// DO NOT RUN without jD (v5.4.9, audit REL-06). It writes data/tth-tour-data.json
+// fresh from setlist.fm and never reads the existing file, so it would wipe the
+// Hip Archive recordings (archiveUrl, archiveFormat, tracks) and the dateNote
+// fixes. It refuses to start while that file exists unless given --force.
 
 const path = require('path');
+const fs = require('fs');
+
+const OUTPUT_PATH = path.join(__dirname, '..', 'data', 'tth-tour-data.json');
+if (fs.existsSync(OUTPUT_PATH) && !process.argv.includes('--force')) {
+  const shows = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+  const withTracks = shows.filter(g => (g.tracks || []).length).length;
+  console.error('STOPPED - nothing fetched, nothing saved.');
+  console.error(`data/tth-tour-data.json already exists (${shows.length} shows, ${withTracks} with Hip Archive recordings).`);
+  console.error('This script would replace it with a fresh setlist.fm pull that has no recordings and no date fixes,');
+  console.error('so every playable show on the tour map would lose its audio. setlist.fm fixes belong in');
+  console.error('data/setlist-corrections.json (then node scripts/apply-setlist-corrections.js) instead.');
+  console.error('Only if you really mean to throw the current file away, run: node --env-file=.env scripts/fetch-setlist-data.js --force');
+  process.exit(1);
+}
 // .env names it SETLIST_FM_API_KEY; run with: node --env-file=.env <script>
 const API_KEY = process.env.SETLIST_FM_API_KEY || process.env.SETLISTFM_API_KEY || 'YOUR_API_KEY_HERE';
 const MBID = 'e86ab653-bec8-46f3-b4b6-a1a866919ef6';
@@ -129,8 +148,7 @@ async function main() {
   const stats = generateStats(gigs);
 
   // save full dataset
-  const fs = await import('fs');
-  const outputPath = path.join(__dirname, '..', 'data', 'tth-tour-data.json');
+  const outputPath = OUTPUT_PATH;
   const statsPath = path.join(__dirname, '..', 'data', 'tth-tour-stats.json');
 
   // ensure data directory exists

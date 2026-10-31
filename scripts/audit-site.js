@@ -9,6 +9,7 @@
 //   5. Data cross-references: show-video orphans, AppleDouble junk tracks,
 //      empty lyrics, unplucked-gems imagePaths
 //   6. External links in page chrome respond (skipped with --no-network)
+//      and every (Un)Locked puzzle's song still in song-index.json
 //   7. Every external image host used by pages/scripts/data is allowed by
 //      the CSP img-src in _headers (localhost ignores _headers, so a
 //      missing host only breaks on the live site)
@@ -112,6 +113,14 @@ for (const era of ug.eras) {
   }
 }
 notes.push(`data cross-refs: ${tour.length} shows, ${Object.keys(sv.byShow || {}).length} video mappings, ${Object.keys(lyrics.songs).length} lyrics, ${ug.eras.length} gem eras`);
+
+// (Un)Locked: a puzzle whose song slug is gone from song-index.json can't be won (v5.4.9, GAME-12)
+const songSlugs = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/song-index.json'), 'utf8')).songs.map(so => so.s));
+const trunk = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/trunk-pool.json'), 'utf8'));
+const unwinnable = trunk.puzzles.map((p, i) => [p, i]).filter(([p]) => !songSlugs.has(p.s));
+for (const [p, i] of unwinnable) problems.push(`trunk-pool.json: puzzle #${i + 1} '${p.t}' has slug ${p.s}, which is not in song-index.json (unwinnable)`);
+const unguessable = trunk.puzzles.filter(p => !trunk.titles.some(([s]) => s === p.s));
+if (unguessable.length) problems.push(`trunk-pool.json: ${unguessable.length} puzzles whose answer is missing from the guess list`);
 
 // ---- 7. CSP img-src covers every external image host ----
 const SITE_HOST = 'thehiphandbook.tthpods.com';

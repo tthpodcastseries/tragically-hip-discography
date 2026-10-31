@@ -16,15 +16,27 @@
 //   - isn't part of the song's title
 //   - appears in 6 or fewer songs
 //   - is a real word (macOS /usr/share/dict/words, with simple endings) or is
-//     always capitalised mid-line in the song (a name or place)
+//     always capitalised mid-line in the song (a name or place). Other machines
+//     and macOS versions can have a different word list, so the builder checks
+//     its fingerprint (DICT_SHA256) and adds no new songs with a different one
+//     unless given --force (v5.4.9, audit GAME-12). Add new songs on macOS.
 //   - has no other anagram in the dictionary or the lyrics ('stop' vs 'pots' is out),
 //     so the scramble has one answer
 //
 // The order is LOCKED once built: existing puzzles keep their place, words and
 // scrambles, and songs that gain lyrics later are added to the end (first version
 // only, since a short tail can't keep repeats 90 days apart). So the puzzle for a
-// given day never changes after launch. Delete data/trunk-pool.json only to start
-// the whole schedule over (never after launch, November 4, 2026).
+// given day never changes after launch. Before saving, the run checks that every
+// existing puzzle kept its place, song, words and scrambles, and refuses to save
+// if not. If data/trunk-pool.json is missing it refuses to start a new schedule
+// unless given --force (get the old one back with git checkout data/trunk-pool.json;
+// never start over after launch, November 4, 2026). Check with
+// node scripts/check-game-schedule.js after.
+//
+// It also stops without saving if a scheduled puzzle's song is no longer in
+// song-index.json (a changed slug): no guess could win that day (GAME-12).
+// And it prints the day the schedule runs out; after that the game repeats from
+// puzzle #1 (GAME-05).
 //
 // Output: { built, total, titles: [[slug, title] ...], puzzles: [ { s, t, v, w: [[word, SCRAMBLE] x5], sp, lv } ] }
 //   v is the version of the song (1 = its first appearance).
@@ -32,13 +44,15 @@
 //   sp (Spotify track link) and lv (latest Hip Archive show with the song) power the
 //   'Play it' links after the reveal; al is the album for the album hint (where the
 //   song first came out: its studio album or EP, else its earliest release).
-//   Unlike the words, these are refreshed every run.
+//   Unlike the words, these are refreshed every run. built only changes when
+//   something else in the file does.
 //
-// Usage: node scripts/build-trunk-pool.js   (re-run after scripts/build-song-index.js
-// whenever lyrics.json gains songs)
+// Usage: node scripts/build-trunk-pool.js [--force]   (re-run after
+// scripts/build-song-index.js whenever lyrics.json gains songs)
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'data', 'trunk-pool.json');
@@ -47,6 +61,10 @@ const MAX_SONGS_WITH_WORD = 6;
 const MAX_VERSIONS = 3;
 const MIN_GAP_DAYS = 90;
 const SEED = 1992; // Fully Completely
+const RUN_OUT_WARN_DAYS = 60;
+const FORCE = process.argv.includes('--force');
+// Fingerprint of the macOS 27 word list the schedule was built with (235,976 words)
+const DICT_SHA256 = 'be41ad97963bf8dabedd5871d5d691596175269d540956b0f9965a885c2bbab9';
 
 const songIndex = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'song-index.json'), 'utf8'));
 const lyrics = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lyrics.json'), 'utf8')).songs;
@@ -86,8 +104,12 @@ const plain = s => s.normalize('NFKD');
 const tokens = text => plain(text).match(/[\p{L}\p{M}']+/gu) || [];
 
 const dictPath = '/usr/share/dict/words';
-if (!fs.existsSync(dictPath)) throw new Error('No dictionary at ' + dictPath + ' - this script needs macOS (or a words file there)');
-const dict = new Set(fs.readFileSync(dictPath, 'utf8').toLowerCase().split('\n').filter(Boolean));
+const dictText = fs.existsSync(dictPath) ? fs.readFileSync(dictPath, 'utf8') : null;
+const dictOk = dictText !== null && crypto.createHash('sha256').update(dictText).digest('hex') === DICT_SHA256;
+// With a different word list, keep the schedule and refresh links, but add no songs
+const addSongs = dictOk || FORCE;
+if (addSongs && dictText === null) throw new Error('No dictionary at ' + dictPath + ' - this script needs macOS (or a words file there)');
+const dict = new Set(addSongs ? dictText.toLowerCase().split('\n').filter(Boolean) : []);
 const ENDINGS = ['s', 'es', 'ed', 'd', 'ing', 'ly', 'er', 'ers', 'est', 'y'];
 const isWord = w => dict.has(w) || ENDINGS.some(e => w.endsWith(e) && w.length - e.length >= 3 &&
   (dict.has(w.slice(0, -e.length)) || dict.has(w.slice(0, -e.length) + 'e')));
@@ -165,6 +187,13 @@ function scramble(word, rand) {
 
 // ─── Build (append-only) ───
 const old = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : null;
+if (!old && !FORCE) {
+  console.error('STOPPED - nothing saved. There is no data/trunk-pool.json, so this would start a brand-new schedule');
+  console.error('and every (Un)Locked puzzle would change. To get the current one back:');
+  console.error('  git checkout data/trunk-pool.json');
+  console.error('Only if you really mean to start the whole game over (never after launch), run: node scripts/build-trunk-pool.js --force');
+  process.exit(1);
+}
 const puzzles = old ? old.puzzles.slice() : [];
 const have = new Set(puzzles.map(p => p.s));
 const rand = rng(SEED + puzzles.length);
@@ -177,6 +206,7 @@ const lyricsTitle = key => plain(key.split('|||')[1]).toLowerCase().replace(/[^a
 const borrowed = so => plain(so.t).toLowerCase().replace(/[^a-z0-9]/g, '') !== lyricsTitle(so.l) &&
   index.some(o => o !== so && o.l === so.l);
 for (const so of index) {
+  if (!addSongs) break;
   if (!so.l || have.has(so.s) || borrowed(so)) continue;
   const versions = pickVersions(so.l, so.t);
   if (!versions.length) { skipped.push(so.t); continue; }
@@ -216,7 +246,6 @@ while (fresh.length < songs.reduce((n, so) => n + so.versions.length, 0)) {
 }
 puzzles.push(...fresh);
 
-// A locked puzzle whose song changed title or slug still plays; flag it
 const bySlug = new Map(index.map(so => [so.s, so]));
 
 // Play links and album (refreshed every run)
@@ -229,14 +258,34 @@ for (const p of puzzles) {
   const rec = so && so.r.length ? so.r[so.r.length - 1] : null;
   p.lv = rec ? String(songIndex.shows[rec[0]][0]) : '';
 }
-const stale = puzzles.filter(p => !bySlug.has(p.s)).map(p => p.t);
+// Puzzle numbers, the same way the game counts them (local calendar date)
+const dayNumber = (y, m, d) => Math.floor(Date.UTC(y, m - 1, d) / 86400000);
+const epochMatch = fs.readFileSync(path.join(ROOT, 'js', 'unlocked.js'), 'utf8').match(/const EPOCH = '(\d{4})-(\d{2})-(\d{2})'/);
+if (!epochMatch) throw new Error('Could not find EPOCH in js/unlocked.js');
+const epoch = dayNumber(+epochMatch[1], +epochMatch[2], +epochMatch[3]);
+const now = new Date();
+const todayNo = dayNumber(now.getFullYear(), now.getMonth() + 1, now.getDate()) - epoch + 1; // 0 or less = not open yet
+const dateOf = no => new Date((epoch + no - 1) * 86400000).toLocaleDateString('en-CA', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' });
 
-const out = {
-  built: new Date().toISOString().slice(0, 10),
-  total: puzzles.length,
-  titles: index.map(so => [so.s, so.t]),
-  puzzles,
-};
+// A scheduled puzzle whose song is gone from song-index.json (a changed slug)
+// can't be won: no title in the guess list matches it. Stop before saving.
+const stale = puzzles.map((p, i) => [p, i]).filter(([p]) => !bySlug.has(p.s));
+if (stale.length) {
+  console.error('STOPPED - nothing saved. These puzzles are for songs no longer in song-index.json, so no guess could win them:');
+  stale.forEach(([p, i]) => console.error(`  #${i + 1} (${dateOf(i + 1)}) '${p.t}' (slug ${p.s})`));
+  console.error('Put the old slug back in song-index.json, or have Claude Code move these puzzles to the new slug.');
+  process.exit(1);
+}
+
+// Self-check: every existing puzzle kept its place, song, version, words and scrambles
+const core = p => JSON.stringify([p.s, p.t, p.v, p.w]);
+if (old) old.puzzles.forEach((p, i) => {
+  if (!puzzles[i] || core(puzzles[i]) !== core(p)) throw new Error(`Refusing to save: puzzle #${i + 1} (${dateOf(i + 1)}) '${p.t}' would change`);
+});
+
+const body = { total: puzzles.length, titles: index.map(so => [so.s, so.t]), puzzles };
+const sameAsOld = old && JSON.stringify(body) === JSON.stringify({ total: old.total, titles: old.titles, puzzles: old.puzzles });
+const out = { built: sameAsOld ? old.built : new Date().toISOString().slice(0, 10), ...body };
 fs.writeFileSync(OUT, JSON.stringify(out) + '\n');
 
 const noAlbum = puzzles.filter(p => !p.al).map(p => p.t);
@@ -252,4 +301,8 @@ puzzles.forEach((p, i) => { if (seen.has(p.s)) gaps.push(i - seen.get(p.s)); see
 if (gaps.length) console.log(`  days between a song's appearances: shortest ${Math.min(...gaps)}, average ${Math.round(gaps.reduce((a, b) => a + b, 0) / gaps.length)}${tooClose ? `; ${tooClose} came back early (end of schedule)` : ''}`);
 console.log(`  word length ${Math.min(...lens)}-${Math.max(...lens)}, average ${(lens.reduce((a, b) => a + b, 0) / lens.length).toFixed(1)}`);
 if (skipped.length) console.log(`  not enough usable words: ${skipped.join(', ')}`);
-if (stale.length) console.log(`  WARNING - songs no longer in song-index.json: ${stale.join(', ')}`);
+if (!dictOk) console.log(`  WARNING - ${dictText === null ? 'no word list at ' + dictPath : 'the word list at ' + dictPath + ' is not the one this schedule was built with'}. ${FORCE ? 'Added new songs anyway (--force), so their words may differ from a run on the original Mac.' : 'No new songs were added (the schedule and play links are fine). Add new songs on the Mac that built it, or run with --force to use this word list.'}`);
+// GAME-05: when the schedule runs out (the game then repeats from puzzle #1)
+const daysLeft = puzzles.length - todayNo;
+console.log(`  runs out: last new puzzle #${puzzles.length} on ${dateOf(puzzles.length)}; from ${dateOf(puzzles.length + 1)} it repeats from puzzle #1 (${daysLeft} days from today)`);
+if (daysLeft < RUN_OUT_WARN_DAYS) console.log(`  WARNING - only ${daysLeft} days of new (Un)Locked puzzles left. Decide what happens after ${dateOf(puzzles.length)} (see docs/CHANGELOG.md v5.4.9).`);

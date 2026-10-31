@@ -1,5 +1,19 @@
 # Changelog
 
+## v5.4.9
+**Yawning or Snarling - Patch** - October 31, 2026
+Protect the games and data before any data fix (pre-relaunch audit Batch 3: GAME-01, REL-06, GAME-12, GAME-05). Scripts only; nothing fans see changes, and no puzzle moved.
+- **Fixed: re-running `scripts/build-game-pool.js` reshuffled every Bring It All Back puzzle, today's included.** It now keeps the existing order. Every puzzle up to and including tomorrow is copied exactly. Later days keep their show and only refresh its details (venue, city, tour, songs, recording flag), so data fixes still reach them. A later show that leaves the pool is replaced on its own day (by a new show, or else the last day's show), and the run lists each changed day. New shows go on the end. It checks itself and refuses to save if a puzzle up to tomorrow would change. Test run: removing one future show used to change 965 days; now it changes 2 (that day and the last day).
+- `scripts/build-trunk-pool.js` ((Un)Locked) was already append-only. It now also checks every existing puzzle kept its song, words and scrambles before saving.
+- Both game builders refuse to start a whole new schedule when their file is missing, unless given `--force`, and keep the old `built` date when nothing changed, so a re-run leaves the file byte-identical.
+- New `scripts/check-game-schedule.js`: compares both game files with the last commit (or `--ref`, or `--before <folder>`) and fails if any scheduled puzzle moved, or if today's or tomorrow's changed at all. Run it after any builder run and right before a push. This run: both files byte-identical.
+- **Fixed: `scripts/fetch-setlist-data.js` would wipe all 614 recordings** and `scripts/build-lyrics.js` would replace the hand-corrected lyrics. Both now stop before downloading anything while their data file exists, explain what would be lost, and only go ahead with `--force`.
+- (Un)Locked builder: a scheduled puzzle whose song is gone from `song-index.json` (a changed slug) now stops the build with an error instead of a warning, because no guess could win it. `scripts/audit-site.js` checks the same thing.
+- (Un)Locked builder: the macOS word list is fingerprinted. On a different word list (another Mac or macOS version) the schedule and play links still refresh, but no new songs are added unless given `--force`.
+- Both builders print when their schedule runs out, and warn loudly when fewer than 60 days are left. Bring It All Back: last new puzzle #967 on June 22, 2029. (Un)Locked: last new puzzle #407 on December 15, 2027. After that both quietly repeat from puzzle #1 (unchanged for now). **jD to decide** before November 2027: (a) add a second round to the end with new scrambles, keeping the 90-day gap across the join (recommended for (Un)Locked); (b) show "no new puzzle today" after the last day; (c) let it repeat from #1 as it does now.
+- Data-refresh notes updated in `docs/The Hip Handbook - Overview.md` and `scripts/apply-setlist-corrections.js`
+- Cache bumped to `thc-v5.4.9`; footer label bumped to v5.4.9
+
 ## v5.4.8
 **Yawning or Snarling - Patch** - October 31, 2026
 Member safety from the pre-relaunch audit (Batch 2: FUNC-02, REL-02, DB-02, DB-04).
