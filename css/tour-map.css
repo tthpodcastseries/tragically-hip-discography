@@ -389,6 +389,26 @@ input[type="range"]::-moz-range-track {
   font-weight: 500;
 }
 
+/* NOTE FOR LINKS THAT POINT AT A SHOW WE CAN'T FIND */
+.map-note {
+  display: none;
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  z-index: 2000;
+  background: rgba(14, 11, 22, 0.96);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text);
+  text-align: center;
+}
+.map-note.open { display: block; }
+
 /* AUDIO PLAYER */
 .audio-player {
   display: none;
@@ -888,4 +908,11 @@ input[type="range"]::-moz-range-track {
   .ap-volume { display: none; }
   .ap-main { gap: 8px; padding: 8px 12px; }
   .ap-tracklist { max-height: 180px; }
+}
+
+/* Map credit links: big enough to tap on a phone (audit DEV-04) */
+.leaflet-control-attribution a {
+  display: inline-block;
+  padding: 7px 2px;
+  line-height: 1.2;
 }

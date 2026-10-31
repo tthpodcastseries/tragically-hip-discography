@@ -576,6 +576,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .lyrics-search-bar { display: flex; gap: 10px; margin-bottom: 20px; }
 .lyrics-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
 .lyrics-search-input:focus { border-color: var(--gold); }
+.lyrics-search-input { min-width: 0; }
+@media (max-width: 380px) { .lyrics-search-bar { gap: 8px; } .lyrics-search-btn { padding: 12px 16px; } }
 .lyrics-search-input::placeholder { color: var(--muted2); }
 .lyrics-search-btn { padding: 12px 24px; border-radius: 30px; border: none; background: var(--red); color: #fff; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
 .lyrics-search-btn:hover { background: #a00d24; }
@@ -652,7 +654,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .setlist-load-more { display: block; margin: 16px auto; padding: 10px 28px; border-radius: 30px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.78rem; cursor: pointer; transition: all 0.15s; }
 .setlist-load-more:hover { border-color: var(--gold); color: var(--gold); }
 
-.setlist-link { font-size: 0.65rem; color: var(--muted2); text-decoration: none; float: right; }
+.setlist-link { padding: 5px 0; font-size: 0.65rem; color: var(--muted2); text-decoration: none; float: right; }
 .setlist-link:hover { color: var(--gold); }
 .setlist-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; clear: both; }
 .iwt-btn { background: transparent; border: 1px solid var(--border); color: var(--muted2); padding: 4px 12px; border-radius: 14px; font-size: 0.65rem; font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.2s; letter-spacing: 0.03em; }

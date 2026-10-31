@@ -1,7 +1,48 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.4.12 (Yawning or Snarling - Patch)';
+  var version = 'v5.4.13 (Yawning or Snarling - Patch)';
+
+  // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
+  // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
+  // lyrics, home and tour-map searches.
+  var COMBINING = /[̀-ͯ]/g;
+  var APOS = /[‘’‛′`´]/g;
+  var QUOTE = /[“”‟″]/g;
+  var DASH = /[‐-―−]/g;
+  window.tthFold = function(text) {
+    return String(text == null ? '' : text).toLowerCase().normalize('NFKD')
+      .replace(COMBINING, '').replace(APOS, "'").replace(QUOTE, '"').replace(DASH, '-')
+      .replace(/\s+/g, ' ').trim();
+  };
+  // The ways a fan might type a show date (audit FUNC-09). Takes 1996-07-27 or 27-07-1996.
+  var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  window.tthDateForms = function(date) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(date || ''), y, mo, d;
+    if (m) { y = m[1]; mo = +m[2]; d = +m[3]; }
+    else if ((m = /^(\d{2})-(\d{2})-(\d{4})/.exec(date || ''))) { d = +m[1]; mo = +m[2]; y = m[3]; }
+    else return [];
+    if (mo < 1 || mo > 12) return [];
+    var name = MONTH_NAMES[mo - 1], pad = function(n) { return (n < 10 ? '0' : '') + n; };
+    return [y + '-' + pad(mo) + '-' + pad(d), name + ' ' + d + ', ' + y, name + ' ' + d + ' ' + y,
+      d + ' ' + name + ' ' + y, name + ' ' + y, pad(d) + '/' + pad(mo) + '/' + y, pad(d) + '-' + pad(mo) + '-' + y];
+  };
+  // Folded text plus, for each folded character, where it sits in the original, so a
+  // match found in the folded copy can be highlighted in the original text.
+  window.tthFoldMap = function(text) {
+    var src = String(text == null ? '' : text), out = '', map = [], i, j, piece, prevSpace = false;
+    for (i = 0; i < src.length; i++) {
+      piece = window.tthFold(src.charAt(i));
+      if (!piece) {
+        // whitespace: keep one space between words
+        if (/\s/.test(src.charAt(i)) && out && !prevSpace) { out += ' '; map.push(i); prevSpace = true; }
+        continue;
+      }
+      prevSpace = false;
+      for (j = 0; j < piece.length; j++) { out += piece.charAt(j); map.push(i); }
+    }
+    return { s: out, map: map };
+  };
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {

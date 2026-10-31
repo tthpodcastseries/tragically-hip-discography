@@ -527,18 +527,21 @@
     }
   });
 
+  // Folded once per show: straight and curly apostrophes and accents all match, and a date
+  // can be typed as 1996-07-27, July 27, 1996, July 1996 or 27/07/1996 (audit FUNC-05, FUNC-09)
+  const gigHaystack = new Map();
+  function haystackFor(g) {
+    let h = gigHaystack.get(g);
+    if (h === undefined) {
+      h = window.tthFold([g.venue, g.city, g.state, g.countryName, g.tour].concat(window.tthDateForms(g.isoDate)).filter(Boolean).join(' '));
+      gigHaystack.set(g, h);
+    }
+    return h;
+  }
+
   function runSearch(query) {
-    const q = query.toLowerCase();
-    const matches = allGigs.filter(g => {
-      const venue = (g.venue || '').toLowerCase();
-      const city = (g.city || '').toLowerCase();
-      const state = (g.state || '').toLowerCase();
-      const country = (g.countryName || '').toLowerCase();
-      const date = (g.isoDate || '');
-      const tour = (g.tour || '').toLowerCase();
-      return venue.includes(q) || city.includes(q) || state.includes(q) ||
-             country.includes(q) || date.includes(q) || tour.includes(q);
-    });
+    const q = window.tthFold(query);
+    const matches = allGigs.filter(g => haystackFor(g).includes(q));
 
     searchResults.innerHTML = '';
     if (matches.length === 0) {
@@ -931,13 +934,30 @@
     });
   }
 
+  // A short note when a shared link points at a show we can't find (audit FUNC-13)
+  let mapNoteTimer = null;
+  function showMapNote(msg) {
+    let note = document.getElementById('mapNote');
+    if (!note) {
+      note = document.createElement('div');
+      note.id = 'mapNote';
+      note.className = 'map-note';
+      note.setAttribute('role', 'status');
+      document.body.appendChild(note);
+    }
+    note.textContent = msg;
+    note.classList.add('open');
+    clearTimeout(mapNoteTimer);
+    mapNoteTimer = setTimeout(() => note.classList.remove('open'), 7000);
+  }
+
   // Deep-link from Video For New Recruits: tour-map.html#show=<id> auto-opens the show
   function handleShowHash() {
     const m = (location.hash || '').match(/show=([A-Za-z0-9_-]+)/);
     if (!m) return;
     const showId = m[1];
     const g = allGigs.find(x => String(x.id) === showId);
-    if (!g) return;
+    if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
     if (g.lat && g.lng) {
       try { map.setView([g.lat, g.lng], 12, { animate: true }); } catch (_) { /* noop */ }
     }
@@ -954,12 +974,13 @@
     let g = null;
     if (m[1] === 'random') {
       const playable = allGigs.filter(x => x.tracks && x.tracks.length);
-      if (!playable.length) return;
+      if (!playable.length) { showMapNote('No recordings to play yet.'); return; }
       g = playable[Math.floor(Math.random() * playable.length)];
     } else {
       g = allGigs.find(x => String(x.id) === m[1]);
     }
-    if (!g || !g.tracks || !g.tracks.length) return;
+    if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
+    if (!g.tracks || !g.tracks.length) { showMapNote('No recording for that show yet.'); return; }
     if (g.lat && g.lng) {
       try { map.setView([g.lat, g.lng], 12, { animate: true }); } catch (_) { /* noop */ }
     }
@@ -1025,7 +1046,7 @@
     </div>
     <div class="ap-info">
       <div class="ap-show-title" id="apShowTitle">No show loaded</div>
-      <div class="ap-track-title" id="apTrackTitle">—</div>
+      <div class="ap-track-title" id="apTrackTitle" role="status" aria-live="polite">—</div>
     </div>
     <div class="ap-time" id="apTime">0:00 / 0:00</div>
     <div class="ap-volume">
@@ -1088,13 +1109,50 @@
     });
   }
 
+  // Say what is happening in the track line, so a silent player never looks like it is playing
+  // (audit FUNC-06). The track's own name comes back as soon as it plays.
+  let failedIndex = -1;
+  let skipTimer = null;
+  function showStatus(msg) { trackTitle.textContent = msg; }
+
+  function trackFailed(index) {
+    if (failedIndex === index || index !== currentTrackIndex) return;
+    failedIndex = index;
+    updatePlayIcon(false);
+    clearTimeout(skipTimer);
+    if (index < tracks.length - 1) {
+      showStatus("This recording couldn't be loaded - skipping to the next one.");
+      skipTimer = setTimeout(() => { if (currentTrackIndex === index) playTrack(index + 1); }, 2000);
+    } else {
+      showStatus("This recording couldn't be loaded.");
+    }
+  }
+
+  // Start playing and handle the browser saying no: no tap yet (NotAllowedError) or a missing/unreadable file
+  function startPlayback() {
+    let attempt;
+    try { attempt = audio.play(); } catch (err) { attempt = Promise.reject(err); }
+    if (!attempt || !attempt.catch) return;
+    attempt.catch(err => {
+      if (err && err.name === 'AbortError') return; // another track was picked first
+      if (err && err.name === 'NotAllowedError') {
+        updatePlayIcon(false);
+        showStatus('Tap play to start');
+      } else {
+        trackFailed(currentTrackIndex);
+      }
+    });
+  }
+
   function playTrack(index) {
     if (index < 0 || index >= tracks.length) return;
+    clearTimeout(skipTimer);
     currentTrackIndex = index;
+    failedIndex = -1;
     trackTitle.textContent = tracks[index].name;
     audio.src = tracks[index].url;
-    audio.play();
-    updatePlayIcon(true);
+    updatePlayIcon(false);
+    startPlayback();
     renderTracklist();
   }
 
@@ -1120,16 +1178,24 @@
 
   playPauseBtn.addEventListener('click', () => {
     if (!tracks.length) return;
-    if (audio.paused) { audio.play(); updatePlayIcon(true); }
-    else { audio.pause(); updatePlayIcon(false); }
+    if (audio.error || failedIndex === currentTrackIndex) { playTrack(currentTrackIndex); return; }
+    if (audio.paused) startPlayback();
+    else audio.pause();
   });
   prevBtn.addEventListener('click', () => { audio.currentTime > 3 ? audio.currentTime = 0 : playTrack(currentTrackIndex - 1); });
   nextBtn.addEventListener('click', () => playTrack(currentTrackIndex + 1));
-  closeBtn.addEventListener('click', () => { audio.pause(); audio.src = ''; player.classList.remove('active'); tracklist.classList.remove('open'); tracks = []; updatePlayIcon(false); });
+  closeBtn.addEventListener('click', () => { clearTimeout(skipTimer); tracks = []; audio.pause(); audio.removeAttribute('src'); audio.load(); player.classList.remove('active'); tracklist.classList.remove('open'); updatePlayIcon(false); });
   listToggle.addEventListener('click', () => tracklist.classList.toggle('open'));
   volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value); });
   audio.addEventListener('timeupdate', () => { if (audio.duration) { progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%'; timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`; } });
   progressWrap.addEventListener('click', (e) => { if (!audio.duration) return; audio.currentTime = ((e.clientX - progressWrap.getBoundingClientRect().left) / progressWrap.offsetWidth) * audio.duration; });
+  // The button follows what the audio element is really doing
+  audio.addEventListener('play', () => {
+    updatePlayIcon(true);
+    if (tracks[currentTrackIndex] && failedIndex !== currentTrackIndex) trackTitle.textContent = tracks[currentTrackIndex].name;
+  });
+  audio.addEventListener('pause', () => updatePlayIcon(false));
+  audio.addEventListener('error', () => { if (tracks.length && audio.getAttribute('src')) trackFailed(currentTrackIndex); });
   audio.addEventListener('ended', () => { currentTrackIndex < tracks.length - 1 ? playTrack(currentTrackIndex + 1) : (updatePlayIcon(false), progressBar.style.width = '0%'); });
 
   window.tthPlayer = { loadShow };

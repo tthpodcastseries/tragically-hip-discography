@@ -337,19 +337,29 @@ function esc(v) {
     }
   }
 
+  // Folded text (tthFold in shared-footer.js): straight and curly apostrophes and accents all match.
+  // Remembered, because the same song names are checked on every keystroke.
+  var foldMemo = new Map();
+  function fold(text) {
+    var v = foldMemo.get(text);
+    if (v === undefined) { v = window.tthFold(text); foldMemo.set(text, v); }
+    return v;
+  }
+
   function universalSearch(query) {
     if (!query || query.length < 2) return { albums: [], songs: [], lyrics: [], shows: [], livePerformances: [] };
-    var q = query.toLowerCase();
+    var q = window.tthFold(query);
+    if (q.length < 2) return { albums: [], songs: [], lyrics: [], shows: [], livePerformances: [] };
     var results = { albums: [], songs: [], lyrics: [], shows: [], livePerformances: [] };
 
     // Albums
     albumIndex.forEach(function(a) {
-      if (a.title.toLowerCase().includes(q)) {
+      if (fold(a.title).includes(q)) {
         results.albums.push(a);
       }
     });
     results.albums.sort(function(a, b) {
-      return (a.title.toLowerCase().startsWith(q) ? 0 : 1) - (b.title.toLowerCase().startsWith(q) ? 0 : 1) || a.title.localeCompare(b.title);
+      return (fold(a.title).startsWith(q) ? 0 : 1) - (fold(b.title).startsWith(q) ? 0 : 1) || a.title.localeCompare(b.title);
     });
     results.albums = results.albums.slice(0, 5);
 
@@ -360,7 +370,7 @@ function esc(v) {
       albumsList.forEach(function(a) {
         if (a.tracks) a.tracks.forEach(function(t) {
           var name = typeof t === 'string' ? t : (t && t.title);
-          if (name && name.toLowerCase().includes(q) && !seenSongs.has(name)) {
+          if (name && fold(name).includes(q) && !seenSongs.has(name)) {
             // A song with its own page appears once, however many releases and versions it is on
             var page = songPages && songPages[songKey(name.replace(/\s*\((Live|Demo|Alternate Version)\)\s*$/i, ''))];
             var dedupeKey = page ? 'page:' + page.s : name;
@@ -379,12 +389,19 @@ function esc(v) {
       Object.entries(lyricsData.songs).forEach(function(entry) {
         if (results.lyrics.length >= 3) return;
         var key = entry[0], text = entry[1];
-        if (typeof text === 'string' && text.toLowerCase().includes(q)) {
+        if (typeof text === 'string' && fold(text).includes(q)) {
           var parts = key.split('|||');
-          var idx = text.toLowerCase().indexOf(q);
-          var start = Math.max(0, idx - 30);
-          var snippet = (start > 0 ? '...' : '') + text.substring(start, idx + q.length + 40).replace(/\n/g, ' ') + '...';
-          results.lyrics.push({ song: parts[1] || key, album: parts[0] || '', snippet: snippet, query: q });
+          // Find the match in the folded text, then map it back onto the original wording for the snippet
+          var f = window.tthFoldMap(text);
+          var idx = f.s.indexOf(q);
+          var mStart = f.map[idx], mEnd = f.map[idx + q.length - 1] + 1;
+          var start = Math.max(0, mStart - 30);
+          results.lyrics.push({
+            song: parts[1] || key, album: parts[0] || '', query: q,
+            pre: (start > 0 ? '...' : '') + text.slice(start, mStart).replace(/\n/g, ' '),
+            match: text.slice(mStart, mEnd).replace(/\n/g, ' '),
+            post: text.slice(mEnd, mEnd + 40).replace(/\n/g, ' ') + '...'
+          });
         }
       });
     }
@@ -393,7 +410,7 @@ function esc(v) {
     if (tourData) {
       tourData.forEach(function(g) {
         if (results.shows.length >= 5) return;
-        var haystack = [g.venue, g.city, g.state, g.isoDate].filter(Boolean).join(' ').toLowerCase();
+        var haystack = fold([g.venue, g.city, g.state].concat(window.tthDateForms(g.isoDate)).filter(Boolean).join(' '));
         if (haystack.includes(q)) {
           results.shows.push(g);
         }
@@ -406,7 +423,7 @@ function esc(v) {
       tourData.forEach(function(g) { tourLookup[g.id] = g; });
       setlistData.setlists.forEach(function(s) {
         if (results.livePerformances.length >= 5) return;
-        var played = s.songs && s.songs.some(function(sg) { return sg.name.toLowerCase().includes(q); });
+        var played = s.songs && s.songs.some(function(sg) { return fold(sg.name).includes(q); });
         if (played && tourLookup[s.id]) {
           results.livePerformances.push(tourLookup[s.id]);
         }
@@ -466,7 +483,7 @@ function esc(v) {
       results.lyrics.forEach(function(l) {
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
-        var highlighted = esc(l.snippet).replace(new RegExp('(' + esc(l.query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<strong style="color:var(--gold)">$1</strong>');
+        var highlighted = esc(l.pre) + '<strong style="color:var(--gold)">' + esc(l.match) + '</strong>' + esc(l.post);
         opt.innerHTML = '<span class="opt-song">' + esc(l.song) + '</span><span class="opt-album">' + esc(l.album) + '</span><span class="opt-lyric">' + highlighted + '</span>';
         opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = '/lyrics?q=' + encodeURIComponent(l.query); });
         searchDropdown.appendChild(opt);

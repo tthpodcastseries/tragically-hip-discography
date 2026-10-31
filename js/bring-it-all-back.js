@@ -155,9 +155,12 @@
   // Worked out from the guess distribution, so games played before points existed still count
   const totalPoints = () => store.stats.dist.reduce((sum, wins, i) => sum + wins * pointsFor(i + 1), 0);
 
+  // The score as words as well as squares, so it reads without colour; the link starts with
+  // https:// so every app turns it into a tap (audit GAME-10)
   const shareText = () =>
-    '\u{1F341} Bring It All Back #' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
-    today.guesses.map(squareFor).join('') + '\n' + SHARE_URL;
+    '\u{1F341} Bring It All Back #' + puzzleNo + ' - ' + todayPoints() + ' points (' +
+    (today.won ? today.guesses.length + ' of ' + MAX_GUESSES : 'missed') + ')\n' +
+    today.guesses.map(squareFor).join('') + '\nhttps://' + SHARE_URL;
 
   function shownStreak() {
     const s = store.stats;
@@ -451,14 +454,29 @@
   });
 
   // ─── Countdown to the next puzzle ───
+  // The puzzle number decides when the page reloads, not an exact
+  // zero on the clock: a tick that lands just after midnight used to miss it (audit GAME-02).
   let timer = null;
   function startCountdown() {
     if (timer) return;
+    // Finished a game that began before midnight: the new puzzle is already out, but reloading
+    // now would take the score screen away, so offer it instead of reloading
+    const staleAtStart = !forcedDay && naturalPuzzleNo() !== puzzleNo;
+    const box = $('biaCountdown').parentNode;
     const tick = () => {
+      if (!forcedDay && naturalPuzzleNo() !== puzzleNo) {
+        if (!staleAtStart) { location.reload(); return; }
+        if (!box.querySelector('a')) {
+          box.textContent = 'A new puzzle is out. ';
+          const a = el('a', '', 'Play it now');
+          a.href = location.pathname;
+          box.appendChild(a);
+        }
+        return;
+      }
       const now = new Date();
       const next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
       const left = Math.max(0, Math.round((next - now) / 1000));
-      if (left === 0) { location.reload(); return; }
       const p = n => String(n).padStart(2, '0');
       $('biaCountdown').textContent = p(Math.floor(left / 3600)) + ':' + p(Math.floor(left / 60) % 60) + ':' + p(left % 60);
     };

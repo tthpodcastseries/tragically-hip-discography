@@ -161,12 +161,24 @@
     }
     renderWords();
   }
+  const firstFreeTile = () => document.querySelector('#ulWords .ul-word.active .ul-tile:not(:disabled)');
   function tapTile(t) {
     const active = today.unlocked.length;
     const input = $('ulWordInput');
     if (input.value.length >= words[active].length) return;
     input.value += scrambles[active][t];
     syncTiles();
+    // syncTiles rebuilds the tiles, which drops keyboard focus: put it on the next free tile,
+    // or on Unlock once every letter is placed (audit GAME-13)
+    (firstFreeTile() || $('ulUnlock')).focus();
+  }
+  // After a guess the song box hides: move on to the word that opens next (or the last guess). A phone would pop
+  // its keyboard up for a text box, so touch screens get the first tile instead.
+  function focusNext() {
+    if (!canUnlock()) { if (canGuess()) $('ulGuessInput').focus(); return; }
+    const fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    const target = fine ? $('ulWordInput') : firstFreeTile();
+    if (target) target.focus();
   }
   $('ulWordInput').addEventListener('input', () => { $('ulWordMsg').textContent = ''; syncTiles(); });
   $('ulClear').addEventListener('click', () => { $('ulWordInput').value = ''; $('ulWordMsg').textContent = ''; syncTiles(); });
@@ -227,6 +239,19 @@
     $('ulGuessInput').setAttribute('aria-expanded', String(!!hits.length));
   }
   $('ulGuessInput').addEventListener('input', () => { $('ulMsg').textContent = ''; suggest(); });
+  // Arrow keys walk the suggestions, Escape closes them (the box says it is a combobox, so it behaves like one)
+  const options = () => [...$('ulSuggest').querySelectorAll('.ul-option:not(:disabled)')];
+  const closeSuggest = () => { $('ulSuggest').hidden = true; $('ulGuessInput').setAttribute('aria-expanded', 'false'); $('ulGuessInput').focus(); };
+  $('ulGuessInput').addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' && options().length) { e.preventDefault(); options()[0].focus(); }
+    else if (e.key === 'Escape') { $('ulSuggest').hidden = true; $('ulGuessInput').setAttribute('aria-expanded', 'false'); }
+  });
+  $('ulSuggest').addEventListener('keydown', e => {
+    const list = options(), i = list.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); (list[i + 1] || list[0]).focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); i > 0 ? list[i - 1].focus() : $('ulGuessInput').focus(); }
+    else if (e.key === 'Escape') { e.preventDefault(); closeSuggest(); }
+  });
 
   $('ulGuessForm').addEventListener('submit', e => {
     e.preventDefault();
@@ -276,6 +301,7 @@
     }
     save();
     renderAll();
+    focusNext();
   }
   $('ulPass').addEventListener('click', () => {
     if (!canGuess() || rung() === 0 || rung() === HINT_RUNG) return;
@@ -358,9 +384,12 @@
     track(won ? 'Unlocked - Won' : 'Unlocked - Lost');
   }
 
+  // Naming the song before any word opens shows as its own line: five black squares read as a fail
+  // (audit GAME-10). The link starts with https:// so every app turns it into a tap.
+  const straightGuess = () => today.won && today.unlocked.length === 0;
   const shareText = () =>
     (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' #' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
-    squares() + '\n' + SHARE_URL;
+    (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL;
 
   function shownStreak() {
     const s = store.stats;
@@ -638,14 +667,29 @@
   });
 
   // ─── Countdown to the next puzzle ───
+  // The puzzle number decides when the page reloads, not an exact
+  // zero on the clock: a tick that lands just after midnight used to miss it (audit GAME-02).
   let timer = null;
   function startCountdown() {
     if (timer) return;
+    // Finished a game that began before midnight: the new puzzle is already out, but reloading
+    // now would take the score screen away, so offer it instead of reloading
+    const staleAtStart = !forcedDay && naturalPuzzleNo() !== puzzleNo;
+    const box = $('ulCountdown').parentNode;
     const tick = () => {
+      if (!forcedDay && naturalPuzzleNo() !== puzzleNo) {
+        if (!staleAtStart) { location.reload(); return; }
+        if (!box.querySelector('a')) {
+          box.textContent = 'A new puzzle is out. ';
+          const a = el('a', '', 'Play it now');
+          a.href = location.pathname;
+          box.appendChild(a);
+        }
+        return;
+      }
       const now = new Date();
       const next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
       const left = Math.max(0, Math.round((next - now) / 1000));
-      if (left === 0) { location.reload(); return; }
       const p = n => String(n).padStart(2, '0');
       $('ulCountdown').textContent = p(Math.floor(left / 3600)) + ':' + p(Math.floor(left / 60) % 60) + ':' + p(left % 60);
     };

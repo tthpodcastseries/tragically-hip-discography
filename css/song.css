@@ -38,7 +38,7 @@
 .sp-also.sp-first { margin-top: 0; margin-bottom: 4px; }
 .sp-rank { font-size: 1.5rem; font-weight: 900; color: var(--gold); }
 .sp-rank small { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-left: 6px; }
-.sp-podcast { display: inline-block; margin-top: 8px; font-size: 0.84rem; font-weight: 600; color: var(--gold); text-decoration: none; }
+.sp-podcast { display: inline-block; padding: 3px 0; margin-top: 5px; font-size: 0.84rem; font-weight: 600; color: var(--gold); text-decoration: none; }
 .sp-podcast:hover { text-decoration: underline; }
 
 .sp-list { list-style: none; display: flex; flex-direction: column; }
@@ -48,12 +48,12 @@
 .sp-where { flex: 1; min-width: 0; color: var(--muted); line-height: 1.4; }
 .sp-where b { color: var(--text); font-weight: 600; }
 .sp-where small { display: block; color: var(--muted2); font-size: 0.72rem; }
-.sp-row a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.78rem; white-space: nowrap; }
+.sp-row a { display: inline-block; padding: 3px 0; color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.78rem; white-space: nowrap; }
 .sp-row a:hover { text-decoration: underline; }
 .sp-more { margin-top: 10px; padding: 9px 16px; background: transparent; border: 1px solid rgba(204, 162, 60, 0.6); border-radius: 10px; color: var(--gold); font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
 .sp-more:hover { background: rgba(204, 162, 60, 0.1); }
 
-.sp-all summary { cursor: pointer; color: var(--gold); font-weight: 700; font-size: 0.86rem; }
+.sp-all summary { padding: 2px 0; cursor: pointer; color: var(--gold); font-weight: 700; font-size: 0.86rem; }
 .sp-all[open] summary { margin-bottom: 8px; }
 /* Lyrics */
 .sp-verse { white-space: pre-line; font-size: 0.92rem; line-height: 1.75; color: var(--text); }
@@ -71,7 +71,7 @@
 .sp-btn-alt:hover { background: rgba(204, 162, 60, 0.1); }
 .sp-links, .sp-source { margin-top: 16px; text-align: center; font-size: 0.78rem; color: var(--muted2); line-height: 1.6; }
 .sp-source { font-size: 0.7rem; }
-.sp-links a, .sp-source a { color: var(--gold); text-decoration: none; }
+.sp-links a, .sp-source a { display: inline-block; padding: 4px 0; color: var(--gold); text-decoration: none; }
 .sp-links a:hover, .sp-source a:hover { text-decoration: underline; }
 
 /* All-songs index */

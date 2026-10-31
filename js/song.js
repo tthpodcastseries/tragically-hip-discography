@@ -322,6 +322,11 @@
     $('spTitle').textContent = 'Every Hip Song';
     $('spDesc').textContent = 'Every song on an official release, with its live history.';
     if (slug) {
+      // An address with no song behind it should never be listed by search engines (audit FUNC-13)
+      const robots = document.createElement('meta');
+      robots.name = 'robots';
+      robots.content = 'noindex';
+      document.head.appendChild(robots);
       const m = $('spIndexMsg');
       m.hidden = false;
       m.textContent = "No song at that address. Try the list below.";

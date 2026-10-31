@@ -166,6 +166,17 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.78rem;
-  margin-bottom: 16px;
+  padding: 4px 0;
+  margin-bottom: 12px;
 }
 .site-footer .yer-letter-link:hover { color: var(--text); }
+
+/* iPhone Safari zooms the page when a text box smaller than 16px is tapped, and stays zoomed.
+   16px on phones stops that; pinch-zoom stays available (audit DEV-02) */
+@media (max-width: 600px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

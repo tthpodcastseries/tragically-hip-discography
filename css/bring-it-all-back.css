@@ -80,6 +80,7 @@
 .bia-dist-bar.today { background: var(--red); }
 .bia-next { margin-top: 18px; font-size: 0.8rem; color: var(--muted2); }
 .bia-next b { color: #fff; font-variant-numeric: tabular-nums; }
+.bia-next a { color: #fff; text-decoration: underline; }
 
 .bia-how { margin-top: 24px; font-size: 0.82rem; color: var(--muted); }
 .bia-how summary { cursor: pointer; color: var(--gold); font-weight: 600; }

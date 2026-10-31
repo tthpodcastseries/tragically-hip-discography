@@ -1544,11 +1544,23 @@ async function initSetlistExplorer() {
     render();
   });
 
+  // What the search box looks at for one show: venue, city, state, tour, songs and the date
+  // (1996-07-27, "July 27, 1996" and 27/07/1996). Folded once per show, so typing stays quick.
+  const haystackCache = new Map();
+  function setlistHaystack(s) {
+    let h = haystackCache.get(s.id);
+    if (h === undefined) {
+      h = window.tthFold([s.venue, s.city, s.state, s.tour, ...s.songs.map(sg => sg.name), ...window.tthDateForms(s.date)].filter(Boolean).join(' '));
+      haystackCache.set(s.id, h);
+    }
+    return h;
+  }
+
   function getFiltered() {
     const year = yearSelect.value;
     const tour = tourSelect.value;
     const city = citySelect.value;
-    const search = document.getElementById('setlistSearch').value.toLowerCase().trim();
+    const search = window.tthFold(document.getElementById('setlistSearch').value);
 
     return withSongs.filter(s => {
       if (showOnlyAttended && !attendedShows.has(s.id)) return false;
@@ -1556,8 +1568,7 @@ async function initSetlistExplorer() {
       if (tour && s.tour !== tour) return false;
       if (city && s.city !== city) return false;
       if (search) {
-        const haystack = [s.venue, s.city, s.state, s.tour, ...s.songs.map(sg => sg.name)].filter(Boolean).join(' ').toLowerCase();
-        if (!haystack.includes(search)) return false;
+        if (!setlistHaystack(s).includes(search)) return false;
       }
       return true;
     });
@@ -1850,22 +1861,48 @@ function escapeHtml(str) {
   return String(str == null ? '' : str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
+// Folded copy of each song's lines, kept so repeat searches don't fold the whole archive again
+const foldedLyricsCache = new Map();
+function foldedLines(key, lyrics) {
+  let hit = foldedLyricsCache.get(key);
+  if (!hit || hit.src !== lyrics) {
+    const lines = lyrics.split('\n').filter(l => l.trim());
+    hit = { src: lyrics, lines, folded: lines.map(l => window.tthFold(l)) };
+    foldedLyricsCache.set(key, hit);
+  }
+  return hit;
+}
+
+// Wraps every match of the folded query in <mark>, in the original (escaped) line
+function highlightLine(line, foldedQuery) {
+  if (!foldedQuery) return escapeHtml(line);
+  const f = window.tthFoldMap(line);
+  let out = '', last = 0, from = 0, at;
+  while ((at = f.s.indexOf(foldedQuery, from)) !== -1) {
+    const start = f.map[at], end = f.map[at + foldedQuery.length - 1] + 1;
+    out += escapeHtml(line.slice(last, start)) + '<mark>' + escapeHtml(line.slice(start, end)) + '</mark>';
+    last = end;
+    from = at + foldedQuery.length;
+  }
+  return out + escapeHtml(line.slice(last));
+}
+
 function searchLyrics(query) {
   const cache = getLyricsCache();
   const allSongs = getAllSongsForLyrics();
   const results = [];
-  const q = query.toLowerCase();
-  const qRegex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  const q = window.tthFold(query);
+  if (!q) return results;
 
   allSongs.forEach(s => {
     const key = `${s.album}|||${s.song}`;
     const lyrics = cache[key];
     if (!lyrics) return;
 
-    const lines = lyrics.split('\n').filter(l => l.trim());
+    const { lines, folded } = foldedLines(key, lyrics);
     const matchingLines = [];
     lines.forEach((line, idx) => {
-      if (line.toLowerCase().includes(q)) {
+      if (folded[idx].includes(q)) {
         // Get context: line before and after
         const context = [];
         if (idx > 0 && lines[idx - 1].trim()) context.push(lines[idx - 1]);
@@ -1896,8 +1933,7 @@ function renderLyricsResults(results, query) {
   const countEl = document.getElementById('lyricsResultsCount');
   const breakdownEl = document.getElementById('lyricsAlbumBreakdown');
   const emptyEl = document.getElementById('lyricsEmpty');
-  // Matched against escaped lyric lines, so escape the query the same way
-  const qRegex = new RegExp(`(${escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  const foldedQuery = window.tthFold(query);
 
   if (results.length === 0) {
     container.innerHTML = '';
@@ -1943,8 +1979,7 @@ function renderLyricsResults(results, query) {
       card.className = 'lyrics-result';
       const contextHtml = r.matches.slice(0, 3).map(m => {
         return m.context.map(line => {
-          const highlighted = escapeHtml(line).replace(qRegex, '<mark>$1</mark>');
-          return highlighted;
+          return highlightLine(line, foldedQuery);
         }).join('<br>');
       }).join('<br><span style="color:var(--border)">...</span><br>');
 
@@ -2065,14 +2100,28 @@ function initLyricsSearch() {
   const input = document.getElementById('lyricsSearchInput');
   const btn = document.getElementById('lyricsSearchBtn');
 
+  // Back to the "type a word or phrase" hint, with no old results left on screen (audit FUNC-10)
+  const emptyEl = document.getElementById('lyricsEmpty');
+  const hintHtml = emptyEl.innerHTML;
+  function clearResults() {
+    document.getElementById('lyricsResults').innerHTML = '';
+    document.getElementById('lyricsResultsCount').textContent = '';
+    document.getElementById('lyricsAlbumBreakdown').innerHTML = '';
+    emptyEl.innerHTML = hintHtml;
+    emptyEl.style.display = '';
+    updateLyricsCacheStatus();
+  }
+
   function doSearch() {
     const q = input.value.trim();
-    if (q.length < 2) return;
+    if (window.tthFold(q).length < 2) { clearResults(); return; }
     const results = searchLyrics(q);
     renderLyricsResults(results, q);
   }
   btn.addEventListener('click', doSearch);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+  // Emptying the box (or leaving one letter) clears the old results straight away
+  input.addEventListener('input', () => { if (window.tthFold(input.value).length < 2) clearResults(); });
 
   // Check if cache already exists
   const cache = getLyricsCache();

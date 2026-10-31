@@ -61,7 +61,7 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 4px;
+  padding: 5px 4px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.85rem;
 }
@@ -73,10 +73,10 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
   text-align: right;
   flex-shrink: 0;
 }
-.rank-song { flex-shrink: 0; font-weight: 600; }
-.rank-song a { color: var(--text); text-decoration: none; }
+.rank-song { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
+.rank-song a { display: inline-block; padding: 3px 0; color: var(--text); text-decoration: none; }
 .rank-song a:hover { color: var(--gold); text-decoration: underline; }
-.rank-bar-wrap { flex: 1; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); overflow: hidden; }
+.rank-bar-wrap { flex: 1 1 24px; min-width: 24px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); overflow: hidden; }
 .rank-bar { height: 100%; border-radius: 4px; background: var(--red); }
 .rank-count { color: var(--gold); font-weight: 700; font-size: 0.78rem; min-width: 38px; text-align: right; flex-shrink: 0; }
 
@@ -100,10 +100,10 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
   line-height: 1.5;
 }
 .detail-row:first-child { border-top: none; }
-.detail-row a { color: var(--text); font-weight: 600; text-decoration: none; }
+.detail-row a { display: inline-block; padding: 3px 0; color: var(--text); font-weight: 600; text-decoration: none; }
 .detail-row a:hover { color: var(--gold); text-decoration: underline; }
 .detail-meta { color: var(--muted2); font-size: 0.75rem; }
-.detail-meta a { color: var(--gold); font-weight: 600; font-size: 0.75rem; }
+.detail-meta a { display: inline-block; padding: 4px 0; color: var(--gold); font-weight: 600; font-size: 0.75rem; }
 
 .never-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .never-chip {
