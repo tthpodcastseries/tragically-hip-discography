@@ -24,7 +24,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Hip Handbook">
+<meta name="apple-mobile-web-app-title" content="The Handbook">
 <meta name="theme-color" content="#0e0b16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,22 +72,22 @@
     <section class="nav-group" aria-labelledby="navGroupShuffle">
       <h2 class="nav-group-title" id="navGroupShuffle">Shuffle</h2>
       <div class="shuffle-row">
-        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Hip Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
-        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 614 Hip Archive recordings</span></a>
+        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
+        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 614 live recordings</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupPlay">
       <h2 class="nav-group-title" id="navGroupPlay">Play</h2>
       <div class="nav-cards">
-        <a href="bring-it-all-back.html" class="nav-card"><span class="nav-card-sub">Bring It All Back</span><span class="nav-card-name">Daily Setlist Game</span><span class="nav-card-desc">Guess the month and year from a real Hip setlist. A new show every day - share yer score.</span></a>
-        <a href="unlocked.html" class="nav-card"><span class="nav-card-sub">(Un)Locked in the Trunk of a Car</span><span class="nav-card-name">Daily Lyrics Game</span><span class="nav-card-desc">Five scrambled words from one Hip song. Name it with as few unlocked as you can.</span></a>
+        <a href="bring-it-all-back.html" class="nav-card"><span class="nav-card-sub">Bring It All Back</span><span class="nav-card-name">Daily Setlist Game</span><span class="nav-card-desc">Guess the month and year from a real setlist from The Hip. A new show every day - share yer score.</span></a>
+        <a href="unlocked.html" class="nav-card"><span class="nav-card-sub">(Un)Locked in the Trunk of a Car</span><span class="nav-card-name">Daily Lyrics Game</span><span class="nav-card-desc">Five scrambled words from one song by The Hip. Name it with as few unlocked as you can.</span></a>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupListen">
       <h2 class="nav-group-title" id="navGroupListen">Listen</h2>
       <div class="nav-cards">
         <a href="discography.html" class="nav-card"><span class="nav-card-sub">Music @ Work</span><span class="nav-card-name">The Discography</span><span class="nav-card-desc">All 36 releases - studio albums, EPs, live records, box sets, and solo projects</span></a>
-        <a href="/top-40" class="nav-card"><span class="nav-card-sub">TTHTop40 Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from #1 to #169</span></a>
+        <a href="/top-40" class="nav-card"><span class="nav-card-sub">The Tragically Hip Top Forty Countdown</span><span class="nav-card-name">Fan-Ranked Top 40</span><span class="nav-card-desc">The songs fans voted the best, with every ranking from No. 1 to No. 169</span></a>
         <a href="unplucked-gems.html" class="nav-card"><span class="nav-card-sub">Unplucked Gems</span><span class="nav-card-name">Unreleased Recordings</span><span class="nav-card-desc">545 demos, outtakes, and alternate versions from the vault</span></a>
       </div>
     </section>
@@ -235,7 +235,7 @@ function esc(v) {
           const state = s.state || '';
           const loc = [city, state, s.country].filter(Boolean).join(', ');
           const songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
-          const tourInfo = s.tour ? ' (' + s.tour + ')' : '';
+          const tourInfo = s.tour ? ' (' + window.tthAlbumCase(s.tour) + ')' : '';
           const noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
           const hasVideo = !!videoByShow[s.id];
           // Only link when the tour map can actually show something (gigs span 1985-2016)
@@ -254,7 +254,7 @@ function esc(v) {
   titleEl.textContent = 'On This Day - ' + MONTHS[todayMonth - 1] + ' ' + todayDay;
 
   if (events.length === 0) {
-    container.innerHTML = '<div class="otd-empty">No known Hip events on this date.</div>';
+    container.innerHTML = '<div class="otd-empty">No known events for The Hip on this date.</div>';
   } else {
     container.innerHTML = events.map(function(e) {
       var inner = '<span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + (e.showId ? ' <span class="otd-view">' + (e.hasVideo ? '🎬 ' : '') + 'View show →</span>' : '') + '</span>';
@@ -284,9 +284,9 @@ function esc(v) {
       const pp = pick.date.split('-');
       const songCount = (pick.songs || []).filter(function(x) { return !x.tape && x.name; }).length;
       const loc = [pick.city, pick.state, pick.country].filter(Boolean).join(', ');
-      document.getElementById('sotdVenue').textContent = pick.venue || 'A Hip show';
+      document.getElementById('sotdVenue').textContent = pick.venue || 'A show by The Hip';
       document.getElementById('sotdMeta').textContent = [new Date(+pp[2], +pp[1] - 1, +pp[0]).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' }), loc, pick.tour, songCount ? songCount + ' songs' : ''].filter(Boolean).join(' \u00b7 ');
-      document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from the Hip Archive.';
+      document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from The Tragically Hip Archive.';
       document.getElementById('sotdPlay').href = 'tour-map.html#play=' + encodeURIComponent(pick.id);
       document.getElementById('sotd').hidden = false;
     }

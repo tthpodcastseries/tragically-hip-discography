@@ -113,7 +113,7 @@
     const isGuest = !!(sess && sess.guest);
     const memberEl = $('ppMember');
     if (sess && !isGuest) {
-      memberEl.textContent = 'Yer shows, ' + (sess.firstName || 'friend') + ' (#' + sess.memberNumber + ')';
+      memberEl.textContent = 'Yer shows, ' + (sess.firstName || 'friend') + ' (No. ' + sess.memberNumber + ')';
       memberEl.hidden = false;
     } else {
       memberEl.hidden = true;
@@ -144,7 +144,7 @@
     ].map(x => '<div class="pp-stat"><span class="pp-stat-num">' + x[0] + '</span><span class="pp-stat-lbl">' + x[1] + '</span></div>').join('');
 
     $('ppSpan').textContent = shows.length === 1
-      ? 'First stamp: ' + fmtDate(first.date) + ' at ' + (first.venue || 'a Hip show')
+      ? 'First stamp: ' + fmtDate(first.date) + ' at ' + (first.venue || 'a show by The Hip')
       : 'First show ' + fmtDate(first.date) + ' (' + (first.venue || '?') + ')  -  latest ' + fmtDate(last.date) + ' (' + (last.venue || '?') + ')';
 
     const noteEl = $('ppNoSetlist');
@@ -189,7 +189,7 @@
       return '<div class="pp-show"><div>' +
         '<div class="pp-show-date">' + esc(fmtDate(s.date)) + '</div>' +
         '<div class="pp-show-venue">' + esc(s.venue || 'Unknown venue') + '</div>' +
-        '<div class="pp-show-meta">' + esc(loc) + (s.tour ? ' &middot; ' + esc(s.tour) : '') + (n ? ' &middot; ' + n + ' songs' : '') + '</div>' +
+        '<div class="pp-show-meta">' + esc(loc) + (s.tour ? ' &middot; ' + esc(window.tthAlbumCase(s.tour)) : '') + (n ? ' &middot; ' + n + ' songs' : '') + '</div>' +
         '<div class="pp-show-links">' + links.join('') + '</div></div>' +
         '<button class="pp-remove" type="button" data-id="' + esc(s.id) + '" aria-label="Remove ' + esc(s.venue || 'this show') + ' from yer shows">Remove</button></div>';
     }).join('');
@@ -379,7 +379,7 @@
     const file = new File([currentCard.blob], 'my-hip-passport-' + FORMATS[currentCard.format].file + '.png', { type: 'image/png' });
     const n = lastStats.shows.length;
     try {
-      await navigator.share({ files: [file], title: 'Yer Hip Passport', text: 'I\'ve been to ' + plural(n, 'Hip show', 'Hip shows') + '. Build yer own passport at thehiphandbook.tthpods.com/my-shows' });
+      await navigator.share({ files: [file], title: 'Yer Hip Passport', text: 'I\'ve been to ' + plural(n, 'show by The Hip', 'shows by The Hip') + '. Build yer own passport at thehiphandbook.tthpods.com/my-shows' });
       track('Passport - Card shared');
     } catch (err) { /* cancelled */ }
   });

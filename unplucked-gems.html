@@ -23,7 +23,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Hip Handbook">
+<meta name="apple-mobile-web-app-title" content="The Handbook">
 <meta name="theme-color" content="#0e0b16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,19 +69,19 @@
   // Image path mapping (fallback when JSON imagePath not yet populated)
   var imageMap = {
     'The Tragically Hip': 'assets-optimized/eps/The-EP.jpg',
-    'Up To Here': 'assets-optimized/studio-albums/Up-to-Here.jpg',
+    'Up to Here': 'assets-optimized/studio-albums/Up-to-Here.jpg',
     'Road Apples': 'assets-optimized/studio-albums/Road-Apples.jpg',
     'Fully Completely': 'assets-optimized/studio-albums/Fully-Completely.jpg',
-    'Day For Night': 'assets-optimized/studio-albums/Day-for-Night.jpg',
-    'Trouble At The Henhouse': 'assets-optimized/studio-albums/Trouble-at-the-Henhouse.jpg',
+    'Day for Night': 'assets-optimized/studio-albums/Day-for-Night.jpg',
+    'Trouble at the Henhouse': 'assets-optimized/studio-albums/Trouble-at-the-Henhouse.jpg',
     'Live Between Us': 'assets-optimized/live-albums/Live-Between-Us.jpg',
     'Phantom Power': 'assets-optimized/studio-albums/Phantom-Power.jpg',
     'Music @ Work': 'assets-optimized/studio-albums/Music-at-Work.jpg',
     'In Violet Light': 'assets-optimized/studio-albums/In-Violet-Light.jpg',
     'In Between Evolution': 'assets-optimized/studio-albums/In-Between-Evolution.jpg',
     'World Container': 'assets-optimized/studio-albums/World-Container.jpg',
-    'We Are The Same': 'assets-optimized/studio-albums/We-Are-the-Same.jpg',
-    'Now For Plan A': 'assets-optimized/studio-albums/Now-for-Plan-A.jpg',
+    'We Are the Same': 'assets-optimized/studio-albums/We-Are-the-Same.jpg',
+    'Now for Plan A': 'assets-optimized/studio-albums/Now-for-Plan-A.jpg',
     'Man Machine Poem': 'assets-optimized/studio-albums/Man-Machine-Poem.jpg'
   };
 
@@ -165,6 +165,7 @@
   }
 
   // Build each album card + panel
+  data.eras.forEach(function(era) { era.era = window.tthAlbumCase(era.era); });
   data.eras.forEach(function(era, idx) {
     // Prefer the local imageMap - imported tracker data has carried stale filenames before
     var imagePath = imageMap[era.era] || era.imagePath || '';
@@ -237,7 +238,7 @@
     var noResults = document.createElement('div');
     noResults.className = 'panel-no-results';
     noResults.style.display = 'none';
-    noResults.textContent = 'No sessions match your search.';
+    noResults.textContent = 'No sessions match yer search.';
 
     // Build session cards
     era.sessions.forEach(function(s) {

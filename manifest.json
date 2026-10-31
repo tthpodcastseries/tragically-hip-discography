@@ -2,7 +2,7 @@
   "lang": "en",
   "categories": ["music", "entertainment"],
   "name": "The Hip Handbook",
-  "short_name": "Hip Handbook",
+  "short_name": "The Handbook",
   "description": "The complete discography explorer for The Tragically Hip - albums, streaming, lyrics, setlists, and tour map.",
   "start_url": "/",
   "display": "standalone",

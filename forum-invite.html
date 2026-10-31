@@ -257,14 +257,14 @@
 
   <!-- SCREEN 1: Welcome + Form -->
   <div id="screen-welcome" class="screen active">
-    <div class="eyebrow">Free for every Hip fan</div>
+    <div class="eyebrow">Free for every fan of The Hip</div>
     <h1>Claim Yer <span>membersHIP</span></h1>
 
     <div class="welcome-text">
       <p>Hey, it's jD here. Thanks for being here.</p>
       <p>The <strong>Hip Handbook</strong> is the fan-built home for everything about The Tragically Hip - the discography, the live tour archive, unplucked gems, video archives, lyrics, all of it. It's free, and you can explore every bit of it without a number.</p>
       <p>Whether you've been listening since '89 or you just discovered "Fully Completely" last week, you belong here.</p>
-      <p>A <strong>membersHIP</strong> number lets you save the Hip shows you were at and build yer own concert history, on any device. Drop yer name below and I'll set you up.</p>
+      <p>A <strong>membersHIP</strong> number lets you save the shows you were at and build yer own concert history, on any device. Drop yer name below and I'll set you up.</p>
     </div>
 
     <div class="form-row">
@@ -293,7 +293,7 @@
 
   <!-- SCREEN 2: Reveal -->
   <div id="screen-reveal" class="screen">
-    <div class="membership-number" id="membership-num">#1</div>
+    <div class="membership-number" id="membership-num">No. 1</div>
     <div class="membership-label">membersHIP</div>
 
     <div class="reveal-greeting" id="reveal-greeting">Yer in, friend.</div>
@@ -357,7 +357,7 @@
 
       var num = data;
 
-      document.getElementById('membership-num').textContent = '#' + num;
+      document.getElementById('membership-num').textContent = 'No. ' + num;
       document.getElementById('reveal-greeting').textContent =
         "Yer in, " + firstName + ". You're membersHIP #" + num + ".";
 

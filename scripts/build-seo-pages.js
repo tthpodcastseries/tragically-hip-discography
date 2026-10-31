@@ -69,7 +69,7 @@ function songPages() {
 
     const title = "'" + song.t + "' - Song" + CATEGORY_NOTE;
     const desc = plays.length
-      ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in the Hip Archive.' : '.')
+      ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : '.')
       : "'" + song.t + "' by The Tragically Hip: albums and fan ranking.";
 
     let html = setHead(template, { title, desc, url: SITE + '/song/' + song.s });

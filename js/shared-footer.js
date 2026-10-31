@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.4.14 (Yawning or Snarling - Patch)';
+  var version = 'v5.4.15 (Yawning or Snarling - Patch)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -49,12 +49,12 @@
     footerEl.className = 'site-footer';
     footerEl.innerHTML =
       '<div class="footer-buttons">' +
-        '<a href="mailto:jd@tthpods.com" class="footer-btn">' +
+        '<a href="mailto:tthpodcastseries@gmail.com" class="footer-btn">' +
           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>' +
           'Connect with jD' +
         '</a>' +
       '</div>' +
-      '<a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-link">Sign up For Yer Letter - The TTH Podcast Series Newsletter</a><br>' +
+      '<a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-link">Sign up for Yer Letter - The TTH Podcast Series Newsletter</a><br>' +
       '<strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://home.tthpods.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
       '<span style="color:#929292;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +

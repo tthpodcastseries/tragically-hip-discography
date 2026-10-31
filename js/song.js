@@ -37,7 +37,7 @@
     $('spError').hidden = false;
     return;
   }
-  const shows = data.shows.map(r => ({ id: r[0], iso: r[1], venue: r[2], city: r[3], state: r[4], country: r[5], tour: r[6], rec: r[7] }));
+  const shows = data.shows.map(r => ({ id: r[0], iso: r[1], venue: r[2], city: r[3], state: r[4], country: r[5], tour: window.tthAlbumCase(r[6]), rec: r[7] }));
   const song = data.songs.find(s => s.s === slug);
 
   const setMeta = (title, desc, url) => {
@@ -80,7 +80,7 @@
     const url = SITE + '/song/' + song.s;
     setMeta("'" + song.t + "' - Song - The Hip Handbook",
       plays.length
-        ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in the Hip Archive.' : '.')
+        ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : '.')
         : "'" + song.t + "' by The Tragically Hip: albums and fan ranking.",
       url);
 
@@ -100,7 +100,7 @@
       cell('Played live', plays.length.toLocaleString('en-CA'), plural(new Set(plays.map(x => x.iso.slice(0, 4))).size, 'year', 'years'));
       cell('Live debut', fmtDate(first.iso), showLine(first), '/tour-map.html#show=' + first.id);
       cell('Latest', fmtDate(last.iso), showLine(last), '/tour-map.html#show=' + last.id);
-      cell('Recordings', recs.length.toLocaleString('en-CA'), recs.length ? 'in the Hip Archive' : 'none in the Hip Archive');
+      cell('Recordings', recs.length.toLocaleString('en-CA'), recs.length ? 'in the Archive' : 'none in the Archive');
     } else {
       $('spNever').hidden = false;
     }
@@ -188,8 +188,8 @@
     const k = song.k;
     if (!k) return;
     const box = $('spRank');
-    const head = el('div', 'sp-rank', '#' + k.rank);
-    head.appendChild(el('small', '', k.rank <= 40 ? 'TTHTop40 Countdown' : 'Full 169 Fan Vote'));
+    const head = el('div', 'sp-rank', 'No. ' + k.rank);
+    head.appendChild(el('small', '', k.rank <= 40 ? 'The Tragically Hip Top Forty Countdown' : 'Full 169 Fan Vote'));
     box.appendChild(head);
     if (k.pts) box.appendChild(el('div', 'sp-line', plural(k.pts, 'point', 'points')));
     if (k.url) {
@@ -241,7 +241,7 @@
     for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619);
     return text.length + '-' + (h >>> 0).toString(36);
   }
-  const lyricsMailto = title => 'mailto:jd@tthpods.com?subject=' + encodeURIComponent('Lyrics for The Hip Handbook') +
+  const lyricsMailto = title => 'mailto:tthpodcastseries@gmail.com?subject=' + encodeURIComponent('Lyrics for The Hip Handbook') +
     '&body=' + encodeURIComponent('Song: ' + title + '\n\nLyrics:\n\n\nSource (optional - liner notes, where you got them):\n\nCredit (optional - how you\'d like to be thanked):');
 
   async function lyricsFor(key) {
@@ -331,7 +331,7 @@
   // ─── All songs ───
   function renderIndex() {
     $('spLabel').textContent = 'Songs';
-    $('spTitle').textContent = 'Every Hip Song';
+    $('spTitle').textContent = 'Every Song';
     $('spDesc').textContent = 'Every song on an official release, with its live history.';
     if (slug) {
       // An address with no song behind it should never be listed by search engines (audit FUNC-13)

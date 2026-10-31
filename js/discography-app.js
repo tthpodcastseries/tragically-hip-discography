@@ -12,186 +12,186 @@ const studioAlbums = [
   {
     num: '01', title: 'Up to Here', year: '1989', releaseDate: 'September 5, 1989', type: 'Studio', img: 'assets-optimized/studio-albums/Up-to-Here.jpg',
     label: 'MCA Records', producer: 'Don Smith',
-    chart: '#9', units: '1M+ (Diamond, Canada)',
+    chart: 'No. 9', units: '1M+ (Diamond, Canada)',
     junoAwards: ['Most Promising Group (1990)'],
     desc: 'Debut full-length, recorded in Memphis. Certified Diamond in Canada. Introduced the band to a national audience and launched four consecutive Canadian radio singles.',
     gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
     bestRank: 3,
     singles: [
-      { title: 'Blow at High Dough', rank: 'Top 40 #6' },
-      { title: 'New Orleans Is Sinking', rank: 'Top 40 #11' },
-      { title: 'Boots or Hearts', rank: 'Top 40 #25' },
-      { title: '38 Years Old', rank: 'Top 40 #3' },
+      { title: 'Blow at High Dough', rank: 'Top 40 No. 6' },
+      { title: 'New Orleans Is Sinking', rank: 'Top 40 No. 11' },
+      { title: 'Boots or Hearts', rank: 'Top 40 No. 25' },
+      { title: '38 Years Old', rank: 'Top 40 No. 3' },
     ],
     tracks: ['Blow at High Dough', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight)', 'New Orleans Is Sinking', '38 Years Old', 'She Didn\'t Know', 'Boots or Hearts', 'Everytime You Go', 'When the Weight Comes Down', 'Trickle Down', 'Another Midnight', 'Opiated'],
   },
   {
     num: '02', title: 'Road Apples', year: '1991', releaseDate: 'February 19, 1991', type: 'Studio', img: 'assets-optimized/studio-albums/Road-Apples.jpg',
     label: 'MCA Records', producer: 'Don Smith',
-    chart: '#1', units: '1M+ (Diamond, Canada)',
-    desc: 'First #1 album in Canada. Certified Diamond. First album with all lyrics by Gord Downie. Recorded in New Orleans at Kingsway Studio.',
+    chart: 'No. 1', units: '1M+ (Diamond, Canada)',
+    desc: 'First number one album in Canada. Certified Diamond. First album with all lyrics by Gord Downie. Recorded in New Orleans at Kingsway Studio.',
     gradient: 'linear-gradient(145deg, #0D2200 0%, #235E00 50%, #091500 100%)',
     bestRank: 5,
     singles: [
-      { title: 'Little Bones', rank: 'Top 40 #5' },
-      { title: 'Three Pistols', rank: 'Top 40 #21' },
-      { title: 'Twist My Arm', rank: 'Road #45' },
-      { title: 'Long Time Running', rank: 'Top 40 #22' },
-      { title: 'On the Verge', rank: 'Road #91' },
-      { title: 'Cordelia', rank: 'Top 40 #19' },
+      { title: 'Little Bones', rank: 'Top 40 No. 5' },
+      { title: 'Three Pistols', rank: 'Top 40 No. 21' },
+      { title: 'Twist My Arm', rank: 'Road No. 45' },
+      { title: 'Long Time Running', rank: 'Top 40 No. 22' },
+      { title: 'On the Verge', rank: 'Road No. 91' },
+      { title: 'Cordelia', rank: 'Top 40 No. 19' },
     ],
     tracks: ['Little Bones', 'Twist My Arm', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Bring It All Back', 'Three Pistols', 'Fight', 'On the Verge', 'Fiddler\'s Green', 'The Last of the Unplucked Gems'],
   },
   {
     num: '03', title: 'Fully Completely', year: '1992', releaseDate: 'October 6, 1992', type: 'Studio', img: 'assets-optimized/studio-albums/Fully-Completely.jpg',
     label: 'MCA Records', producer: 'Chris Tsangarides',
-    chart: '#1', units: '1M+ (Diamond, Canada)',
+    chart: 'No. 1', units: '1M+ (Diamond, Canada)',
     desc: 'Certified Diamond in Canada. Six Canadian singles. Widely considered a landmark Canadian rock record. 300,000 copies sold in its first year.',
     gradient: 'linear-gradient(145deg, #2A1A00 0%, #5C3A00 50%, #1A0E00 100%)',
     bestRank: 8,
     singles: [
-      { title: 'Locked in the Trunk of a Car', rank: 'Top 40 #8' },
-      { title: 'Fifty-Mission Cap', rank: 'Top 40 #20' },
-      { title: 'Courage (for Hugh MacLennan)', rank: 'Top 40 #10' },
-      { title: 'At the Hundredth Meridian', rank: 'Top 40 #16' },
-      { title: 'Looking for a Place to Happen', rank: 'Top 40 #35' },
-      { title: 'Fully Completely', rank: 'Top 40 #13' },
+      { title: 'Locked in the Trunk of a Car', rank: 'Top 40 No. 8' },
+      { title: 'Fifty-Mission Cap', rank: 'Top 40 No. 20' },
+      { title: 'Courage (for Hugh MacLennan)', rank: 'Top 40 No. 10' },
+      { title: 'At the Hundredth Meridian', rank: 'Top 40 No. 16' },
+      { title: 'Looking for a Place to Happen', rank: 'Top 40 No. 35' },
+      { title: 'Fully Completely', rank: 'Top 40 No. 13' },
     ],
     tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go, Too', 'Fully Completely', 'Fifty-Mission Cap', 'Wheat Kings', 'The Wherewithal', 'Eldorado'],
   },
   {
     num: '04', title: 'Day for Night', year: '1994', releaseDate: 'September 19, 1994', type: 'Studio', img: 'assets-optimized/studio-albums/Day-for-Night.jpg',
     label: 'MCA Records', producer: 'Mark Howard & The Tragically Hip',
-    chart: '#1', units: '300,000 in first 4 days',
-    desc: 'Murky, experimental record. Recorded in New Orleans. Debuted at #1 with 300,000 copies sold in the first four days - still a Canadian record at the time. Features Grace, Too, the #1 ranked song in the TTHTop40 Countdown.',
+    chart: 'No. 1', units: '300,000 in first 4 days',
+    desc: 'Murky, experimental record. Recorded in New Orleans. Debuted at number one with 300,000 copies sold in the first four days - still a Canadian record at the time. Features \'Grace, Too\', the top-ranked song in The Tragically Hip Top Forty Countdown.',
     gradient: 'linear-gradient(145deg, #060612 0%, #10104A 50%, #030308 100%)',
     bestRank: 1,
     singles: [
-      { title: 'Grace, Too', rank: 'Top 40 #1' },
-      { title: 'Greasy Jungle', rank: 'Top 40 #36' },
-      { title: 'Nautical Disaster', rank: 'Top 40 #7' },
-      { title: 'So Hard Done By', rank: 'Road #43' },
-      { title: 'Scared', rank: 'Top 40 #28' },
-      { title: 'Thugs', rank: 'Road #47' },
+      { title: 'Grace, Too', rank: 'Top 40 No. 1' },
+      { title: 'Greasy Jungle', rank: 'Top 40 No. 36' },
+      { title: 'Nautical Disaster', rank: 'Top 40 No. 7' },
+      { title: 'So Hard Done By', rank: 'Road No. 43' },
+      { title: 'Scared', rank: 'Top 40 No. 28' },
+      { title: 'Thugs', rank: 'Road No. 47' },
     ],
     tracks: ['Grace, Too', 'Daredevil', 'Greasy Jungle', 'Yawning or Snarling', 'Fire in the Hole', 'So Hard Done By', 'Nautical Disaster', 'Thugs', 'Inevitability of Death', 'Scared', 'An Inch an Hour', 'Emergency', 'Titanic Terrarium', 'Impossibilium'],
   },
   {
     num: '05', title: 'Trouble at the Henhouse', year: '1996', releaseDate: 'May 7, 1996', type: 'Studio', img: 'assets-optimized/studio-albums/Trouble-at-the-Henhouse.jpg',
     label: 'MCA Records', producer: 'The Tragically Hip & Mark Vreeken',
-    chart: '#1 (4 consecutive weeks)', units: '',
-    desc: 'First simultaneous Canada/US release. Won the 1997 Juno Award for Album of the Year. Features Ahead by a Century - TTHTop40 #2.',
+    chart: 'No. 1 (4 consecutive weeks)', units: '',
+    desc: 'First simultaneous Canada/US release. Won the 1997 Juno Award for Album of the Year. Features \'Ahead by a Century\', No. 2 in The Tragically Hip Top Forty Countdown.',
     gradient: 'linear-gradient(145deg, #2E0A00 0%, #6B2500 50%, #1C0500 100%)',
     junoAwards: ['Album of the Year (1997)', 'Rock Album of the Year (1997)', 'Group of the Year (1997)'],
     bestRank: 2,
     singles: [
-      { title: 'Ahead by a Century', rank: 'Top 40 #2' },
-      { title: 'Gift Shop', rank: 'Top 40 #12' },
-      { title: '700 Ft. Ceiling', rank: 'Road #76' },
-      { title: 'Flamenco', rank: 'Top 40 #27' },
-      { title: 'Springtime in Vienna', rank: 'Top 40 #38' },
+      { title: 'Ahead by a Century', rank: 'Top 40 No. 2' },
+      { title: 'Gift Shop', rank: 'Top 40 No. 12' },
+      { title: '700 Ft. Ceiling', rank: 'Road No. 76' },
+      { title: 'Flamenco', rank: 'Top 40 No. 27' },
+      { title: 'Springtime in Vienna', rank: 'Top 40 No. 38' },
     ],
     tracks: ['Gift Shop', 'Springtime in Vienna', 'Ahead by a Century', 'Don\'t Wake Daddy', 'Flamenco', '700 Ft. Ceiling', 'Butts Wigglin\'', 'Apartment Song', 'Coconut Cream', 'Let\'s Stay Engaged', 'Sherpa', 'Put It Off'],
   },
   {
     num: '06', title: 'Phantom Power', year: '1998', releaseDate: 'July 14, 1998', type: 'Studio', img: 'assets-optimized/studio-albums/Phantom-Power.jpg',
     label: 'Universal Music Canada / Sire Records (US)', producer: 'Steve Berlin, Mark Vreeken & The Tragically Hip',
-    chart: '#1', units: '108,000 (first week)',
-    desc: 'Produced with Steve Berlin of Los Lobos. Bobcaygeon - TTHTop40 #4 - became one of the band\'s most enduring songs. Recorded at The Bathouse in Bath, Ontario.',
+    chart: 'No. 1', units: '108,000 (first week)',
+    desc: 'Produced with Steve Berlin of Los Lobos. \'Bobcaygeon\' (No. 4 in The Tragically Hip Top Forty Countdown) became one of the band\'s most enduring songs. Recorded at The Bathouse in Bath, Ontario.',
     gradient: 'linear-gradient(145deg, #1A001A 0%, #4A0050 50%, #0E000E 100%)',
     junoAwards: ['Best Rock Album (1999)', 'Best Album Design (1999)', 'Single of the Year (2000)'],
     bestRank: 4,
     singles: [
-      { title: 'Poets', rank: 'Top 40 #23' },
-      { title: 'Something On', rank: 'Road #61' },
-      { title: 'Fireworks', rank: 'Top 40 #15' },
-      { title: 'Bobcaygeon', rank: 'Top 40 #4' },
-      { title: 'Escape Is at Hand for the Travellin\' Man', rank: 'Top 40 #14' },
+      { title: 'Poets', rank: 'Top 40 No. 23' },
+      { title: 'Something On', rank: 'Road No. 61' },
+      { title: 'Fireworks', rank: 'Top 40 No. 15' },
+      { title: 'Bobcaygeon', rank: 'Top 40 No. 4' },
+      { title: 'Escape Is at Hand for the Travellin\' Man', rank: 'Top 40 No. 14' },
     ],
     tracks: ['Poets', 'Something On', 'Save the Planet', 'Bobcaygeon', 'Thompson Girl', 'Membership', 'Fireworks', 'Vapour Trails', 'The Rules', 'Chagrin Falls', 'Escape Is at Hand for the Travellin\' Man', 'Emperor Penguin'],
   },
   {
     num: '07', title: 'Music @ Work', year: '2000', releaseDate: 'June 6, 2000', type: 'Studio', img: 'assets-optimized/studio-albums/Music-at-Work.jpg',
     label: 'Universal Music Canada', producer: 'Steve Berlin, Mark Vreeken & The Tragically Hip',
-    chart: '#1', units: '2x Platinum (Canada)',
-    desc: 'Won the 2001 Juno Award for Best Rock Album. Nominated for Album of the Year. Produced with the same team as Phantom Power at The Bathouse.',
+    chart: 'No. 1', units: '2x Platinum (Canada)',
+    desc: 'Won the 2001 Juno Award for Best Rock Album. Nominated for Album of the Year. Produced with the same team as "Phantom Power" at The Bathouse.',
     gradient: 'linear-gradient(145deg, #001A1A 0%, #003D3D 50%, #000F0F 100%)',
     junoAwards: ['Best Rock Album (2001)'],
     bestRank: 24,
     singles: [
-      { title: 'My Music at Work', rank: 'Top 40 #26' },
-      { title: 'Lake Fever', rank: 'Top 40 #24' },
-      { title: 'The Completists', rank: 'Road #116' },
-      { title: 'Freak Turbulence', rank: 'Road #124' },
+      { title: 'My Music at Work', rank: 'Top 40 No. 26' },
+      { title: 'Lake Fever', rank: 'Top 40 No. 24' },
+      { title: 'The Completists', rank: 'Road No. 116' },
+      { title: 'Freak Turbulence', rank: 'Road No. 124' },
     ],
     tracks: ['My Music at Work', 'Tiger the Lion', 'Lake Fever', 'Putting Down', 'Stay', 'The Bastard', 'The Completists', 'Freak Turbulence', 'Sharks', 'Toronto #4', 'Wild Mountain Honey', 'Train Overnight', 'The Bear', 'As I Wind Down the Pines'],
   },
   {
     num: '08', title: 'In Violet Light', year: '2002', releaseDate: 'June 11, 2002', type: 'Studio', img: 'assets-optimized/studio-albums/In-Violet-Light.jpg',
     label: 'Universal Music Canada', producer: 'Hugh Padgham & Terry Manning',
-    chart: '#2', units: 'Platinum (Canada)',
+    chart: 'No. 2', units: 'Platinum (Canada)',
     desc: 'Recorded at Compass Point Studios, Bahamas - same studio as AC/DC, Grace Jones, and the Rolling Stones. Hugh Padgham\'s atmospheric production gives the album a distinctly dreamy quality.',
     gradient: 'linear-gradient(145deg, #100028 0%, #2E006B 50%, #090014 100%)',
     bestRank: 18,
     singles: [
-      { title: 'It\'s a Good Life If You Don\'t Weaken', rank: 'Top 40 #18' },
-      { title: 'Silver Jet', rank: 'Road #83' },
-      { title: 'The Darkest One', rank: 'Top 40 #30' },
+      { title: 'It\'s a Good Life If You Don\'t Weaken', rank: 'Top 40 No. 18' },
+      { title: 'Silver Jet', rank: 'Road No. 83' },
+      { title: 'The Darkest One', rank: 'Top 40 No. 30' },
     ],
     tracks: ['Are You Ready', 'Use It Up', 'The Darkest One', 'It\'s a Good Life If You Don\'t Weaken', 'Silver Jet', 'Throwing Off Glass', 'All Tore Up', 'Leave', 'A Beautiful Thing', 'The Dire Wolf', 'The Dark Canuck'],
   },
   {
     num: '09', title: 'In Between Evolution', year: '2004', releaseDate: 'June 29, 2004', type: 'Studio', img: 'assets-optimized/studio-albums/In-Between-Evolution.jpg',
     label: 'Universal Music Canada', producer: 'Adam Kasper',
-    chart: '#1', units: '22,500 (first week)',
+    chart: 'No. 1', units: '22,500 (first week)',
     desc: 'Produced by Adam Kasper (Foo Fighters, Queens of the Stone Age, Pearl Jam). A harder-edged return. Recorded at The Bathouse and The Warehouse Studio, Vancouver.',
     gradient: 'linear-gradient(145deg, #1A0800 0%, #4A2200 50%, #0F0400 100%)',
     bestRank: 31,
     singles: [
-      { title: 'Vaccination Scar', rank: 'Road #66' },
-      { title: 'It Can\'t Be Nashville Every Night', rank: 'Road #52' },
-      { title: 'Gus: The Polar Bear from Central Park', rank: 'Top 40 #31' },
+      { title: 'Vaccination Scar', rank: 'Road No. 66' },
+      { title: 'It Can\'t Be Nashville Every Night', rank: 'Road No. 52' },
+      { title: 'Gus: The Polar Bear from Central Park', rank: 'Top 40 No. 31' },
     ],
     tracks: ['Heaven Is a Better Place Today', 'Summer\'s Killing Us', 'Gus: The Polar Bear from Central Park', 'Vaccination Scar', 'It Can\'t Be Nashville Every Night', 'If New Orleans Is Beat', 'You\'re Everywhere', 'As Makeshift As We Are', 'Mean Streak', 'The Heart of the Melt', 'One Night in Copenhagen', 'Are We Family', 'Goodnight Josephine'],
   },
   {
     num: '10', title: 'World Container', year: '2006', releaseDate: 'October 17, 2006', type: 'Studio', img: 'assets-optimized/studio-albums/World-Container.jpg',
     label: 'Universal Music Canada', producer: 'Bob Rock',
-    chart: '#2', units: 'Platinum (Canada)',
+    chart: 'No. 2', units: 'Platinum (Canada)',
     desc: 'Produced by Bob Rock (Metallica, Aerosmith). Recorded in Toronto, Vancouver, and Maui. First album of a two-record partnership with Rock.',
     gradient: 'linear-gradient(145deg, #001530 0%, #003580 50%, #000C1A 100%)',
     bestRank: 39,
     singles: [
-      { title: 'In View', rank: 'Road #46' },
-      { title: 'The Lonely End of the Rink', rank: 'Road #75' },
-      { title: 'Yer Not the Ocean', rank: 'Top 40 #39' },
-      { title: 'Family Band', rank: 'Road #103' },
+      { title: 'In View', rank: 'Road No. 46' },
+      { title: 'The Lonely End of the Rink', rank: 'Road No. 75' },
+      { title: 'Yer Not the Ocean', rank: 'Top 40 No. 39' },
+      { title: 'Family Band', rank: 'Road No. 103' },
     ],
     tracks: ['Yer Not the Ocean', 'The Lonely End of the Rink', 'In View', 'Fly', 'Luv (sic)', 'The Kids Don\'t Get It', 'Pretend', 'Last Night I Dreamed You Didn\'t Love Me', 'The Drop-Off', 'Family Band', 'World Container'],
   },
   {
     num: '11', title: 'We Are the Same', year: '2009', releaseDate: 'April 7, 2009', type: 'Studio', img: 'assets-optimized/studio-albums/We-Are-the-Same.jpg',
     label: 'Universal Music Canada / Zoë Records (US)', producer: 'Bob Rock',
-    chart: '#1 (8th Canadian #1)', units: '',
-    desc: 'Their eighth Canadian #1 album - more than any other Canadian rock band at the time. Second collaboration with Bob Rock. A warmer, more reflective record.',
+    chart: 'No. 1 (8th Canadian number one)', units: '',
+    desc: 'Their eighth Canadian number one album - more than any other Canadian rock band at the time. Second collaboration with Bob Rock. A warmer, more reflective record.',
     gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1D4D1D 50%, #050F05 100%)',
     bestRank: 34,
     singles: [
-      { title: 'Love Is a First', rank: 'Road #145' },
-      { title: 'Morning Moon', rank: 'Road #73' },
-      { title: 'Speed River', rank: 'Road #161' },
+      { title: 'Love Is a First', rank: 'Road No. 145' },
+      { title: 'Morning Moon', rank: 'Road No. 73' },
+      { title: 'Speed River', rank: 'Road No. 161' },
     ],
     tracks: ['Morning Moon', 'Honey, Please', 'The Last Recluse', 'Coffee Girl', 'Now the Struggle Has a Name', 'The Depression Suite', 'The Exact Feeling', 'Queen of the Furrows', 'Speed River', 'Frozen in My Tracks', 'Love Is a First', 'Country Day', 'Hush', 'Skeleton Park'],
   },
   {
     num: '12', title: 'Now for Plan A', year: '2012', releaseDate: 'October 2, 2012', type: 'Studio', img: 'assets-optimized/studio-albums/Now-for-Plan-A.jpg',
     label: 'Universal Music Canada / Concord Records (US)', producer: 'Gavin Brown',
-    chart: '#3', units: '',
-    desc: 'Produced by Gavin Brown. Features a duet with Sarah Harmer on The Lookahead. Highest US chart position of any Hip album: #129 on the Billboard 200.',
+    chart: 'No. 3', units: '',
+    desc: 'Produced by Gavin Brown. Features a duet with Sarah Harmer on \'The Lookahead\'. Highest US chart position of any album by The Hip: No. 129 on the Billboard 200.',
     gradient: 'linear-gradient(145deg, #1A1A00 0%, #404000 50%, #0D0D00 100%)',
     bestRank: 33,
     singles: [
-      { title: 'At Transformation', rank: 'Top 40 #33' },
+      { title: 'At Transformation', rank: 'Top 40 No. 33' },
       { title: 'Streets Ahead', rank: 'Unranked' },
     ],
     tracks: ['At Transformation', 'Man Machine Poem', 'The Lookahead', 'We Want to Be It', 'Streets Ahead', 'Now for Plan A', 'The Modern Spirit', 'About This Map', 'Take Forever', 'Done and Done', 'Goodnight Attawapiskat'],
@@ -199,15 +199,15 @@ const studioAlbums = [
   {
     num: '13', title: 'Man Machine Poem', year: '2016', releaseDate: 'June 17, 2016', type: 'Studio', img: 'assets-optimized/studio-albums/Man-Machine-Poem.jpg',
     label: 'Universal Music Canada', producer: 'Kevin Drew & Dave Hamelin',
-    chart: '#1', units: '20,000 (first week)',
+    chart: 'No. 1', units: '20,000 (first week)',
     desc: 'Final studio album. Recorded following Gord Downie\'s terminal brain cancer diagnosis. The final concert took place August 20, 2016 at K-Rock Centre in Kingston, Ontario - broadcast live on CBC to 11.7 million Canadians.',
     gradient: 'linear-gradient(145deg, #08001F 0%, #1A0055 50%, #040010 100%)',
     junoAwards: ['Group of the Year (2017)', 'Rock Album of the Year (2017)'],
     bestRank: 37,
     singles: [
-      { title: 'In a World Possessed by the Human Mind', rank: 'Top 40 #37' },
-      { title: 'Tired as Fuck', rank: 'Road #58' },
-      { title: 'What Blue', rank: 'Road #135' },
+      { title: 'In a World Possessed by the Human Mind', rank: 'Top 40 No. 37' },
+      { title: 'Tired as Fuck', rank: 'Road No. 58' },
+      { title: 'What Blue', rank: 'Road No. 135' },
     ],
     tracks: ['Man', 'In a World Possessed by the Human Mind', 'What Blue', 'In Sarnia', 'Here, in the Dark', 'Great Soul', 'Tired as Fuck', 'Hot Mic', 'Ocean Next', 'Machine'],
   },
@@ -260,8 +260,8 @@ const top40Songs = [
 const liveAlbums = [
   { num: '01', title: 'Live Between Us', year: '1997', releaseDate: 'May 20, 1997', type: 'Live', img: 'assets-optimized/live-albums/Live-Between-Us.jpg',
     gradient: 'linear-gradient(145deg, #1A0A00 0%, #4A2800 50%, #0F0500 100%)',
-    desc: 'Recorded live at Cobo Arena in Detroit, Michigan on November 23, 1996 during the Trouble at the Henhouse tour. Debuted at #1 in Canada, selling 35,000 copies in its first two days. Certified 4x Platinum.',
-    label: 'Universal Music Canada', producer: '', chart: '#1', units: '4x Platinum (Canada)', bestRank: null, singles: [],
+    desc: 'Recorded live at Cobo Arena in Detroit, Michigan on November 23, 1996 during the Trouble at the Henhouse tour. Debuted at number one in Canada, selling 35,000 copies in its first two days. Certified 4x Platinum.',
+    label: 'Universal Music Canada', producer: '', chart: 'No. 1', units: '4x Platinum (Canada)', bestRank: null, singles: [],
     tracks: ['Grace, Too', 'Fully Completely', 'Springtime in Vienna', 'Twist My Arm', 'Gift Shop', 'Ahead by a Century', 'The Luxury', 'Courage', 'New Orleans Is Sinking', 'Don\'t Wake Daddy', 'Scared', 'Blow at High Dough', 'Nautical Disaster', 'The Wherewithal'] },
   { num: '02', title: 'Live at the Roxy', year: '2022', releaseDate: 'June 24, 2022', type: 'Live', img: 'assets-optimized/live-albums/Live-at-the-Roxy.jpg',
     gradient: 'linear-gradient(145deg, #200A0A 0%, #501A1A 50%, #100505 100%)',
@@ -280,7 +280,7 @@ const liveAlbums = [
     tracks: ['Use It Up', 'My Music at Work', 'New Orleans Is Sinking', 'Grace, Too', 'Fireworks', 'Bobcaygeon', 'Silver Jet', 'Courage (for Hugh MacLennan)', 'Inevitability of Death', 'It\'s a Good Life If You Don\'t Weaken', 'At the Hundredth Meridian', 'Springtime in Vienna', 'So Hard Done By', 'Poets', 'Ahead by a Century', 'Little Bones', 'Chagrin Falls', 'All Tore Up', 'Blow at High Dough'] },
   { num: '05', title: 'From The Vault: Vol. 3 - Hamilton 2007', year: '2009', releaseDate: 'March 3, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-3.jpg',
     gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)',
-    desc: 'Copps Coliseum, Hamilton, Ontario - February 6, 2007. World Container tour. Features six World Container tracks alongside classics like Boots or Hearts, Three Pistols, Fiddler\'s Green and Wheat Kings.',
+    desc: 'Copps Coliseum, Hamilton, Ontario - February 6, 2007. World Container tour. Features six World Container tracks alongside classics like \'Boots or Hearts\', \'Three Pistols\', \'Fiddler\'s Green\', and \'Wheat Kings\'.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['The Lonely End of the Rink', 'New Orleans Is Sinking', 'Fully Completely', 'Boots or Hearts', 'Yer Not the Ocean', 'Ahead by a Century', 'In View', 'Courage (for Hugh MacLennan)', 'Fiddler\'s Green', 'World Container', 'Springtime in Vienna', 'At the Hundredth Meridian', 'It\'s a Good Life If You Don\'t Weaken', 'The Kids Don\'t Get It', 'Three Pistols', 'Wheat Kings', 'Family Band', 'My Music at Work', 'Blow at High Dough', 'Picture My Face', 'Grace, Too', 'Fire in the Hole'] },
   { num: '06', title: 'From The Vault: Vol. 4 - Brussels 1994', year: '2009', releaseDate: 'June 2, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-4.jpg',
@@ -290,7 +290,7 @@ const liveAlbums = [
     tracks: ['Grace, Too', 'Fully Completely', 'Courage', 'Greasy Jungle', 'The Last of the Unplucked Gems', 'New Orleans Is Sinking', 'Inevitability of Death', 'Locked in the Trunk of a Car', 'Fire in the Hole', 'Titanic Terrarium', 'At the Hundredth Meridian', 'Nautical Disaster', 'The Wherewithal', 'Yawning or Snarling', 'Little Bones'] },
   { num: '07', title: 'From The Vault: Vol. 5 - Los Angeles 2004', year: '2009', releaseDate: 'September 1, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-5.jpg',
     gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
-    desc: 'Avalon, Los Angeles, California - October 6, 2004. In Between Evolution world tour. Features rarities like Mean Streak and You\'re Everywhere that have rarely surfaced since.',
+    desc: 'Avalon, Los Angeles, California - October 6, 2004. In Between Evolution world tour. Features rarities like \'Mean Streak\' and \'You\'re Everywhere\' that have rarely surfaced since.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Vaccination Scar', 'Grace, Too', 'Twist My Arm', 'It\'s a Good Life If You Don\'t Weaken', 'Summer\'s Killing Us', 'Fully Completely', 'You\'re Everywhere', 'Courage (for Hugh MacLennan)', 'Bobcaygeon', 'Poets', 'Gus: The Polar Bear from Central Park', 'At the Hundredth Meridian', 'As Makeshift as We Are', 'My Music at Work', 'Mean Streak', 'New Orleans Is Sinking', 'It Can\'t Be Nashville Every Night', 'Little Bones', 'Heaven Is a Better Place Today', 'Ahead by a Century', 'Fire in the Hole', 'Wheat Kings', 'Blow at High Dough'] },
   { num: '08', title: 'From The Vault: Vol. 6 - Cleveland 1996', year: '2009', releaseDate: 'December 1, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-6.jpg',
@@ -300,44 +300,44 @@ const liveAlbums = [
     tracks: ['Springtime in Vienna', 'Fully Completely', 'Gift Shop', 'Grace, Too', 'Butts Wigglin\'', 'Opiated', '700 Ft. Ceiling', 'Flamenco', 'At the Hundredth Meridian', 'Don\'t Wake Daddy', 'Courage (for Hugh MacLennan)', 'Ahead by a Century', 'New Orleans Is Sinking', 'Locked in the Trunk of a Car', 'The Wherewithal', 'Put It Off', 'Nautical Disaster', 'Little Bones'] },
   { num: '09', title: 'Live July 22 - August 20, 2016', year: '2026', releaseDate: 'August 21, 2026', type: 'Live', img: 'assets-optimized/live-albums/Live-2016.jpg',
     gradient: 'linear-gradient(145deg, #08001F 0%, #1A0055 50%, #040010 100%)',
-    desc: 'Twenty-nine songs from the 2016 Man Machine Poem Tour, from the July 22 opener in Victoria to the August 20 finale in Kingston. Released ten years and a day after the final show. Debuted at #46 in Canada.',
-    label: 'Universal Music Canada', producer: '', chart: '#46', units: '', bestRank: null, singles: [],
+    desc: 'Twenty-nine songs from the 2016 Man Machine Poem Tour, from the July 22 opener in Victoria to the August 20 finale in Kingston. Released ten years and a day after the final show. Debuted at No. 46 in Canada.',
+    label: 'Universal Music Canada', producer: '', chart: 'No. 46', units: '', bestRank: null, singles: [],
     tracks: ['At Transformation', 'In View', 'In a World Possessed by the Human Mind', 'Family Band', 'The Lonely End of the Rink', 'Something On', 'Locked in the Trunk of a Car', 'Opiated', 'Nautical Disaster', 'New Orleans Is Sinking', 'Yer Not the Ocean', 'Gus: The Polar Bear from Central Park', 'At the Hundredth Meridian', 'Daredevil', 'Bobcaygeon', 'Lake Fever', 'Escape Is at Hand for the Travellin\' Man', 'Flamenco', 'Putting Down', 'We Want to Be It', 'Fifty-Mission Cap', 'Little Bones', 'Greasy Jungle', 'The Last of the Unplucked Gems', 'Fiddler\'s Green', 'Machine', 'What Blue', 'It\'s a Good Life If You Don\'t Weaken', 'Ahead by a Century'] },
 ];
 
 const compilationAlbums = [
   { num: '01', title: 'Yer Favourites', year: '2005', releaseDate: 'November 1, 2005', type: 'Compilation', img: 'assets-optimized/compilations/Yer-Favourites.jpg',
     gradient: 'linear-gradient(145deg, #200010 0%, #500028 50%, #100008 100%)',
-    desc: 'Fan-voted greatest hits collection. 35 remastered classics plus 2 new songs, selected by over 150,000 fans through the band\'s website. Debuted at #1 on the Canadian Albums Chart. Certified Diamond in Canada.',
-    label: 'Universal Music Canada', producer: '', chart: '#1', units: 'Diamond (Canada)', bestRank: null, singles: [],
+    desc: 'Fan-voted greatest hits collection. 35 remastered classics plus 2 new songs, selected by over 150,000 fans through the band\'s website. Debuted at number one on the Canadian Albums Chart. Certified Diamond in Canada.',
+    label: 'Universal Music Canada', producer: '', chart: 'No. 1', units: 'Diamond (Canada)', bestRank: null, singles: [],
     tracks: ['No Threat', 'Grace, Too', 'My Music at Work', '38 Years Old', 'Gift Shop', 'Ahead by a Century', 'Vaccination Scar', 'Three Pistols', 'So Hard Done By', 'Fiddler\'s Green', 'Looking for a Place to Happen', 'Cordelia', 'It\'s a Good Life If You Don\'t Weaken', 'Blow at High Dough', 'Wheat Kings', 'Fifty-Mission Cap', 'New Orleans Is Sinking', 'Escape Is at Hand for the Travellin\' Man', 'Fully Completely', 'Twist My Arm', 'Courage (for Hugh MacLennan)', 'Lake Fever', 'Poets', 'Fireworks', 'Boots or Hearts', 'Bobcaygeon', 'Nautical Disaster', 'Highway Girl', 'Gus: The Polar Bear from Central Park', 'Scared', 'Something On', 'At the Hundredth Meridian', 'Long Time Running', 'The Darkest One', 'Locked in the Trunk of a Car', 'Little Bones', 'The New Maybe'] },
 ];
 
 const boxSetAlbums = [
   { num: '01', title: 'Hipeponymous', year: '2005', releaseDate: 'November 1, 2005', type: 'Box Set', img: 'assets-optimized/box-sets/Hipeponymous.jpg',
     gradient: 'linear-gradient(145deg, #1A0020 0%, #3D0048 50%, #0F0012 100%)',
-    desc: 'Limited-edition box set featuring the Yer Favourites 2-CD compilation, a live concert DVD from the Air Canada Centre (Nov 26, 2004), a complete music video collection, and the Macroscopic backstage documentary. Certified Platinum in Canada.',
+    desc: 'Limited-edition box set featuring the "Yer Favourites" 2-CD compilation, a live concert DVD from the Air Canada Centre (Nov 26, 2004), a complete music video collection, and the "Macroscopic" backstage documentary. Certified Platinum in Canada.',
     junoAwards: ['CD/DVD Artwork Design of the Year (2006)', 'Music DVD of the Year (2006)'],
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Platinum (Canada)', bestRank: null, singles: [],
     tracks: ['No Threat', 'Grace, Too', 'My Music at Work', '38 Years Old', 'Gift Shop', 'Ahead by a Century', 'Vaccination Scar', 'Three Pistols', 'So Hard Done By', 'Fiddler\'s Green', 'Looking for a Place to Happen', 'Cordelia', 'It\'s a Good Life If You Don\'t Weaken', 'Blow at High Dough', 'Wheat Kings', 'Fifty-Mission Cap', 'New Orleans Is Sinking', 'Escape Is at Hand for the Travellin\' Man', 'Fully Completely', 'Twist My Arm', 'Courage (for Hugh MacLennan)', 'Lake Fever', 'Poets', 'Fireworks', 'Boots or Hearts', 'Bobcaygeon', 'Nautical Disaster', 'Highway Girl', 'Gus: The Polar Bear from Central Park', 'Scared', 'Something On', 'At the Hundredth Meridian', 'Long Time Running', 'The Darkest One', 'Locked in the Trunk of a Car', 'Little Bones', 'The New Maybe'] },
   { num: '02', title: 'Fully Completely Box Set', year: '2014', releaseDate: 'November 17, 2014', type: 'Box Set', img: 'assets-optimized/box-sets/Fully-Completely-Box-Set.jpg',
     gradient: 'linear-gradient(145deg, #2A1A00 0%, #5C3A00 50%, #1A0E00 100%)',
-    desc: 'Deluxe 2014 reissue of Fully Completely. Disc 1 is the remastered album plus two unreleased songs from the sessions, Radio Show and So Hard Done By. Disc 2 is Live at the Horseshoe Tavern, Toronto, September 13, 1992. The Super Deluxe edition adds the Heksenketel documentary on DVD/Blu-ray.',
+    desc: 'Deluxe 2014 reissue of "Fully Completely". Disc 1 is the remastered album plus two unreleased songs from the sessions, \'Radio Show\' and \'So Hard Done By\'. Disc 2 is Live at the Horseshoe Tavern, Toronto, September 13, 1992. The Super Deluxe edition adds the Heksenketel documentary on DVD/Blu-ray.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go Too', 'Fully Completely', 'Fifty-Mission Cap', 'Wheat Kings', 'The Wherewithal', 'Eldorado', 'Radio Show', 'So Hard Done By', 'At the Hundredth Meridian (Live)', 'Fifty-Mission Cap (Live)', 'We\'ll Go Too (Live)', 'Fully Completely (Live)', 'Pigeon Camera (Live)', 'Twist My Arm (Live)', 'Lionized (Live)', 'Wheat Kings (Live)', 'Eldorado (Live)', 'Looking for a Place to Happen (Live)', 'Courage (for Hugh MacLennan) (Live)', 'Locked in the Trunk of a Car (Live)', 'The Wherewithal (Live)'] },
   { num: '03', title: 'Road Apples Box Set', year: '2021', releaseDate: 'November 12, 2021', type: 'Box Set', img: 'assets-optimized/box-sets/Road-Apples-Box-Set.jpg',
     gradient: 'linear-gradient(145deg, #0D2200 0%, #235E00 50%, #091500 100%)',
-    desc: '30th anniversary deluxe edition of Road Apples. Disc 1 is the remastered album. Disc 2 is Saskadelphia. Disc 3 is Live at the Roxy, Los Angeles, May 3, 1991. Disc 4 is Hoof Hearted, nine unreleased demos, outtakes, and alternate versions, including If You Lived Here and Angst on the Planks (the demo of Cordelia). A Blu-ray carries Dolby Atmos, 5.1, and binaural mixes.',
+    desc: '30th anniversary deluxe edition of "Road Apples". Disc 1 is the remastered album. Disc 2 is "Saskadelphia". Disc 3 is Live at the Roxy, Los Angeles, May 3, 1991. Disc 4 is "Hoof Hearted", nine unreleased demos, outtakes, and alternate versions, including \'If You Lived Here\' and \'Angst on the Planks\' (the demo of \'Cordelia\'). A Blu-ray carries Dolby Atmos, 5.1, and binaural mixes.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Little Bones', 'Twist My Arm', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Bring It All Back', 'Three Pistols', 'Fight', 'On the Verge', 'Fiddler\'s Green', 'The Last of the Unplucked Gems', 'Ouch', 'Not Necessary', 'Montreal (Live)', 'Crack My Spine Like a Whip', 'Just as Well', 'Reformed Baptist Blues', 'Little Bones (Live)', 'She Didn\'t Know (Live)', 'Twist My Arm (Live)', 'Highway Girl (Live)', 'Cordelia (Live)', 'Trickle Down (Live)', 'The Luxury (Live)', 'Three Pistols (Live)', 'Fight (Live)', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight) (Live)', 'New Orleans Is Sinking (Live)', 'On the Verge (Live)', 'Long Time Running (Live)', 'Blow at High Dough (Live)', 'All Canadian Surf Club (Live)', 'Cordelia (Alternate Version)', 'Bring It All Back (Demo)', 'Fiddler\'s Green (Alternate Version)', 'Fight (Alternate Version)', 'Born in the Water (Alternate Version)', 'Little Bones (Alternate Version)', 'If You Lived Here (Demo)', 'Angst on the Planks (Demo)', 'The Last of the Unplucked Gems (Alternate Version)'] },
   { num: '04', title: 'Phantom Power Box Set', year: '2023', releaseDate: 'November 3, 2023', type: 'Box Set', img: 'assets-optimized/box-sets/Phantom-Power-Box-Set.jpg',
     gradient: 'linear-gradient(145deg, #1A001A 0%, #4A0050 50%, #0E000E 100%)',
-    desc: '25th anniversary deluxe edition of Phantom Power. Disc 1 is the remastered album plus five unreleased songs from the sessions: Bumblebee, Insomniacs, Songwriters Cabal, Vegas Strip, and Mystery. Disc 2 is Live at the Metropol, Pittsburgh, October 2, 1998. Disc 3 has Poets (Super Farmer Nano Baby Version) and six alternate mixes.',
+    desc: '25th anniversary deluxe edition of "Phantom Power". Disc 1 is the remastered album plus five unreleased songs from the sessions: \'Bumblebee\', \'Insomniacs\', \'Songwriters Cabal\', \'Vegas Strip\', and \'Mystery\'. Disc 2 is Live at the Metropol, Pittsburgh, October 2, 1998. Disc 3 has \'Poets (Super Farmer Nano Baby Version)\' and six alternate mixes.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Poets', 'Something On', 'Save the Planet', 'Bobcaygeon', 'Thompson Girl', 'Membership', 'Fireworks', 'Vapour Trails', 'The Rules', 'Chagrin Falls', 'Escape Is at Hand for the Travellin\' Man', 'Emperor Penguin', 'Bumblebee', 'Insomniacs', 'Songwriters Cabal', 'Vegas Strip', 'Mystery', 'Save the Planet (Live)', 'Twist My Arm (Live)', 'Poets (Live)', 'Gift Shop (Live)', 'Bobcaygeon (Live)', 'Nautical Disaster (Live)', 'Ahead by a Century (Live)', 'The Luxury (Live)', 'Fireworks (Live)', 'Springtime in Vienna (Live)', 'Chagrin Falls (Live)', 'New Orleans Is Sinking (Live)', 'Grace, Too (Live)', 'Escape Is at Hand for the Travellin\' Man (Live)', 'At the Hundredth Meridian (Live)', 'Poets (Super Farmer Nano Baby Version)', 'Something On (Alternate Version)', 'Chagrin Falls (Alternate Version)', 'Fireworks (Alternate Version)', 'Thompson Girl (Alternate Version)', 'Escape Is at Hand for the Travellin\' Man (Alternate Version)', 'Bobcaygeon (Alternate Version)'] },
-  { num: '05', title: 'Up To Here Box Set', year: '2024', releaseDate: 'November 8, 2024', type: 'Box Set', img: 'assets-optimized/box-sets/Up-to-Here-Box-Set.jpg',
+  { num: '05', title: 'Up to Here Box Set', year: '2024', releaseDate: 'November 8, 2024', type: 'Box Set', img: 'assets-optimized/box-sets/Up-to-Here-Box-Set.jpg',
     gradient: 'linear-gradient(145deg, #002040 0%, #003D7A 50%, #001529 100%)',
-    desc: '35th anniversary deluxe edition of Up to Here. Disc 1 is the remastered album. Disc 2 is Live From the Misty Moon, Halifax, April 26, 1990, plus four unreleased studio tracks: She\'s Got What It Takes, Get Back Again, Rain, Hearts and Fire, and Wait So Long. Disc 3 is How We Got Here - The 1988 Demos. A Blu-ray has a Dolby Atmos mix and the Misty Moon concert film.',
+    desc: '35th anniversary deluxe edition of "Up to Here". Disc 1 is the remastered album. Disc 2 is Live From the Misty Moon, Halifax, April 26, 1990, plus four unreleased studio tracks: \'She\'s Got What It Takes\', \'Get Back Again\', \'Rain, Hearts and Fire\', and \'Wait So Long\'. Disc 3 is "How We Got Here - The 1988 Demos". A Blu-ray has a Dolby Atmos mix and the Misty Moon concert film.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Blow at High Dough', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight)', 'New Orleans Is Sinking', '38 Years Old', 'She Didn\'t Know', 'Boots or Hearts', 'Everytime You Go', 'When the Weight Comes Down', 'Trickle Down', 'Another Midnight', 'Opiated', 'Crack My Spine Like a Whip (Live)', 'She Didn\'t Know (Live)', 'Highway Girl (Live)', 'Just as Well (Live)', 'Boots or Hearts (Live)', 'Trickle Down (Live)', 'Get Back Again (Live)', 'Three Pistols (Live)', 'Fight (Live)', '38 Years Old (Live)', 'Blow at High Dough (Live)', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight) (Live)', 'New Orleans Is Sinking (Live)', 'On the Verge (Live)', 'She\'s Got What It Takes', 'Get Back Again', 'Rain, Hearts and Fire', 'Wait So Long', 'Hailstone Hands of God (Demo)', 'When the Weight Comes Down (Demo)', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight) (Demo)', 'New Orleans Is Sinking (Demo)', 'Rain, Hearts and Fire (Demo)', 'She Didn\'t Know (Demo)', 'Blow at High Dough (Demo)', 'Boots or Hearts (Demo)', 'Everytime You Go (Demo)', 'Just Another Midnight (Demo)'] },
 ];
@@ -348,44 +348,44 @@ const epAlbums = [
     desc: 'Self-titled debut EP - seven tracks on cassette, eight on CD. First national release January 1988. Produced by Red Rider guitarist Ken Greer for $5,000.',
     label: 'MCA Records', producer: 'Ken Greer (Red Rider)', chart: '', units: '', bestRank: null,
     singles: [
-      { title: 'Small Town Bringdown', rank: 'Road #90' },
-      { title: 'Highway Girl', rank: 'Road #60' },
+      { title: 'Small Town Bringdown', rank: 'Road No. 90' },
+      { title: 'Highway Girl', rank: 'Road No. 60' },
     ],
     tracks: ['Small Town Bringdown', 'Last American Exit', 'Killing Time', 'Evelyn', 'Cemetery Sideroad', 'I\'m a Werewolf, Baby', 'Highway Girl', 'All Canadian Surf Club'] },
   { num: '02', title: 'Saskadelphia', year: '2021', releaseDate: 'May 21, 2021', type: 'EP', img: 'assets-optimized/eps/Saskadelphia.jpg',
     gradient: 'linear-gradient(145deg, #2A1500 0%, #5C3200 50%, #1A0D00 100%)',
-    desc: 'Six previously unreleased tracks from the 1990 Road Apples recording sessions at Daniel Lanois\'s Kingsway Studio in New Orleans. First release since Gord Downie\'s passing in 2017. Originally the working title of Road Apples before the label rejected it. Debuted at #2 in Canada and #66 on Billboard\'s US Top Current Albums chart.',
-    label: 'Universal Music Canada', producer: 'Don Smith', chart: '#2', units: '', bestRank: null, singles: [],
+    desc: 'Six previously unreleased tracks from the 1990 "Road Apples" recording sessions at Daniel Lanois\'s Kingsway Studio in New Orleans. First release since Gord Downie\'s passing in 2017. "Saskadelphia" was originally the working title of "Road Apples" before the label rejected it. Debuted at No. 2 in Canada and No. 66 on Billboard\'s US Top Current Albums chart.',
+    label: 'Universal Music Canada', producer: 'Don Smith', chart: 'No. 2', units: '', bestRank: null, singles: [],
     tracks: ['Ouch', 'Not Necessary', 'Montreal (Live)', 'Crack My Spine Like a Whip', 'Just as Well', 'Reformed Baptist Blues'] },
 ];
 
 const videoAlbums = [
   { num: '01', title: 'Heksenketel', year: '1993', releaseDate: '1993', type: 'Video', img: 'assets-optimized/video-albums/Heksenketel.jpg',
     gradient: 'linear-gradient(145deg, #1A1A0A 0%, #3D3D1A 50%, #0F0F05 100%)',
-    desc: 'Tour documentary following the band across Canada during the 1993 Another Roadside Attraction tour. The name is Dutch for "witch\'s cauldron" - the original working title for the tour. Primarily backstage and tour bus footage. Reissued on DVD/Blu-ray in the 2014 Fully Completely Super Deluxe Box Set.',
+    desc: 'Tour documentary following the band across Canada during the 1993 Another Roadside Attraction tour. The name is Dutch for "witch\'s cauldron" - the original working title for the tour. Primarily backstage and tour bus footage. Reissued on DVD/Blu-ray in the 2014 "Fully Completely" Super Deluxe Box Set.',
     label: 'MCA Records', producer: '', chart: '', units: 'Gold (Canada)', bestRank: null, singles: [], tracks: [] },
   { num: '02', title: 'That Night in Toronto', year: '2005', releaseDate: 'November 8, 2005', type: 'Video', img: 'assets-optimized/video-albums/That-Night-in-Toronto.jpg',
     gradient: 'linear-gradient(145deg, #0A0A2A 0%, #1A1A5A 50%, #050518 100%)',
-    desc: 'Full unedited concert film from the Air Canada Centre on November 26, 2004 during the In Between Evolution tour. Directed by Pierre and Francois Lamoureux. Filmed in HD with 5.1 surround. 18,000 in attendance, three encores. Also released as part of the Hipeponymous box set.',
+    desc: 'Full unedited concert film from the Air Canada Centre on November 26, 2004 during the In Between Evolution tour. Directed by Pierre and Francois Lamoureux. Filmed in HD with 5.1 surround. 18,000 in attendance, three encores. Also released as part of the "Hipeponymous" box set.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '5x Platinum (Canada)', bestRank: null, singles: [],
     tracks: ['Vaccination Scar', 'Fully Completely', 'Grace, Too', 'Summer\'s Killing Us', 'Ahead by a Century', 'Silver Jet', 'As Makeshift as We Are', 'Courage (for Hugh MacLennan)', 'Bobcaygeon', 'Nautical Disaster', 'Gus: The Polar Bear from Central Park', 'Poets', 'At the Hundredth Meridian', 'It Can\'t Be Nashville Every Night', 'My Music at Work', 'New Orleans Is Sinking', 'Heaven Is a Better Place Today', 'It\'s a Good Life If You Don\'t Weaken', 'Little Bones', 'Gift Shop', 'Springtime in Vienna', 'Three Pistols', 'Boots or Hearts', 'Blow at High Dough'] },
   { num: '03', title: 'Bobcaygeon', year: '2012', releaseDate: 'November 19, 2012', type: 'Video', img: 'assets-optimized/video-albums/Bobcaygeon.jpg',
     gradient: 'linear-gradient(145deg, #0A1A0A 0%, #1A3D1A 50%, #050F05 100%)',
-    desc: 'Documentary film directed by Andy Keen chronicling the band\'s headline set at Big Music Fest in Bobcaygeon, Ontario on June 25, 2011 - 25,000 fans pilgrimed to the small town (pop. 2,500) that inspired one of their most beloved songs. The band doesn\'t take the stage until 49 minutes in.',
+    desc: 'Documentary film directed by Andy Keen chronicling the band\'s headline set at Big Music Fest in Bobcaygeon, Ontario on June 25, 2011 - 25,000 fans made the pilgrimage to the small town (pop. 2,500) that inspired one of their most beloved songs. The band doesn\'t take the stage until 49 minutes in.',
     junoAwards: ['Music DVD of the Year (2013)'],
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Gold (Canada)', bestRank: null, singles: [], tracks: [] },
   { num: '04', title: 'Long Time Running', year: '2017', releaseDate: 'September 14, 2017', type: 'Video', img: 'assets-optimized/video-albums/Long-Time-Running.jpg',
     gradient: 'linear-gradient(145deg, #1A0D00 0%, #3D2200 50%, #0F0700 100%)',
-    desc: 'Feature documentary by Jennifer Baichwal and Nicholas de Pencier following the band during their final 2016 Man Machine Poem Tour after Gord Downie\'s terminal brain cancer diagnosis. Premiered at TIFF 2017, named First Runner-Up for the People\'s Choice Documentary Award. Originally aired on CTV; moved up after Downie\'s passing.',
+    desc: 'Feature documentary by Jennifer Baichwal and Nicholas de Pencier following the band during their final 2016 Man Machine Poem Tour after Gord Downie\'s terminal brain cancer diagnosis. Premiered at TIFF 2017, named First Runner-Up for the People\'s Choice Documentary Award. Originally aired on CTV; moved up after Gord\'s passing.',
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Platinum (Canada)', bestRank: null, singles: [], tracks: [] },
   { num: '05', title: 'A National Celebration', year: '2017', releaseDate: 'December 8, 2017', type: 'Video', img: 'assets-optimized/video-albums/A-National-Celebration.jpg',
     gradient: 'linear-gradient(145deg, #2A0000 0%, #5A0A0A 50%, #1A0000 100%)',
-    desc: 'The complete final concert — August 20, 2016, Rogers K-Rock Centre, Kingston, Ontario. Originally broadcast live by CBC to an estimated 11.7 million Canadians, roughly one-third of the country. All 30 songs presented with no overdubs or corrections. Directed by Dave Russell. Audio mixed by Rich Chycki, mastered by Bob Ludwig.',
+    desc: 'The complete final concert - August 20, 2016, Rogers K-Rock Centre, Kingston, Ontario. Originally broadcast live by CBC to an estimated 11.7 million Canadians, roughly one-third of the country. All 30 songs presented with no overdubs or corrections. Directed by Dave Russell. Audio mixed by Rich Chycki, mastered by Bob Ludwig.',
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Platinum (Canada)', bestRank: null, singles: [],
     tracks: ['Fifty-Mission Cap', 'Courage (for Hugh MacLennan)', 'Wheat Kings', 'At the Hundredth Meridian', 'In a World Possessed by the Human Mind', 'What Blue', 'Tired as Fuck', 'Machine', 'My Music at Work', 'Lake Fever', 'Toronto #4', 'Putting Down', 'Twist My Arm', 'Three Pistols', 'Fiddler\'s Green', 'Little Bones', 'Last of the Unplucked Gems', 'Something On', 'Poets', 'Bobcaygeon', 'Fireworks', 'New Orleans Is Sinking', 'Boots or Hearts', 'Blow at High Dough', 'Nautical Disaster', 'Scared', 'Grace, Too', 'Locked in the Trunk of a Car', 'Gift Shop', 'Ahead by a Century'] },
   { num: '06', title: 'No Dress Rehearsal', year: '2024', releaseDate: 'September 20, 2024', type: 'Video', img: 'assets-optimized/video-albums/No-Dress-Rehearsal.jpeg',
     gradient: 'linear-gradient(145deg, #0A0A1A 0%, #1A1A3D 50%, #05050F 100%)',
-    desc: 'Four-part documentary series directed by Mike Downie, Gord\'s brother. Premiered at TIFF 2024 and streamed on Prime Video, becoming the most-watched Canadian documentary series on the platform. Features never-before-seen performances, unreleased music, and unprecedented access spanning 40 years of the band. IMDB rating: 9.3/10.',
+    desc: 'Four-part documentary series directed by Mike Downie, Gord\'s brother. Premiered at TIFF 2024 and streamed on Prime Video, becoming the most-watched Canadian documentary series on the platform. Features never-before-seen performances, unreleased music, and behind-the-scenes access spanning 40 years of the band. IMDb rating: 9.3/10.',
     label: 'Amazon MGM Studios / Banger Films', producer: 'Mike Downie, Sam Coyle, Scot McFadyen', chart: '', units: '', bestRank: null, singles: [], tracks: [] },
 ];
 
@@ -394,11 +394,11 @@ const soloProjects = {
   downie: {
     name: 'Gord Downie',
     role: 'Vocals / Lyrics - The Tragically Hip (1984-2017)',
-    bio: 'Gord Downie pursued a solo career alongside the Hip beginning in 2001, releasing a series of records that drew on indie rock, Americana, folk, and spoken word. He released five solo albums during his lifetime, with four posthumous releases following his death from glioblastoma on October 17, 2017. His final completed project, Secret Path (2016), was a multimedia concept album about Chanie Wenjack and became a landmark in Canadian reconciliation.',
+    bio: 'Gord Downie pursued a solo career alongside The Hip beginning in 2001, releasing a series of records that drew on indie rock, Americana, folk, and spoken word. He released five solo albums during his lifetime, with four posthumous releases following his death from glioblastoma on October 17, 2017. His final completed project, "Secret Path" (2016), was a multimedia concept album about Chanie Wenjack and became a landmark in Canadian reconciliation.',
     albums: [
       { title: 'Coke Machine Glow', year: '2001', credit: 'Gordon Downie w/ The Goddamned Band', img: 'assets-optimized/solo-projects/Gord Downie/Coke-Machine-Glow.jpg', notes: 'Solo debut. Folk/indie rock. Accompanied by poetry book of same name.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
         tracks: ['Starpainters','Vancouver Divorce','SF Song','Trick Rider','Canada Geese','Chancellor','The Never-Ending Present','Nothing But Heartache in Your Social Life','Blackflies','Lofty Pines','Boy Bruised By Butterfly Chase','Mystery','Elaborate','Yer Possessed','Every Irrelevance','Insomniacs of the World, Good Night'] },
-      { title: 'Battle of the Nudes', year: '2003', credit: 'Gordon Downie w/ Country of Miracles', img: 'assets-optimized/solo-projects/Gord Downie/Battle-of-the-Nudes.jpg', notes: 'Harder-edged follow-up. Features Christmastime in Toronto.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
+      { title: 'Battle of the Nudes', year: '2003', credit: 'Gordon Downie w/ Country of Miracles', img: 'assets-optimized/solo-projects/Gord Downie/Battle-of-the-Nudes.jpg', notes: 'Harder-edged follow-up. Features \'Christmastime in Toronto\'.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
         tracks: ['Into the Night','Figment','Christmastime in Toronto','Willow Logic','Pascal\'s Submarine','11th Fret','Who by Rote','Steeplechase','More Me Less You','We\'re Hardcore','Pillform No. 2','Pillform No. 1'] },
       { title: 'The Grand Bounce', year: '2010', credit: 'Gord Downie & the Country of Miracles', img: 'assets-optimized/solo-projects/Gord Downie/The-Grand-Bounce.jpg', notes: 'Third solo effort. Backing band includes The Dinner Is Ruined.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)',
         tracks: ['The East Wind','Moon over Glenora','As a Mover','The Dance and Its Disappearance','The Hard Canadian','Gone','The Drowning Machine','Yellow Days','Night Is for Getting','Moonslow Yer Lashes','Retrace','Broadcast','Pinned'] },
@@ -410,7 +410,7 @@ const soloProjects = {
         tracks: ['First Person','Wolf\'s Home','Bedtime','Introduce Yerself','Coco Chanel No.5','Ricky Please','Safe Is Dead','Spoon','A Natural','Faith Faith','My First Girlfriend','Yer Ashore','Love over Money','You Me and the B\'s','Snowflake','A Better End','Nancy','Thinking About Us','The Road','You Are the Bird','The Lake','Far Away and Blurred','The North'] },
       { title: 'Away Is Mine', year: '2020', credit: 'Gord Downie', img: 'assets-optimized/solo-projects/Gord Downie/Away-Is-Mine.jpg', notes: 'Posthumous. Co-written with longtime collaborator Josh Finlayson.', gradient: 'linear-gradient(145deg, #0D1A1A 0%, #1A3D3D 50%, #060F0F 100%)', posthumous: true,
         tracks: ['Hotel Worth','Useless Nights','I Am Lost','About Blank','River Don\'t Care','The Least Impossible','Traffic Is Magic','Away Is Mine','No Solace','Untitled','Hotel Worth (Acoustic)','Useless Nights (Acoustic)','I Am Lost (Acoustic)','About Blank (Acoustic)','River Don\'t Care (Acoustic)','The Least Impossible (Acoustic)','Traffic Is Magic (Acoustic)','Away Is Mine (Acoustic)','No Solace (Acoustic)','Untitled (Acoustic)'] },
-      { title: 'Lustre Parfait', year: '2023', credit: 'Gord Downie & Bob Rock', img: 'assets-optimized/solo-projects/Gord Downie/Lustre-Parfait.jpg', notes: 'Posthumous. Sessions begun during Downie\'s lifetime with producer Bob Rock.', gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)', posthumous: true,
+      { title: 'Lustre Parfait', year: '2023', credit: 'Gord Downie & Bob Rock', img: 'assets-optimized/solo-projects/Gord Downie/Lustre-Parfait.jpg', notes: 'Posthumous. Sessions begun during Gord\'s lifetime with producer Bob Rock.', gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)', posthumous: true,
         tracks: ['Greyboy Says','The Raven and the Red-Tailed Hawk','Lustre Parfait','The Moment Is a Wild Place','Something More','Camaro','The North Shore','Is There Nowhere','To Catch the Truth','Let Me Howl','HellBreaksLoose','The Safest Day of the Year','In the Field','There Goes the Sun'] },
       { title: 'Live at 6 O\'Clock', year: '2026', credit: 'Gord Downie, The Sadies & The Conquering Sun', img: 'assets-optimized/solo-projects/Gord Downie/Live-at-Six.jpg', notes: 'Posthumous. 8 live tracks from 4 festival sets, 2014 summer tour. Arts & Crafts.', gradient: 'linear-gradient(145deg, #1A1A0D 0%, #3D3D1A 50%, #0F0F06 100%)', posthumous: true,
         tracks: ['If You Have Ghosts','So Sad About Us','It Didn\'t Start to Break My Heart Until This Afternoon','Grey Riders','Generation','Goodbye Johnny','Demand Destruction','I Got a Right'] },
@@ -421,7 +421,7 @@ const soloProjects = {
     role: 'Lead Guitar - The Tragically Hip (1984-2017)',
     bio: 'Rob Baker formed Stripper\'s Union with Craig Northey (The Odds) after decades of accumulated instrumental ideas that needed a lyricist and vocalist. The partnership has produced three albums, all recorded at The Bathouse Recording Studio in Bath, Ontario.',
     albums: [
-      { title: 'Stripper\'s Union Local 518', year: '2006', credit: 'Stripper\'s Union', img: 'assets-optimized/solo-projects/Robby Baker/Local-518.jpg', notes: 'Debut. Recorded at The Bathouse. Top 10 rock radio hit Give Up and Go Away.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+      { title: 'Stripper\'s Union Local 518', year: '2006', credit: 'Stripper\'s Union', img: 'assets-optimized/solo-projects/Robby Baker/Local-518.jpg', notes: 'Debut. Recorded at The Bathouse. Top 10 rock radio hit \'Give Up and Go Away\'.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
         tracks: ['Shake It Off (Walkin\' with the King o\' Funk)','Full Flow Angry Boy','No Ones Watching','Bullet-Proof White Limo','Lost Lost Highway','Everybody Knows the Words','Give Up and Go Away','Local Bear','Horses and Trains (Harmonica Miner)','Nothing Can Bring You Back','Sweet and Low (2nd Last Temptation)','The Radio (Foggy Hill)','Wave After Wave'] },
       { title: 'The Deuce', year: '2011', credit: 'Stripper\'s Union', img: 'assets-optimized/solo-projects/Robby Baker/The-Deuce.jpg', notes: 'Blend of blues, jazz, and country rock. Deluxe edition available.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
         tracks: ['Making Strange','When Your Beauty Fades','Only Lows (You\'ll Be Lonely)','High','I Give You Away','Nala','Burn the Bridge Down','Fade to Black','Whiteout','The Circle Is Small'] },
@@ -432,7 +432,7 @@ const soloProjects = {
   langlois: {
     name: 'Paul Langlois',
     role: 'Rhythm Guitar - The Tragically Hip (1986-2017)',
-    bio: 'Paul Langlois released two solo albums before forming the Paul Langlois Band. His fourth and most recent album, Smooth Rock Falls, was a surprise digital release in February 2026. All releases are on his own Ching Music label.',
+    bio: 'Paul Langlois released two solo albums before forming the Paul Langlois Band. His fourth and most recent album, "Smooth Rock Falls", was a surprise digital release in February 2026. All releases are on his own Ching Music label.',
     albums: [
       { title: 'Fix This Head', year: '2010', credit: 'Paul Langlois', img: 'assets-optimized/solo-projects/Paul Langlois/Fix-This-Head.jpg', notes: 'Solo debut. Released on Ching Music, the label Langlois founded in 2005.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
         tracks: ['Broken Road','Fix This Head','Can\'t Wait Anymore','Confidences','Shattered Down','If I Were You','Cards','House I Fix','Homeless in Aspen','Things I Should Have Said'] },
@@ -447,9 +447,9 @@ const soloProjects = {
   sinclair: {
     name: 'Gord Sinclair',
     role: 'Bass Guitar / Backing Vocals - The Tragically Hip (1984-2017)',
-    bio: 'The first surviving Hip member to release new music after Gord Downie\'s death, Gord Sinclair described himself as a "reluctant solo artist." Taxi Dancers (2020) was created while processing the loss of his lifelong friend and bandmate.',
+    bio: 'The first surviving member of The Hip to release new music after Gord Downie\'s death, Gord Sinclair described himself as a "reluctant solo artist." "Taxi Dancers" (2020) was created while processing the loss of his lifelong friend and bandmate.',
     albums: [
-      { title: 'Taxi Dancers', year: '2020', credit: 'Gord Sinclair', img: 'assets-optimized/solo-projects/Gord Sinclair/Taxi-Dancers.jpg', notes: 'Solo debut. First new music from any Hip member post-Downie. Pheromone Recordings.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
+      { title: 'Taxi Dancers', year: '2020', credit: 'Gord Sinclair', img: 'assets-optimized/solo-projects/Gord Sinclair/Taxi-Dancers.jpg', notes: 'Solo debut. First new music from any member of The Hip since Gord\'s passing. Pheromone Recordings.', gradient: 'linear-gradient(145deg, #1A0A00 0%, #3D2200 50%, #0F0500 100%)',
         tracks: ['It\'s Already Too Late','Wonderful Way','In the Next Life','Forward March Fight','Your Comet Drowns Out the Star Filled Sky','Up and Over','Change of Heart','No Words','Never Coming Back','Take Me to the Moon'] },
       { title: 'In Continental Drift', year: '2023', credit: 'Gord Sinclair', img: 'assets-optimized/solo-projects/Gord Sinclair/In-Continental-Drift.jpeg', notes: 'Sophomore album. More confident vocal range. Pheromone / Cadence Music Group.', gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
         tracks: ['Gool Guy','Sometimes','It\'s Hard to Believe','Now That\'s Gone Too','Carole\'en','Change Your Mind','Over and Over Again','I\'m Getting By','All the Way'] },
@@ -458,7 +458,7 @@ const soloProjects = {
   fay: {
     name: 'Johnny Fay',
     role: 'Drums - The Tragically Hip (1984-2017)',
-    bio: 'Johnny Fay\'s Mercury Sea EP is a significant departure from his three decades behind the kit with the Hip. A 6-track ambient and atmospheric work inspired by explorer Aleksander Doba\'s solo kayak crossings of the Atlantic Ocean. Mixed by Grammy-winning producer David Bottrill.',
+    bio: 'Johnny Fay\'s "Mercury Sea" EP is a significant departure from his three decades behind the kit with The Hip. A 6-track ambient and atmospheric work inspired by explorer Aleksander Doba\'s solo kayak crossings of the Atlantic Ocean. Mixed by Grammy-winning producer David Bottrill.',
     albums: [
       { title: 'Mercury Sea', year: '2025', credit: 'Johnny Fay', img: 'assets-optimized/solo-projects/Johnny Fay/Mercury-Sea.jpg', notes: '6-track ambient EP. Released Jan 22, 2025. Mixed by David Bottrill.', gradient: 'linear-gradient(145deg, #0D0D1A 0%, #1A1A3D 50%, #06060F 100%)',
         tracks: ['Endurance (Aleksander Doba)','Twin Crossings','Glowstate','Nassau Cloud','Time Shift','Glittering'] },
@@ -485,7 +485,7 @@ const categoryData = {
 const categoryStats = {
   studio: [
     { num: '13', lbl: 'Studio Albums' },
-    { num: '9', lbl: 'Canadian #1s' },
+    { num: '9', lbl: 'Canadian number ones' },
     { num: '1989', lbl: 'First Release' },
     { num: '2016', lbl: 'Final Album' },
   ],
@@ -523,7 +523,7 @@ const categoryStats = {
     { num: '40', lbl: 'Songs Ranked' },
     { num: '2025', lbl: 'Countdown Year' },
     { num: '13', lbl: 'Albums Featured' },
-    { num: '#1', lbl: 'Grace, Too' },
+    { num: 'No. 1', lbl: 'Grace, Too' },
   ],
   solo: [
     { num: '5', lbl: 'Members' },
@@ -580,7 +580,7 @@ const spotifyAlbumURLs = {
   'Fully Completely Box Set': 'https://open.spotify.com/album/6dWzo61hYvRtiKDblfwU4C',
   'Road Apples Box Set': 'https://open.spotify.com/album/6DZzcs4OnSsyUWIWb3TnSA',
   'Phantom Power Box Set': 'https://open.spotify.com/album/1HSX49MRRoXiT8DCN2xTet',
-  'Up To Here Box Set': 'https://open.spotify.com/album/5548ROx9ZxjJ2iXCq9DLI6',
+  'Up to Here Box Set': 'https://open.spotify.com/album/5548ROx9ZxjJ2iXCq9DLI6',
   'The Tragically Hip': 'https://open.spotify.com/album/40agYF5r1Q9nra0qu8qPSs',
   'Saskadelphia': 'https://open.spotify.com/album/4K4TmKxqAJLQfsIuwb7per',
 };
@@ -676,7 +676,7 @@ const appleMusicAlbumURLs = {
   'That Night in Toronto': 'https://music.apple.com/ca/album/that-night-in-toronto-live/1440776402',
   'Yer Favourites': 'https://music.apple.com/ca/album/yer-favourites/1440817057',
   'Fully Completely Box Set': 'https://music.apple.com/ca/album/fully-completely-deluxe-version/1422703267',
-  'Up To Here Box Set': 'https://music.apple.com/ca/album/up-to-here-deluxe/1750989687',
+  'Up to Here Box Set': 'https://music.apple.com/ca/album/up-to-here-deluxe/1750989687',
   'Phantom Power Box Set': 'https://music.apple.com/ca/album/phantom-power-deluxe/1704043571',
   'The Tragically Hip': 'https://music.apple.com/ca/album/the-tragically-hip-ep/1440827504',
   'Saskadelphia': 'https://music.apple.com/ca/album/saskadelphia-ep/1566475818',
@@ -1306,7 +1306,7 @@ function getSingleTitles(album) {
 function rankClass(rankStr) {
   if (rankStr === 'Unranked') return 'unranked';
   if (rankStr.startsWith('Road')) return 'road';
-  const n = parseInt(rankStr.replace('Top 40 #',''));
+  const n = parseInt(rankStr.replace('Top 40 No. ',''));
   if (n <= 10) return 't10';
   return 't40';
 }
@@ -1337,10 +1337,10 @@ async function renderMyShows() {
   if (memberHeaderEl) {
     const session = (window.TTHMember && window.TTHMember.getSession) ? window.TTHMember.getSession() : null;
     if (session && session.firstName) {
-      memberHeaderEl.textContent = `Yer Shows, ${session.firstName} (#${session.memberNumber})`;
+      memberHeaderEl.textContent = `Yer Shows, ${session.firstName} (No. ${session.memberNumber})`;
       memberHeaderEl.style.display = '';
     } else if (session && session.memberNumber) {
-      memberHeaderEl.textContent = `Yer Shows (#${session.memberNumber})`;
+      memberHeaderEl.textContent = `Yer Shows (No. ${session.memberNumber})`;
       memberHeaderEl.style.display = '';
     } else {
       memberHeaderEl.textContent = '';
@@ -1476,6 +1476,7 @@ async function loadSetlistData() {
     ]);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     setlistData = await resp.json();
+    (setlistData.setlists || []).forEach(s => { s.tour = window.tthAlbumCase(s.tour); });
     if (svResp && svResp.ok) {
       try {
         const svData = await svResp.json();
@@ -1506,7 +1507,7 @@ async function initSetlistExplorer() {
 
   const data = await loadSetlistData();
   if (!data) {
-    document.getElementById('setlistEmpty').textContent = 'Failed to load setlist data.';
+    document.getElementById('setlistEmpty').textContent = "Couldn't load the setlist data. Check yer connection and refresh.";
     return;
   }
 
@@ -2044,7 +2045,7 @@ async function autoLoadLyrics(onComplete) {
 }
 
 // ─── Lyrics crowdsourcing (community submissions for songs no API carries) ───
-const LYRICS_EMAIL = 'jd@tthpods.com';
+const LYRICS_EMAIL = 'tthpodcastseries@gmail.com';
 const LYRICS_SUBJECT = 'Lyrics for The Hip Handbook';
 function lyricsMailto(songTitle) {
   const body =
@@ -2075,7 +2076,7 @@ async function renderLyricsCrowdsource() {
   const listId = 'lyricsCsList';
   el.innerHTML =
     `<h3>🎤 Help Complete the Archive</h3>` +
-    `<p>${songs.length} songs from the Hip's deep catalogue - B-sides, box-set rarities and unreleased demos - aren't carried by any lyrics site, so search can't include them yet. Know the words to any of these? Send them in and we'll add them.</p>` +
+    `<p>${songs.length} songs from The Hip's deep catalogue - B-sides, box-set rarities, and unreleased demos - aren't carried by any lyrics site, so search can't include them yet. Know the words to any of these? Send them in and we'll add them.</p>` +
     `<a class="lyrics-cs-email" href="${lyricsMailto('')}">📧 Email jD the lyrics</a>` +
     `<button class="lyrics-cs-toggle" id="lyricsCsToggle" aria-expanded="false" aria-controls="${listId}">See the ${songs.length} songs</button>` +
     `<ul class="lyrics-cs-list" id="${listId}" hidden>` +
@@ -2487,7 +2488,7 @@ function renderSongResults(songTitle) {
   let headerHtml = `<div class="song-result-title">${escapeHtml(songTitle)}</div>`;
   if (top40) {
     const cls = top40.rank <= 10 ? 'gold' : '';
-    headerHtml += `<span class="item-rank ${cls}">#${top40.rank} ${top40.rank <= 40 ? 'TTHTop40' : 'Fan Vote'}</span>`;
+    headerHtml += `<span class="item-rank ${cls}">No. ${top40.rank} ${top40.rank <= 40 ? 'Top 40' : 'Fan Vote'}</span>`;
   }
   header.innerHTML = headerHtml;
   resultsEl.appendChild(header);
@@ -2529,9 +2530,9 @@ function renderSongResults(songTitle) {
     group.innerHTML = `<div class="song-result-group-label">Fan Rankings</div>`;
     const item = document.createElement('div');
     item.className = 'song-result-item';
-    const rankLabel = top40.rank <= 40 ? 'TTHTop40 Countdown' : 'Full 169 Fan Vote';
+    const rankLabel = top40.rank <= 40 ? 'The Tragically Hip Top Forty Countdown' : 'Full 169 Fan Vote';
     const road = top40.rank > 40 ? roadEpisodeForRank(top40.rank) : null;
-    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--text);font-weight:800;">#${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
+    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--text);font-weight:800;">No. ${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
   }
@@ -2795,7 +2796,7 @@ function renderCategory(category) {
         <div class="album-bottom">
           <span>${a.year}</span>
           <span class="type-badge">${a.type}</span>
-          ${a.chart && a.chart !== '' ? `<span class="chart-badge">${/^#1[^0-9]|^#1$/.test(a.chart) ? '<svg width="14" height="10" viewBox="0 0 3 2" style="vertical-align:-1px;margin-right:2px"><rect width="3" height="2" fill="#fff"/><rect x="1" width="1" height="2" fill="#C8102E"/><rect width="0.75" height="2" fill="#C8102E"/><rect x="2.25" width="0.75" height="2" fill="#C8102E"/></svg>#1' : a.chart}</span>` : ''}
+          ${a.chart && a.chart !== '' ? `<span class="chart-badge">${/^No\. 1(?![0-9])/.test(a.chart) ? '<svg width="14" height="10" viewBox="0 0 3 2" style="vertical-align:-1px;margin-right:2px"><rect width="3" height="2" fill="#fff"/><rect x="1" width="1" height="2" fill="#C8102E"/><rect width="0.75" height="2" fill="#C8102E"/><rect x="2.25" width="0.75" height="2" fill="#C8102E"/></svg>No. 1' : a.chart}</span>` : ''}
         </div>
         ${a.junoAwards ? `<div class="juno-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gold)" style="flex-shrink:0"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg> Juno Award Winner</div>` : ''}
       </div>
@@ -2851,8 +2852,8 @@ const FEATURE_VIEWS = {
     desc: 'Search the lyrics of 188 songs by The Tragically Hip by a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
     desc: 'Browse all 1,355 live shows and appearances from 1985 to 2022 - 1,089 with setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
-  'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'TTHTop40 Countdown',
-    desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from #1 to #169.' },
+  'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'The Tragically Hip Top Forty Countdown',
+    desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from No. 1 to No. 169.' },
   'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',
     desc: 'Mark the shows by The Tragically Hip you were at and build yer own concert history.' },
 };
@@ -3075,14 +3076,14 @@ top40Songs.forEach(s => {
     el.rel = 'noopener noreferrer';
   }
   el.innerHTML = `
-    <div class="song-rank ${isTop10 ? 'top10' : 'top40'}">#${s.rank}</div>
+    <div class="song-rank ${isTop10 ? 'top10' : 'top40'}">No. ${s.rank}</div>
     <div class="song-info">
       <div class="song-title">'${s.title}'</div>
       <div class="song-meta">"${s.album}" · ${s.year}</div>
     </div>
     ${url ? '<svg class="song-podcast-icon" viewBox="0 0 24 24" fill="var(--red)"><path d="M12 1a9 9 0 00-9 9v7a3 3 0 003 3h1a2 2 0 002-2v-4a2 2 0 00-2-2H5v-2a7 7 0 0114 0v2h-2a2 2 0 00-2 2v4a2 2 0 002 2h1a3 3 0 003-3v-7a9 9 0 00-9-9z"/></svg>' : ''}
   `;
-  if (url) { const hint = document.createElement('span'); hint.className = 'vh'; hint.textContent = ' - listen to the TTHTop40 Countdown episode'; el.appendChild(hint); }
+  if (url) { const hint = document.createElement('span'); hint.className = 'vh'; hint.textContent = ' - listen to The Tragically Hip Top Forty Countdown episode'; el.appendChild(hint); }
   songsGrid.appendChild(el);
 });
 
@@ -3094,7 +3095,7 @@ beyondTop40.forEach(s => {
   const beyondSpotifyURL = spotifyTrackURLs[s.title] || `https://open.spotify.com/search/${searchQ}`;
   wrapper.innerHTML = `
     <div class="song-row expandable" role="button" tabindex="0">
-      <div class="song-rank beyond">#${s.rank}</div>
+      <div class="song-rank beyond">No. ${s.rank}</div>
       <div class="song-info">
         <div class="song-title">'${s.title}'<span class="vh"> - select to see streaming links</span></div>
         <div class="song-meta">"${s.album}"</div>
@@ -3142,7 +3143,7 @@ document.getElementById('beyondToggle').addEventListener('click', function() {
 
     const votedHtml = voted
       .sort((a, b) => top40Ranks.get(a) - top40Ranks.get(b))
-      .map((t, i) => `<span class="voted${i % 2 ? ' alt' : ''}">#${top40Ranks.get(t)} ${t}</span>`)
+      .map((t, i) => `<span class="voted${i % 2 ? ' alt' : ''}">No. ${top40Ranks.get(t)} ${t}</span>`)
       .join(' · ');
     const unvotedHtml = unvoted.map(t => `<span class="unvoted">${t}</span>`).join(' · ');
 
@@ -3187,7 +3188,7 @@ function openModal(i) {
   const tagsEl = document.getElementById('mTags');
   tagsEl.innerHTML = `<span class="modal-tag red">${a.type}</span>`;
   if (a.chart !== '') {
-    const isOne = /^#1[^0-9]|^#1$/.test(a.chart);
+    const isOne = /^No\. 1(?![0-9])/.test(a.chart);
     tagsEl.innerHTML += `<span class="modal-tag ${isOne ? 'gold' : 'dim'}">${isOne ? '<svg width="14" height="10" viewBox="0 0 3 2" style="vertical-align:-1px;margin-right:2px"><rect width="3" height="2" fill="#fff"/><rect x="1" width="1" height="2" fill="#C8102E"/><rect width="0.75" height="2" fill="#C8102E"/><rect x="2.25" width="0.75" height="2" fill="#C8102E"/></svg>' : ''}${a.chart}</span>`;
   }
   if (a.units !== '') tagsEl.innerHTML += `<span class="modal-tag dim">${a.units}</span>`;
@@ -3238,7 +3239,7 @@ function openModal(i) {
               <span class="track-num">${idx + 1}</span>
               <span class="track-name">${t}</span>
               ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
-              ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="TTH Top 40 - #${top40Ranks.get(t)}">#${top40Ranks.get(t)}</span>` : '<span class="track-top40-badge" style="visibility:hidden">#00</span>'}
+              ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="The Tragically Hip Top Forty Countdown - No. ${top40Ranks.get(t)}">No. ${top40Ranks.get(t)}</span>` : '<span class="track-top40-badge" style="visibility:hidden">No. 00</span>'}
               <span class="track-flip-hint">LIVE STATS &#8635;</span>
               <button class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
             </div>

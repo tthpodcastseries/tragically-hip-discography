@@ -1,5 +1,5 @@
 // unlocked.js - '(Un)Locked in the Trunk of a Car', the daily lyrics game (v5.4; points ladder in v5.4.4)
-// One Hip song a day, the same for everyone, behind five scrambled words from its
+// One song by The Hip a day, the same for everyone, behind five scrambled words from its
 // lyrics. Name the song with as few words unlocked as you can.
 // Everything runs in the browser from data/trunk-pool.json (scripts/build-trunk-pool.js);
 // there is no server and nothing is sent anywhere except anonymous Umami event names.
@@ -59,7 +59,7 @@
   // Not open yet: say when, and open itself when the day arrives
   if (!forcedDay && localDayNumber(new Date()) < epochDay) {
     const opens = new Date(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]));
-    $('ulLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One Hip song a day - come back then.';
+    $('ulLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One song by The Hip a day - come back then.';
     const now = new Date();
     setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
     return;
@@ -342,7 +342,7 @@
     if (today.hint) {
       shown.textContent = '';
       shown.appendChild(el('span', '', yearHint() ? 'Came out in ' : 'Album: '));
-      shown.appendChild(el('b', '', yearHint() ? String(puzzle.ay) : puzzle.al));
+      shown.appendChild(el('b', '', yearHint() ? String(puzzle.ay) : window.tthAlbumCase(puzzle.al)));
     }
   }
   // Two taps, so nobody gives up by accident
@@ -389,7 +389,7 @@
   // (audit GAME-10). The link starts with https:// so every app turns it into a tap.
   const straightGuess = () => today.won && today.unlocked.length === 0;
   const shareText = () =>
-    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' #' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
+    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
     (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL;
 
   function shownStreak() {
@@ -457,7 +457,7 @@
     reveal.textContent = '';
     reveal.appendChild(el('div', 'when', "Today's song"));
     reveal.appendChild(el('div', 'where', puzzle.t));
-    if (puzzle.al) reveal.appendChild(el('div', 'meta', 'From ' + puzzle.al));
+    if (puzzle.al) reveal.appendChild(el('div', 'meta', 'From ' + window.tthAlbumCase(puzzle.al)));
 
     // Play it: a direct Spotify track where we have one, search links elsewhere,
     // and the latest Hip Archive show with the song (plays the whole show)
@@ -478,7 +478,7 @@
       play.appendChild(a);
     });
     if (puzzle.lv) {
-      const live = el('a', 'ul-play-btn ul-play-live', 'Live in the Hip Archive');
+      const live = el('a', 'ul-play-btn ul-play-live', 'Live in the Archive');
       live.href = 'tour-map.html#play=' + puzzle.lv;
       live.addEventListener('click', () => track('Unlocked - Play - live'));
       play.appendChild(live);
@@ -497,7 +497,7 @@
   }
 
   function renderAll() {
-    $('ulNo').textContent = 'Puzzle #' + puzzleNo;
+    $('ulNo').textContent = 'Puzzle No. ' + puzzleNo;
     $('ulPoints').textContent = shownPoints();
     renderWords();
     renderGuess();
@@ -600,12 +600,12 @@
     const s = store.stats;
     const statLine = 'Streak ' + shownStreak() + '   |   Win rate ' + (s.played ? Math.round(100 * s.won / s.played) : 0) + '%';
     const totalLine = 'Total: ' + s.points.toLocaleString('en-CA') + ' points';
-    const blurb = 'Name the Hip song from five scrambled lyric words';
+    const blurb = 'Name the song by The Hip from five scrambled lyric words';
 
     if (landscape) {
       put(today.won ? '\u{1F513}' : '\u{1F512}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 28, '#ffffff', '4px', 540);
-      put('PUZZLE #' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -625,7 +625,7 @@
       const gap = 24, rowW = WORDS * y.size + (WORDS - 1) * gap;
       put(today.won ? '\u{1F513}' : '\u{1F512}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#ffffff', '4px', W - 160);
-      put('PUZZLE #' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
@@ -668,7 +668,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: SHORT + ' #' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: SHORT + ' No. ' + puzzleNo, text: shareText() });
       track('Unlocked - Card shared');
     } catch (e) { /* cancelled */ }
   });

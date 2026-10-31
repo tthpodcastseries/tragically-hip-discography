@@ -1,5 +1,5 @@
 // bring-it-all-back.js - 'Bring It All Back', the daily setlist game (v5)
-// One real Hip setlist a day, the same for everyone. Guess the month and year in five tries.
+// One real setlist from The Hip a day, the same for everyone. Guess the month and year in five tries.
 // Everything runs in the browser from data/game-pool.json (scripts/build-game-pool.js);
 // there is no server and nothing is sent anywhere except anonymous Umami event names.
 (async function () {
@@ -43,7 +43,7 @@
 
   // Not open yet: say when, and open itself when the day arrives
   if (!forcedDay && localDayNumber(new Date()) < epochDay) {
-    $('biaLoading').textContent = 'Bring It All Back opens ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One real Hip setlist a day - come back then.';
+    $('biaLoading').textContent = 'Bring It All Back opens ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One real setlist from The Hip a day - come back then.';
     const now = new Date();
     setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
     return;
@@ -88,11 +88,11 @@
   const region = s => (s.co === 'US' || s.co === 'CA') ? s.st || '' : '';
   // 'World Container Tour', not 'World Container Tour tour', and one-off events
   // (audit DATA-14) as they are (v5.4.10, audit GAME-07)
-  const tourLabel = t => !t ? 'No tour listed' : /\b(tour|broadcast|festival)\b|^Music Without Borders$/i.test(t) ? t : t + ' tour';
+  const tourLabel = t => !t ? 'No tour listed' : (t = window.tthAlbumCase(t), /\b(tour|broadcast|festival)\b|^Music Without Borders$/i.test(t) ? t : t + ' tour');
   const hints = [
     ['Country', () => countryName(show.co)],
     // Drop a trailing year ('Another Roadside Attraction 1997') so the hint doesn't give the answer away
-    ['Tour', () => show.t ? show.t.replace(/\s+(19|20)\d\d$/, '') : 'none listed'],
+    ['Tour', () => show.t ? window.tthAlbumCase(show.t).replace(/\s+(19|20)\d\d$/, '') : 'none listed'],
     ['City', () => [show.c, region(show)].filter(Boolean).join(', ')],
   ];
   const el = (tag, cls, text) => {
@@ -158,7 +158,7 @@
   // The score as words as well as squares, so it reads without colour; the link starts with
   // https:// so every app turns it into a tap (audit GAME-10)
   const shareText = () =>
-    '\u{1F341} Bring It All Back #' + puzzleNo + ' - ' + todayPoints() + ' points (' +
+    '\u{1F341} Bring It All Back No. ' + puzzleNo + ' - ' + todayPoints() + ' points (' +
     (today.won ? today.guesses.length + ' of ' + MAX_GUESSES : 'missed') + ')\n' +
     today.guesses.map(squareFor).join('') + '\nhttps://' + SHARE_URL;
 
@@ -240,7 +240,7 @@
   }
 
   function renderAll() {
-    $('biaNo').textContent = 'Puzzle #' + puzzleNo;
+    $('biaNo').textContent = 'Puzzle No. ' + puzzleNo;
     renderSetlist();
     renderGuesses();
     renderHints();
@@ -390,7 +390,7 @@
       // Score on the left, the details on the right
       put('\u{1F341}', 330, 130, '700', 60, '#ffffff');
       put('BRING IT ALL BACK', 330, 186, '700', 28, '#ffffff', '8px', 520);
-      put('PUZZLE #' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -400,7 +400,7 @@
       tiles(690, 255, 76, 16);
       put(totalLine, 690, 395, '700', 34, '#ffffff', '0px', 460, 'left');
       put(statLine, 690, 445, '600', 28, '#d9d9d9', '0px', 460, 'left');
-      put('Guess the month and year of a real Hip setlist', 690, 492, '600', 24, '#b0b0b0', '0px', 460, 'left');
+      put('Guess the month and year of a real setlist from The Hip', 690, 492, '600', 24, '#b0b0b0', '0px', 460, 'left');
       put(siteText, W / 2, 585, '600', 24, '#b0b0b0', '2px', W - 120);
     } else {
       // Portrait. Stories keep content inside the safe zone (Instagram covers
@@ -411,14 +411,14 @@
       const gap = 24, rowW = MAX_GUESSES * y.size + (MAX_GUESSES - 1) * gap;
       put('\u{1F341}', W / 2, y.maple, '700', story ? 110 : 96, '#ffffff');
       put('BRING IT ALL BACK', W / 2, y.label, '700', 40, '#ffffff', '10px', W - 160);
-      put('PUZZLE #' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
       tiles((W - rowW) / 2, y.tiles, y.size, gap);
       put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#ffffff', '0px', W - 160);
       put(statLine, W / 2, y.stats, '600', story ? 42 : 38, '#d9d9d9', '0px', W - 160);
-      put('Guess the month and year of a real Hip setlist', W / 2, y.blurb, '600', story ? 34 : 30, '#b0b0b0', '0px', W - 160);
+      put('Guess the month and year of a real setlist from The Hip', W / 2, y.blurb, '600', story ? 34 : 30, '#b0b0b0', '0px', W - 160);
       put(siteText, W / 2, y.site, '600', 32, '#b0b0b0', '2px', W - 140);
     }
 
@@ -454,7 +454,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: 'Bring It All Back #' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: 'Bring It All Back No. ' + puzzleNo, text: shareText() });
       track('Game - Card shared');
     } catch (e) { /* cancelled */ }
   });

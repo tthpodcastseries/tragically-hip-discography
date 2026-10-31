@@ -31,6 +31,18 @@
 //   localStorage key: 'tth_member_session'
 //   Shape: { memberNumber: number, firstName: string, attendedShows: string[], unlockedAt: number }
 
+// Album and tour names in the data files use "Day For Night" casing. The Brand & Style Guide
+// writes the five albums with lowercase prepositions, so pages show them through this
+// (audit BRAND-04). The data files are not changed. Loaded first on every page that needs it.
+window.tthAlbumCase = function (text) {
+  return text == null ? text : String(text)
+    .replace(/\bUp To Here\b/g, 'Up to Here')
+    .replace(/\bDay For Night\b/g, 'Day for Night')
+    .replace(/\bTrouble At The Henhouse\b/g, 'Trouble at the Henhouse')
+    .replace(/\bWe Are The Same\b/g, 'We Are the Same')
+    .replace(/\bNow For Plan A\b/g, 'Now for Plan A');
+};
+
 (function () {
   'use strict';
 
@@ -267,7 +279,7 @@
     '<style>' + gateCss + '</style>' +
     '<div class="mg-card">' +
       '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
-      '<div class="mg-eyebrow">Free for every Hip fan</div>' +
+      '<div class="mg-eyebrow">Free for every fan of The Hip</div>' +
       '<h2 id="mg-title" class="mg-title">Yer <span>Handbook</span></h2>' +
       '<p class="mg-sub">Every release, 1,355 live shows and appearances, lyrics, and rare recordings. No account needed.</p>' +
       '<button id="mg-guest-btn" class="mg-start" type="button">Start exploring</button>' +
@@ -289,7 +301,7 @@
         '</form>' +
         '<p class="mg-claim">No number yet? <a id="mg-claim-link" href="/forum-invite.html">Get one free - takes 10 seconds.</a></p>' +
         // Members' shows sync via update_attended_shows; guest shows never leave the device
-        '<p class="mg-why"><b>Why grab one?</b> Save the Hip shows you were at and build yer own concert history, on any device. As a guest, yer shows stay on this one device.</p>' +
+        '<p class="mg-why"><b>Why grab one?</b> Save the shows you were at and build yer own concert history, on any device. As a guest, yer shows stay on this one device.</p>' +
       '</div>' +
       '<p class="mg-privacy">No email. No password. Nothing to buy.</p>' +
     '</div>';

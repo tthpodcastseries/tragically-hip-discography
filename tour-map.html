@@ -23,7 +23,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Hip Handbook">
+<meta name="apple-mobile-web-app-title" content="The Handbook">
 <meta name="theme-color" content="#0e0b16">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,9 +137,10 @@
     const res = await fetch('data/tth-tour-data.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allGigs = await res.json();
+    allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
   } catch (e) {
-    document.getElementById('statsPill').textContent = 'Failed to load tour data';
-    document.getElementById('map').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Failed to load tour data.</p><p style="font-size:0.85rem;">Please refresh the page to try again.</p></div></div>';
+    document.getElementById('statsPill').textContent = "Couldn't load the tour data";
+    document.getElementById('map').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Couldn\'t load the tour data.</p><p style="font-size:0.85rem;">Check yer connection and refresh.</p></div></div>';
     console.error('Tour data load failed:', e);
     return;
   }
@@ -187,7 +188,7 @@
   // Public by design - it ships in every tile URL. Manage at dashboard.basemaps.carto.com (jd@tthpods.com).
   const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY, {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase.com</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Hip Archive</a> (Darrin Cappe)',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Tragically Hip Archive</a> (Darrin Cappe)',
     subdomains: 'abcd',
     maxZoom: 18
   }).addTo(map);
@@ -822,7 +823,7 @@
     }
     document.getElementById('slCity').textContent = cityParts.join(', ');
 
-    const tourName = (sl && sl.tour) || (g && g.tour) || '';
+    const tourName = window.tthAlbumCase((sl && sl.tour) || (g && g.tour) || '');
     document.getElementById('slTour').textContent = tourName;
     document.getElementById('slTour').style.display = tourName ? '' : 'none';
 
@@ -1098,7 +1099,7 @@
     </div>
     <div class="ap-info">
       <div class="ap-show-title" id="apShowTitle">No show loaded</div>
-      <div class="ap-track-title" id="apTrackTitle" role="status" aria-live="polite">—</div>
+      <div class="ap-track-title" id="apTrackTitle" role="status" aria-live="polite">-</div>
     </div>
     <div class="ap-time" id="apTime">0:00 / 0:00</div>
     <div class="ap-volume">
