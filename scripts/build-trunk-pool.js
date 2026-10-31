@@ -38,12 +38,13 @@
 // And it prints the day the schedule runs out; after that the game repeats from
 // puzzle #1 (GAME-05).
 //
-// Output: { built, total, titles: [[slug, title] ...], puzzles: [ { s, t, v, w: [[word, SCRAMBLE] x5], sp, lv } ] }
+// Output: { built, total, titles: [[slug, title] ...], puzzles: [ { s, t, v, w: [[word, SCRAMBLE] x5], sp, lv, al, ay } ] }
 //   v is the version of the song (1 = its first appearance).
 //   titles is every song on the official list, for the guess box.
 //   sp (Spotify track link) and lv (latest Hip Archive show with the song) power the
 //   'Play it' links after the reveal; al is the album for the album hint (where the
-//   song first came out: its studio album or EP, else its earliest release).
+//   song first came out: its studio album or EP, else its earliest release), and ay
+//   its year, shown instead when the album is named after the song.
 //   Unlike the words, these are refreshed every run. built only changes when
 //   something else in the file does.
 //
@@ -120,6 +121,8 @@ const df = {};
 for (const [key, text] of Object.entries(lyrics)) {
   const count = {}, caps = {};
   for (const line of text.split('\n')) {
+    // Section markers ('[Chorus]') aren't lyrics (v5.4.10, audit DATA-06)
+    if (/^\s*\[[^\]]*\]?\s*$/.test(line)) continue;
     tokens(line).forEach((tok, i) => {
       const w = tok.toLowerCase();
       if (!/^[a-z]+$/.test(w)) return;
@@ -248,12 +251,19 @@ puzzles.push(...fresh);
 
 const bySlug = new Map(index.map(so => [so.s, so]));
 
+// Songs missing from the site's track lists, so song-index.json has no album for them
+// (jD confirmed 2026-10-31: their album hint is In Violet Light, audit GAME-08)
+const ALBUM_HINTS = { 'Forest Edge': 'In Violet Light', 'Problem Bears': 'In Violet Light', 'Ultra Mundane': 'In Violet Light' };
+const albumYear = new Map(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'discography.json'), 'utf8')).albums.map(a => [a.title, +a.year]));
+
 // Play links and album (refreshed every run)
 for (const p of puzzles) {
   const so = bySlug.get(p.s);
   const released = so ? [...so.a].sort((x, y) => x[1] - y[1]) : [];
   const origin = released.find(a => (a[2] === 'studio' || a[2] === 'eps') && !a[4]) || released[0];
-  p.al = origin ? origin[0] : '';
+  p.al = origin ? origin[0] : (ALBUM_HINTS[p.t] || '');
+  // The year, for when the album name would give the answer away (a title track)
+  p.ay = origin ? origin[1] : (p.al && albumYear.get(p.al)) || '';
   p.sp = spotifyTrackURLs[p.t] || '';
   const rec = so && so.r.length ? so.r[so.r.length - 1] : null;
   p.lv = rec ? String(songIndex.shows[rec[0]][0]) : '';

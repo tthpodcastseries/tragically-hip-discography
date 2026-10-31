@@ -9,12 +9,14 @@
 //   { built, shows: [ [id, 'yyyy-mm-dd', venue, city, state, country, tour, hasRecording] ... ],
 //     songs: [ { s: slug, t: title, p: [showIdx ...], r: [[showIdx, trackNo] ...],
 //                a: [[album, year, category, trackNo, versionNote] ...],
-//                k: { rank, pts, url, ep } | null, l: lyricsKey (only if it has lyrics) } ... ] }
+//                k: { rank, pts, url, ep } | null, o: opened, e: encores, l: lyricsKey (only if it has lyrics) } ... ] }
 //   shows are sorted oldest first, so p[0] is the live debut and p[p.length - 1] the
 //   latest performance. p matches livePlays in canonical-songs.json (medleys count
 //   for both songs, covers and tape are skipped) - the script checks this.
 //   r lists the Hip Archive recordings of the song: the show, and the track number
 //   in that recording.
+//   o and e (v5.4.10, audit DATA-02): how many times the song opened a show and
+//   was played in an encore. Left out when 0. The album flip cards read these.
 //
 //   l is the song's key in data/lyrics.json ('Album|||Song'). The song page fetches
 //   the lyrics only when someone opens its Lyrics card.
@@ -66,7 +68,7 @@ const songs = canon.songs.map(c => ({
   // ('Angst on the Planks (Demo)' is Cordelia)
   titleKeys: new Set([norm(c.title), ...c.versions.map(norm),
     ...c.versions.map(v => norm(v.replace(/\s*\(.*\)\s*$/, '')))]),
-  p: [], r: [], a: [], k: null, livePlays: c.livePlays,
+  p: [], r: [], a: [], k: null, o: 0, e: 0, livePlays: c.livePlays,
 }));
 const slugs = new Set(songs.map(x => x.s));
 if (slugs.size !== songs.length) throw new Error('Two songs share a slug');
@@ -74,13 +76,19 @@ const byKey = new Map();
 for (const so of songs) for (const k of so.keys) byKey.set(k, so);
 
 // Live performances
+// o / e: times it opened a show (the first song, as on Live Stats) or was in an encore
+const ENCORE = /encore/i;
 shows.forEach((x, i) => {
+  const first = (x.s.songs || []).find(song => !song.tape && song.name && song.name.trim());
   for (const song of x.s.songs || []) {
     if (song.tape || song.cover || !song.name || !song.name.trim()) continue;
-    for (const part of partsOf(song.name)) {
+    partsOf(song.name).forEach((part, n) => {
       const so = byKey.get(songKey(part));
-      if (so) so.p.push(i);
-    }
+      if (!so) return;
+      so.p.push(i);
+      if (song === first && n === 0) so.o++;
+      if (ENCORE.test(song.set || '')) so.e++;
+    });
   }
 });
 
@@ -150,7 +158,7 @@ if (mismatched.length) throw new Error('Play counts differ from canonical-songs.
 const out = {
   built: new Date().toISOString().slice(0, 10),
   shows: shows.map(x => [x.id, x.iso, x.s.venue || '', x.s.city || '', x.s.state || '', x.s.country || '', x.s.tour || '', x.rec ? 1 : 0]),
-  songs: songs.map(so => ({ s: so.s, t: so.t, p: so.p, r: so.r, a: so.a, k: so.k, ...(so.l ? { l: so.l } : {}) })),
+  songs: songs.map(so => ({ s: so.s, t: so.t, p: so.p, r: so.r, a: so.a, k: so.k, ...(so.o ? { o: so.o } : {}), ...(so.e ? { e: so.e } : {}), ...(so.l ? { l: so.l } : {}) })),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'song-index.json'), JSON.stringify(out) + '\n');
 

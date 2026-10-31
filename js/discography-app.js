@@ -534,11 +534,12 @@ const categoryStats = {
   lyrics: [
     { num: '20', lbl: 'Albums Indexed' },
     { num: '188', lbl: 'Songs Searchable' },
-    { num: '0', lbl: 'Cached Songs' },
-    { num: 'API', lbl: 'lyrics.ovh' },
+    // Counted again from the lyrics once they load (updateLyricsCacheStatus)
+    { num: '4,476', lbl: 'Different Words' },
+    { num: '36,368', lbl: 'Words of Lyrics' },
   ],
   setlists: [
-    { num: '1,355', lbl: 'Live Shows' },
+    { num: '1,355', lbl: 'Shows & Appearances' },
     { num: '302', lbl: 'Cities' },
     { num: '23', lbl: 'Tours & Events' },
     { num: '1985-2016', lbl: 'Years Active' },
@@ -652,36 +653,36 @@ const spotifyTrackURLs = {
   'We Want to Be It': 'https://open.spotify.com/track/2zvv6IlyHsNNYpaDRWEaZU',
 };
 
+// Album IDs checked against Apple's catalogue (itunes.apple.com/lookup, Canadian store)
+// on 2026-10-31 (v5.4.10, audit LINK-02). From The Vault Vol. 1 to 5 aren't on Apple
+// Music in Canada or the US, so they have no button. Road Apples Box Set links to
+// Apple's Road Apples (Deluxe), the closest digital edition (jD confirmed).
 const appleMusicAlbumURLs = {
-  'Up to Here': 'https://music.apple.com/album/up-to-here/1440842642',
-  'Road Apples': 'https://music.apple.com/album/road-apples/1440845275',
-  'Fully Completely': 'https://music.apple.com/album/fully-completely/1469548485',
-  'Day for Night': 'https://music.apple.com/album/day-for-night/1440826552',
-  'Trouble at the Henhouse': 'https://music.apple.com/album/trouble-at-the-henhouse/1440855998',
-  'Phantom Power': 'https://music.apple.com/album/phantom-power/1440826990',
-  'Music @ Work': 'https://music.apple.com/album/music-work/1440829579',
-  'In Violet Light': 'https://music.apple.com/album/in-violet-light/1469546313',
-  'In Between Evolution': 'https://music.apple.com/album/in-between-evolution/1440828991',
-  'World Container': 'https://music.apple.com/album/world-container/1443560147',
-  'We Are the Same': 'https://music.apple.com/album/we-are-the-same/1440831279',
-  'Now for Plan A': 'https://music.apple.com/album/now-for-plan-a/1442445847',
-  'Man Machine Poem': 'https://music.apple.com/album/man-machine-poem/1444160103',
-  'Live Between Us': 'https://music.apple.com/album/live-between-us/1440844264',
-  'Live at the Roxy': 'https://music.apple.com/album/live-at-the-roxy/1621335855',
-  'That Night in Toronto': 'https://music.apple.com/album/that-night-in-toronto-live/1440776402',
-  'Yer Favourites': 'https://music.apple.com/album/yer-favourites/1440817057',
-  'Fully Completely Box Set': 'https://music.apple.com/album/fully-completely-deluxe-version/1422703267',
-  'Up To Here Box Set': 'https://music.apple.com/album/up-to-here-deluxe/1750989687',
-  'Phantom Power Box Set': 'https://music.apple.com/album/phantom-power-deluxe/1704043571',
-  'The Tragically Hip': 'https://music.apple.com/album/the-tragically-hip-ep/1440827504',
-  'Saskadelphia': 'https://music.apple.com/album/saskadelphia-ep/1566475818',
-  'From The Vault: Vol. 1 - Halifax 1995': 'https://music.apple.com/album/from-the-vault-vol-1-live-in-halifax/1440843081',
-  'From The Vault: Vol. 2 - Austin 2002': 'https://music.apple.com/album/from-the-vault-vol-2-live-in-austin/1440843553',
-  'From The Vault: Vol. 3 - Hamilton 2007': 'https://music.apple.com/album/from-the-vault-vol-3-live-in-hamilton/1440843851',
-  'From The Vault: Vol. 4 - Brussels 1994': 'https://music.apple.com/album/from-the-vault-vol-4-live-in-brussels/1440844009',
-  'From The Vault: Vol. 5 - Los Angeles 2004': 'https://music.apple.com/album/from-the-vault-vol-5-live-in-los-angeles/1440844154',
-  'From The Vault: Vol. 6 - Cleveland 1996': 'https://music.apple.com/album/from-the-vault-vol-6-live-in-cleveland/1440844321',
-  'Road Apples Box Set': 'https://music.apple.com/album/road-apples-30th-anniversary-deluxe/1581037648',
+  'Up to Here': 'https://music.apple.com/ca/album/up-to-here/1440842642',
+  'Road Apples': 'https://music.apple.com/ca/album/road-apples/1440845275',
+  'Fully Completely': 'https://music.apple.com/ca/album/fully-completely/1469548485',
+  'Day for Night': 'https://music.apple.com/ca/album/day-for-night/1440826552',
+  'Trouble at the Henhouse': 'https://music.apple.com/ca/album/trouble-at-the-henhouse/1440855998',
+  'Phantom Power': 'https://music.apple.com/ca/album/phantom-power/1440826990',
+  'Music @ Work': 'https://music.apple.com/ca/album/music-work/1440829579',
+  'In Violet Light': 'https://music.apple.com/ca/album/in-violet-light/1469546313',
+  'In Between Evolution': 'https://music.apple.com/ca/album/in-between-evolution/1440828991',
+  'World Container': 'https://music.apple.com/ca/album/world-container/1443560147',
+  'We Are the Same': 'https://music.apple.com/ca/album/we-are-the-same/1440831279',
+  'Now for Plan A': 'https://music.apple.com/ca/album/now-for-plan-a/1442445847',
+  'Man Machine Poem': 'https://music.apple.com/ca/album/man-machine-poem/1444160103',
+  'Live Between Us': 'https://music.apple.com/ca/album/live-between-us/1440844264',
+  'Live at the Roxy': 'https://music.apple.com/ca/album/live-at-the-roxy/1621335855',
+  'That Night in Toronto': 'https://music.apple.com/ca/album/that-night-in-toronto-live/1440776402',
+  'Yer Favourites': 'https://music.apple.com/ca/album/yer-favourites/1440817057',
+  'Fully Completely Box Set': 'https://music.apple.com/ca/album/fully-completely-deluxe-version/1422703267',
+  'Up To Here Box Set': 'https://music.apple.com/ca/album/up-to-here-deluxe/1750989687',
+  'Phantom Power Box Set': 'https://music.apple.com/ca/album/phantom-power-deluxe/1704043571',
+  'The Tragically Hip': 'https://music.apple.com/ca/album/the-tragically-hip-ep/1440827504',
+  'Saskadelphia': 'https://music.apple.com/ca/album/saskadelphia-ep/1566475818',
+  'From The Vault: Vol. 6 - Cleveland 1996': 'https://music.apple.com/ca/album/live-from-the-vault-volume-6-the-odeon-cleveland/6766691195',
+  'Road Apples Box Set': 'https://music.apple.com/ca/album/road-apples-deluxe/1585698841',
+  'Live July 22 - August 20, 2016': 'https://music.apple.com/ca/album/live-july-22-august-20-2016/6766353779',
 };
 
 // Inject Spotify and Apple Music URLs into all album and single objects
@@ -696,25 +697,27 @@ Object.values(categoryData).flat().forEach(album => {
 });
 
 // ─── Live Play Count Data ───
-let livePlayCountMap = {};
-(async function loadLivePlayCounts() {
-  try {
-    const res = await fetch('data/live-play-counts-merged.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    if (data && data.albums) {
-      data.albums.forEach(album => {
-        if (!album.tracks) return;
-        album.tracks.forEach(track => {
-          const key = album.album + '|||' + track.title;
-          livePlayCountMap[key] = track;
-        });
-      });
-    }
-  } catch (e) {
-    console.warn('Could not load live play count data:', e.message);
-  }
-})();
+// v5.4.10 (audit DATA-02): the flip cards show the same numbers as the song pages and
+// Live Stats - setlist.fm after the October 2026 corrections, each song in a medley
+// counted - read from data/song-index.json (the song pages' file, already precached).
+const songIndexData = fetch('data/song-index.json').then(r => r.ok ? r.json() : null).catch(() => null);
+let livePlayCountMap = null; // 'Album|||trackNo' and title key -> song stats
+let livePlayMax = 1;
+const livePlayTitleKey = s => String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+const livePlayCountsReady = songIndexData.then(idx => {
+  livePlayCountMap = {};
+  if (!idx) return;
+  idx.songs.forEach(so => {
+    const stats = {
+      plays: so.p.length, opener: so.o || 0, encore: so.e || 0,
+      first: so.p.length ? idx.shows[so.p[0]][1] : null,
+      last: so.p.length ? idx.shows[so.p[so.p.length - 1]][1] : null,
+    };
+    livePlayMax = Math.max(livePlayMax, stats.plays);
+    so.a.forEach(a => { livePlayCountMap[a[0] + '|||' + a[3]] = stats; });
+    if (!livePlayCountMap[livePlayTitleKey(so.t)]) livePlayCountMap[livePlayTitleKey(so.t)] = stats;
+  });
+});
 
 let currentCategory = 'studio';
 let currentAlbums = studioAlbums;
@@ -940,26 +943,30 @@ function buildTrackStreamPanel(trackTitle, albumTitle) {
 }
 
 function buildTrackFlipBack(albumTitle, trackTitle) {
-  const key = albumTitle + '|||' + trackTitle;
-  const data = livePlayCountMap[key];
-  if (!data) {
+  if (!livePlayCountMap) return '<div class="track-flip-no-data">Loading live performance data...</div>';
+  const album = Object.values(categoryData).flat().find(a => a.title === albumTitle);
+  const trackNo = album && Array.isArray(album.tracks) ? album.tracks.indexOf(trackTitle) + 1 : 0;
+  const data = (trackNo && livePlayCountMap[albumTitle + '|||' + trackNo]) ||
+    livePlayCountMap[livePlayTitleKey(trackTitle)] ||
+    livePlayCountMap[livePlayTitleKey(trackTitle.replace(/\s*\([^)]*\)\s*$/, ''))];
+  if (!data || !data.plays) {
     return '<div class="track-flip-no-data">No live performance data available</div>';
   }
-  const MAX_PLAYS = 836;
-  const plays = data.best_estimate || 0;
-  const openerCount = Math.max(data.hipbase_opener || 0, data.setlistfm_opener || 0);
-  const encoreCount = Math.max(data.hipbase_encore || 0, data.setlistfm_encore || 0);
-  const firstPlayed = data.first_played ? new Date(data.first_played + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '-';
-  const lastPlayed = data.last_played ? new Date(data.last_played + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '-';
-  const sources = (data.sources_matched || []).join(' + ') || '-';
-  const pct = Math.min(Math.round((plays / MAX_PLAYS) * 100), 100);
+  const plays = data.plays;
+  const openerCount = data.opener;
+  const encoreCount = data.encore;
+  const fmt = d => new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const firstPlayed = data.first ? fmt(data.first) : '-';
+  const lastPlayed = data.last ? fmt(data.last) : '-';
+  const sources = 'setlist.fm';
+  const pct = Math.min(Math.round((plays / livePlayMax) * 100), 100);
   return `<div class="track-flip-stats">
     <div class="track-flip-stat"><span class="track-flip-stat-label">Times Played</span><span class="track-flip-stat-value gold">${plays.toLocaleString()}</span></div>
     <div class="track-flip-stat"><span class="track-flip-stat-label">As Opener</span><span class="track-flip-stat-value">${openerCount}</span></div>
     <div class="track-flip-stat"><span class="track-flip-stat-label">First Played</span><span class="track-flip-stat-value">${firstPlayed}</span></div>
     <div class="track-flip-stat"><span class="track-flip-stat-label">As Encore</span><span class="track-flip-stat-value">${encoreCount}</span></div>
     <div class="track-flip-stat"><span class="track-flip-stat-label">Last Played</span><span class="track-flip-stat-value">${lastPlayed}</span></div>
-    <div class="track-flip-stat"><span class="track-flip-stat-label">Sources</span><span class="track-flip-stat-value">${sources}</span></div>
+    <div class="track-flip-stat"><span class="track-flip-stat-label">Source</span><span class="track-flip-stat-value">${sources}</span></div>
     <div class="track-flip-freq-bar"><div class="track-flip-freq-fill" style="width:${pct}%"></div></div>
   </div>`;
 }
@@ -996,7 +1003,8 @@ function initTrackFlip(container) {
         const albumTitle = front.dataset.album;
         const trackTitle = front.dataset.track;
         back.innerHTML = buildTrackFlipBack(albumTitle, trackTitle);
-        back.dataset.populated = '1';
+        if (livePlayCountMap) back.dataset.populated = '1';
+        else livePlayCountsReady.then(() => { back.innerHTML = buildTrackFlipBack(albumTitle, trackTitle); back.dataset.populated = '1'; });
       }
       inner.classList.add('flipped');
       flipContainer.classList.add('is-flipped');
@@ -1707,8 +1715,8 @@ async function initSetlistExplorer() {
 
 // ─── Lyrics Search Engine ───
 // Bump the version when lyrics.json gains songs, so returning visitors reload it
-const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v3';
-try { localStorage.removeItem('tth_lyrics_cache_v1'); localStorage.removeItem('tth_lyrics_cache_v2'); } catch {}
+const LYRICS_CACHE_KEY = 'tth_lyrics_cache_v4';
+try { localStorage.removeItem('tth_lyrics_cache_v1'); localStorage.removeItem('tth_lyrics_cache_v2'); localStorage.removeItem('tth_lyrics_cache_v3'); } catch {}
 let lyricsSearchInitialized = false;
 
 function getLyricsCache() {
@@ -2067,16 +2075,37 @@ function initLyricsSearch() {
   }
 }
 
+let lyricWordCount = null;
+function countLyricWords(cache) {
+  const texts = Object.values(cache).filter(v => typeof v === 'string');
+  if (lyricWordCount && lyricWordCount.songs === texts.length) return lyricWordCount;
+  const unique = new Set();
+  let total = 0;
+  texts.forEach(text => {
+    (text.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[’‘]/g, "'").match(/[a-z]+(?:'[a-z]+)*/g) || [])
+      .forEach(w => { total++; unique.add(w); });
+  });
+  lyricWordCount = { songs: texts.length, unique: unique.size, total };
+  return lyricWordCount;
+}
+
 function updateLyricsCacheStatus() {
   const cache = getLyricsCache();
   const allSongs = getAllSongsForLyrics();
   const cached = allSongs.filter(s => cache[`${s.album}|||${s.song}`]).length;
   const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
 
-  // Update stats row
-  const stat3 = document.getElementById('statNum3');
-  if (stat3 && document.querySelector('.category-btn.active')?.dataset.category === 'lyrics') {
-    stat3.textContent = String(found);
+  // Update stats row: words in the lyrics, counted from the lyrics themselves (v5.4.10, audit DATA-16)
+  if (found && currentCategory === 'lyrics') {
+    const words = countLyricWords(cache);
+    categoryStats.lyrics[2].num = words.unique.toLocaleString();
+    categoryStats.lyrics[3].num = words.total.toLocaleString();
+    [2, 3].forEach(i => {
+      const num = document.getElementById('statNum' + (i + 1));
+      if (!num) return;
+      num.textContent = categoryStats.lyrics[i].num;
+      num.parentElement.setAttribute('aria-label', categoryStats.lyrics[i].num + ' ' + categoryStats.lyrics[i].lbl);
+    });
   }
 
   const statusArea = document.getElementById('lyricsCacheStatus');
@@ -2274,7 +2303,7 @@ function clearSongSearch() {
 // /song/<slug>. data/song-index.json is loaded on demand to find a title's slug.
 let songPageIndex = null;
 function findSongPage(title) {
-  if (!songPageIndex) songPageIndex = fetch('data/song-index.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  if (!songPageIndex) songPageIndex = songIndexData;
   const key = s => String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
   return songPageIndex.then(idx => {
     const hit = idx && idx.songs.find(s => key(s.t) === key(title));
@@ -2744,7 +2773,7 @@ const FEATURE_VIEWS = {
   'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
     desc: 'Search the lyrics of 188 Tragically Hip songs by a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
-    desc: 'Browse all 1,355 live shows from 1985 to 2016 - 1,089 with full setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
+    desc: 'Browse all 1,355 live shows and appearances from 1985 to 2022 - 1,089 with setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
   'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'TTHTop40 Countdown',
     desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from #1 to #169.' },
   'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',

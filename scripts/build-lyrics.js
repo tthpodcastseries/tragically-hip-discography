@@ -214,6 +214,11 @@ const songs = [
   { album: 'Saskadelphia', song: 'Reformed Baptist Blues' },
 ];
 
+// Section markers ('[Chorus]', '[Verse 2]') aren't sung - drop them so they never
+// reach the song pages or the (Un)Locked word list (v5.4.10, audit DATA-06)
+const SECTION_MARKER = /^\s*\[[^\]]*\]?\s*$/;
+const stripMarkers = text => text ? text.split('\n').filter(l => !SECTION_MARKER.test(l)).join('\n').replace(/\n{3,}/g, '\n\n') : text;
+
 async function fetchLyrics(artist, song) {
   try {
     const controller = new AbortController();
@@ -242,7 +247,7 @@ async function main() {
 
     if (i > 0) await new Promise(r => setTimeout(r, DELAY_MS));
 
-    const lyrics = await fetchLyrics(ARTIST, song);
+    const lyrics = stripMarkers(await fetchLyrics(ARTIST, song));
     result[key] = lyrics || '';
 
     if (lyrics) {

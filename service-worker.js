@@ -1,4 +1,4 @@
-const CACHE_NAME = 'thc-v5.4.9';
+const CACHE_NAME = 'thc-v5.4.10';
 const CORE_ASSETS = [
   // HTML pages
   '/',
@@ -45,7 +45,6 @@ const CORE_ASSETS = [
   '/data/setlists.min.json',
   '/data/tth-tour-data.json',
   '/data/unplucked-gems.json',
-  '/data/live-play-counts-merged.json',
   '/data/show-videos.json',
   '/data/missing-lyrics.json',
   // Other

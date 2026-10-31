@@ -83,11 +83,17 @@
   const countryName = code => {
     try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code; } catch (e) { return code; }
   };
+  // State or province for US and Canadian shows only. Elsewhere setlist.fm stores
+  // region codes ('BE-BRU', '07') that read like a glitch (v5.4.10, audit GAME-06).
+  const region = s => (s.co === 'US' || s.co === 'CA') ? s.st || '' : '';
+  // 'World Container Tour', not 'World Container Tour tour', and one-off events
+  // (audit DATA-14) as they are (v5.4.10, audit GAME-07)
+  const tourLabel = t => !t ? 'No tour listed' : /\b(tour|broadcast|festival)\b|^Music Without Borders$/i.test(t) ? t : t + ' tour';
   const hints = [
     ['Country', () => countryName(show.co)],
     // Drop a trailing year ('Another Roadside Attraction 1997') so the hint doesn't give the answer away
     ['Tour', () => show.t ? show.t.replace(/\s+(19|20)\d\d$/, '') : 'none listed'],
-    ['City', () => show.st ? show.c + ', ' + show.st : show.c],
+    ['City', () => [show.c, region(show)].filter(Boolean).join(', ')],
   ];
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
@@ -207,8 +213,8 @@
     reveal.textContent = '';
     reveal.appendChild(el('div', 'when', DAYS[d.getUTCDay()] + ', ' + MONTHS[+parts[1] - 1] + ' ' + (+parts[0]) + ', ' + parts[2]));
     reveal.appendChild(el('div', 'where', show.v || show.c));
-    reveal.appendChild(el('div', 'meta', [show.c, show.st, countryName(show.co)].filter(Boolean).join(', ')));
-    reveal.appendChild(el('div', 'meta', show.t ? show.t + ' tour' : 'No tour listed'));
+    reveal.appendChild(el('div', 'meta', [show.c, region(show), countryName(show.co)].filter(Boolean).join(', ')));
+    reveal.appendChild(el('div', 'meta', tourLabel(show.t)));
 
     const links = $('biaLinks');
     links.textContent = '';

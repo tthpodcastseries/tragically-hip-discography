@@ -1,8 +1,10 @@
 // live-stats.html - computes live performance trivia from setlist data (v4.3)
+// v5.4.10 (audit DATA-01, DATA-03): songs are matched the way the song pages match
+// them (scripts/build-song-index.js), so every count here agrees with /song/<slug>.
 (async function() {
   const $ = id => document.getElementById(id);
 
-  let setData = null, lyricsData = null;
+  let setData = null, canon = null;
   try {
     const r = await fetch('data/setlists.min.json');
     if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -14,39 +16,55 @@
     return;
   }
   try {
-    // The lyrics index doubles as the 169-song studio catalogue (Album|||Song keys)
-    const r2 = await fetch('data/lyrics.json');
-    if (r2.ok) lyricsData = await r2.json();
-  } catch (e) { /* catalogue optional - Never Played section stays hidden */ }
+    // jD's official song list, with the setlist spellings of each song
+    const r2 = await fetch('data/canonical-songs.json');
+    if (r2.ok) canon = await r2.json();
+  } catch (e) { /* optional - songs then count under their setlist names, and Never Played stays hidden */ }
 
-  const norm = s => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+  // Same normalizer and rules as scripts/build-song-index.js
+  const norm = s => String(s || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+  const NOT_SONGS = /^\s*(interview|introduction|intro|outro)\b/i;
+  // setlist.fm placeholders, not titles (jD confirmed 2026-10-31)
+  const PLACEHOLDERS = new Set(['newsong', 'past']);
+  const aliases = (canon && canon.aliases) || {};
+  const official = new Map(); // setlist key -> official title
+  if (canon) canon.songs.forEach(c => c.setlistKeys.forEach(k => official.set(k, c.title)));
+  // A medley ('New Orleans Is Sinking / Nautical Disaster') counts for each song in it
+  const partsOf = name => String(name).split(' / ').filter(p => p.trim() && !NOT_SONGS.test(p) && !PLACEHOLDERS.has(norm(p)));
+  const keyOf = (part, cover) => {
+    const k = aliases[norm(part)] || norm(part);
+    if (cover) return 'cover:' + k;
+    return official.has(k) ? 'song:' + official.get(k) : 'other:' + k;
+  };
   const parseDate = d => { const p = d.split('-'); return new Date(+p[2], +p[1] - 1, +p[0]); };
   const fmtDate = d => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const songLink = title => '<a href="discography.html#song=' + encodeURIComponent(title) + '">' + esc(title) + '</a>';
 
   // ─── Tally every performance ───
-  const plays = new Map();   // norm name -> { display, count, dates[], cover }
+  const plays = new Map();   // song key -> { display, count, dates[], cover }
   const openers = new Map(); // norm name -> count
   const closers = new Map();
   let totalPerf = 0, showsWithSongs = 0;
 
   (setData.setlists || []).forEach(s => {
-    const songs = (s.songs || []).filter(x => !x.tape && x.name);
+    // One entry per song played, medleys split up
+    const songs = [];
+    (s.songs || []).filter(x => !x.tape && x.name).forEach(x =>
+      partsOf(x.name).forEach(part => songs.push({ k: keyOf(part, x.cover), name: part.trim(), cover: !!x.cover })));
     if (!songs.length) return;
     showsWithSongs++;
     const d = parseDate(s.date);
     songs.forEach(x => {
       totalPerf++;
-      const k = norm(x.name);
-      if (!plays.has(k)) plays.set(k, { display: x.name, count: 0, dates: [], cover: false });
-      const rec = plays.get(k);
+      if (!plays.has(x.k)) plays.set(x.k, { display: x.k.startsWith('song:') ? x.k.slice(5) : x.name, count: 0, dates: [], cover: x.cover });
+      const rec = plays.get(x.k);
       rec.count++;
       rec.dates.push({ d, venue: s.venue || 'Unknown venue', city: s.city || '', id: s.id });
-      if (x.cover) rec.cover = true;
     });
-    const ok = norm(songs[0].name);
-    const ck = norm(songs[songs.length - 1].name);
+    const ok = songs[0].k;
+    const ck = songs[songs.length - 1].k;
     openers.set(ok, (openers.get(ok) || 0) + 1);
     closers.set(ck, (closers.get(ck) || 0) + 1);
   });
@@ -135,15 +153,9 @@
   ).join('');
 
   // ─── Never played live (per setlist.fm data) ───
-  if (lyricsData && lyricsData.songs) {
-    const catalogue = new Map();
-    Object.keys(lyricsData.songs).forEach(key => {
-      const title = (key.split('|||')[1] || '').trim();
-      if (!title) return;
-      const base = title.replace(/\s*\((Live|Demo|Alternate Version)\)\s*$/i, '');
-      if (!catalogue.has(norm(base))) catalogue.set(norm(base), base);
-    });
-    const never = [...catalogue.entries()].filter(([k]) => !plays.has(k)).map(([, v]) => v).sort();
+  // Every song on the official list with no performance (the Passport's count too)
+  if (canon) {
+    const never = canon.songs.map(c => c.title).filter(t => !plays.has('song:' + t)).sort((a, b) => a.localeCompare(b));
     if (never.length) {
       $('neverSection').style.display = '';
       $('neverCount').textContent = never.length;

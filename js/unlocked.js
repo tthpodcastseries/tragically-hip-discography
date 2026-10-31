@@ -248,6 +248,11 @@
     answer(pick.s, pick.t);
   });
 
+  // When the album is named after the song (a title track), the album would give the
+  // answer away, so the hint is the year it came out instead (v5.4.10, audit GAME-08)
+  const flat = s => String(s || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
+  const yearHint = () => !!(puzzle.al && puzzle.ay && flat(puzzle.al).includes(flat(puzzle.t)));
+
   // A guess (or a pass, slug '') on the current rung
   function answer(slug, title) {
     const r = rung();
@@ -263,7 +268,7 @@
       // Missed with every word open: the album hint is the last rung
       today.hint = true;
       track('Unlocked - Album hint');
-      msg.textContent = (slug ? 'Not ' + title + '.' : 'Passed.') + ' Here is the album - one last guess.';
+      msg.textContent = (slug ? 'Not ' + title + '.' : 'Passed.') + (yearHint() ? ' Here is the year it came out' : ' Here is the album') + ' - one last guess.';
     } else if (r === 0) {
       msg.textContent = 'Not ' + title + ". No points lost - unlock word 1 when you're ready.";
     } else {
@@ -295,7 +300,7 @@
     $('ulGuessLabel').textContent = r === 0
       ? 'Know it already? Name the song for ' + worth(0) + ' points'
       : r === HINT_RUNG
-        ? 'Last guess, with the album hint - worth ' + worth(r) + ' points'
+        ? 'Last guess, with the ' + (yearHint() ? 'year' : 'album') + ' hint - worth ' + worth(r) + ' points'
         : 'Word ' + r + ' is open - name the song for ' + worth(r) + ' points, or pass';
     $('ulPass').hidden = r === 0 || r === HINT_RUNG;
   }
@@ -309,8 +314,8 @@
     shown.hidden = !today.hint;
     if (today.hint) {
       shown.textContent = '';
-      shown.appendChild(el('span', '', 'Album: '));
-      shown.appendChild(el('b', '', puzzle.al));
+      shown.appendChild(el('span', '', yearHint() ? 'Came out in ' : 'Album: '));
+      shown.appendChild(el('b', '', yearHint() ? String(puzzle.ay) : puzzle.al));
     }
   }
   // Two taps, so nobody gives up by accident
