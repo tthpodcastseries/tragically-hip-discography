@@ -1827,7 +1827,7 @@ async function buildLyricsIndexFromAPI(onProgress) {
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(str == null ? '' : str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
 function searchLyrics(query) {
@@ -1876,7 +1876,8 @@ function renderLyricsResults(results, query) {
   const countEl = document.getElementById('lyricsResultsCount');
   const breakdownEl = document.getElementById('lyricsAlbumBreakdown');
   const emptyEl = document.getElementById('lyricsEmpty');
-  const qRegex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  // Matched against escaped lyric lines, so escape the query the same way
+  const qRegex = new RegExp(`(${escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
 
   if (results.length === 0) {
     container.innerHTML = '';
@@ -1904,7 +1905,7 @@ function renderLyricsResults(results, query) {
     sortedAlbums.forEach(([album, count]) => {
       const pill = document.createElement('span');
       pill.className = 'lyrics-album-pill' + (activeAlbumFilter === album ? ' active' : '');
-      pill.innerHTML = `${album} <span class="pill-count">${count}</span>`;
+      pill.innerHTML = `${escapeHtml(album)} <span class="pill-count">${count}</span>`;
       pill.addEventListener('click', () => {
         activeAlbumFilter = activeAlbumFilter === album ? null : album;
         renderBreakdown();
@@ -2376,7 +2377,7 @@ function renderSongResults(songTitle) {
   // Header
   const header = document.createElement('div');
   header.className = 'song-result-header';
-  let headerHtml = `<div class="song-result-title">${songTitle}</div>`;
+  let headerHtml = `<div class="song-result-title">${escapeHtml(songTitle)}</div>`;
   if (top40) {
     const cls = top40.rank <= 10 ? 'gold' : '';
     headerHtml += `<span class="item-rank ${cls}">#${top40.rank} ${top40.rank <= 40 ? 'TTHTop40' : 'Fan Vote'}</span>`;
@@ -2392,7 +2393,7 @@ function renderSongResults(songTitle) {
     studioAppearances.forEach(a => {
       const item = document.createElement('div');
       item.className = 'song-result-item';
-      item.innerHTML = `<div class="item-main">${a.album} <span style="color:var(--muted2);font-weight:400;font-size:0.72rem;">(${a.albumYear})</span></div><div class="item-sub">Track ${a.trackNum} &middot; ${a.type}</div>`;
+      item.innerHTML = `<div class="item-main">${escapeHtml(a.album)} <span style="color:var(--muted2);font-weight:400;font-size:0.72rem;">(${escapeHtml(a.albumYear)})</span></div><div class="item-sub">Track ${escapeHtml(a.trackNum)} &middot; ${escapeHtml(a.type)}</div>`;
       group.appendChild(item);
     });
     resultsEl.appendChild(group);
@@ -2408,7 +2409,7 @@ function renderSongResults(songTitle) {
       const label = variant ? variant[1] : '';
       const item = document.createElement('div');
       item.className = 'song-result-item';
-      item.innerHTML = `<div class="item-main">${a.album} <span style="color:var(--muted2);font-weight:400;font-size:0.72rem;">(${a.albumYear})</span></div><div class="item-sub">${label} &middot; Track ${a.trackNum}</div>`;
+      item.innerHTML = `<div class="item-main">${escapeHtml(a.album)} <span style="color:var(--muted2);font-weight:400;font-size:0.72rem;">(${escapeHtml(a.albumYear)})</span></div><div class="item-sub">${escapeHtml(label)} &middot; Track ${escapeHtml(a.trackNum)}</div>`;
       group.appendChild(item);
     });
     resultsEl.appendChild(group);
@@ -2478,7 +2479,7 @@ function renderSongResults(songTitle) {
     item.className = 'song-result-item';
     // Show first ~300 chars of lyrics
     const snippet = lyrics.lyrics.length > 400 ? lyrics.lyrics.substring(0, 400) + '...' : lyrics.lyrics;
-    item.innerHTML = `<div class="song-result-lyric-snippet">${snippet.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+    item.innerHTML = `<div class="song-result-lyric-snippet">${escapeHtml(snippet)}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
   } else {
@@ -2499,7 +2500,7 @@ function renderSongResults(songTitle) {
 
   // No results at all
   if (studioAppearances.length === 0 && otherAppearances.length === 0 && setlists.length === 0 && !top40 && !lyrics) {
-    resultsEl.innerHTML = `<p style="text-align:center;color:var(--muted2);padding:40px 20px;font-size:0.85rem;">No results found for "${songTitle.replace(/</g,'&lt;')}". Try a different song name.</p>`;
+    resultsEl.innerHTML = `<p style="text-align:center;color:var(--muted2);padding:40px 20px;font-size:0.85rem;">No results found for "${escapeHtml(songTitle)}". Try a different song name.</p>`;
   }
 }
 
@@ -2524,7 +2525,7 @@ async function initSongSearch() {
     suggestions.forEach((s, i) => {
       const opt = document.createElement('div');
       opt.className = 'song-search-option';
-      opt.innerHTML = `<span class="opt-song">${s.title}</span><span class="opt-album">${s.album} (${s.year})</span>`;
+      opt.innerHTML = `<span class="opt-song">${escapeHtml(s.title)}</span><span class="opt-album">${escapeHtml(s.album)} (${escapeHtml(s.year)})</span>`;
       opt.addEventListener('mousedown', (e) => {
         e.preventDefault();
         selectSong(s.title);
@@ -3143,7 +3144,7 @@ function openModal(i) {
     </ul>
   ` : '';
 
-  const descHtml = a.desc ? `<p class="modal-desc">${a.desc}</p>` : '';
+  const descHtml = a.desc ? `<p class="modal-desc">${escapeHtml(a.desc)}</p>` : '';
 
   const streamLinks = `
     <div class="stream-links">
@@ -3212,7 +3213,7 @@ function openSoloModal(album) {
   tagsEl.innerHTML = `<span class="modal-tag red">Solo</span>`;
   if (a.posthumous) tagsEl.innerHTML += `<span class="modal-tag gold">Posthumous</span>`;
 
-  const descHtml = a.notes ? `<p class="modal-desc">${a.notes}</p>` : '';
+  const descHtml = a.notes ? `<p class="modal-desc">${escapeHtml(a.notes)}</p>` : '';
 
   const searchArtist = a.credit.replace(/&amp;/g, '&');
   const searchQuery = encodeURIComponent(a.title + ' ' + searchArtist);

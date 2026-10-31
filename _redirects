@@ -11,3 +11,6 @@ https://forum-portal.tthpods.com/  /forum-invite.html  200!
 /audits/*  /404.html  404!
 /docs/*  /404.html  404!
 /data/live-play-counts-unmatched.txt  /404.html  404!
+/data/source/*  /404.html  404!
+/supabase/*  /404.html  404!
+/package-lock.json  /404.html  404!

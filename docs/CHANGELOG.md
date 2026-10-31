@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.4.7
+**Yawning or Snarling - Patch** - October 31, 2026
+Security quick fixes from the pre-relaunch audit (Batch 1: SEC-02, SEC-12, SEC-07, MAP-10, LINK-01, MAP-06).
+- **Fixed: a crafted `#song=` link could put its own HTML into the discography page.** Song titles, album names, descriptions, notes, and lyric snippets are now escaped before going into the page, on the discography page and in the home page's On This Day, search dropdown, and show card. `escapeHtml` in `js/discography-app.js` now also escapes apostrophes and accepts numbers; `index.html` gets a matching `esc()` helper.
+- Lyrics search highlighting matches the escaped text, so searches with apostrophes ("don't") still highlight.
+- **Footer credit link** now goes to https://home.tthpods.com. The old tragicallyhippodcast.com address was never registered.
+- `/package-lock.json`, `/supabase/*`, and `/data/source/*` now return 404 on the live site (`_redirects` and `netlify.toml`).
+- The `/scripts/*` 404 page shows as a normal page instead of raw code (dropped the forced `text/plain` in `_headers`).
+- setlist.fm scripts read `SETLIST_FM_API_KEY` (the name in `.env`) as well as the old `SETLISTFM_API_KEY`; run them with `node --env-file=.env`.
+- `scripts/check-spotify-urls.js` is no longer gitignored, so it's backed up with the repo (it has no keys).
+- Cache bumped to `thc-v5.4.7`; footer label bumped to v5.4.7
+
 ## v5.4.6
 **Yawning or Snarling - Patch** - October 31, 2026
 Member details are private again.

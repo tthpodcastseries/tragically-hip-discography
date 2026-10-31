@@ -7,7 +7,6 @@
 
 /scripts/*
   X-Robots-Tag: noindex, nofollow
-  Content-Type: text/plain
 
 /service-worker.js
   Cache-Control: no-cache, no-store, must-revalidate
