@@ -1,12 +1,9 @@
 https://yerletter.tthpods.com/* https://subscribe.tthpods.com/ 301!
 https://forum-portal.tthpods.com/  /forum-invite.html  200!
-/lyrics  /discography.html  200
-/setlists  /discography.html  200
-/top-40  /discography.html  200
 /my-shows  /passport.html  200
 /song/just-another-midnight  /song/another-midnight  301!
 /song  /song.html  200
-/song/*  /song.html  200
+/song/*  /404.html  404
 /scripts/*  /404.html  404!
 /audits/*  /404.html  404!
 /docs/*  /404.html  404!

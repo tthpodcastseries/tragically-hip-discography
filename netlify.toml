@@ -2,30 +2,17 @@
 [build]
   publish = "."
 
-# Feature pages (v4.7) - /lyrics, /setlists and /top-40 are served by
-# discography.html, which switches into the matching view from the path;
-# /my-shows is the Yer Hip Passport (passport.html, v5)
-[[redirects]]
-  from = "/lyrics"
-  to = "/discography.html"
-  status = 200
-
-[[redirects]]
-  from = "/setlists"
-  to = "/discography.html"
-  status = 200
-
-[[redirects]]
-  from = "/top-40"
-  to = "/discography.html"
-  status = 200
-
+# Feature pages - /lyrics, /setlists and /top-40 are real files (lyrics.html,
+# setlists.html, top-40.html) written by scripts/build-seo-pages.js, so link
+# previews see their own tags; /my-shows is the Yer Hip Passport (passport.html)
 [[redirects]]
   from = "/my-shows"
   to = "/passport.html"
   status = 200
 
-# Song pages (v5.1) - /song/<slug> is served by song.html, which reads the slug
+# Song pages - /song/<slug> is a real file (song/<slug>.html, written by
+# scripts/build-seo-pages.js); an unknown slug gets the 404 page with a real 404.
+# /song (the list of all songs) is song.html
 [[redirects]]
   from = "/song"
   to = "/song.html"
@@ -33,8 +20,8 @@
 
 [[redirects]]
   from = "/song/*"
-  to = "/song.html"
-  status = 200
+  to = "/404.html"
+  status = 404
 
 [[redirects]]
   from = "/scripts/*"

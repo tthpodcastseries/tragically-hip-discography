@@ -805,7 +805,7 @@ if (!spotifyToken) {
 window.onSpotifyWebPlaybackSDKReady = () => {
   if (!spotifyToken) return;
   spotifyPlayer = new Spotify.Player({
-    name: 'Tragically Hip Discography',
+    name: 'The Hip Handbook',
     getOAuthToken: cb => cb(spotifyToken),
     volume: 0.8
   });
@@ -2800,13 +2800,13 @@ catBtns.forEach((btn, idx) => {
 // for local testing - the page shows only that feature under its own header.
 const FEATURE_VIEWS = {
   'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
-    desc: 'Search the lyrics of 188 Tragically Hip songs by a word or phrase you remember.' },
+    desc: 'Search the lyrics of 188 songs by The Tragically Hip by a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
     desc: 'Browse all 1,355 live shows and appearances from 1985 to 2022 - 1,089 with setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
   'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'TTHTop40 Countdown',
     desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from #1 to #169.' },
   'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',
-    desc: 'Mark the Hip shows you were at and build yer own concert history.' },
+    desc: 'Mark the shows by The Tragically Hip you were at and build yer own concert history.' },
 };
 const featureByCategory = {};
 Object.keys(FEATURE_VIEWS).forEach(k => { featureByCategory[FEATURE_VIEWS[k].category] = FEATURE_VIEWS[k]; });
@@ -2823,7 +2823,7 @@ if (activeView) {
   setText('pageSubtitle', activeView.label);
   setText('pageTitle', activeView.title);
   setText('pageDesc', activeView.desc);
-  document.title = activeView.title + ' - ' + activeView.label + ' - The Hip Handbook';
+  document.title = activeView.label + ' (' + activeView.title + ') - The Hip Handbook';
   const canonical = document.querySelector('link[rel=canonical]');
   if (canonical) canonical.href = 'https://thehiphandbook.tthpods.com' + activeView.path;
 }

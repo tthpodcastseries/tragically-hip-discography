@@ -98,8 +98,8 @@
       };
       const showLine = x => [x.venue, placeOf(x)].filter(Boolean).join(', ');
       cell('Played live', plays.length.toLocaleString('en-CA'), plural(new Set(plays.map(x => x.iso.slice(0, 4))).size, 'year', 'years'));
-      cell('Live debut', fmtDate(first.iso), showLine(first), 'tour-map.html#show=' + first.id);
-      cell('Latest', fmtDate(last.iso), showLine(last), 'tour-map.html#show=' + last.id);
+      cell('Live debut', fmtDate(first.iso), showLine(first), '/tour-map.html#show=' + first.id);
+      cell('Latest', fmtDate(last.iso), showLine(last), '/tour-map.html#show=' + last.id);
       cell('Recordings', recs.length.toLocaleString('en-CA'), recs.length ? 'in the Hip Archive' : 'none in the Hip Archive');
     } else {
       $('spNever').hidden = false;
@@ -200,7 +200,7 @@
       where.appendChild(el('b', '', x.venue || placeOf(x)));
       where.appendChild(el('small', '', [placeOf(x), x.tour].filter(Boolean).join(' - ')));
       li.appendChild(where);
-      const play = link('▶ Play', 'tour-map.html#play=' + x.id);
+      const play = link('▶ Play', '/tour-map.html#play=' + x.id);
       play.addEventListener('click', () => track('Song - Play recording'));
       li.appendChild(play);
       return li;
@@ -310,7 +310,7 @@
         where.appendChild(el('b', '', x.venue || placeOf(x)));
         where.appendChild(el('small', '', [placeOf(x), x.tour].filter(Boolean).join(' - ')));
         li.appendChild(where);
-        li.appendChild(x.rec ? link('▶ Play', 'tour-map.html#play=' + x.id) : link('Map', 'tour-map.html#show=' + x.id));
+        li.appendChild(x.rec ? link('▶ Play', '/tour-map.html#play=' + x.id) : link('Map', '/tour-map.html#show=' + x.id));
         list.appendChild(li);
       });
     });

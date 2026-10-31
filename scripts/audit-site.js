@@ -47,6 +47,8 @@ function existsLocal(ref) {
   if (rewrites.has('/' + clean)) return fs.existsSync(path.join(ROOT, rewrites.get('/' + clean).replace(/^\//, '')));
   const wild = wildcardTarget('/' + clean);
   if (wild) return fs.existsSync(path.join(ROOT, wild.replace(/^\//, '')));
+  // Netlify also serves /lyrics from lyrics.html (v5.4.12)
+  if (!path.extname(clean) && fs.existsSync(path.join(ROOT, clean + '.html'))) return true;
   return fs.existsSync(path.join(ROOT, clean));
 }
 
@@ -167,6 +169,52 @@ for (const page of pages) {
   if (!/<meta name="mobile-web-app-capable" content="yes">/.test(html)) problems.push(`${page}: missing <meta name="mobile-web-app-capable" content="yes">`);
   if (/black-translucent/.test(html)) problems.push(`${page}: status bar style black-translucent puts the page under the iPhone clock in the home-screen app (use "black")`);
 }
+
+// ---- 9. Link previews and search (v5.4.12) ----
+// Preview robots read the raw HTML, so each route needs its own file with its own tags.
+const stalePages = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-seo-pages.js'), '--check'], { encoding: 'utf8' });
+if (stalePages.status !== 0) problems.push(`generated pages (song/*.html, lyrics.html, setlists.html, top-40.html) are out of date: ${(stalePages.stderr || stalePages.stdout || '').trim().split('\n').slice(-1)[0]}`);
+
+// song.html is served at /song/<slug>, so a relative link in it points inside /song/
+{
+  const src = fs.readFileSync(path.join(ROOT, 'song.html'), 'utf8');
+  for (const m of src.matchAll(/(?:href|src)=["']([^"']+)["']/g)) {
+    if (!/^(\/|https?:\/\/|mailto:|data:|#|tel:)/.test(m[1])) problems.push(`song.html: relative link "${m[1]}" breaks on /song/<slug> (use /${m[1]})`);
+  }
+}
+
+const pageFiles = [...pages, ...(fs.existsSync(path.join(ROOT, 'song')) ? fs.readdirSync(path.join(ROOT, 'song')).filter(f => f.endsWith('.html')).map(f => 'song/' + f) : [])];
+const canonicalOf = f => (fs.readFileSync(path.join(ROOT, f), 'utf8').match(/<link rel="canonical" href="([^"]+)">/) || [])[1];
+const sitemapLocs = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
+for (const f of pageFiles) {
+  const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  if (/<meta name="robots" content="noindex/.test(html)) continue;
+  const canon = canonicalOf(f);
+  if (!canon) { problems.push(`${f}: no canonical tag`); continue; }
+  if (!sitemapLocs.has(canon)) problems.push(`${f}: canonical ${canon} is not in sitemap.xml`);
+  for (const tag of ['og:image:width', 'og:image:height', 'og:image:alt', 'og:image', 'og:title', 'og:description', 'og:url']) {
+    if (!html.includes(`property="${tag}"`)) problems.push(`${f}: missing ${tag}`);
+  }
+  if (!html.includes('name="twitter:card"')) problems.push(`${f}: missing twitter:card`);
+  if (f.startsWith('song/') && !/<h1 id="spTitle">[^<$]+<\/h1>/.test(html)) problems.push(`${f}: song title missing from the page body`);
+  if (canon !== (html.match(/<meta property="og:url" content="([^"]+)">/) || [])[1]) problems.push(`${f}: og:url differs from canonical`);
+  // Brand guide: never 'Tragically Hip' without 'The' in the text a link preview shows
+  for (const m of html.matchAll(/<(?:title>([^<]*)<|meta (?:name="description"|property="og:(?:title|description)") content="([^"]*)")/g)) {
+    const text = m[1] || m[2] || '';
+    if (/(?<![Tt]he )Tragically Hip/.test(text)) problems.push(`${f}: preview text says 'Tragically Hip' without 'The': ${text.slice(0, 80)}`);
+  }
+}
+for (const loc of sitemapLocs) {
+  const pathname = new URL(loc).pathname;
+  const file = rewrites.has(pathname) ? rewrites.get(pathname).replace(/^\//, '')
+    : pathname.startsWith('/song/') ? pathname.slice(1) + '.html'
+    : pathname.replace(/^\//, '') || 'index.html';
+  const candidates = [file, file + '.html'];
+  const hit = candidates.find(c => fs.existsSync(path.join(ROOT, c)) && fs.statSync(path.join(ROOT, c)).isFile());
+  if (!hit) { problems.push(`sitemap.xml: ${loc} has no file`); continue; }
+  if (canonicalOf(hit) !== loc) problems.push(`sitemap.xml: ${loc} is not the canonical address of ${hit} (${canonicalOf(hit)})`);
+}
+notes.push(`link previews: ${pageFiles.length} pages checked for canonical, og tags and brand naming; sitemap has ${sitemapLocs.size} addresses`);
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {

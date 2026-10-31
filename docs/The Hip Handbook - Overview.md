@@ -146,7 +146,7 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 3. `scrape-archive.js`, `upload-audio-to-b2.py`, `run-upload-workers.sh`, `fix-track-names.py` -> recordings and track lists
 4. `build-lyrics.js`, `build-missing-lyrics-doc.js` -> lyrics (`build-lyrics.js` is retired: `lyrics.json` is now edited by hand, so it refuses unless given `--force`)
 5. `parse-sessions-csv.js` (reads the TrackerHub sessions CSV) -> `unplucked-gems.json`; `build-youtube-videos.js` then `build-show-video-map.js` -> video data
-6. v5, run in this order when setlist data changes: `build-canonical-songs.js` (needs network, reads the Google Form), `build-show-index.js`, `build-game-pool.js`, `build-song-index.js` (also rewrites the song block in `sitemap.xml`), then `build-trunk-pool.js`. Both game builders are append-only: scheduled puzzles never move (v5.4.9). Check with `node scripts/check-game-schedule.js` before committing
+6. v5, run in this order when setlist data changes: `build-canonical-songs.js` (needs network, reads the Google Form), `build-show-index.js`, `build-game-pool.js`, `build-song-index.js` (also rewrites the song block in `sitemap.xml`), `build-seo-pages.js` (the per-song and per-route files link previews read, v5.4.12), then `build-trunk-pool.js`. Both game builders are append-only: scheduled puzzles never move (v5.4.9). Check with `node scripts/check-game-schedule.js` before committing
 7. Always finish with `node scripts/audit-site.js`
 
 Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.
@@ -249,6 +249,7 @@ Fixed on 2026-10-28 and live in v5.1.1: the Passport share card being blocked by
 | Check the whole site's links, assets, data and CSP | `node scripts/audit-site.js` (add `--no-network` to skip external checks) |
 | Check linked YouTube videos are alive | `node scripts/check-youtube-videos.js` |
 | Rebuild song pages and sitemap song block | `node scripts/build-song-index.js` |
+| Rewrite `song/<slug>.html`, `lyrics.html`, `setlists.html`, `top-40.html` (own title, description and tags for link previews). Never edit them by hand; run after any song, `song.html`, `discography.html` or `FEATURE_VIEWS` change | `node scripts/build-seo-pages.js` (`--check` only reports) |
 | Rebuild the official song list | `node scripts/build-canonical-songs.js` |
 | Local preview | `hip-webapp` in `.claude/launch.json` (`npx serve`, port 8765) |
 | Publish | Merge to `main` and push. Bump `CACHE_NAME` and the footer version first (`scripts/audit-site.js` checks they match). |
