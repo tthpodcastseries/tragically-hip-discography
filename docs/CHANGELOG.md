@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.4.8
+**Yawning or Snarling - Patch** - October 31, 2026
+Member safety from the pre-relaunch audit (Batch 2: FUNC-02, REL-02, DB-02, DB-04).
+- **Fixed: a guest who tapped "Sign in with a number" on the Passport lost every show they'd marked.** Their shows now wait in `tth_guest_shows_pending` while the gate is up. Signing in with a number merges them into the member's list (no duplicates) and saves it; tapping "Start exploring" or using the press login hands them back; claiming a new number on the claim page picks them up too. New `TTHMember.signInWithNumber()` in `js/tth-member-gate.js`; "Switch member" for members still just signs out.
+- Sign-in errors from the database show plain words: too many tries, no match, or a save that would remove too many shows (`TTHMember.friendlyError`).
+- `docs/The Hip Handbook - Database Schema.sql`: the full membersHIP database setup (table, number generators, the three site functions, RLS helper, storage rule), code only, so it can be rebuilt.
+- `docs/The Hip Handbook - Passport Guessing Stopgap.sql`: limits failed sign-ins per visitor and overall, stops one save from removing more than 10 shows, and makes the number generators internal only. Run by hand in the Supabase SQL Editor.
+- Cache bumped to `thc-v5.4.8`; footer label bumped to v5.4.8
+
 ## v5.4.7
 **Yawning or Snarling - Patch** - October 31, 2026
 Security quick fixes from the pre-relaunch audit (Batch 1: SEC-02, SEC-12, SEC-07, MAP-10, LINK-01, MAP-06).

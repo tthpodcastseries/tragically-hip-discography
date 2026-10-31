@@ -338,7 +338,12 @@
   }
 
   // ─── Wiring ───
-  $('ppSwitch').addEventListener('click', () => M.signOut());
+  // Guests keep their shows through sign-in (merged on unlock); members just switch
+  $('ppSwitch').addEventListener('click', () => {
+    const sess = M.getSession();
+    if (sess && sess.guest && M.signInWithNumber) M.signInWithNumber();
+    else M.signOut();
+  });
   $('ppMissingBtn').addEventListener('click', e => {
     onlyMissing = !onlyMissing;
     e.currentTarget.setAttribute('aria-pressed', String(onlyMissing));

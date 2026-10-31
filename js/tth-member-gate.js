@@ -19,6 +19,8 @@
 //   getSession()              -> { memberNumber, firstName, attendedShows, guest } | null
 //   isUnlocked()              -> boolean
 //   signOut()                 -> clears local session and reloads
+//   signInWithNumber()        -> like signOut, but a guest's shows wait in
+//                                'tth_guest_shows_pending' and merge in on unlock
 //   hasShow(id)               -> boolean
 //   addShow(id)               -> Promise<void>
 //   removeShow(id)            -> Promise<void>
@@ -76,6 +78,28 @@
     } catch (e) {}
   }
 
+  // Guest shows wait here while a guest goes to the sign-in gate, then get
+  // merged into the member's list (or handed back if they stay a guest)
+  var PENDING_KEY = 'tth_guest_shows_pending';
+  function readPending() {
+    try {
+      var list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+      return Array.isArray(list) ? list.map(String) : [];
+    } catch (e) { return []; }
+  }
+  function clearPending() {
+    try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
+  }
+
+  // Database errors arrive as codes; turn them into something a fan can act on
+  function friendlyError(err) {
+    var msg = (err && err.message) || '';
+    if (msg.indexOf('too_many_attempts') !== -1) return 'Too many tries from here. Give it an hour and try again.';
+    if (msg.indexOf('invalid_credentials') !== -1) return 'No match. Check yer name and number.';
+    if (msg.indexOf('too_many_removed') !== -1) return 'That would remove a lot of shows at once, so it wasn\'t saved.';
+    return msg || 'Something went wrong. Try again.';
+  }
+
   // Lazy supabase loader
   var sbClient = null;
   var sbPromise = null;
@@ -130,6 +154,17 @@
       };
     },
     isUnlocked: function () { return !!session; },
+    // Guest -> member sign-in without losing the guest's shows (audit FUNC-02)
+    signInWithNumber: function () {
+      if (session && session.guest && session.attendedShows.length) {
+        try { localStorage.setItem(PENDING_KEY, JSON.stringify(session.attendedShows)); } catch (e) {}
+      }
+      session = null;
+      persistLocal();
+      notify();
+      location.reload();
+    },
+    friendlyError: friendlyError,
     signOut: function () {
       session = null;
       persistLocal();
@@ -329,11 +364,12 @@
       session = {
         memberNumber: GUEST_NUMBER,
         firstName: GUEST_FIRST_NAME,
-        attendedShows: [],
+        attendedShows: readPending(),
         unlockedAt: Date.now(),
         guest: true
       };
       persistLocal();
+      clearPending();
       track('Gate - Start exploring').then(function () { location.reload(); });
     });
 
@@ -361,11 +397,12 @@
         session = {
           memberNumber: GUEST_NUMBER,
           firstName: GUEST_FIRST_NAME,
-          attendedShows: [],
+          attendedShows: readPending(),
           unlockedAt: Date.now(),
           guest: true
         };
         persistLocal();
+        clearPending();
         location.reload();
         return;
       }
@@ -373,24 +410,39 @@
       btn.disabled = true;
       btn.textContent = 'Unlocking...';
 
+      var sbRef;
       getSupabase().then(function (sb) {
+        sbRef = sb;
         return sb.rpc('unlock_member', { p_first_name: first, p_number: num });
       }).then(function (res) {
         if (res && res.error) throw res.error;
         var data = res && res.data;
         if (!data) throw new Error('No match. Check yer name and number.');
 
+        // Fold in any shows marked as a guest on this device
+        var shows = (data.attended_shows || []).map(String);
+        var added = readPending().filter(function (id) { return shows.indexOf(id) === -1; });
         session = {
           memberNumber: data.membership_number,
           firstName: data.first_name,
-          attendedShows: (data.attended_shows || []).map(String),
+          attendedShows: shows.concat(added),
           unlockedAt: Date.now()
         };
         persistLocal();
+        if (!added.length) { clearPending(); return; }
+        return sbRef.rpc('update_attended_shows', {
+          p_first_name: session.firstName,
+          p_number: session.memberNumber,
+          p_shows: session.attendedShows
+        }).then(function (r) {
+          // Saved: done with the guest copy. If not, it stays for the next sign-in.
+          if (!(r && r.error)) clearPending();
+        }, function () {});
+      }).then(function () {
         // Reload so the rest of the page boots with the session in place.
         track('Gate - Member unlock').then(function () { location.reload(); });
       }).catch(function (err) {
-        errEl.textContent = (err && err.message) || 'Something went wrong. Try again.';
+        errEl.textContent = friendlyError(err);
         btn.disabled = false;
         btn.textContent = 'Unlock yer shows';
         track('Gate - Unlock failed');

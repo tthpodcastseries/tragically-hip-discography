@@ -361,6 +361,10 @@
       try {
         var prev = JSON.parse(localStorage.getItem('tth_member_session') || 'null');
         if (prev && prev.guest && Array.isArray(prev.attendedShows)) guestShows = prev.attendedShows.map(String);
+        // Shows a guest left waiting when they went to sign in (tth-member-gate.js)
+        var pending = JSON.parse(localStorage.getItem('tth_guest_shows_pending') || '[]');
+        if (Array.isArray(pending)) pending.map(String).forEach(function (id) { if (guestShows.indexOf(id) === -1) guestShows.push(id); });
+        localStorage.removeItem('tth_guest_shows_pending');
       } catch (e2) { /* no prior session */ }
       try {
         localStorage.setItem('tth_member_session', JSON.stringify({
