@@ -7,6 +7,10 @@
 // the key. Words run from the vaguest (shared with a few other songs) at the top
 // to the most telling (only in this song, sung often) at the bottom.
 //
+// Songs come back: each song gives up to 3 versions, each with its own five words
+// (no word is used twice for a song), and the best version goes out first. The
+// schedule mixes them so the same song never returns within 90 days.
+//
 // A word is used only if it:
 //   - has 4+ letters, plain a-z (no apostrophes or accents), and isn't filler
 //   - isn't part of the song's title
@@ -17,11 +21,13 @@
 //     so the scramble has one answer
 //
 // The order is LOCKED once built: existing puzzles keep their place, words and
-// scrambles, and songs that gain lyrics later are shuffled onto the end. So the
-// puzzle for a given day never changes after launch. Delete data/trunk-pool.json
-// only to start the whole order over (never after launch).
+// scrambles, and songs that gain lyrics later are added to the end (first version
+// only, since a short tail can't keep repeats 90 days apart). So the puzzle for a
+// given day never changes after launch. Delete data/trunk-pool.json only to start
+// the whole schedule over (never after launch, November 4, 2026).
 //
-// Output: { built, total, titles: [[slug, title] ...], puzzles: [ { s, t, w: [[word, SCRAMBLE] x5], sp, lv } ] }
+// Output: { built, total, titles: [[slug, title] ...], puzzles: [ { s, t, v, w: [[word, SCRAMBLE] x5], sp, lv } ] }
+//   v is the version of the song (1 = its first appearance).
 //   titles is every song on the official list, for the guess box.
 //   sp (Spotify track link) and lv (latest Hip Archive show with the song) power the
 //   'Play it' links after the reveal. Unlike the words, they're refreshed every run.
@@ -36,6 +42,8 @@ const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'data', 'trunk-pool.json');
 const WORDS = 5;
 const MAX_SONGS_WITH_WORD = 6;
+const MAX_VERSIONS = 3;
+const MIN_GAP_DAYS = 90;
 const SEED = 1992; // Fully Completely
 
 const songIndex = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'song-index.json'), 'utf8'));
@@ -108,7 +116,8 @@ for (const w of dict) { addFam(w); addFam(w + 's'); }
 for (const w of Object.keys(df)) addFam(w);
 const oneAnswer = w => [...family.get(sig(w))].every(v => v === w);
 
-function pickWords(key, title) {
+// A song's versions, best first: each is five words, vaguest to most telling
+function pickVersions(key, title) {
   const { count, caps } = songWords[key];
   const titleWords = (plain(title).toLowerCase().match(/[a-z]+/g) || []).filter(t => t.length >= 3);
   const inTitle = w => titleWords.some(t => w === t || (t.length >= 4 && (w.includes(t) || t.includes(w))));
@@ -116,18 +125,27 @@ function pickWords(key, title) {
     w.length >= 4 && !FILLER.has(w) && !SKIP_WORDS.has(w) && !inTitle(w) && df[w] <= MAX_SONGS_WITH_WORD &&
     !/(.)\1\1/.test(w) && /[aeiouy]/.test(w) &&
     (isWord(w) || caps[w] === true) && oneAnswer(w));
-  if (cands.length < WORDS) return null;
+  // Every version needs its own giveaway: a word only this song has
+  const k = Math.min(MAX_VERSIONS, Math.floor(cands.length / WORDS), cands.filter(w => df[w] === 1).length);
+  if (k < 1) return [];
   // How much a word gives away: sung often, in few other songs
   const tell = w => count[w] / (df[w] * df[w]);
-  cands.sort((a, b) => tell(a) - tell(b) || a.localeCompare(b));
-  // Spread the picks from the vaguest to the most telling
-  const picked = [];
-  for (let i = 0; i < WORDS; i++) {
-    let j = Math.round(i * (cands.length - 1) / (WORDS - 1));
-    while (picked.includes(cands[j])) j++;
-    picked.push(cands[j]);
-  }
-  return picked;
+  cands.sort((a, b) => tell(b) - tell(a) || a.localeCompare(b));
+  // Deal the words out like cards, most telling first, so each version gets a
+  // full range and version 1 holds the single most telling word
+  const hands = Array.from({ length: k }, () => []);
+  cands.forEach((w, i) => hands[i % k].push(w));
+  return hands.map(hand => {
+    const asc = hand.reverse();
+    // Spread the picks from the vaguest to the most telling
+    const picked = [];
+    for (let i = 0; i < WORDS; i++) {
+      let j = Math.round(i * (asc.length - 1) / (WORDS - 1));
+      while (picked.includes(asc[j])) j++;
+      picked.push(asc[j]);
+    }
+    return picked;
+  });
 }
 
 // Scramble so no more than a third of the letters stay put (never the word itself)
@@ -150,17 +168,46 @@ const have = new Set(puzzles.map(p => p.s));
 const rand = rng(SEED + puzzles.length);
 
 const skipped = [];
-const fresh = [];
+const songs = []; // { s, t, versions: [[word x5] ...] }
 for (const so of index) {
   if (!so.l || have.has(so.s)) continue;
-  const words = pickWords(so.l, so.t);
-  if (!words) { skipped.push(so.t); continue; }
-  fresh.push({ s: so.s, t: so.t, w: words });
+  const versions = pickVersions(so.l, so.t);
+  if (!versions.length) { skipped.push(so.t); continue; }
+  // Added after launch: first version only (see the note at the top)
+  songs.push({ s: so.s, t: so.t, versions: old ? versions.slice(0, 1) : versions });
 }
-shuffle(fresh, rand).forEach(p => {
-  p.w = p.w.map(w => [w, scramble(w, rand)]);
-  puzzles.push(p);
-});
+shuffle(songs, rand);
+
+// Schedule: one puzzle a day. Each day picks at random from the songs that are
+// due (never played, or last played 90+ days ago), favouring songs with more
+// versions left so the repeats spread across the year instead of piling up at
+// the end. Versions go out in order.
+const lastDay = new Map();
+puzzles.forEach((p, i) => lastDay.set(p.s, i));
+const left = new Map(songs.map(so => [so.s, so.versions.length]));
+const next = new Map(songs.map(so => [so.s, 0]));
+let tooClose = 0;
+const fresh = [];
+while (fresh.length < songs.reduce((n, so) => n + so.versions.length, 0)) {
+  const day = puzzles.length + fresh.length;
+  const open = songs.filter(so => left.get(so.s) > 0);
+  let due = open.filter(so => !lastDay.has(so.s) || day - lastDay.get(so.s) >= MIN_GAP_DAYS);
+  if (!due.length) {
+    // Nothing is due (only near the very end): take the song that waited longest
+    tooClose++;
+    const wait = so => day - lastDay.get(so.s);
+    due = [open.reduce((a, b) => (wait(b) > wait(a) ? b : a))];
+  }
+  const weight = so => left.get(so.s) ** 3;
+  let r = rand() * due.reduce((n, so) => n + weight(so), 0);
+  const so = due.find(x => (r -= weight(x)) < 0) || due[due.length - 1];
+  const v = next.get(so.s);
+  fresh.push({ s: so.s, t: so.t, v: v + 1, w: so.versions[v].map(w => [w, scramble(w, rand)]) });
+  next.set(so.s, v + 1);
+  left.set(so.s, left.get(so.s) - 1);
+  lastDay.set(so.s, day);
+}
+puzzles.push(...fresh);
 
 // A locked puzzle whose song changed title or slug still plays; flag it
 const bySlug = new Map(index.map(so => [so.s, so]));
@@ -185,6 +232,12 @@ fs.writeFileSync(OUT, JSON.stringify(out) + '\n');
 console.log(`  play links: ${puzzles.filter(p => p.sp).length} Spotify tracks (the rest use search), ${puzzles.filter(p => p.lv).length} with a Hip Archive show`);
 const lens = puzzles.flatMap(p => p.w.map(w => w[0].length));
 console.log(`wrote data/trunk-pool.json: ${puzzles.length} puzzles (${fresh.length} new, ${puzzles.length - fresh.length} kept), ${out.titles.length} titles, ${Math.round(fs.statSync(OUT).size / 1024)} KB`);
+const byVersion = [1, 2, 3].map(v => puzzles.filter(p => (p.v || 1) === v).length);
+console.log(`  ${new Set(puzzles.map(p => p.s)).size} songs; first appearances ${byVersion[0]}, second ${byVersion[1]}, third ${byVersion[2]}`);
+const gaps = [];
+const seen = new Map();
+puzzles.forEach((p, i) => { if (seen.has(p.s)) gaps.push(i - seen.get(p.s)); seen.set(p.s, i); });
+if (gaps.length) console.log(`  days between a song's appearances: shortest ${Math.min(...gaps)}, average ${Math.round(gaps.reduce((a, b) => a + b, 0) / gaps.length)}${tooClose ? `; ${tooClose} came back early (end of schedule)` : ''}`);
 console.log(`  word length ${Math.min(...lens)}-${Math.max(...lens)}, average ${(lens.reduce((a, b) => a + b, 0) / lens.length).toFixed(1)}`);
 if (skipped.length) console.log(`  not enough usable words: ${skipped.join(', ')}`);
 if (stale.length) console.log(`  WARNING - songs no longer in song-index.json: ${stale.join(', ')}`);

@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.4.1
+**Yawning or Snarling - Patch** - October 31, 2026 (before the game opens November 4)
+A bigger (Un)Locked schedule, so the game runs well past its first few months.
+- **404 puzzles** (was 176), running to December 12, 2027. Songs come back: each song gives up to 3 versions with five different words each, and no word is used twice for the same song. 176 songs appear once, 140 twice, and 88 three times.
+- **Repeats are spread through the year** instead of waiting until every song has been used. The same song never returns within 90 days (average gap 150), and the first 3+ months (to February 20, 2027) are all new songs. A song's best version (the one with its most telling word) goes out first.
+- `scripts/build-trunk-pool.js` builds the versions and the schedule. After launch it stays append-only: songs that gain lyrics later join the end with their first version only.
+
 ## v5.4
 **Yawning or Snarling** - October 31, 2026 (game opens Wednesday, November 4)
 A second daily game. v5.2 and v5.3 stay reserved for listening paths and fan voting.
