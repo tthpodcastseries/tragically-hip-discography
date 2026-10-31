@@ -30,7 +30,9 @@
 //   v is the version of the song (1 = its first appearance).
 //   titles is every song on the official list, for the guess box.
 //   sp (Spotify track link) and lv (latest Hip Archive show with the song) power the
-//   'Play it' links after the reveal. Unlike the words, they're refreshed every run.
+//   'Play it' links after the reveal; al is the album for the album hint (where the
+//   song first came out: its studio album or EP, else its earliest release).
+//   Unlike the words, these are refreshed every run.
 //
 // Usage: node scripts/build-trunk-pool.js   (re-run after scripts/build-song-index.js
 // whenever lyrics.json gains songs)
@@ -212,9 +214,12 @@ puzzles.push(...fresh);
 // A locked puzzle whose song changed title or slug still plays; flag it
 const bySlug = new Map(index.map(so => [so.s, so]));
 
-// Play links (refreshed every run)
+// Play links and album (refreshed every run)
 for (const p of puzzles) {
   const so = bySlug.get(p.s);
+  const released = so ? [...so.a].sort((x, y) => x[1] - y[1]) : [];
+  const origin = released.find(a => (a[2] === 'studio' || a[2] === 'eps') && !a[4]) || released[0];
+  p.al = origin ? origin[0] : '';
   p.sp = spotifyTrackURLs[p.t] || '';
   const rec = so && so.r.length ? so.r[so.r.length - 1] : null;
   p.lv = rec ? String(songIndex.shows[rec[0]][0]) : '';
@@ -229,6 +234,8 @@ const out = {
 };
 fs.writeFileSync(OUT, JSON.stringify(out) + '\n');
 
+const noAlbum = puzzles.filter(p => !p.al).map(p => p.t);
+if (noAlbum.length) console.log(`  WARNING - no album for the hint: ${[...new Set(noAlbum)].join(', ')}`);
 console.log(`  play links: ${puzzles.filter(p => p.sp).length} Spotify tracks (the rest use search), ${puzzles.filter(p => p.lv).length} with a Hip Archive show`);
 const lens = puzzles.flatMap(p => p.w.map(w => w[0].length));
 console.log(`wrote data/trunk-pool.json: ${puzzles.length} puzzles (${fresh.length} new, ${puzzles.length - fresh.length} kept), ${out.titles.length} titles, ${Math.round(fs.statSync(OUT).size / 1024)} KB`);

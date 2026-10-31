@@ -53,10 +53,16 @@
 .ul-play-apple { background: var(--red); border-color: var(--red); }
 .ul-play-live { background: transparent; color: var(--gold); border-color: rgba(204, 162, 60, 0.6); }
 
-/* Practice puzzle (?practice) */
-.ul-practice-link { display: inline-block; margin-top: 10px; color: var(--gold); font-weight: 700; }
-.ul-practice-end { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.86rem; color: var(--muted); }
-.ul-practice-end .bia-btn { text-decoration: none; display: inline-block; }
+/* Album hint and give up */
+.ul-tools { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.ul-tools-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.ul-hint-shown { margin: 0; font-size: 0.9rem; color: var(--text); background: rgba(204, 162, 60, 0.1); border: 1px solid rgba(204, 162, 60, 0.35); border-radius: 10px; padding: 9px 14px; }
+.ul-hint-shown span { color: var(--gold); font-weight: 700; }
+.ul-hint-shown b { color: #fff; }
+.ul-giveup { margin-left: auto; background: none; border: 0; padding: 6px 0; color: var(--muted2); font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.ul-giveup:hover { color: var(--text); }
+.ul-giveup.armed { color: #ff6b6b; }
+.ul-giveup:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .ul-dist-h { margin-top: 14px; font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
 

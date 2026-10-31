@@ -76,6 +76,13 @@
     </form>
     <div id="ulMsg" class="bia-msg" role="status" aria-live="polite"></div>
     <ul id="ulWrong" class="ul-wrong" aria-label="Wrong guesses"></ul>
+    <div id="ulTools" class="ul-tools">
+      <p id="ulHintShown" class="ul-hint-shown" hidden></p>
+      <div class="ul-tools-row">
+        <button id="ulHint" class="bia-btn bia-btn-alt" type="button" hidden>Album hint (-20)</button>
+        <button id="ulGiveUp" class="ul-giveup" type="button">Give up</button>
+      </div>
+    </div>
 
     <section id="ulEnd" class="bia-card bia-end" hidden aria-labelledby="ulResult">
       <h2 class="bia-result" id="ulResult"></h2>
@@ -83,14 +90,6 @@
       <div id="ulReveal" class="bia-reveal"></div>
       <div id="ulPlay" class="ul-play" role="group" aria-label="Play the song"></div>
       <div id="ulLinks" class="bia-links"></div>
-      <div id="ulPracticeEnd" class="ul-practice-end" hidden>
-        <p id="ulPracticeNote"></p>
-        <div class="bia-actions">
-          <a class="bia-btn" href="unlocked.html">Play today's puzzle</a>
-          <button id="ulAgain" class="bia-btn bia-btn-alt" type="button">Practise again</button>
-        </div>
-      </div>
-      <div id="ulShareBox">
       <pre id="ulShareText" class="bia-sharetext"></pre>
       <div class="bia-actions">
         <button id="ulCopy" class="bia-btn" type="button">Copy my score</button>
@@ -114,7 +113,6 @@
       </div>
       <div id="ulStats" class="bia-stats"></div>
       <p class="bia-next">Next puzzle in <b id="ulCountdown">--:--:--</b></p>
-      </div>
     </section>
 
     <details class="bia-how">
@@ -124,8 +122,9 @@
         <li>The words run from the vaguest at the top to the biggest giveaway at the bottom, and they unlock in that order.</li>
         <li>Name the song at any time. Get it with no words unlocked for 100 points.</li>
         <li>Each word you unscramble costs 10 points, a word you reveal costs 20, and each wrong guess costs 10. Wrong unscrambles are free - keep trying.</li>
-        <li>Hit 0 and the trunk stays locked for the day. Yer points add up over every game you play.</li>
-        <li>Squares: &#129001; unscrambled, &#129000; revealed, &#11035; never needed, &#128997; a wrong guess.</li>
+        <li>Still stuck with all five words unlocked? Buy the album hint for 20 points, or give up to see the song.</li>
+        <li>Hit 0 (or give up) and the trunk stays locked for the day. Yer points add up over every game you play.</li>
+        <li>Squares: &#129001; unscrambled, &#129000; revealed, &#11035; never needed, &#128191; album hint, &#128997; a wrong guess.</li>
       </ul>
     </details>
   </div>

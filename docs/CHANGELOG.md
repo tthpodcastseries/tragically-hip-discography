@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.4.3
+**Yawning or Snarling - Patch** - October 31, 2026
+(Un)Locked players who unlock all five words and still don't know the song now have a way forward.
+- **Album hint (-20)**: shows up once all five words are unlocked and names the album the song first came out on (its studio album or EP, else its first release, like a box set). It's greyed out when buying it would drop the score to 0. Adds 💿 to the share squares.
+- **Give up**: available the whole game, with a second tap to confirm. Shows the song and counts as a loss (0 points, streak reset).
+- The reveal now says which album the song is from.
+- `scripts/build-trunk-pool.js` adds the album (`al`) to every puzzle; the schedule, versions, and words are unchanged.
+- **Practice puzzle removed** from the site (`/unlocked?practice`), as planned. The pitch page keeps its own playable copy.
+
 ## v5.4.2
 **Yawning or Snarling - Patch** - October 31, 2026
 - **Practice puzzle for (Un)Locked** at `/unlocked?practice`, playable any time (including before the game opens November 4). It uses Morning Moon, one of the songs that sit out of the schedule, so it spoils no real day. It saves separately and doesn't touch stats, streaks, or sharing, and ends with "Play today's puzzle" and "Practise again".
