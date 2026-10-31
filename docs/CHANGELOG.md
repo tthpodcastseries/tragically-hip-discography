@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.4.4
+**Yawning or Snarling - Patch** - October 31, 2026
+(Un)Locked moves to a points ladder, so guessing along the way always pays and holding back never does.
+- **Score depends only on when you name the song**: 100 before any word (a free first shot - a miss there costs nothing), then 90, 80, 70, 60, 50 after words 1 to 5, and 30 with the album hint. Wrong guesses no longer cost extra; a miss just moves you down a rung.
+- **A guess after every word**: each unlocked word must be followed by a guess or a Pass before the next word opens. That's at most seven guesses.
+- **The album hint is the last rung**: it appears on its own after a miss on word 5, for one final guess. Missing that is a loss. Give up still works any time.
+- **Revealing a word costs 10** (was 20). A win always scores at least 10, so the lowest wins are 30 (every word unscrambled, plus the album) and 10 (every word revealed, plus the album).
+- Share squares drop the red wrong-guess marks (the ladder already says how far down you went). The stats chart gains an album-hint row; saved stats carry over.
+- The pitch page's built-in practice puzzle plays by the same rules.
+
 ## v5.4.3
 **Yawning or Snarling - Patch** - October 31, 2026
 (Un)Locked players who unlock all five words and still don't know the song now have a way forward.

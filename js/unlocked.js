@@ -1,4 +1,4 @@
-// unlocked.js - '(Un)Locked in the Trunk of a Car', the daily lyrics game (v5.4; album hint and give up in v5.4.3)
+// unlocked.js - '(Un)Locked in the Trunk of a Car', the daily lyrics game (v5.4; points ladder in v5.4.4)
 // One Hip song a day, the same for everyone, behind five scrambled words from its
 // lyrics. Name the song with as few words unlocked as you can.
 // Everything runs in the browser from data/trunk-pool.json (scripts/build-trunk-pool.js);
@@ -12,16 +12,20 @@
   // says when the game opens instead of showing a puzzle.
   const EPOCH = '2026-11-04';
   const WORDS = 5;
-  // Points: 100 to start; each word unscrambled -10, revealed -20, each wrong guess -10,
-  // and the album hint -20 (offered once all five words are unlocked). 0 is a loss.
-  const START = 100, COST_SOLVED = 10, COST_REVEALED = 20, COST_WRONG = 10, COST_HINT = 20;
+  // Points ladder: the score depends on when you name the song. Rung 0 is before any
+  // word (a free first shot), rungs 1-5 come after each word, and rung 6 is the album
+  // hint, which appears after a miss on word 5. Every unlocked word forces a guess (or
+  // a pass) before the next one opens. A word revealed instead of unscrambled costs 10
+  // more, but a win always scores at least 10. Missing the last guess is a loss.
+  const LADDER = [100, 90, 80, 70, 60, 50, 30];
+  const HINT_RUNG = 6, REVEAL_COST = 10, MIN_WIN = 10;
   const STORE_KEY = 'tth_unlocked_v1';
   const SHARE_URL = 'thehiphandbook.tthpods.com/unlocked';
   const NAME = '(Un)Locked in the Trunk of a Car';
   const SHORT = '(Un)Locked';
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const SQ = { solved: '\u{1F7E9}', revealed: '\u{1F7E8}', locked: '\u{2B1B}', wrong: '\u{1F7E5}', hint: '\u{1F4BF}' };
+  const SQ = { solved: '\u{1F7E9}', revealed: '\u{1F7E8}', locked: '\u{2B1B}', hint: '\u{1F4BF}' };
 
   // ?day=N and ?reset=1 are for testing, and only work on a local address
   const isLocal = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
@@ -30,13 +34,15 @@
   const songHref = s => isLocal ? '/song?s=' + s : '/song/' + s;
 
   // ─── Storage (never trust it to be there) ───
-  // dist[n] = wins with n words unlocked (0-5)
-  const blank = () => ({ stats: { played: 0, won: 0, streak: 0, best: 0, points: 0, dist: [0, 0, 0, 0, 0, 0], lastSolved: 0 }, today: null });
+  // dist[r] = wins on rung r (0-5 words unlocked, 6 = with the album hint)
+  const blank = () => ({ stats: { played: 0, won: 0, streak: 0, best: 0, points: 0, dist: [0, 0, 0, 0, 0, 0, 0], lastSolved: 0 }, today: null });
   const load = () => {
     try {
       if (isLocal && params.get('reset') === '1') localStorage.removeItem(STORE_KEY);
       const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
-      if (saved && saved.stats && Array.isArray(saved.stats.dist) && saved.stats.dist.length === WORDS + 1) return saved;
+      // Saves from before the ladder (v5.4.4) have six rows; add the hint row
+      if (saved && saved.stats && Array.isArray(saved.stats.dist) && saved.stats.dist.length === WORDS + 1) saved.stats.dist.push(0);
+      if (saved && saved.stats && Array.isArray(saved.stats.dist) && saved.stats.dist.length === HINT_RUNG + 1) return saved;
     } catch (e) { /* private mode or bad data - start fresh */ }
     return blank();
   };
@@ -74,8 +80,9 @@
   const scrambles = puzzle.w.map(w => w[1]);
 
   // Saved game belongs to a different puzzle (or is missing): start today's fresh
-  if (!store.today || store.today.no !== puzzleNo || !Array.isArray(store.today.unlocked) || !Array.isArray(store.today.wrong)) {
-    store.today = { no: puzzleNo, unlocked: [], wrong: [], done: false, won: false, started: false };
+  // guesses: one per rung at most, { r: rung, s: song slug, or '' for a pass }
+  if (!store.today || store.today.no !== puzzleNo || !Array.isArray(store.today.unlocked) || !Array.isArray(store.today.guesses)) {
+    store.today = { no: puzzleNo, unlocked: [], guesses: [], hint: false, done: false, won: false, started: false };
   }
   const today = store.today;
 
@@ -88,13 +95,18 @@
   };
   const norm = s => String(s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
   const titleOf = slug => (pool.titles.find(t => t[0] === slug) || [slug, slug])[1];
-  const points = () => Math.max(0, START -
-    today.unlocked.reduce((sum, how) => sum + (how === 'revealed' ? COST_REVEALED : COST_SOLVED), 0) -
-    today.wrong.length * COST_WRONG - (today.hint ? COST_HINT : 0));
-  const todayPoints = () => today.won ? points() : 0;
-  const squares = () => words.map((w, i) => SQ[today.unlocked[i] || 'locked']).join('') +
-    (today.hint ? ' ' + SQ.hint : '') +
-    (today.wrong.length ? ' ' + today.wrong.map(() => SQ.wrong).join('') : '');
+  const rung = () => today.hint ? HINT_RUNG : today.unlocked.length;
+  const reveals = () => today.unlocked.filter(how => how === 'revealed').length;
+  // What a right answer is worth on a rung
+  const worth = r => Math.max(MIN_WIN, LADDER[r] - reveals() * REVEAL_COST);
+  const guessedHere = () => today.guesses.some(g => g.r === rung());
+  // Guess now? Every rung allows one; rungs 1+ require it before the next word opens
+  const canGuess = () => !today.done && !guessedHere();
+  const canUnlock = () => !today.done && !today.hint && today.unlocked.length < WORDS && (rung() === 0 || guessedHere());
+  const wrongSlugs = () => today.guesses.filter(g => g.s && g.s !== puzzle.s).map(g => g.s);
+  const todayPoints = () => today.won ? worth(today.wonAt) : 0;
+  const shownPoints = () => today.done ? todayPoints() : worth(canGuess() ? rung() : Math.min(rung() + 1, HINT_RUNG));
+  const squares = () => words.map((w, i) => SQ[today.unlocked[i] || 'locked']).join('') + (today.hint ? ' ' + SQ.hint : '');
   const markStarted = () => { if (!today.started) { today.started = true; track('Unlocked - Started'); } };
 
   // ─── The words ───
@@ -102,14 +114,14 @@
   function renderWords() {
     const list = $('ulWords');
     list.textContent = '';
-    const active = today.done ? -1 : today.unlocked.length;
+    const active = canUnlock() ? today.unlocked.length : -1;
     words.forEach((word, i) => {
       const how = today.unlocked[i];
       const li = el('li', 'ul-word' + (how ? ' open ' + how : i === active ? ' active' : ' locked'));
       li.appendChild(el('span', 'ul-num', i + 1));
       if (how || today.done) {
         li.appendChild(el('span', 'ul-answer', word.toUpperCase()));
-        li.appendChild(el('span', 'ul-tag', how === 'revealed' ? 'Revealed -20' : how ? 'Unlocked -10' : 'Never needed'));
+        li.appendChild(el('span', 'ul-tag', how === 'revealed' ? 'Revealed -10' : how ? 'Unlocked' : 'Never needed'));
       } else {
         const tiles = el('span', 'ul-tiles');
         [...scrambles[i]].forEach((ch, t) => {
@@ -130,7 +142,7 @@
       list.appendChild(li);
     });
     const form = $('ulWordForm');
-    form.hidden = active < 0 || active >= WORDS;
+    form.hidden = active < 0;
     if (!form.hidden) {
       $('ulWordLabel').textContent = 'Unscramble word ' + (active + 1) + ' (' + words[active].length + ' letters)';
       $('ulWordInput').maxLength = words[active].length;
@@ -140,7 +152,7 @@
   // Tiles and the text box stay in step: tapping types the letter, typing spends tiles
   function syncTiles() {
     const active = today.unlocked.length;
-    if (active >= WORDS) return;
+    if (!canUnlock()) return;
     const letters = [...scrambles[active]];
     used = [];
     for (const ch of $('ulWordInput').value.toUpperCase()) {
@@ -164,13 +176,14 @@
     today.unlocked.push(how);
     $('ulWordInput').value = '';
     used = [];
-    if (points() <= 0) finish(false);
+    $('ulMsg').textContent = '';
     save();
     renderAll();
+    $('ulGuessInput').focus();
   }
   $('ulWordForm').addEventListener('submit', e => {
     e.preventDefault();
-    if (today.done) return;
+    if (!canUnlock()) return;
     const active = today.unlocked.length;
     const raw = $('ulWordInput').value.trim().toLowerCase();
     const msg = $('ulWordMsg');
@@ -180,7 +193,7 @@
     unlock('solved');
   });
   $('ulRevealWord').addEventListener('click', () => {
-    if (today.done) return;
+    if (!canUnlock()) return;
     $('ulWordMsg').textContent = '';
     unlock('revealed');
   });
@@ -200,7 +213,7 @@
       const b = el('button', 'ul-option', x.t);
       b.type = 'button';
       b.setAttribute('role', 'option');
-      if (today.wrong.includes(x.s)) { b.disabled = true; b.textContent = x.t + ' - already guessed'; }
+      if (wrongSlugs().includes(x.s)) { b.disabled = true; b.textContent = x.t + ' - already guessed'; }
       b.addEventListener('click', () => {
         $('ulGuessInput').value = x.t;
         box.hidden = true;
@@ -217,7 +230,7 @@
 
   $('ulGuessForm').addEventListener('submit', e => {
     e.preventDefault();
-    if (today.done) return;
+    if (!canGuess()) return;
     const msg = $('ulMsg');
     const q = norm($('ulGuessInput').value);
     if (!q) { msg.textContent = 'Type a song title.'; return; }
@@ -228,39 +241,70 @@
       if (hits.length === 1) pick = hits[0];
     }
     if (!pick) { msg.textContent = 'Pick a song from the list.'; return; }
-    if (today.wrong.includes(pick.s)) { msg.textContent = 'Already guessed ' + pick.t + '. Try another.'; return; }
-    msg.textContent = '';
+    if (wrongSlugs().includes(pick.s)) { msg.textContent = 'Already guessed ' + pick.t + '. Try another.'; return; }
     markStarted();
     $('ulGuessInput').value = '';
     $('ulSuggest').hidden = true;
-    if (pick.s === puzzle.s) finish(true);
-    else {
-      today.wrong.push(pick.s);
-      msg.textContent = 'Not ' + pick.t + '. -10 points.';
-      if (points() <= 0) finish(false);
+    answer(pick.s, pick.t);
+  });
+
+  // A guess (or a pass, slug '') on the current rung
+  function answer(slug, title) {
+    const r = rung();
+    const msg = $('ulMsg');
+    today.guesses.push({ r, s: slug });
+    if (slug === puzzle.s) {
+      msg.textContent = '';
+      today.wonAt = r;
+      finish(true);
+    } else if (r === HINT_RUNG || (r === WORDS && !puzzle.al)) {
+      finish(false);
+    } else if (r === WORDS) {
+      // Missed with every word open: the album hint is the last rung
+      today.hint = true;
+      track('Unlocked - Album hint');
+      msg.textContent = (slug ? 'Not ' + title + '.' : 'Passed.') + ' Here is the album - one last guess.';
+    } else if (r === 0) {
+      msg.textContent = 'Not ' + title + ". No points lost - unlock word 1 when you're ready.";
+    } else {
+      msg.textContent = (slug ? 'Not ' + title + '.' : 'Passed.') + ' Unlock word ' + (r + 1) + '.';
     }
     save();
     renderAll();
+  }
+  $('ulPass').addEventListener('click', () => {
+    if (!canGuess() || rung() === 0 || rung() === HINT_RUNG) return;
+    markStarted();
+    $('ulGuessInput').value = '';
+    $('ulSuggest').hidden = true;
+    answer('', '');
   });
 
   function renderWrong() {
     const list = $('ulWrong');
     list.textContent = '';
-    today.wrong.forEach(s => list.appendChild(el('li', '', '✗ ' + titleOf(s))));
+    wrongSlugs().forEach(s => list.appendChild(el('li', '', '✗ ' + titleOf(s))));
+  }
+
+  // The guess box: what it's worth now, and whether a guess is owed
+  function renderGuess() {
+    const form = $('ulGuessForm');
+    form.hidden = !canGuess();
+    if (form.hidden) return;
+    const r = rung();
+    $('ulGuessLabel').textContent = r === 0
+      ? 'Know it already? Name the song for ' + worth(0) + ' points'
+      : r === HINT_RUNG
+        ? 'Last guess, with the album hint - worth ' + worth(r) + ' points'
+        : 'Word ' + r + ' is open - name the song for ' + worth(r) + ' points, or pass';
+    $('ulPass').hidden = r === 0 || r === HINT_RUNG;
   }
 
   // ─── Album hint and giving up ───
-  // The hint is offered once all five words are unlocked, and only while it can't
-  // end the game by itself (buying it must leave at least 10 points)
   function renderTools() {
     const tools = $('ulTools');
     tools.hidden = today.done;
     if (today.done) return;
-    const allOpen = today.unlocked.length >= WORDS;
-    const hintBtn = $('ulHint');
-    hintBtn.hidden = !allOpen || today.hint || !puzzle.al;
-    hintBtn.disabled = points() <= COST_HINT;
-    hintBtn.textContent = hintBtn.disabled ? 'Album hint (-20) - not enough points' : 'Album hint (-20)';
     const shown = $('ulHintShown');
     shown.hidden = !today.hint;
     if (today.hint) {
@@ -269,14 +313,6 @@
       shown.appendChild(el('b', '', puzzle.al));
     }
   }
-  $('ulHint').addEventListener('click', () => {
-    if (today.done || today.hint || today.unlocked.length < WORDS || points() <= COST_HINT) return;
-    markStarted();
-    today.hint = true;
-    track('Unlocked - Album hint');
-    save();
-    renderAll();
-  });
   // Two taps, so nobody gives up by accident
   let giveUpArmed = null;
   $('ulGiveUp').addEventListener('click', () => {
@@ -306,8 +342,8 @@
     s.played++;
     if (won) {
       s.won++;
-      s.points += points();
-      s.dist[today.unlocked.length]++;
+      s.points += todayPoints();
+      s.dist[today.wonAt]++;
       s.streak = s.lastSolved === puzzleNo - 1 ? s.streak + 1 : 1;
       s.lastSolved = puzzleNo;
       s.best = Math.max(s.best, s.streak);
@@ -345,13 +381,13 @@
     });
     box.appendChild(row);
 
-    box.appendChild(el('p', 'ul-dist-h', 'Words unlocked when you got it'));
+    box.appendChild(el('p', 'ul-dist-h', 'Words unlocked when you got it (\u{1F4BF} = album hint)'));
     const dist = el('div', 'bia-dist');
     const max = Math.max(1, ...s.dist);
     s.dist.forEach((n, i) => {
       const r = el('div', 'bia-dist-row');
-      r.appendChild(el('span', '', i));
-      const bar = el('span', 'bia-dist-bar' + (today.won && today.unlocked.length === i ? ' today' : ''), n);
+      r.appendChild(el('span', '', i === HINT_RUNG ? SQ.hint : i));
+      const bar = el('span', 'bia-dist-bar' + (today.won && today.wonAt === i ? ' today' : ''), n);
       bar.style.width = Math.max(8, Math.round(100 * n / max)) + '%';
       r.appendChild(bar);
       dist.appendChild(r);
@@ -360,10 +396,11 @@
   }
 
   const resultLine = () => {
-    const n = today.unlocked.length;
+    const r = today.wonAt;
     if (!today.won) return today.gaveUp ? 'You gave up - here it is. 0 points.' : 'The trunk stays locked. 0 points.';
-    if (n === 0 && !today.wrong.length && !today.hint) return 'Straight guess. Bang on. 100 points!';
-    return 'Unlocked with ' + n + (n === 1 ? ' word' : ' words') + ' - ' + todayPoints() + ' points!';
+    if (r === 0) return 'Straight guess. Bang on. 100 points!';
+    if (r === HINT_RUNG) return 'Got it with the album hint - ' + todayPoints() + ' points!';
+    return 'Unlocked with ' + r + (r === 1 ? ' word' : ' words') + ' - ' + todayPoints() + ' points!';
   };
 
   function renderEnd() {
@@ -422,8 +459,9 @@
 
   function renderAll() {
     $('ulNo').textContent = 'Puzzle #' + puzzleNo;
-    $('ulPoints').textContent = today.done ? todayPoints() : points();
+    $('ulPoints').textContent = shownPoints();
     renderWords();
+    renderGuess();
     renderWrong();
     renderTools();
     if (today.done) renderEnd();
@@ -511,17 +549,17 @@
       }
     };
 
-    const n = today.unlocked.length;
+    const n = today.wonAt;
     const score = String(todayPoints());
     const result = !today.won
       ? (today.gaveUp ? (name ? name + ' gave up today' : 'Gave up today') : (name ? name + ' stayed locked out today' : 'Locked out today'))
       : n === 0
         ? (name ? name + ' got it straight away' : 'Straight guess. Bang on.')
-        : (name ? name + ' unlocked it with ' + n : 'Unlocked with ' + n) + (n === 1 ? ' word' : ' words');
+        : n === HINT_RUNG
+          ? (name ? name + ' got it with the album hint' : 'Got it with the album hint')
+          : (name ? name + ' unlocked it with ' + n : 'Unlocked with ' + n) + (n === 1 ? ' word' : ' words');
     const s = store.stats;
-    const wrongs = today.wrong.length;
-    const statLine = 'Streak ' + shownStreak() + '   |   Win rate ' + (s.played ? Math.round(100 * s.won / s.played) : 0) + '%' +
-      (wrongs ? '   |   ' + wrongs + (wrongs === 1 ? ' wrong guess' : ' wrong guesses') : '');
+    const statLine = 'Streak ' + shownStreak() + '   |   Win rate ' + (s.played ? Math.round(100 * s.won / s.played) : 0) + '%';
     const totalLine = 'Total: ' + s.points.toLocaleString('en-CA') + ' points';
     const blurb = 'Name the Hip song from five scrambled lyric words';
 
