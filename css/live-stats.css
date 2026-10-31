@@ -14,7 +14,7 @@ header h1 {
 .subtitle {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -75,17 +75,17 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
 }
 .rank-song { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
 .rank-song a { display: inline-block; padding: 3px 0; color: var(--text); text-decoration: none; }
-.rank-song a:hover { color: var(--gold); text-decoration: underline; }
+.rank-song a:hover { color: var(--text); text-decoration: underline; }
 .rank-bar-wrap { flex: 1 1 24px; min-width: 24px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); overflow: hidden; }
 .rank-bar { height: 100%; border-radius: 4px; background: var(--red); }
-.rank-count { color: var(--gold); font-weight: 700; font-size: 0.78rem; min-width: 38px; text-align: right; flex-shrink: 0; }
+.rank-count { color: var(--text); font-weight: 700; font-size: 0.78rem; min-width: 38px; text-align: right; flex-shrink: 0; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
 .two-col h3 {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   text-align: center;
@@ -101,9 +101,9 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
 }
 .detail-row:first-child { border-top: none; }
 .detail-row a { display: inline-block; padding: 3px 0; color: var(--text); font-weight: 600; text-decoration: none; }
-.detail-row a:hover { color: var(--gold); text-decoration: underline; }
+.detail-row a:hover { color: var(--text); text-decoration: underline; }
 .detail-meta { color: var(--muted2); font-size: 0.75rem; }
-.detail-meta a { display: inline-block; padding: 4px 0; color: var(--gold); font-weight: 600; font-size: 0.75rem; }
+.detail-meta a { display: inline-block; padding: 4px 0; color: var(--text); font-weight: 600; font-size: 0.75rem; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
 .never-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .never-chip {
@@ -115,7 +115,7 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
   text-decoration: none;
   transition: all 0.15s ease;
 }
-.never-chip:hover { border-color: var(--gold); color: var(--gold); }
+.never-chip:hover { border-color: var(--gold); color: var(--text); }
 
 .show-more-btn {
   display: block;

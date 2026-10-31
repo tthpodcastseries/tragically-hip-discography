@@ -14,7 +14,7 @@ header h1 {
 .subtitle {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -31,7 +31,7 @@ header h1 {
 .stats-context {
   text-align: center;
   font-size: 0.72rem;
-  color: var(--gold);
+  color: var(--text);
   font-weight: 600;
   margin-top: 8px;
   min-height: 1.2em;
@@ -121,7 +121,7 @@ header h1 {
   transition: color 0.2s ease;
 }
 .flip-card:not(.flipped):hover .flip-card-label {
-  color: var(--gold);
+  color: var(--text);
 }
 .flip-card-count {
   text-align: center;
@@ -191,7 +191,7 @@ header h1 {
 .panel-title {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -342,14 +342,14 @@ header h1 {
 .tag-type { background: rgba(255, 255, 255, 0.08); color: var(--muted); }
 .tag-full { background: rgba(29, 185, 84, 0.2); color: #1DB954; }
 .tag-confirmed { background: rgba(255, 255, 255, 0.06); color: var(--muted2); }
-.tag-partial { background: rgba(204, 162, 60, 0.2); color: var(--gold); }
-.tag-snippet { background: rgba(204, 162, 60, 0.15); color: var(--gold); }
+.tag-partial { background: rgba(204, 162, 60, 0.2); color: var(--text); }
+.tag-snippet { background: rgba(204, 162, 60, 0.15); color: var(--text); }
 .tag-rumored { background: rgba(200, 16, 46, 0.15); color: #e66; }
 .tag-quality-lossless { background: rgba(29, 185, 84, 0.15); color: #1DB954; }
 .tag-quality-cd { background: rgba(29, 185, 84, 0.1); color: #59c76e; }
 .tag-quality-high { background: rgba(100, 180, 255, 0.12); color: #7ab8f5; }
 .tag-quality-low { background: rgba(255, 200, 100, 0.1); color: #c9a74e; }
-.tag-link { background: rgba(200, 16, 46, 0.2); color: var(--red); cursor: pointer; text-decoration: none; }
+.tag-link { background: rgba(200, 16, 46, 0.2); color: var(--text); cursor: pointer; text-decoration: none; }
 .tag-link:hover { background: var(--red); color: #fff; }
 
 .session-notes {

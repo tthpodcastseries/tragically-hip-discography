@@ -45,7 +45,7 @@
     .subtitle {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--gold);
+      color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 16px;
@@ -68,8 +68,8 @@
       padding: 4px 0;
       margin-top: 4px;
       font-size: 0.72rem;
-      color: var(--gold);
-      text-decoration: none;
+      color: var(--text);
+      text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px;
       font-weight: 600;
     }
     .playlist-link:hover { text-decoration: underline; }
@@ -230,7 +230,7 @@
       color: var(--text);
       text-decoration: none;
     }
-    .mv-song a:hover { color: var(--gold); }
+    .mv-song a:hover { color: var(--text); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .mv-album-year {
       font-size: 0.74rem;
       color: var(--muted2);
@@ -241,7 +241,7 @@
     }
     .mv-director {
       font-size: 0.72rem;
-      color: var(--gold);
+      color: var(--text);
       font-weight: 600;
       margin-bottom: 8px;
     }
@@ -257,7 +257,7 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       background: rgba(204, 162, 60, 0.18);
-      color: var(--gold);
+      color: var(--text);
       padding: 2px 8px;
       border-radius: 10px;
       margin-bottom: 8px;
@@ -327,6 +327,7 @@
   <a id="playlistLink" class="playlist-link" href="#" target="_blank" rel="noopener noreferrer">Watch the full playlist on YouTube &rarr;</a>
 </header>
 
+<main id="main-content">
 <p class="credit" id="creditLine"></p>
 
 <div class="filter-bar">
@@ -341,7 +342,6 @@
   </div>
 </div>
 
-<main id="main-content">
   <div class="mv-grid" id="mvGrid"></div>
 </main>
 

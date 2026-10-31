@@ -2,7 +2,7 @@
    Builds on bring-it-all-back.css (loaded first); only what's new lives here. */
 
 .ul-points { font-size: 0.78rem; color: var(--muted2); }
-.ul-points b { color: var(--gold); font-size: 1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.ul-points b { color: var(--text); font-size: 1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 
 /* The five words */
 .ul-words { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -31,7 +31,7 @@
 .ul-wordform label { display: block; font-size: 0.82rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
 .ul-wordform input { text-transform: uppercase; letter-spacing: 0.12em; }
 .ul-wordtools { display: flex; justify-content: space-between; margin-top: 8px; }
-.ul-link { background: none; border: 0; padding: 4px 0; color: var(--gold); font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
+.ul-link { background: none; border: 0; padding: 4px 0; color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .ul-link:hover { text-decoration: underline; }
 
 /* Song guess */
@@ -39,30 +39,31 @@
 .ul-suggest { list-style: none; margin-top: 6px; background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; overflow: hidden; }
 .ul-option { display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid #2a2a2a; padding: 11px 14px; color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
 .ul-suggest li:first-child .ul-option { border-top: 0; }
-.ul-option:hover:not(:disabled), .ul-option:focus-visible { background: rgba(204, 162, 60, 0.1); color: var(--gold); outline: none; }
+.ul-option:hover:not(:disabled), .ul-option:focus-visible { background: rgba(204, 162, 60, 0.1); color: var(--text); }
+.ul-option:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 .ul-option:disabled { color: var(--muted2); cursor: default; }
 .ul-wrong { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
-.ul-wrong li { font-size: 0.8rem; color: #ff6b6b; background: rgba(200, 16, 46, 0.1); border: 1px solid rgba(200, 16, 46, 0.4); border-radius: 999px; padding: 4px 12px; }
+.ul-wrong li { font-size: 0.8rem; color: #fff; background: rgba(200, 16, 46, 0.1); border: 1px solid rgba(200, 16, 46, 0.4); border-radius: 999px; padding: 4px 12px; }
 
 /* Play it, after the reveal */
 .ul-play { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
-.ul-play-h { flex-basis: 100%; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.ul-play-h { flex-basis: 100%; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); }
 .ul-play-btn { display: inline-block; padding: 9px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none; color: #fff; background: #2a2a2a; border: 1px solid #2a2a2a; }
 .ul-play-btn:hover { filter: brightness(1.15); }
 .ul-play-spotify { background: #1DB954; border-color: #1DB954; }
 .ul-play-apple { background: var(--red); border-color: var(--red); }
-.ul-play-live { background: transparent; color: var(--gold); border-color: rgba(204, 162, 60, 0.6); }
+.ul-play-live { background: transparent; color: var(--text); border-color: rgba(204, 162, 60, 0.6); }
 
 /* Album hint and give up */
 .ul-tools { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
 .ul-tools-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
 .ul-hint-shown { margin: 0; font-size: 0.9rem; color: var(--text); background: rgba(204, 162, 60, 0.1); border: 1px solid rgba(204, 162, 60, 0.35); border-radius: 10px; padding: 9px 14px; }
-.ul-hint-shown span { color: var(--gold); font-weight: 700; }
+.ul-hint-shown span { color: var(--text); font-weight: 700; }
 .ul-hint-shown b { color: #fff; }
 .ul-pass { margin-top: 6px; }
 .ul-giveup { margin-left: auto; background: none; border: 0; padding: 6px 0; color: var(--muted2); font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
 .ul-giveup:hover { color: var(--text); }
-.ul-giveup.armed { color: #ff6b6b; }
+.ul-giveup.armed { color: #fff; background: var(--red); padding: 6px 12px; border-radius: 6px; text-decoration: none; }
 .ul-giveup:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .ul-dist-h { margin-top: 14px; font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }

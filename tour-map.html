@@ -39,10 +39,12 @@
 <script src="/js/tth-member-gate.js"></script>
 <a href="#map" class="skip-link">Skip to map</a>
 
-<div class="map-header">
+<header class="map-header">
   <h1><span class="the">THE</span> TRAGICALLY HIP - About This Map</h1>
   <a href="index.html" class="back-link">← Home</a>
-</div>
+</header>
+
+<main id="main-content">
 
 <div class="otd-banner" id="otdBanner">
   <div class="otd-title" id="otdTitle"></div>
@@ -122,6 +124,7 @@
 </div>
 
 <div class="gig-flash" id="gigFlash"></div>
+</main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" integrity="sha256-Hk4dIpcqOSb0hZjgyvFOP+cEmDXUKKNE/tT542ZbNQg=" crossorigin="anonymous"></script>
@@ -168,11 +171,16 @@
   }
 
   // Map setup - dark tiles
+  // No zoom or fade animation for people who asked for less motion (audit A11Y-08)
+  const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const map = L.map('map', {
     center: [50, -85],
     zoom: 4,
     zoomControl: true,
-    attributionControl: true
+    attributionControl: true,
+    zoomAnimation: !REDUCE_MOTION,
+    fadeAnimation: !REDUCE_MOTION,
+    markerZoomAnimation: !REDUCE_MOTION
   });
 
   // CARTO basemaps need a key since Sept 2026 (free non-commercial tier, 5M tiles/month).
@@ -188,21 +196,64 @@
   function createIcon(color = '#C8102E') {
     return L.divIcon({
       className: 'custom-pin',
-      html: `<svg width="20" height="28" viewBox="0 0 20 28" xmlns="http://www.w3.org/2000/svg">
+      html: `<svg width="24" height="34" viewBox="0 0 20 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M10 0C4.5 0 0 4.5 0 10c0 7.5 10 18 10 18s10-10.5 10-18C20 4.5 15.5 0 10 0z" fill="${color}" opacity="0.9"/>
         <circle cx="10" cy="10" r="4" fill="#0e0b16"/>
       </svg>`,
-      iconSize: [20, 28],
-      iconAnchor: [10, 28],
-      popupAnchor: [0, -28]
+      iconSize: [24, 34],
+      iconAnchor: [12, 34],
+      popupAnchor: [0, -34]
     });
   }
 
   const redIcon = createIcon('#C8102E');
   const goldIcon = createIcon('#CCA23C');
 
+  // Keyboard use of the pins (audit A11Y-04): Enter on a pin opens its popup and moves
+  // focus into it, Esc closes it and puts focus back on the pin. Leaflet only listens
+  // for Esc when the map itself has focus, not a pin.
+  let kbPopupOpener = null;
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('leaflet-marker-icon')) kbPopupOpener = e.target;
+    else if (e.key === 'Escape' && document.querySelector('.leaflet-popup')) map.closePopup();
+  }, true);
+  document.addEventListener('mousedown', () => { kbPopupOpener = null; }, true);
+  map.on('popupopen', (e) => {
+    if (!kbPopupOpener) return;
+    const pop = e.popup.getElement();
+    const f = pop && (pop.querySelector('.leaflet-popup-content button, .leaflet-popup-content a[href]') || pop.querySelector('.leaflet-popup-close-button'));
+    if (f) f.focus();
+  });
+  map.on('popupclose', () => {
+    const opener = kbPopupOpener;
+    const ae = document.activeElement;
+    if (opener && document.contains(opener) && (ae === document.body || (ae && ae.closest && ae.closest('.leaflet-popup')))) opener.focus();
+  });
+
+  // A pin is announced as "Venue, City, date" (audit A11Y-04); the title also
+  // shows as a hover tooltip
+  function pinLabel(g) {
+    return [g.venue || 'Unknown venue', g.city, g.isoDate].filter(Boolean).join(', ');
+  }
+  function makePin(g, icon) {
+    const label = pinLabel(g);
+    const m = L.marker([g.lat, g.lng], { icon, title: label, alt: label });
+    m.on('add', () => { const el = m.getElement(); if (el) el.setAttribute('aria-label', label); });
+    return m;
+  }
+
   // Marker cluster group
   let clusterGroup = L.markerClusterGroup({
+    // Say what a cluster is, not just a number
+    iconCreateFunction: function(cluster) {
+      const n = cluster.getChildCount();
+      const size = n < 10 ? 'small' : n < 100 ? 'medium' : 'large';
+      return new L.DivIcon({
+        html: '<div><span>' + n + '</span><span class="vh"> shows in this spot. Press Enter to zoom in.</span></div>',
+        className: 'marker-cluster marker-cluster-' + size,
+        iconSize: new L.Point(40, 40)
+      });
+    },
     maxClusterRadius: 40,
     spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
@@ -251,11 +302,11 @@
     if (g.tracks && g.tracks.length) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
-      html += `<button onclick="window.playGig('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#CCA23C;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
+      html += `<button onclick="window.playGig('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
     } else if (g.archiveUrl) {
       html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
-    if (g.setlistUrl) html += `<button onclick="window.showSetlist('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:4px 0;background:none;border:none;color:#CCA23C;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;text-align:left;">View setlist →</button>`;
+    if (g.setlistUrl) html += `<button onclick="window.showSetlist('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:4px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;text-align:left;">View setlist →</button>`;
     const isAttended = tthAttended.has(g.id);
     html += `<button class="iwt-popup-btn${isAttended ? ' active' : ''}" onclick="window.toggleAttended('${g.id}',this)">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>`;
     return html;
@@ -268,7 +319,7 @@
   function getGigMarker(g) {
     let m = markerCache.get(g.id);
     if (!m) {
-      m = L.marker([g.lat, g.lng], { icon: redIcon });
+      m = makePin(g, redIcon);
       m.bindPopup(() => popupHTML(g), { maxWidth: 280 });
       markerCache.set(g.id, m);
     }
@@ -431,7 +482,7 @@
       // Add markers for this year with gold icon
       yearGigs.forEach(g => {
         if (!g.lat || !g.lng) return;
-        const marker = L.marker([g.lat, g.lng], { icon: goldIcon });
+        const marker = makePin(g, goldIcon);
         marker.bindPopup(popupHTML(g), { maxWidth: 280 });
         clusterGroup.addLayer(marker);
         if (g.city) allSeenCities.add(g.city);
@@ -476,7 +527,7 @@
       flash.classList.remove('show');
       document.getElementById('playbackOverlay').classList.remove('active');
       applyFilters();
-      map.setView([50, -85], 4, { animate: true });
+      map.setView([50, -85], 4, { animate: !REDUCE_MOTION });
     }, 1500);
   }
 
@@ -725,7 +776,7 @@
       mapBtn.textContent = 'Show on map';
       mapBtn.addEventListener('click', () => {
         document.getElementById('showDetailOverlay').classList.remove('active');
-        map.setView([g.lat, g.lng], 14, { animate: true });
+        map.setView([g.lat, g.lng], 14, { animate: !REDUCE_MOTION });
       });
       actions.appendChild(mapBtn);
     }
@@ -908,7 +959,7 @@
     const otdMarkers = [];
     otdGigs.forEach(g => {
       if (!g.lat || !g.lng) return;
-      const marker = L.marker([g.lat, g.lng], { icon: goldIcon });
+      const marker = makePin(g, goldIcon);
       const badgeHTML = `<div class="otd-pin-badge">On This Day</div>`;
       marker.bindPopup(badgeHTML + popupHTML(g), { maxWidth: 280 });
       clusterGroup.addLayer(marker);
@@ -920,7 +971,7 @@
     banner.addEventListener('click', () => {
       const m = otdMarkers[otdIndex % otdMarkers.length];
       const ll = m.getLatLng();
-      map.setView(ll, 13, { animate: true });
+      map.setView(ll, 13, { animate: !REDUCE_MOTION });
       // Wait for zoom to finish then open popup
       setTimeout(() => {
         // At zoom 13 clusters should be broken - find the visible marker
@@ -959,7 +1010,7 @@
     const g = allGigs.find(x => String(x.id) === showId);
     if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
     if (g.lat && g.lng) {
-      try { map.setView([g.lat, g.lng], 12, { animate: true }); } catch (_) { /* noop */ }
+      try { map.setView([g.lat, g.lng], 12, { animate: !REDUCE_MOTION }); } catch (_) { /* noop */ }
     }
     showDetailCard(g);
   }
@@ -982,7 +1033,7 @@
     if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
     if (!g.tracks || !g.tracks.length) { showMapNote('No recording for that show yet.'); return; }
     if (g.lat && g.lng) {
-      try { map.setView([g.lat, g.lng], 12, { animate: true }); } catch (_) { /* noop */ }
+      try { map.setView([g.lat, g.lng], 12, { animate: !REDUCE_MOTION }); } catch (_) { /* noop */ }
     }
     window._gigLookup = window._gigLookup || {};
     window._gigLookup[g.id] = g;
@@ -1023,9 +1074,10 @@
 </div>
 
 <!-- AUDIO PLAYER -->
-<div class="audio-player" id="audioPlayer">
+<div class="audio-player" id="audioPlayer" role="region" aria-label="Audio player">
   <div class="ap-progress-wrap" id="apProgressWrap">
     <div class="ap-progress-bar" id="apProgressBar"></div>
+    <input type="range" class="ap-seek" id="apSeek" min="0" max="100" step="0.1" value="0" aria-label="Seek" aria-valuetext="0:00 of 0:00">
   </div>
   <div class="ap-loading" id="apLoading">
     <div class="ap-loading-text" id="apLoadingText">Loading show...</div>
@@ -1034,13 +1086,13 @@
   </div>
   <div class="ap-main">
     <div class="ap-controls">
-      <button class="ap-btn" id="apPrev" title="Previous track">
+      <button class="ap-btn" id="apPrev" title="Previous track" aria-label="Previous track">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
       </button>
-      <button class="ap-btn ap-btn-play" id="apPlayPause" title="Play/Pause">
-        <svg viewBox="0 0 24 24" fill="currentColor" id="apPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+      <button class="ap-btn ap-btn-play" id="apPlayPause" title="Play" aria-label="Play">
+        <svg viewBox="0 0 24 24" fill="currentColor" id="apPlayIcon" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </button>
-      <button class="ap-btn" id="apNext" title="Next track">
+      <button class="ap-btn" id="apNext" title="Next track" aria-label="Next track">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
       </button>
     </div>
@@ -1053,10 +1105,10 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="#888"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
       <input type="range" id="apVolume" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
     </div>
-    <button class="ap-btn" id="apListToggle" title="Show tracklist">
+    <button class="ap-btn" id="apListToggle" title="Show tracklist" aria-label="Show tracklist" aria-expanded="false" aria-controls="apTracklist">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
     </button>
-    <button class="ap-close" id="apClose" title="Close player">&times;</button>
+    <button class="ap-close" id="apClose" title="Close player" aria-label="Close player">&times;</button>
   </div>
   <div class="ap-tracklist" id="apTracklist"></div>
 </div>
@@ -1065,7 +1117,6 @@
 <script>
 (function() {
   const player = document.getElementById('audioPlayer');
-  const progressWrap = document.getElementById('apProgressWrap');
   const progressBar = document.getElementById('apProgressBar');
   const showTitle = document.getElementById('apShowTitle');
   const trackTitle = document.getElementById('apTrackTitle');
@@ -1093,6 +1144,9 @@
   }
 
   function updatePlayIcon(playing) {
+    const name = playing ? 'Pause' : 'Play';
+    playPauseBtn.setAttribute('aria-label', name);
+    playPauseBtn.title = name;
     playIcon.innerHTML = playing
       ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
       : '<path d="M8 5v14l11-7z"/>';
@@ -1103,8 +1157,13 @@
     tracks.forEach((t, i) => {
       const div = document.createElement('div');
       div.className = 'ap-track' + (i === currentTrackIndex ? ' active' : '');
+      // Reachable and playable from the keyboard
+      div.setAttribute('role', 'button');
+      div.tabIndex = 0;
+      if (i === currentTrackIndex) div.setAttribute('aria-current', 'true');
       div.innerHTML = `<span class="ap-track-num">${i + 1}</span><span class="ap-track-name">${t.name}</span><span class="ap-track-dur">${t.duration || ''}</span>`;
       div.addEventListener('click', () => playTrack(i));
+      div.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playTrack(i); } });
       tracklist.appendChild(div);
     });
   }
@@ -1184,11 +1243,25 @@
   });
   prevBtn.addEventListener('click', () => { audio.currentTime > 3 ? audio.currentTime = 0 : playTrack(currentTrackIndex - 1); });
   nextBtn.addEventListener('click', () => playTrack(currentTrackIndex + 1));
-  closeBtn.addEventListener('click', () => { clearTimeout(skipTimer); tracks = []; audio.pause(); audio.removeAttribute('src'); audio.load(); player.classList.remove('active'); tracklist.classList.remove('open'); updatePlayIcon(false); });
-  listToggle.addEventListener('click', () => tracklist.classList.toggle('open'));
+  closeBtn.addEventListener('click', () => { clearTimeout(skipTimer); tracks = []; audio.pause(); audio.removeAttribute('src'); audio.load(); player.classList.remove('active'); tracklist.classList.remove('open'); listToggle.setAttribute('aria-expanded', 'false'); updatePlayIcon(false); });
+  listToggle.addEventListener('click', () => {
+    const open = tracklist.classList.toggle('open');
+    listToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    listToggle.setAttribute('aria-label', open ? 'Hide tracklist' : 'Show tracklist');
+    listToggle.title = open ? 'Hide tracklist' : 'Show tracklist';
+  });
   volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value); });
-  audio.addEventListener('timeupdate', () => { if (audio.duration) { progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%'; timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`; } });
-  progressWrap.addEventListener('click', (e) => { if (!audio.duration) return; audio.currentTime = ((e.clientX - progressWrap.getBoundingClientRect().left) / progressWrap.offsetWidth) * audio.duration; });
+  const seekBar = document.getElementById('apSeek');
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = audio.currentTime / audio.duration * 100;
+    progressBar.style.width = pct + '%';
+    timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+    seekBar.value = pct;
+    seekBar.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} of ${formatTime(audio.duration)}`);
+  });
+  // A real slider: drag, click, or arrow keys (audit A11Y-04)
+  seekBar.addEventListener('input', () => { if (audio.duration) audio.currentTime = (parseFloat(seekBar.value) / 100) * audio.duration; });
   // The button follows what the audio element is really doing
   audio.addEventListener('play', () => {
     updatePlayIcon(true);

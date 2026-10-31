@@ -222,6 +222,7 @@
       .slice(0, 6);
     hits.forEach(x => {
       const li = el('li');
+      li.setAttribute('role', 'presentation');
       const b = el('button', 'ul-option', x.t);
       b.type = 'button';
       b.setAttribute('role', 'option');
@@ -438,11 +439,15 @@
   };
 
   function renderEnd() {
+    // If the keyboard was in a form that's about to vanish, land on the result instead of losing focus
+    const hadFocus = $('ulGuessForm').contains(document.activeElement) || $('ulWordForm').contains(document.activeElement) || $('ulSuggest').contains(document.activeElement) || $('ulTools').contains(document.activeElement);
     $('ulGuessForm').hidden = true;
     $('ulWordForm').hidden = true;
     $('ulMsg').textContent = '';
     $('ulEnd').hidden = false;
+    $('ulResult').setAttribute('tabindex', '-1');
     $('ulResult').textContent = resultLine();
+    if (hadFocus) $('ulResult').focus();
     const total = $('ulTotal');
     total.textContent = 'Yer total: ';
     total.appendChild(el('b', '', store.stats.points.toLocaleString('en-CA') + ' points'));
@@ -599,16 +604,16 @@
 
     if (landscape) {
       put(today.won ? '\u{1F513}' : '\u{1F512}', 330, 130, '700', 60, '#ffffff');
-      put(NAME.toUpperCase(), 330, 186, '700', 28, '#CCA23C', '4px', 540);
+      put(NAME.toUpperCase(), 330, 186, '700', 28, '#ffffff', '4px', 540);
       put('PUZZLE #' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
-      put(score, 330, 420, '900', 190, '#C8102E', '0px', 540);
-      put('POINTS', 330, 492, '700', 40, '#CCA23C', '10px');
+      put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
+      put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
       x.lineWidth = 2;
       x.beginPath(); x.moveTo(650, 120); x.lineTo(650, 520); x.stroke();
       put(result, 690, 210, '700', 42, '#ffffff', '0px', 460, 'left');
       tiles(690, 255, 76, 16);
-      put(totalLine, 690, 395, '700', 34, '#CCA23C', '0px', 460, 'left');
+      put(totalLine, 690, 395, '700', 34, '#ffffff', '0px', 460, 'left');
       put(statLine, 690, 445, '600', 28, '#d9d9d9', '0px', 460, 'left');
       put(blurb, 690, 492, '600', 24, '#b0b0b0', '0px', 460, 'left');
       put(SHARE_URL, W / 2, 585, '600', 24, '#b0b0b0', '2px', W - 120);
@@ -619,13 +624,13 @@
         : { icon: 160, label: 232, no: 290, score: 590, pts: 668, result: 768, tiles: 806, size: 140, total: 1036, stats: 1100, blurb: 1160, site: 1250 };
       const gap = 24, rowW = WORDS * y.size + (WORDS - 1) * gap;
       put(today.won ? '\u{1F513}' : '\u{1F512}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
-      put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#CCA23C', '4px', W - 160);
+      put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#ffffff', '4px', W - 160);
       put('PUZZLE #' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
-      put(score, W / 2, y.score, '900', story ? 330 : 290, '#C8102E', '0px', W - 160);
-      put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#CCA23C', '12px');
+      put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
+      put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
       tiles((W - rowW) / 2, y.tiles, y.size, gap);
-      put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#CCA23C', '0px', W - 160);
+      put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#ffffff', '0px', W - 160);
       put(statLine, W / 2, y.stats, '600', story ? 42 : 38, '#d9d9d9', '0px', W - 160);
       put(blurb, W / 2, y.blurb, '600', story ? 34 : 30, '#b0b0b0', '0px', W - 160);
       put(SHARE_URL, W / 2, y.site, '600', 32, '#b0b0b0', '2px', W - 140);
@@ -636,6 +641,8 @@
     currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
     const img = $('ulCardImg');
     img.src = currentCard.url;
+    // The card's own words, for people who can't see it (audit BRAND-15)
+    img.alt = '(Un)Locked in the Trunk of a Car, puzzle ' + puzzleNo + ': ' + result + '. ' + score + ' points today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('ulCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });

@@ -50,11 +50,11 @@
   <div class="stats-context" id="statsContext"></div>
 </header>
 
+<main id="main-content">
 <p class="credit" id="creditLine"></p>
 
 <div class="grid-overlay" id="gridOverlay"></div>
 
-<main id="main-content">
   <div class="album-grid" id="albumGrid"></div>
 </main>
 
@@ -182,7 +182,6 @@
     var card = document.createElement('button');
     card.type = 'button';
     card.className = 'flip-card';
-    card.setAttribute('aria-label', 'Open ' + era.era + ' sessions');
 
     var inner = document.createElement('div');
     inner.className = 'flip-card-inner';
@@ -190,7 +189,7 @@
     var front = document.createElement('div');
     front.className = 'flip-card-front';
     front.innerHTML =
-      '<img src="' + esc(imagePath) + '" alt="' + esc(era.era) + ' album cover" loading="lazy">' +
+      '<img src="' + esc(imagePath) + '" alt="" loading="lazy">' +
       '<div class="flip-card-label">' + esc(era.era) + '</div>' +
       '<div class="flip-card-count">' + era.sessions.length + ' sessions</div>';
 

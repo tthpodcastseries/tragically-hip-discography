@@ -1410,7 +1410,7 @@ async function renderMyShows() {
   // Render show list
   let html = '';
   if (topSong) {
-    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.78rem;color:var(--muted);">Most heard song: <span style="color:var(--gold);font-weight:700;">${topSong[0]}</span> (${topSong[1]}x)</div>`;
+    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.78rem;color:var(--muted);">Most heard song: <span style="color:var(--text);font-weight:700;">${topSong[0]}</span> (${topSong[1]}x)</div>`;
   }
   if (shows.length > 0) {
     const first = shows[0];
@@ -2422,7 +2422,7 @@ function renderSongResults(songTitle) {
   setSearchModeChrome(true);
 
   // Deactivate all category buttons
-  document.querySelectorAll('.category-btn').forEach(btn => {
+  document.querySelectorAll('.category-btn[data-category]').forEach(btn => {
     btn.classList.remove('active');
     btn.setAttribute('aria-selected', 'false');
   });
@@ -2531,7 +2531,7 @@ function renderSongResults(songTitle) {
     item.className = 'song-result-item';
     const rankLabel = top40.rank <= 40 ? 'TTHTop40 Countdown' : 'Full 169 Fan Vote';
     const road = top40.rank > 40 ? roadEpisodeForRank(top40.rank) : null;
-    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--gold);font-weight:800;">#${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
+    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--text);font-weight:800;">#${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
   }
@@ -2705,7 +2705,7 @@ function renderCategory(category) {
   currentAlbums = categoryData[category];
 
   // Update active button + roving tabindex
-  document.querySelectorAll('.category-btn').forEach(btn => {
+  document.querySelectorAll('.category-btn[data-category]').forEach(btn => {
     const isActive = btn.dataset.category === category;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
@@ -2785,10 +2785,9 @@ function renderCategory(category) {
     card.setAttribute('tabindex', '0');
     card.className = 'album-card';
     card.dataset.type = a.type;
-    card.setAttribute('aria-label', `${a.title} (${a.year})`);
     card.innerHTML = `
       <div class="album-art"${a.img ? '' : ` style="background:${a.gradient}"`}>
-        ${a.img ? `<img src="${a.img}" alt="${a.title} album cover" class="album-art-img" loading="lazy" data-gradient="${a.gradient}">` : ''}
+        ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" loading="lazy" data-gradient="${a.gradient}">` : ''}
       </div>
       <div class="album-info">
         <span class="album-info-hint">Details</span>
@@ -3003,10 +3002,9 @@ document.querySelectorAll('.solo-member-btn').forEach(btn => {
       card.dataset.type = 'Solo';
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', `${a.title} (${a.year})`);
-      card.innerHTML = `
+        card.innerHTML = `
         <div class="album-art"${a.img ? '' : ` style="background:${a.gradient}"`}>
-          ${a.img ? `<img src="${a.img}" alt="${a.title} album cover" class="album-art-img" loading="lazy" data-gradient="${a.gradient}">` : ''}
+          ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" loading="lazy" data-gradient="${a.gradient}">` : ''}
         </div>
         <div class="album-info">
           <span class="album-info-hint">Details</span>
@@ -3014,7 +3012,7 @@ document.querySelectorAll('.solo-member-btn').forEach(btn => {
           <div style="font-size:0.72rem;color:var(--muted);margin-bottom:4px;">${a.credit}</div>
           <div class="album-bottom">
             <span>${a.year}</span>
-            ${a.posthumous ? '<span class="type-badge" style="background:rgba(212,160,23,0.2);color:var(--gold);">Posthumous</span>' : '<span class="type-badge">Solo</span>'}
+            ${a.posthumous ? '<span class="type-badge" style="background:rgba(212,160,23,0.2);color:var(--text);">Posthumous</span>' : '<span class="type-badge">Solo</span>'}
           </div>
         </div>
       `;
@@ -3075,7 +3073,6 @@ top40Songs.forEach(s => {
     el.href = url;
     el.target = '_blank';
     el.rel = 'noopener noreferrer';
-    el.setAttribute('aria-label', `${s.title} - listen to TTHTop40 Countdown episode`);
   }
   el.innerHTML = `
     <div class="song-rank ${isTop10 ? 'top10' : 'top40'}">#${s.rank}</div>
@@ -3085,6 +3082,7 @@ top40Songs.forEach(s => {
     </div>
     ${url ? '<svg class="song-podcast-icon" viewBox="0 0 24 24" fill="var(--red)"><path d="M12 1a9 9 0 00-9 9v7a3 3 0 003 3h1a2 2 0 002-2v-4a2 2 0 00-2-2H5v-2a7 7 0 0114 0v2h-2a2 2 0 00-2 2v4a2 2 0 002 2h1a3 3 0 003-3v-7a9 9 0 00-9-9z"/></svg>' : ''}
   `;
+  if (url) { const hint = document.createElement('span'); hint.className = 'vh'; hint.textContent = ' - listen to the TTHTop40 Countdown episode'; el.appendChild(hint); }
   songsGrid.appendChild(el);
 });
 
@@ -3095,16 +3093,16 @@ beyondTop40.forEach(s => {
   const searchQ = encodeURIComponent(s.title + ' The Tragically Hip');
   const beyondSpotifyURL = spotifyTrackURLs[s.title] || `https://open.spotify.com/search/${searchQ}`;
   wrapper.innerHTML = `
-    <div class="song-row expandable" role="button" tabindex="0" aria-label="${s.title} - select to see streaming links">
+    <div class="song-row expandable" role="button" tabindex="0">
       <div class="song-rank beyond">#${s.rank}</div>
       <div class="song-info">
-        <div class="song-title">'${s.title}'</div>
+        <div class="song-title">'${s.title}'<span class="vh"> - select to see streaming links</span></div>
         <div class="song-meta">"${s.album}"</div>
       </div>
       <svg class="song-expand-icon" viewBox="0 0 24 24" fill="var(--muted2)"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
     <div class="song-stream-panel">
-      ${(() => { const road = roadEpisodeForRank(s.rank); return road ? `<a href="${road.url}" target="_blank" rel="noopener noreferrer" class="stream-link" style="flex-basis:100%;color:var(--gold);border-color:var(--gold);font-weight:600;" aria-label="Hear ${s.title} discussed on The Road to the Top 40, episode ${road.ep}">🎙 Road to the Top 40 - Episode ${road.ep}</a>` : ''; })()}
+      ${(() => { const road = roadEpisodeForRank(s.rank); return road ? `<a href="${road.url}" target="_blank" rel="noopener noreferrer" class="stream-link" style="flex-basis:100%;color:var(--text);border-color:var(--gold);font-weight:600;" aria-label="Hear ${s.title} discussed on The Road to the Top 40, episode ${road.ep}">🎙 Road to the Top 40 - Episode ${road.ep}</a>` : ''; })()}
       <a href="https://music.apple.com/search?term=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-apple">Apple Music</a>
       <a href="${beyondSpotifyURL}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-spotify">Spotify</a>
       <a href="https://tidal.com/search?q=${searchQ}" target="_blank" rel="noopener noreferrer" class="stream-link stream-link-tidal">Tidal</a>

@@ -39,8 +39,8 @@
 
 <header>
   <span class="maple" aria-hidden="true">🍁</span>
-  <h1><span style="color: #C8102E;">THE</span> HIP <span style="color: #C8102E;">HANDBOOK</span></h1>
-  <img src="assets-optimized/band/band-photo-4.jpg" alt="The Tragically Hip - The Final Show, Kingston 2016" class="hero-img" loading="eager">
+  <h1>THE HIP HANDBOOK</h1>
+  <img src="assets-optimized/band/band-photo-4.jpg" alt="The five members of The Tragically Hip on stage at the final show in Kingston, 2016, arms around each other, smiling, with the crowd behind them" class="hero-img" loading="eager">
   <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 4px;font-style:italic;">Photo: David Bastedo</p>
   <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,355 live shows and appearances, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
   <div class="song-search-autocomplete">
@@ -116,17 +116,17 @@
     </section>
   </nav>
 
-</main>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
-  <img src="assets-optimized/band/band-photo.jpg" alt="The Tragically Hip - band photo by Anthony Pidgeon" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <img src="assets-optimized/band/band-photo.jpg" alt="The Tragically Hip standing close together in front of a dark red curtain, one holding an acoustic guitar and one a pair of drumsticks" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
   <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Anthony Pidgeon</p>
 </div>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
-  <img src="assets-optimized/band/band-photo-3.jpg" alt="The Tragically Hip - band photo by Gordon Hawkins" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <img src="assets-optimized/band/band-photo-3.jpg" alt="The Tragically Hip standing in tall grass under a concrete highway overpass, the man in front in a straw hat and pinstriped suit, the others in dark jackets" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
   <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
 </div>
+</main>
 
 <!-- SETLIST OVERLAY -->
 <div class="setlist-overlay" id="setlistOverlay" role="dialog" aria-modal="true" aria-labelledby="slVenue">
@@ -483,7 +483,7 @@ function esc(v) {
       results.lyrics.forEach(function(l) {
         var opt = document.createElement('div');
         opt.className = 'song-search-option';
-        var highlighted = esc(l.pre) + '<strong style="color:var(--gold)">' + esc(l.match) + '</strong>' + esc(l.post);
+        var highlighted = esc(l.pre) + '<strong style="color:var(--text)">' + esc(l.match) + '</strong>' + esc(l.post);
         opt.innerHTML = '<span class="opt-song">' + esc(l.song) + '</span><span class="opt-album">' + esc(l.album) + '</span><span class="opt-lyric">' + highlighted + '</span>';
         opt.addEventListener('mousedown', function(e) { e.preventDefault(); window.location.href = '/lyrics?q=' + encodeURIComponent(l.query); });
         searchDropdown.appendChild(opt);

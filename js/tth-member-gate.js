@@ -232,15 +232,16 @@
     '#tth-member-gate::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%); pointer-events:none; }',
     '#tth-member-gate .mg-card { position:relative; max-width:440px; width:100%; text-align:center; margin:auto 0; }',
     '#tth-member-gate .mg-maple { font-size:2rem; display:block; margin-bottom:12px; }',
-    '#tth-member-gate .mg-eyebrow { text-transform:uppercase; font-size:0.7rem; font-weight:600; letter-spacing:3px; color:#CCA23C; margin-bottom:0.6rem; }',
+    '#tth-member-gate .mg-eyebrow { text-transform:uppercase; font-size:0.7rem; font-weight:600; letter-spacing:3px; color:#d9d9d9; margin-bottom:0.6rem; }',
     '#tth-member-gate .mg-title { font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#fff; line-height:1.15; margin:0 0 0.6rem; }',
-    '#tth-member-gate .mg-title span { color:#C8102E; }',
+    '#tth-member-gate .mg-title span { color:#fff; }',
     '#tth-member-gate .mg-sub { font-size:0.92rem; line-height:1.6; color:#d9d9d9; margin:0 0 1.4rem; }',
-    '#tth-member-gate a { color:#CCA23C; text-decoration:none; font-weight:600; }',
+    '#tth-member-gate a { color:#fff; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; font-weight:600; }',
     '#tth-member-gate a:hover { text-decoration:underline; }',
     '#tth-member-gate button { width:100%; padding:1rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; transition:background 0.15s, border-color 0.15s, color 0.15s; }',
     '#tth-member-gate button:hover:not(:disabled) { background:#a60d26; }',
     '#tth-member-gate button:disabled { opacity:0.6; cursor:not-allowed; }',
+    '#tth-member-gate button:focus-visible, #tth-member-gate a:focus-visible { outline:2px solid #fff; outline-offset:3px; }',
     '#tth-member-gate .mg-start { font-size:1.05rem; padding:1.1rem; }',
     '#tth-member-gate .mg-member { margin-top:1.75rem; padding-top:1.4rem; border-top:1px solid #2a2a2a; text-align:left; }',
     // No uppercase on these - it would flatten the membersHIP brand casing
@@ -250,10 +251,10 @@
     '#tth-member-gate .mg-fields > div { flex:1; min-width:0; }',
     '#tth-member-gate label { font-size:0.72rem; font-weight:500; letter-spacing:0.5px; color:#d9d9d9; margin-bottom:0.35rem; display:block; }',
     '#tth-member-gate input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
-    '#tth-member-gate input:focus { outline:none; border-color:#CCA23C; }',
-    '#tth-member-gate .mg-unlock { background:transparent; color:#CCA23C; border:1px solid rgba(204,162,60,0.6); font-size:0.85rem; padding:0.85rem; }',
+    '#tth-member-gate input:focus { outline:2px solid #CCA23C; outline-offset:2px; border-color:#CCA23C; }',
+    '#tth-member-gate .mg-unlock { background:transparent; color:#fff; border:1px solid rgba(204,162,60,0.6); font-size:0.85rem; padding:0.85rem; }',
     '#tth-member-gate .mg-unlock:hover:not(:disabled) { background:rgba(204,162,60,0.1); border-color:#CCA23C; }',
-    '#tth-member-gate .mg-err { color:#ff6b6b; font-size:0.85rem; min-height:1.2em; text-align:center; }',
+    '#tth-member-gate .mg-err { color:#fff; font-size:0.85rem; min-height:1.2em; text-align:center; }',
     '#tth-member-gate .mg-claim { font-size:0.85rem; color:#b0b0b0; text-align:center; margin:0.25rem 0 0; }',
     '#tth-member-gate .mg-why { font-size:0.8rem; line-height:1.55; color:#b0b0b0; background:#141414; border:1px solid #2a2a2a; border-radius:10px; padding:0.85rem 1rem; margin:1rem 0 0; }',
     '#tth-member-gate .mg-why b { color:#fff; font-weight:600; }',
@@ -267,7 +268,7 @@
     '<div class="mg-card">' +
       '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
       '<div class="mg-eyebrow">Free for every Hip fan</div>' +
-      '<h1 class="mg-title">Yer <span>Handbook</span></h1>' +
+      '<h2 id="mg-title" class="mg-title">Yer <span>Handbook</span></h2>' +
       '<p class="mg-sub">Every release, 1,355 live shows and appearances, lyrics, and rare recordings. No account needed.</p>' +
       '<button id="mg-guest-btn" class="mg-start" type="button">Start exploring</button>' +
       '<div class="mg-member">' +
@@ -325,6 +326,10 @@
 
     var gate = document.createElement('div');
     gate.id = 'tth-member-gate';
+    // Named dialog so screen readers announce it and stay inside it (audit A11Y-10)
+    gate.setAttribute('role', 'dialog');
+    gate.setAttribute('aria-modal', 'true');
+    gate.setAttribute('aria-labelledby', 'mg-title');
     gate.innerHTML = gateHtml;
     document.body.insertBefore(gate, document.body.firstChild);
 
@@ -354,6 +359,9 @@
     if (prefillFirst) {
       firstEl.value = prefillFirst;
       setTimeout(function () { try { numEl.focus(); } catch (e) {} }, 60);
+    } else {
+      // A button, so no phone keyboard pops; keyboard and screen reader users start inside the gate
+      setTimeout(function () { try { document.getElementById('mg-guest-btn').focus(); } catch (e) {} }, 60);
     }
 
     track('Gate - Shown');

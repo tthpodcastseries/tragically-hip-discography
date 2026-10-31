@@ -208,7 +208,7 @@
     const section = $('ppMap').parentElement;
     if (typeof L === 'undefined') { section.hidden = true; return; }
     if (!map) {
-      map = L.map('ppMap', { scrollWheelZoom: false });
+      map = L.map('ppMap', { scrollWheelZoom: false, zoomAnimation: !window.matchMedia('(prefers-reduced-motion: reduce)').matches });
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
         subdomains: 'abcd', maxZoom: 18,
@@ -288,9 +288,9 @@
     if (landscape) {
       // Number on the left, the details on the right
       put('\u{1F341}', 330, 150, '700', 70, '#ffffff');
-      put('YER HIP PASSPORT', 330, 212, '700', 28, '#CCA23C', '8px');
-      put(String(shows.length), 330, 410, '900', 230 * numSize, '#C8102E');
-      put(label, 330, 486, '700', 50, '#CCA23C', '10px');
+      put('YER HIP PASSPORT', 330, 212, '700', 28, '#ffffff', '8px');
+      put(String(shows.length), 330, 410, '900', 230 * numSize, '#ffffff');
+      put(label, 330, 486, '700', 50, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
       x.lineWidth = 2;
       x.beginPath(); x.moveTo(650, 120); x.lineTo(650, 520); x.stroke();
@@ -311,10 +311,10 @@
         ? { maple: 340, label: 440, head: 570, num: 1030, lbl: 1150, lines: 1290, gap: 80, site: 1650 }
         : { maple: 190, label: 272, head: 384, num: 760, lbl: 856, lines: 972, gap: 70, site: 1262 };
       put('\u{1F341}', W / 2, y.maple, '700', story ? 110 : 96, '#ffffff');
-      put('YER HIP PASSPORT', W / 2, y.label, '700', 38, '#CCA23C', '10px');
+      put('YER HIP PASSPORT', W / 2, y.label, '700', 38, '#ffffff', '10px');
       put(headline, W / 2, y.head, '700', story ? 58 : 54, '#ffffff', '0px', W - 160);
-      put(String(shows.length), W / 2, y.num, '900', (story ? 420 : 360) * numSize, '#C8102E');
-      put(label, W / 2, y.lbl, '700', story ? 72 : 64, '#CCA23C', '12px');
+      put(String(shows.length), W / 2, y.num, '900', (story ? 420 : 360) * numSize, '#ffffff');
+      put(label, W / 2, y.lbl, '700', story ? 72 : 64, '#ffffff', '12px');
       const lines = [
         d.songsHeard.toLocaleString('en-CA') + ' songs heard live',
         d.seenPlayable + ' of ' + playable.length + ' songs on the checklist',
@@ -330,6 +330,8 @@
     currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
     const img = $('ppCardImg');
     img.src = currentCard.url;
+    // The card's own words, for people who can't see it (audit BRAND-15)
+    img.alt = 'Yer Hip Passport: ' + headline + '. ' + shows.length + ' ' + label.toLowerCase() + '. ' + d.songsHeard.toLocaleString('en-CA') + ' songs heard live, ' + d.seenPlayable + ' of ' + playable.length + ' songs seen' + (d.rarities.length ? ', ' + plural(d.rarities.length, 'rarity', 'rarities') + ' caught' : '') + '. First show: ' + firstYear + '.';
     img.className = 'pp-card-img pp-card-' + cardFormat;
     $('ppCardWrap').hidden = false;
     const file = new File([blob], 'my-hip-passport-' + fmt.file + '.png', { type: 'image/png' });

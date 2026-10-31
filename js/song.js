@@ -135,9 +135,10 @@
     const say = y => { note.textContent = y + ': ' + (counts[y] ? plural(counts[y], 'play', 'plays') : 'not played'); };
     for (let y = lo; y <= hi; y++) {
       const n = counts[y] || 0;
-      const b = el('button', 'sp-bar' + (n ? '' : ' none') + (y === busiest ? ' top' : ''));
-      b.type = 'button';
-      b.setAttribute('aria-label', y + ': ' + plural(n, 'play', 'plays'));
+      // The bars are for mouse and touch; the year picker below does the same job from
+      // the keyboard and for screen readers (the bars are under 24px wide, audit A11Y-06)
+      const b = el('div', 'sp-bar' + (n ? '' : ' none') + (y === busiest ? ' top' : ''));
+      b.setAttribute('aria-hidden', 'true');
       const bar = el('i');
       bar.style.height = n ? Math.max(4, Math.round(100 * n / max)) + '%' : '';
       b.appendChild(bar);
@@ -148,7 +149,18 @@
     const axis = el('div', 'sp-axis');
     [lo, Math.round((lo + hi) / 2), hi].forEach(y => axis.appendChild(el('span', '', y)));
     box.parentNode.insertBefore(axis, $('spYearNote'));
-    note.textContent = 'Busiest year: ' + busiest + ' (' + plural(max, 'play', 'plays') + '). Tap a bar for a year.';
+    const pick = el('div', 'sp-yearpick');
+    const lbl = el('label', '', 'Pick a year');
+    lbl.setAttribute('for', 'spYearSelect');
+    const sel = el('select');
+    sel.id = 'spYearSelect';
+    sel.appendChild(new Option('Choose a year', ''));
+    for (let y = lo; y <= hi; y++) sel.appendChild(new Option(y + ' - ' + plural(counts[y] || 0, 'play', 'plays'), y));
+    sel.addEventListener('change', () => { if (sel.value) say(+sel.value); });
+    pick.appendChild(lbl);
+    pick.appendChild(sel);
+    box.parentNode.insertBefore(pick, $('spYearNote'));
+    note.textContent = 'Busiest year: ' + busiest + ' (' + plural(max, 'play', 'plays') + '). Tap a bar, or pick a year below.';
     $('spYearsCard').hidden = false;
   }
 

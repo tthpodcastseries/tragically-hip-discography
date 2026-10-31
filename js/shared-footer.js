@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.4.13 (Yawning or Snarling - Patch)';
+  var version = 'v5.4.14 (Yawning or Snarling - Patch)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -57,8 +57,8 @@
       '<a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-link">Sign up For Yer Letter - The TTH Podcast Series Newsletter</a><br>' +
       '<strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://home.tthpods.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
-      '<span style="color:#888;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
-      '<span style="color:#666;font-size:0.7rem;">' + version + '</span>';
+      '<span style="color:#929292;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
+      '<span style="color:#929292;font-size:0.7rem;">' + version + '</span>';
   }
 
   // Service worker registration

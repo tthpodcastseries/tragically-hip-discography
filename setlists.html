@@ -61,12 +61,12 @@
     <div class="stat"><div class="stat-num" id="statNum3"></div><div class="stat-lbl" id="statLbl3"></div></div>
     <div class="stat"><div class="stat-num" id="statNum4"></div><div class="stat-lbl" id="statLbl4"></div></div>
   </div>
-  <nav><div class="category-nav" id="categoryNav" role="tablist" aria-label="Album categories">
+  <nav><div class="category-nav" id="categoryNav" role="group" aria-label="Album categories">
     <div class="nav-row" role="none"><button class="category-btn random-song-btn" id="randomSongBtn" style="flex:1;max-width:480px;">Random Hip Song</button></div>
     <h2 class="nav-group-title" style="margin:20px 0 2px;">Albums &amp; Releases</h2>
-    <div class="nav-row"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
-    <div class="nav-row"><button class="category-btn" data-category="live" role="tab" aria-selected="false" aria-controls="albumsGrid">Live</button><button class="category-btn" data-category="compilations" role="tab" aria-selected="false" aria-controls="albumsGrid">Compilations</button></div>
-    <div class="nav-row"><button class="category-btn" data-category="boxsets" role="tab" aria-selected="false" aria-controls="albumsGrid">Box Sets</button><button class="category-btn" data-category="video" role="tab" aria-selected="false" aria-controls="albumsGrid">Video</button></div>
+    <div class="nav-row" role="tablist" aria-label="Albums"><button class="category-btn active" data-category="studio" role="tab" aria-selected="true" aria-controls="albumsGrid">Studio</button><button class="category-btn" data-category="eps" role="tab" aria-selected="false" aria-controls="albumsGrid">EPs</button><button class="category-btn" data-category="solo" role="tab" aria-selected="false" aria-controls="albumsGrid">Solo Projects</button></div>
+    <div class="nav-row" role="tablist" aria-label="Live and compilations"><button class="category-btn" data-category="live" role="tab" aria-selected="false" aria-controls="albumsGrid">Live</button><button class="category-btn" data-category="compilations" role="tab" aria-selected="false" aria-controls="albumsGrid">Compilations</button></div>
+    <div class="nav-row" role="tablist" aria-label="Box sets and video"><button class="category-btn" data-category="boxsets" role="tab" aria-selected="false" aria-controls="albumsGrid">Box Sets</button><button class="category-btn" data-category="video" role="tab" aria-selected="false" aria-controls="albumsGrid">Video</button></div>
   </div></nav>
 </header>
 
@@ -130,7 +130,7 @@
     <div id="myShowsStats" class="profile-stats"></div>
     <div id="myShowsList" class="profile-show-list"></div>
     <div id="myShowsEmpty" class="profile-empty">
-      You haven't marked any shows yet. Head to the <button id="myShowsGotoSetlists" style="background:none;border:none;color:var(--gold);font-family:Poppins,sans-serif;font-size:inherit;cursor:pointer;text-decoration:underline;">Setlist Explorer</button> and tap "I Was There" on shows you attended.
+      You haven't marked any shows yet. Head to the <button id="myShowsGotoSetlists" style="background:none;border:none;color:var(--text);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:inherit;cursor:pointer;text-decoration:underline;">Setlist Explorer</button> and tap "I Was There" on shows you attended.
     </div>
   </div>
 
@@ -160,7 +160,7 @@
         <div class="section-line"></div>
       </div>
       <div style="max-width:700px;margin:0 auto 32px;text-align:center;">
-        <img src="assets-optimized/band/band-photo-8.jpg" alt="The Tragically Hip - band photo by Bob Berg" loading="lazy" style="width:100%;border-radius:12px;margin-bottom:4px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+        <img src="assets-optimized/band/band-photo-8.jpg" alt="Close-up of the five members of The Tragically Hip, young, looking up at the camera from a red and white tiled plaza" loading="lazy" style="width:100%;border-radius:12px;margin-bottom:4px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
         <p style="font-size:0.7rem;color:#b0b0b0;margin-bottom:24px;font-style:italic;">Photo: Bob Berg</p>
         <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:55ch;margin:0 auto 32px;">Sometimes even the greatest bands need to explore space outside of the collective. Here is the complete discography of Gord, Gord, Johnny, Paul, and Robby.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
@@ -182,6 +182,10 @@
       <div class="albums-grid" id="soloGrid"></div>
     </div>
   </div>
+<div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
+  <img src="assets-optimized/band/band-photo-6.jpg" alt="Black and white photo of the five members of The Tragically Hip, young, posed on rocks at the edge of a lake with a city skyline across the water" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Taffi Laing</p>
+</div>
 </main>
 
 <div class="random-song-page" id="randomSongPage" role="dialog" aria-modal="true" aria-labelledby="rspTrack">
@@ -191,7 +195,7 @@
   <div class="random-song-streams" id="rspStreams"></div>
 </div>
 
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Release details" aria-labelledby="mTitle">
   <div class="modal" id="modal">
     <div class="modal-top">
       <div class="modal-art" id="mArt"></div>
@@ -204,11 +208,6 @@
     </div>
     <div class="modal-body" id="mBody"></div>
   </div>
-</div>
-
-<div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
-  <img src="assets-optimized/band/band-photo-6.jpg" alt="The Tragically Hip - Early Days" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
-  <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Taffi Laing</p>
 </div>
 
 <footer id="site-footer"></footer>
