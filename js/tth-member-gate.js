@@ -23,7 +23,10 @@
 //   addShow(id)               -> Promise<void>
 //   removeShow(id)            -> Promise<void>
 //   toggleShow(id)            -> Promise<boolean>   // resolves true if now attended
+//                                (a failed save puts the show back and shows a note)
 //   onChange(cb)              -> unsubscribe fn
+//   rpc(name, params)         -> Promise<data>, gives up after 15 seconds
+//   friendlyError(err, ctx)   -> a line for fans; ctx is 'signin', 'claim' or 'save'
 //
 // Session persistence:
 //   localStorage key: 'tth_member_session'
@@ -103,18 +106,40 @@ window.tthAlbumCase = function (text) {
     return { memberNumber: GUEST_NUMBER, firstName: GUEST_FIRST_NAME, attendedShows: shows, unlockedAt: Date.now(), guest: true };
   }
 
-  // Database errors arrive as codes; turn them into something a fan can act on
-  function friendlyError(err) {
-    var msg = (err && err.message) || '';
-    if (msg.indexOf('too_many_attempts') !== -1) return 'Too many tries from here. Give it an hour and try again.';
-    if (msg.indexOf('invalid_credentials') !== -1) return 'No match. Check yer name and number.';
-    if (msg.indexOf('too_many_removed') !== -1) return 'That would remove a lot of shows at once, so it wasn\'t saved.';
-    // The database is asleep or out of reach (audit REL-05): browsers word this
-    // "Failed to fetch" (Chrome), "Load failed" (Safari) or "NetworkError" (Firefox)
-    if (/failed to (?:fetch|load supabase)|load failed|networkerror|network request failed|timed? ?out/i.test(msg) || (err && err.status >= 500)) {
-      return 'Member sign-in is down right now. Keep exploring as a guest and try again later.';
-    }
-    return msg || 'Something went wrong. Try again.';
+  // Database errors arrive as codes, raw server text or an HTML error page. Fans only ever
+  // see one of these lines (audit REL-04, BRAND-08). Shared with the claim page.
+  // context: 'signin' (default), 'claim' or 'save'.
+  var DOWN_LINES = {
+    signin: 'Member sign-in is down right now. Keep exploring as a guest and try again later.',
+    claim: 'Can\'t hand out new numbers right now. Keep exploring as a guest and try again later.',
+    save: 'Couldn\'t save that show. Check yer connection and try again.'
+  };
+  var LIMIT_LINES = {
+    signin: 'Too many tries from here. Give it an hour and try again.',
+    claim: 'Too many new numbers from here. Give it a while and try again.',
+    save: 'That\'s a lot of saves in a short stretch. Give it a while and try again.'
+  };
+  // claim_member already words these for fans, so they pass through as written
+  var OWN_WORDS = ['Add yer first name and a last name or initial.', 'That\'s a bit long - try a shorter answer.'];
+
+  function friendlyError(err, context) {
+    if (!DOWN_LINES[context]) context = 'signin';
+    var msg = String((err && err.message) || (typeof err === 'string' ? err : '')).trim();
+    var low = msg.toLowerCase();
+    if (low.indexOf('too_many_removed') !== -1) return 'That would remove a lot of shows at once, so it wasn\'t saved.';
+    // Member Hardening limits (audit SEC-01, SEC-02, SEC-05) get their own lines
+    if (low.indexOf('slow_down') !== -1) return 'Lots of wrong guesses on the site right now, so sign-in is slowed down. Wait a few minutes and try again.';
+    if (low.indexOf('too_many_saves') !== -1) return 'That\'s a lot of saves in one hour. Give it a bit and try again.';
+    if (low.indexOf('removal_limit_today') !== -1) return 'That\'s a lot of shows removed in one day, so this one wasn\'t saved. Try again tomorrow.';
+    if (low.indexOf('too_many_claims') !== -1) return 'That\'s the most numbers one connection can claim in a day. Try again tomorrow.';
+    if (low.indexOf('claims_full_today') !== -1) return 'That\'s the most numbers the Handbook hands out in one day. Try again tomorrow.';
+    // Rate limits, whatever the database calls them (too_many_attempts and friends)
+    if (/too[ _]many|limit/.test(low) || (err && (err.httpStatus === 429 || err.status === 429))) return LIMIT_LINES[context];
+    if (low.indexOf('invalid_credentials') !== -1) return 'No match. Check yer name and number.';
+    if (OWN_WORDS.indexOf(msg) !== -1) return msg;
+    // Everything else - out of reach, timed out, paused, a gateway or HTML error page,
+    // or a code nobody planned for - is "down right now", never the raw text
+    return DOWN_LINES[context];
   }
 
   // Lazy supabase loader
@@ -137,7 +162,41 @@ window.tthAlbumCase = function (text) {
       s.onerror = function () { reject(new Error('Failed to load Supabase.')); };
       document.head.appendChild(s);
     });
+    // A failed load can be tried again on the next tap
+    sbPromise.catch(function () { sbPromise = null; });
     return sbPromise;
+  }
+
+  // Every database call goes through here: a 15-second limit, so a slow or hung
+  // server never leaves a button stuck on "Unlocking..." (audit REL-04).
+  // Resolves with the data; rejects with an error for friendlyError().
+  var RPC_TIMEOUT_MS = 15000;
+  function callRpc(name, params) {
+    var timer = null;
+    var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+    var timeout = new Promise(function (resolve, reject) {
+      timer = setTimeout(function () {
+        if (ctrl) { try { ctrl.abort(); } catch (e) {} }
+        reject(new Error('timed out'));
+      }, RPC_TIMEOUT_MS);
+    });
+    var call = getSupabase().then(function (sb) {
+      var q = sb.rpc(name, params);
+      if (ctrl && q && typeof q.abortSignal === 'function') q = q.abortSignal(ctrl.signal);
+      return q;
+    }).then(function (res) {
+      if (res && res.error) {
+        var e = res.error;
+        // The library's error has no status of its own; keep the reply's for friendlyError
+        try { if (res.status) e.httpStatus = res.status; } catch (e2) {}
+        throw e;
+      }
+      return res ? res.data : null;
+    });
+    return Promise.race([call, timeout]).then(
+      function (data) { clearTimeout(timer); return data; },
+      function (err) { clearTimeout(timer); throw err; }
+    );
   }
 
   function persistRemote() {
@@ -146,15 +205,50 @@ window.tthAlbumCase = function (text) {
     if (!session) return Promise.resolve();
     // Guest sessions are local-only - never write to Supabase.
     if (session.guest) return Promise.resolve();
-    return getSupabase().then(function (sb) {
-      return sb.rpc('update_attended_shows', {
-        p_first_name: session.firstName,
-        p_number: session.memberNumber,
-        p_shows: session.attendedShows
-      });
-    }).then(function (res) {
-      if (res && res.error) throw res.error;
-      return res && res.data;
+    return callRpc('update_attended_shows', {
+      p_first_name: session.firstName,
+      p_number: session.memberNumber,
+      p_shows: session.attendedShows
+    });
+  }
+
+  // A short note at the top of the page when a show didn't save (audit REL-04, BRAND-08)
+  var noteEl = null;
+  var noteTimer = null;
+  function showSaveNote(text) {
+    if (!document.body) return;
+    if (!noteEl) {
+      noteEl = document.createElement('div');
+      noteEl.id = 'tth-save-note';
+      noteEl.setAttribute('role', 'status');
+      document.body.appendChild(noteEl);
+    }
+    noteEl.textContent = '';
+    noteEl.classList.add('open');
+    // Filled a moment after the region exists, so screen readers read it out
+    setTimeout(function () { noteEl.textContent = text; }, 60);
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(function () { noteEl.classList.remove('open'); noteEl.textContent = ''; }, 7000);
+  }
+
+  // Add or remove one show and save it. If the save fails, put that show back the way it
+  // was on this device too, so the Passport, the map and the member's other devices
+  // agree, and tell the fan (audit REL-04)
+  function changeShow(id, add) {
+    var had = session.attendedShows.indexOf(id) !== -1;
+    if (add && !had) session.attendedShows.push(id);
+    if (!add && had) session.attendedShows = session.attendedShows.filter(function (s) { return s !== id; });
+    var mine = session;
+    return persistRemote().catch(function (err) {
+      if (session === mine) {
+        var now = session.attendedShows.indexOf(id) !== -1;
+        if (had && !now) session.attendedShows.push(id);
+        if (!had && now) session.attendedShows = session.attendedShows.filter(function (s) { return s !== id; });
+        persistLocal();
+        notify();
+      }
+      showSaveNote(friendlyError(err, 'save'));
+      throw err;
     });
   }
 
@@ -181,6 +275,8 @@ window.tthAlbumCase = function (text) {
     // Guest -> member sign-in without losing the guest's shows (audit FUNC-02)
     signInWithNumber: function () { openSignIn('Sign-in - Opened'); },
     friendlyError: friendlyError,
+    // The claim page's database calls use the same time limit (audit REL-04)
+    rpc: callRpc,
     signOut: function () {
       if (session && session.guest) { openSignIn('Sign-in - Opened'); return; }
       session = guestSession([]);
@@ -195,23 +291,17 @@ window.tthAlbumCase = function (text) {
     },
     addShow: function (id) {
       if (!session) return Promise.reject(new Error('Not unlocked'));
-      id = String(id);
-      if (session.attendedShows.indexOf(id) === -1) session.attendedShows.push(id);
-      return persistRemote();
+      return changeShow(String(id), true).then(function () {});
     },
     removeShow: function (id) {
       if (!session) return Promise.reject(new Error('Not unlocked'));
-      id = String(id);
-      session.attendedShows = session.attendedShows.filter(function (s) { return s !== id; });
-      return persistRemote();
+      return changeShow(String(id), false).then(function () {});
     },
     toggleShow: function (id) {
       if (!session) return Promise.reject(new Error('Not unlocked'));
       id = String(id);
       var isAdd = session.attendedShows.indexOf(id) === -1;
-      if (isAdd) session.attendedShows.push(id);
-      else session.attendedShows = session.attendedShows.filter(function (s) { return s !== id; });
-      return persistRemote().then(function () { return isAdd; });
+      return changeShow(id, isAdd).then(function () { return isAdd; });
     },
     onChange: function (cb) {
       subscribers.push(cb);
@@ -273,15 +363,17 @@ window.tthAlbumCase = function (text) {
     '#tth-signin .mg-fields { display:flex; gap:0.6rem; }',
     '#tth-signin .mg-fields > div { flex:1; min-width:0; }',
     '#tth-signin label { font-size:0.72rem; font-weight:500; letter-spacing:0.5px; color:#d9d9d9; margin-bottom:0.35rem; display:block; }',
-    '#tth-signin input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
+    '#tth-signin input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #929292; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
     '#tth-signin input:focus { outline:2px solid #CCA23C; outline-offset:2px; border-color:#CCA23C; }',
     '#tth-signin .mg-unlock { width:100%; padding:0.95rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; }',
     '#tth-signin .mg-unlock:hover:not(:disabled) { background:#a60d26; }',
     '#tth-signin .mg-unlock:disabled { opacity:0.6; cursor:not-allowed; }',
     '#tth-signin .mg-err { color:#fff; font-size:0.85rem; min-height:1.2em; text-align:center; }',
-    '#tth-signin .mg-claim { font-size:0.85rem; color:#b0b0b0; margin:1rem 0 0; }',
-    '#tth-signin .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1rem; }',
-    '#tth-signin .mg-privacy a { color:#d9d9d9; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; }'
+    '#tth-signin .mg-claim { font-size:0.85rem; color:#929292; margin:1rem 0 0; }',
+    '#tth-signin .mg-privacy { font-size:0.75rem; color:#929292; margin-top:1rem; }',
+    '#tth-signin .mg-privacy a { color:#d9d9d9; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; }',
+    '#tth-save-note { display:none; position:fixed; top:16px; left:50%; transform:translateX(-50%); z-index:10050; width:max-content; max-width:calc(100% - 32px); padding:10px 16px; background:#0e0b16; border:1px solid #CCA23C; border-radius:10px; color:#fff; font-family:Poppins,sans-serif; font-size:0.85rem; line-height:1.4; text-align:center; box-shadow:0 6px 24px rgba(0,0,0,0.5); }',
+    '#tth-save-note.open { display:block; }'
   ].join('\n');
   var styleEl = document.createElement('style');
   styleEl.id = 'tth-member-gate-css';
@@ -377,9 +469,9 @@ window.tthAlbumCase = function (text) {
       var first = firstEl.value.trim();
       var numStr = numEl.value.trim();
 
-      if (!first) { errEl.textContent = 'Yer first name is required.'; return; }
+      if (!first) { errEl.textContent = 'Add yer first name.'; return; }
       if (!/^[0-9]{1,7}$/.test(numStr)) {
-        errEl.textContent = 'Number must be 1 to 7 digits.';
+        errEl.textContent = 'Yer membersHIP number is 1 to 7 digits, numbers only.';
         return;
       }
       var num = parseInt(numStr, 10);
@@ -401,14 +493,8 @@ window.tthAlbumCase = function (text) {
       btn.disabled = true;
       btn.textContent = 'Unlocking...';
 
-      var sbRef;
-      getSupabase().then(function (sb) {
-        sbRef = sb;
-        return sb.rpc('unlock_member', { p_first_name: first, p_number: num });
-      }).then(function (res) {
-        if (res && res.error) throw res.error;
-        var data = res && res.data;
-        if (!data) throw new Error('No match. Check yer name and number.');
+      callRpc('unlock_member', { p_first_name: first, p_number: num }).then(function (data) {
+        if (!data) throw new Error('invalid_credentials');
 
         var shows = (data.attended_shows || []).map(String);
         var added = guestShows.filter(function (id) { return shows.indexOf(id) === -1; });
@@ -422,18 +508,16 @@ window.tthAlbumCase = function (text) {
         if (!added.length) { clearPending(); return; }
         // Keep the guest copy until the merge is saved, so a failed save can try again next sign-in
         try { localStorage.setItem(PENDING_KEY, JSON.stringify(added)); } catch (e2) {}
-        return sbRef.rpc('update_attended_shows', {
+        return callRpc('update_attended_shows', {
           p_first_name: session.firstName,
           p_number: session.memberNumber,
           p_shows: session.attendedShows
-        }).then(function (r) {
-          if (!(r && r.error)) clearPending();
-        }, function () {});
+        }).then(function () { clearPending(); }, function () {});
       }).then(function () {
         // Reload so the rest of the page boots with the member's session in place.
         track('Gate - Member unlock').then(function () { location.reload(); });
       }).catch(function (err) {
-        errEl.textContent = friendlyError(err);
+        errEl.textContent = friendlyError(err, 'signin');
         btn.disabled = false;
         btn.textContent = 'Unlock yer shows';
         track('Gate - Unlock failed');
@@ -447,6 +531,9 @@ window.tthAlbumCase = function (text) {
       return;
     }
     if (!dialog) buildDialog();
+    // iPhones before iOS 15.4 have no pop-up dialogs: go to the membersHIP page instead of
+    // a Sign in button that does nothing (audit DEV-07)
+    if (typeof dialog.showModal !== 'function') { if (!onClaimPage) location.href = '/forum-invite.html'; return; }
     if (dialog.open) return;
     document.getElementById('mg-err').textContent = '';
     if (prefillFirst) document.getElementById('mg-first').value = prefillFirst;

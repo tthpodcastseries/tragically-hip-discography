@@ -26,6 +26,15 @@ header h1 {
   margin: 0 auto 16px;
 }
 
+/* What the headline numbers count (audit FUNC-10) */
+.stats-note {
+  font-size: 0.72rem;
+  color: var(--muted2);
+  max-width: 560px;
+  margin: 16px auto 0;
+  line-height: 1.5;
+}
+
 .stats-loading, .stats-error {
   text-align: center;
   color: var(--muted2);

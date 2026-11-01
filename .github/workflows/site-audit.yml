@@ -3,7 +3,9 @@ name: Weekly site audit
 # Weekly: the full audit, outside links included, plus the YouTube check.
 # Every push to main: the quick pre-push check (no outside links), so a push that
 # skipped it still raises a failure email within a minute or two (v5.4.18, audit
-# CODE-06). Netlify has already published by then: fix forward and push again.
+# CODE-06). Netlify runs the same check before it publishes, so a push that fails
+# it normally never goes live. On a push, the game schedules are also compared with
+# the commit before the push, so the whole history is fetched (audit GAME-01, CODE-03).
 on:
   push:
     branches: [main]
@@ -17,11 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      - name: Run site audit (links, assets, data integrity)
-        run: node scripts/audit-site.js ${{ github.event_name == 'push' && '--no-network' || '' }}
+      - name: Quick audit, games compared with the commit before the push
+        if: github.event_name == 'push'
+        env:
+          BEFORE_PUSH: ${{ github.event.before }}
+        run: node scripts/audit-site.js --no-network --game-ref "$BEFORE_PUSH"
+      - name: Full site audit (links, assets, data integrity)
+        if: github.event_name != 'push'
+        run: node scripts/audit-site.js
 
   youtube:
     if: github.event_name != 'push'

@@ -32,12 +32,18 @@
   }
 
   // Stats
-  var globalStats = {
-    sessions: data.summary.totalSessions,
-    eras: data.summary.totalEras,
-    full: data.summary.totalFull,
-    vault: data.summary.totalUnavailable
-  };
+  // Counted from the sessions themselves, with the same rule as each album's panel below, so
+  // Available + In the Vault always adds up to Sessions (audit DATA-08). The tracker's own
+  // summary numbers in the JSON come from its spreadsheet headers and don't add up.
+  var globalStats = { sessions: 0, eras: data.eras.length, full: 0, vault: 0 };
+  data.eras.forEach(function(era) {
+    (era.sessions || []).forEach(function(s) {
+      var av = (s.availability || '').toLowerCase();
+      globalStats.sessions++;
+      if (av === 'full' || av === 'partial' || av === 'snippet') globalStats.full++;
+      else globalStats.vault++;
+    });
+  });
 
   var statTotal = document.getElementById('statTotal');
   var statEras = document.getElementById('statEras');
@@ -88,10 +94,13 @@
       if (search) search.value = '';
       filterBtns.forEach(function(b, i) {
         b.classList.toggle('active', i === 0);
+        b.setAttribute('aria-pressed', String(i === 0));
       });
       sessions.forEach(function(c) {
         c.style.display = '';
         c.classList.remove('expanded');
+        var t = c.querySelector('.session-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
       });
       if (noResults) noResults.style.display = 'none';
       currentPanel._activeFilter = 'all';
@@ -103,6 +112,7 @@
   }
 
   // Build each album card + panel
+  var sessionCount = 0;
   data.eras.forEach(function(era) { era.era = window.tthAlbumCase(era.era); });
   data.eras.forEach(function(era, idx) {
     // Prefer the local imageMap - imported tracker data has carried stale filenames before
@@ -134,6 +144,7 @@
 
     var backPlaceholder = document.createElement('div');
     backPlaceholder.className = 'flip-card-back-placeholder';
+    backPlaceholder.setAttribute('aria-hidden', 'true'); // not part of the button's name (audit A11Y-11)
     backPlaceholder.innerHTML = '<span>Loading...</span>';
 
     inner.appendChild(front);
@@ -162,12 +173,13 @@
     panelControls.innerHTML =
       '<input type="text" class="panel-search" placeholder="Search this era..." aria-label="Search sessions in ' + esc(era.era) + '">' +
       '<div class="panel-filter-row">' +
-        '<button class="filter-btn active" data-filter="all">All</button>' +
-        '<button class="filter-btn" data-filter="full">Available</button>' +
-        '<button class="filter-btn" data-filter="holy-grail">Holy Grails</button>' +
-        '<button class="filter-btn" data-filter="demo">Demos</button>' +
-        '<button class="filter-btn" data-filter="throwaway">Throwaways</button>' +
-      '</div>';
+        '<button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
+        '<button type="button" class="filter-btn" data-filter="full" aria-pressed="false">Available</button>' +
+        '<button type="button" class="filter-btn" data-filter="holy-grail" aria-pressed="false">Holy Grails</button>' +
+        '<button type="button" class="filter-btn" data-filter="demo" aria-pressed="false">Demos</button>' +
+        '<button type="button" class="filter-btn" data-filter="throwaway" aria-pressed="false">Throwaways</button>' +
+      '</div>' +
+      '<div class="sr-only" role="status"></div>';
 
     // Panel sessions list
     var panelSessions = document.createElement('div');
@@ -203,7 +215,8 @@
         else if (s.availability === 'Partial') avClass = 'tag-partial';
         else if (s.availability === 'Snippet') avClass = 'tag-snippet';
         else if (s.availability === 'Rumored') avClass = 'tag-rumored';
-        tags += '<span class="tag ' + avClass + '">' + esc(s.availability) + '</span>';
+        // The data says 'Rumored' (a match key); fans read the Canadian spelling (audit BRAND-12)
+        tags += '<span class="tag ' + avClass + '">' + esc(s.availability === 'Rumored' ? 'Rumoured' : s.availability) + '</span>';
       }
       if (s.quality && s.quality !== 'Not Available') {
         var qClass = 'tag-quality-low';
@@ -216,11 +229,18 @@
         tags += '<a href="' + esc(s.link) + '" target="_blank" rel="noopener noreferrer" class="tag tag-link">Listen</a>';
       }
 
-      var notesHtml = s.notes ? '<div class="session-notes">' + esc(s.notes) + '</div>' : '';
+      // Sessions with notes get a real button that opens them, so the keyboard and
+      // screen readers can reach the notes too (audit A11Y-06)
+      sessionCount++;
+      var notesId = 'ugNotes' + sessionCount;
+      var notesHtml = s.notes ? '<div class="session-notes" id="' + notesId + '">' + esc(s.notes) + '</div>' : '';
+      var nameHtml = s.notes
+        ? '<button type="button" class="session-toggle" aria-expanded="false" aria-controls="' + notesId + '">' + esc(displayLabel) + altText + '</button>'
+        : esc(displayLabel) + altText;
 
       sc.innerHTML =
         '<div class="session-top">' +
-          '<div class="session-name">' + esc(displayLabel) + altText + '</div>' +
+          '<div class="session-name">' + nameHtml + '</div>' +
           tierBadge +
         '</div>' +
         (tags ? '<div class="session-tags">' + tags + '</div>' : '') +
@@ -231,7 +251,11 @@
       if (listenLink) listenLink.addEventListener('click', function(e) { e.stopPropagation(); });
 
       if (s.notes) {
-        sc.addEventListener('click', function() { sc.classList.toggle('expanded'); });
+        var toggle = sc.querySelector('.session-toggle');
+        sc.addEventListener('click', function() {
+          var open = sc.classList.toggle('expanded');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
       }
 
       panelSessions.appendChild(sc);
@@ -246,15 +270,19 @@
     // --- Filter logic for this panel ---
     var panelSearch = panelControls.querySelector('.panel-search');
     var panelFilterBtns = panelControls.querySelectorAll('.filter-btn');
+    var panelStatus = panelControls.querySelector('[role="status"]');
+    var statusTimer = null;
 
     function applyPanelFilters() {
       var q = panelSearch.value.toLowerCase().trim();
       var cards = panelSessions.querySelectorAll('.session-card');
       var af = panel._activeFilter;
       var anyVisible = false;
+      var shown = 0;
 
       cards.forEach(function(c) {
-        var matchSearch = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+        // Folded match: curly or no apostrophes, accents (audit FUNC-02)
+        var matchSearch = !q || window.tthMatch(c.getAttribute('data-search'), q);
         var matchFilter = true;
         if (af === 'full') matchFilter = c.getAttribute('data-availability') === 'full';
         else if (af === 'holy-grail') matchFilter = c.getAttribute('data-tier') === 'holy-grail';
@@ -263,10 +291,15 @@
 
         var show = matchSearch && matchFilter;
         c.style.display = show ? '' : 'none';
-        if (show) anyVisible = true;
+        if (show) { anyVisible = true; shown++; }
       });
 
       noResults.style.display = anyVisible ? 'none' : '';
+      // Say how many sessions are left (audit A11Y-07)
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(function() {
+        panelStatus.textContent = shown ? shown + (shown === 1 ? ' session' : ' sessions') : 'No sessions match yer search.';
+      }, 400);
     }
 
     panelSearch.addEventListener('input', applyPanelFilters);
@@ -274,8 +307,9 @@
     panelControls.querySelector('.panel-filter-row').addEventListener('click', function(e) {
       var btn = e.target.closest('.filter-btn');
       if (!btn) return;
-      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); });
+      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       panel._activeFilter = btn.getAttribute('data-filter');
       applyPanelFilters();
     });

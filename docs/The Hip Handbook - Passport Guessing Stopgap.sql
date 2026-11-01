@@ -1,3 +1,7 @@
+-- HISTORY ONLY - already run (2026-10-31). Replaced by "The Hip Handbook -
+-- Member Hardening.sql"; kept for that file's UNDO steps. (Marked 2026-11-01.)
+-- The whole database is now in "The Hip Handbook - Database Rebuild.sql".
+--
 -- The Hip Handbook - Passport Guessing Stopgap (audit DB-02, DB-04)
 --
 -- Problem: signing in and saving Passport shows only needs a first name and a

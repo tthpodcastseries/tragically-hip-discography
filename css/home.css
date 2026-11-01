@@ -83,7 +83,7 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 
 /* SONG SEARCH */
 .song-search-autocomplete { position: relative; max-width: 480px; margin: 24px auto 20px; }
-.song-search-input { width: 100%; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.25); background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
+.song-search-input { width: 100%; padding: 12px 16px; border-radius: 30px; border: 1px solid #929292; background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
 .song-search-input:focus { border-color: #fff; }
 .song-search-input::placeholder { color: var(--muted2); }
 .song-search-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; max-height: 260px; overflow-y: auto; z-index: 50; display: none; margin-top: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
@@ -163,6 +163,8 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 /* Hip-song name as a small gold eyebrow above the plain name (v4.6) */
 .nav-card-sub { font-size: 0.68rem; font-weight: 600; font-style: italic; color: var(--text); letter-spacing: 0.02em; }
 .nav-card-desc { font-size: 0.74rem; color: var(--muted2); line-height: 1.45; margin-top: 2px; }
+/* Readable on phones: 12px or more (audit DEV-05) */
+@media (max-width: 600px) { .nav-card-desc { font-size: 0.8rem; } }
 .nav-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .shuffle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .nav-card-cta { background: var(--red); border-color: var(--red); }

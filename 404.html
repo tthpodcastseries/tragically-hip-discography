@@ -9,14 +9,14 @@
   <meta property="og:title" content="Page Not Found - The Hip Handbook">
   <meta property="og:description" content="That address doesn't lead anywhere. Head back to The Hip Handbook, the fan-built archive for The Tragically Hip.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
   <meta property="og:url" content="https://thehiphandbook.tthpods.com/404.html">
   <meta property="og:site_name" content="The Hip Handbook">
   <meta name="twitter:card" content="summary_large_image">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true"></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
@@ -37,10 +37,11 @@
       text-align: center;
       padding: 24px;
     }
+    main { display: flex; flex-direction: column; align-items: center; }
     .maple { font-size: 64px; margin-bottom: 24px; }
     h1 { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
     h1 span { color: #ffffff; }
-    p { font-size: 1.1rem; color: #b0b0b0; margin-bottom: 32px; max-width: 480px; }
+    p { font-size: 1.1rem; color: #d9d9d9; margin-bottom: 32px; max-width: 480px; }
     .links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
     .links a {
       display: inline-block;
@@ -59,7 +60,8 @@
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
-  <div id="main-content" class="maple">🍁</div>
+<main id="main-content">
+  <div class="maple" aria-hidden="true">🍁</div>
   <h1><span>404</span> - Page Not Found</h1>
   <p>Looks like this page took a wrong turn somewhere between Kingston and the Horseshoe Tavern.</p>
   <div class="links">
@@ -68,6 +70,7 @@
     <a href="/tour-map.html">Interactive Tour Map</a>
     <a href="/links.html">Fan Community Links</a>
   </div>
+</main>
 
 <footer id="site-footer"></footer>
 

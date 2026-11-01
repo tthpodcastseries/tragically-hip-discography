@@ -1,14 +1,18 @@
-# Content-Security-Policy (audit SEC-03, v5.4.17): no inline scripts or onclick= handlers
-# anywhere - put code in /js/ files. Outside hosts: unpkg (Leaflet, map pages), Umami
-# (cloud.umami.is script, gateway.umami.is events), CARTO map tiles, YouTube thumbnails
-# (i.ytimg.com), Supabase (membersHIP) and Backblaze (live audio). Fonts are our own.
-# scripts/audit-site.js checks there is no 'unsafe-inline' in script-src.
+# Content-Security-Policy (audit SEC-03, v5.4.17; tightened in audit SEC-10): no inline
+# scripts or onclick= handlers anywhere - put code in /js/ files. Leaflet is our own copy
+# (/js/vendor/, /css/vendor/). Outside hosts, each named exactly: Umami (the one
+# cloud.umami.is script, gateway.umami.is events), CARTO map tiles (a-d), YouTube thumbnails
+# (i.ytimg.com), our Supabase project (membersHIP) and our Backblaze server (live audio,
+# played by the <audio> element, so media-src only). Fonts are our own.
+# scripts/audit-site.js checks there is no 'unsafe-inline' in script-src, and that every
+# outside script and image host a page uses is allowed here.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://unpkg.com https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://unpkg.com; font-src 'self'; img-src 'self' data: blob: https://*.basemaps.cartocdn.com https://unpkg.com https://i.ytimg.com; connect-src 'self' https://*.supabase.co https://*.backblazeb2.com https://gateway.umami.is; media-src 'self' https://*.backblazeb2.com; manifest-src 'self'; worker-src 'self'; frame-src 'none'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cloud.umami.is/script.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://c.basemaps.cartocdn.com https://d.basemaps.cartocdn.com https://i.ytimg.com; connect-src 'self' https://deqslacywpwnjjckdygp.supabase.co https://gateway.umami.is; media-src 'self' https://f006.backblazeb2.com; manifest-src 'self'; worker-src 'self'; frame-src 'none'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 /scripts/*

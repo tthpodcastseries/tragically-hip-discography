@@ -60,6 +60,26 @@
     return line;
   };
 
+  // Same text as songDesc in scripts/build-seo-pages.js (audit SEO-02): the longest
+  // version that fits 155 characters, dropping "by The Tragically Hip" first
+  function songDesc(plays, recs, origin) {
+    const t = "'" + song.t + "'";
+    const fit = list => list.find(d => d.length <= 155) || list[list.length - 1];
+    if (plays.length) {
+      const first = plays[0], last = plays[plays.length - 1];
+      const live = plays.length === 1 ? 'played live once, on ' + fmtDate(first.iso) + '.' : 'played live ' + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '.';
+      const recLong = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : ' Plays by year.';
+      const recShort = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + '.' : ' Plays by year.';
+      return fit([t + ' by The Tragically Hip: ' + live + recLong, t + ': ' + live + recLong, t + ': ' + live + recShort, t + ': ' + live]);
+    }
+    const from = origin ? ' From "' + origin[0] + '" (' + origin[1] + ').' : '';
+    return fit([
+      t + ' by The Tragically Hip.' + from + ' No live performances on record. Albums and fan ranking.',
+      t + '.' + from + ' No live performances on record. Albums and fan ranking.',
+      t + '.' + from + ' Albums and fan ranking.',
+    ]);
+  }
+
   // ─── The song page ───
   function renderSong() {
     const plays = song.p.map(i => shows[i]);
@@ -74,15 +94,16 @@
     $('spTitle').textContent = song.t;
     const bits = [];
     if (origin) bits.push('From "' + origin[0] + '" (' + origin[1] + ')');
-    bits.push(plays.length ? 'played live ' + plural(plays.length, 'time', 'times') : 'no live performances on record');
+    // One play reads "played live once, on Dec 9, 1993" (audit BRAND-09)
+    const once = plays.length === 1 ? 'played live once, on ' + fmtDate(first.iso) : '';
+    bits.push(once || (plays.length ? 'played live ' + plural(plays.length, 'time', 'times') : 'no live performances on record'));
     $('spDesc').textContent = bits.join(' - ') + '.';
 
     const url = SITE + '/song/' + song.s;
-    setMeta("'" + song.t + "' - Song - The Hip Handbook",
-      plays.length
-        ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : '.')
-        : "'" + song.t + "' by The Tragically Hip: albums and fan ranking.",
-      url);
+    setMeta("'" + song.t + "' - Song - The Hip Handbook", songDesc(plays, recs, origin), url);
+    // The plain summary written into the page for search engines says what the stats
+    // below now show (audit SEO-03)
+    if ($('spSummary')) $('spSummary').hidden = true;
 
     // Story strip
     if (plays.length) {

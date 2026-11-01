@@ -1,7 +1,10 @@
 # The old Netlify address forwards to the real one (audit SEC-11)
 https://discography-web-app.netlify.app/*  https://thehiphandbook.tthpods.com/:splat  301!
 https://yerletter.tthpods.com/* https://subscribe.tthpods.com/ 301!
-https://forum-portal.tthpods.com/  /forum-invite.html  200!
+# The forum's old claim address and Netlify's branch address send every path to the real
+# site, so a fan signs in once, on the address they will keep using (audit SEC-09)
+https://forum-portal.tthpods.com/*  https://thehiphandbook.tthpods.com/forum-invite.html  301!
+https://main--discography-web-app.netlify.app/*  https://thehiphandbook.tthpods.com/:splat  301!
 /my-shows  /passport.html  200
 /song/just-another-midnight  /song/another-midnight  301!
 /song  /song.html  200

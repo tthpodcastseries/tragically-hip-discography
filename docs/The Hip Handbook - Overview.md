@@ -30,9 +30,9 @@ Cost model: free to every visitor. No account is needed. No email, no password, 
 
 | Layer | What |
 |---|---|
-| Site | Static HTML, CSS and plain JavaScript. No framework, no build step. The repo root is the publish root. |
-| Hosting | Netlify, auto-deployed from GitHub `main` (public repo `tthpodcastseries/tragically-hip-discography`). Pushing `main` publishes the live site within seconds. |
-| Config | `_headers` (security headers and the CSP), `_redirects` (rewrites and blocks; since v5.4.18 the only place for them, `netlify.toml` just sets the publish folder). |
+| Site | Static HTML, CSS and plain JavaScript. No framework. The repo root is the site; Netlify publishes a copy of it in `_site/` without the working folders (`scripts/netlify-publish.js`). |
+| Hosting | Netlify, auto-deployed from GitHub `main` (public repo `tthpodcastseries/tragically-hip-discography`). Pushing `main` publishes the live site within a minute, after `scripts/audit-site.js --no-network` passes on Netlify; a failure stops the deploy. Pushes that only change notes or tools (`docs/`, `scripts/`, `audits/`, `supabase/`, `.github/`, `CLAUDE.md`) are skipped. |
+| Config | `_headers` (security headers and the CSP), `_redirects` (rewrites and blocks; since v5.4.18 the only place for them), `netlify.toml` (the skip rule, the build command and the `_site` publish folder). |
 | Type and colour | Poppins only. Background `#0e0b16`, text `#d9d9d9`, gold `#CCA23C`, red `#C8102E`. No gradients except the approved soft red glow behind the home header. |
 | Maps | Leaflet with marker clustering (tour map) and Leaflet in the Passport. Basemap tiles from CARTO (needs a free non-commercial API key, which lives in the tile URL in code). |
 | Audio | 614 show recordings hosted on Backblaze B2 (`AUDIO_BASE` in `tour-map.html`), played by a custom player on the tour map. |

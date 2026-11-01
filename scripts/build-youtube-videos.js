@@ -260,7 +260,7 @@ function main() {
 
   const output = {
     title: 'Video For New Recruits',
-    description: "A curated YouTube archive of concerts by The Tragically Hip, soundboards, radio simulcasts, rarities and compilations - bucketed by era.",
+    description: "Concerts by The Tragically Hip on YouTube - soundboards, radio simulcasts, rarities, and compilations, sorted by era.",
     lastUpdated: today,
     summary: {
       totalVideos: kept,

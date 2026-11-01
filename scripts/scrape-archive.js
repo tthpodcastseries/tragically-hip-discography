@@ -30,7 +30,9 @@ function extractShows(html, year) {
   const audioFiles = [];
 
   while ((match = audioRegex.exec(html)) !== null) {
-    audioFiles.push(match[1]);
+    // The archive's HTML sometimes breaks a file name across lines ("-mp3\r\n\t\t.zip"):
+    // drop line breaks and tabs, and write spaces as %20 in the link (audit LINK-02)
+    audioFiles.push(match[1].replace(/[\r\n\t]+/g, '').trim());
   }
 
   // Parse each audio filename to extract date and location
@@ -52,7 +54,7 @@ function extractShows(html, year) {
 
     // Only keep mp3 versions to avoid duplicates (prefer mp3 for linking)
     // But if only flac exists, keep that
-    const audioUrl = `${BASE}/Files/Audio/${filename}`;
+    const audioUrl = `${BASE}/Files/Audio/${filename.replace(/ /g, '%20')}`;
 
     shows.push({
       date: dateStr,

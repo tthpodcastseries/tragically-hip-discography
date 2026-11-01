@@ -16,11 +16,14 @@
 
   // Stats
   var videos = data.videos || [];
-  var albums = new Set(videos.map(function(v) { return v.album; }));
+  // One video can carry several songs (the "We Are the Same" trilogy), and a deluxe
+  // edition is the same album (audit DATA-12)
+  var uniqueVideos = new Set(videos.map(function(v) { return v.youtubeId || v.song; }));
+  var albums = new Set(videos.map(function(v) { return String(v.album).replace(/\s*\(.*\)\s*$/, ''); }));
   var directors = new Set(videos.filter(function(v) { return v.director; }).map(function(v) { return v.director; }));
   var decades = new Set(videos.map(function(v) { return Math.floor(v.year / 10) * 10; }));
 
-  document.getElementById('statTotal').textContent = videos.length;
+  document.getElementById('statTotal').textContent = uniqueVideos.size;
   document.getElementById('statAlbums').textContent = albums.size;
   document.getElementById('statDirectors').textContent = directors.size;
   document.getElementById('statDecades').textContent = decades.size;
@@ -84,13 +87,21 @@
   var activeSearch = '';
   var filterBtns = document.querySelectorAll('.filter-btn');
   var searchInput = document.getElementById('filterSearch');
+  // Say which decade is on (audit A11Y-13) and how many videos are showing (A11Y-07)
+  filterBtns.forEach(function(b) { b.setAttribute('aria-pressed', String(b.classList.contains('active'))); });
+  var status = document.createElement('div');
+  status.className = 'sr-only';
+  status.setAttribute('role', 'status');
+  grid.parentNode.insertBefore(status, grid);
+  var statusTimer = null;
 
   function applyFilters() {
     var cards = grid.querySelectorAll('.mv-card');
     var visible = 0;
     cards.forEach(function(card) {
       var matchDecade = activeDecade === 'all' || card.getAttribute('data-decade') === activeDecade;
-      var matchSearch = !activeSearch || card.getAttribute('data-search').indexOf(activeSearch) !== -1;
+      // Folded match: curly or no apostrophes, accents (audit FUNC-02)
+      var matchSearch = !activeSearch || window.tthMatch(card.getAttribute('data-search'), activeSearch);
       var show = matchDecade && matchSearch;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
@@ -106,12 +117,17 @@
     } else if (noRes) {
       noRes.remove();
     }
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(function() {
+      status.textContent = visible ? visible + (visible === 1 ? ' video' : ' videos') : 'No videos match those filters.';
+    }, 400);
   }
 
   filterBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      filterBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       activeDecade = btn.getAttribute('data-decade');
       applyFilters();
     });

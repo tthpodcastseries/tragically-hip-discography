@@ -118,8 +118,7 @@ header h1 {
 .flip-card-count {
   text-align: center;
   font-size: 0.58rem;
-  color: var(--muted2);
-  opacity: 0.6;
+  color: var(--muted2); /* Mid Grey at full strength: 6.2:1 on the background (audit BRAND-02) */
   margin-top: 2px;
 }
 
@@ -208,7 +207,7 @@ header h1 {
   width: 100%;
   padding: 10px 16px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #929292;
   background: transparent;
   color: var(--text);
   font-size: 0.85rem;
@@ -216,7 +215,7 @@ header h1 {
   outline: none;
   transition: border-color 0.2s;
 }
-.panel-search:focus { border-color: #fff; }
+.panel-search:focus { border-color: #fff; outline: 2px solid var(--gold); outline-offset: 2px; }
 .panel-search::placeholder { color: var(--muted2); }
 
 .panel-filter-row {
@@ -241,6 +240,7 @@ header h1 {
 }
 .filter-btn:hover { border-color: var(--red); color: var(--text); }
 .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+.filter-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .panel-videos {
   flex: 1;
@@ -299,6 +299,8 @@ header h1 {
   transition: opacity 0.18s ease;
 }
 .video-card:hover .video-thumb-play { opacity: 1; }
+/* Touch screens have no hover: show the play icon all the time (audit DEV-06) */
+@media (hover: none) { .video-thumb-play { opacity: 1; } }
 .video-thumb-play svg {
   width: 40px;
   height: 40px;

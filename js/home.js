@@ -4,6 +4,22 @@
 function esc(v) {
   return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
+// Links from setlist.fm and the Hip Archive data: https: only (audit SEC-11)
+function httpsOnly(u) {
+  return (typeof u === 'string' && /^https:\/\//i.test(u.trim())) ? u.trim() : '';
+}
+
+// On This Day and Show of the Day are worked out when the page loads. A page left open
+// past midnight reloads when the fan comes back to it, so it never shows yesterday
+// (audit FUNC-15)
+(function() {
+  var loadedDay = new Date().toDateString();
+  function freshDay() {
+    if (document.visibilityState === 'visible' && new Date().toDateString() !== loadedDay) location.reload();
+  }
+  document.addEventListener('visibilitychange', freshDay);
+  window.addEventListener('pageshow', function(e) { if (e.persisted) freshDay(); });
+})();
 
 (async function() {
   // Both boxes show from the first paint with placeholder text, so nothing jumps
@@ -80,10 +96,10 @@ function esc(v) {
           const loc = [city, state, s.country].filter(Boolean).join(', ');
           const songCount = s.songCount;
           const tourInfo = s.tour ? ' (' + window.tthAlbumCase(s.tour) + ')' : '';
-          const noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
+          const noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist yet)</span>' : '';
           const hasVideo = !!s.video;
-          // Only link when the tour map can actually show something (gigs span 1985-2016)
-          const linkable = !!s.id && yr >= 1985 && yr <= 2016 && (songCount > 0 || hasVideo);
+          // Only link when the tour map can actually show something (gigs span 1985 to 2022, audit DATA-04)
+          const linkable = !!s.id && yr >= 1985 && yr <= 2022 && (songCount > 0 || hasVideo);
           events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + esc(venue) + '</b>, ' + esc(loc) + esc(tourInfo) + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist, showId: linkable ? s.id : null, hasVideo: hasVideo });
         }
       }
@@ -103,7 +119,7 @@ function esc(v) {
     container.innerHTML = events.map(function(e) {
       var inner = '<span class="otd-year">' + e.year + '</span><span class="otd-desc"><span class="otd-tag otd-tag-' + e.tag + '">' + e.tag + '</span> ' + e.desc + (e.showId ? ' <span class="otd-view">' + (e.hasVideo ? '🎬 ' : '') + 'View show →</span>' : '') + '</span>';
       if (e.showId) {
-        return '<a class="otd-event" href="tour-map.html#show=' + e.showId + '" title="Open this show on the Interactive Tour Map">' + inner + '</a>';
+        return '<a class="otd-event" href="tour-map.html#show=' + encodeURIComponent(e.showId) + '" title="Open this show on the Interactive Tour Map">' + inner + '</a>';
       }
       return '<div class="otd-event">' + inner + '</div>';
     }).join('');
@@ -151,34 +167,49 @@ function esc(v) {
   // The local preview server has no rewrites, so there song.html takes ?s=<slug>
   var songHref = function(slug) { return ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) >= 0 ? '/song?s=' + slug : '/song/' + slug; };
 
-  async function loadSearchData() {
-    if (!songPages) {
-      try {
-        const r = await fetch('data/song-index.json');
-        if (r.ok) {
-          songPages = {};
-          (await r.json()).songs.forEach(function(s) { songPages[songKey(s.t)] = s; });
-        }
-      } catch(e) {}
-    }
-    if (!lyricsData) {
-      try { const r = await fetch('data/lyrics.json'); if (r.ok) lyricsData = await r.json(); } catch(e) {}
-    }
-    if (!tourData) {
-      // The tour map's light file (no track lists); tracks come from tour-tracks.json when a show is opened
-      try { const r = await fetch('data/tour-map.json'); if (r.ok) tourData = await r.json(); } catch(e) {}
-    }
-    if (!setlistData) {
-      try {
-        const r = await fetch('data/setlists.min.json');
-        if (r.ok) {
-          setlistData = await r.json();
-          if (setlistData.setlists) {
-            setlistData.setlists.forEach(function(s) { setlistLookup[s.id] = s; });
-          }
-        }
-      } catch(e) {}
-    }
+  // The four search files download at the same time, each only once (audit PERF-03).
+  // A download already running is shared, so fast typing never starts a second one;
+  // a failed one is forgotten so the next search tries again.
+  var searchFiles = [
+    { url: 'data/song-index.json', ready: function() { return !!songPages; },
+      use: function(d) { var map = {}; d.songs.forEach(function(s) { map[songKey(s.t)] = s; }); songPages = map; } },
+    { url: 'data/lyrics.json', ready: function() { return !!lyricsData; }, use: function(d) { lyricsData = d; } },
+    // The tour map's light file (no track lists); tracks come from tour-tracks.json when a show is opened
+    { url: 'data/tour-map.json', ready: function() { return !!tourData; }, use: function(d) { tourData = d; } },
+    { url: 'data/setlists.min.json', ready: function() { return !!setlistData; },
+      use: function(d) { if (d.setlists) d.setlists.forEach(function(s) { setlistLookup[s.id] = s; }); setlistData = d; } }
+  ];
+  var searchLoading = 0; // downloads still running
+
+  // Starts whatever isn't loaded yet; onLanded runs as each file arrives (or fails)
+  function loadSearchData(onLanded) {
+    var jobs = [];
+    searchFiles.forEach(function(f) {
+      if (f.ready()) return;
+      if (!f.promise) {
+        searchLoading++;
+        f.promise = fetch(f.url)
+          .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(f.use)
+          .catch(function() {})
+          .then(function() { searchLoading--; f.promise = null; });
+      }
+      jobs.push(f.promise);
+    });
+    if (onLanded) jobs.forEach(function(p) { p.then(onLanded); });
+    return Promise.all(jobs);
+  }
+
+  // Albums and songs show straight away; lyrics and shows join in as their files land
+  function runSearch() {
+    var q = searchInput.value.trim();
+    if (q.length < 2) return;
+    loadSearchData(function() {
+      if (searchInput.value.trim() === q && document.activeElement === searchInput) {
+        renderUniversalDropdown(universalSearch(q), q);
+      }
+    });
+    renderUniversalDropdown(universalSearch(q), q);
   }
 
   // Folded text (tthFold in shared-footer.js): straight and curly apostrophes and accents all match.
@@ -281,6 +312,55 @@ function esc(v) {
   var searchDropdown = document.getElementById('songSearchDropdown');
   var activeIdx = -1;
 
+  // Screen readers (audit A11Y-07): the box is a combobox, the drop-down a listbox,
+  // and the arrow keys point at the highlighted option. A hidden status line says
+  // how many results came up.
+  searchInput.setAttribute('role', 'combobox');
+  searchInput.setAttribute('aria-autocomplete', 'list');
+  searchInput.setAttribute('aria-expanded', 'false');
+  searchInput.setAttribute('aria-controls', 'songSearchDropdown');
+  searchDropdown.setAttribute('role', 'listbox');
+  searchDropdown.setAttribute('aria-label', 'Search results');
+  var searchStatus = document.createElement('div');
+  searchStatus.className = 'sr-only';
+  searchStatus.setAttribute('role', 'status');
+  searchDropdown.parentNode.appendChild(searchStatus);
+  new MutationObserver(function() {
+    var open = searchDropdown.classList.contains('open');
+    searchInput.setAttribute('aria-expanded', String(open));
+    if (!open) searchInput.removeAttribute('aria-activedescendant');
+  }).observe(searchDropdown, { attributes: true, attributeFilter: ['class'] });
+
+  // Give each result its option role and id, and say which group it is in
+  function finishListbox() {
+    var n = 0, group = '';
+    Array.prototype.forEach.call(searchDropdown.children, function(el) {
+      if (el.classList.contains('search-category-label')) {
+        el.setAttribute('aria-hidden', 'true');
+        group = el.textContent;
+      } else if (el.classList.contains('song-search-option')) {
+        el.setAttribute('role', 'option');
+        el.setAttribute('aria-selected', 'false');
+        el.id = 'songSearchOpt' + n;
+        if (group) el.insertAdjacentHTML('beforeend', '<span class="sr-only"> (' + esc(group) + ')</span>');
+        if (el.hasAttribute('data-empty')) el.setAttribute('aria-disabled', 'true');
+        else n++;
+      }
+    });
+    return n;
+  }
+
+  function setActive(opts, idx) {
+    opts.forEach(function(o, i) {
+      o.classList.toggle('active', i === idx);
+      o.setAttribute('aria-selected', String(i === idx));
+    });
+    if (opts[idx]) {
+      searchInput.setAttribute('aria-activedescendant', opts[idx].id);
+      opts[idx].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
   function renderUniversalDropdown(results, query) {
     searchDropdown.innerHTML = '';
     var hasResults = false;
@@ -369,23 +449,27 @@ function esc(v) {
     if (!hasResults && query.length >= 2) {
       var opt = document.createElement('div');
       opt.className = 'song-search-option';
-      opt.innerHTML = '<span class="opt-song" style="color:var(--muted)">No results for "' + esc(query) + '"</span>';
+      // Lyrics and shows may still be on their way: don't say "No results" until they're in
+      opt.setAttribute('data-empty', '');
+      opt.innerHTML = searchLoading
+        ? '<span class="opt-song" style="color:var(--muted)">Searching...</span>'
+        : '<span class="opt-song" style="color:var(--muted)">No results for "' + esc(query) + '"</span>';
       searchDropdown.appendChild(opt);
     }
 
     activeIdx = -1;
-    if (query.length >= 2) searchDropdown.classList.add('open');
-    else searchDropdown.classList.remove('open');
+    var count = finishListbox();
+    if (query.length >= 2) {
+      searchDropdown.classList.add('open');
+      searchStatus.textContent = count ? count + (count === 1 ? ' result' : ' results') + '. Use the up and down arrows to choose.' : 'No results.';
+    } else searchDropdown.classList.remove('open');
   }
 
   searchInput.addEventListener('input', function() {
     var q = searchInput.value.trim();
     if (q.length < 2) { searchDropdown.classList.remove('open'); return; }
     clearTimeout(searchDebounce);
-    searchDebounce = setTimeout(async function() {
-      await loadSearchData();
-      renderUniversalDropdown(universalSearch(q), q);
-    }, 150);
+    searchDebounce = setTimeout(runSearch, 150);
   });
 
   searchInput.addEventListener('keydown', function(e) {
@@ -393,11 +477,11 @@ function esc(v) {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       activeIdx = Math.min(activeIdx + 1, opts.length - 1);
-      opts.forEach(function(o, i) { o.classList.toggle('active', i === activeIdx); });
+      setActive(opts, activeIdx);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       activeIdx = Math.max(activeIdx - 1, 0);
-      opts.forEach(function(o, i) { o.classList.toggle('active', i === activeIdx); });
+      setActive(opts, activeIdx);
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (activeIdx >= 0 && opts[activeIdx]) {
@@ -414,13 +498,14 @@ function esc(v) {
     setTimeout(function() { searchDropdown.classList.remove('open'); }, 150);
   });
 
-  searchInput.addEventListener('focus', function() {
-    if (searchInput.value.trim().length >= 2) {
-      loadSearchData().then(function() {
-        renderUniversalDropdown(universalSearch(searchInput.value.trim()), searchInput.value.trim());
-      });
-    }
-  });
+  // Start the downloads as soon as the fan taps into the box, before the first letter (audit PERF-03)
+  function onSearchFocus() {
+    if (searchInput.value.trim().length >= 2) runSearch();
+    else loadSearchData();
+  }
+  searchInput.addEventListener('focus', onSearchFocus);
+  // The fan may have tapped in (or typed) before this part of the page was ready
+  if (document.activeElement === searchInput) onSearchFocus();
 
   // ─── Show Detail Card ───
   function formatShowDate(iso) {
@@ -451,7 +536,8 @@ function esc(v) {
         var list = all[g.id];
         if (!list || document.getElementById('sdVenue').textContent !== (g.venue || 'Unknown venue')) return;
         var ol = '<ol>';
-        list.forEach(function(t) { ol += '<li>' + esc(t.name || 'Unknown') + '</li>'; });
+        // File-style names show as "Track N" (js/track-names.js, audit DATA-07 / BRAND-01)
+        list.forEach(function(t, i) { ol += '<li>' + esc(window.tthTrackName ? window.tthTrackName(t.name, i + 1) : (t.name || 'Unknown')) + '</li>'; });
         ol += '</ol>';
         setlistEl.innerHTML = ol;
         setlistEl.style.display = '';
@@ -474,10 +560,10 @@ function esc(v) {
     }
 
     // Download button
-    if (g.archiveUrl && !g.trackCount) {
+    if (httpsOnly(g.archiveUrl) && !g.trackCount) {
       var dlBtn = document.createElement('a');
       dlBtn.className = 'sd-download';
-      dlBtn.href = g.archiveUrl;
+      dlBtn.href = httpsOnly(g.archiveUrl);
       dlBtn.target = '_blank';
       dlBtn.rel = 'noopener noreferrer';
       dlBtn.textContent = '🎧 Download this show';
@@ -500,7 +586,7 @@ function esc(v) {
     var mapBtn = document.createElement('a');
     mapBtn.className = 'sd-setlist-link';
     mapBtn.href = 'tour-map.html';
-    mapBtn.textContent = 'Open on Map';
+    mapBtn.textContent = 'View on map';
     actions.appendChild(mapBtn);
 
     document.getElementById('showDetailOverlay').classList.add('active');
@@ -520,8 +606,8 @@ function esc(v) {
     var overlay = document.getElementById('setlistOverlay');
 
     // If no setlist data at all, fall back to setlist.fm in new tab
-    if (!sl && g.setlistUrl) {
-      window.open(g.setlistUrl, '_blank', 'noopener,noreferrer');
+    if (!sl && httpsOnly(g.setlistUrl)) {
+      window.open(httpsOnly(g.setlistUrl), '_blank', 'noopener,noreferrer');
       return;
     }
 
@@ -532,7 +618,7 @@ function esc(v) {
     var cityParts = [];
     if (sl) {
       if (sl.city) cityParts.push(sl.city);
-      if (sl.state) cityParts.push(sl.state);
+      if (sl.state && !/^\d+$/.test(sl.state)) cityParts.push(sl.state); // not setlist.fm's number codes (audit FUNC-08)
     } else {
       if (g.city) cityParts.push(g.city);
       if (g.state) cityParts.push(g.state);
@@ -602,7 +688,7 @@ function esc(v) {
 
       document.getElementById('slCount').textContent = songNum + ' song' + (songNum !== 1 ? 's' : '');
     } else {
-      songsWrap.innerHTML = '<div class="setlist-empty">No setlist data available for this show.</div>';
+      songsWrap.innerHTML = '<div class="setlist-empty">No setlist for this one yet.</div>';
       document.getElementById('slCount').textContent = '';
     }
 
@@ -629,7 +715,7 @@ function esc(v) {
 
     // Credit
     var credit = document.getElementById('slCredit');
-    var setlistUrl = (sl && sl.url) || g.setlistUrl || '';
+    var setlistUrl = httpsOnly((sl && sl.url) || g.setlistUrl || '');
     if (setlistUrl) {
       credit.innerHTML = '<a href="' + esc(setlistUrl) + '" target="_blank" rel="noopener noreferrer">Setlist data from setlist.fm</a>';
     } else {

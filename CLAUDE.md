@@ -6,33 +6,35 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
 
 ## How it works
 
-- Static HTML, CSS and plain JavaScript. No framework, no npm packages, no build step. The repo root is the site.
+- Static HTML, CSS and plain JavaScript. No framework, no npm packages. The repo root is the site (Netlify's only build step checks it and copies it, see Deploying).
 - Pages: one `.html` per page at the root, with its script in `js/` and its styles in `css/`. No inline scripts or `onclick=` (the Content-Security-Policy in `_headers` blocks them).
 - Data: static JSON in `data/`, loaded by the browser. Shows are keyed by their setlist.fm id everywhere.
-- Members (membersHIP): Supabase, called from the browser with the public anon key in `js/tth-member-gate.js`. The `forum_members` table is closed; the site only calls three database functions: `claim_member`, `unlock_member` and `update_attended_shows`. The full database setup is in `docs/The Hip Handbook - Database Schema.sql` (plus the two other `.sql` files in `docs/`). Database changes are SQL that jD runs by hand in the Supabase SQL Editor. Never write to the live database from a test: use guest sessions.
+- Album facts are in two places: `data/discography.json` and the album lists at the top of `js/discography-app.js`. Change both; `audit-site.js` fails if they disagree.
+- Members (membersHIP): Supabase, called from the browser with the public anon key in `js/tth-member-gate.js`. The `forum_members` table is closed; the site only calls three database functions: `claim_member`, `unlock_member` and `update_attended_shows`. The full database setup, in run order, is `docs/The Hip Handbook - Database Rebuild.sql` (never run it against the live project); the other `.sql` files in `docs/` are the changes that got the live project there. Keep the Rebuild file in step with any database change. Database changes are SQL that jD runs by hand in the Supabase SQL Editor. Never write to the live database from a test: use guest sessions.
 - Privacy: `privacy.html` says what the site keeps and where it goes (Supabase, Umami, Backblaze and the rest). If a change collects anything new or adds an outside service, update that page in the same release and show jD the wording.
 - Outside hosts: any new one (scripts, images, audio, APIs) must be added to the CSP in `_headers`, or it works locally and breaks live. The local preview ignores `_headers` and `_redirects`.
-- Redirects and blocked paths live in `_redirects` only. `netlify.toml` just sets the publish folder.
+- Redirects and blocked paths live in `_redirects` only. `netlify.toml` holds the deploy steps (see Deploying).
 - Offline: `service-worker.js` precaches the small shell (`CORE_ASSETS`) and is network-first for pages, CSS, JS and data.
 - More detail: `docs/The Hip Handbook - Overview.md`. History: `docs/CHANGELOG.md`.
 
 ## Deploying
 
-- Netlify publishes every push to `main`, within seconds. Each deploy costs Netlify credits shared with jD's other sites, so batch the work: commit locally and **never `git push` unless jD says so in this session.**
-- Before every push, and before every commit that changes data or pages, run `node scripts/audit-site.js --no-network`. It must end "All checks passed." Drop `--no-network` to also test outside links. GitHub runs the same check after every push (`.github/workflows/site-audit.yml`) and emails jD if it fails, but by then Netlify has already published, so run it first.
+- Netlify publishes every push to `main`, within a minute. Each deploy costs Netlify credits shared with jD's other sites, so batch the work: commit locally and **never `git push` unless jD says so in this session.**
+- `netlify.toml`: Netlify skips the deploy (no credits) when only `docs/`, `scripts/`, `audits/`, `supabase/`, `.github/` or `CLAUDE.md` changed since the last deploy. Otherwise it runs `audit-site.js --no-network` as the build command: a failure stops the deploy and the live site stays as it was. Then `scripts/netlify-publish.js` copies the site into `_site/` (gitignored) without the working folders, and Netlify publishes that. A new root page or folder is published automatically; add it to `LEAVE_OUT` in that script only if fans must never download it.
+- Before every push, and before every commit that changes data or pages, run `node scripts/audit-site.js --no-network`. It must end "All checks passed." Drop `--no-network` to also test outside links. Netlify runs it before publishing and GitHub after every push (`.github/workflows/site-audit.yml`, emails jD on a failure), but a failed deploy still wastes a push, so run it first.
 - Scripts expect Node 22 (`.nvmrc`). Most need no packages; the Python ones in `scripts/archive/` need `reportlab` or `boto3`.
 - Local preview: `hip-webapp` in `.claude/launch.json` (port 8765).
 - `git push` from this Mac needs the sandbox off (macOS keychain).
 
 ## Releases
 
-- Version names follow The Hip's albums: the major number is an album, each minor is that album's next track, in order (check `data/discography.json`). v5 is "Day for Night": v5.4 is 'Yawning or Snarling', so the next minor is v5.5 'Fire in the Hole'. Fixes add a third digit: `v5.4.18 (Yawning or Snarling - Patch)`. jD decides when a minor or major starts.
+- Version names follow The Hip's albums: the major number is an album, each minor is that album's next track, in order (check `data/discography.json`). v5 is "Day for Night": v5.6 is 'So Hard Done By', so the next minor is v5.7 'Nautical Disaster'. Fixes add a third digit: `v5.6.1 (So Hard Done By - Patch)`. jD decides when a minor or major starts.
 - Every release, in one commit:
   1. `var version` in `js/shared-footer.js` (the footer label)
   2. `CACHE_NAME` in `service-worker.js`: `hh-v` plus the number. Keep the `hh-` prefix, never `thc-`.
   3. A new entry at the top of `docs/CHANGELOG.md` in the existing style, ending with the cache and footer bump line
   4. New pages, scripts and styles added to `CORE_ASSETS` (nothing over 250 KB)
-  5. Commit message: `v5.4.18 (Yawning or Snarling - Patch) - Short summary`
+  5. Commit message: `v5.6.1 (So Hard Done By - Patch) - Short summary`
 - `scripts/audit-site.js` fails if the footer, the cache name and the newest changelog entry disagree.
 
 ## Brand rules (TTH Podcast Series Brand & Style Guide v7.1)
@@ -66,7 +68,7 @@ When setlist or show data changes, run in this order:
 
 Also: `build-youtube-videos.js` (from `data/source/youtube-videos.csv`, then step 4), `build-webp.js` for new images (needs ffmpeg). `build-site-stats.js`, `build-seo-pages.js`, `build-light-data.js` and `build-webp.js` take `--check`, which only reports.
 
-**The daily games are append-only.** Never change, reorder or remove a scheduled puzzle. `node scripts/check-game-schedule.js` proves nothing moved; `audit-site.js` runs it against the last commit and the last push. A change jD approves by puzzle number goes in `APPROVED` at the top of that script, and only then.
+**The daily games are append-only.** Never change, reorder or remove a scheduled puzzle, or change a game's start date (`EPOCH`) once it has opened. `node scripts/check-game-schedule.js` proves nothing moved: against `data/game-schedule-lock.json` (a fingerprint of every scheduled day plus the start dates; never edit it by hand) and against git (`audit-site.js` uses the last commit, the last push and, on Netlify, the last deploy). The builders add new days to the lock (`check-game-schedule.js --update-lock`). A change jD approves by puzzle number goes in `APPROVED` at the top of that script, and only then; run `--update-lock` to lock it in, and empty `APPROVED` once it is pushed.
 
 **Song names:** `audit-site.js` fails when a setlist song matches nothing on the official song list. Fix a misspelling in `data/setlist-corrections.json` (`renameSongs`), then rerun from step 1. Only a song The Hip played but never released goes on `KNOWN_NOT_ON_LIST` in `audit-site.js`, and only with jD's say-so.
 

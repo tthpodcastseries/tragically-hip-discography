@@ -4,7 +4,7 @@
   --white: #ffffff;
   --bg2: var(--bg);
   --bg3: #1a1a1a;
-  --muted: #888;
+  --muted: #929292;
 }
 /* Page scrolls so the map keeps real height on short screens - a locked
    100vh body squeezed #map to 0px on phones once header, controls, slider
@@ -46,14 +46,20 @@ body {
   flex-wrap: wrap;
   border-bottom: 1px solid var(--bg3);
   flex-shrink: 0;
-  z-index: 1000;
+  /* Above the year slider, and not clipped, so the search results can hang down over it
+     (it was overflow-x: hidden, which also cut the list off at the slider) */
+  position: relative;
+  z-index: 1001;
   max-width: 100%;
-  overflow-x: hidden;
   box-sizing: border-box;
 }
+/* Fixed widths, so "All Countries" isn't cut off and nothing moves when the
+   tours and countries fill in (audits DEV-02, PERF-01) */
 .controls select {
-  max-width: 45%;
+  max-width: 100%;
 }
+#tourFilter { width: 16rem; }
+#countryFilter { width: 13rem; }
 .control-group {
   display: flex;
   align-items: center;
@@ -76,6 +82,7 @@ select, button {
   padding: 12px 16px;
   cursor: pointer;
 }
+select { border-color: #929292; }
 select:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 select:hover, button:hover { border-color: var(--gold); }
 button.active { background: var(--red); border-color: var(--red); color: var(--white); }
@@ -102,6 +109,9 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
   color: var(--text);
   font-weight: 500;
   white-space: nowrap;
+  /* Room for the full count from the start, so it doesn't grow out of "Loading..." (audit PERF-01) */
+  min-width: 15.5rem;
+  text-align: center;
 }
 
 /* YEAR SLIDER */
@@ -112,19 +122,32 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
   flex-shrink: 0;
   z-index: 1000;
 }
+/* Each year label sits over its spot on the slider (1985 to 2022, audit DATA-04).
+   The 9px and 18px are half and all of the handle's width. */
 .year-labels {
-  display: flex;
-  justify-content: space-between;
+  --min: 1985;
+  position: relative;
+  height: 1.5em;
   font-size: 0.65rem;
   color: var(--muted);
   margin-bottom: 4px;
-  padding: 0 2px;
 }
+.year-labels span {
+  position: absolute;
+  top: 0;
+  left: calc(9px + (100% - 18px) * (var(--y) - var(--min)) / (var(--max) - var(--min)));
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.year-labels .yl-min { left: 0; transform: none; }
+.year-labels .yl-max { left: auto; right: 0; transform: none; }
+/* A tap or click on the line moves the nearest handle there (audit A11Y-01) */
 .year-range-wrap {
   position: relative;
   height: 24px;
+  cursor: pointer;
 }
-input[type="range"] {
+.year-range-wrap input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -136,7 +159,7 @@ input[type="range"] {
   z-index: 2;
   margin: 0;
 }
-input[type="range"]::-webkit-slider-thumb {
+.year-range-wrap input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 18px;
@@ -148,11 +171,11 @@ input[type="range"]::-webkit-slider-thumb {
   border: 2px solid var(--bg);
   margin-top: -7px;
 }
-input[type="range"]::-webkit-slider-runnable-track {
+.year-range-wrap input[type="range"]::-webkit-slider-runnable-track {
   height: 4px;
   background: transparent;
 }
-input[type="range"]::-moz-range-thumb {
+.year-range-wrap input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -161,7 +184,7 @@ input[type="range"]::-moz-range-thumb {
   pointer-events: all;
   border: 2px solid var(--bg);
 }
-input[type="range"]::-moz-range-track {
+.year-range-wrap input[type="range"]::-moz-range-track {
   height: 4px;
   background: transparent;
 }
@@ -302,6 +325,7 @@ input[type="range"]::-moz-range-track {
 .otd-banner[hidden] { display: none; }
 .otd-banner:not(.active) { cursor: default; }
 .otd-banner.active:hover { background: rgba(255, 255, 255, 0.08); }
+.otd-banner:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 .otd-banner .otd-title {
   font-size: 0.85rem;
   font-weight: 600;
@@ -311,15 +335,13 @@ input[type="range"]::-moz-range-track {
   font-size: 0.7rem;
   color: var(--muted);
   margin-top: 2px;
-  /* Always two lines, so the filters below don't jump when the shows fill in (audit PERF-06) */
+  /* At least two lines, so the filters below don't jump when the shows fill in (audit PERF-06);
+     never cut short, so every show can be read on a phone (audit A11Y-20) */
   line-height: 1.5;
   min-height: 3em;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
 }
+/* Readable on phones: 12px or more (audit DEV-05) */
+@media (max-width: 600px) { .otd-banner .otd-detail { font-size: 0.8rem; } }
 .otd-pin-badge {
   display: inline-block;
   background: var(--gold);
@@ -341,13 +363,13 @@ input[type="range"]::-moz-range-track {
   font-size: 0.8rem;
   background: var(--bg3);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #929292;
   border-radius: 6px;
   padding: 6px 28px 6px 10px;
   width: 200px;
   outline: none;
 }
-.search-wrap input:focus { border-color: var(--gold); }
+.search-wrap input:focus { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 2px; }
 .search-wrap input::placeholder { color: var(--muted); font-size: 0.75rem; }
 .search-clear {
   position: absolute;
@@ -386,7 +408,9 @@ input[type="range"]::-moz-range-track {
   transition: background 0.15s;
 }
 .search-result-item:last-child { border-bottom: none; }
-.search-result-item:hover { background: rgba(255, 255, 255, 0.06); }
+.search-result-item:hover,
+.search-result-item.active { background: rgba(255, 255, 255, 0.06); }
+.search-result-item.active { box-shadow: inset 3px 0 0 var(--gold); }
 .search-result-item .sr-date { color: var(--text); font-size: 0.75rem; font-weight: 600; }
 .search-result-item .sr-venue { color: var(--white); font-size: 0.8rem; font-weight: 500; }
 .search-result-item .sr-city { color: var(--muted); font-size: 0.7rem; }
@@ -461,6 +485,10 @@ input[type="range"]::-moz-range-track {
 .ap-btn:hover { background: rgba(255,255,255,0.1); }
 .ap-btn svg { width: 20px; height: 20px; }
 .ap-btn-play svg { width: 28px; height: 28px; }
+/* "Tap play to start the show" on iPhone: a gold ring on the play button (audit DEV-04) */
+.ap-btn-play.ap-needs-tap { border-radius: 50%; box-shadow: 0 0 0 2px var(--gold); animation: ap-tap-pulse 1.6s ease-in-out infinite; }
+@keyframes ap-tap-pulse { 50% { box-shadow: 0 0 0 6px rgba(204, 162, 60, 0.35); } }
+@media (prefers-reduced-motion: reduce) { .ap-btn-play.ap-needs-tap { animation: none; } }
 .ap-info {
   flex: 1;
   min-width: 0;
@@ -597,6 +625,18 @@ input[type="range"]::-moz-range-track {
   pointer-events: all;
 }
 .ap-volume input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+.ap-volume input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.ap-volume input[type="range"]::-moz-range-track {
   height: 4px;
   background: transparent;
 }
@@ -931,7 +971,115 @@ input[type="range"]::-moz-range-track {
 main#main-content { display: flex; flex-direction: column; flex: 1 0 auto; }
 
 /* The seek bar is a real slider laid invisibly over the thin progress line, so
-   a click, a drag, or the arrow keys all work */
-.ap-seek { position: absolute; left: 0; right: 0; top: -10px; width: 100%; height: 24px; margin: 0; opacity: 0; cursor: pointer; }
+   a click, a tap, a drag, or the arrow keys all work. It used to pick up the year
+   slider's "pointer-events: none" and ignored clicks (audit A11Y-01). */
+.ap-seek { position: absolute; left: 0; right: 0; top: -10px; width: 100%; height: 24px; margin: 0; opacity: 0; cursor: pointer; pointer-events: auto; z-index: 2; }
 .ap-progress-wrap:has(.ap-seek:focus-visible) { outline: 2px solid var(--text); outline-offset: 3px; }
 .ap-track:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+
+/* With reduce motion on, shared.css gives every element a tiny transition. Leaflet
+   hides a pop-up for a moment while it lays it out, so that turned into a
+   "visibility" transition that left the pop-up unfocusable (audit A11Y-08). Pop-ups
+   don't fade with reduce motion anyway, so they get no transition at all. */
+@media (prefers-reduced-motion: reduce) {
+  .leaflet-popup,
+  .leaflet-popup * { transition: none !important; }
+}
+
+/* FILTERS BUTTON (audit DEV-02). On a computer the filters show as they always have
+   and the button stays hidden. On a phone (or a phone on its side) they fold away
+   behind one "Filters" button, so the map starts on the first screen. */
+.filters-toggle { display: none; }
+.map-filters { display: contents; }
+@media (max-width: 768px), (max-height: 500px) {
+  .controls { flex-wrap: wrap; }
+  .filters-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 8px 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .filters-toggle[aria-expanded="true"] { border-color: var(--gold); }
+  .controls .stats-pill {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    margin-left: 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.3;
+    padding: 4px 12px;
+  }
+  .map-filters { display: none; order: 3; flex: 1 1 100%; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .map-filters.open { display: flex; }
+  .year-slider-container:not(.open) { display: none; }
+  /* Each drop-down and the search box get a full row, so "All Countries" fits */
+  .map-filters > button { padding: 10px 12px; }
+  .map-filters .control-group { flex: 1 1 100%; }
+  .map-filters .control-group label { min-width: 5.2em; }
+  .map-filters .control-group select { flex: 1; min-width: 0; max-width: none; }
+  /* The results list hangs from the whole search row, not just the box */
+  .map-filters .search-wrap { flex: 1; position: static; }
+  .map-filters .search-wrap input { width: 100%; }
+  .map-filters .search-results { left: 0; right: 0; width: auto; }
+}
+
+/* Room for two lines of the On This Day title on phones, so the map doesn't
+   jump down when the day's shows fill in (audit PERF-01) */
+@media (max-width: 600px) {
+  .otd-banner .otd-title { min-height: 3em; line-height: 1.5; display: flex; align-items: center; justify-content: center; }
+}
+
+/* PLAYER ON PHONES (audit FUNC-03): the show and the song get their own full-width
+   row above the buttons, and can wrap to two lines instead of cutting off */
+@media (max-width: 600px) {
+  .ap-main { flex-wrap: wrap; row-gap: 4px; }
+  .ap-info { order: -1; flex: 1 1 100%; }
+  .ap-show-title,
+  .ap-track-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  .ap-time { min-width: 0; margin-left: auto; }
+}
+
+/* MAP CREDITS ON PHONES (audit A11Y-16): the full credit line covered a fifth of the
+   map, so it folds behind a "Credits" button there. Computers see it as before. */
+.map-credits-ctl { display: none; }
+.map-credits-ctl .map-credits-btn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  min-height: 32px;
+  border-radius: 4px;
+  background: rgba(14, 11, 22, 0.85);
+  color: var(--text);
+  border: 1px solid rgba(217, 217, 217, 0.2);
+}
+.map-credits-ctl .map-credits-btn[aria-expanded="true"] { border-color: var(--gold); }
+@media (max-width: 600px) {
+  .map-credits-ctl { display: block; }
+  .leaflet-container:not(.credits-open) .leaflet-control-attribution { display: none; }
+}
+
+/* The Play Timeline box fits a phone screen instead of running off both sides */
+@media (max-width: 600px) {
+  .playback-overlay {
+    width: calc(100vw - 16px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+    padding: 10px 12px;
+  }
+  .speed-controls { margin-left: 0; }
+}

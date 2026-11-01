@@ -1,0 +1,38 @@
+/* offline.css - the page service-worker.js shows offline when the page asked for
+   isn't saved yet (audit FUNC-01) */
+body.offline-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0e0b16;
+  color: #d9d9d9;
+  font-family: 'Poppins', sans-serif;
+}
+.offline-page main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+}
+.offline-maple { font-size: 56px; margin-bottom: 20px; }
+.offline-page h1 { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; }
+.offline-page p { font-size: 1rem; line-height: 1.7; color: #d9d9d9; max-width: 460px; margin-bottom: 32px; }
+.offline-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.offline-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 24px;
+  border: 1px solid rgba(204, 162, 60, 0.6);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.offline-links a:first-child { background: #C8102E; border-color: #C8102E; }
+.offline-links a:hover { border-color: #CCA23C; }
+.offline-links a:focus-visible { outline: 2px solid #CCA23C; outline-offset: 2px; }

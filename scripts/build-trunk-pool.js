@@ -316,3 +316,11 @@ if (!dictOk) console.log(`  WARNING - ${dictText === null ? 'no word list at ' +
 const daysLeft = puzzles.length - todayNo;
 console.log(`  runs out: last new puzzle #${puzzles.length} on ${dateOf(puzzles.length)}; from ${dateOf(puzzles.length + 1)} it repeats from puzzle #1 (${daysLeft} days from today)`);
 if (daysLeft < RUN_OUT_WARN_DAYS) console.log(`  WARNING - only ${daysLeft} days of new (Un)Locked puzzles left. Decide what happens after ${dateOf(puzzles.length)} (see docs/CHANGELOG.md v5.4.9).`);
+
+// Add the new days to data/game-schedule-lock.json, the fixed record of every scheduled
+// puzzle (audit GAME-01). It refuses, and exits 1, if a locked day changed.
+{
+  const lockArgs = [path.join(__dirname, 'check-game-schedule.js'), '--update-lock', ...(FORCE ? ['--reset', 'trunk-pool.json'] : [])];
+  const lockRun = require('child_process').spawnSync(process.execPath, lockArgs, { stdio: 'inherit' });
+  if (lockRun.status !== 0) process.exitCode = 1;
+}

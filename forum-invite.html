@@ -7,16 +7,16 @@
   <meta name="description" content="Grab yer membersHIP number for The Hip Handbook - the fan-built home for everything about The Tragically Hip.">
   <meta property="og:title" content="Claim Yer membersHIP - The Hip Handbook">
   <meta property="og:description" content="Grab yer membersHIP number for The Hip Handbook - the fan-built home for everything about The Tragically Hip.">
-  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thehiphandbook.tthpods.com/forum-invite.html">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/forum-invite">
   <meta property="og:site_name" content="The Hip Handbook">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://thehiphandbook.tthpods.com/forum-invite.html">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true"></script>
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/forum-invite">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
@@ -31,9 +31,15 @@
   <style>
     body {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem 1rem;
+    }
+
+    body > .site-footer {
+      width: 100%;
+      margin-top: 2.5rem;
     }
 
     .container {
@@ -69,7 +75,7 @@
     .welcome-text {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: #b0b0b0;
+      color: #d9d9d9;
       margin-bottom: 2rem;
     }
 
@@ -108,7 +114,7 @@
     input[type="text"] {
       width: 100%;
       background: #1a1528;
-      border: 1px solid #2a2340;
+      border: 1px solid #929292;
       border-radius: 8px;
       padding: 0.75rem 1rem;
       font-family: 'Poppins', sans-serif;
@@ -123,7 +129,7 @@
     }
 
     input[type="text"]::placeholder {
-      color: #b0b0b0;
+      color: #929292;
     }
 
     .song-label {
@@ -136,7 +142,7 @@
       font-size: 0.7rem;
       text-transform: none;
       letter-spacing: 0;
-      color: #b0b0b0;
+      color: #929292;
       font-weight: 400;
     }
 
@@ -180,7 +186,7 @@
     }
     .privacy-note {
       font-size: 0.75rem;
-      color: #909090;
+      color: #929292;
       line-height: 1.5;
       margin-top: 0.75rem;
     }
@@ -199,6 +205,8 @@
       line-height: 1;
       margin-bottom: 0.25rem;
     }
+    /* Focus lands here after a claim so screen readers read the number; not a Tab stop */
+    .membership-number:focus { outline: none; }
 
     .membership-label {
       font-size: 0.8rem;
@@ -218,11 +226,11 @@
     .signoff {
       margin-top: 2rem;
       font-size: 0.85rem;
-      color: #b0b0b0;
+      color: #d9d9d9;
     }
 
     .signoff strong {
-      color: #b0b0b0;
+      color: #d9d9d9;
     }
 
     /* --- RESPONSIVE --- */
@@ -255,6 +263,7 @@
   </style>
 </head>
 <body>
+<script src="/js/tth-member-gate.js"></script>
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -272,14 +281,15 @@
       <p>A <strong>membersHIP</strong> number lets you save the shows you were at and build yer own concert history, on any device. Drop yer name below and I'll set you up.</p>
     </div>
 
+    <form id="claim-form" novalidate>
     <div class="form-row">
       <div class="form-group">
         <label for="first-name">First Name</label>
-        <input type="text" id="first-name" placeholder="Gord" maxlength="50" required>
+        <input type="text" id="first-name" name="first_name" placeholder="Gord" maxlength="50" autocomplete="given-name" autocapitalize="words" required>
       </div>
       <div class="form-group">
         <label for="last-name">Last Name or Initial</label>
-        <input type="text" id="last-name" placeholder="D." maxlength="50" required>
+        <input type="text" id="last-name" name="last_name" placeholder="D." maxlength="50" autocomplete="family-name" autocapitalize="words" required>
       </div>
     </div>
 
@@ -288,20 +298,21 @@
         <label for="fav-song">Yer Favourite Song</label>
         <span class="skip-hint">Optional - skip if you can't pick just one</span>
       </div>
-      <input type="text" id="fav-song" placeholder="Ahead by a Century" maxlength="200">
+      <input type="text" id="fav-song" name="favourite_song" placeholder="Ahead by a Century" maxlength="200" autocomplete="off">
     </div>
 
-    <button class="btn-connect" id="btn-connect">Get my number</button>
-    <div class="error-msg" id="error-msg"></div>
+    <button type="submit" class="btn-connect" id="btn-connect">Get my number</button>
+    <div class="error-msg" id="error-msg" role="alert"></div>
+    </form>
     <p class="privacy-note">All I keep is yer first name, yer last name or initial, yer favourite song if you share it, yer number, and the shows you mark in yer Passport. No email, no password, no spam. <a href="/privacy.html">What I keep and why</a></p>
   </div>
 
   <!-- SCREEN 2: Reveal -->
   <div id="screen-reveal" class="screen">
-    <div class="membership-number" id="membership-num">No. 1</div>
+    <div class="membership-number" id="membership-num" tabindex="-1">No. 1</div>
     <div class="membership-label">membersHIP</div>
 
-    <div class="reveal-greeting" id="reveal-greeting">Yer in, friend.</div>
+    <div class="reveal-greeting" id="reveal-greeting" aria-live="polite">Yer in, friend.</div>
 
     <div class="welcome-text">
       <p>That number's yours, and you're already signed in on this device.</p>
@@ -318,7 +329,10 @@
 
 </main>
 
+<footer id="site-footer"></footer>
+
 <script src="/js/forum-invite.js"></script>
+<script src="/js/shared-footer.js"></script>
 
 </body>
 </html>

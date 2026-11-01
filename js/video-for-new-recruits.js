@@ -79,6 +79,7 @@
       if (search) search.value = '';
       filterBtns.forEach(function(b, i) {
         b.classList.toggle('active', i === 0);
+        b.setAttribute('aria-pressed', String(i === 0));
       });
       videos.forEach(function(c) { c.style.display = ''; });
       if (noResults) noResults.style.display = 'none';
@@ -112,11 +113,14 @@
     ].filter(Boolean).join(' ').toLowerCase();
     card.setAttribute('data-search', searchBlob);
 
+    // Link names carry the date and place, since hundreds of videos share the title
+    // "The Tragically Hip" (audit A11Y-11)
+    var label = [v.title || v.rawTitle, v.dateDisplay, v.location].filter(Boolean).join(', ');
     var thumb = v.thumbnail
-      ? '<img src="' + esc(v.thumbnail) + '" alt="' + esc(v.title) + ' thumbnail" loading="lazy" data-onerror="hide">'
+      ? '<img src="' + esc(v.thumbnail) + '" alt="" loading="lazy" data-onerror="hide">'
       : '';
     var thumbHtml =
-      '<a class="video-thumb" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer" aria-label="Watch ' + esc(v.title) + ' on YouTube">' +
+      '<a class="video-thumb" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer" aria-label="Watch ' + esc(label) + ' on YouTube">' +
         thumb +
         '<span class="video-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
       '</a>';
@@ -147,7 +151,7 @@
           (isLong
             ? '<div class="video-tracks-preview">' + esc(preview) + ' ...</div>' +
               '<div class="video-tracks-list">' + fullList + '</div>' +
-              '<button type="button" class="video-tracks-toggle">Show all tracks</button>'
+              '<button type="button" class="video-tracks-toggle" aria-expanded="false">Show all tracks</button>'
             : '<div class="video-tracks-list" style="display:block">' + fullList + '</div>') +
           (v.partialTracklist ? '<span class="video-tracks-partial">Partial tracklist - recovery pending</span>' : '') +
         '</div>';
@@ -155,7 +159,7 @@
       tracksHtml = '<div class="video-tracks"><span class="video-tracks-partial">Tracklist not yet recovered</span></div>';
     }
 
-    var watchHtml = '<a class="video-watch" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>';
+    var watchHtml = '<a class="video-watch" href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube: ' + esc(label) + '">Watch on YouTube &rarr;</a>';
 
     // If this video maps to a known show, add a back-link to About This Map
     var showLinkHtml = '';
@@ -164,14 +168,14 @@
       var showLabel = [matchedShow.venue, matchedShow.city].filter(Boolean).join(', ') || 'this show';
       showLinkHtml =
         '<a class="video-show-link" href="tour-map.html#show=' + esc(matchedShow.showId) + '" ' +
-          'aria-label="View ' + esc(showLabel) + ' on the Interactive Tour Map">' +
-          'View on Map &rarr;' +
+          'aria-label="View on map: ' + esc(showLabel) + '">' +
+          'View on map &rarr;' +
         '</a>';
     }
 
     var titleHtml =
       '<div class="video-title">' +
-        '<a href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer">' + esc(v.title || v.rawTitle) + '</a>' +
+        '<a href="' + esc(v.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(label) + '">' + esc(v.title || v.rawTitle) + '</a>' +
       '</div>';
 
     card.innerHTML =
@@ -193,6 +197,7 @@
         var wrap = card.querySelector('.video-tracks');
         var expanded = wrap.classList.toggle('expanded');
         toggle.textContent = expanded ? 'Hide tracks' : 'Show all tracks';
+        toggle.setAttribute('aria-expanded', String(expanded));
       });
     }
 
@@ -220,6 +225,7 @@
 
     var backPlaceholder = document.createElement('div');
     backPlaceholder.className = 'flip-card-back-placeholder';
+    backPlaceholder.setAttribute('aria-hidden', 'true'); // not part of the button's name (audit A11Y-11)
     backPlaceholder.innerHTML = '<span>Loading...</span>';
 
     inner.appendChild(front);
@@ -246,12 +252,13 @@
     panelControls.innerHTML =
       '<input type="text" class="panel-search" placeholder="Search title, location, or track..." aria-label="Search videos in ' + esc(era.era) + '">' +
       '<div class="panel-filter-row">' +
-        '<button class="filter-btn active" data-filter="all">All</button>' +
-        '<button class="filter-btn" data-filter="sbd">Soundboard</button>' +
-        '<button class="filter-btn" data-filter="fm simulcast">FM Simulcast</button>' +
-        '<button class="filter-btn" data-filter="pro-shot">Pro-Shot</button>' +
-        '<button class="filter-btn" data-filter="compilation">Compilations</button>' +
-      '</div>';
+        '<button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
+        '<button type="button" class="filter-btn" data-filter="sbd" aria-pressed="false">Soundboard</button>' +
+        '<button type="button" class="filter-btn" data-filter="fm simulcast" aria-pressed="false">FM Simulcast</button>' +
+        '<button type="button" class="filter-btn" data-filter="pro-shot" aria-pressed="false">Pro-Shot</button>' +
+        '<button type="button" class="filter-btn" data-filter="compilation" aria-pressed="false">Compilations</button>' +
+      '</div>' +
+      '<div class="sr-only" role="status"></div>';
 
     var panelVideos = document.createElement('div');
     panelVideos.className = 'panel-videos';
@@ -279,15 +286,19 @@
     // Filter logic
     var panelSearch = panelControls.querySelector('.panel-search');
     var panelFilterBtns = panelControls.querySelectorAll('.filter-btn');
+    var panelStatus = panelControls.querySelector('[role="status"]');
+    var statusTimer = null;
 
     function applyPanelFilters() {
       var q = panelSearch.value.toLowerCase().trim();
       var cards = panelVideos.querySelectorAll('.video-card');
       var af = panel._activeFilter;
       var anyVisible = false;
+      var shown = 0;
 
       cards.forEach(function(c) {
-        var matchSearch = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+        // Folded match: curly or no apostrophes, accents (audit FUNC-02)
+        var matchSearch = !q || window.tthMatch(c.getAttribute('data-search'), q);
         var matchFilter = true;
         if (af !== 'all') {
           var tags = (c.getAttribute('data-tags') || '').split(',');
@@ -295,17 +306,23 @@
         }
         var show = matchSearch && matchFilter;
         c.style.display = show ? '' : 'none';
-        if (show) anyVisible = true;
+        if (show) { anyVisible = true; shown++; }
       });
       noResults.style.display = anyVisible ? 'none' : '';
+      // Say how many videos are left (audit A11Y-07)
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(function() {
+        panelStatus.textContent = shown ? shown + (shown === 1 ? ' video' : ' videos') : 'No videos match yer search.';
+      }, 400);
     }
 
     panelSearch.addEventListener('input', applyPanelFilters);
     panelControls.querySelector('.panel-filter-row').addEventListener('click', function(e) {
       var btn = e.target.closest('.filter-btn');
       if (!btn) return;
-      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); });
+      panelFilterBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       panel._activeFilter = btn.getAttribute('data-filter');
       applyPanelFilters();
     });

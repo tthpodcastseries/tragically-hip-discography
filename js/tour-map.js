@@ -1,5 +1,31 @@
 // tour-map.js - Live Show Tour Map: data, map, popups and search (moved out of
 // tour-map.html in v5.4.17, audit SEC-03)
+
+// Phones: the "Filters" button opens and closes the tour, country, search and year
+// controls (audit DEV-02). On a computer the button is hidden and the filters always
+// show. Works before the map or its data have loaded.
+(function() {
+  const toggle = document.getElementById('filtersToggle');
+  const panels = [document.getElementById('mapFilters'), document.getElementById('yearSlider')];
+  if (!toggle || panels.some(p => !p)) return;
+  function setOpen(open) {
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panels.forEach(p => p.classList.toggle('open', open));
+    // The map moves up or down the page; let Leaflet re-measure it
+    window.dispatchEvent(new Event('resize'));
+  }
+  // Focus stays on the button; the filters come straight after it in Tab order
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  // Esc inside the open filters closes them and puts focus back on the button
+  // (the search box's own Esc closes its results first)
+  panels.forEach(p => p.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true' || getComputedStyle(toggle).display === 'none') return;
+    if (e.target && e.target.id === 'gigSearch') return;
+    setOpen(false);
+    toggle.focus();
+  }));
+})();
+
 (async function() {
 
   // Load data. data/tour-map.json is tth-tour-data.json without the track lists
@@ -18,33 +44,51 @@
     }).catch(e => console.warn('Show-videos map load failed:', e))
   ]);
 
+  // Show data comes from setlist.fm, which anyone can edit: escape it before it goes
+  // into HTML, and only link to https: addresses (audit SEC-11)
+  const esc = v => String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  const httpsOnly = u => (typeof u === 'string' && /^https:\/\//i.test(u.trim())) ? u.trim() : '';
+
+  // The show pins (572 KB) start downloading now, but the map and its tiles no longer
+  // wait for them: the map is drawn first and the pins are added when they arrive
+  // (audit PERF-01)
+  const tourDataPromise = fetch('data/tour-map.json').then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  });
+  tourDataPromise.catch(() => {}); // handled where it is awaited below
+
   function showMapError(what) {
     document.getElementById('statsPill').textContent = `Couldn't load the ${what}`;
     document.getElementById('otdBanner').hidden = true;
     document.getElementById('map').innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Couldn't load the ${what}.</p><p style="font-size:0.85rem;">Check yer connection and refresh.</p></div></div>`;
   }
 
-  // Leaflet comes from unpkg.com; if that is down or blocked, say so instead of
-  // stopping with a blank page (audit REL-05)
-  if (typeof L === 'undefined' || typeof L.markerClusterGroup !== 'function') {
-    showMapError('map');
-    console.error('Leaflet did not load');
-    return;
-  }
+  // Leaflet is our own copy in /js/vendor/ (audit PRIV-04). If it fails to load, the map area says so
+  // (audit REL-05), but the audio player and #play= links still work: they don't
+  // need the map (audit REL-06)
+  const hasMap = typeof L !== 'undefined' && typeof L.markerClusterGroup === 'function';
 
   let allGigs;
-  try {
-    const res = await fetch('data/tour-map.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    allGigs = await res.json();
-    allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
-  } catch (e) {
-    showMapError('tour data');
-    console.error('Tour data load failed:', e);
+  if (!hasMap) {
+    // No map code: the player and #play= links still work from the show data alone
+    try {
+      allGigs = await tourDataPromise;
+      allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
+    } catch (e) {
+      showMapError('tour data');
+      console.error('Tour data load failed:', e);
+      return;
+    }
+    showMapError('map');
+    console.error('Leaflet did not load');
+    handlePlayHash();
+    window.addEventListener('hashchange', handlePlayHash);
     return;
   }
 
-  // Map setup - dark tiles
+  // Map setup - dark tiles. Drawn before the show data arrives, so the tiles load
+  // alongside it (audit PERF-01).
   // No zoom or fade animation for people who asked for less motion (audit A11Y-08)
   const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const map = L.map('map', {
@@ -58,13 +102,49 @@
   });
 
   // CARTO basemaps need a key since Sept 2026 (free non-commercial tier, 5M tiles/month).
-  // Public by design - it ships in every tile URL. Manage at dashboard.basemaps.carto.com (jd@tthpods.com).
+  // Public by design - it ships in every tile URL. Without it every tile reads "API KEY
+  // REQUIRED" (checked 2026-11-01). Manage at dashboard.basemaps.carto.com (jd@tthpods.com).
   const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY, {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Tragically Hip Archive</a> (Darrin Cappe)',
     subdomains: 'abcd',
     maxZoom: 18
   }).addTo(map);
+
+  // On phones the credit line folds behind a "Credits" button (CSS hides it under
+  // 600px wide), so it doesn't cover a fifth of the map (audit A11Y-16)
+  const attribEl = map.attributionControl && map.attributionControl.getContainer();
+  if (attribEl) {
+    attribEl.id = 'mapCredits';
+    const CreditsControl = L.Control.extend({
+      options: { position: 'bottomright' },
+      onAdd: function() {
+        const wrap = L.DomUtil.create('div', 'leaflet-control map-credits-ctl');
+        const btn = L.DomUtil.create('button', 'map-credits-btn', wrap);
+        btn.type = 'button';
+        btn.textContent = 'Credits';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'mapCredits');
+        L.DomEvent.disableClickPropagation(wrap);
+        L.DomEvent.on(btn, 'click', () => {
+          const open = map.getContainer().classList.toggle('credits-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        return wrap;
+      }
+    });
+    new CreditsControl().addTo(map);
+  }
+
+  try {
+    allGigs = await tourDataPromise;
+    allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
+  } catch (e) {
+    try { map.remove(); } catch (_) { /* the map is already drawn now; clear it before the message */ }
+    showMapError('tour data');
+    console.error('Tour data load failed:', e);
+    return;
+  }
 
   // Custom red marker
   function createIcon(color = '#C8102E') {
@@ -96,8 +176,55 @@
     if (!kbPopupOpener) return;
     const pop = e.popup.getElement();
     const f = pop && (pop.querySelector('.leaflet-popup-content button, .leaflet-popup-content a[href]') || pop.querySelector('.leaflet-popup-close-button'));
-    if (f) f.focus();
+    // A moment later, once Leaflet has finished placing the pop-up: with reduce motion
+    // an immediate focus() was silently lost (audit A11Y-08; see also the
+    // reduce-motion rule for .leaflet-popup in css/tour-map.css). Tries again on the
+    // next frames if the pop-up still isn't ready.
+    if (f) {
+      const tryFocus = (n) => {
+        if (!document.contains(f)) return;
+        f.focus();
+        if (document.activeElement !== f && n > 0) requestAnimationFrame(() => tryFocus(n - 1));
+      };
+      setTimeout(() => tryFocus(3), 0);
+    }
   });
+
+  // A pin or cluster that takes keyboard focus while it is off the edge of the map,
+  // or under the player or the map credits, is brought into view (audit A11Y-16)
+  const mapEl = map.getContainer();
+  mapEl.addEventListener('focusin', (e) => {
+    const el = e.target;
+    if (!el || !el.classList || !el.classList.contains('leaflet-marker-icon')) return;
+    // After the browser has done its own scrolling to the pin
+    setTimeout(() => panToFocused(el), 0);
+  });
+  function panToFocused(el) {
+    if (document.activeElement !== el) return;
+    // The browser may have scrolled the map's own box to reach the pin; undo that first
+    if (mapEl.scrollTop || mapEl.scrollLeft) { mapEl.scrollTop = 0; mapEl.scrollLeft = 0; }
+    const box = visibleMapBox();
+    const r = el.getBoundingClientRect();
+    const pad = 12;
+    let dx = 0, dy = 0;
+    if (r.left < box.left + pad) dx = r.left - box.left - pad;
+    else if (r.right > box.right - pad) dx = r.right - box.right + pad;
+    if (r.top < box.top + pad) dy = r.top - box.top - pad;
+    else if (r.bottom > box.bottom - pad) dy = r.bottom - box.bottom + pad;
+    if (dx || dy) map.panBy([dx, dy], { animate: !REDUCE_MOTION });
+  }
+
+  // The part of the map a fan can actually see: inside the window, above the audio
+  // player and, on phones, above the credit line when it is open
+  function visibleMapBox() {
+    const m = mapEl.getBoundingClientRect();
+    let bottom = Math.min(m.bottom, window.innerHeight);
+    const player = document.getElementById('audioPlayer');
+    if (player && player.classList.contains('active')) bottom = Math.min(bottom, player.getBoundingClientRect().top);
+    const credits = mapEl.querySelector('.leaflet-control-attribution');
+    if (credits && credits.offsetParent) bottom = Math.min(bottom, credits.getBoundingClientRect().top);
+    return { left: m.left, right: m.right, top: Math.max(m.top, 0), bottom };
+  }
   map.on('popupclose', () => {
     const opener = kbPopupOpener;
     const ae = document.activeElement;
@@ -168,22 +295,22 @@
   // Create popup content
   function popupHTML(g) {
     let html = `<div class="popup-date">${formatDate(g.isoDate)}</div>`;
-    html += `<div class="popup-venue">${g.venue || 'Unknown venue'}</div>`;
-    html += `<div class="popup-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' - ' + g.countryName : ''}</div>`;
-    if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
+    html += `<div class="popup-venue">${esc(g.venue || 'Unknown venue')}</div>`;
+    html += `<div class="popup-city">${esc(g.city || '')}${g.state ? ', ' + esc(g.state) : ''}${g.countryName ? ' - ' + esc(g.countryName) : ''}</div>`;
+    if (g.tour) html += `<div class="popup-tour">${esc(g.tour)}</div>`;
     if (g.dateNote) html += `<div class="popup-date-note">Date unconfirmed</div>`;
     if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
     if (g.trackCount && g.recordingNote) html += `<div class="popup-date-note">${g.recordingNote}</div>`;
     if (g.trackCount) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
-      html += `<button data-gig-action="play" data-gig="${g.id}" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
-    } else if (g.archiveUrl) {
-      html += `<a href="${g.archiveUrl}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
+      html += `<button data-gig-action="play" data-gig="${esc(g.id)}" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
+    } else if (httpsOnly(g.archiveUrl)) {
+      html += `<a href="${esc(httpsOnly(g.archiveUrl))}" target="_blank" rel="noopener noreferrer" class="popup-link popup-archive">🎧 Download this show</a>`;
     }
-    if (g.setlistUrl) html += `<button data-gig-action="setlist" data-gig="${g.id}" style="display:block;width:100%;margin-top:6px;padding:4px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;text-align:left;">View setlist →</button>`;
+    if (g.setlistUrl) html += `<button data-gig-action="setlist" data-gig="${esc(g.id)}" style="display:block;width:100%;margin-top:6px;padding:4px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;text-align:left;">View setlist →</button>`;
     const isAttended = tthAttended.has(g.id);
-    html += `<button class="iwt-popup-btn${isAttended ? ' active' : ''}" data-gig-action="attended" data-gig="${g.id}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>`;
+    html += `<button class="iwt-popup-btn${isAttended ? ' active' : ''}" data-gig-action="attended" data-gig="${esc(g.id)}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>`;
     return html;
   }
 
@@ -222,7 +349,7 @@
     });
     clusterGroup.addLayers(markers);
     document.getElementById('statsPill').textContent =
-      `${gigs.length.toLocaleString()} gigs - ${[...new Set(gigs.map(g => g.city))].length} cities - ${[...new Set(gigs.map(g => g.countryName))].length} countries`;
+      `${gigs.length.toLocaleString()} gigs - ${new Set(gigs.filter(g => g.city).map(g => [g.city, g.state, g.country].join('|'))).size} cities - ${[...new Set(gigs.map(g => g.countryName))].length} countries`;
   }
 
   // Filter logic
@@ -264,7 +391,8 @@
 
   // Slider track fill
   function updateSliderTrack() {
-    const min = 1985, max = 2022;
+    // The slider's own ends (1985 to 2022, audit DATA-04), so the fill always meets the handles
+    const min = parseInt(document.getElementById('yearMin').min), max = parseInt(document.getElementById('yearMin').max);
     const minVal = Math.min(
       parseInt(document.getElementById('yearMin').value),
       parseInt(document.getElementById('yearMax').value)
@@ -297,11 +425,29 @@
   document.getElementById('yearMin').addEventListener('input', onYearInput);
   document.getElementById('yearMax').addEventListener('input', onYearInput);
 
+  // A tap or click on the slider line moves the nearer handle to that year, so the
+  // range can be set without dragging (audit A11Y-01). Only the two handles take
+  // pointer events, so a click anywhere else on the line lands here.
+  document.querySelector('.year-range-wrap').addEventListener('click', (e) => {
+    if (e.target && e.target.matches && e.target.matches('input[type="range"]')) return; // a handle: the slider did it
+    const lo = document.getElementById('yearMin'), hi = document.getElementById('yearMax');
+    const min = parseInt(lo.min), max = parseInt(lo.max);
+    const rect = e.currentTarget.getBoundingClientRect();
+    const THUMB = 18; // the handle's width in css/tour-map.css
+    const frac = Math.min(1, Math.max(0, (e.clientX - rect.left - THUMB / 2) / (rect.width - THUMB)));
+    const year = Math.round(min + frac * (max - min));
+    const a = parseInt(lo.value), b = parseInt(hi.value);
+    // Move whichever handle is closer; on a tie, the one on the side that was tapped
+    const target = Math.abs(year - a) < Math.abs(year - b) || (Math.abs(year - a) === Math.abs(year - b) && year < a) ? lo : hi;
+    target.value = year;
+    onYearInput();
+  });
+
   document.getElementById('resetBtn').addEventListener('click', () => {
     tourSelect.value = 'all';
     countrySelect.value = 'all';
-    document.getElementById('yearMin').value = 1985;
-    document.getElementById('yearMax').value = 2022;
+    document.getElementById('yearMin').value = document.getElementById('yearMin').min;
+    document.getElementById('yearMax').value = document.getElementById('yearMax').max;
     applyFilters();
     map.setView([50, -85], 4);
   });
@@ -315,10 +461,12 @@
 
   // Speed controls
   document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.setAttribute('aria-pressed', String(btn.classList.contains('active'))); // audit A11Y-13
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.speed-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       playbackSpeed = parseInt(btn.dataset.speed);
     });
   });
@@ -372,7 +520,7 @@
         const marker = makePin(g, goldIcon);
         marker.bindPopup(popupHTML(g), { maxWidth: 280 });
         clusterGroup.addLayer(marker);
-        if (g.city) allSeenCities.add(g.city);
+        if (g.city) allSeenCities.add([g.city, g.state, g.country].join('|')); // name + state + country (audit DATA-10)
         if (g.countryName) allSeenCountries.add(g.countryName);
       });
 
@@ -434,34 +582,75 @@
   const searchClear = document.getElementById('searchClear');
   let searchDebounce = null;
 
+  const searchStatus = document.getElementById('searchStatus');
+  let searchActive = -1;
+
+  // The results list works like the Home search: Up and Down move through it, Enter
+  // opens the show, Esc closes the list and leaves focus in the box. Screen readers
+  // hear the count and the highlighted show (audit A11Y-05).
+  function setResultsOpen(open) {
+    searchResults.classList.toggle('open', open);
+    searchInput.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) setActiveResult(-1);
+  }
+  function resultItems() { return searchResults.querySelectorAll('.search-result-item'); }
+  function setActiveResult(i) {
+    const items = resultItems();
+    searchActive = i;
+    items.forEach((el, n) => {
+      el.classList.toggle('active', n === i);
+      el.setAttribute('aria-selected', n === i ? 'true' : 'false');
+    });
+    if (i >= 0 && items[i]) {
+      searchInput.setAttribute('aria-activedescendant', items[i].id);
+      items[i].scrollIntoView({ block: 'nearest' });
+    } else {
+      searchInput.removeAttribute('aria-activedescendant');
+    }
+  }
+
   searchInput.addEventListener('input', () => {
     clearTimeout(searchDebounce);
     const q = searchInput.value.trim();
     searchClear.style.display = q ? 'block' : 'none';
     if (q.length < 2) {
-      searchResults.classList.remove('open');
+      setResultsOpen(false);
+      searchStatus.textContent = '';
       return;
     }
     searchDebounce = setTimeout(() => runSearch(q), 200);
   });
 
   searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      searchResults.classList.remove('open');
-      searchInput.blur();
+    const items = resultItems();
+    const open = searchResults.classList.contains('open');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!items.length) return;
+      e.preventDefault();
+      if (!open) { setResultsOpen(true); setActiveResult(0); return; }
+      const next = e.key === 'ArrowDown' ? Math.min(searchActive + 1, items.length - 1) : Math.max(searchActive - 1, 0);
+      setActiveResult(next);
+    } else if (e.key === 'Enter') {
+      if (!open || !items.length) return;
+      e.preventDefault();
+      items[searchActive >= 0 ? searchActive : 0].click();
+    } else if (e.key === 'Escape') {
+      if (open) { e.preventDefault(); setResultsOpen(false); }
     }
   });
 
   searchClear.addEventListener('click', () => {
     searchInput.value = '';
     searchClear.style.display = 'none';
-    searchResults.classList.remove('open');
+    setResultsOpen(false);
+    searchStatus.textContent = '';
+    searchInput.focus();
   });
 
   // Close results when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-wrap')) {
-      searchResults.classList.remove('open');
+    if (!e.target.closest('.search-wrap') && !e.target.closest('.search-group')) {
+      setResultsOpen(false);
     }
   });
 
@@ -483,32 +672,39 @@
 
     searchResults.innerHTML = '';
     if (matches.length === 0) {
-      searchResults.innerHTML = '<div class="search-result-count">No shows found</div>';
-      searchResults.classList.add('open');
+      searchResults.innerHTML = '<div class="search-result-count" aria-hidden="true">No shows found</div>';
+      searchStatus.textContent = 'No shows found';
+      setResultsOpen(true);
       return;
     }
 
     const shown = matches.slice(0, 50);
+    const countText = matches.length === 1 ? '1 show found' :
+      `${matches.length} shows found` + (matches.length > 50 ? ' (showing first 50)' : '');
     const countDiv = document.createElement('div');
     countDiv.className = 'search-result-count';
-    countDiv.textContent = matches.length === 1 ? '1 show found' :
-      `${matches.length} shows found` + (matches.length > 50 ? ' (showing first 50)' : '');
+    countDiv.setAttribute('aria-hidden', 'true'); // read out by #searchStatus instead
+    countDiv.textContent = countText;
     searchResults.appendChild(countDiv);
+    searchStatus.textContent = countText + '. Use the up and down arrows to pick one.';
 
-    shown.forEach(g => {
+    shown.forEach((g, i) => {
       const item = document.createElement('div');
       item.className = 'search-result-item';
+      item.id = 'sr-opt-' + i;
+      item.setAttribute('role', 'option');
+      item.setAttribute('aria-selected', 'false');
       item.innerHTML = `<div class="sr-date">${formatDate(g.isoDate)}</div>
-        <div class="sr-venue">${g.venue || 'Unknown venue'}</div>
-        <div class="sr-city">${g.city || ''}${g.state ? ', ' + g.state : ''}${g.countryName ? ' - ' + g.countryName : ''}</div>`;
+        <div class="sr-venue">${esc(g.venue || 'Unknown venue')}</div>
+        <div class="sr-city">${esc(g.city || '')}${g.state ? ', ' + esc(g.state) : ''}${g.countryName ? ' - ' + esc(g.countryName) : ''}</div>`;
       item.addEventListener('click', () => {
-        searchResults.classList.remove('open');
+        setResultsOpen(false);
         showDetailCard(g);
       });
       searchResults.appendChild(item);
     });
 
-    searchResults.classList.add('open');
+    setResultsOpen(true);
   }
 
   // ─── Attended Shows (I Was There) ───
@@ -560,9 +756,11 @@
 
   // "My Shows" filter button
   let showingMyShows = false;
+  document.getElementById('myShowsBtn').setAttribute('aria-pressed', 'false'); // audit A11Y-13
   document.getElementById('myShowsBtn').addEventListener('click', () => {
     showingMyShows = !showingMyShows;
     const btn = document.getElementById('myShowsBtn');
+    btn.setAttribute('aria-pressed', String(showingMyShows));
     if (showingMyShows) {
       btn.classList.add('active');
       const myGigs = allGigs.filter(g => tthAttended.has(g.id));
@@ -625,8 +823,8 @@
         if (v.trackCount) metaParts.push(v.trackCount + ' tracks');
         if (v.partialTracklist) metaParts.push('partial');
         a.innerHTML =
-          '<img src="' + (v.thumbnail || '') + '" alt="" loading="lazy" data-onerror="hide">' +
-          '<span class="show-video-thumb-tag">' + primaryTag + '</span>' +
+          '<img src="' + esc(v.thumbnail || '') + '" alt="" loading="lazy" data-onerror="hide">' +
+          '<span class="show-video-thumb-tag">' + esc(primaryTag) + '</span>' +
           (metaParts.length ? '<div class="show-video-thumb-meta">' + metaParts.join(' · ') + '</div>' : '');
         list.appendChild(a);
       });
@@ -643,6 +841,7 @@
       playBtn.addEventListener('click', () => {
         document.getElementById('showDetailOverlay').classList.remove('active');
         window.playGig(g.id);
+        document.getElementById('apPlayPause').focus(); // audit A11Y-04: land on the player
       });
       actions.appendChild(playBtn);
     }
@@ -661,10 +860,10 @@
     if (g.lat && g.lng) {
       const mapBtn = document.createElement('button');
       mapBtn.className = 'show-detail-map-btn';
-      mapBtn.textContent = 'Show on map';
+      mapBtn.textContent = 'View on map';
       mapBtn.addEventListener('click', () => {
         document.getElementById('showDetailOverlay').classList.remove('active');
-        map.setView([g.lat, g.lng], 14, { animate: !REDUCE_MOTION });
+        bringShowIntoView(g, 14);
       });
       actions.appendChild(mapBtn);
     }
@@ -703,7 +902,8 @@
     const cityParts = [];
     if (sl) {
       if (sl.city) cityParts.push(sl.city);
-      if (sl.state) cityParts.push(sl.state);
+      // setlist.fm's number-only region codes ("Amsterdam, 07") mean nothing to fans (audit FUNC-08)
+      if (sl.state && !/^\d+$/.test(sl.state)) cityParts.push(sl.state);
     } else if (g) {
       if (g.city) cityParts.push(g.city);
       if (g.state) cityParts.push(g.state);
@@ -773,7 +973,7 @@
 
       document.getElementById('slCount').textContent = songNum + ' song' + (songNum !== 1 ? 's' : '');
     } else {
-      songsWrap.innerHTML = '<div class="setlist-empty">No setlist data available for this show.</div>';
+      songsWrap.innerHTML = '<div class="setlist-empty">No setlist for this one yet.</div>';
       document.getElementById('slCount').textContent = '';
     }
 
@@ -802,9 +1002,9 @@
 
     // Credit link
     const credit = document.getElementById('slCredit');
-    const setlistUrl = (sl && sl.url) || (g && g.setlistUrl) || '';
+    const setlistUrl = httpsOnly((sl && sl.url) || (g && g.setlistUrl) || '');
     if (setlistUrl) {
-      credit.innerHTML = '<a href="' + setlistUrl + '" target="_blank" rel="noopener noreferrer">Setlist data from setlist.fm</a>';
+      credit.innerHTML = '<a href="' + esc(setlistUrl) + '" target="_blank" rel="noopener noreferrer">Setlist data from setlist.fm</a>';
     } else {
       credit.innerHTML = '';
     }
@@ -845,9 +1045,15 @@
       const year = g.isoDate.substring(0, 4);
       return `${year} - ${g.venue || 'Unknown'}, ${g.city || ''}`;
     }).join('  ·  ');
-    document.getElementById('otdDetail').textContent = details + '  ·  Click to visit each gig';
+    document.getElementById('otdDetail').textContent = details + '  ·  Tap or press Enter to visit each gig';
 
     banner.classList.add('active');
+    // Reachable from the keyboard too (audit A11Y-14)
+    banner.setAttribute('role', 'button');
+    banner.tabIndex = 0;
+    banner.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); banner.click(); }
+    });
 
     // Mark OTD pins with gold icon and badge
     const otdMarkers = [];
@@ -880,7 +1086,7 @@
   }
 
   // A short note when a shared link points at a show we can't find (audit FUNC-13)
-  let mapNoteTimer = null;
+  var mapNoteTimer = null; // var, not let: showMapNote can run before this line when the map is missing
   function showMapNote(msg) {
     let note = document.getElementById('mapNote');
     if (!note) {
@@ -896,6 +1102,27 @@
     mapNoteTimer = setTimeout(() => note.classList.remove('open'), 7000);
   }
 
+  // After a link opens a show: make sure its pin can be seen. On a phone the page
+  // scrolls down to the map, and the pin is centred in the part of the map that is
+  // not under the audio player (audit FUNC-03).
+  function bringShowIntoView(g, zoom) {
+    if (!g || !g.lat || !g.lng) return;
+    try {
+      const ll = [g.lat, g.lng];
+      map.setView(ll, zoom || map.getZoom(), { animate: false });
+      let box = visibleMapBox();
+      if (box.bottom - box.top < Math.min(260, mapEl.offsetHeight * 0.6)) {
+        window.scrollTo({ top: window.scrollY + mapEl.getBoundingClientRect().top, behavior: 'instant' });
+        box = visibleMapBox();
+      }
+      const m = mapEl.getBoundingClientRect();
+      const p = map.latLngToContainerPoint(ll);
+      const dx = p.x - ((box.left + box.right) / 2 - m.left);
+      const dy = p.y - ((box.top + box.bottom) / 2 - m.top);
+      if (Math.abs(dx) > 1 || Math.abs(dy) > 1) map.panBy([dx, dy], { animate: false });
+    } catch (_) { /* the map still opens at the show */ }
+  }
+
   // Deep-link from Video For New Recruits: tour-map.html#show=<id> auto-opens the show
   function handleShowHash() {
     const m = (location.hash || '').match(/show=([A-Za-z0-9_-]+)/);
@@ -903,9 +1130,7 @@
     const showId = m[1];
     const g = allGigs.find(x => String(x.id) === showId);
     if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
-    if (g.lat && g.lng) {
-      try { map.setView([g.lat, g.lng], 12, { animate: !REDUCE_MOTION }); } catch (_) { /* noop */ }
-    }
+    bringShowIntoView(g, 12);
     showDetailCard(g);
   }
   handleShowHash();
@@ -921,17 +1146,19 @@
       const playable = allGigs.filter(x => x.trackCount);
       if (!playable.length) { showMapNote('No recordings to play yet.'); return; }
       g = playable[Math.floor(Math.random() * playable.length)];
+      // Swap #play=random for the show picked, so a reload or a shared link plays this
+      // show (audit FUNC-07). replaceState doesn't fire hashchange, so nothing plays twice.
+      try { history.replaceState(null, '', location.pathname + location.search + location.hash.replace('play=random', 'play=' + g.id)); } catch (_) { /* noop */ }
     } else {
       g = allGigs.find(x => String(x.id) === m[1]);
     }
     if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
     if (!g.trackCount) { showMapNote('No recording for that show yet.'); return; }
-    if (g.lat && g.lng) {
-      try { map.setView([g.lat, g.lng], 12, { animate: !REDUCE_MOTION }); } catch (_) { /* noop */ }
-    }
     window._gigLookup = window._gigLookup || {};
     window._gigLookup[g.id] = g;
     if (window.playGig) window.playGig(g.id);
+    // Zoom to the show once the player has opened, so its height is known (audit FUNC-03)
+    if (hasMap) bringShowIntoView(g, 12);
   }
   handlePlayHash();
   window.addEventListener('hashchange', handlePlayHash);

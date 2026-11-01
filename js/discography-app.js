@@ -8,6 +8,21 @@ document.addEventListener('error', function(e) {
   }
 }, true);
 
+// Read a short status line to screen readers (audit A11Y-07), e.g. "12 shows" after a filter.
+// Uses the page's hidden live region; waits a beat so fast typing gives one announcement.
+let announceTimer = null;
+function announce(msg) {
+  const el = document.getElementById('categoryAnnounce');
+  if (!el) return;
+  clearTimeout(announceTimer);
+  announceTimer = setTimeout(() => { el.textContent = msg; }, 400);
+}
+
+// Scroll that honours the reduce-motion setting (audit A11Y-19)
+function scrollBehavior() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+}
+
 const studioAlbums = [
   {
     num: '01', title: 'Up to Here', year: '1989', releaseDate: 'September 5, 1989', type: 'Studio', img: 'assets-optimized/studio-albums/Up-to-Here.webp',
@@ -270,7 +285,7 @@ const liveAlbums = [
     tracks: ['Little Bones', 'She Didn\'t Know', 'Twist My Arm', 'Highway Girl', 'Cordelia', 'Trickle Down', 'The Luxury', 'Three Pistols', 'Fight', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight)', 'New Orleans Is Sinking', 'On the Verge', 'Long Time Running', 'Blow at High Dough', 'All Canadian Surf Club'] },
   { num: '03', title: 'From the Vault: Vol. 1 - Halifax 1995', year: '2008', releaseDate: 'June 17, 2008', type: 'Live', img: 'assets-optimized/live-albums/Live-From-the-Vault-Volume-1.webp',
     gradient: 'linear-gradient(145deg, #0D1A0D 0%, #1A3D1A 50%, #060F06 100%)',
-    desc: 'Metro Centre, Halifax, Nova Scotia - February 2, 1995. Day for Night tour. First installment in the Live from the Vault archival series featuring full soundboard recordings.',
+    desc: 'Metro Centre, Halifax, Nova Scotia - February 2, 1995. Day for Night tour. First instalment in the Live from the Vault archival series featuring full soundboard recordings.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Grace, Too', 'Fully Completely', 'Inevitability of Death', 'Courage (for Hugh MacLennan)', 'Greasy Jungle', 'The Last of the Unplucked Gems', 'Thugs', 'New Orleans Is Sinking', 'Lionized', 'Scared', 'Opiated', 'Nautical Disaster', 'Fifty-Mission Cap', 'Titanic Terrarium', 'At the Hundredth Meridian', 'Locked in the Trunk of a Car', 'Fire in the Hole', 'We\'ll Go Too', 'Daredevil', 'Little Bones'] },
   { num: '04', title: 'From the Vault: Vol. 2 - Austin 2002', year: '2008', releaseDate: 'October 7, 2008', type: 'Live', img: 'assets-optimized/live-albums/Live-From-the-Vault-Volume-2.webp',
@@ -280,7 +295,7 @@ const liveAlbums = [
     tracks: ['Use It Up', 'My Music at Work', 'New Orleans Is Sinking', 'Grace, Too', 'Fireworks', 'Bobcaygeon', 'Silver Jet', 'Courage (for Hugh MacLennan)', 'Inevitability of Death', 'It\'s a Good Life If You Don\'t Weaken', 'At the Hundredth Meridian', 'Springtime in Vienna', 'So Hard Done By', 'Poets', 'Ahead by a Century', 'Little Bones', 'Chagrin Falls', 'All Tore Up', 'Blow at High Dough'] },
   { num: '05', title: 'From the Vault: Vol. 3 - Hamilton 2007', year: '2009', releaseDate: 'March 3, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-3.webp',
     gradient: 'linear-gradient(145deg, #1A0D1A 0%, #3D1A3D 50%, #0F060F 100%)',
-    desc: 'Copps Coliseum, Hamilton, Ontario - February 6, 2007. World Container tour. Features six World Container tracks alongside classics like \'Boots or Hearts\', \'Three Pistols\', \'Fiddler\'s Green\', and \'Wheat Kings\'.',
+    desc: 'Copps Coliseum, Hamilton, Ontario - February 6, 2007. World Container tour. Features six "World Container" tracks alongside classics like \'Boots or Hearts\', \'Three Pistols\', \'Fiddler\'s Green\', and \'Wheat Kings\'.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['The Lonely End of the Rink', 'New Orleans Is Sinking', 'Fully Completely', 'Boots or Hearts', 'Yer Not the Ocean', 'Ahead by a Century', 'In View', 'Courage (for Hugh MacLennan)', 'Fiddler\'s Green', 'World Container', 'Springtime in Vienna', 'At the Hundredth Meridian', 'It\'s a Good Life If You Don\'t Weaken', 'The Kids Don\'t Get It', 'Three Pistols', 'Wheat Kings', 'Family Band', 'My Music at Work', 'Blow at High Dough', 'Picture My Face', 'Grace, Too', 'Fire in the Hole'] },
   { num: '06', title: 'From the Vault: Vol. 4 - Brussels 1994', year: '2009', releaseDate: 'June 2, 2009', type: 'Live', img: 'assets-optimized/live-albums/From-the-Vault-Volume-4.webp',
@@ -322,12 +337,12 @@ const boxSetAlbums = [
     tracks: ['No Threat', 'Grace, Too', 'My Music at Work', '38 Years Old', 'Gift Shop', 'Ahead by a Century', 'Vaccination Scar', 'Three Pistols', 'So Hard Done By', 'Fiddler\'s Green', 'Looking for a Place to Happen', 'Cordelia', 'It\'s a Good Life If You Don\'t Weaken', 'Blow at High Dough', 'Wheat Kings', 'Fifty-Mission Cap', 'New Orleans Is Sinking', 'Escape Is at Hand for the Travellin\' Man', 'Fully Completely', 'Twist My Arm', 'Courage (for Hugh MacLennan)', 'Lake Fever', 'Poets', 'Fireworks', 'Boots or Hearts', 'Bobcaygeon', 'Nautical Disaster', 'Highway Girl', 'Gus: The Polar Bear from Central Park', 'Scared', 'Something On', 'At the Hundredth Meridian', 'Long Time Running', 'The Darkest One', 'Locked in the Trunk of a Car', 'Little Bones', 'The New Maybe'] },
   { num: '02', title: 'Fully Completely Box Set', year: '2014', releaseDate: 'November 17, 2014', type: 'Box Set', img: 'assets-optimized/box-sets/Fully-Completely-Box-Set.webp',
     gradient: 'linear-gradient(145deg, #2A1A00 0%, #5C3A00 50%, #1A0E00 100%)',
-    desc: 'Deluxe 2014 reissue of "Fully Completely". Disc 1 is the remastered album plus two unreleased songs from the sessions, \'Radio Show\' and \'So Hard Done By\'. Disc 2 is Live at the Horseshoe Tavern, Toronto, September 13, 1992. The Super Deluxe edition adds the Heksenketel documentary on DVD/Blu-ray.',
+    desc: 'Deluxe 2014 reissue of "Fully Completely". Disc 1 is the remastered album plus two unreleased songs from the sessions, \'Radio Show\' and \'So Hard Done By\'. Disc 2 is "Live at the Horseshoe Tavern", Toronto, September 13, 1992. The Super Deluxe edition adds the "Heksenketel" documentary on DVD/Blu-ray.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Courage (for Hugh MacLennan)', 'Looking for a Place to Happen', 'At the Hundredth Meridian', 'Pigeon Camera', 'Lionized', 'Locked in the Trunk of a Car', 'We\'ll Go Too', 'Fully Completely', 'Fifty-Mission Cap', 'Wheat Kings', 'The Wherewithal', 'Eldorado', 'Radio Show', 'So Hard Done By', 'At the Hundredth Meridian (Live)', 'Fifty-Mission Cap (Live)', 'We\'ll Go Too (Live)', 'Fully Completely (Live)', 'Pigeon Camera (Live)', 'Twist My Arm (Live)', 'Lionized (Live)', 'Wheat Kings (Live)', 'Eldorado (Live)', 'Looking for a Place to Happen (Live)', 'Courage (for Hugh MacLennan) (Live)', 'Locked in the Trunk of a Car (Live)', 'The Wherewithal (Live)'] },
   { num: '03', title: 'Road Apples Box Set', year: '2021', releaseDate: 'November 12, 2021', type: 'Box Set', img: 'assets-optimized/box-sets/Road-Apples-Box-Set.webp',
     gradient: 'linear-gradient(145deg, #0D2200 0%, #235E00 50%, #091500 100%)',
-    desc: '30th anniversary deluxe edition of "Road Apples". Disc 1 is the remastered album. Disc 2 is "Saskadelphia". Disc 3 is Live at the Roxy, Los Angeles, May 3, 1991. Disc 4 is "Hoof Hearted", nine unreleased demos, outtakes, and alternate versions, including \'If You Lived Here\' and \'Angst on the Planks\' (the demo of \'Cordelia\'). A Blu-ray carries Dolby Atmos, 5.1, and binaural mixes.',
+    desc: '30th anniversary deluxe edition of "Road Apples". Disc 1 is the remastered album. Disc 2 is "Saskadelphia". Disc 3 is "Live at the Roxy", Los Angeles, May 3, 1991. Disc 4 is "Hoof Hearted", nine unreleased demos, outtakes, and alternate versions, including \'If You Lived Here\' and \'Angst on the Planks\' (the demo of \'Cordelia\'). A Blu-ray carries Dolby Atmos, 5.1, and binaural mixes.',
     label: 'Universal Music Canada', producer: '', chart: '', units: '', bestRank: null, singles: [],
     tracks: ['Little Bones', 'Twist My Arm', 'Cordelia', 'The Luxury', 'Born in the Water', 'Long Time Running', 'Bring It All Back', 'Three Pistols', 'Fight', 'On the Verge', 'Fiddler\'s Green', 'The Last of the Unplucked Gems', 'Ouch', 'Not Necessary', 'Montreal (Live)', 'Crack My Spine Like a Whip', 'Just as Well', 'Reformed Baptist Blues', 'Little Bones (Live)', 'She Didn\'t Know (Live)', 'Twist My Arm (Live)', 'Highway Girl (Live)', 'Cordelia (Live)', 'Trickle Down (Live)', 'The Luxury (Live)', 'Three Pistols (Live)', 'Fight (Live)', 'I\'ll Believe in You (Or I\'ll Be Leaving You Tonight) (Live)', 'New Orleans Is Sinking (Live)', 'On the Verge (Live)', 'Long Time Running (Live)', 'Blow at High Dough (Live)', 'All Canadian Surf Club (Live)', 'Cordelia (Alternate Version)', 'Bring It All Back (Demo)', 'Fiddler\'s Green (Alternate Version)', 'Fight (Alternate Version)', 'Born in the Water (Alternate Version)', 'Little Bones (Alternate Version)', 'If You Lived Here (Demo)', 'Angst on the Planks (Demo)', 'The Last of the Unplucked Gems (Alternate Version)'] },
   { num: '04', title: 'Phantom Power Box Set', year: '2023', releaseDate: 'November 3, 2023', type: 'Box Set', img: 'assets-optimized/box-sets/Phantom-Power-Box-Set.webp',
@@ -540,7 +555,7 @@ const categoryStats = {
   ],
   setlists: [
     { num: '1,364', lbl: 'Shows & Appearances' },
-    { num: '303', lbl: 'Cities' },
+    { num: '307', lbl: 'Cities' },
     { num: '23', lbl: 'Tours & Events' },
     { num: '1985-2016', lbl: 'Years Active' },
   ],
@@ -551,6 +566,46 @@ const categoryStats = {
     { num: '-', lbl: 'Unique Songs' },
   ],
 };
+
+// Counts and years that can be worked out from the album lists above, so they stay right
+// when a release is added (audit DATA-09). Rows from outside the lists (chart number ones,
+// fan votes, viewers, the Vault series) are still typed by hand.
+(function syncCategoryStats() {
+  const set = (cat, lbl, val) => {
+    const row = categoryStats[cat].find(r => r.lbl === lbl);
+    if (row && isFinite(val)) row.num = String(val);
+  };
+  const years = list => list.map(a => +a.year).filter(Boolean);
+  const first = list => Math.min(...years(list));
+  const last = list => Math.max(...years(list));
+  const trackCount = list => list.reduce((n, a) => n + (a.tracks || []).length, 0);
+  const solo = Object.values(soloProjects).flatMap(m => m.albums || []);
+
+  set('studio', 'Studio Albums', studioAlbums.length);
+  set('studio', 'First Release', first(studioAlbums));
+  set('studio', 'Final Album', last(studioAlbums));
+  set('live', 'Live Albums', liveAlbums.length);
+  set('live', 'First Release', first(liveAlbums));
+  set('live', 'Latest Release', last(liveAlbums));
+  set('compilations', 'Tracks', trackCount(compilationAlbums));
+  set('compilations', 'Released', first(compilationAlbums));
+  set('boxsets', 'Box Sets', boxSetAlbums.length);
+  set('boxsets', 'First Release', first(boxSetAlbums));
+  set('boxsets', 'Latest Release', last(boxSetAlbums));
+  set('eps', 'EPs', epAlbums.length);
+  set('eps', 'First Release', first(epAlbums));
+  set('eps', 'Latest Release', last(epAlbums));
+  set('eps', 'Total Tracks', trackCount(epAlbums));
+  set('video', 'Video Releases', videoAlbums.length);
+  set('video', 'First Release', first(videoAlbums));
+  set('video', 'Latest Release', last(videoAlbums));
+  set('top40', 'Songs Ranked', top40Songs.length);
+  set('top40', 'Albums Featured', new Set(top40Songs.map(s => s.album)).size);
+  set('solo', 'Members', Object.keys(soloProjects).length);
+  set('solo', 'Solo Releases', solo.length);
+  set('solo', 'First Solo Album', first(solo));
+  set('solo', 'Latest Release', last(solo));
+})();
 
 // ─── Spotify URL Mapping ───
 const spotifyAlbumURLs = {
@@ -740,8 +795,9 @@ studioAlbums.forEach(album => {
 try { localStorage.removeItem('spotify_code_verifier'); localStorage.removeItem('spotify_oauth_state'); } catch (e) { /* storage blocked */ }
 
 // ─── STICKY STREAMING PREFERENCE ───
-function getPreferredStream() { return sessionStorage.getItem('tth_preferred_stream') || ''; }
-function setPreferredStream(service) { sessionStorage.setItem('tth_preferred_stream', service); }
+// Wrapped: with site data blocked, sessionStorage throws and album pop-ups never opened (audit DEV-01)
+function getPreferredStream() { try { return sessionStorage.getItem('tth_preferred_stream') || ''; } catch (e) { return ''; } }
+function setPreferredStream(service) { try { sessionStorage.setItem('tth_preferred_stream', service); } catch (e) { /* storage blocked */ } }
 function applyStreamPreference(container) {
   if (!container) return;
   const pref = getPreferredStream();
@@ -788,14 +844,14 @@ function buildTrackStreamPanel(trackTitle, albumTitle) {
 }
 
 function buildTrackFlipBack(albumTitle, trackTitle) {
-  if (!livePlayCountMap) return '<div class="track-flip-no-data">Loading live performance data...</div>';
+  if (!livePlayCountMap) return '<div class="track-flip-no-data">Counting the live plays...</div>';
   const album = Object.values(categoryData).flat().find(a => a.title === albumTitle);
   const trackNo = album && Array.isArray(album.tracks) ? album.tracks.indexOf(trackTitle) + 1 : 0;
   const data = (trackNo && livePlayCountMap[albumTitle + '|||' + trackNo]) ||
     livePlayCountMap[livePlayTitleKey(trackTitle)] ||
     livePlayCountMap[livePlayTitleKey(trackTitle.replace(/\s*\([^)]*\)\s*$/, ''))];
   if (!data || !data.plays) {
-    return '<div class="track-flip-no-data">No live performance data available</div>';
+    return '<div class="track-flip-no-data">No live plays on record for this one.</div>';
   }
   const plays = data.plays;
   const openerCount = data.opener;
@@ -834,47 +890,51 @@ function initTrackFlip(container) {
     const front = flipContainer.querySelector('.track-flip-front');
     const back = flipContainer.querySelector('.track-flip-back');
     if (!inner || !front || !back) return;
+    const openBtn = front.querySelector('.track-flip-open');
+    const closeBtn = back.querySelector('.track-flip-close');
+    const dataEl = back.querySelector('.track-flip-data');
 
     function flipOpen() {
       // Close other flipped cards first
       container.querySelectorAll('.track-flip-inner.flipped').forEach(other => {
-        if (other !== inner) {
-          other.classList.remove('flipped');
-          other.closest('.track-flip-container').classList.remove('is-flipped');
-        }
+        if (other !== inner) other.closest('.track-flip-container')._flipClose(false);
       });
       // Populate back face lazily on first flip
       if (!back.dataset.populated) {
         const albumTitle = front.dataset.album;
         const trackTitle = front.dataset.track;
-        back.innerHTML = buildTrackFlipBack(albumTitle, trackTitle);
+        dataEl.innerHTML = buildTrackFlipBack(albumTitle, trackTitle);
         if (livePlayCountMap) back.dataset.populated = '1';
-        else livePlayCountsReady.then(() => { back.innerHTML = buildTrackFlipBack(albumTitle, trackTitle); back.dataset.populated = '1'; });
+        else livePlayCountsReady.then(() => { dataEl.innerHTML = buildTrackFlipBack(albumTitle, trackTitle); back.dataset.populated = '1'; });
       }
       inner.classList.add('flipped');
       flipContainer.classList.add('is-flipped');
+      // Only the face showing can be reached (audit A11Y-12); focus follows the flip
+      front.inert = true;
+      back.inert = false;
+      openBtn.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
     }
-    function flipClose() {
+    function flipClose(refocus) {
       inner.classList.remove('flipped');
       flipContainer.classList.remove('is-flipped');
+      front.inert = false;
+      back.inert = true;
+      openBtn.setAttribute('aria-expanded', 'false');
+      if (refocus) openBtn.focus();
     }
+    flipContainer._flipClose = flipClose;
 
     front.addEventListener('click', e => {
       if (e.target.closest('.track-stream-icon')) return;
       e.preventDefault();
       flipOpen();
     });
-    front.addEventListener('keydown', e => {
-      if (e.target.closest('.track-stream-icon')) return;
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipOpen(); }
-    });
 
     back.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
       e.preventDefault();
-      flipClose();
-    });
-    back.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipClose(); }
+      flipClose(true);
     });
 
     // Stream icon handler
@@ -988,21 +1048,24 @@ document.getElementById('randomSongBtn').addEventListener('click', () => {
   applyStreamPreference(document.getElementById('rspStreams'));
   const rsp = document.getElementById('randomSongPage');
   rsp.classList.add('open');
-  document.querySelector('header').inert = true;
-  document.querySelector('main').inert = true;
-  document.querySelector('footer').inert = true;
+  // Everything behind the pop-up goes quiet, including the sign-in bar and skip link
+  // (audit A11Y-15), so Tab stays in the pop-up
+  rspInerted = Array.prototype.filter.call(document.body.children, el => el !== rsp && !el.inert && el.tagName !== 'SCRIPT');
+  rspInerted.forEach(el => { el.inert = true; });
   document.getElementById('rspTrack').focus();
 });
+let rspInerted = [];
 function closeRandomSong() {
   const rsp = document.getElementById('randomSongPage');
   rsp.classList.remove('open');
-  document.querySelector('header').inert = false;
-  document.querySelector('main').inert = false;
-  document.querySelector('footer').inert = false;
+  rspInerted.forEach(el => { el.inert = false; });
+  rspInerted = [];
   document.getElementById('randomSongBtn').focus();
 }
 document.getElementById('randomSongBack').addEventListener('click', closeRandomSong);
-document.getElementById('randomSongPage').addEventListener('keydown', e => { if (e.key === 'Escape') closeRandomSong(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('randomSongPage').classList.contains('open')) closeRandomSong();
+});
 
 // Songs #41-#169 from the TTHTop40 countdown (all songs that received votes)
 const beyondTop40 = [
@@ -1161,7 +1224,9 @@ const attendedShows = {
   has(id) { return window.TTHMember ? window.TTHMember.hasShow(id) : false; },
   async toggle(id) {
     if (!window.TTHMember) return false;
-    return await window.TTHMember.toggleShow(id);
+    // A failed save puts the show back and the gate tells the fan (audit REL-04)
+    try { return await window.TTHMember.toggleShow(id); }
+    catch (e) { return this.has(id); }
   },
   getAll() {
     if (!window.TTHMember) return [];
@@ -1181,11 +1246,23 @@ async function renderMyShows() {
   // Personalized header for the unlocked member
   if (memberHeaderEl) {
     const session = (window.TTHMember && window.TTHMember.getSession) ? window.TTHMember.getSession() : null;
-    if (session && session.firstName) {
-      memberHeaderEl.textContent = `Yer Shows, ${session.firstName} (No. ${session.memberNumber})`;
-      memberHeaderEl.style.display = '';
-    } else if (session && session.memberNumber) {
-      memberHeaderEl.textContent = `Yer Shows (No. ${session.memberNumber})`;
+    if (session && (session.firstName || session.memberNumber)) {
+      // The number stays off screen until asked for, so a screenshot never shows it (audit SEC-12)
+      memberHeaderEl.textContent = session.firstName ? `Yer Shows, ${session.firstName} ` : 'Yer Shows ';
+      const num = document.createElement('span');
+      num.textContent = `(No. ${session.memberNumber}) `;
+      num.hidden = true;
+      const numBtn = document.createElement('button');
+      numBtn.type = 'button';
+      numBtn.textContent = 'Show my number';
+      numBtn.setAttribute('aria-expanded', 'false');
+      numBtn.style.cssText = 'background:none;border:none;padding:4px 0;min-height:24px;color:var(--muted);font-family:Poppins,sans-serif;font-size:0.8rem;cursor:pointer;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;';
+      numBtn.addEventListener('click', () => {
+        num.hidden = !num.hidden;
+        numBtn.textContent = num.hidden ? 'Show my number' : 'Hide my number';
+        numBtn.setAttribute('aria-expanded', String(!num.hidden));
+      });
+      if (session.memberNumber && !session.guest) memberHeaderEl.append(num, numBtn);
       memberHeaderEl.style.display = '';
     } else {
       memberHeaderEl.textContent = '';
@@ -1222,7 +1299,8 @@ async function renderMyShows() {
   });
 
   // Calculate stats
-  const cities = new Set(shows.map(s => s.city).filter(Boolean));
+  // A city is name + state + country: London, Ontario and London, England are two (audit DATA-10)
+  const cities = new Set(shows.filter(s => s.city).map(s => [s.city, s.state, s.country].join('|')));
   const venues = new Set(shows.map(s => s.venue).filter(Boolean));
   const years = new Set(shows.map(s => s.date.split('-')[2]));
   const tours = new Set(shows.map(s => s.tour).filter(Boolean));
@@ -1255,12 +1333,12 @@ async function renderMyShows() {
   // Render show list
   let html = '';
   if (topSong) {
-    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.78rem;color:var(--muted);">Most heard song: <span style="color:var(--text);font-weight:700;">${topSong[0]}</span> (${topSong[1]}x)</div>`;
+    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.78rem;color:var(--muted);">Most heard song: <span style="color:var(--text);font-weight:700;">${escapeHtml(topSong[0])}</span> (${topSong[1]}x)</div>`;
   }
   if (shows.length > 0) {
     const first = shows[0];
     const last = shows[shows.length - 1];
-    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.72rem;color:var(--muted2);">First show: ${formatSetlistDate(first.date)} at ${first.venue} &middot; Most recent: ${formatSetlistDate(last.date)} at ${last.venue}</div>`;
+    html += `<div style="text-align:center;margin-bottom:20px;font-size:0.72rem;color:var(--muted2);">First show: ${formatSetlistDate(first.date)} at ${escapeHtml(first.venue)} &middot; Most recent: ${formatSetlistDate(last.date)} at ${escapeHtml(last.venue)}</div>`;
   }
 
   shows.slice().reverse().forEach(s => {
@@ -1271,11 +1349,11 @@ async function renderMyShows() {
       if (sg.set !== currentSet) {
         currentSet = sg.set;
         if (currentSet !== 'Main Set') {
-          songsHtml += `<span class="encore-label">${currentSet}</span>`;
+          songsHtml += `<span class="encore-label">${escapeHtml(currentSet)}</span>`;
         }
       }
-      const coverNote = sg.cover ? ` <span class="song-cover">(${sg.cover} cover)</span>` : '';
-      songsHtml += `<span class="song-name">${sg.name}</span>${coverNote} &middot; `;
+      const coverNote = sg.cover ? ` <span class="song-cover">(${escapeHtml(sg.cover)} cover)</span>` : '';
+      songsHtml += `<span class="song-name">${escapeHtml(sg.name)}</span>${coverNote} &middot; `;
     });
     songsHtml = songsHtml.replace(/ &middot; $/, '');
 
@@ -1283,15 +1361,15 @@ async function renderMyShows() {
       <div class="setlist-card attended">
         <div class="setlist-card-header">
           <span class="setlist-date">${formatSetlistDate(s.date)}</span>
-          <span class="setlist-city">${location}</span>
+          <span class="setlist-city">${escapeHtml(location)}</span>
         </div>
-        <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
-        ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
-        ${s.dateNote ? `<div class="date-note" title="${s.dateNote.replace(/"/g, '&quot;')}">Date unconfirmed</div>` : ''}
+        <div class="setlist-venue">${escapeHtml(s.venue || 'Unknown venue')}</div>
+        ${s.tour ? `<span class="setlist-tour">${escapeHtml(s.tour)}</span>` : ''}
+        ${s.dateNote ? `<div class="date-note" title="${escapeHtml(s.dateNote)}">Date unconfirmed</div>` : ''}
         <div class="setlist-songs">${songsHtml}</div>
         <div class="setlist-card-footer">
-          <button class="iwt-btn active" data-show-id="${s.id}">I Was There ✓</button>
-          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>
+          <button class="iwt-btn active" data-show-id="${escapeHtml(s.id)}">I Was There ✓</button>
+          ${httpsOnly(s.url) ? `<a href="${escapeHtml(httpsOnly(s.url))}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>` : ''}
         </div>
       </div>`;
   });
@@ -1310,29 +1388,38 @@ async function renderMyShows() {
 let setlistData = null;
 let setlistInitialized = false;
 let showVideosMap = {}; // showId -> [video refs]; populated lazily alongside setlist data
+let setlistPromise = null; // the download in progress, shared by every caller
 
-async function loadSetlistData() {
-  if (setlistData) return setlistData;
-  try {
-    // Fetch both in parallel; show-videos is non-fatal if it fails
-    const [resp, svResp] = await Promise.all([
-      fetch('data/setlists.min.json'),
-      fetch('data/show-videos.json').catch(() => null),
-    ]);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    setlistData = await resp.json();
-    (setlistData.setlists || []).forEach(s => { s.tour = window.tthAlbumCase(s.tour); });
-    if (svResp && svResp.ok) {
-      try {
-        const svData = await svResp.json();
-        if (svData && svData.byShow) showVideosMap = svData.byShow;
-      } catch (_) { /* hide silently */ }
+// Every part of the page that needs the setlists shares one download (audit PERF-02:
+// the 2 MB file used to be fetched and read twice when two callers asked at once).
+// A failed load clears the shared copy so the next ask tries again.
+function loadSetlistData() {
+  if (setlistData) return Promise.resolve(setlistData);
+  if (!setlistPromise) setlistPromise = (async () => {
+    try {
+      // Fetch both in parallel; show-videos is non-fatal if it fails
+      const [resp, svResp] = await Promise.all([
+        fetch('data/setlists.min.json'),
+        fetch('data/show-videos.json').catch(() => null),
+      ]);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      (data.setlists || []).forEach(s => { s.tour = window.tthAlbumCase(s.tour); });
+      if (svResp && svResp.ok) {
+        try {
+          const svData = await svResp.json();
+          if (svData && svData.byShow) showVideosMap = svData.byShow;
+        } catch (_) { /* hide silently */ }
+      }
+      setlistData = data;
+      return setlistData;
+    } catch (e) {
+      console.error('Failed to load setlist data:', e);
+      setlistPromise = null;
+      return null;
     }
-    return setlistData;
-  } catch (e) {
-    console.error('Failed to load setlist data:', e);
-    return null;
-  }
+  })();
+  return setlistPromise;
 }
 
 function formatSetlistDate(dateStr) {
@@ -1352,7 +1439,9 @@ async function initSetlistExplorer() {
 
   const data = await loadSetlistData();
   if (!data) {
-    document.getElementById('setlistEmpty').textContent = "Couldn't load the setlist data. Check yer connection and refresh.";
+    const failEl = document.getElementById('setlistEmpty');
+    failEl.textContent = "Couldn't load the setlist data. Check yer connection and refresh.";
+    failEl.style.minHeight = '0'; // the loading space (audit PERF-02) isn't needed for one line
     return;
   }
 
@@ -1444,13 +1533,16 @@ async function initSetlistExplorer() {
       topEl.innerHTML = '<div style="font-size:0.7rem;color:var(--muted2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Most Played Songs</div><div class="setlist-top-songs-grid"></div>';
       const grid = topEl.querySelector('.setlist-top-songs-grid');
       topSongs.forEach(([name, count]) => {
-        const pill = document.createElement('span');
+        // A real button, so the keyboard reaches it (audit A11Y-14)
+        const pill = document.createElement('button');
+        pill.type = 'button';
         pill.className = 'setlist-top-pill';
-        pill.innerHTML = `${name} <span class="pill-ct">${count}</span>`;
+        pill.innerHTML = `${escapeHtml(name)} <span class="pill-ct">${count}</span>`;
+        pill.setAttribute('aria-label', `${name}, ${count} plays`);
         pill.addEventListener('click', () => {
           document.getElementById('setlistSearch').value = name;
           currentPage = 1;
-          render();
+          render(true);
         });
         grid.appendChild(pill);
       });
@@ -1467,6 +1559,39 @@ async function initSetlistExplorer() {
     infoEl.textContent = `Showing ${showing.length} of ${filtered.length} shows`;
     container.innerHTML = '';
 
+    // Nothing matched: say so, with a way back (audit FUNC-09)
+    if (!filtered.length) {
+      infoEl.textContent = '';
+      const staleMore = container.parentElement.querySelector('.setlist-load-more');
+      if (staleMore) staleMore.remove();
+      const searchBox = document.getElementById('setlistSearch');
+      const query = searchBox.value.trim();
+      const none = document.createElement('div');
+      none.className = 'setlist-empty';
+      none.setAttribute('role', 'status');
+      const msg = document.createElement('p');
+      msg.textContent = query
+        ? `No shows match '${query.length > 60 ? query.slice(0, 60) + '...' : query}'. Try a song, a venue, a city, or a date like July 1996.`
+        : (showOnlyAttended ? 'No shows match these filters among the shows you were at.' : 'No shows match these filters.');
+      const clearBtn = document.createElement('button');
+      clearBtn.type = 'button';
+      clearBtn.className = 'setlist-load-more';
+      clearBtn.textContent = query ? 'Clear search' : 'Clear filters';
+      clearBtn.addEventListener('click', () => {
+        searchBox.value = '';
+        if (!query) {
+          yearSelect.value = ''; tourSelect.value = ''; citySelect.value = '';
+          if (showOnlyAttended) iwtToggle.click();
+        }
+        currentPage = 1;
+        render();
+        searchBox.focus();
+      });
+      none.append(msg, clearBtn);
+      container.appendChild(none);
+      return;
+    }
+
     showing.forEach(s => {
       const card = document.createElement('div');
       const isAttended = attendedShows.has(s.id);
@@ -1479,11 +1604,11 @@ async function initSetlistExplorer() {
         if (sg.set !== currentSet) {
           currentSet = sg.set;
           if (currentSet !== 'Main Set') {
-            songsHtml += `<span class="encore-label">${currentSet}</span>`;
+            songsHtml += `<span class="encore-label">${escapeHtml(currentSet)}</span>`;
           }
         }
-        const coverNote = sg.cover ? ` <span class="song-cover">(${sg.cover} cover)</span>` : '';
-        songsHtml += `<span class="song-name">${sg.name}</span>${coverNote} &middot; `;
+        const coverNote = sg.cover ? ` <span class="song-cover">(${escapeHtml(sg.cover)} cover)</span>` : '';
+        songsHtml += `<span class="song-name">${escapeHtml(sg.name)}</span>${coverNote} &middot; `;
       });
       // Remove trailing middot
       songsHtml = songsHtml.replace(/ &middot; $/, '');
@@ -1500,10 +1625,12 @@ async function initSetlistExplorer() {
           const metaParts = [];
           if (v.trackCount) metaParts.push(v.trackCount + ' tracks');
           if (v.partialTracklist) metaParts.push('partial');
-          const safeTitle = (v.title || 'recording').replace(/"/g, '&quot;');
-          return `<a class="setlist-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${safeTitle} on YouTube">` +
-                   `<img src="${v.thumbnail || ''}" alt="" loading="lazy" data-onerror="hide">` +
-                   `<span class="setlist-video-thumb-tag">${primaryTag}</span>` +
+          const safeTitle = escapeHtml(v.title || 'recording');
+          // The link's name is its own words plus a hidden lead-in, so it matches what's shown (audit A11Y-11)
+          return `<a class="setlist-video-thumb" href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer">` +
+                   `<span class="sr-only">Watch ${safeTitle} on YouTube: </span>` +
+                   `<img src="${escapeHtml(v.thumbnail || '')}" alt="" loading="lazy" data-onerror="hide">` +
+                   `<span class="setlist-video-thumb-tag">${escapeHtml(primaryTag)}</span>` +
                    (metaParts.length ? `<div class="setlist-video-thumb-meta">${metaParts.join(' · ')}</div>` : '') +
                  `</a>`;
         }).join('');
@@ -1513,16 +1640,16 @@ async function initSetlistExplorer() {
       card.innerHTML = `
         <div class="setlist-card-header">
           <span class="setlist-date">${formatSetlistDate(s.date)}</span>
-          <span class="setlist-city">${location}</span>
+          <span class="setlist-city">${escapeHtml(location)}</span>
         </div>
-        <div class="setlist-venue">${s.venue || 'Unknown venue'}</div>
-        ${s.tour ? `<span class="setlist-tour">${s.tour}</span>` : ''}
-        ${s.dateNote ? `<div class="date-note" title="${s.dateNote.replace(/"/g, '&quot;')}">Date unconfirmed</div>` : ''}
+        <div class="setlist-venue">${escapeHtml(s.venue || 'Unknown venue')}</div>
+        ${s.tour ? `<span class="setlist-tour">${escapeHtml(s.tour)}</span>` : ''}
+        ${s.dateNote ? `<div class="date-note" title="${escapeHtml(s.dateNote)}">Date unconfirmed</div>` : ''}
         <div class="setlist-songs">${songsHtml}</div>
         ${videosHtml}
         <div class="setlist-card-footer">
-          <button class="iwt-btn${isAttended ? ' active' : ''}" data-show-id="${s.id}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>
-          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>
+          <button class="iwt-btn${isAttended ? ' active' : ''}" data-show-id="${escapeHtml(s.id)}">${isAttended ? 'I Was There ✓' : 'I Was There'}</button>
+          ${httpsOnly(s.url) ? `<a href="${escapeHtml(httpsOnly(s.url))}" target="_blank" rel="noopener noreferrer" class="setlist-link">View on setlist.fm</a>` : ''}
         </div>
       `;
 
@@ -1551,20 +1678,21 @@ async function initSetlistExplorer() {
     }
   }
 
-  function render() {
+  function render(say) {
     const filtered = getFiltered();
     renderSummary(filtered);
     renderCards(filtered);
+    if (say) announce(filtered.length === 1 ? '1 show' : `${filtered.length.toLocaleString()} shows`);
   }
 
   // Event listeners
-  yearSelect.addEventListener('change', () => { currentPage = 1; render(); });
-  tourSelect.addEventListener('change', () => { currentPage = 1; render(); });
-  citySelect.addEventListener('change', () => { currentPage = 1; render(); });
+  yearSelect.addEventListener('change', () => { currentPage = 1; render(true); });
+  tourSelect.addEventListener('change', () => { currentPage = 1; render(true); });
+  citySelect.addEventListener('change', () => { currentPage = 1; render(true); });
   let searchTimeout;
   document.getElementById('setlistSearch').addEventListener('input', () => {
     clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => { currentPage = 1; render(); }, 300);
+    searchTimeout = setTimeout(() => { currentPage = 1; render(true); }, 300);
   });
 
   render();
@@ -1665,6 +1793,10 @@ async function loadLyricsFromStatic(onProgress) {
 function escapeHtml(str) {
   return String(str == null ? '' : str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
+// Links from setlist.fm data: https: only (audit SEC-11)
+function httpsOnly(u) {
+  return (typeof u === 'string' && /^https:\/\//i.test(u.trim())) ? u.trim() : '';
+}
 
 // Folded copy of each song's lines, kept so repeat searches don't fold the whole archive again
 const foldedLyricsCache = new Map();
@@ -1672,22 +1804,30 @@ function foldedLines(key, lyrics) {
   let hit = foldedLyricsCache.get(key);
   if (!hit || hit.src !== lyrics) {
     const lines = lyrics.split('\n').filter(l => l.trim());
-    hit = { src: lyrics, lines, folded: lines.map(l => window.tthFold(l)) };
+    const folded = lines.map(l => window.tthFold(l));
+    // Apostrophes dropped too, so "dont" and "im" typed on a phone find "don't" and "I'm" (FUNC-14)
+    hit = { src: lyrics, lines, folded, bare: folded.map(noApostrophes) };
     foldedLyricsCache.set(key, hit);
   }
   return hit;
 }
+function noApostrophes(s) { return s.replace(/'/g, ''); }
 
-// Wraps every match of the folded query in <mark>, in the original (escaped) line
+// Wraps every match of the folded query in <mark>, in the original (escaped) line.
+// Matches with apostrophes dropped on both sides, like searchLyrics.
 function highlightLine(line, foldedQuery) {
   if (!foldedQuery) return escapeHtml(line);
   const f = window.tthFoldMap(line);
+  let q = noApostrophes(foldedQuery), s = '', map = [];
+  if (q) {
+    for (let i = 0; i < f.s.length; i++) if (f.s.charAt(i) !== "'") { s += f.s.charAt(i); map.push(f.map[i]); }
+  } else { q = foldedQuery; s = f.s; map = f.map; }
   let out = '', last = 0, from = 0, at;
-  while ((at = f.s.indexOf(foldedQuery, from)) !== -1) {
-    const start = f.map[at], end = f.map[at + foldedQuery.length - 1] + 1;
+  while ((at = s.indexOf(q, from)) !== -1) {
+    const start = map[at], end = map[at + q.length - 1] + 1;
     out += escapeHtml(line.slice(last, start)) + '<mark>' + escapeHtml(line.slice(start, end)) + '</mark>';
     last = end;
-    from = at + foldedQuery.length;
+    from = at + q.length;
   }
   return out + escapeHtml(line.slice(last));
 }
@@ -1698,16 +1838,17 @@ function searchLyrics(query) {
   const results = [];
   const q = window.tthFold(query);
   if (!q) return results;
+  const qBare = noApostrophes(q);
 
   allSongs.forEach(s => {
     const key = `${s.album}|||${s.song}`;
     const lyrics = cache[key];
     if (!lyrics) return;
 
-    const { lines, folded } = foldedLines(key, lyrics);
+    const { lines, folded, bare } = foldedLines(key, lyrics);
     const matchingLines = [];
     lines.forEach((line, idx) => {
-      if (folded[idx].includes(q)) {
+      if (qBare ? bare[idx].includes(qBare) : folded[idx].includes(q)) {
         // Get context: line before and after
         const context = [];
         if (idx > 0 && lines[idx - 1].trim()) context.push(lines[idx - 1]);
@@ -1746,12 +1887,14 @@ function renderLyricsResults(results, query) {
     breakdownEl.innerHTML = '';
     emptyEl.style.display = '';
     emptyEl.innerHTML = `<p>No lyrics found matching "<strong>${escapeHtml(query)}</strong>"</p><p style="font-size:0.75rem;margin-top:8px;color:var(--muted2)">Try a different word or phrase. Some songs may not have cached lyrics yet.</p>`;
+    announce(`No lyrics found matching ${query}`);
     return;
   }
 
   emptyEl.style.display = 'none';
   const totalMatches = results.reduce((s, r) => s + r.matchCount, 0);
   countEl.textContent = `${totalMatches} match${totalMatches !== 1 ? 'es' : ''} across ${results.length} song${results.length !== 1 ? 's' : ''}`;
+  announce(countEl.textContent);
 
   // Album breakdown
   const albumCounts = {};
@@ -1820,8 +1963,8 @@ async function autoLoadLyrics(onComplete) {
   statusEl.style.display = '';
   statusEl.innerHTML = `
     <div class="lyrics-loading-state">
-      <div class="lyrics-loading-title">Building Lyrics Index</div>
-      <div class="lyrics-loading-subtitle">Loading lyrics for all 188 songs...</div>
+      <div class="lyrics-loading-title">Getting the lyrics ready</div>
+      <div class="lyrics-loading-subtitle">Pulling in the words to all 188 songs...</div>
       <div class="lyrics-progress-bar"><div class="lyrics-progress-fill" id="lyricsAutoFill"></div></div>
       <div class="lyrics-progress-song" id="lyricsAutoSong"></div>
     </div>`;
@@ -1837,7 +1980,7 @@ async function autoLoadLyrics(onComplete) {
   if (cache) {
     const allSongs = getAllSongsForLyrics();
     const found = allSongs.filter(s => { const v = cache[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
-    statusEl.innerHTML = `<div class="lyrics-loading-state"><div class="lyrics-ready-msg">Ready to search - ${found} songs indexed</div></div>`;
+    statusEl.innerHTML = `<div class="lyrics-loading-state"><div class="lyrics-ready-msg">All set - ${found} songs ready to search</div></div>`;
     setTimeout(() => { statusEl.style.display = 'none'; emptyEl.style.display = ''; updateLyricsCacheStatus(); }, 1500);
     onComplete();
   } else {
@@ -1987,7 +2130,6 @@ function updateLyricsCacheStatus() {
       const num = document.getElementById('statNum' + (i + 1));
       if (!num) return;
       num.textContent = categoryStats.lyrics[i].num;
-      num.parentElement.setAttribute('aria-label', categoryStats.lyrics[i].num + ' ' + categoryStats.lyrics[i].lbl);
     });
   }
 
@@ -1995,18 +2137,18 @@ function updateLyricsCacheStatus() {
   if (!statusArea) return;
   if (cached === 0) {
     statusArea.innerHTML = `
-      <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">No lyrics cached.
-        <button class="lyrics-cache-btn" id="lyricsBuildBtn" style="display:inline;margin-left:8px">Retry Build</button>
+      <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">The lyrics didn't load.
+        <button class="lyrics-cache-btn" id="lyricsBuildBtn" style="display:inline;margin-left:8px">Try again</button>
       </p>`;
     document.getElementById('lyricsBuildBtn').addEventListener('click', () => {
       autoLoadLyrics(enableLyricsSearch);
     });
   } else {
     statusArea.innerHTML = `
-      <p style="margin-top:12px;font-size:0.75rem;color:var(--muted)">${found} of ${allSongs.length} songs indexed with lyrics</p>
+      <p style="margin-top:12px;font-size:0.75rem;color:var(--muted)">Lyrics ready for ${found} of ${allSongs.length} songs, saved on this device</p>
       <div class="lyrics-cache-actions">
-        <button class="lyrics-cache-btn" id="lyricsRebuildBtn">Rebuild Index</button>
-        <button class="lyrics-cache-btn" id="lyricsClearBtn">Clear Cache</button>
+        <button class="lyrics-cache-btn" id="lyricsRebuildBtn">Load them fresh</button>
+        <button class="lyrics-cache-btn" id="lyricsClearBtn">Clear them off this device</button>
       </div>`;
     document.getElementById('lyricsRebuildBtn')?.addEventListener('click', () => {
       localStorage.removeItem(LYRICS_CACHE_KEY);
@@ -2028,7 +2170,7 @@ async function startBuildIndex() {
   const btn = document.getElementById('lyricsSearchBtn');
   btn.disabled = true;
   statusEl.style.display = '';
-  statusEl.innerHTML = 'Loading lyrics data...<div class="lyrics-status-bar"><div class="lyrics-status-fill" id="lyricsFill"></div></div>';
+  statusEl.innerHTML = 'Getting the lyrics ready...<div class="lyrics-status-bar"><div class="lyrics-status-fill" id="lyricsFill"></div></div>';
 
   const fill = document.getElementById('lyricsFill');
 
@@ -2036,7 +2178,7 @@ async function startBuildIndex() {
   let cache = await loadLyricsFromStatic((done, total, songName) => {
     const pct = Math.round((done / total) * 100);
     fill.style.width = pct + '%';
-    statusEl.innerHTML = `Loading: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
+    statusEl.innerHTML = `Loading ${songName} (${done} of ${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
   });
 
   btn.disabled = false;
@@ -2046,7 +2188,7 @@ async function startBuildIndex() {
   }
   const allSongs = getAllSongsForLyrics();
   const found = allSongs.filter(s => { const v = (cache || {})[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
-  statusEl.innerHTML = `Index complete - ${found} songs with lyrics found`;
+  statusEl.innerHTML = `All set - ${found} songs ready to search`;
   setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
   updateLyricsCacheStatus();
 }
@@ -2081,24 +2223,38 @@ function buildSongIndex() {
   });
 }
 
+// Titles that have their own song page, filled in when data/song-index.json arrives (FUNC-05)
+let songPageKeys = null;
+songIndexData.then(idx => { if (idx) songPageKeys = new Set(idx.songs.map(so => livePlayTitleKey(so.t))); });
+
 function getSongSearchSuggestions(query) {
   if (!query || query.length < 1) return [];
-  const q = query.toLowerCase();
+  // Curly or straight apostrophes, accents, and no apostrophe at all all match
+  // ("Don’t", "don't", "dont", "fiddlers") - audit FUNC-02
+  const fold = window.tthFold || (t => String(t).toLowerCase());
+  const bare = t => t.replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
+  const q = fold(query);
+  const qBare = bare(q);
+  const hit = title => { const t = fold(title); return t.includes(q) || (qBare !== '' && bare(t).includes(qBare)); };
+  const starts = title => { const t = fold(title); return t.startsWith(q) || (qBare !== '' && bare(t).startsWith(qBare)); };
   // Get unique base song titles
   const seen = new Set();
   const results = [];
   songIndex.forEach(s => {
     const key = s.baseTitle.toLowerCase();
-    if (key.includes(q) && !seen.has(key)) {
+    if (!seen.has(key) && hit(s.baseTitle)) {
       seen.add(key);
       results.push({ title: s.baseTitle, album: s.album, year: s.albumYear });
     }
   });
-  // Sort: exact start match first, then alphabetical
+  // Sort: exact start match first, then titles with a song page (so Enter on "courage"
+  // opens the full song, not a live album's shorter title - FUNC-05), then alphabetical
+  const hasPage = title => (songPageKeys && songPageKeys.has(livePlayTitleKey(title))) ? 0 : 1;
   results.sort((a, b) => {
-    const aStarts = a.title.toLowerCase().startsWith(q) ? 0 : 1;
-    const bStarts = b.title.toLowerCase().startsWith(q) ? 0 : 1;
+    const aStarts = starts(a.title) ? 0 : 1;
+    const bStarts = starts(b.title) ? 0 : 1;
     if (aStarts !== bStarts) return aStarts - bStarts;
+    if (hasPage(a.title) !== hasPage(b.title)) return hasPage(a.title) - hasPage(b.title);
     return a.title.localeCompare(b.title);
   });
   return results.slice(0, 15);
@@ -2120,12 +2276,25 @@ function findSongAcrossAlbums(songTitle) {
   return appearances;
 }
 
-function findSongInSetlists(songTitle) {
-  if (!setlistData) return [];
-  const q = songTitle.toLowerCase();
-  return setlistData.setlists.filter(s =>
-    s.songs.some(sg => sg.name.toLowerCase() === q && !sg.tape)
-  );
+// Live performances come from data/song-index.json, the same file as the song pages,
+// Live Stats and the album flip cards, so medleys and other spellings count too
+// (audit DATA-02). A title that isn't on the official song list (a cover, say) still
+// counts setlist entries with exactly its name, as before.
+async function findSongInSetlists(songTitle) {
+  const idx = await songIndexData;
+  const key = livePlayTitleKey(songTitle);
+  const so = idx && idx.songs.find(x => livePlayTitleKey(x.t) === key);
+  if (!so) {
+    const data = await loadSetlistData();
+    if (!data) return [];
+    const q = songTitle.toLowerCase();
+    return data.setlists.filter(s => s.songs.some(sg => sg.name.toLowerCase() === q && !sg.tape));
+  }
+  return so.p.map(i => {
+    const r = idx.shows[i];
+    const [y, m, d] = r[1].split('-');
+    return { date: d + '-' + m + '-' + y, venue: r[2], city: r[3], state: r[4], country: r[5], tour: window.tthAlbumCase ? window.tthAlbumCase(r[6]) : r[6] };
+  });
 }
 
 function findSongInTop40(songTitle) {
@@ -2275,8 +2444,7 @@ function renderSongResults(songTitle) {
   // 2. TTHTop40 ranking
   const top40 = findSongInTop40(songTitle);
 
-  // 3. Setlist appearances
-  const setlists = findSongInSetlists(songTitle);
+  // 3. Setlist appearances: filled in below once data/song-index.json is in
 
   // 4. Lyrics
   const lyrics = findSongLyrics(songTitle);
@@ -2331,15 +2499,20 @@ function renderSongResults(songTitle) {
     item.className = 'song-result-item';
     const rankLabel = top40.rank <= 40 ? 'The Tragically Hip Top Forty Countdown' : 'Full 169 Fan Vote';
     const road = top40.rank > 40 ? roadEpisodeForRank(top40.rank) : null;
-    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--text);font-weight:800;">No. ${top40.rank}</span></div><div class="item-sub">From ${top40.album}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
+    item.innerHTML = `<div class="item-main">${rankLabel}: <span style="color:var(--text);font-weight:800;">No. ${top40.rank}</span></div><div class="item-sub">From ${escapeHtml(top40.album)}${top40.year ? ` (${top40.year})` : ''}${top40.points ? ' &middot; ' + top40.points + ' points' : ''}${road ? ` &middot; <a href="${road.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">🎙 Hear it on Road to the Top 40 - Ep ${road.ep}</a>` : ''}</div>`;
     group.appendChild(item);
     resultsEl.appendChild(group);
   }
 
-  // Setlist appearances
-  if (setlists.length > 0) {
-    const group = document.createElement('div');
-    group.className = 'song-result-group';
+  // Setlist appearances (a placeholder keeps their place above the lyrics)
+  const liveGroup = document.createElement('div');
+  liveGroup.className = 'song-result-group';
+  liveGroup.style.display = 'none';
+  resultsEl.appendChild(liveGroup);
+  findSongInSetlists(songTitle).then(setlists => {
+    if (!setlists.length) { liveGroup.remove(); return; }
+    const group = liveGroup;
+    group.style.display = '';
     group.innerHTML = `<div class="song-result-group-label">Live Performances <span class="count-badge">${setlists.length}</span></div>`;
 
     const initialShow = 10;
@@ -2356,7 +2529,7 @@ function renderSongResults(songTitle) {
         const loc = [s.city, s.state, s.country].filter(Boolean).join(', ');
         const item = document.createElement('div');
         item.className = 'song-result-item';
-        item.innerHTML = `<div class="song-result-setlist-row"><span class="song-result-setlist-date">${dateStr}</span><span class="song-result-setlist-venue">${s.venue || 'Unknown venue'}</span><span class="song-result-setlist-loc">${loc}</span></div>${s.tour ? '<div class="item-sub">' + s.tour + '</div>' : ''}`;
+        item.innerHTML = `<div class="song-result-setlist-row"><span class="song-result-setlist-date">${dateStr}</span><span class="song-result-setlist-venue">${escapeHtml(s.venue || 'Unknown venue')}</span><span class="song-result-setlist-loc">${escapeHtml(loc)}</span></div>${s.tour ? '<div class="item-sub">' + escapeHtml(s.tour) + '</div>' : ''}`;
         container.appendChild(item);
       });
     }
@@ -2373,9 +2546,7 @@ function renderSongResults(songTitle) {
       });
       group.appendChild(moreBtn);
     }
-
-    resultsEl.appendChild(group);
-  }
+  });
 
   // Lyrics snippet
   if (lyrics) {
@@ -2406,7 +2577,7 @@ function renderSongResults(songTitle) {
   }
 
   // No results at all
-  if (studioAppearances.length === 0 && otherAppearances.length === 0 && setlists.length === 0 && !top40 && !lyrics) {
+  if (studioAppearances.length === 0 && otherAppearances.length === 0 && !top40 && !lyrics) {
     resultsEl.innerHTML = `<p style="text-align:center;color:var(--muted2);padding:40px 20px;font-size:0.85rem;">No results found for "${escapeHtml(songTitle)}". Try a different song name.</p>`;
   }
 }
@@ -2416,22 +2587,51 @@ async function initSongSearch() {
   songSearchInitialized = true;
 
   buildSongIndex();
-  // Pre-load setlist data in background
-  loadSetlistData();
+  // Start the setlist download when the fan taps into the search box, not on page open (audit PERF-06)
+  const searchBox = document.getElementById('songSearchInput');
+  if (searchBox) searchBox.addEventListener('focus', () => { loadSetlistData(); });
 
   const input = document.getElementById('songSearchInput');
   const dropdown = document.getElementById('songSearchDropdown');
   let activeIdx = -1;
 
+  // Screen readers (audit A11Y-07): combobox + listbox, the arrow keys point at the
+  // highlighted option, and the result count is read out.
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+  input.setAttribute('aria-expanded', 'false');
+  input.setAttribute('aria-controls', 'songSearchDropdown');
+  dropdown.setAttribute('role', 'listbox');
+  dropdown.setAttribute('aria-label', 'Matching songs');
+  new MutationObserver(() => {
+    const open = dropdown.classList.contains('open');
+    input.setAttribute('aria-expanded', String(open));
+    if (!open) input.removeAttribute('aria-activedescendant');
+  }).observe(dropdown, { attributes: true, attributeFilter: ['class'] });
+  function setActive(opts, idx) {
+    opts.forEach((o, i) => {
+      o.classList.toggle('active', i === idx);
+      o.setAttribute('aria-selected', String(i === idx));
+    });
+    if (opts[idx]) {
+      input.setAttribute('aria-activedescendant', opts[idx].id);
+      opts[idx].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
   function showDropdown(suggestions) {
     if (suggestions.length === 0) {
       dropdown.classList.remove('open');
+      announce('No matching songs.');
       return;
     }
     dropdown.innerHTML = '';
     suggestions.forEach((s, i) => {
       const opt = document.createElement('div');
       opt.className = 'song-search-option';
+      opt.id = 'songSearchOpt' + i;
+      opt.setAttribute('role', 'option');
+      opt.setAttribute('aria-selected', 'false');
       opt.innerHTML = `<span class="opt-song">${escapeHtml(s.title)}</span><span class="opt-album">${escapeHtml(s.album)} (${escapeHtml(s.year)})</span>`;
       opt.addEventListener('mousedown', (e) => {
         e.preventDefault();
@@ -2441,12 +2641,14 @@ async function initSongSearch() {
     });
     activeIdx = -1;
     dropdown.classList.add('open');
+    announce(suggestions.length + (suggestions.length === 1 ? ' song' : ' songs') + '. Use the up and down arrows to choose.');
   }
 
   function selectSong(title) {
     input.value = title;
     dropdown.classList.remove('open');
     renderSongResults(title);
+    announce(`Showing results for ${title}`);
     // Results now render directly beneath the search input - just surface the top of the page
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
@@ -2468,11 +2670,11 @@ async function initSongSearch() {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       activeIdx = Math.min(activeIdx + 1, opts.length - 1);
-      opts.forEach((o, i) => o.classList.toggle('active', i === activeIdx));
+      setActive(opts, activeIdx);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       activeIdx = Math.max(activeIdx - 1, 0);
-      opts.forEach((o, i) => o.classList.toggle('active', i === activeIdx));
+      setActive(opts, activeIdx);
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (activeIdx >= 0 && opts[activeIdx]) {
@@ -2517,14 +2719,16 @@ function renderCategory(category) {
   for (let i = 0; i < 4; i++) {
     document.getElementById('statNum' + (i + 1)).textContent = stats[i].num;
     document.getElementById('statLbl' + (i + 1)).textContent = stats[i].lbl;
-    document.getElementById('statNum' + (i + 1)).parentElement.setAttribute('aria-label', stats[i].num + ' ' + stats[i].lbl);
+    // No aria-label on these plain divs: screen readers ignore it, and the text already says it (audit A11Y-20)
   }
 
   // Announce category change for screen readers
   const announceEl = document.getElementById('categoryAnnounce');
   if (announceEl) {
+    // Feature pages hide the buttons: name the view, not its internal id (audit FUNC-13)
     const activeBtn = document.querySelector('.category-btn.active');
-    announceEl.textContent = `Showing ${activeBtn ? activeBtn.textContent : category}`;
+    const feature = featureByCategory[category];
+    announceEl.textContent = `Showing ${activeBtn ? activeBtn.textContent : (feature ? feature.label : category)}`;
   }
 
   // Show/hide Top 40 section
@@ -2648,9 +2852,9 @@ catBtns.forEach((btn, idx) => {
 // for local testing - the page shows only that feature under its own header.
 const FEATURE_VIEWS = {
   'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
-    desc: 'Search the lyrics of 188 songs by The Tragically Hip by a word or phrase you remember.' },
+    desc: 'Search the lyrics of 188 songs by The Tragically Hip for a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
-    desc: 'Browse all 1,364 live shows and appearances from 1985 to 2022 - 1,092 with setlists - by song, venue, city, tour, or year. Powered by setlist.fm.' },
+    desc: 'Browse all 1,364 live shows and appearances from 1985 to 2022 - 1,092 with setlists - by song, venue, city, tour, or year. Setlists from setlist.fm.' },
   'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'The Tragically Hip Top Forty Countdown',
     desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from No. 1 to No. 169.' },
   'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',
@@ -2723,8 +2927,12 @@ try {
       }
     }, 100);
   } else if (catParam && categoryData[catParam]) {
-    renderCategory(catParam);
     const lyricsQ = params.get('q') || hashParams.get('q');
+    // /setlists?q=... (old #cat=setlists&q= links forward here): fill the search box
+    // before the explorer's first render reads it (audit FUNC-06)
+    const setlistSearchEl = document.getElementById('setlistSearch');
+    if (catParam === 'setlists' && lyricsQ && setlistSearchEl) setlistSearchEl.value = lyricsQ;
+    renderCategory(catParam);
     if (catParam === 'lyrics' && lyricsQ) {
       // Wait for the lyrics index to finish building, then run the query
       const tryLyricsQuery = (attempts) => {
@@ -2733,7 +2941,7 @@ try {
         if (input && btn && !input.disabled) {
           input.value = lyricsQ;
           btn.click();
-          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          input.scrollIntoView({ behavior: scrollBehavior(), block: 'center' });
         } else if (attempts > 0) {
           setTimeout(() => tryLyricsQuery(attempts - 1), 300);
         }
@@ -2742,7 +2950,9 @@ try {
     }
     if (albumParam) {
       setTimeout(() => {
-        const idx = categoryData[catParam].findIndex(a => a.title === albumParam);
+        // Case-insensitive, so an old link with "Up To Here Box Set" casing still opens it (audit BRAND-04)
+        const wanted = albumParam.toLowerCase();
+        const idx = categoryData[catParam].findIndex(a => a.title.toLowerCase() === wanted);
         if (idx >= 0) { currentAlbums = categoryData[catParam]; openModal(idx); }
       }, 50);
     }
@@ -2820,14 +3030,14 @@ document.querySelectorAll('.solo-member-btn').forEach(btn => {
       card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSoloModal(a); } });
       soloGrid.appendChild(card);
     });
-    window.scrollTo({ top: memberView.offsetTop - 100, behavior: 'smooth' });
+    window.scrollTo({ top: memberView.offsetTop - 100, behavior: scrollBehavior() });
   });
 });
 
 document.getElementById('soloBackBtn').addEventListener('click', () => {
   document.getElementById('soloMemberView').style.display = 'none';
   document.getElementById('soloLanding').style.display = '';
-  window.scrollTo({ top: document.getElementById('soloSection').offsetTop - 100, behavior: 'smooth' });
+  window.scrollTo({ top: document.getElementById('soloSection').offsetTop - 100, behavior: scrollBehavior() });
 });
 
 // Kitelink podcast episode URLs for TTHTop40 Countdown
@@ -2973,7 +3183,7 @@ function openModal(i) {
   const mArt = document.getElementById('mArt');
   if (a.img) {
     mArt.style.background = '';
-    mArt.innerHTML = `<img src="${a.img}" alt="${a.title}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${a.gradient}">`;
+    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${escapeHtml(a.gradient)}">`;
   } else {
     mArt.style.background = a.gradient;
     mArt.innerHTML = '';
@@ -2985,7 +3195,7 @@ function openModal(i) {
   document.getElementById('mSub').textContent = `${a.releaseDate || a.year} · ${a.num} of ${currentAlbums.length}`;
 
   const tagsEl = document.getElementById('mTags');
-  tagsEl.innerHTML = `<span class="modal-tag red">${a.type}</span>`;
+  tagsEl.innerHTML = `<span class="modal-tag red">${escapeHtml(a.type)}</span>`;
   if (a.chart !== '') {
     const isOne = /^No\. 1(?![0-9])/.test(a.chart);
     tagsEl.innerHTML += `<span class="modal-tag ${isOne ? 'gold' : 'dim'}">${isOne ? '<svg width="14" height="10" viewBox="0 0 3 2" style="vertical-align:-1px;margin-right:2px"><rect width="3" height="2" fill="#fff"/><rect x="1" width="1" height="2" fill="#C8102E"/><rect width="0.75" height="2" fill="#C8102E"/><rect x="2.25" width="0.75" height="2" fill="#C8102E"/></svg>' : ''}${a.chart}</span>`;
@@ -3034,15 +3244,17 @@ function openModal(i) {
       ${a.tracks.map((t, idx) => `
         <li class="track-flip-container">
           <div class="track-flip-inner">
-            <div class="track-flip-front track-item clickable" role="button" tabindex="0" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+            <div class="track-flip-front track-item clickable" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+              <button type="button" class="track-flip-open" aria-expanded="false">
               <span class="track-num">${idx + 1}</span>
               <span class="track-name">${t}</span>
               ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
               ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="The Tragically Hip Top Forty Countdown - No. ${top40Ranks.get(t)}">No. ${top40Ranks.get(t)}</span>` : '<span class="track-top40-badge" style="visibility:hidden">No. 00</span>'}
               <span class="track-flip-hint">LIVE STATS &#8635;</span>
-              <button class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
+              </button>
+              <button type="button" class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
             </div>
-            <div class="track-flip-back" role="button" tabindex="0" aria-label="Close live stats"></div>
+            <div class="track-flip-back" role="region" aria-label="Live stats: ${t.replace(/"/g, '&quot;')}" inert><div class="track-flip-data"></div><button type="button" class="track-flip-close">Back</button></div>
           </div>
         </li>
       `).join('')}
@@ -3106,7 +3318,7 @@ function openSoloModal(album) {
   const mArt = document.getElementById('mArt');
   if (a.img) {
     mArt.style.background = '';
-    mArt.innerHTML = `<img src="${a.img}" alt="${a.title}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${a.gradient}">`;
+    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${escapeHtml(a.gradient)}">`;
   } else {
     mArt.style.background = a.gradient;
     mArt.innerHTML = '';
@@ -3147,13 +3359,15 @@ function openSoloModal(album) {
       ${a.tracks.map((t, idx) => `
         <li class="track-flip-container">
           <div class="track-flip-inner">
-            <div class="track-flip-front track-item clickable" role="button" tabindex="0" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+            <div class="track-flip-front track-item clickable" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
+              <button type="button" class="track-flip-open" aria-expanded="false">
               <span class="track-num">${idx + 1}</span>
               <span class="track-name">${t}</span>
               <span class="track-flip-hint">LIVE STATS &#8635;</span>
-              <button class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
+              </button>
+              <button type="button" class="track-stream-icon" aria-label="Stream ${t.replace(/"/g, '&quot;')}" title="Stream this track"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
             </div>
-            <div class="track-flip-back" role="button" tabindex="0" aria-label="Close live stats"></div>
+            <div class="track-flip-back" role="region" aria-label="Live stats: ${t.replace(/"/g, '&quot;')}" inert><div class="track-flip-data"></div><button type="button" class="track-flip-close">Back</button></div>
           </div>
         </li>
       `).join('')}

@@ -7,16 +7,16 @@
   <meta name="description" content="What The Hip Handbook keeps, where it goes, and how to see, fix, or delete yer membersHIP details.">
   <meta property="og:title" content="Privacy - The Hip Handbook">
   <meta property="og:description" content="What The Hip Handbook keeps, where it goes, and how to see, fix, or delete yer membersHIP details.">
-  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thehiphandbook.tthpods.com/privacy.html">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/privacy">
   <meta property="og:site_name" content="The Hip Handbook">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://thehiphandbook.tthpods.com/privacy.html">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true"></script>
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/privacy">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
@@ -82,8 +82,10 @@
 
   <section class="privacy-section">
     <h2>If you claim a membersHIP number</h2>
-    <p>I keep yer first name, yer last name or initial, yer favourite song (if you share it), yer membersHIP number, and the shows you mark in yer Passport. That's it. No email, no password, no phone number, and no payment details.</p>
-    <p>It's stored with Supabase, a database service, on servers in the United States (North Virginia). Only the site's sign-in and Passport can reach it, and only I can see the full list. Yer first name and number are yer sign-in, so keep yer number to yerself.</p>
+    <p>I keep yer first name, yer last name or initial, yer favourite song (if you share it), yer membersHIP number, and the shows you mark in Yer Hip Passport. That's it for yer details. No email, no password, no phone number, and no payment details.</p>
+    <p>It's stored with Supabase, a database service, on servers in the United States (Northern Virginia). Only the site's sign-in and yer Passport can reach it, and only I can see the full list. Yer first name and number are yer sign-in, so keep yer number to yerself.</p>
+    <p>To stop people guessing numbers or grabbing hundreds of them, the database looks at yer internet address when you claim a number, sign in, or save shows. If you type the wrong name or number, it keeps a scrambled copy of that address for 24 hours. When you claim a number, it keeps one for two days. The scrambling uses a secret key that's never published. Supabase also keeps its own short-term logs of every request, address included.</p>
+    <p>I keep these details to run yer membersHIP and Passport, because you asked for one when you claimed yer number. If you're under 13, ask a parent or guardian before you claim one.</p>
   </section>
 
   <section class="privacy-section">
@@ -94,7 +96,7 @@
 
   <section class="privacy-section">
     <h2>Visitor counts</h2>
-    <p>I use Umami to see how the site gets used. It uses no cookies and doesn't store yer IP address. It sees the page you opened, the site that sent you, yer screen size, language, and rough country. It also logs actions by name, like "Game - Started" or "Passport - Card saved", which outside links get clicked, and error messages when something on a page breaks, so I can fix it. It never gets yer name or number. That data sits on Umami's servers.</p>
+    <p>I use Umami to see how the site gets used. It uses no cookies and doesn't store yer IP address. It sees the page you opened and its title, the site that sent you, yer browser, device type, screen size, language, and rough location (country, region, and city, worked out from yer IP address). The words you search for on the site aren't sent. It also logs actions by name, like "Game - Started" or "Passport - Card saved", which outside links get clicked (the full link), and error messages when something on a page breaks, so I can fix it. It never gets yer name or number. That data sits on Umami's servers.</p>
     <p>If yer browser sends "Do Not Track", Umami counts nothing from you.</p>
   </section>
 
@@ -103,9 +105,10 @@
     <p>Loading any web page means yer device talks to the servers sending it, and they see yer IP address. Here, that's:</p>
     <ul>
       <li>Netlify, which hosts the site</li>
-      <li>CARTO (map tiles) and unpkg (map code), on the Tour Map and Passport</li>
+      <li>CARTO, which sends the map tiles on the Tour Map and Passport</li>
       <li>Backblaze, which sends the live recordings, only when you press play</li>
       <li>YouTube's image server, for video thumbnails</li>
+      <li>Supabase, which holds the membersHIP list, when you claim a number, sign in, or save shows</li>
     </ul>
     <p>The Spotify, Apple Music, YouTube, and other listen buttons are plain links. Nothing goes to them until you tap one, and after that their own privacy rules apply.</p>
   </section>
@@ -117,12 +120,17 @@
 
   <section class="privacy-section">
     <h2>How long I keep it</h2>
-    <p>Yer membersHIP stays until you ask me to delete it.</p>
+    <p>Yer membersHIP stays until you ask me to delete it. When you take shows off yer Passport, I keep a copy of yer list from just before for 30 days, so I can put it back if someone messes with it. The scrambled addresses are gone within two days.</p>
   </section>
 
   <section class="privacy-section">
     <h2>See it, fix it, or delete it</h2>
-    <p>Email me at <a href="mailto:tthpodcastseries@gmail.com">tthpodcastseries@gmail.com</a> with yer first name and membersHIP number and tell me what you want: a copy of what I have, a fix, or a full delete. I do it by hand and I'll let you know when it's done. Deleting removes yer name, song, number, and Passport shows from the database. Anything on yer own device stays until you clear it.</p>
+    <p>Email me at <a href="mailto:tthpodcastseries@gmail.com">tthpodcastseries@gmail.com</a> with yer first name and membersHIP number and tell me what you want: a copy of what I have, a fix, or a full delete. I do it by hand and I'll let you know when it's done. Deleting removes yer name, song, number, Passport shows, and any saved copies of yer show list from the database. Anything on yer own device stays until you clear it.</p>
+  </section>
+
+  <section class="privacy-section">
+    <h2>If something goes wrong</h2>
+    <p>If member details ever get out, I'll say so here and in Yer Letter: what happened, whose details, and what I've done about it.</p>
   </section>
 
   <section class="privacy-section">

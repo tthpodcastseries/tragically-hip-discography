@@ -13,11 +13,11 @@ body { color: var(--text); }
 .stream-link-apple { color: var(--text); border-color: var(--red); }
 .stream-link-apple:hover, .stream-link-apple:focus { background: var(--red); color: #fff; }
 .stream-link-spotify { color: #1DB954; border-color: #1DB954; }
-.stream-link-spotify:hover, .stream-link-spotify:focus { background: #1DB954; color: #fff; }
+.stream-link-spotify:hover, .stream-link-spotify:focus { background: #1DB954; color: #0e0b16; }
 .stream-link-tidal { color: #00CCCC; border-color: #00CCCC; }
 .stream-link-tidal:hover, .stream-link-tidal:focus { background: #00CCCC; color: #000; }
 .stream-link-youtube { color: #E87C2A; border-color: #E87C2A; }
-.stream-link-youtube:hover, .stream-link-youtube:focus { background: #E87C2A; color: #fff; }
+.stream-link-youtube:hover, .stream-link-youtube:focus { background: #E87C2A; color: #0e0b16; }
 .stream-link-amazon { color: #C4A44A; border-color: #C4A44A; }
 .stream-link-amazon:hover, .stream-link-amazon:focus { background: #C4A44A; color: #000; }
 .stream-link-hip { color: #A87BDB; border-color: #A87BDB; }
@@ -182,9 +182,9 @@ body.view-mode .section-header { margin-bottom: 0; }
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 .stream-btn-apple { background: var(--red); color: #fff; }
-.stream-btn-spotify { background: #1DB954; color: #fff; }
+.stream-btn-spotify { background: #1DB954; color: #0e0b16; }
 .stream-btn-tidal { background: #00CCCC; color: #000; }
-.stream-btn-youtube { background: #E87C2A; color: #fff; }
+.stream-btn-youtube { background: #E87C2A; color: #0e0b16; }
 .stream-btn-amazon { background: #C4A44A; color: #000; }
 
 /* ─── MAIN ─── */
@@ -338,6 +338,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
   color: var(--text);
   margin-top: 6px;
 }
+/* Badges readable on phones: 12px or more (audit DEV-05) */
+@media (max-width: 600px) { .album-info-hint, .type-badge, .juno-badge { font-size: 0.75rem; } }
 
 /* ─── SOLO PROJECTS ─── */
 .solo-member-btn {
@@ -423,6 +425,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .song-info { min-width: 0; flex: 1; }
 .song-title { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .song-meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* On narrow phones, let long titles wrap instead of cutting them off (audit A11Y-20) */
+@media (max-width: 480px) { .song-title, .song-meta { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; } }
 .song-rank.beyond { color: var(--muted); }
 
 /* ─── BEYOND TOP 40 ─── */
@@ -469,8 +473,8 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 /* ─── LYRICS SEARCH ─── */
 .lyrics-section { display: none; padding: 0 16px 32px; max-width: 800px; margin: 0 auto; }
 .lyrics-search-bar { display: flex; gap: 10px; margin-bottom: 20px; }
-.lyrics-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
-.lyrics-search-input:focus { border-color: var(--gold); }
+.lyrics-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid #929292; background: var(--bg2); color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
+.lyrics-search-input:focus { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 2px; }
 .lyrics-search-input { min-width: 0; }
 @media (max-width: 380px) { .lyrics-search-bar { gap: 8px; } .lyrics-search-btn { padding: 12px 16px; } }
 .lyrics-search-input::placeholder { color: var(--muted2); }
@@ -523,15 +527,17 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 /* ─── SETLIST EXPLORER ─── */
 .setlist-section { display: none; padding: 0 16px 32px; max-width: 900px; margin: 0 auto; }
 .setlist-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-.setlist-filter { padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; min-width: 140px; cursor: pointer; }
-.setlist-filter:focus { border-color: var(--gold); }
+.setlist-filter { padding: 10px 14px; border-radius: 8px; border: 1px solid #929292; background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; min-width: 140px; cursor: pointer; }
+.setlist-filter:focus { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 2px; }
 .setlist-filter option { background: var(--bg2); color: var(--text); }
-.setlist-search { flex: 1; min-width: 180px; border-radius: 30px; padding: 10px 16px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; }
-.setlist-search:focus { border-color: var(--gold); }
+.setlist-search { flex: 1; min-width: 180px; border-radius: 30px; padding: 10px 16px; border: 1px solid #929292; background: var(--bg2); color: var(--text); font-size: 0.82rem; font-family: 'Poppins', sans-serif; outline: none; }
+.setlist-search:focus { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 2px; }
 .setlist-search::placeholder { color: var(--muted2); }
 .setlist-summary { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px; font-size: 0.75rem; color: var(--muted); }
 .setlist-summary-item { display: flex; align-items: center; gap: 4px; }
 .setlist-summary-num { color: var(--text); font-weight: 700; }
+/* What the summary numbers count (audit FUNC-10) */
+.setlist-count-note { font-size: 0.68rem; color: var(--muted2); text-align: center; max-width: 560px; margin: -8px auto 16px; line-height: 1.5; }
 .setlist-results-info { font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
 .setlist-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; transition: border-color 0.15s; }
 .setlist-card:hover { border-color: var(--gold); }
@@ -546,6 +552,9 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .setlist-songs .song-name { color: var(--text); }
 .setlist-songs .song-cover { color: var(--muted2); font-style: italic; }
 .setlist-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
+/* Only shown while the setlists load: hold a screen's worth of room so the photo at the
+   bottom of the page doesn't sit in view and then jump away (audit PERF-02) */
+#setlistEmpty { min-height: 100vh; }
 .setlist-load-more { display: block; margin: 16px auto; padding: 10px 28px; border-radius: 30px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.78rem; cursor: pointer; transition: all 0.15s; }
 .setlist-load-more:hover { border-color: var(--gold); color: var(--text); }
 
@@ -579,12 +588,12 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .profile-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
 .setlist-top-songs { margin-bottom: 20px; }
 .setlist-top-songs-grid { display: flex; flex-wrap: wrap; gap: 6px; }
-.setlist-top-pill { padding: 3px 10px; border-radius: 14px; font-size: 0.68rem; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+.setlist-top-pill { padding: 3px 10px; border-radius: 14px; font-size: 0.68rem; border: 1px solid var(--border); background: none; color: var(--muted); font-family: 'Poppins', sans-serif; cursor: pointer; transition: all 0.15s; }
 .setlist-top-pill:hover { border-color: var(--red); color: var(--text); }
 .setlist-top-pill .pill-ct { color: var(--text); margin-left: 4px; font-weight: 600; }
 
 /* ─── SONG SEARCH ─── */
-.song-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.25); background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
+.song-search-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid #929292; background: transparent; color: var(--text); font-size: 0.95rem; font-family: 'Poppins', sans-serif; outline: none; transition: border-color 0.2s; }
 .song-search-input:focus { border-color: #fff; }
 .song-search-input::placeholder { color: var(--muted2); }
 .song-search-autocomplete { position: relative; flex: 1; }
@@ -699,7 +708,7 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 
 .modal-desc {
   font-size: 0.85rem;
-  color: #aaa;
+  color: #d9d9d9;
   line-height: 1.6;
   max-width: 55ch;
   margin-bottom: 22px;
@@ -847,8 +856,43 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
   pointer-events: none;
 }
 .track-flip-front:hover .track-flip-hint,
-.track-flip-front:focus .track-flip-hint {
+.track-flip-front:focus-within .track-flip-hint {
   opacity: 1;
+}
+/* The track row is one button (opens the live stats), with the Stream button beside it,
+   not inside it (audit A11Y-12) */
+.track-flip-open {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 14px;
+  align-items: center;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.track-flip-open:focus-visible, .track-flip-close:focus-visible, .track-stream-icon:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.track-flip-close {
+  display: block;
+  margin: 10px 0 0 auto;
+  min-height: 28px;
+  padding: 4px 14px;
+  background: none;
+  border: 1px solid #929292;
+  border-radius: 14px;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 .track-flip-stats {
   display: grid;

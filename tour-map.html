@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Live Show Tour Map (About This Map) - The Hip Handbook</title>
-<meta name="description" content="Interactive map of every live show by The Tragically Hip, from 1985 to 2016. Filter by tour, country, and year.">
+<meta name="description" content="Interactive map of every live show by The Tragically Hip, from 1985 to 2022. Filter by tour, country, and year.">
 <meta property="og:title" content="Live Show Tour Map (About This Map) - The Hip Handbook">
-<meta property="og:description" content="Interactive map of every live show by The Tragically Hip, from 1985 to 2016. Filter by tour, country, and year.">
+<meta property="og:description" content="Interactive map of every live show by The Tragically Hip, from 1985 to 2022. Filter by tour, country, and year.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/band-photo-4.jpg">
-<meta property="og:image:width" content="1280">
-<meta property="og:image:height" content="720">
+<meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
-<meta property="og:url" content="https://thehiphandbook.tthpods.com/tour-map.html">
+<meta property="og:url" content="https://thehiphandbook.tthpods.com/tour-map">
 <meta property="og:site_name" content="The Hip Handbook">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://thehiphandbook.tthpods.com/tour-map.html">
-<script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true"></script>
+<link rel="canonical" href="https://thehiphandbook.tthpods.com/tour-map">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
@@ -25,12 +25,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="The Handbook">
 <meta name="theme-color" content="#0e0b16">
-<link rel="preconnect" href="https://unpkg.com">
+<!-- Warm up the map tile servers while the page loads (audit PERF-01) -->
+<link rel="preconnect" href="https://a.basemaps.cartocdn.com">
+<link rel="preconnect" href="https://b.basemaps.cartocdn.com">
 <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha256-YU3qCpj/P06tdPBJGPax0bm6Q1wltfwjsho5TR4+TYc=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" integrity="sha256-YSWCMtmNZNwqex4CEw1nQhvFub2lmU7vcCKP+XVwwXA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/vendor/leaflet-1.9.4.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/vendor/MarkerCluster-1.5.3.css" integrity="sha256-YU3qCpj/P06tdPBJGPax0bm6Q1wltfwjsho5TR4+TYc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/vendor/MarkerCluster.Default-1.5.3.css" integrity="sha256-YSWCMtmNZNwqex4CEw1nQhvFub2lmU7vcCKP+XVwwXA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/shared.css">
   <link rel="stylesheet" href="/css/tour-map.css">
 </head>
@@ -51,6 +53,12 @@
 </div>
 
 <nav aria-label="Map filters" class="controls">
+  <!-- Phones: the filters fold away behind this button so the map starts on the first screen (audit DEV-02) -->
+  <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="mapFilters yearSlider">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+    Filters
+  </button>
+  <div class="map-filters" id="mapFilters">
   <div class="control-group">
     <label for="tourFilter">Tour</label>
     <select id="tourFilter">
@@ -72,25 +80,27 @@
   <div class="control-group search-group">
     <label for="gigSearch">Search</label>
     <div class="search-wrap">
-      <input type="text" id="gigSearch" placeholder="Venue, city, or date..." autocomplete="off" spellcheck="false">
+      <input type="text" id="gigSearch" placeholder="Venue, city, or date..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchResults">
       <button id="searchClear" class="search-clear" aria-label="Clear search">&times;</button>
-      <div class="search-results" id="searchResults"></div>
+      <div class="search-results" id="searchResults" role="listbox" aria-label="Matching shows"></div>
+      <div class="vh" id="searchStatus" role="status" aria-live="polite"></div>
     </div>
+  </div>
   </div>
   <div class="stats-pill" id="statsPill">Loading...</div>
 </nav>
 
-<div class="year-slider-container">
-  <div class="year-labels">
-    <span>1985</span><span>1990</span><span>1995</span><span>2000</span><span>2005</span><span>2010</span><span>2016</span>
+<div class="year-slider-container" id="yearSlider">
+  <div class="year-labels" style="--max:2022" aria-hidden="true">
+    <span class="yl-min">1985</span><span style="--y:1990">1990</span><span style="--y:1995">1995</span><span style="--y:2000">2000</span><span style="--y:2005">2005</span><span style="--y:2010">2010</span><span style="--y:2016">2016</span><span class="yl-max">2022</span>
   </div>
   <div class="year-range-wrap">
     <div class="slider-track"></div>
     <div class="slider-track-fill" id="trackFill"></div>
-    <input type="range" id="yearMin" min="1985" max="2016" value="1985" step="1" aria-label="Start year">
-    <input type="range" id="yearMax" min="1985" max="2016" value="2016" step="1" aria-label="End year">
+    <input type="range" id="yearMin" min="1985" max="2022" value="1985" step="1" aria-label="Start year">
+    <input type="range" id="yearMax" min="1985" max="2022" value="2022" step="1" aria-label="End year">
   </div>
-  <div class="year-display" id="yearDisplay">1985 - 2016</div>
+  <div class="year-display" id="yearDisplay">1985 - 2022</div>
 </div>
 
 <div id="map"></div>
@@ -125,8 +135,8 @@
 <div class="gig-flash" id="gigFlash"></div>
 </main>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" integrity="sha256-Hk4dIpcqOSb0hZjgyvFOP+cEmDXUKKNE/tT542ZbNQg=" crossorigin="anonymous"></script>
+<script src="/js/vendor/leaflet-1.9.4.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="/js/vendor/leaflet.markercluster-1.5.3.js" integrity="sha256-Hk4dIpcqOSb0hZjgyvFOP+cEmDXUKKNE/tT542ZbNQg=" crossorigin="anonymous"></script>
 <script src="/js/tour-map.js"></script>
 
 <!-- SHOW DETAIL OVERLAY -->
@@ -165,7 +175,7 @@
   </div>
   <div class="ap-loading" id="apLoading">
     <div class="ap-loading-text" id="apLoadingText">Loading show...</div>
-    <div class="ap-loading-sub" id="apLoadingSub">Preparing audio files</div>
+    <div class="ap-loading-sub" id="apLoadingSub">Getting the recordings ready</div>
     <div class="ap-loading-bar"><div class="ap-loading-fill" id="apLoadingFill"></div></div>
   </div>
   <div class="ap-main">
@@ -186,7 +196,7 @@
     </div>
     <div class="ap-time" id="apTime">0:00 / 0:00</div>
     <div class="ap-volume">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="#888"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#929292"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
       <input type="range" id="apVolume" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
     </div>
     <button class="ap-btn" id="apListToggle" title="Show tracklist" aria-label="Show tracklist" aria-expanded="false" aria-controls="apTracklist">
@@ -198,6 +208,7 @@
 </div>
 
 <!-- AUDIO PLAYER JS -->
+<script src="/js/track-names.js"></script>
 <script src="/js/tour-map-player.js"></script>
 
 <footer id="site-footer"></footer>

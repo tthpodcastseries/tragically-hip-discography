@@ -1,5 +1,19 @@
-# Static site - publish the repo root as-is, no build step.
 # Redirects, rewrites and blocked paths live in _redirects only (audit MAP-02):
 # Netlify reads _redirects first, so rules here were never used.
+#
+# Each deploy (relaunch fixes, audit CODE-03, SEC-08, COST-02):
+# 1. ignore: if nothing fans can see changed since the last deploy (only docs/,
+#    scripts/, audits/, supabase/, .github/ or CLAUDE.md), Netlify cancels the deploy
+#    and no deploy credits are used. Any other change, or no record of the last
+#    deploy (for example "Clear cache and deploy site"), deploys as normal.
+# 2. command: the same audit as before a push. If it fails, the deploy fails and the
+#    live site stays on the last good version. Then the site is copied into _site/
+#    without the working folders (docs, scripts and the rest), so they are never
+#    published at all.
 [build]
-  publish = "."
+  publish = "_site"
+  command = "node scripts/audit-site.js --no-network && node scripts/netlify-publish.js"
+  ignore = '''if [ -n "$CACHED_COMMIT_REF" ] && [ "$CACHED_COMMIT_REF" != "$COMMIT_REF" ] && git cat-file -e "$CACHED_COMMIT_REF^{commit}" 2>/dev/null && git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- . ":(exclude)docs" ":(exclude)scripts" ":(exclude)audits" ":(exclude)supabase" ":(exclude).github" ":(exclude)CLAUDE.md" && git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- scripts/netlify-publish.js; then echo "Only notes or tools changed since the last deploy, so this deploy is skipped (no credits used)."; exit 0; else exit 1; fi'''
+
+[build.environment]
+  NODE_VERSION = "22"

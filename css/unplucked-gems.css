@@ -127,8 +127,7 @@ header h1 {
 .flip-card-count {
   text-align: center;
   font-size: 0.58rem;
-  color: var(--muted2);
-  opacity: 0.6;
+  color: var(--muted2); /* Mid Grey at full strength: 6.2:1 on the background (audit BRAND-02) */
   margin-top: 2px;
 }
 
@@ -227,7 +226,7 @@ header h1 {
   width: 100%;
   padding: 10px 16px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #929292;
   background: transparent;
   color: var(--text);
   font-size: 0.85rem;
@@ -235,7 +234,7 @@ header h1 {
   outline: none;
   transition: border-color 0.2s;
 }
-.panel-search:focus { border-color: #fff; }
+.panel-search:focus { border-color: #fff; outline: 2px solid var(--gold); outline-offset: 2px; }
 .panel-search::placeholder { color: var(--muted2); }
 
 .panel-filter-row {
@@ -363,6 +362,17 @@ header h1 {
   line-height: 1.6;
 }
 .session-card.expanded .session-notes { display: block; }
+.session-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.session-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+.filter-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 /* OVERLAY */
 .grid-overlay {

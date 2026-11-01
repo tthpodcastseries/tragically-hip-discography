@@ -22,7 +22,8 @@ function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) return walk(p);
-    return /\.(jpe?g|png)$/i.test(e.name) && !e.name.startsWith('._') ? [p] : [];
+    // link-preview-*.jpg is only for og:image (robots read the JPEG), so it needs no WebP
+    return /\.(jpe?g|png)$/i.test(e.name) && !e.name.startsWith('._') && !e.name.startsWith('link-preview') ? [p] : [];
   });
 }
 

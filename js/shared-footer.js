@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.5.1 (Fire in the Hole - Patch)';
+  var version = 'v5.6 (So Hard Done By)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -43,6 +43,19 @@
     }
     return { s: out, map: map };
   };
+  // Does the text contain what the fan typed? Folded on both sides, and also compared with
+  // apostrophes and other punctuation dropped, so "dont" finds "Don't" and "fiddlers" finds
+  // "Fiddler's Green" (audit FUNC-02, FUNC-14). Used by the Discography song box, Unplucked
+  // Gems, Music Videos and Video For New Recruits searches.
+  var bare = function(t) { return t.replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim(); };
+  window.tthBare = bare;
+  window.tthMatch = function(text, query) {
+    var t = window.tthFold(text), q = window.tthFold(query);
+    if (!q) return true;
+    if (t.indexOf(q) !== -1) return true;
+    var qb = bare(q);
+    return qb !== '' && bare(t).indexOf(qb) !== -1;
+  };
 
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
@@ -55,7 +68,7 @@
         '</a>' +
       '</div>' +
       '<a href="https://subscribe.tthpods.com" target="_blank" rel="noopener noreferrer" class="yer-letter-link">Sign up for Yer Letter - The TTH Podcast Series Newsletter</a><br>' +
-      '<strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
+      '<strong style="color:#d9d9d9">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://home.tthpods.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
       '<span style="color:#929292;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
       '<a href="/privacy.html">Privacy</a><br>' +

@@ -18,6 +18,8 @@
 //     newly eligible show, or by the last day's show if there are none; the run
 //     lists every day that changed
 //   - newly eligible shows go on the end
+//   - a newly placed show (gap fill or on the end) avoids the month and year of any
+//     show within 7 days of it, where it can (GAME-09); scheduled days never move for it
 // Before saving, the run checks itself and refuses to save if any puzzle up to
 // tomorrow would change. Check with node scripts/check-game-schedule.js after.
 // If data/game-pool.json is missing it refuses to start a new schedule unless
@@ -40,6 +42,7 @@ const MIN_SONGS = 10;
 const SEED = 1984;
 const LOCK_AHEAD_DAYS = 1;
 const RUN_OUT_WARN_DAYS = 60;
+const SPACING_DAYS = 7; // GAME-09: no same month and year within a week, for shows placed from now on
 const FORCE = process.argv.includes('--force');
 
 const setlists = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'setlists.min.json'), 'utf8')).setlists;
@@ -126,11 +129,23 @@ if (!old) {
   });
   const inPool = new Set(pool.filter(Boolean).map(p => p.id));
   const newcomers = shuffled(shows.filter(s => !inPool.has(s.id)), SEED + old.shows.length);
+  // GAME-09: a newly placed show avoids the same month and year as any show within
+  // SPACING_DAYS of its day, so yesterday's answer isn't a head start. Takes the first
+  // newcomer (in shuffled order) that fits, or the first one if none does.
+  const monthYear = s => s.d.slice(3);
+  const takeSpaced = at => {
+    const near = new Set();
+    for (let k = Math.max(0, at - SPACING_DAYS); k <= at + SPACING_DAYS && k < pool.length; k++) {
+      if (k !== at && pool[k]) near.add(monthYear(pool[k]));
+    }
+    const pick = newcomers.findIndex(s => !near.has(monthYear(s)));
+    return newcomers.splice(pick < 0 ? 0 : pick, 1)[0];
+  };
   const day = i => `#${i + 1} (${dateOf(i + 1)})`;
   const dropped = i => replaced.push(`${day(i)} show ${old.shows[i].id} (${old.shows[i].d}) left the pool; nothing to replace it, so the pool is one day shorter`);
   for (let i = 0; i < pool.length; i++) {
     if (pool[i]) continue;
-    let fill = newcomers.shift();
+    let fill = takeSpaced(i);
     if (!fill) {
       // No new shows: the last day's show moves into the gap, and the pool gets a day shorter
       while (pool.length - 1 > i && !pool[pool.length - 1]) { dropped(pool.length - 1); pool.pop(); }
@@ -143,7 +158,7 @@ if (!old) {
     else { dropped(i); pool.splice(i, 1); i--; }
   }
   appended = newcomers.length;
-  pool.push(...newcomers);
+  while (newcomers.length) { pool.push(null); pool[pool.length - 1] = takeSpaced(pool.length - 1); }
 
   // Self-check: nothing up to tomorrow changed, and every other day kept its show or is listed above
   for (let i = 0; i < old.shows.length; i++) {
@@ -173,3 +188,11 @@ if (old) {
 const daysLeft = pool.length - todayNo;
 console.log(`  runs out: last new puzzle #${pool.length} on ${dateOf(pool.length)}; from ${dateOf(pool.length + 1)} it repeats from puzzle #1 (${daysLeft} days from today)`);
 if (daysLeft < RUN_OUT_WARN_DAYS) console.log(`  WARNING - only ${daysLeft} days of new Bring It All Back puzzles left. Decide what happens after ${dateOf(pool.length)} (see docs/CHANGELOG.md v5.4.9).`);
+
+// Add the new days to data/game-schedule-lock.json, the fixed record of every scheduled
+// puzzle (audit GAME-01). It refuses, and exits 1, if a locked day changed.
+{
+  const lockArgs = [path.join(__dirname, 'check-game-schedule.js'), '--update-lock', ...(FORCE ? ['--reset', 'game-pool.json'] : [])];
+  const lockRun = require('child_process').spawnSync(process.execPath, lockArgs, { stdio: 'inherit' });
+  if (lockRun.status !== 0) process.exitCode = 1;
+}

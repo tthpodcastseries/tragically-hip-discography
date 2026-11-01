@@ -19,6 +19,10 @@ node_modules/
 # The October 2026 pre-relaunch audit - stays on jD's Mac, never in the public repo
 AUDIT_*.md
 SYSTEM_MAP.md
+_audit_scratch/
+
+# The copy Netlify publishes, made by scripts/netlify-publish.js
+_site/
 
 # Personal context files - never commit these to the public repo
 _MANIFEST.md

@@ -17,7 +17,8 @@
   const RARE_UNDER = 10;
   const SHOWS_VISIBLE = 8;
 
-  // Public by design, like the tour map's key - see tour-map.html
+  // CARTO map tiles need this key: without it every tile reads "API KEY REQUIRED"
+  // (checked 2026-11-01). Public by design, like the Tour Map's - see js/tour-map.js
   const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
 
   const M = window.TTHMember;
@@ -85,7 +86,7 @@
     const heard = new Map();  // key -> { name, count }
     const seen = new Map();   // canonical index -> count
     shows.forEach(s => {
-      if (s.city) cities.add(s.city);
+      if (s.city) cities.add([s.city, s.state, s.country].join('|')); // London, ON and London, England are two (audit DATA-10)
       if (s.venue) venues.add(s.venue);
       years.add(s.date.split('-')[2]);
       (s.songs || []).forEach(entry => {
@@ -113,7 +114,23 @@
     const isGuest = !!(sess && sess.guest);
     const memberEl = $('ppMember');
     if (sess && !isGuest) {
-      memberEl.textContent = 'Yer shows, ' + (sess.firstName || 'friend') + ' (No. ' + sess.memberNumber + ')';
+      // The number stays off screen until asked for, so a screenshot of the Passport
+      // never shows it (audit SEC-12)
+      memberEl.textContent = 'Yer shows, ' + (sess.firstName || 'friend') + ' ';
+      const num = document.createElement('span');
+      num.textContent = '(No. ' + sess.memberNumber + ') ';
+      num.hidden = true;
+      const numBtn = document.createElement('button');
+      numBtn.type = 'button';
+      numBtn.className = 'pp-num-btn';
+      numBtn.textContent = 'Show my number';
+      numBtn.setAttribute('aria-expanded', 'false');
+      numBtn.addEventListener('click', () => {
+        num.hidden = !num.hidden;
+        numBtn.textContent = num.hidden ? 'Show my number' : 'Hide my number';
+        numBtn.setAttribute('aria-expanded', String(!num.hidden));
+      });
+      memberEl.append(num, numBtn);
       memberEl.hidden = false;
     } else {
       memberEl.hidden = true;
@@ -172,7 +189,7 @@
     $('ppCheckSub').textContent = 'You\'ve seen ' + d.seenPlayable + ' of ' + playable.length + ' songs live (' + pct + '%).';
     $('ppBarFill').style.width = pct + '%';
     $('ppBar').setAttribute('aria-valuenow', String(pct));
-    $('ppChecklist').innerHTML = playable.map(i => '<a class="pp-song' + (d.seen.has(i) ? ' seen' : '') + '" href="/song/' + songSlug(songs[i].title) + '">' + esc(songs[i].title) + '</a>').join('');
+    $('ppChecklist').innerHTML = playable.map(i => '<a class="pp-song' + (d.seen.has(i) ? ' seen' : '') + '" href="/song/' + songSlug(songs[i].title) + '">' + esc(songs[i].title) + (d.seen.has(i) ? '<span class="sr-only"> (seen live)</span>' : '') + '</a>').join('');
     $('ppChecklist').classList.toggle('only-missing', onlyMissing);
     $('ppNeverLive').textContent = neverLive + ' more songs on the official list have never been played live, per setlist.fm, so there\'s nothing to catch.';
 
@@ -302,7 +319,7 @@
       lines.push('First show: ' + firstYear);
       put(headline, 690, 190, '700', 40, '#ffffff', '0px', 460, 'left');
       lines.forEach((ln, i) => put(ln, 690, 280 + i * 62, '600', 34, '#d9d9d9', '0px', 460, 'left'));
-      put(siteText, W / 2, 585, '600', 26, '#b0b0b0', '2px');
+      put(siteText, W / 2, 585, '600', 26, '#929292', '2px');
     } else {
       // Portrait. Stories keep content inside the safe zone (Instagram covers
       // roughly the top and bottom 250px with its own interface).
@@ -322,7 +339,7 @@
       if (d.rarities.length) lines.push(plural(d.rarities.length, 'rarity', 'rarities') + ' caught');
       lines.push('First show: ' + firstYear);
       lines.forEach((ln, i) => put(ln, W / 2, y.lines + i * y.gap, '600', story ? 48 : 44, '#d9d9d9', '0px', W - 160));
-      put(siteText, W / 2, y.site, '600', 36, '#b0b0b0', '2px');
+      put(siteText, W / 2, y.site, '600', 36, '#929292', '2px');
     }
 
     const blob = await new Promise(res => c.toBlob(res, 'image/png'));
@@ -379,7 +396,7 @@
     const file = new File([currentCard.blob], 'my-hip-passport-' + FORMATS[currentCard.format].file + '.png', { type: 'image/png' });
     const n = lastStats.shows.length;
     try {
-      await navigator.share({ files: [file], title: 'Yer Hip Passport', text: 'I\'ve been to ' + plural(n, 'show by The Hip', 'shows by The Hip') + '. Build yer own passport at thehiphandbook.tthpods.com/my-shows' });
+      await navigator.share({ files: [file], title: 'Yer Hip Passport', text: 'I\'ve been to ' + plural(n, 'show by The Hip', 'shows by The Hip') + '. Build yer own Passport at thehiphandbook.tthpods.com/my-shows' });
       track('Passport - Card shared');
     } catch (err) { /* cancelled */ }
   });

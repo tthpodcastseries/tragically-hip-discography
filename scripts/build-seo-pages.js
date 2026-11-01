@@ -49,6 +49,53 @@ function setHead(html, h) {
   return html;
 }
 
+// Search results show about 155 characters of a description (audit SEO-02)
+const DESC_MAX = 155;
+// The song description: the longest version that fits DESC_MAX, dropping "by The
+// Tragically Hip" first. js/song.js (songDesc) writes the same text - keep them in step.
+function songDesc(song, plays, recs, origin) {
+  const t = "'" + song.t + "'";
+  const fit = list => list.find(d => d.length <= DESC_MAX) || list[list.length - 1];
+  if (plays.length) {
+    const first = plays[0], last = plays[plays.length - 1];
+    const live = plays.length === 1 ? 'played live once, on ' + fmtDate(first.iso) + '.' : 'played live ' + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '.';
+    const recLong = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : ' Plays by year.';
+    const recShort = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + '.' : ' Plays by year.';
+    return fit([t + ' by The Tragically Hip: ' + live + recLong, t + ': ' + live + recLong, t + ': ' + live + recShort, t + ': ' + live]);
+  }
+  // Never played live: say where it came out, so the description isn't one thin line
+  const from = origin ? ' From "' + origin[0] + '" (' + origin[1] + ').' : '';
+  return fit([
+    t + ' by The Tragically Hip.' + from + ' No live performances on record. Albums and fan ranking.',
+    t + '.' + from + ' No live performances on record. Albums and fan ranking.',
+    t + '.' + from + ' Albums and fan ranking.',
+  ]);
+}
+
+// A plain paragraph with the song's live history, in the HTML as sent, for search engines
+// and link-preview robots that don't run scripts (audit SEO-03). js/song.js hides it once
+// the full page has drawn, since the stats there say the same.
+function songSummary(song, plays, recs, rows) {
+  const at = i => { const r = rows[i]; return fmtDate(r[1]) + ([r[2], r[3]].filter(Boolean).length ? ', ' + [r[2], r[3]].filter(Boolean).join(', ') : ''); };
+  const bits = [];
+  if (plays.length === 1) bits.push('Played live once on record: ' + at(song.p[0]) + '.');
+  else if (plays.length) bits.push('First live performance on record: ' + at(song.p[0]) + '. Latest: ' + at(song.p[song.p.length - 1]) + '.');
+  else bits.push('No live performances on record.');
+  const releases = new Set(song.a.map(a => a[0])).size;
+  if (releases) bits.push(releases === 1 ? 'On one official release.' : 'On ' + releases + ' official releases.');
+  if (recs.length) bits.push(plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.');
+  return bits.join(' ');
+}
+
+// Structured data for the song (audit SEO-03): the composition, recorded by The Hip,
+// first released on its origin album
+function songJsonLd(song, origin) {
+  const rec = { '@type': 'MusicRecording', name: song.t, byArtist: { '@type': 'MusicGroup', name: 'The Tragically Hip', url: SITE + '/' } };
+  if (origin) rec.inAlbum = { '@type': 'MusicAlbum', name: origin[0], datePublished: String(origin[1]) };
+  const ld = { '@context': 'https://schema.org', '@type': 'MusicComposition', name: song.t, url: SITE + '/song/' + song.s, recordedAs: rec };
+  return '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>';
+}
+
 // ---- song pages ----
 function songPages() {
   const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/song-index.json'), 'utf8'));
@@ -58,23 +105,24 @@ function songPages() {
   for (const song of data.songs) {
     const plays = song.p.map(i => shows[i]);
     const recs = song.r.map(r => r[0]).filter((x, i, all) => all.indexOf(x) === i);
-    const first = plays[0], last = plays[plays.length - 1];
     const sorted = [...song.a].sort((x, y) => x[1] - y[1]);
     const origin = sorted.find(a => (a[2] === 'studio' || a[2] === 'eps') && !a[4]) || sorted[0];
 
     const bits = [];
     if (origin) bits.push('From "' + origin[0] + '" (' + origin[1] + ')');
-    bits.push(plays.length ? 'played live ' + plural(plays.length, 'time', 'times') : 'no live performances on record');
+    // One play reads "played live once, on Dec 9, 1993" (audit BRAND-09)
+    const once = plays.length === 1 ? 'played live once, on ' + fmtDate(plays[0].iso) : '';
+    bits.push(once || (plays.length ? 'played live ' + plural(plays.length, 'time', 'times') : 'no live performances on record'));
     const lead = bits.join(' - ') + '.';
 
     const title = "'" + song.t + "' - Song" + CATEGORY_NOTE;
-    const desc = plays.length
-      ? "'" + song.t + "' by The Tragically Hip: played live " + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '. Plays by year' + (recs.length ? ' and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : '.')
-      : "'" + song.t + "' by The Tragically Hip: albums and fan ranking.";
+    const desc = songDesc(song, plays, recs, origin);
 
     let html = setHead(template, { title, desc, url: SITE + '/song/' + song.s });
     html = swap(html, /(<h1 id="spTitle">)[^<]*(<\/h1>)/, (m, a, b) => a + escText(song.t) + b, 'spTitle');
     html = swap(html, /(<p class="header-desc" id="spDesc">)[^<]*(<\/p>)/, (m, a, b) => a + escText(lead) + b, 'spDesc');
+    html = swap(html, /(<p id="spSummary" class="sp-summary">)[^<]*(<\/p>)/, (m, a, b) => a + escText(songSummary(song, plays, recs, data.shows)) + b, 'spSummary');
+    html = swap(html, /\n<\/head>/, () => '\n  ' + songJsonLd(song, origin) + '\n</head>', '</head>');
     out['song/' + song.s + '.html'] = html;
   }
   return out;

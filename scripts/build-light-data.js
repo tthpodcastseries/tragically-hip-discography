@@ -27,12 +27,17 @@ const showIndex = read('show-index.json');
 const byShow = read('show-videos.json').byShow || {};
 const tour = read('tth-tour-data.json');
 
+// setlist.fm stores some regions outside North America as bare numbers ("Amsterdam, 07, NL").
+// They mean nothing to fans, so the light files leave them out (audit FUNC-08).
+const isRegionCode = st => /^\d+$/.test(String(st || '').trim());
+const fanState = st => (isRegionCode(st) ? undefined : st);
+
 // On This Day: shows with a guessed date (dateNote) never show there, so they're left out
 const otd = [];
 for (const s of setlists) {
   if (s.dateNote) continue;
   const songs = s.songs || [];
-  const o = { id: s.id, date: s.date, venue: s.venue, city: s.city, state: s.state, country: s.country, tour: s.tour };
+  const o = { id: s.id, date: s.date, venue: s.venue, city: s.city, state: fanState(s.state), country: s.country, tour: s.tour };
   // The two counts the homepage used: On This Day's, and Show of the Day's (named songs only)
   o.songCount = s.songCount || songs.filter(x => !x.tape).length;
   const named = songs.filter(x => !x.tape && x.name).length;
@@ -47,6 +52,7 @@ const tracks = {};
 for (const g of tour) {
   const o = Object.assign({}, g);
   delete o.tracks;
+  if (isRegionCode(o.state)) delete o.state;
   if (g.tracks && g.tracks.length) {
     o.trackCount = g.tracks.length;
     tracks[g.id] = g.tracks.map(t => (t.duration ? { name: t.name, url: t.url, duration: t.duration } : { name: t.name, url: t.url }));

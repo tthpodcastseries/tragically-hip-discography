@@ -21,12 +21,17 @@
 //  10. Pre-push safety net (v5.4.18): every data file parses and every script passes
 //      node --check; fetched data files exist; recordings, setlists and lyrics never
 //      shrink; page counts match the data (build-site-stats.js); every setlist song is
-//      on the song list; no scheduled puzzle moved (vs the last commit and the last
-//      push); no em or en dashes fans can read; footer, cache name and changelog agree
+//      on the song list; no scheduled puzzle moved (vs the committed lock, the last commit,
+//      the last push and, on Netlify, the last deploy); no em or en dashes fans can read;
+//      footer, cache name and changelog agree
+//  11. No "<" in any data text field; the album lists in js/discography-app.js match
+//      data/discography.json; warns when this Node isn't the .nvmrc version
 //
-// Run before every push (Node 22):
-//   node scripts/audit-site.js --no-network     (the pre-push check, about 30 seconds)
+// Run before every push (Node 22). Netlify also runs it as the build command
+// (netlify.toml), so a failure stops the deploy and the live site stays as it was.
+//   node scripts/audit-site.js --no-network     (the pre-push check, a few seconds)
 //   node scripts/audit-site.js                  (also tests outside links; the weekly job)
+//   --game-ref <ref>   also compare the game schedules with that commit (GitHub uses it)
 // Exit code 0 = clean, 1 = problems found.
 
 const fs = require('fs');
@@ -257,8 +262,11 @@ for (const f of pageFiles) {
   for (const m of html.matchAll(/<script\b([^>]*)>/g)) {
     const attrs = m[1];
     if (/\bsrc=/.test(attrs) || /type="application\/ld\+json"/.test(attrs)) {
-      const host = (attrs.match(/src="https:\/\/([^/"]+)/) || [])[1];
-      if (host && !scriptSrc.includes('https://' + host)) problems.push(`${f}: script from ${host} is not allowed by the CSP script-src`);
+      // A CSP source is a whole host, a folder ending in "/", or one exact file (SEC-10)
+      const url = ((attrs.match(/src="(https:\/\/[^"?#]+)/) || [])[1]);
+      const host = url && url.split('/')[2];
+      const okSrc = s => s === 'https://' + host || (s.endsWith('/') ? url.startsWith(s) : url === s);
+      if (url && !scriptSrc.some(okSrc)) problems.push(`${f}: script ${url} is not allowed by the CSP script-src`);
       continue;
     }
     problems.push(`${f}: inline <script> - the CSP blocks it; move it into a /js/ file`);
@@ -348,21 +356,37 @@ for (const show of slData) {
 for (const [name, id] of offList) problems.push(`setlists: '${name}' (show ${id}) matches no song on the official list. A new spelling? Fix it in data/setlist-corrections.json (renameSongs), or add it to KNOWN_NOT_ON_LIST in scripts/audit-site.js if it really is an unreleased song`);
 if (canonical.songs.length !== songSlugs.size) problems.push(`canonical-songs.json has ${canonical.songs.length} songs but song-index.json has ${songSlugs.size}: run scripts/build-song-index.js`);
 
-// No scheduled puzzle moved: against the last commit, and against the last push (what is live)
-let gitOk = false;
-try { execFileSync('git', ['rev-parse', '--verify', 'HEAD'], { cwd: ROOT, stdio: 'ignore' }); gitOk = true; } catch (e) { /* not a git checkout */ }
-if (gitOk) {
-  const refs = ['HEAD'];
-  try {
-    execFileSync('git', ['rev-parse', '--verify', 'origin/main'], { cwd: ROOT, stdio: 'ignore' });
-    refs.push('origin/main');
-  } catch (e) { warnings.push('no origin/main ref, so the game schedule was only checked against the last commit'); }
-  for (const ref of refs) {
-    const r = runScript('check-game-schedule.js', ['--ref', ref]);
-    if (r.status !== 0) problems.push(`game schedule vs ${ref}: a scheduled puzzle moved or changed. Run node scripts/check-game-schedule.js --ref ${ref} for the list`);
+// No scheduled puzzle moved (GAME-01, GAME-02, CODE-03). First the committed lock
+// (data/game-schedule-lock.json), which needs no git history, so it also guards Netlify's
+// build. Then git copies: the last commit, the last push (origin/main), the last Netlify
+// deploy ($CACHED_COMMIT_REF) and --game-ref <ref> (GitHub passes the commit before the push).
+// On Netlify and GitHub (IN_CI) a missing history is a warning; on a Mac it fails.
+const IN_CI = ['NETLIFY', 'CI', 'GITHUB_ACTIONS'].some(k => process.env[k] === 'true') || !!process.env.COMMIT_REF; // COMMIT_REF: Netlify
+const lockRun = runScript('check-game-schedule.js', ['--no-git']);
+if (lockRun.status !== 0) problems.push('game schedule vs the lock (data/game-schedule-lock.json): a scheduled puzzle or a start date changed. Run node scripts/check-game-schedule.js for the list');
+const historyGap = msg => (IN_CI ? warnings : problems).push(msg);
+const resolveRef = ref => { try { return execFileSync('git', ['rev-parse', '--verify', '--quiet', ref + '^{commit}'], { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch (e) { return null; } };
+const head = resolveRef('HEAD');
+if (head) {
+  const gameRefAt = process.argv.indexOf('--game-ref');
+  const wanted = [['HEAD', 'the last commit'], ['origin/main', 'the last push']];
+  if (process.env.CACHED_COMMIT_REF) wanted.push([process.env.CACHED_COMMIT_REF, 'the last Netlify deploy']);
+  if (gameRefAt > 0 && process.argv[gameRefAt + 1]) wanted.push([process.argv[gameRefAt + 1], 'the commit before this push']);
+  const checked = [], seen = new Set();
+  for (const [ref, label] of wanted) {
+    const sha = resolveRef(ref);
+    if (!sha) { historyGap(`game schedule: can't find ${label} (${ref}) in this copy's git history, so it was checked against the lock only`); continue; }
+    if (ref !== 'HEAD' && sha === head) { checked.push(`${label} (same commit)`); continue; }
+    if (seen.has(sha)) continue;
+    seen.add(sha);
+    const r = runScript('check-game-schedule.js', ['--no-lock', '--ref', sha]);
+    if (r.status === 1) problems.push(`game schedule vs ${label} (${ref}): a scheduled puzzle moved or changed. Run node scripts/check-game-schedule.js --ref ${ref} for the list`);
+    else if (r.status === 2) historyGap(`game schedule: couldn't read the game files at ${label} (${ref}), so it was checked against the lock only`);
+    else if (r.status !== 0) problems.push(`game schedule vs ${label}: the check crashed - ${lastLine(r)}`);
+    checked.push(label);
   }
-  notes.push(`game schedules checked against ${refs.join(' and ')}`);
-} else warnings.push('not a git checkout, so the game schedule check was skipped');
+  notes.push(`game schedules checked against the lock${checked.length ? ' and ' + checked.join(', ') : ''}`);
+} else historyGap('not a git checkout, so the game schedule was checked against the lock only');
 
 // No em or en dashes in anything fans read (Brand & Style Guide: use " - ")
 const DASH_RE = /[—–]/;
@@ -387,6 +411,78 @@ for (const f of dataFiles.filter(n => n !== 'unplucked-gems.json')) {
 const changelogVersion = (fs.readFileSync(path.join(ROOT, 'docs/CHANGELOG.md'), 'utf8').match(/^## (v[\d.]+)/m) || [])[1];
 if (changelogVersion !== footerVersion) problems.push(`docs/CHANGELOG.md newest entry is ${changelogVersion}, but the footer says ${footerVersion}: add the changelog entry`);
 notes.push(`release ${footerVersion}: footer, cache name and changelog checked`);
+
+// ---- Daily games: warn 90 days before either schedule runs out (audit GAME-05) ----
+// After the last puzzle both games quietly start again from No. 1, so this gives time to
+// append more. Counted in Toronto days, like the games themselves.
+{
+  const tp = {};
+  new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', year: 'numeric', month: 'numeric', day: 'numeric' })
+    .formatToParts(new Date()).forEach(x => { tp[x.type] = +x.value; });
+  const torontoToday = Math.floor(Date.UTC(tp.year, tp.month - 1, tp.day) / 86400000);
+  for (const [name, js, file, key] of [["'Bring It All Back'", 'bring-it-all-back.js', 'game-pool.json', 'shows'], ["'(Un)Locked'", 'unlocked.js', 'trunk-pool.json', 'puzzles']]) {
+    const m = fs.readFileSync(path.join(ROOT, 'js', js), 'utf8').match(/const EPOCH = '(\d{4})-(\d{2})-(\d{2})'/);
+    if (!m) { problems.push(`js/${js}: could not find EPOCH, so the game schedule run-out check was skipped`); continue; }
+    const count = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', file), 'utf8'))[key].length;
+    const lastDay = Math.floor(Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000) + count - 1;
+    const lastDate = new Date(lastDay * 86400000).toLocaleDateString('en-CA', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' });
+    const left = lastDay - torontoToday;
+    if (left < 0) warnings.push(`${name} ran out of new puzzles after No. ${count} on ${lastDate} and is repeating from No. 1. Append more puzzles`);
+    else if (left < 90) warnings.push(`${name} has ${left} days of new puzzles left (last one No. ${count} on ${lastDate}), then it repeats from No. 1. Append more puzzles before then`);
+    else notes.push(`${name} schedule runs to No. ${count} on ${lastDate} (${left} days left)`);
+  }
+}
+// ---- 11. Data hygiene and code health (audit SEC-11, CODE-01, CODE-06) ----
+{
+  // No HTML in the data. setlist.fm is crowd-edited; a "<" in a venue or song name could
+  // turn into markup on a page that forgot to escape it (SEC-11).
+  let textFields = 0;
+  for (const f of dataFiles) {
+    const bad = [];
+    const walk = (v, at) => {
+      if (typeof v === 'string') { textFields++; if (v.includes('<') && bad.length < 3) bad.push(`${at}: ${v.slice(0, 60)}`); }
+      else if (v && typeof v === 'object') for (const k of Object.keys(v)) walk(v[k], at + '.' + k);
+    };
+    try { walk(JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f), 'utf8')), f); } catch (e) { continue; /* reported above */ }
+    for (const b of bad) problems.push(`data/${b} - text has a "<" (HTML?). Fix it at the source or in data/setlist-corrections.json`);
+  }
+  notes.push(`data text: ${textFields.toLocaleString('en-US')} text fields checked for HTML`);
+
+  // Album facts live in two places: data/discography.json and the arrays at the top of
+  // js/discography-app.js. They must agree on title, year, release date and track list (CODE-01).
+  const appSrc = fs.readFileSync(path.join(ROOT, 'js/discography-app.js'), 'utf8');
+  const ARRAYS = { studioAlbums: 'studio', liveAlbums: 'live', compilationAlbums: 'compilations', boxSetAlbums: 'boxsets', epAlbums: 'eps', videoAlbums: 'video' };
+  const jsonAlbums = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/discography.json'), 'utf8')).albums;
+  const appAlbums = [];
+  for (const [name, category] of Object.entries(ARRAYS)) {
+    const m = appSrc.match(new RegExp('\\nconst ' + name + ' = (\\[[\\s\\S]*?\\n\\]);'));
+    let list = null;
+    try { list = m && new Function('return ' + m[1])(); } catch (e) { /* reported below */ }
+    if (!Array.isArray(list)) { problems.push(`js/discography-app.js: couldn't read the ${name} list to compare with data/discography.json`); continue; }
+    list.forEach(a => appAlbums.push({ ...a, category }));
+  }
+  // Titles match ignoring capitals; a capitals-only difference is a warning (jD's call which is right)
+  const albumKey = a => a.category + '|' + String(a.title).toLowerCase();
+  const jsonByKey = new Map(jsonAlbums.map(a => [albumKey(a), a]));
+  const appByKey = new Map(appAlbums.map(a => [albumKey(a), a]));
+  for (const [k, a] of appByKey) {
+    const j = jsonByKey.get(k);
+    if (!j) { problems.push(`album "${a.title}" (${a.category}) is in js/discography-app.js but not data/discography.json - album facts must match in both`); continue; }
+    if (a.title !== j.title) warnings.push(`album title capitals differ: "${a.title}" in js/discography-app.js, "${j.title}" in data/discography.json`);
+    for (const field of ['year', 'releaseDate']) {
+      if (String(a[field] || '') !== String(j[field] || '')) problems.push(`album "${a.title}": ${field} is "${a[field]}" in js/discography-app.js but "${j[field]}" in data/discography.json - change both`);
+    }
+    if (JSON.stringify(a.tracks || []) !== JSON.stringify(j.tracks || [])) problems.push(`album "${a.title}": track list differs between js/discography-app.js and data/discography.json - change both`);
+  }
+  for (const [k, j] of jsonByKey) if (!appByKey.has(k)) problems.push(`album "${j.title}" (${j.category}) is in data/discography.json but not js/discography-app.js - album facts must match in both`);
+  notes.push(`album facts: ${appAlbums.length} albums in js/discography-app.js compared with data/discography.json`);
+
+  // The scripts are written for the Node version in .nvmrc (GitHub runs that one). A newer
+  // Node here can hide a feature that breaks there (CODE-06).
+  const nvmrc = fs.existsSync(path.join(ROOT, '.nvmrc')) ? fs.readFileSync(path.join(ROOT, '.nvmrc'), 'utf8').trim().replace(/^v/, '') : '';
+  const nodeMajor = process.versions.node.split('.')[0];
+  if (nvmrc && nodeMajor !== nvmrc.split('.')[0]) warnings.push(`this Mac runs Node ${process.versions.node}, but .nvmrc says ${nvmrc} (what GitHub uses). Scripts that pass here could fail there: switch with "nvm use" if you can`);
+}
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {

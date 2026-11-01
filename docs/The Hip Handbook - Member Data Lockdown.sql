@@ -1,3 +1,7 @@
+-- HISTORY ONLY - already run (v5.4.6, 2026-10-31). (Marked 2026-11-01, audit REL-02.)
+-- The whole database is now in "The Hip Handbook - Database Rebuild.sql".
+-- Part 1 is still used by the UNDO steps in "The Hip Handbook - Member Hardening.sql".
+--
 -- The Hip Handbook - Member Data Lockdown (v5.4.6)
 --
 -- Problem: the public key that ships in the site's JavaScript could read every

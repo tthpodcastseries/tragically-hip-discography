@@ -8,8 +8,8 @@
   const $ = id => document.getElementById(id);
   const track = name => { try { if (window.umami && window.umami.track) window.umami.track(name); } catch (e) { /* analytics optional */ } };
 
-  // Date of puzzle #1 - the game opens this day (local time). Before it the page
-  // says when the game opens instead of showing a puzzle.
+  // Date of puzzle #1 - the game opens at midnight Toronto time on this day. Before it the
+  // page says when the game opens instead of showing a puzzle.
   const EPOCH = '2026-11-04';
   const WORDS = 5;
   // Points ladder: the score depends on when you name the song. Rung 0 is before any
@@ -49,19 +49,64 @@
   const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) { /* playing still works */ } };
   const store = load();
 
+  // ─── Which day it is: Toronto's calendar date ───
+  // Every fan gets the new puzzle at midnight Toronto time, wherever they are (jD, 2026-11-01,
+  // audit GAME-06). The browser's own time-zone data handles daylight saving; a browser
+  // without it falls back to the device's own date. The same code is in bring-it-all-back.js.
+  let torontoClock = null;
+  try {
+    torontoClock = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+  } catch (e) { /* no time-zone data */ }
+  // The time on a Toronto wall clock at moment t, written as if it were UTC (ms)
+  const torontoWall = t => {
+    const d = new Date(t);
+    if (torontoClock) {
+      try {
+        const p = {};
+        torontoClock.formatToParts(d).forEach(x => { p[x.type] = +x.value; });
+        if (p.year && p.month && p.day) return Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute, p.second);
+      } catch (e) { /* fall back below */ }
+    }
+    return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds());
+  };
+  const dayNumber = (t = Date.now()) => Math.floor(torontoWall(t) / 86400000);
+  // Milliseconds from now until midnight in Toronto at the start of day number n
+  const msUntilDay = n => {
+    const t = Date.now();
+    const offset = at => torontoWall(at) - Math.floor(at / 1000) * 1000; // Toronto's clock minus UTC
+    let at = n * 86400000 - offset(t);
+    at = n * 86400000 - offset(at); // again, in case the clocks change in between
+    return at - t;
+  };
+
   // ─── Which puzzle is today ───
-  const localDayNumber = d => Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
   const epochParts = EPOCH.split('-');
   const epochDay = Math.floor(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]) / 86400000);
-  const naturalPuzzleNo = () => Math.max(1, localDayNumber(new Date()) - epochDay + 1);
-  const puzzleNo = forcedDay || naturalPuzzleNo();
+  const naturalPuzzleNo = () => Math.max(1, dayNumber() - epochDay + 1);
+  // Normally today's puzzle, but a saved game is kept when it is:
+  //  - yesterday's and half played: finish it first, then today's is waiting (audit GAME-03)
+  //  - one day ahead: saved before puzzles changed at midnight Toronto time, by a fan east of
+  //    Toronto who already had the next puzzle. They keep it instead of replaying one (GAME-06)
+  const natural = naturalPuzzleNo();
+  const saved = store.today && Array.isArray(store.today.unlocked) && Array.isArray(store.today.guesses) ? store.today : null;
+  const carried = !forcedDay && !!saved && (saved.no === natural + 1 || (saved.no === natural - 1 && !saved.done && !!saved.started));
+  const puzzleNo = forcedDay || (carried ? saved.no : natural);
+  const yesterdays = carried && puzzleNo < natural;
+
+  // Streaks across the switch to Toronto days (audit GAME-06): a fan west of Toronto who won
+  // yesterday's puzzle by their own date can find Toronto already a puzzle ahead, so their
+  // first game after the switch forgives a one-puzzle gap, once.
+  if (!store.tz) {
+    store.tz = 'America/Toronto';
+    if (store.stats.played > 0) store.tzGrace = true;
+    save();
+  }
 
   // Not open yet: say when, and open itself when the day arrives
-  if (!forcedDay && localDayNumber(new Date()) < epochDay) {
+  if (!forcedDay && dayNumber() < epochDay) {
     const opens = new Date(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]));
-    $('ulLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + '. One song by The Hip a day - come back then.';
-    const now = new Date();
-    setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
+    $('ulLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + ', at midnight Toronto time (Eastern). One song by The Hip a day - come back then.';
+    setTimeout(() => location.reload(), msUntilDay(dayNumber() + 1) + 1000);
     return;
   }
 
@@ -188,9 +233,12 @@
     today.unlocked.push(how);
     $('ulWordInput').value = '';
     used = [];
-    $('ulMsg').textContent = '';
     save();
     renderAll();
+    // Read the word out: focus moves to the song box, so a screen reader would only hear its
+    // label, not the word (audit A11Y-09)
+    const n = today.unlocked.length;
+    $('ulMsg').textContent = 'Word ' + n + ': ' + words[n - 1].toUpperCase() + '. Name the song for ' + worth(rung()) + ' points, or pass.';
     $('ulGuessInput').focus();
   }
   $('ulWordForm').addEventListener('submit', e => {
@@ -211,7 +259,12 @@
   });
 
   // ─── Guessing the song ───
-  const titles = pool.titles.map(([s, t]) => ({ s, t, n: norm(t) }));
+  // words: the title's words, matched like norm(); starts: the title from each word on, run together
+  const wordsOf = t => String(t || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/['\u2018\u2019]/g, '').split(/[^a-z0-9]+/).filter(Boolean);
+  const titles = pool.titles.map(([s, t]) => {
+    const w = wordsOf(t);
+    return { s, t, n: norm(t), words: w, starts: w.map((x, i) => w.slice(i).join('')) };
+  });
   function suggest() {
     const q = norm($('ulGuessInput').value);
     const box = $('ulSuggest');
@@ -260,10 +313,12 @@
     const msg = $('ulMsg');
     const q = norm($('ulGuessInput').value);
     if (!q) { msg.textContent = 'Type a song title.'; return; }
-    // An exact title, or the only song that matches what was typed
+    // An exact title, or the only song where what was typed starts one of its words (so "gus"
+    // finds 'Gus: The Polar Bear from Central Park', not 'Summer's Killing Us'). Part of a word
+    // needs 4 letters or more ("cen" isn't enough); a whole word needs 3 ("gus") (audit GAME-13)
     let pick = titles.find(x => x.n === q);
     if (!pick) {
-      const hits = titles.filter(x => x.n.includes(q));
+      const hits = titles.filter(x => x.starts.some(w => w.startsWith(q)) && (q.length >= 4 || (q.length >= 3 && x.words.includes(q))));
       if (hits.length === 1) pick = hits[0];
     }
     if (!pick) { msg.textContent = 'Pick a song from the list.'; return; }
@@ -275,9 +330,13 @@
   });
 
   // When the album is named after the song (a title track), the album would give the
-  // answer away, so the hint is the year it came out instead (v5.4.10, audit GAME-08)
+  // answer away, so the hint is the year it came out instead (v5.4.10, audit GAME-08).
+  // Same when they share two or more words of 4+ letters: 'My Music at Work' on
+  // "Music @ Work" (audit GAME-08, 2026-11-01).
   const flat = s => String(s || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
-  const yearHint = () => !!(puzzle.al && puzzle.ay && flat(puzzle.al).includes(flat(puzzle.t)));
+  const bigWords = s => wordsOf(s).filter(w => w.length >= 4);
+  const yearHint = () => !!(puzzle.al && puzzle.ay && (flat(puzzle.al).includes(flat(puzzle.t)) ||
+    bigWords(puzzle.t).filter((w, i, all) => all.indexOf(w) === i && bigWords(puzzle.al).includes(w)).length >= 2));
 
   // A guess (or a pass, slug '') on the current rung
   function answer(slug, title) {
@@ -345,15 +404,16 @@
       shown.appendChild(el('b', '', yearHint() ? String(puzzle.ay) : window.tthAlbumCase(puzzle.al)));
     }
   }
-  // Two taps, so nobody gives up by accident
+  // Two presses, so nobody gives up by accident. Ten seconds to press again, long enough for
+  // a screen reader to read the new label out (audit A11Y-09).
   let giveUpArmed = null;
   $('ulGiveUp').addEventListener('click', () => {
     if (today.done) return;
     const btn = $('ulGiveUp');
     if (!giveUpArmed) {
-      btn.textContent = 'Tap again to give up';
+      btn.textContent = 'Press again to give up';
       btn.classList.add('armed');
-      giveUpArmed = setTimeout(() => { giveUpArmed = null; btn.textContent = 'Give up'; btn.classList.remove('armed'); }, 4000);
+      giveUpArmed = setTimeout(() => { giveUpArmed = null; btn.textContent = 'Give up'; btn.classList.remove('armed'); }, 10000);
       return;
     }
     clearTimeout(giveUpArmed);
@@ -376,25 +436,35 @@
       s.won++;
       s.points += todayPoints();
       s.dist[today.wonAt]++;
-      s.streak = s.lastSolved === puzzleNo - 1 ? s.streak + 1 : 1;
+      s.streak = continues() ? s.streak + 1 : 1;
       s.lastSolved = puzzleNo;
       s.best = Math.max(s.best, s.streak);
     } else {
       s.streak = 0;
     }
+    delete store.tzGrace;
     track(won ? 'Unlocked - Won' : 'Unlocked - Lost');
   }
 
   // Naming the song before any word opens shows as its own line: five black squares read as a fail
   // (audit GAME-10). The link starts with https:// so every app turns it into a tap.
   const straightGuess = () => today.won && today.unlocked.length === 0;
+  // The squares in words too, so green and yellow don't rely on colour (audit GAME-12).
+  // "hint", never "album hint" or "year hint": the year would say it's a title track.
+  const shareWords = () => {
+    if (!today.won) return today.gaveUp ? ' (gave up)' : ' (missed)';
+    if (straightGuess()) return '';
+    const n = today.unlocked.length, rev = reveals();
+    return ' (' + n + (n === 1 ? ' word' : ' words') + (rev ? ', ' + rev + ' revealed' : '') + (today.wonAt === HINT_RUNG ? ', plus the hint' : '') + ')';
+  };
   const shareText = () =>
-    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points\n' +
+    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
     (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL;
 
+  // A win on this puzzle keeps the streak going (see the switch note at the top)
+  const continues = () => store.stats.lastSolved === puzzleNo - 1 || (!!store.tzGrace && store.stats.lastSolved === puzzleNo - 2);
   function shownStreak() {
-    const s = store.stats;
-    return s.lastSolved === puzzleNo || s.lastSolved === puzzleNo - 1 ? s.streak : 0;
+    return store.stats.lastSolved === puzzleNo || continues() ? store.stats.streak : 0;
   }
 
   function renderStats() {
@@ -497,7 +567,7 @@
   }
 
   function renderAll() {
-    $('ulNo').textContent = 'Puzzle No. ' + puzzleNo;
+    $('ulNo').textContent = 'Puzzle No. ' + puzzleNo + (yesterdays ? " (yesterday's)" : '');
     $('ulPoints').textContent = shownPoints();
     renderWords();
     renderGuess();
@@ -605,7 +675,7 @@
     if (landscape) {
       put(today.won ? '\u{1F513}' : '\u{1F512}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 28, '#ffffff', '4px', 540);
-      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -615,8 +685,8 @@
       tiles(690, 255, 76, 16);
       put(totalLine, 690, 395, '700', 34, '#ffffff', '0px', 460, 'left');
       put(statLine, 690, 445, '600', 28, '#d9d9d9', '0px', 460, 'left');
-      put(blurb, 690, 492, '600', 24, '#b0b0b0', '0px', 460, 'left');
-      put(SHARE_URL, W / 2, 585, '600', 24, '#b0b0b0', '2px', W - 120);
+      put(blurb, 690, 492, '600', 24, '#929292', '0px', 460, 'left');
+      put(SHARE_URL, W / 2, 585, '600', 24, '#929292', '2px', W - 120);
     } else {
       // Stories keep content inside Instagram's safe zone (top and bottom ~250px)
       const y = story
@@ -625,15 +695,15 @@
       const gap = 24, rowW = WORDS * y.size + (WORDS - 1) * gap;
       put(today.won ? '\u{1F513}' : '\u{1F512}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#ffffff', '4px', W - 160);
-      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#b0b0b0', '6px');
+      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
       tiles((W - rowW) / 2, y.tiles, y.size, gap);
       put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#ffffff', '0px', W - 160);
       put(statLine, W / 2, y.stats, '600', story ? 42 : 38, '#d9d9d9', '0px', W - 160);
-      put(blurb, W / 2, y.blurb, '600', story ? 34 : 30, '#b0b0b0', '0px', W - 160);
-      put(SHARE_URL, W / 2, y.site, '600', 32, '#b0b0b0', '2px', W - 140);
+      put(blurb, W / 2, y.blurb, '600', story ? 34 : 30, '#929292', '0px', W - 160);
+      put(SHARE_URL, W / 2, y.site, '600', 32, '#929292', '2px', W - 140);
     }
 
     const blob = await new Promise(res => c.toBlob(res, 'image/png'));
@@ -673,18 +743,19 @@
     } catch (e) { /* cancelled */ }
   });
 
-  // ─── Countdown to the next puzzle ───
+  // ─── Countdown to the next puzzle (midnight Toronto time) ───
   // The puzzle number decides when the page reloads, not an exact
   // zero on the clock: a tick that lands just after midnight used to miss it (audit GAME-02).
   let timer = null;
+  const behind = () => !forcedDay && naturalPuzzleNo() > puzzleNo;
   function startCountdown() {
     if (timer) return;
     // Finished a game that began before midnight: the new puzzle is already out, but reloading
     // now would take the score screen away, so offer it instead of reloading
-    const staleAtStart = !forcedDay && naturalPuzzleNo() !== puzzleNo;
+    const staleAtStart = behind();
     const box = $('ulCountdown').parentNode;
     const tick = () => {
-      if (!forcedDay && naturalPuzzleNo() !== puzzleNo) {
+      if (behind()) {
         if (!staleAtStart) { location.reload(); return; }
         if (!box.querySelector('a')) {
           box.textContent = 'A new puzzle is out. ';
@@ -694,9 +765,8 @@
         }
         return;
       }
-      const now = new Date();
-      const next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-      const left = Math.max(0, Math.round((next - now) / 1000));
+      // The next puzzle comes out on the day after this one's, at midnight Toronto time
+      const left = Math.max(0, Math.round(msUntilDay(epochDay + puzzleNo) / 1000));
       const p = n => String(n).padStart(2, '0');
       $('ulCountdown').textContent = p(Math.floor(left / 3600)) + ':' + p(Math.floor(left / 60) % 60) + ':' + p(left % 60);
     };
@@ -704,12 +774,14 @@
     timer = setInterval(tick, 1000);
   }
 
-  // Phone left open overnight: new day, new puzzle
+  // Phone left open overnight: new day, new puzzle. Never in the middle of a game, though:
+  // switching apps on a phone counts, and the half-played game would be lost (audit GAME-03).
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && !forcedDay && naturalPuzzleNo() !== puzzleNo) location.reload();
+    if (!document.hidden && behind() && (today.done || !today.started)) location.reload();
   });
 
   renderAll();
+  if (yesterdays) $('ulMsg').textContent = "Yesterday's puzzle is still open - finish it, then today's is waiting.";
   $('ulLoading').hidden = true;
   $('ulGame').hidden = false;
 })();

@@ -49,7 +49,9 @@ const STATS = {
   lastYear: { n: Math.max(...setlists.map(s => +s.date.slice(-4))), from: 'latest show year in setlists.min.json', plain: true },
   setlists: { n: setlists.filter(s => (s.songs || []).length).length, from: 'shows with at least one song' },
   recordings: { n: tour.filter(g => (g.tracks || []).length).length, from: 'shows with tracks in tth-tour-data.json' },
-  cities: { n: new Set(setlists.map(s => s.city)).size, from: 'city names in setlists.min.json' },
+  // A city is its name plus its province or state and country: London, Ontario and London,
+  // England are two cities (audit DATA-10)
+  cities: { n: new Set(setlists.filter(s => s.city).map(s => [s.city, s.state, s.country].join('|'))).size, from: 'cities (name, state, country) in setlists.min.json' },
   tours: { n: new Set(setlists.filter(s => s.tour).map(s => s.tour)).size, from: 'tour names in setlists.min.json' },
   lyrics: { n: lyricTexts.length, from: 'songs in lyrics.json' },
   lyricWords: { n: words.size, from: 'different words in lyrics.json' },
@@ -57,6 +59,9 @@ const STATS = {
   unreleased: { n: readJson('unplucked-gems.json').eras.reduce((n, e) => n + (e.sessions || []).length, 0), from: 'sessions in unplucked-gems.json' },
   concertVideos: { n: readJson('youtube-videos.json').eras.reduce((n, e) => n + (e.videos || []).length, 0), from: 'videos in youtube-videos.json' },
   officialVideos: { n: readJson('music-videos.json').videos.length, from: 'entries in music-videos.json' },
+  // The years the official videos span (audit DATA-09)
+  videoFirstYear: { n: Math.min(...readJson('music-videos.json').videos.map(v => +v.year)), from: 'earliest year in music-videos.json', plain: true },
+  videoLastYear: { n: Math.max(...readJson('music-videos.json').videos.map(v => +v.year)), from: 'latest year in music-videos.json', plain: true },
   ranks: { n: Math.max(...ranks), from: 'highest rank in js/discography-app.js' },
 };
 
@@ -72,17 +77,22 @@ const PHRASES = [
   ['shows', /\b\d[\d,]*(?= live shows and appearances)/g, ['index.html', 'discography.html', 'js/discography-app.js']],
   ['shows', /(?<=num: ')\d[\d,]*(?=', lbl: 'Shows & Appearances')/g, ['js/discography-app.js']],
   ['lastYear', /(?<=live shows and appearances from 1985 to\s+)\d{4}/g, ['discography.html', 'js/discography-app.js']],
+  // The tour map's span: Home's card, the map's description, and its year slider (audit DATA-04)
+  ['lastYear', /(?<=Every gig from 1985 to )\d{4}(?= on one map)|(?<=The Tragically Hip, from 1985 to )\d{4}/g, ['index.html', 'tour-map.html']],
+  ['lastYear', /(?<=id="year(?:Min|Max)" min="1985" max=")\d{4}|(?<=id="yearMax" min="1985" max="\d{4}" value=")\d{4}|(?<=id="yearDisplay">1985 - )\d{4}|(?<=class="year-labels" style="--max:)\d{4}|(?<=class="yl-max">)\d{4}/g, ['tour-map.html']],
   ['setlists', /\b\d[\d,]*(?= (?:with )?setlists\b)/g, ['index.html', 'live-stats.html', 'js/discography-app.js']],
   ['recordings', /\b\d[\d,]*(?= live recordings| shows you can play)/g, ['index.html']],
   ['cities', /(?<=num: ')\d[\d,]*(?=', lbl: 'Cities')/g, ['js/discography-app.js']],
   ['tours', /(?<=num: ')\d[\d,]*(?=', lbl: 'Tours & Events')/g, ['js/discography-app.js']],
-  ['lyrics', /\b\d[\d,]*(?= songs by (?:keyword or phrase|The Tragically Hip by a word))/g, ['discography.html', 'js/discography-app.js']],
-  ['lyrics', /(?<=num: ')\d[\d,]*(?=', lbl: 'Songs Searchable')|(?<=Loading lyrics for all )\d[\d,]*(?= songs)/g, ['js/discography-app.js']],
+  ['lyrics', /\b\d[\d,]*(?= songs by (?:keyword or phrase|The Tragically Hip for a word))/g, ['discography.html', 'js/discography-app.js']],
+  ['lyrics', /(?<=num: ')\d[\d,]*(?=', lbl: 'Songs Searchable')|(?<=the words to all )\d[\d,]*(?= songs)/g, ['js/discography-app.js']],
   ['lyricWords', /(?<=num: ')\d[\d,]*(?=', lbl: 'Different Words')/g, ['js/discography-app.js']],
   ['lyricWordTotal', /(?<=num: ')\d[\d,]*(?=', lbl: 'Words of Lyrics')/g, ['js/discography-app.js']],
   ['unreleased', /\b\d[\d,]*(?= demos, outtakes, and alternate versions)/g, ['index.html']],
-  ['concertVideos', /\b\d[\d,]*(?= videos: concerts)/g, ['index.html']],
+  ['concertVideos', /\b\d[\d,]*(?= videos and playlists: concerts)/g, ['index.html']],
   ['officialVideos', /(?<=Official videos for )\d[\d,]*(?= songs)/g, ['index.html']],
+  ['videoFirstYear', /(?<=Official videos for \d[\d,]* songs, from )\d{4}/g, ['index.html']],
+  ['videoLastYear', /(?<=Official videos for \d[\d,]* songs, from \d{4} to )\d{4}/g, ['index.html']],
   ['ranks', /(?<=ranking from No\. 1 to No\. )\d+|(?<=The Full )\d+(?= - All Songs)/g, ['index.html', 'discography.html', 'js/discography-app.js']],
   ['ranks', /(?<=Full )\d+(?= Fan Vote)/g, ['js/song.js', 'js/discography-app.js']],
 ];

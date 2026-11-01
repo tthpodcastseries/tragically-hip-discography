@@ -21,7 +21,9 @@
 //   l is the song's key in data/lyrics.json ('Album|||Song'). The song page fetches
 //   the lyrics only when someone opens its Lyrics card.
 //
-// Also rewrites the song block between the markers in sitemap.xml.
+// Also rewrites the song block between the markers in sitemap.xml. No <lastmod> there:
+// the only date this script knows is the day it ran, which tells search engines nothing
+// (audit SEO-04).
 //
 // When lyrics.json gains songs, re-run this script too, and bump LYRICS_CACHE_KEY
 // and the lyrics counts in js/discography-app.js and discography.html.
@@ -123,10 +125,13 @@ const podEnd = app.indexOf('};', app.indexOf('const top40PodcastURLs')) + 2;
 if (roadStart < 0 || podEnd < 2) throw new Error('Could not find the podcast episode data in discography-app.js');
 const { roadEpisodeForRank, top40PodcastURLs } = new Function(app.slice(roadStart, podEnd) + '\nreturn { roadEpisodeForRank, top40PodcastURLs };')();
 
-const unvoted = [];
+const unvoted = [], keptRank = [];
 for (const v of [...top40, ...beyond]) {
   const so = byTitle.get(norm(v.title)) || byTitle.get(norm(v.title.replace(/\s*\(.*\)\s*$/, '')));
   if (!so) { unvoted.push(v.title); continue; }
+  // A version's own vote ('Poets (Super Farmer Nano Baby Version)', No. 169) never
+  // replaces the song's better ranking ('Poets', No. 23) (audit DATA-01)
+  if (so.k && so.k.rank <= v.rank) { keptRank.push(`${v.title} (No. ${v.rank}) kept ${so.t} at No. ${so.k.rank}`); continue; }
   const road = v.rank > 40 ? roadEpisodeForRank(v.rank) : null;
   const kite = top40PodcastURLs[v.rank];
   so.k = { rank: v.rank, pts: v.points || 0 };
@@ -157,7 +162,8 @@ if (mismatched.length) throw new Error('Play counts differ from canonical-songs.
 // ─── Write ───
 const out = {
   built: new Date().toISOString().slice(0, 10),
-  shows: shows.map(x => [x.id, x.iso, x.s.venue || '', x.s.city || '', x.s.state || '', x.s.country || '', x.s.tour || '', x.rec ? 1 : 0]),
+  // state: setlist.fm's number-only region codes ("Amsterdam, 07") are left out (audit FUNC-08)
+  shows: shows.map(x => [x.id, x.iso, x.s.venue || '', x.s.city || '', /^\d+$/.test(x.s.state || '') ? '' : (x.s.state || ''), x.s.country || '', x.s.tour || '', x.rec ? 1 : 0]),
   songs: songs.map(so => ({ s: so.s, t: so.t, p: so.p, r: so.r, a: so.a, k: so.k, ...(so.o ? { o: so.o } : {}), ...(so.e ? { e: so.e } : {}), ...(so.l ? { l: so.l } : {}) })),
 };
 fs.writeFileSync(path.join(ROOT, 'data', 'song-index.json'), JSON.stringify(out) + '\n');
@@ -167,7 +173,7 @@ const smPath = path.join(ROOT, 'sitemap.xml');
 let sm = fs.readFileSync(smPath, 'utf8');
 const START = '<!-- songs:start -->', END = '<!-- songs:end -->';
 const block = START + '\n' + songs.map(so =>
-  `  <url>\n    <loc>https://thehiphandbook.tthpods.com/song/${so.s}</loc>\n    <lastmod>${out.built}</lastmod>\n    <priority>0.5</priority>\n  </url>`
+  `  <url>\n    <loc>https://thehiphandbook.tthpods.com/song/${so.s}</loc>\n    <priority>0.5</priority>\n  </url>`
 ).join('\n') + '\n  ' + END;
 if (sm.includes(START)) sm = sm.replace(new RegExp(START + '[\\s\\S]*?' + END), () => block);
 else sm = sm.replace('</urlset>', () => '  ' + block + '\n</urlset>');
@@ -182,4 +188,5 @@ if (noAlbum.length) console.log(`  no album found for: ${noAlbum.join(', ')}`);
 console.log(`  with lyrics: ${songs.filter(s => s.l).length}; without: ${songs.filter(s => !s.l).map(s => s.t).join(', ') || 'none'}`);
 if (unmatchedLyrics.length) console.log(`  lyrics titles not matched to a song: ${unmatchedLyrics.join(', ')}`);
 if (unvoted.length) console.log(`  fan-vote titles not matched to a song: ${unvoted.join(', ')}`);
+if (keptRank.length) console.log(`  version votes that did not replace a better ranking: ${keptRank.join('; ')}`);
 console.log(`updated ${songs.length} song entries in sitemap.xml`);

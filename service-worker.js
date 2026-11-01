@@ -1,6 +1,7 @@
 // Bump with each release (matches the footer version). Fans get new pages, CSS, JS
-// and data even if this is forgotten: those are all fetched network-first below.
-const CACHE_NAME = 'hh-v5.5.1';
+// and data even if this is forgotten: those are all fetched network-first below
+// (pages and data fall back to a saved copy after a few seconds on a weak signal).
+const CACHE_NAME = 'hh-v5.6';
 // The small shell only. Big data files (setlists, tour data, lyrics, song index...)
 // are cached the first time a page asks for them.
 const CORE_ASSETS = [
@@ -20,7 +21,11 @@ const CORE_ASSETS = [
   '/song.html',
   '/forum-invite.html',
   '/privacy.html',
+  '/lyrics.html',
+  '/setlists.html',
+  '/top-40.html',
   '/404.html',
+  '/offline.html',
   // CSS
   '/css/shared.css',
   '/css/passport.css',
@@ -33,6 +38,7 @@ const CORE_ASSETS = [
   '/css/unplucked-gems.css',
   '/css/video-for-new-recruits.css',
   '/css/live-stats.css',
+  '/css/offline.css',
   // JS
   '/js/shared-footer.js',
   '/js/discography-app.js',
@@ -43,6 +49,7 @@ const CORE_ASSETS = [
   '/js/song.js',
   '/js/tth-member-gate.js',
   '/js/home.js',
+  '/js/track-names.js',
   '/js/dialog-a11y.js',
   '/js/tour-map.js',
   '/js/tour-map-player.js',
@@ -50,6 +57,12 @@ const CORE_ASSETS = [
   '/js/music-videos.js',
   '/js/unplucked-gems.js',
   '/js/video-for-new-recruits.js',
+  // Leaflet, our own copy since audit PRIV-04 (map pages)
+  '/js/vendor/leaflet-1.9.4.js',
+  '/js/vendor/leaflet.markercluster-1.5.3.js',
+  '/css/vendor/leaflet-1.9.4.css',
+  '/css/vendor/MarkerCluster-1.5.3.css',
+  '/css/vendor/MarkerCluster.Default-1.5.3.css',
   // Fonts (the two every page preloads; the other weights are cached when first used)
   '/fonts/poppins-400-latin.woff2',
   '/fonts/poppins-600-latin.woff2',
@@ -98,8 +111,79 @@ function save(request, response) {
   return response;
 }
 
-// Fetch: network-first for pages, CSS, JS, data and the manifest (cache only when
-// offline); images and everything else: cached copy first, refreshed in the background
+// How long a page or data file gets to answer before a saved copy is shown instead
+// (audit PERF-05 / FUNC-12). Only used when a saved copy exists; the network answer
+// still lands in the cache in the background, ready for the next visit.
+const NETWORK_WAIT_MS = 4000;
+
+// Saved pages (audit FUNC-01 / PERF-08). Fans tap the short addresses (/tour-map,
+// /my-shows), the shell above is saved under the file names (/tour-map.html), and a
+// search address (/lyrics?q=...) is the same page. So a page is saved under its address
+// without the ?search part, and looked up under every name it goes by.
+const PAGE_ALIASES = { '/my-shows': '/passport.html', '/song': '/song.html' };
+
+function pageKeys(pathname) {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  const keys = [path];
+  if (path === '/' || path === '/index' || path === '/index.html') keys.push('/', '/index.html');
+  else if (path.endsWith('.html')) keys.push(path.slice(0, -5));
+  else keys.push(path + '.html');
+  const bare = path.replace(/\.html$/, '');
+  if (PAGE_ALIASES[bare]) keys.push(PAGE_ALIASES[bare]);
+  return [...new Set(keys)];
+}
+
+// A copy saved after a redirect (say /tour-map.html -> /tour-map) can't answer a page
+// load as it is: the browser refuses it. Hand back a plain copy of it instead.
+function usable(response) {
+  if (!response || !response.redirected) return response;
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: response.headers });
+}
+
+async function savedPage(url) {
+  const cache = await caches.open(CACHE_NAME);
+  for (const key of pageKeys(url.pathname)) {
+    const hit = await cache.match(key, { ignoreSearch: true, ignoreVary: true });
+    if (hit) return usable(hit);
+  }
+  return null;
+}
+
+function savePage(url, response) {
+  if (response.status === 200 && response.type === 'basic' && !response.redirected) {
+    const clone = response.clone();
+    caches.open(CACHE_NAME).then(cache => cache.put(url.origin + url.pathname, clone)).catch(() => {});
+  }
+  return response;
+}
+
+// Offline and nothing saved for this address
+async function offlinePage(url) {
+  const cache = await caches.open(CACHE_NAME);
+  // A song page not visited yet: song.html reads the slug from the address
+  const r = (url.pathname.startsWith('/song/') && await cache.match('/song.html'))
+    || await cache.match('/offline.html')
+    || await cache.match('/404.html');
+  return usable(r) || Response.error();
+}
+
+// The network answer, unless it takes longer than NETWORK_WAIT_MS (or fails) and a
+// saved copy exists: then the saved copy
+function networkOrSaved(network, saved) {
+  if (!saved) return network;
+  return new Promise(resolve => {
+    const timer = setTimeout(() => resolve(saved), NETWORK_WAIT_MS);
+    network.then(
+      response => { clearTimeout(timer); resolve(response); },
+      () => { clearTimeout(timer); resolve(saved); }
+    );
+  });
+}
+
+// Fetch: pages and data are network-first, falling back to the saved copy when offline
+// or when the network is too slow (above). CSS, JS and the manifest are network-first
+// with no time limit, so a release's new code always arrives. Images and everything
+// else: cached copy first, refreshed in the background.
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
@@ -108,19 +192,36 @@ self.addEventListener('fetch', event => {
 
   // HTML pages
   if (event.request.mode === 'navigate' || event.request.headers.get('accept')?.includes('text/html')) {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => save(event.request, response))
-        .catch(() => caches.match(event.request)
-          // Offline on a song page not visited yet: song.html reads the slug from the address
-          .then(r => r || (url.pathname.startsWith('/song/') ? caches.match('/song.html') : null))
-          .then(r => r || caches.match('/404.html')))
-    );
+    const network = fetch(event.request).then(response => savePage(url, response));
+    event.waitUntil(network.catch(() => {}));
+    event.respondWith((async () => {
+      const saved = await savedPage(url).catch(() => null);
+      try {
+        return await networkOrSaved(network, saved);
+      } catch (e) {
+        return offlinePage(url);
+      }
+    })());
     return;
   }
 
-  // CSS, JS, JSON data, manifest: always ask the server (a quick "not modified" when unchanged)
-  if (/^\/(css|js)\//.test(url.pathname) || (url.pathname.startsWith('/data/') && url.pathname.endsWith('.json')) || url.pathname === '/manifest.json') {
+  // JSON data: as pages, with the same time limit when a saved copy exists
+  if (url.pathname.startsWith('/data/') && url.pathname.endsWith('.json')) {
+    const network = fetch(event.request, { cache: 'no-cache' }).then(response => save(event.request, response));
+    event.waitUntil(network.catch(() => {}));
+    event.respondWith((async () => {
+      const saved = await caches.match(event.request).catch(() => null);
+      try {
+        return await networkOrSaved(network, saved);
+      } catch (e) {
+        return Response.error();
+      }
+    })());
+    return;
+  }
+
+  // CSS, JS, manifest: always ask the server (a quick "not modified" when unchanged)
+  if (/^\/(css|js)\//.test(url.pathname) || url.pathname === '/manifest.json') {
     event.respondWith(
       fetch(event.request, { cache: 'no-cache' })
         .then(response => save(event.request, response))

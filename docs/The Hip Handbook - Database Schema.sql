@@ -1,3 +1,9 @@
+-- HISTORY ONLY - DON'T RUN THIS FILE. (Marked 2026-11-01, audit REL-02.)
+-- It's the 2026-10-31 snapshot: run top to bottom it stops at the table
+-- (the generator it needs comes later), and its unlock_member and
+-- update_attended_shows have no guessing limits. To rebuild the database use
+-- "The Hip Handbook - Database Rebuild.sql".
+--
 -- The Hip Handbook - Database Schema (Supabase project deqslacywpwnjjckdygp, "tth-compendium")
 --
 -- Record of how the membersHIP database is set up, so it can be rebuilt if the
