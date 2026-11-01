@@ -456,7 +456,17 @@
     "lat": 45.500113293,
     "lng": -77.082749468,
     "songCount": 15,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1987/butsons-valley-hotel-renfrew-on-canada-23fc04c7.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1987/butsons-valley-hotel-renfrew-on-canada-23fc04c7.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1987-05-XX-Renfrew-ON-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full tape",
+        "url": "1987-05-20-Renfrew-ON/The Tragically Hip Live Renfrew Ont May 1987.MP3_280308381_soundcloud.mp3",
+        "filename": "The Tragically Hip Live Renfrew Ont May 1987.MP3_280308381_soundcloud.mp3"
+      }
+    ],
+    "recordingNote": "Tape dated May 20-23, 1987 - filed under the first night."
   },
   {
     "id": "33fc04c5",
@@ -1666,7 +1676,17 @@
     "lat": 42.900120853,
     "lng": -78.932856028,
     "songCount": 13,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/mather-arch-park-fort-erie-on-canada-bc4d502.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/mather-arch-park-fort-erie-on-canada-bc4d502.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=T-m-FynSJd4",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "1989-06-30-Fort-Erie-ON/The Tragically Hip Live in Fort Erie, Ontario, June 30, 1989 FULL CONCERT AUDIO.mp3",
+        "filename": "The Tragically Hip Live in Fort Erie, Ontario, June 30, 1989 FULL CONCERT AUDIO.mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload."
   },
   {
     "id": "bff811a",
@@ -2289,6 +2309,38 @@
         "filename": "tth1989-12-XXd1t11.mp3"
       }
     ]
+  },
+  {
+    "id": "b7fa9fa",
+    "date": "01-12-1989",
+    "isoDate": "1989-12-01",
+    "tour": null,
+    "venue": "23 East Cabaret",
+    "venueId": "3d761af",
+    "city": "Ardmore",
+    "state": "PA",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 40.0067786,
+    "lng": -75.2854622,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/23-east-cabaret-ardmore-pa-b7fa9fa.html"
+  },
+  {
+    "id": "137fa9fd",
+    "date": "02-12-1989",
+    "isoDate": "1989-12-02",
+    "tour": null,
+    "venue": "23 East Cabaret",
+    "venueId": "3d761af",
+    "city": "Ardmore",
+    "state": "PA",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 40.0067786,
+    "lng": -75.2854622,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/23-east-cabaret-ardmore-pa-137fa9fd.html"
   },
   {
     "id": "63fc768f",
@@ -2974,6 +3026,22 @@
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/the-moore-theatre-seattle-wa-139c8db9.html"
   },
   {
+    "id": "337c20f1",
+    "date": "21-05-1990",
+    "isoDate": "1990-05-21",
+    "tour": null,
+    "venue": "Carnaval",
+    "venueId": "43df3b03",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 34.4208305,
+    "lng": -119.6981901,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/carnaval-santa-barbara-ca-337c20f1.html"
+  },
+  {
     "id": "539eef11",
     "date": "23-05-1990",
     "isoDate": "1990-05-23",
@@ -3272,7 +3340,91 @@
     "lat": 42.900120853,
     "lng": -78.932856028,
     "songCount": 16,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/mather-arch-park-fort-erie-on-canada-350f53f.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/mather-arch-park-fort-erie-on-canada-350f53f.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-06-29-FortErie-ON-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Crack My Spine Like a Whip",
+        "url": "1990-06-30-Fort-Erie-ON/01 Crack my Spine.mp3",
+        "filename": "01 Crack my Spine.mp3"
+      },
+      {
+        "name": "She Didn't Know",
+        "url": "1990-06-30-Fort-Erie-ON/02 She didn_t Know.mp3",
+        "filename": "02 She didn_t Know.mp3"
+      },
+      {
+        "name": "It's Just as Well",
+        "url": "1990-06-30-Fort-Erie-ON/03 It_s just as Well.mp3",
+        "filename": "03 It_s just as Well.mp3"
+      },
+      {
+        "name": "Cordelia",
+        "url": "1990-06-30-Fort-Erie-ON/04 Cordelia.mp3",
+        "filename": "04 Cordelia.mp3"
+      },
+      {
+        "name": "Everytime You Go",
+        "url": "1990-06-30-Fort-Erie-ON/05 Everytime you Go.mp3",
+        "filename": "05 Everytime you Go.mp3"
+      },
+      {
+        "name": "Trickle Down",
+        "url": "1990-06-30-Fort-Erie-ON/06 Trickle Down.mp3",
+        "filename": "06 Trickle Down.mp3"
+      },
+      {
+        "name": "Boots or Hearts",
+        "url": "1990-06-30-Fort-Erie-ON/07 Boots or Hearts.mp3",
+        "filename": "07 Boots or Hearts.mp3"
+      },
+      {
+        "name": "Long Time Running",
+        "url": "1990-06-30-Fort-Erie-ON/08 Long Time Runnin.mp3",
+        "filename": "08 Long Time Runnin.mp3"
+      },
+      {
+        "name": "Three Pistols",
+        "url": "1990-06-30-Fort-Erie-ON/09 Three Pistols.mp3",
+        "filename": "09 Three Pistols.mp3"
+      },
+      {
+        "name": "Fight",
+        "url": "1990-06-30-Fort-Erie-ON/10 Fight.mp3",
+        "filename": "10 Fight.mp3"
+      },
+      {
+        "name": "All Canadian Surf Club",
+        "url": "1990-06-30-Fort-Erie-ON/11 All Canadian Surf Club.mp3",
+        "filename": "11 All Canadian Surf Club.mp3"
+      },
+      {
+        "name": "38 Years Old",
+        "url": "1990-06-30-Fort-Erie-ON/12 38 Years Old.mp3",
+        "filename": "12 38 Years Old.mp3"
+      },
+      {
+        "name": "Blow at High Dough",
+        "url": "1990-06-30-Fort-Erie-ON/13 Blow at High Dough.mp3",
+        "filename": "13 Blow at High Dough.mp3"
+      },
+      {
+        "name": "New Orleans Is Sinking",
+        "url": "1990-06-30-Fort-Erie-ON/14 New Oleans is Sinking.mp3",
+        "filename": "14 New Oleans is Sinking.mp3"
+      },
+      {
+        "name": "I'll Believe In You (Or I'll Be Leaving You Tonight)",
+        "url": "1990-06-30-Fort-Erie-ON/15 I_ll Beleive in You.mp3",
+        "filename": "15 I_ll Beleive in You.mp3"
+      },
+      {
+        "name": "Ouch!",
+        "url": "1990-06-30-Fort-Erie-ON/16 Ouch.mp3",
+        "filename": "16 Ouch.mp3"
+      }
+    ]
   },
   {
     "id": "3d9d91b",
@@ -3338,6 +3490,22 @@
         "filename": "hip1990-07-01d1t09.mp3"
       }
     ]
+  },
+  {
+    "id": "6b736a6e",
+    "date": "01-07-1990",
+    "isoDate": "1990-07-01",
+    "tour": null,
+    "venue": "Grandstand at Lansdowne Park",
+    "venueId": "6bd24226",
+    "city": "Ottawa",
+    "state": "ON",
+    "country": "CA",
+    "countryName": "Canada",
+    "lat": 45.4209405046496,
+    "lng": -75.6902861595154,
+    "songCount": 4,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1990/grandstand-at-lansdowne-park-ottawa-on-canada-6b736a6e.html"
   },
   {
     "id": "6bc7e232",
@@ -7714,6 +7882,22 @@
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/coca-cola-starplex-amphitheatre-dallas-tx-2be4c882.html"
   },
   {
+    "id": "2b71c06e",
+    "date": "21-04-1993",
+    "isoDate": "1993-04-21",
+    "tour": null,
+    "venue": "El Rey Theater",
+    "venueId": "53d2d3dd",
+    "city": "Albuquerque",
+    "state": "NM",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 35.084,
+    "lng": -106.651,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/el-rey-theater-albuquerque-nm-2b71c06e.html"
+  },
+  {
     "id": "b83c92e",
     "date": "23-04-1993",
     "isoDate": "1993-04-23",
@@ -7976,6 +8160,22 @@
     "lng": -74.0059729,
     "songCount": 0,
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/the-grand-new-york-ny-4bcf4366.html"
+  },
+  {
+    "id": "3b773868",
+    "date": "23-05-1993",
+    "isoDate": "1993-05-23",
+    "tour": null,
+    "venue": "Coca-Cola Lakewood Amphitheatre",
+    "venueId": "7bd62e9c",
+    "city": "Atlanta",
+    "state": "GA",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 33.7489954,
+    "lng": -84.3879824,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1993/coca-cola-lakewood-amphitheatre-atlanta-ga-3b773868.html"
   },
   {
     "id": "6bcdeac2",
@@ -17069,6 +17269,116 @@
     ]
   },
   {
+    "id": "37d8dc7",
+    "date": "29-08-1996",
+    "isoDate": "1996-08-29",
+    "tour": null,
+    "venue": "Cat's Cradle",
+    "venueId": "73d6c245",
+    "city": "Carrboro",
+    "state": "NC",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 35.9101438,
+    "lng": -79.0752895,
+    "songCount": 18,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/cats-cradle-carrboro-nc-37d8dc7.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-08-29-Carrboro-NC-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Springtime in Vienna",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t01.mp3",
+        "filename": "tth1996-08-29d01t01.mp3"
+      },
+      {
+        "name": "Grace, Too",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t02.mp3",
+        "filename": "tth1996-08-29d01t02.mp3"
+      },
+      {
+        "name": "Gift Shop",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t03.mp3",
+        "filename": "tth1996-08-29d01t03.mp3"
+      },
+      {
+        "name": "Pigeon Camera",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t04.mp3",
+        "filename": "tth1996-08-29d01t04.mp3"
+      },
+      {
+        "name": "700 ft. Ceiling",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t05.mp3",
+        "filename": "tth1996-08-29d01t05.mp3"
+      },
+      {
+        "name": "Coconut Cream",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t06.mp3",
+        "filename": "tth1996-08-29d01t06.mp3"
+      },
+      {
+        "name": "Locked in the Trunk of a Car",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t07.mp3",
+        "filename": "tth1996-08-29d01t07.mp3"
+      },
+      {
+        "name": "Flamenco",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t08.mp3",
+        "filename": "tth1996-08-29d01t08.mp3"
+      },
+      {
+        "name": "At the Hundredth Meridian",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t09.mp3",
+        "filename": "tth1996-08-29d01t09.mp3"
+      },
+      {
+        "name": "Butts Wigglin'",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t10.mp3",
+        "filename": "tth1996-08-29d01t10.mp3"
+      },
+      {
+        "name": "Fully Completely",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t11.mp3",
+        "filename": "tth1996-08-29d01t11.mp3"
+      },
+      {
+        "name": "Ahead by a Century",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d01t12.mp3",
+        "filename": "tth1996-08-29d01t12.mp3"
+      },
+      {
+        "name": "New Orleans Is Sinking",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t01.mp3",
+        "filename": "tth1996-08-29d02t01.mp3"
+      },
+      {
+        "name": "Put It Off",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t02.mp3",
+        "filename": "tth1996-08-29d02t02.mp3"
+      },
+      {
+        "name": "Fire in the Hole",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t03.mp3",
+        "filename": "tth1996-08-29d02t03.mp3"
+      },
+      {
+        "name": "Scared",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t04.mp3",
+        "filename": "tth1996-08-29d02t04.mp3"
+      },
+      {
+        "name": "Nautical Disaster",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t05.mp3",
+        "filename": "tth1996-08-29d02t05.mp3"
+      },
+      {
+        "name": "The Wherewithal",
+        "url": "1996-08-29-Carrboro-NC/tth1996-08-29d02t06.mp3",
+        "filename": "tth1996-08-29d02t06.mp3"
+      }
+    ]
+  },
+  {
     "id": "5bfcf730",
     "date": "10-09-1996",
     "isoDate": "1996-09-10",
@@ -19564,6 +19874,62 @@
     ]
   },
   {
+    "id": "37d8ddb",
+    "date": "07-05-1997",
+    "isoDate": "1997-05-07",
+    "tour": null,
+    "venue": "NOB radiostudio (2 Meter Sessie)",
+    "venueId": "bd62dd2",
+    "city": "Hilversum",
+    "state": "07",
+    "country": "NL",
+    "countryName": "Netherlands",
+    "lat": 52.223333,
+    "lng": 5.176389,
+    "songCount": 10,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nob-radiostudio-2-meter-sessie-hilversum-netherlands-37d8ddb.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1997-05-07-Utrecht-Netherlands-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Gift Shop",
+        "url": "1997-05-07-Hilversum-07/01 - Gift Shop.mp3",
+        "filename": "01 - Gift Shop.mp3"
+      },
+      {
+        "name": "Ahead by a Century",
+        "url": "1997-05-07-Hilversum-07/02 - Ahead by a Century.mp3",
+        "filename": "02 - Ahead by a Century.mp3"
+      },
+      {
+        "name": "Springtime in Vienna",
+        "url": "1997-05-07-Hilversum-07/03 - Springtime in Vienna.mp3",
+        "filename": "03 - Springtime in Vienna.mp3"
+      },
+      {
+        "name": "The Luxury",
+        "url": "1997-05-07-Hilversum-07/04 - The Luxury.mp3",
+        "filename": "04 - The Luxury.mp3"
+      },
+      {
+        "name": "Don't Wake Daddy",
+        "url": "1997-05-07-Hilversum-07/05 - Don_t Wake Daddy.mp3",
+        "filename": "05 - Don_t Wake Daddy.mp3"
+      },
+      {
+        "name": "Flamenco",
+        "url": "1997-05-07-Hilversum-07/06 - Flamenco.mp3",
+        "filename": "06 - Flamenco.mp3"
+      },
+      {
+        "name": "Scared",
+        "url": "1997-05-07-Hilversum-07/07 - Scared.mp3",
+        "filename": "07 - Scared.mp3"
+      }
+    ],
+    "recordingNote": "Radio broadcast: 7 of the 10 songs, in broadcast order, with the talk edited out."
+  },
+  {
     "id": "734ce6c5",
     "date": "08-05-1997",
     "isoDate": "1997-05-08",
@@ -19577,7 +19943,17 @@
     "lat": 51.9225,
     "lng": 4.479167,
     "songCount": 0,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nighttown-rotterdam-netherlands-734ce6c5.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nighttown-rotterdam-netherlands-734ce6c5.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=alkOWXldh8Q",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "1997-05-08-Rotterdam-11/The Tragically Hip - May 8, 1997 (Rotterdam SBD).mp3",
+        "filename": "The Tragically Hip - May 8, 1997 (Rotterdam SBD).mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload (soundboard)."
   },
   {
     "id": "7bd952bc",
@@ -20005,7 +20381,106 @@
     "lat": 52.090833,
     "lng": 5.122222,
     "songCount": 19,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/tivoli-utrecht-netherlands-5bfe732c.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/tivoli-utrecht-netherlands-5bfe732c.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1997-05-12-Utrecht-Netherlands-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "700 ft. Ceiling",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL01.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL01.mp3"
+      },
+      {
+        "name": "Everytime You Go",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL02.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL02.mp3"
+      },
+      {
+        "name": "Grace, Too",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL03.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL03.mp3"
+      },
+      {
+        "name": "Springtime in Vienna",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL04.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL04.mp3"
+      },
+      {
+        "name": "Twist My Arm",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL05.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL05.mp3"
+      },
+      {
+        "name": "Ahead by a Century",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL06.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL06.mp3"
+      },
+      {
+        "name": "Gift Shop",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL07.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL07.mp3"
+      },
+      {
+        "name": "Save the Planet",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL08.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL08.mp3"
+      },
+      {
+        "name": "Courage (for Hugh MacLennan)",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL09.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL09.mp3"
+      },
+      {
+        "name": "Scared",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL10.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL10.mp3"
+      },
+      {
+        "name": "At the Hundredth Meridian",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL11.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL11.mp3"
+      },
+      {
+        "name": "Don't Wake Daddy",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL12.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL12.mp3"
+      },
+      {
+        "name": "Coconut Cream",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL13.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL13.mp3"
+      },
+      {
+        "name": "Bobcaygeon",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL14.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL14.mp3"
+      },
+      {
+        "name": "Nautical Disaster",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL15.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL15.mp3"
+      },
+      {
+        "name": "Little Bones",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL16.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL16.mp3"
+      },
+      {
+        "name": "The Wherewithal",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL17.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL17.mp3"
+      },
+      {
+        "name": "Escape Is at Hand for the Travellin' Man",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL18.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL18.mp3"
+      },
+      {
+        "name": "New Orleans Is Sinking",
+        "url": "1997-06-12-Utrecht-09/tth1997-05-12 - Utrecht, NL19.mp3",
+        "filename": "tth1997-05-12 - Utrecht, NL19.mp3"
+      }
+    ]
   },
   {
     "id": "bdc4962",
@@ -24165,6 +24640,111 @@
     "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/house-of-blues-west-hollywood-ca-23cf40ff.html"
   },
   {
+    "id": "1b76e538",
+    "date": "20-10-1998",
+    "isoDate": "1998-10-20",
+    "tour": "Phantom Power Tour",
+    "venue": "4th & B",
+    "venueId": "bd6216e",
+    "city": "San Diego",
+    "state": "CA",
+    "country": "US",
+    "countryName": "United States",
+    "lat": 32.7153292,
+    "lng": -117.1572551,
+    "songCount": 0,
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/4th-and-b-san-diego-ca-1b76e538.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-10-20-SanDiego-CA-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Poets",
+        "url": "1998-10-20-San-Diego-CA/01 - Poets.mp3",
+        "filename": "01 - Poets.mp3"
+      },
+      {
+        "name": "Fully Completely",
+        "url": "1998-10-20-San-Diego-CA/02 - Fully Completely.mp3",
+        "filename": "02 - Fully Completely.mp3"
+      },
+      {
+        "name": "Fireworks",
+        "url": "1998-10-20-San-Diego-CA/03 - Fireworks.mp3",
+        "filename": "03 - Fireworks.mp3"
+      },
+      {
+        "name": "Thompson Girl",
+        "url": "1998-10-20-San-Diego-CA/04 - Thompson Girl.mp3",
+        "filename": "04 - Thompson Girl.mp3"
+      },
+      {
+        "name": "Lionized",
+        "url": "1998-10-20-San-Diego-CA/05 - Lionized.mp3",
+        "filename": "05 - Lionized.mp3"
+      },
+      {
+        "name": "Ahead by a Century",
+        "url": "1998-10-20-San-Diego-CA/06 - Ahead By A Century.mp3",
+        "filename": "06 - Ahead By A Century.mp3"
+      },
+      {
+        "name": "The Luxury",
+        "url": "1998-10-20-San-Diego-CA/07 - The Luxury.mp3",
+        "filename": "07 - The Luxury.mp3"
+      },
+      {
+        "name": "Something On",
+        "url": "1998-10-20-San-Diego-CA/08 - Something On.mp3",
+        "filename": "08 - Something On.mp3"
+      },
+      {
+        "name": "Courage (for Hugh MacLennan)",
+        "url": "1998-10-20-San-Diego-CA/09 - Courage.mp3",
+        "filename": "09 - Courage.mp3"
+      },
+      {
+        "name": "Chagrin Falls",
+        "url": "1998-10-20-San-Diego-CA/10 - Chagrin Falls.mp3",
+        "filename": "10 - Chagrin Falls.mp3"
+      },
+      {
+        "name": "Gift Shop",
+        "url": "1998-10-20-San-Diego-CA/11 - Gift Shop.mp3",
+        "filename": "11 - Gift Shop.mp3"
+      },
+      {
+        "name": "Emperor Penguin",
+        "url": "1998-10-20-San-Diego-CA/12 - Emperor Penguin.mp3",
+        "filename": "12 - Emperor Penguin.mp3"
+      },
+      {
+        "name": "Fire in the Hole",
+        "url": "1998-10-20-San-Diego-CA/13 - Fire In The Hole.mp3",
+        "filename": "13 - Fire In The Hole.mp3"
+      },
+      {
+        "name": "Escape Is at Hand for the Travellin' Man",
+        "url": "1998-10-20-San-Diego-CA/14 - Escape Is At Hand For The Travellin_ Man.mp3",
+        "filename": "14 - Escape Is At Hand For The Travellin_ Man.mp3"
+      },
+      {
+        "name": "Nautical Disaster",
+        "url": "1998-10-20-San-Diego-CA/15 - Nautical Disaster.mp3",
+        "filename": "15 - Nautical Disaster.mp3"
+      },
+      {
+        "name": "The Rules",
+        "url": "1998-10-20-San-Diego-CA/16 - The Rules.mp3",
+        "filename": "16 - The Rules.mp3"
+      },
+      {
+        "name": "Blow at High Dough",
+        "url": "1998-10-20-San-Diego-CA/17 - Blow At High Dough.mp3",
+        "filename": "17 - Blow At High Dough.mp3"
+      }
+    ]
+  },
+  {
     "id": "3bffc86c",
     "date": "21-10-1998",
     "isoDate": "1998-10-21",
@@ -26087,7 +26667,17 @@
     "lat": 46.115943434,
     "lng": -64.801862188,
     "songCount": 22,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/moncton-coliseum-moncton-nb-canada-63cc36fb.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/moncton-coliseum-moncton-nb-canada-63cc36fb.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=KvlfDtToiL4",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "1999-01-31-Moncton-NB/Tragically Hip 1999 01 31 Moncton.mp3",
+        "filename": "Tragically Hip 1999 01 31 Moncton.mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload."
   },
   {
     "id": "73cc3615",
@@ -45507,7 +46097,17 @@
     "lat": 55.6776812020993,
     "lng": 12.5709342956543,
     "songCount": 18,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/lille-vega-copenhagen-denmark-33ff0c4d.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/lille-vega-copenhagen-denmark-33ff0c4d.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=DqrWFfc_lH4",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "2002-11-18-Copenhagen-17/The Tragically Hip - November 18, 2002 (Copenhagen SBD).mp3",
+        "filename": "The Tragically Hip - November 18, 2002 (Copenhagen SBD).mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload (soundboard)."
   },
   {
     "id": "3ff0d0f",
@@ -49405,7 +50005,17 @@
     "lat": 42.983389283,
     "lng": -81.233042387,
     "songCount": 24,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/john-labatt-centre-london-on-canada-6bd7b28e.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/john-labatt-centre-london-on-canada-6bd7b28e.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=0_SsSvN9euk",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "2004-11-27-London-ON/The Tragically Hip - November 27, 2004 (London, Ontario SBD).mp3",
+        "filename": "The Tragically Hip - November 27, 2004 (London, Ontario SBD).mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload (soundboard)."
   },
   {
     "id": "7bdcb6c8",
@@ -50122,7 +50732,26 @@
     "lat": 49.884398624,
     "lng": -97.147044715,
     "songCount": 2,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2005/mts-centre-winnipeg-mb-canada-6bff2ace.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2005/mts-centre-winnipeg-mb-canada-6bff2ace.html",
+    "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2005-04-03-Winnipeg-MB-mp3.zip",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Intro",
+        "url": "2005-04-02-Winnipeg-MB/tth040305t1.mp3",
+        "filename": "tth040305t1.mp3"
+      },
+      {
+        "name": "Fully Completely",
+        "url": "2005-04-02-Winnipeg-MB/tth040305t2.mp3",
+        "filename": "tth040305t2.mp3"
+      },
+      {
+        "name": "Grace, Too",
+        "url": "2005-04-02-Winnipeg-MB/tth040305t3.mp3",
+        "filename": "tth040305t3.mp3"
+      }
+    ]
   },
   {
     "id": "7bff2ac8",
@@ -56932,7 +57561,17 @@
     "lat": 37.775,
     "lng": -122.419,
     "songCount": 25,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/the-fillmore-san-francisco-ca-1bfe8118.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/the-fillmore-san-francisco-ca-1bfe8118.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=wLJ2b4ZSXEk",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "2007-03-26-San-Francisco-CA/The Tragically Hip Live at The Filmore in San Francisco March 26 2007.mp3",
+        "filename": "The Tragically Hip Live at The Filmore in San Francisco March 26 2007.mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload."
   },
   {
     "id": "3dd3113",
@@ -70203,7 +70842,17 @@
     "lat": 53.550135939,
     "lng": -113.468712219,
     "songCount": 18,
-    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/northlands-grounds-edmonton-ab-canada-53ff0395.html"
+    "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/northlands-grounds-edmonton-ab-canada-53ff0395.html",
+    "archiveUrl": "https://www.youtube.com/watch?v=nCA76EB2U1g",
+    "archiveFormat": "mp3",
+    "tracks": [
+      {
+        "name": "Full show",
+        "url": "2011-07-14-Edmonton-AB/The Tragically Hip @ Edmonton - July 14th 2011.mp3",
+        "filename": "The Tragically Hip @ Edmonton - July 14th 2011.mp3"
+      }
+    ],
+    "recordingNote": "From a YouTube upload."
   },
   {
     "id": "23d340b7",

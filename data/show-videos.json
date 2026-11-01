@@ -1,15 +1,15 @@
 {
   "description": "ISO-date match between data/youtube-videos.json and data/tth-tour-data.json. Used by tour-map.html, discography.html (Family Band), and video-for-new-recruits.html for bidirectional show ↔ video links.",
-  "lastUpdated": "2026-10-29",
+  "lastUpdated": "2026-11-01",
   "summary": {
-    "totalShowsWithVideo": 195,
-    "totalVideosMatched": 226,
-    "multipleVideosPerShow": 30,
+    "totalShowsWithVideo": 206,
+    "totalVideosMatched": 238,
+    "multipleVideosPerShow": 31,
     "ambiguousDateMatches": 5,
-    "unmatchedVideos": 154,
+    "unmatchedVideos": 151,
     "skippedNoDate": 101,
     "skippedYearOnly": 47,
-    "skippedNoShow": 6
+    "skippedNoShow": 3
   },
   "byShow": {
     "53c4e3b9": [
@@ -101,6 +101,19 @@
         "location": "Toronto, Ontario",
         "partialTracklist": false,
         "trackCount": 4
+      }
+    ],
+    "bc4d502": [
+      {
+        "videoId": "T-m-FynSJd4",
+        "url": "https://www.youtube.com/watch?v=T-m-FynSJd4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/T-m-FynSJd4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jun 30, 1989",
+        "location": "Fort Erie, Ontario",
+        "partialTracklist": false,
+        "trackCount": 0
       }
     ],
     "2bfe0402": [
@@ -432,6 +445,19 @@
         "trackCount": 2
       }
     ],
+    "5bd53384": [
+      {
+        "videoId": "QOSeul2tuyw",
+        "url": "https://www.youtube.com/watch?v=QOSeul2tuyw",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/QOSeul2tuyw/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Feb 10, 1995",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 22
+      }
+    ],
     "7bcf82a8": [
       {
         "videoId": "sjRZMgmDa3I",
@@ -585,6 +611,19 @@
         "trackCount": 2
       }
     ],
+    "37d8dc7": [
+      {
+        "videoId": "PuBCMmKNYbo",
+        "url": "https://www.youtube.com/watch?v=PuBCMmKNYbo",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/PuBCMmKNYbo/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Aug 29, 1996",
+        "location": "Carrboro, North Carolina",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
     "b86e94a": [
       {
         "videoId": "onUnp8QymtM",
@@ -683,6 +722,49 @@
         "location": "Montreal",
         "partialTracklist": false,
         "trackCount": 1
+      }
+    ],
+    "37d8ddb": [
+      {
+        "videoId": "a1Tf4AgZCt0",
+        "url": "https://www.youtube.com/watch?v=a1Tf4AgZCt0",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/a1Tf4AgZCt0/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "May 7, 1997",
+        "location": "Utrecht, Holland",
+        "partialTracklist": true,
+        "trackCount": 3
+      },
+      {
+        "videoId": "bAqJnR2VtrM",
+        "url": "https://www.youtube.com/watch?v=bAqJnR2VtrM",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/bAqJnR2VtrM/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "May 7, 1997",
+        "location": "Amsterdam",
+        "partialTracklist": true,
+        "trackCount": 2
+      }
+    ],
+    "734ce6c5": [
+      {
+        "videoId": "alkOWXldh8Q",
+        "url": "https://www.youtube.com/watch?v=alkOWXldh8Q",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/alkOWXldh8Q/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "May 8, 1997",
+        "location": "Rotterdam, Holland",
+        "partialTracklist": false,
+        "trackCount": 19
       }
     ],
     "5bfe7330": [
@@ -1036,6 +1118,19 @@
         "location": "Boston, Massachusetts",
         "partialTracklist": false,
         "trackCount": 3
+      }
+    ],
+    "63cc36fb": [
+      {
+        "videoId": "KvlfDtToiL4",
+        "url": "https://www.youtube.com/watch?v=KvlfDtToiL4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/KvlfDtToiL4/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jan 31, 1999",
+        "location": "Moncton, New Brunswick",
+        "partialTracklist": false,
+        "trackCount": 0
       }
     ],
     "6bc61236": [
@@ -1753,6 +1848,21 @@
         "trackCount": 0
       }
     ],
+    "33ff0c4d": [
+      {
+        "videoId": "DqrWFfc_lH4",
+        "url": "https://www.youtube.com/watch?v=DqrWFfc_lH4",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/DqrWFfc_lH4/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 18, 2002",
+        "location": "Copenhagen, Denmark",
+        "partialTracklist": false,
+        "trackCount": 17
+      }
+    ],
     "43db7feb": [
       {
         "videoId": "v6UU8Th7WVU",
@@ -1879,6 +1989,34 @@
         "location": "Grand Rapids, Michigan",
         "partialTracklist": false,
         "trackCount": 4
+      }
+    ],
+    "2bc570da": [
+      {
+        "videoId": "f-8yIYu1Ros",
+        "url": "https://www.youtube.com/watch?v=f-8yIYu1Ros",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/f-8yIYu1Ros/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Nov 26, 2004",
+        "location": "Toronto, Ontario",
+        "partialTracklist": false,
+        "trackCount": 0
+      }
+    ],
+    "6bd7b28e": [
+      {
+        "videoId": "0_SsSvN9euk",
+        "url": "https://www.youtube.com/watch?v=0_SsSvN9euk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/0_SsSvN9euk/hqdefault.jpg",
+        "tags": [
+          "SBD"
+        ],
+        "dateDisplay": "Nov 27, 2004",
+        "location": "London, Ontario",
+        "partialTracklist": false,
+        "trackCount": 23
       }
     ],
     "6bfe9212": [
@@ -2284,6 +2422,19 @@
         "location": "Houston, Texas",
         "partialTracklist": true,
         "trackCount": 2
+      }
+    ],
+    "1bfe8118": [
+      {
+        "videoId": "wLJ2b4ZSXEk",
+        "url": "https://www.youtube.com/watch?v=wLJ2b4ZSXEk",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/wLJ2b4ZSXEk/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Mar 26, 2007",
+        "location": "San Francisco, California",
+        "partialTracklist": false,
+        "trackCount": 21
       }
     ],
     "63d5baef": [
@@ -2852,6 +3003,19 @@
         "trackCount": 3
       }
     ],
+    "53ff0395": [
+      {
+        "videoId": "nCA76EB2U1g",
+        "url": "https://www.youtube.com/watch?v=nCA76EB2U1g",
+        "title": "The Tragically Hip",
+        "thumbnail": "https://i.ytimg.com/vi/nCA76EB2U1g/hqdefault.jpg",
+        "tags": [],
+        "dateDisplay": "Jul 14, 2011",
+        "location": "Edmonton, Alberta",
+        "partialTracklist": false,
+        "trackCount": 0
+      }
+    ],
     "53e08fad": [
       {
         "videoId": "c2w5C0ftJeA",
@@ -3058,6 +3222,17 @@
       "countryName": "Canada",
       "tour": null,
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1988/horseshoe-tavern-toronto-on-canada-6bc4da96.html"
+    },
+    "T-m-FynSJd4": {
+      "showId": "bc4d502",
+      "isoDate": "1989-06-30",
+      "venue": "Mather Arch Park",
+      "city": "Fort Erie",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1989/mather-arch-park-fort-erie-on-canada-bc4d502.html"
     },
     "T7e8HxPx1E0": {
       "showId": "2bfe0402",
@@ -3312,6 +3487,17 @@
       "tour": "Day For Night",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/ottawa-civic-centre-ottawa-on-canada-bd9e1e6.html"
     },
+    "QOSeul2tuyw": {
+      "showId": "5bd53384",
+      "isoDate": "1995-02-10",
+      "venue": "Maple Leaf Gardens",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Day For Night",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1995/maple-leaf-gardens-toronto-on-canada-5bd53384.html"
+    },
     "sjRZMgmDa3I": {
       "showId": "7bcf82a8",
       "isoDate": "1995-03-28",
@@ -3433,6 +3619,17 @@
       "tour": null,
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/fox-theatre-boulder-co-4bfcf7f6.html"
     },
+    "PuBCMmKNYbo": {
+      "showId": "37d8dc7",
+      "isoDate": "1996-08-29",
+      "venue": "Cat's Cradle",
+      "city": "Carrboro",
+      "state": "NC",
+      "country": "US",
+      "countryName": "United States",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/cats-cradle-carrboro-nc-37d8dc7.html"
+    },
     "onUnp8QymtM": {
       "showId": "b86e94a",
       "isoDate": "1996-10-06",
@@ -3520,6 +3717,39 @@
       "countryName": "Canada",
       "tour": "Trouble at the Henhouse",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1996/centre-molson-montreal-qc-canada-7bc61238.html"
+    },
+    "a1Tf4AgZCt0": {
+      "showId": "37d8ddb",
+      "isoDate": "1997-05-07",
+      "venue": "NOB radiostudio (2 Meter Sessie)",
+      "city": "Hilversum",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nob-radiostudio-2-meter-sessie-hilversum-netherlands-37d8ddb.html"
+    },
+    "bAqJnR2VtrM": {
+      "showId": "37d8ddb",
+      "isoDate": "1997-05-07",
+      "venue": "NOB radiostudio (2 Meter Sessie)",
+      "city": "Hilversum",
+      "state": "07",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nob-radiostudio-2-meter-sessie-hilversum-netherlands-37d8ddb.html"
+    },
+    "alkOWXldh8Q": {
+      "showId": "734ce6c5",
+      "isoDate": "1997-05-08",
+      "venue": "Nighttown",
+      "city": "Rotterdam",
+      "state": "11",
+      "country": "NL",
+      "countryName": "Netherlands",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1997/nighttown-rotterdam-netherlands-734ce6c5.html"
     },
     "EzjMdL0YNw8": {
       "showId": "5bfe7330",
@@ -3817,6 +4047,17 @@
       "countryName": "United States",
       "tour": "Phantom Power Tour",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1998/orpheum-theatre-boston-ma-1b9c9994.html"
+    },
+    "KvlfDtToiL4": {
+      "showId": "63cc36fb",
+      "isoDate": "1999-01-31",
+      "venue": "Moncton Coliseum",
+      "city": "Moncton",
+      "state": "NB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "Phantom Power Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/1999/moncton-coliseum-moncton-nb-canada-63cc36fb.html"
     },
     "kYc8yf5e-fI": {
       "showId": "6bc61236",
@@ -4423,6 +4664,17 @@
       "tour": "In Violet Light",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/de-oosterpoort-groningen-netherlands-33ff0c15.html"
     },
+    "DqrWFfc_lH4": {
+      "showId": "33ff0c4d",
+      "isoDate": "2002-11-18",
+      "venue": "Lille Vega",
+      "city": "Copenhagen",
+      "state": "17",
+      "country": "DK",
+      "countryName": "Denmark",
+      "tour": "In Violet Light",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2002/lille-vega-copenhagen-denmark-33ff0c4d.html"
+    },
     "v6UU8Th7WVU": {
       "showId": "43db7feb",
       "isoDate": "2003-09-06",
@@ -4532,6 +4784,28 @@
       "countryName": "United States",
       "tour": "In Between Evolution",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/the-orbit-room-grand-rapids-mi-23ff2457.html"
+    },
+    "f-8yIYu1Ros": {
+      "showId": "2bc570da",
+      "isoDate": "2004-11-26",
+      "venue": "Air Canada Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/air-canada-centre-toronto-on-canada-2bc570da.html"
+    },
+    "0_SsSvN9euk": {
+      "showId": "6bd7b28e",
+      "isoDate": "2004-11-27",
+      "venue": "John Labatt Centre",
+      "city": "London",
+      "state": "ON",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": "In Between Evolution",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2004/john-labatt-centre-london-on-canada-6bd7b28e.html"
     },
     "pQkfWkupCNE": {
       "showId": "6bfe9212",
@@ -4873,6 +5147,17 @@
       "countryName": "United States",
       "tour": "World Container Tour",
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/scout-bar-webster-tx-3bc7c4a0.html"
+    },
+    "wLJ2b4ZSXEk": {
+      "showId": "1bfe8118",
+      "isoDate": "2007-03-26",
+      "venue": "The Fillmore",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "countryName": "United States",
+      "tour": "World Container Tour",
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2007/the-fillmore-san-francisco-ca-1bfe8118.html"
     },
     "XFqnVjmNf0Q": {
       "showId": "63d5baef",
@@ -5357,6 +5642,17 @@
       "countryName": "Canada",
       "tour": null,
       "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/shaw-park-winnipeg-mb-canada-3bd358fc.html"
+    },
+    "nCA76EB2U1g": {
+      "showId": "53ff0395",
+      "isoDate": "2011-07-14",
+      "venue": "Northlands Grounds",
+      "city": "Edmonton",
+      "state": "AB",
+      "country": "CA",
+      "countryName": "Canada",
+      "tour": null,
+      "setlistUrl": "https://www.setlist.fm/setlist/the-tragically-hip/2011/northlands-grounds-edmonton-ab-canada-53ff0395.html"
     },
     "c2w5C0ftJeA": {
       "showId": "53e08fad",

@@ -39,6 +39,108 @@
     "4bd33f36": "2009-06-17 recording is the KMTT radio session (3b5d5810), not the Moore Theatre show.",
     "33ffc899": "1998-08-06 'Day' recording is the Martyrs' daytime interview set (135e4de9), not the evening show."
   },
+  "addShows": {
+    "b7fa9fa": "23 East Cabaret, Ardmore, Dec 1, 1989 - new on setlist.fm since the March 2026 pull.",
+    "137fa9fd": "23 East Cabaret, Ardmore, Dec 2, 1989 - new on setlist.fm since the March 2026 pull.",
+    "337c20f1": "Carnaval, Santa Barbara, May 21, 1990 - new on setlist.fm since the March 2026 pull.",
+    "6b736a6e": "Grandstand at Lansdowne Park, Ottawa, July 1, 1990 - new on setlist.fm since the March 2026 pull.",
+    "2b71c06e": "El Rey Theater, Albuquerque, April 21, 1993 - new on setlist.fm since the March 2026 pull.",
+    "3b773868": "Coca-Cola Lakewood Amphitheatre, Atlanta, May 23, 1993 - new on setlist.fm since the March 2026 pull.",
+    "1b76e538": "4th & B, San Diego, Oct 20, 1998 - new on setlist.fm; The Hip Archive has the recording (jD, 2026-11-01).",
+    "37d8ddb": "NOB radiostudio (2 Meter Sessie), Hilversum, May 7, 1997 - posted to setlist.fm by jD; The Hip Archive has the radio recording (jD, 2026-11-01).",
+    "37d8dc7": "Cat's Cradle, Carrboro, Aug 29, 1996 - posted to setlist.fm by jD from The Hip Archive tape notes (jD, 2026-11-01)."
+  },
+  "addRecording": {
+    "350f53f": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1990-06-29-FortErie-ON-mp3.zip",
+      "why": "Same 16-song setlist; The Hip Archive dates the tape June 29, 1990 and links this show (jD, 2026-11-01).",
+      "trackNames": ["Crack My Spine Like a Whip", "She Didn't Know", "It's Just as Well", "Cordelia", "Everytime You Go", "Trickle Down", "Boots or Hearts", "Long Time Running", "Three Pistols", "Fight", "All Canadian Surf Club", "38 Years Old", "Blow at High Dough", "New Orleans Is Sinking", "I'll Believe In You (Or I'll Be Leaving You Tonight)", "Ouch!"]
+    },
+    "5bfe732c": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1997-05-12-Utrecht-Netherlands-mp3.zip",
+      "why": "Same 19-song setlist in the same order; the taper's notes date it May 12, 1997 (jD, 2026-11-01).",
+      "trackNames": ["700 ft. Ceiling", "Everytime You Go", "Grace, Too", "Springtime in Vienna", "Twist My Arm", "Ahead by a Century", "Gift Shop", "Save the Planet", "Courage (for Hugh MacLennan)", "Scared", "At the Hundredth Meridian", "Don't Wake Daddy", "Coconut Cream", "Bobcaygeon", "Nautical Disaster", "Little Bones", "The Wherewithal", "Escape Is at Hand for the Travellin' Man", "New Orleans Is Sinking"]
+    },
+    "6bff2ace": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/2005-04-03-Winnipeg-MB-mp3.zip",
+      "why": "2005 Juno Awards broadcast, same two songs; the taper dates it April 3, 2005 (jD, 2026-11-01).",
+      "trackNames": ["Intro", "Fully Completely", "Grace, Too"]
+    },
+    "23fc04c7": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1987-05-XX-Renfrew-ON-mp3.zip",
+      "why": "One tape from the four Butson's Valley Hotel nights; The Hip Archive links it to May 20 (jD, 2026-11-01).",
+      "trackNames": ["Full tape"],
+      "note": "Tape dated May 20-23, 1987 - filed under the first night."
+    },
+    "1b76e538": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1998-10-20-SanDiego-CA-mp3.zip",
+      "why": "New setlist.fm show with no songs listed yet; track names from the tape (jD, 2026-11-01).",
+      "trackNames": ["Poets", "Fully Completely", "Fireworks", "Thompson Girl", "Lionized", "Ahead by a Century", "The Luxury", "Something On", "Courage (for Hugh MacLennan)", "Chagrin Falls", "Gift Shop", "Emperor Penguin", "Fire in the Hole", "Escape Is at Hand for the Travellin' Man", "Nautical Disaster", "The Rules", "Blow at High Dough"]
+    },
+    "37d8ddb": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1997-05-07-Utrecht-Netherlands-mp3.zip",
+      "why": "Radio broadcast of the 2 Meter Sessie; The Hip Archive dates the tape May 7, 1997 and files it under Utrecht (jD, 2026-11-01).",
+      "trackNames": ["Gift Shop", "Ahead by a Century", "Springtime in Vienna", "The Luxury", "Don't Wake Daddy", "Flamenco", "Scared"],
+      "note": "Radio broadcast: 7 of the 10 songs, in broadcast order, with the talk edited out."
+    },
+    "37d8dc7": {
+      "archiveUrl": "https://www.thehiparchive.com/Files/Audio/1996-08-29-Carrboro-NC-mp3.zip",
+      "why": "Audience tape; jD posted the setlist to setlist.fm from the taper's notes (jD, 2026-11-01).",
+      "trackNames": ["Springtime in Vienna", "Grace, Too", "Gift Shop", "Pigeon Camera", "700 ft. Ceiling", "Coconut Cream", "Locked in the Trunk of a Car", "Flamenco", "At the Hundredth Meridian", "Butts Wigglin'", "Fully Completely", "Ahead by a Century", "New Orleans Is Sinking", "Put It Off", "Fire in the Hole", "Scared", "Nautical Disaster", "The Wherewithal"]
+    },
+    "bc4d502": {
+      "localFile": "The Tragically Hip Live in Fort Erie, Ontario, June 30, 1989 FULL CONCERT AUDIO.mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=T-m-FynSJd4",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload."
+    },
+    "734ce6c5": {
+      "localFile": "The Tragically Hip - May 8, 1997  (Rotterdam SBD).mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=alkOWXldh8Q",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload (soundboard)."
+    },
+    "63cc36fb": {
+      "localFile": "Tragically Hip   1999 01 31   Moncton.mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=KvlfDtToiL4",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload."
+    },
+    "33ff0c4d": {
+      "localFile": "The Tragically Hip - November 18, 2002  (Copenhagen SBD).mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=DqrWFfc_lH4",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload (soundboard)."
+    },
+    "6bd7b28e": {
+      "localFile": "The Tragically Hip - November 27, 2004   (London, Ontario SBD).mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=0_SsSvN9euk",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload (soundboard)."
+    },
+    "1bfe8118": {
+      "localFile": "The Tragically Hip Live at The Filmore in San Francisco March 26 2007.mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=wLJ2b4ZSXEk",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload."
+    },
+    "53ff0395": {
+      "localFile": "The Tragically Hip @ Edmonton - July 14th 2011.mp3",
+      "sourceUrl": "https://www.youtube.com/watch?v=nCA76EB2U1g",
+      "why": "Audio of the YouTube full show already linked to this show (jD, 2026-11-01).",
+      "trackNames": ["Full show"],
+      "note": "From a YouTube upload."
+    }
+  },
+  "markCover": {
+    "6b736a6e": { "Green-Eyed Lady": "Sugarloaf" }
+  },
   "renameSongs": {
     "Raining Hearts of Fire": "Rain, Hearts and Fire",
     "She's Got All It Takes": "She's Got What It Takes"

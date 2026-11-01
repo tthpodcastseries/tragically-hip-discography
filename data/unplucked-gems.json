@@ -164,29 +164,29 @@
         },
         {
           "era": "The Tragically Hip",
-          "name": "Juilet [V1]",
+          "name": "Waltz For Juliette [V1]",
           "tier": null,
           "altNames": [
-            "Waltz For Juilte"
+            "Juliette"
           ],
           "notes": "An early song that was recorded during many early demos but unfortunatley never made it onto any release.",
           "type": "Throwaway",
           "availability": "Full",
           "quality": "Low Quality",
-          "displayName": "Juilet"
+          "displayName": "Waltz For Juliette"
         },
         {
           "era": "The Tragically Hip",
-          "name": "Juilet [V2]",
+          "name": "Waltz For Juliette [V2]",
           "tier": null,
           "altNames": [
-            "Waltz For Juilte"
+            "Juliette"
           ],
           "notes": "An early song that was recorded during many early demos but unfortunatley never made it onto any release.",
           "type": "Throwaway",
           "availability": "Confirmed",
           "quality": "Not Available",
-          "displayName": "Juilet Version 2"
+          "displayName": "Waltz For Juliette Version 2"
         },
         {
           "era": "The Tragically Hip",
@@ -4160,12 +4160,12 @@
         },
         {
           "era": "Trouble At The Henhouse",
-          "name": "Daredevil January 12th 1995 Version]",
+          "name": "Daredevil [January 12th 1995 Version]",
           "tier": null,
           "type": "Demo",
           "availability": "Confirmed",
           "quality": "Not Available",
-          "displayName": "Daredevil January 12th 1995 Version]"
+          "displayName": "Daredevil"
         },
         {
           "era": "Trouble At The Henhouse",

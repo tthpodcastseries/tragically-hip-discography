@@ -16,7 +16,11 @@
 //   dateUncertain    adds dateNote; On This Day and the daily game skip these
 //   tour             set the tour name on listed shows
 //   removeRecording  detach a Hip Archive recording matched to the wrong show
+//   addRecording     recordings for scripts/add-archive-recordings.js; a "note"
+//                    here becomes the show's recordingNote (shown in the player)
+//   addShows         setlist.fm shows for scripts/add-setlistfm-shows.js
 //   renameSongs      fix song-name typos everywhere
+//   markCover        mark a song on one show as a cover (setlist.fm left the cover box empty)
 //   dropSongsMatching  regex for blank and non-song entries (interviews, intros)
 //
 // Usage: node scripts/apply-setlist-corrections.js
@@ -31,7 +35,7 @@ const sl = read('data/setlists.min.json');
 const tour = read('data/tth-tour-data.json');
 
 const drop = new RegExp(fix.dropSongsMatching, 'i');
-const counts = { removed: 0, trimmed: 0, flagged: 0, retoured: 0, unlinked: 0, renamed: 0, dropped: 0 };
+const counts = { removed: 0, trimmed: 0, flagged: 0, retoured: 0, unlinked: 0, renamed: 0, dropped: 0, covers: 0 };
 const tourFor = {};
 for (const [name, t] of Object.entries(fix.tour || {})) for (const id of t.ids) tourFor[id] = name;
 
@@ -56,7 +60,13 @@ function fixShow(s, isTourData) {
       s.archiveUrl = null; s.archiveFormat = null; s.tracks = [];
       counts.unlinked++;
     }
+    const note = ((fix.addRecording || {})[s.id] || {}).note;
+    if (note && (s.tracks || []).length) s.recordingNote = note;
+    else delete s.recordingNote;
     return;
+  }
+  for (const [song, artist] of Object.entries((fix.markCover || {})[s.id] || {})) {
+    for (const x of s.songs) if (x.name === song && x.cover !== artist) { x.cover = artist; counts.covers++; }
   }
   const before = s.songs.length;
   s.songs = s.songs.filter(x => !drop.test(x.name || ''));
@@ -90,5 +100,5 @@ fs.writeFileSync(path.join(ROOT, 'data', 'setlists.min.json'), JSON.stringify(sl
 fs.writeFileSync(path.join(ROOT, 'data', 'tth-tour-data.json'), JSON.stringify(tour, null, 2) + '\n');
 console.log(`applied setlist corrections: ${counts.removed} duplicates removed, ${counts.trimmed} setlists trimmed, ` +
   `${counts.flagged} dates flagged uncertain, ${counts.retoured} tours fixed, ${counts.unlinked} recordings unlinked, ` +
-  `${counts.renamed} songs renamed, ${counts.dropped} blank/non-song entries dropped`);
+  `${counts.renamed} songs renamed, ${counts.covers} covers marked, ${counts.dropped} blank/non-song entries dropped`);
 console.log(`now ${sl.totalSetlists} shows, ${sl.setlistsWithSongs} with setlists, ${sl.uniqueCities} cities, ${sl.uniqueTours} tours`);

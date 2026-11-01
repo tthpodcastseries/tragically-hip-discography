@@ -521,6 +521,7 @@ input[type="range"]::-moz-range-track {
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .ap-tracklist.open { display: block; }
+.ap-track-note { padding: 6px 16px; color: var(--muted); font-size: 0.7rem; font-style: italic; }
 .ap-track {
   display: flex;
   align-items: center;

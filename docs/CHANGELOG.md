@@ -1,5 +1,28 @@
 # Changelog
 
+## v5.5.1
+**Fire in the Hole - Patch** - November 1, 2026
+Fourteen more recordings and nine more shows, after a full check of the Handbook against The Hip Archive and setlist.fm. jD ruled on every one on 2026-11-01. Recordings go from 614 to 628 and shows from 1,355 to 1,364.
+- **What the check found:** The Hip Archive lists 721 entries (704 with audio, 617 different dates), and the Handbook already had 613 of them. What's left there is 79 alternate versions of shows that already have audio (one recording per show for now), and 12 one-offs. jD ruled on all 12: seven added (below; two after jD posted them to setlist.fm), and five skipped. The skips are an undated 1985 mixed tape, a four-song 1991 tape the Archive itself isn't sure about, a 1992 CBC radio appearance by Gord and Paul, the 2006 Fort York soundboard mix (both nights already have audio), and a 1993 Roxy radio broadcast (the April 26, 1993 Roxy show already has its own recording).
+- **Seven new Hip Archive recordings, on Backblaze with the rest:**
+  - Mather Arch Park, Fort Erie, June 30, 1990 (16 tracks). The tape is dated June 29, but the setlist is the same and The Hip Archive links this show.
+  - Tivoli, Utrecht, June 12, 1997 (19 tracks). The setlist is the same, song for song. The taper's notes date it May 12, 1997.
+  - MTS Centre, Winnipeg, April 2, 2005 (3 tracks, the Juno Awards). The tape is dated April 3.
+  - Butson's Valley Hotel, Renfrew, May 20, 1987 (one full tape). The tape covers the four nights of May 20-23, so the player and the map say so: "Tape dated May 20-23, 1987 - filed under the first night."
+  - 4th & B, San Diego, October 20, 1998 (17 tracks; new show, below).
+  - Cat's Cradle, Carrboro, August 29, 1996 (18 tracks; new show, below).
+  - The 2 Meter Sessie, Hilversum, May 7, 1997 (7 tracks; a Dutch radio session, new show, below). The player says it's a radio broadcast with the talk edited out.
+  The show dates stay as setlist.fm has them. Three of these shows are scheduled 'Bring It All Back' puzzles (No. 112, 345 and 354), and they stay put; the only change is that they now show they have a recording.
+- **Seven new shows from setlist.fm** that came in after the March 2026 pull: 23 East Cabaret, Ardmore (Dec 1 and 2, 1989), Carnaval, Santa Barbara (May 21, 1990), Lansdowne Park, Ottawa (July 1, 1990), El Rey Theater, Albuquerque (April 21, 1993), Lakewood Amphitheatre, Atlanta (May 23, 1993), and 4th & B, San Diego (Oct 20, 1998). Only the Ottawa show has songs listed. None of them joins the game schedule.
+- **Two more shows that jD posted to setlist.fm** from The Hip Archive's tape notes: Cat's Cradle, Carrboro (Aug 29, 1996) and the 2 Meter Sessie at NOB radiostudio, Hilversum (May 7, 1997). Both have setlists, and both join the end of the 'Bring It All Back' schedule (969 days now); no puzzle moved.
+- **Seven recordings from YouTube full shows:** jD saved the audio of seven of the full-show videos below, and each now plays in the Handbook as one "Full show" track, with a player note saying it's from a YouTube upload (and a soundboard, where it is): Mather Arch Park, Fort Erie (June 30, 1989), Nighttown, Rotterdam (May 8, 1997), Moncton Coliseum (Jan 31, 1999), Lille Vega, Copenhagen (Nov 18, 2002), John Labatt Centre, London (Nov 27, 2004), The Fillmore, San Francisco (March 26, 2007), and Northlands Grounds, Edmonton (July 14, 2011). The other two videos, Maple Leaf Gardens (Feb 10, 1995) and the Air Canada Centre (Nov 26, 2004), are official releases ("Live From The Vaults" and "That Night In Toronto"), so their audio isn't hosted.
+- **New `scripts/add-setlistfm-shows.js`:** adds the setlist.fm shows listed under `addShows` in `data/setlist-corrections.json`, and never touches a show that's already in. This is the safe way to bring in new shows (`fetch-setlist-data.js` would wipe every recording).
+- **New `scripts/add-archive-recordings.js`:** downloads the Hip Archive zips listed under `addRecording`, puts the MP3s on Backblaze B2 (native API, no packages), and writes the tracks onto the show. It names the tracks from `trackNames`, skips shows that already have audio, never uploads a file twice, and has `--dry-run` and `--only`. It also takes an MP3 jD already has (`localFile` plus `sourceUrl`, read from the Desktop or `--from`). It needs a Backblaze key in `.env` (`B2_KEY_ID`, `B2_APP_KEY`).
+- **New correction `markCover`:** setlist.fm lists 'Green-Eyed Lady' at Lansdowne Park (July 1, 1990) as a Sugarloaf cover in its notes but didn't tick the cover box. It's now marked as a cover, so it doesn't count as a song by The Hip (jD, 2026-11-01).
+- **Nine more full-show videos** from YouTube (added in a parallel session): Fort Erie 1989, Maple Leaf Gardens 1995, Rotterdam 1997, Moncton 1999, Copenhagen 2002, Toronto and London 2004, San Francisco 2007, and Edmonton 2011. Videos go from 380 to 389.
+- **Unplucked Gems fixes:** the early song filed as "Juilet" (also "Waltz For Juilte") is now 'Waltz For Juliette', with "Juliette" kept as its other title (jD, 2026-11-01). The January 12, 1995 'Daredevil' demo had a broken label ("Daredevil January 12th 1995 Version]") and now shows as 'Daredevil'.
+- Cache bumped to `hh-v5.5.1`; footer label bumped to v5.5.1 (Fire in the Hole - Patch)
+
 ## v5.5
 **Fire in the Hole** - November 1, 2026
 The relaunch release: every fix from the October 2026 pre-relaunch audit that was saved as v5.4.8 to v5.4.18 goes live together in this one deploy. Details are in each entry below.

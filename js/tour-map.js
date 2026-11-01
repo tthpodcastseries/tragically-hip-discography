@@ -173,6 +173,7 @@
     if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
     if (g.dateNote) html += `<div class="popup-date-note">Date unconfirmed</div>`;
     if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
+    if (g.trackCount && g.recordingNote) html += `<div class="popup-date-note">${g.recordingNote}</div>`;
     if (g.trackCount) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;

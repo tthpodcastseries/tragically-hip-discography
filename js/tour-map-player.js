@@ -38,6 +38,12 @@
 
   function renderTracklist() {
     tracklist.innerHTML = '';
+    if (currentShow && currentShow.recordingNote) {
+      const note = document.createElement('div');
+      note.className = 'ap-track-note';
+      note.textContent = currentShow.recordingNote;
+      tracklist.appendChild(note);
+    }
     tracks.forEach((t, i) => {
       const div = document.createElement('div');
       div.className = 'ap-track' + (i === currentTrackIndex ? ' active' : '');

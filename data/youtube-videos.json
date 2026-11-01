@@ -1,11 +1,11 @@
 {
   "title": "Video For New Recruits",
   "description": "A curated YouTube archive of concerts by The Tragically Hip, soundboards, radio simulcasts, rarities and compilations - bucketed by era.",
-  "lastUpdated": "2026-04-15",
+  "lastUpdated": "2026-11-01",
   "summary": {
-    "totalVideos": 380,
+    "totalVideos": 389,
     "totalEras": 7,
-    "totalSBD": 96,
+    "totalSBD": 99,
     "partialTracklists": 99
   },
   "eras": [
@@ -182,8 +182,22 @@
       "era": "1989 - 1994",
       "label": "Up To Here - Fully Completely",
       "imagePath": "assets-optimized/89.webp",
-      "count": 33,
+      "count": 34,
       "videos": [
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
+          "date": "1989-06-30",
+          "year": 1989,
+          "dateDisplay": "Jun 30, 1989",
+          "location": "Fort Erie, Ontario",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=T-m-FynSJd4",
+          "videoId": "T-m-FynSJd4",
+          "thumbnail": "https://i.ytimg.com/vi/T-m-FynSJd4/hqdefault.jpg",
+          "tracks": [],
+          "partialTracklist": false
+        },
         {
           "title": "The Tragically Hip",
           "rawTitle": "The Tragically Hip - (FM Radio Simulcast)",
@@ -833,7 +847,7 @@
       "era": "1995 - 1999",
       "label": "Day For Night - Phantom Power",
       "imagePath": "assets-optimized/95.webp",
-      "count": 72,
+      "count": 75,
       "videos": [
         {
           "title": "The Tragically Hip",
@@ -885,6 +899,43 @@
             "Fully Completely/ Inevitability of"
           ],
           "partialTracklist": true
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
+          "date": "1995-02-10",
+          "year": 1995,
+          "dateDisplay": "Feb 10, 1995",
+          "location": "Toronto, Ontario",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=QOSeul2tuyw",
+          "videoId": "QOSeul2tuyw",
+          "thumbnail": "https://i.ytimg.com/vi/QOSeul2tuyw/hqdefault.jpg",
+          "tracks": [
+            "Grace, Too",
+            "Fully Completely",
+            "Inevitability Of Death",
+            "Locked In The Trunk Of A Car",
+            "The Last Of The Unplucked Gems",
+            "Fifty-Mission Cap",
+            "Thugs",
+            "At The Hundredth Meridian",
+            "Daredevil",
+            "Scared",
+            "Pigeon Camera (West Wind)",
+            "Nautical Disaster",
+            "Little Bones",
+            "Titanic Terrarium",
+            "Greasy Jungle",
+            "New Orleans Is Sinking",
+            "Ahead By A Century",
+            "Fire In The Hole",
+            "Lionized(Encore #1)",
+            "Three Pistols",
+            "Impossibilium (Encore #2)",
+            "Cordelia"
+          ],
+          "partialTracklist": false
         },
         {
           "title": "The Tragically Hip",
@@ -1409,6 +1460,42 @@
             "Ahead By A Century"
           ],
           "partialTracklist": true
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip - (SBD)",
+          "date": "1997-05-08",
+          "year": 1997,
+          "dateDisplay": "May 8, 1997",
+          "location": "Rotterdam, Holland",
+          "tags": [
+            "SBD"
+          ],
+          "url": "https://www.youtube.com/watch?v=alkOWXldh8Q",
+          "videoId": "alkOWXldh8Q",
+          "thumbnail": "https://i.ytimg.com/vi/alkOWXldh8Q/hqdefault.jpg",
+          "tracks": [
+            "Grace, Too",
+            "Everytime You Go",
+            "Springtime in Vienna (w/ 60 Seconds tag)",
+            "Gift Shop",
+            "Ahead by a Century",
+            "(Early) Save The Planet",
+            "Locked in the Trunk of a Car",
+            "700 Ft. Ceiling",
+            "Hiccups/ Daredevil",
+            "Put It Off",
+            "New Orleans is Sinking (w/ (Early) Fireworks & Poets - Cookie Factory - Freaked/Fucked - (Early) Chagrin Falls tags)",
+            "Don't Wake Daddy",
+            "Scared (w/ Empty tag)",
+            "(Early) Membership",
+            "Nautical Disaster (w/ (Rheostatics) Bad Time to Be Poor - (Jane Siberry) Temple tags)",
+            "Blow at High Dough",
+            "Courage (for Hugh MacLennan)",
+            "(Early) Bobcaygeon",
+            "Little Bones (w/ A Cat Named Little Bones tag)"
+          ],
+          "partialTracklist": false
         },
         {
           "title": "The Tragically Hip",
@@ -2026,6 +2113,20 @@
         {
           "title": "The Tragically Hip",
           "rawTitle": "The Tragically Hip",
+          "date": "1999-01-31",
+          "year": 1999,
+          "dateDisplay": "Jan 31, 1999",
+          "location": "Moncton, New Brunswick",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=KvlfDtToiL4",
+          "videoId": "KvlfDtToiL4",
+          "thumbnail": "https://i.ytimg.com/vi/KvlfDtToiL4/hqdefault.jpg",
+          "tracks": [],
+          "partialTracklist": false
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
           "date": "1999-02-05",
           "year": 1999,
           "dateDisplay": "Feb 5, 1999",
@@ -2191,7 +2292,7 @@
       "era": "2000 - 2006",
       "label": "Music @ Work - In Between Evolution",
       "imagePath": "assets-optimized/2000.webp",
-      "count": 97,
+      "count": 100,
       "videos": [
         {
           "title": "The Tragically Hip - (Part 1)",
@@ -3274,6 +3375,40 @@
         },
         {
           "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip - (SBD)",
+          "date": "2002-11-18",
+          "year": 2002,
+          "dateDisplay": "Nov 18, 2002",
+          "location": "Copenhagen, Denmark",
+          "tags": [
+            "SBD"
+          ],
+          "url": "https://www.youtube.com/watch?v=DqrWFfc_lH4",
+          "videoId": "DqrWFfc_lH4",
+          "thumbnail": "https://i.ytimg.com/vi/DqrWFfc_lH4/hqdefault.jpg",
+          "tracks": [
+            "Use It Up",
+            "Grace, Too (w/ Nothing To Worry About tag)",
+            "My Music at Work",
+            "New Orleans Is Sinking",
+            "Escape Is at Hand for the Travellin' Man",
+            "Nautical Disaster",
+            "Silver Jet",
+            "Daredevil",
+            "It's a Good Life if You Don't Weaken",
+            "At the Hundredth Meridian (w/ Life Is For Getting/Forgetting tag)",
+            "The Dire Wolf",
+            "Gift Shop",
+            "Something On",
+            "Scared (w/ (Early) Mean Streak tag)",
+            "Poets",
+            "Are You Ready",
+            "Blow at High Dough"
+          ],
+          "partialTracklist": false
+        },
+        {
+          "title": "The Tragically Hip",
           "rawTitle": "The Tragically Hip",
           "date": "2003-09-06",
           "year": 2003,
@@ -3515,6 +3650,60 @@
             "Grace, Too",
             "New Orleans is Sinking",
             "Gus: The Polar Bear from Central Park"
+          ],
+          "partialTracklist": false
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
+          "date": "2004-11-26",
+          "year": 2004,
+          "dateDisplay": "Nov 26, 2004",
+          "location": "Toronto, Ontario",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=f-8yIYu1Ros",
+          "videoId": "f-8yIYu1Ros",
+          "thumbnail": "https://i.ytimg.com/vi/f-8yIYu1Ros/hqdefault.jpg",
+          "tracks": [],
+          "partialTracklist": false
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip - (SBD)",
+          "date": "2004-11-27",
+          "year": 2004,
+          "dateDisplay": "Nov 27, 2004",
+          "location": "London, Ontario",
+          "tags": [
+            "SBD"
+          ],
+          "url": "https://www.youtube.com/watch?v=0_SsSvN9euk",
+          "videoId": "0_SsSvN9euk",
+          "thumbnail": "https://i.ytimg.com/vi/0_SsSvN9euk/hqdefault.jpg",
+          "tracks": [
+            "Fully Completely",
+            "Poets Plus",
+            "Lake Fever",
+            "Twist My Arm",
+            "Summer's Killing Us",
+            "Courage (for Hugh MacLennan)",
+            "It Can't Be Nashville Every Night",
+            "Bobcaygeon",
+            "Locked In The Trunk Of A Car",
+            "Gus: The Polar Bear From Central Park",
+            "700ft Ceiling",
+            "At The Hundredth Meridian",
+            "Are We Family",
+            "My Music At Work",
+            "New Orleans Is Sinking",
+            "Heaven Is A Better Place Today",
+            "Ahead By A Century",
+            "Fire In The Hole",
+            "Hiccups/Daredevil",
+            "Scared",
+            "Blow At High Dough",
+            "Long Time Running",
+            "Little Bones"
           ],
           "partialTracklist": false
         },
@@ -4084,7 +4273,7 @@
       "era": "2007 - 2010",
       "label": "World Container - We Are The Same",
       "imagePath": "assets-optimized/2007.webp",
-      "count": 57,
+      "count": 58,
       "videos": [
         {
           "title": "The Tragically Hip - 6 from SBD",
@@ -4258,6 +4447,42 @@
             "New Orleans Is Sinking"
           ],
           "partialTracklist": true
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
+          "date": "2007-03-26",
+          "year": 2007,
+          "dateDisplay": "Mar 26, 2007",
+          "location": "San Francisco, California",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=wLJ2b4ZSXEk",
+          "videoId": "wLJ2b4ZSXEk",
+          "thumbnail": "https://i.ytimg.com/vi/wLJ2b4ZSXEk/hqdefault.jpg",
+          "tracks": [
+            "In View",
+            "New Orleans Is Sinking",
+            "The Drop Off",
+            "It's A Good Life If You Don't Weaken",
+            "Family Band",
+            "Ahead By A Century",
+            "Yer Not The Ocean",
+            "Poets",
+            "World Container",
+            "Boots Or Hearts",
+            "Springtime In Vienna",
+            "At The Hundredth Meridian",
+            "Bobcaygeon",
+            "The Kids Don't Get It (cut)",
+            "Fully Completely",
+            "Scared",
+            "The Lonely End Of The Rink",
+            "Blow At High Dough",
+            "If You Gotta Go, Go Now (Bob Dylan)",
+            "Grace, Too",
+            "Fire In The Hole"
+          ],
+          "partialTracklist": false
         },
         {
           "title": "The Tragically Hip",
@@ -5205,7 +5430,7 @@
       "era": "2011 - 2016",
       "label": "Now For Plan A - Man Machine Poem",
       "imagePath": "assets-optimized/2011.webp",
-      "count": 12,
+      "count": 13,
       "videos": [
         {
           "title": "The Tragically Hip - (Part 2)",
@@ -5241,6 +5466,20 @@
             "Grace, Too  (w/ (Broken Social Scene) Lover's Spit tag)",
             "Love Is a First"
           ],
+          "partialTracklist": false
+        },
+        {
+          "title": "The Tragically Hip",
+          "rawTitle": "The Tragically Hip",
+          "date": "2011-07-14",
+          "year": 2011,
+          "dateDisplay": "Jul 14, 2011",
+          "location": "Edmonton, Alberta",
+          "tags": [],
+          "url": "https://www.youtube.com/watch?v=nCA76EB2U1g",
+          "videoId": "nCA76EB2U1g",
+          "thumbnail": "https://i.ytimg.com/vi/nCA76EB2U1g/hqdefault.jpg",
+          "tracks": [],
           "partialTracklist": false
         },
         {
