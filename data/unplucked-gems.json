@@ -386,7 +386,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/eps/The-EP.jpg"
+      "imagePath": "assets-optimized/eps/The-EP.webp"
     },
     {
       "era": "Up To Here",
@@ -556,7 +556,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Up-to-Here.jpg"
+      "imagePath": "assets-optimized/studio-albums/Up-to-Here.webp"
     },
     {
       "era": "Road Apples",
@@ -1743,7 +1743,7 @@
           "displayName": "Wheat Kings"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Road-Apples.jpg"
+      "imagePath": "assets-optimized/studio-albums/Road-Apples.webp"
     },
     {
       "era": "Fully Completely",
@@ -2180,7 +2180,7 @@
           "displayName": "You See Details Version 2"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Fully-Completely.jpg"
+      "imagePath": "assets-optimized/studio-albums/Fully-Completely.webp"
     },
     {
       "era": "Day For Night",
@@ -3996,7 +3996,7 @@
           "displayName": "[Unknown] Demos"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Day-for-Night.jpg"
+      "imagePath": "assets-optimized/studio-albums/Day-for-Night.webp"
     },
     {
       "era": "Trouble At The Henhouse",
@@ -4239,7 +4239,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Trouble-at-the-Henhouse.jpg"
+      "imagePath": "assets-optimized/studio-albums/Trouble-at-the-Henhouse.webp"
     },
     {
       "era": "Live Between Us",
@@ -4343,7 +4343,7 @@
           "displayName": "Little Bones"
         }
       ],
-      "imagePath": "assets-optimized/live-albums/Live-Between-Us.jpg"
+      "imagePath": "assets-optimized/live-albums/Live-Between-Us.webp"
     },
     {
       "era": "Phantom Power",
@@ -6074,7 +6074,7 @@
           "displayName": "Vegas Strip Version 3"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Phantom-Power.jpg"
+      "imagePath": "assets-optimized/studio-albums/Phantom-Power.webp"
     },
     {
       "era": "Music @ Work",
@@ -6120,7 +6120,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Music-at-Work.jpg"
+      "imagePath": "assets-optimized/studio-albums/Music-at-Work.webp"
     },
     {
       "era": "In Violet Light",
@@ -6290,7 +6290,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/In-Violet-Light.jpg"
+      "imagePath": "assets-optimized/studio-albums/In-Violet-Light.webp"
     },
     {
       "era": "In Between Evolution",
@@ -6335,7 +6335,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/In-Between-Evolution.jpg"
+      "imagePath": "assets-optimized/studio-albums/In-Between-Evolution.webp"
     },
     {
       "era": "World Container",
@@ -6394,7 +6394,7 @@
           "displayName": "Pretend"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/World-Container.jpg"
+      "imagePath": "assets-optimized/studio-albums/World-Container.webp"
     },
     {
       "era": "We Are The Same",
@@ -6429,7 +6429,7 @@
           "displayName": "Skeleton Park"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/We-Are-the-Same.jpg"
+      "imagePath": "assets-optimized/studio-albums/We-Are-the-Same.webp"
     },
     {
       "era": "Now For Plan A",
@@ -6452,7 +6452,7 @@
           "displayName": "Unknown"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Now-for-Plan-A.jpg"
+      "imagePath": "assets-optimized/studio-albums/Now-for-Plan-A.webp"
     },
     {
       "era": "Man Machine Poem",
@@ -6507,7 +6507,7 @@
           "displayName": "Living Room Sessions"
         }
       ],
-      "imagePath": "assets-optimized/studio-albums/Man-Machine-Poem.jpg"
+      "imagePath": "assets-optimized/studio-albums/Man-Machine-Poem.webp"
     }
   ]
 }

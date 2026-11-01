@@ -289,7 +289,7 @@ input[type="range"]::-moz-range-track {
 
 /* ON THIS DAY BANNER */
 .otd-banner {
-  display: none;
+  display: block;
   background: rgba(255, 255, 255, 0.05);
   border-bottom: 2px solid var(--gold);
   padding: 10px 20px;
@@ -299,8 +299,9 @@ input[type="range"]::-moz-range-track {
   cursor: pointer;
   transition: background 0.2s;
 }
-.otd-banner:hover { background: rgba(255, 255, 255, 0.08); }
-.otd-banner.active { display: block; }
+.otd-banner[hidden] { display: none; }
+.otd-banner:not(.active) { cursor: default; }
+.otd-banner.active:hover { background: rgba(255, 255, 255, 0.08); }
 .otd-banner .otd-title {
   font-size: 0.85rem;
   font-weight: 600;
@@ -310,6 +311,14 @@ input[type="range"]::-moz-range-track {
   font-size: 0.7rem;
   color: var(--muted);
   margin-top: 2px;
+  /* Always two lines, so the filters below don't jump when the shows fill in (audit PERF-06) */
+  line-height: 1.5;
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 .otd-pin-badge {
   display: inline-block;

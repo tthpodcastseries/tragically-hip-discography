@@ -27,7 +27,7 @@
 <meta name="theme-color" content="#0e0b16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/shared.css">
   <link rel="stylesheet" href="/css/unplucked-gems.css">
 </head>
@@ -68,21 +68,21 @@
 
   // Image path mapping (fallback when JSON imagePath not yet populated)
   var imageMap = {
-    'The Tragically Hip': 'assets-optimized/eps/The-EP.jpg',
-    'Up to Here': 'assets-optimized/studio-albums/Up-to-Here.jpg',
-    'Road Apples': 'assets-optimized/studio-albums/Road-Apples.jpg',
-    'Fully Completely': 'assets-optimized/studio-albums/Fully-Completely.jpg',
-    'Day for Night': 'assets-optimized/studio-albums/Day-for-Night.jpg',
-    'Trouble at the Henhouse': 'assets-optimized/studio-albums/Trouble-at-the-Henhouse.jpg',
-    'Live Between Us': 'assets-optimized/live-albums/Live-Between-Us.jpg',
-    'Phantom Power': 'assets-optimized/studio-albums/Phantom-Power.jpg',
-    'Music @ Work': 'assets-optimized/studio-albums/Music-at-Work.jpg',
-    'In Violet Light': 'assets-optimized/studio-albums/In-Violet-Light.jpg',
-    'In Between Evolution': 'assets-optimized/studio-albums/In-Between-Evolution.jpg',
-    'World Container': 'assets-optimized/studio-albums/World-Container.jpg',
-    'We Are the Same': 'assets-optimized/studio-albums/We-Are-the-Same.jpg',
-    'Now for Plan A': 'assets-optimized/studio-albums/Now-for-Plan-A.jpg',
-    'Man Machine Poem': 'assets-optimized/studio-albums/Man-Machine-Poem.jpg'
+    'The Tragically Hip': 'assets-optimized/eps/The-EP.webp',
+    'Up to Here': 'assets-optimized/studio-albums/Up-to-Here.webp',
+    'Road Apples': 'assets-optimized/studio-albums/Road-Apples.webp',
+    'Fully Completely': 'assets-optimized/studio-albums/Fully-Completely.webp',
+    'Day for Night': 'assets-optimized/studio-albums/Day-for-Night.webp',
+    'Trouble at the Henhouse': 'assets-optimized/studio-albums/Trouble-at-the-Henhouse.webp',
+    'Live Between Us': 'assets-optimized/live-albums/Live-Between-Us.webp',
+    'Phantom Power': 'assets-optimized/studio-albums/Phantom-Power.webp',
+    'Music @ Work': 'assets-optimized/studio-albums/Music-at-Work.webp',
+    'In Violet Light': 'assets-optimized/studio-albums/In-Violet-Light.webp',
+    'In Between Evolution': 'assets-optimized/studio-albums/In-Between-Evolution.webp',
+    'World Container': 'assets-optimized/studio-albums/World-Container.webp',
+    'We Are the Same': 'assets-optimized/studio-albums/We-Are-the-Same.webp',
+    'Now for Plan A': 'assets-optimized/studio-albums/Now-for-Plan-A.webp',
+    'Man Machine Poem': 'assets-optimized/studio-albums/Man-Machine-Poem.webp'
   };
 
   // Utility
@@ -190,7 +190,7 @@
     var front = document.createElement('div');
     front.className = 'flip-card-front';
     front.innerHTML =
-      '<img src="' + esc(imagePath) + '" alt="" loading="lazy">' +
+      '<img src="' + esc(imagePath) + '" alt="" width="600" height="600" loading="lazy">' +
       '<div class="flip-card-label">' + esc(era.era) + '</div>' +
       '<div class="flip-card-count">' + era.sessions.length + ' sessions</div>';
 

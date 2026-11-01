@@ -28,8 +28,7 @@
 <meta name="theme-color" content="#0e0b16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font" type="font/woff2" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/shared.css">
   <link rel="stylesheet" href="/css/home.css">
 </head>
@@ -40,7 +39,7 @@
 <header>
   <span class="maple" aria-hidden="true">🍁</span>
   <h1>THE HIP HANDBOOK</h1>
-  <img src="assets-optimized/band/band-photo-4.jpg" alt="The five members of The Tragically Hip on stage at the final show in Kingston, 2016, arms around each other, smiling, with the crowd behind them" class="hero-img" loading="eager">
+  <img width="1200" height="675" src="assets-optimized/band/band-photo-4.webp" alt="The five members of The Tragically Hip on stage at the final show in Kingston, 2016, arms around each other, smiling, with the crowd behind them" class="hero-img" loading="eager" fetchpriority="high">
   <p style="font-size:0.7rem;color:#b0b0b0;margin:-4px 0 4px;font-style:italic;">Photo: David Bastedo</p>
   <p class="welcome">Hey, it's jD here. The Hip Handbook is a free fan archive for The Tragically Hip: every official release, 1,355 live shows and appearances, lyrics, setlists, and rare recordings, all in one place. Pick a door and dig in.</p>
   <div class="song-search-autocomplete">
@@ -52,18 +51,18 @@
 <main id="main-content">
   <!-- Today (v5): On This Day and Show of the Day are the first real content, ahead of the menu -->
   <div class="today">
-    <div class="on-this-day" id="onThisDay">
+    <div class="on-this-day otd-loading" id="onThisDay">
       <div class="on-this-day-header">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
         <span id="onThisDayTitle">On This Day in Hip History</span>
       </div>
-      <div id="onThisDayEvents"></div>
+      <div id="onThisDayEvents"><div class="otd-empty">Checking the archive...</div></div>
     </div>
-    <section class="sotd" id="sotd" aria-labelledby="sotdLabel" hidden>
+    <section class="sotd" id="sotd" aria-labelledby="sotdLabel">
       <div class="sotd-label" id="sotdLabel">&#127911; Show of the Day</div>
-      <div class="sotd-venue" id="sotdVenue"></div>
-      <div class="sotd-meta" id="sotdMeta"></div>
-      <div class="sotd-why" id="sotdWhy"></div>
+      <div class="sotd-venue" id="sotdVenue">Picking today's show...</div>
+      <div class="sotd-meta" id="sotdMeta">&nbsp;</div>
+      <div class="sotd-why" id="sotdWhy">&nbsp;</div>
       <a class="sotd-play" id="sotdPlay" href="tour-map.html#play=random">Play this show</a>
     </section>
   </div>
@@ -118,12 +117,12 @@
 
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
-  <img src="assets-optimized/band/band-photo.jpg" alt="The Tragically Hip standing close together in front of a dark red curtain, one holding an acoustic guitar and one a pair of drumsticks" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <img width="600" height="359" src="assets-optimized/band/band-photo.webp" alt="The Tragically Hip standing close together in front of a dark red curtain, one holding an acoustic guitar and one a pair of drumsticks" loading="lazy" style="width:100%;height:auto;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
   <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Anthony Pidgeon</p>
 </div>
 
 <div style="max-width:600px;margin:32px auto 0;padding:0 16px;">
-  <img src="assets-optimized/band/band-photo-3.jpg" alt="The Tragically Hip standing in tall grass under a concrete highway overpass, the man in front in a straw hat and pinstriped suit, the others in dark jackets" loading="lazy" style="width:100%;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
+  <img width="1200" height="675" src="assets-optimized/band/band-photo-3.webp" alt="The Tragically Hip standing in tall grass under a concrete highway overpass, the man in front in a straw hat and pinstriped suit, the others in dark jackets" loading="lazy" style="width:100%;height:auto;border-radius:12px;border:3px solid rgba(255,255,255,0.18);box-shadow:0 4px 24px rgba(0,0,0,0.4);">
   <p style="font-size:0.7rem;color:#b0b0b0;margin-top:4px;font-style:italic;">Photo: Gordon Hawkins</p>
 </div>
 </main>
@@ -166,6 +165,18 @@ function esc(v) {
 }
 
 (async function() {
+  // Both boxes show from the first paint with placeholder text, so nothing jumps
+  // when the data arrives (audit PERF-06); on a failed load they go away
+  function hideToday() {
+    document.getElementById('onThisDay').hidden = true;
+    document.getElementById('sotd').hidden = true;
+  }
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('onThisDayTitle').textContent = 'On This Day - ' + MONTH_NAMES[new Date().getMonth()] + ' ' + new Date().getDate();
+
+  // Start the On This Day download now instead of after discography.json
+  const otdPromise = fetch('data/on-this-day.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });
+
   // ─── Load discography data ───
   let discographyData = null;
   try {
@@ -173,7 +184,7 @@ function esc(v) {
     if (resp.ok) discographyData = await resp.json();
   } catch (e) { console.error('Failed to load discography data:', e); }
 
-  if (!discographyData) return;
+  if (!discographyData) { hideToday(); return; }
 
   const albums = discographyData.albums;
   const milestones = discographyData.milestones;
@@ -206,38 +217,30 @@ function esc(v) {
     }
   }
 
-  // Check setlist data for concerts on this day
+  // Check for concerts on this day. data/on-this-day.json (scripts/build-light-data.js) has
+  // every show without its setlist, so phones skip the 2 MB setlist file (audit PERF-03).
+  // Shows flagged in data/setlist-corrections.json have a guessed date and aren't in it.
   try {
-    const setResp = await fetch('data/setlists.min.json');
-    if (setResp.ok) {
-      const setData = await setResp.json();
-      if (setData && setData.setlists) {
-        allSetlists = setData.setlists;
+    const setData = await otdPromise;
+    {
+      if (setData && setData.shows) {
+        allSetlists = setData.shows;
         const dayStr = String(todayDay).padStart(2, '0');
         const monthStr = String(todayMonth).padStart(2, '0');
-        const matches = setData.setlists.filter(function(s) {
+        const matches = setData.shows.filter(function(s) {
           const parts = s.date.split('-');
-          // Shows flagged in data/setlist-corrections.json have a guessed date
-          return parts[0] === dayStr && parts[1] === monthStr && !s.dateNote;
+          return parts[0] === dayStr && parts[1] === monthStr;
         });
-        // Video availability for today's shows - only fetch the map when there are matches
-        let videoByShow = {};
-        if (matches.length) {
-          try {
-            const vResp = await fetch('data/show-videos.json');
-            if (vResp.ok) { const vData = await vResp.json(); videoByShow = (vData && vData.byShow) || {}; }
-          } catch (e2) { /* video map optional */ }
-        }
         for (const s of matches) {
           const yr = parseInt(s.date.split('-')[2]);
           const venue = s.venue || 'Unknown venue';
           const city = s.city || '';
           const state = s.state || '';
           const loc = [city, state, s.country].filter(Boolean).join(', ');
-          const songCount = s.songCount || (s.songs ? s.songs.filter(function(x) { return !x.tape; }).length : 0);
+          const songCount = s.songCount;
           const tourInfo = s.tour ? ' (' + window.tthAlbumCase(s.tour) + ')' : '';
           const noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist available)</span>' : '';
-          const hasVideo = !!videoByShow[s.id];
+          const hasVideo = !!s.video;
           // Only link when the tour map can actually show something (gigs span 1985-2016)
           const linkable = !!s.id && yr >= 1985 && yr <= 2016 && (songCount > 0 || hasVideo);
           events.push({ year: yr, tag: 'show', desc: 'Live at <b>' + esc(venue) + '</b>, ' + esc(loc) + esc(tourInfo) + (songCount ? ' - ' + songCount + ' songs' : '') + noSetlist, showId: linkable ? s.id : null, hasVideo: hasVideo });
@@ -264,16 +267,14 @@ function esc(v) {
       return '<div class="otd-event">' + inner + '</div>';
     }).join('');
   }
-  wrapper.style.display = 'block';
+  wrapper.classList.remove('otd-loading');
 
   // ─── Show of the Day (v5) ───
   // One recorded show per day, the same for everyone: a show played on today's
   // date if the Hip Archive has one, otherwise a stepped walk through all of
   // the recordings so consecutive days jump around without repeating for ~614 days.
   try {
-    const idxResp = await fetch('data/show-index.json');
-    const idx = idxResp.ok ? await idxResp.json() : {};
-    const recorded = allSetlists.filter(function(s) { return idx[s.id] && idx[s.id][2] && !s.dateNote; })
+    const recorded = allSetlists.filter(function(s) { return s.rec; })
       .sort(function(a, b) { return a.id < b.id ? -1 : 1; });
     if (recorded.length) {
       const dayNumber = Math.floor(Date.UTC(now.getFullYear(), todayMonth - 1, todayDay) / 86400000);
@@ -282,15 +283,16 @@ function esc(v) {
         .sort(function(a, b) { return a.date.split('-')[2] - b.date.split('-')[2]; });
       const pick = onThisDate.length ? onThisDate[dayNumber % onThisDate.length] : recorded[(dayNumber * 7919) % recorded.length];
       const pp = pick.date.split('-');
-      const songCount = (pick.songs || []).filter(function(x) { return !x.tape && x.name; }).length;
+      const songCount = pick.namedCount != null ? pick.namedCount : pick.songCount;
       const loc = [pick.city, pick.state, pick.country].filter(Boolean).join(', ');
       document.getElementById('sotdVenue').textContent = pick.venue || 'A show by The Hip';
       document.getElementById('sotdMeta').textContent = [new Date(+pp[2], +pp[1] - 1, +pp[0]).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' }), loc, pick.tour, songCount ? songCount + ' songs' : ''].filter(Boolean).join(' \u00b7 ');
       document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from The Tragically Hip Archive.';
       document.getElementById('sotdPlay').href = 'tour-map.html#play=' + encodeURIComponent(pick.id);
-      document.getElementById('sotd').hidden = false;
+    } else {
+      document.getElementById('sotd').hidden = true;
     }
-  } catch (e) { /* Show of the Day is optional */ }
+  } catch (e) { document.getElementById('sotd').hidden = true; /* Show of the Day is optional */ }
 
   // ─── Universal Search (albums, songs, lyrics, shows) ───
   var albumIndex = albums.map(function(a) {
@@ -322,7 +324,8 @@ function esc(v) {
       try { const r = await fetch('data/lyrics.json'); if (r.ok) lyricsData = await r.json(); } catch(e) {}
     }
     if (!tourData) {
-      try { const r = await fetch('data/tth-tour-data.json'); if (r.ok) tourData = await r.json(); } catch(e) {}
+      // The tour map's light file (no track lists); tracks come from tour-tracks.json when a show is opened
+      try { const r = await fetch('data/tour-map.json'); if (r.ok) tourData = await r.json(); } catch(e) {}
     }
     if (!setlistData) {
       try {
@@ -585,6 +588,12 @@ function esc(v) {
     return d.toLocaleDateString('en-CA', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
   }
 
+  var tracksPromise = null;
+  function loadTracks() {
+    if (!tracksPromise) tracksPromise = fetch('data/tour-tracks.json').then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { tracksPromise = null; return {}; });
+    return tracksPromise;
+  }
+
   function showDetailCard(g) {
     document.getElementById('sdDate').textContent = formatShowDate(g.isoDate);
     document.getElementById('sdVenue').textContent = g.venue || 'Unknown venue';
@@ -595,21 +604,24 @@ function esc(v) {
 
     // Show track list if available
     var setlistEl = document.getElementById('sdSetlist');
-    if (g.tracks && g.tracks.length) {
-      var ol = '<ol>';
-      g.tracks.forEach(function(t) { ol += '<li>' + esc(t.name || 'Unknown') + '</li>'; });
-      ol += '</ol>';
-      setlistEl.innerHTML = ol;
-      setlistEl.style.display = '';
-    } else {
-      setlistEl.style.display = 'none';
+    setlistEl.style.display = 'none';
+    if (g.trackCount) {
+      loadTracks().then(function(all) {
+        var list = all[g.id];
+        if (!list || document.getElementById('sdVenue').textContent !== (g.venue || 'Unknown venue')) return;
+        var ol = '<ol>';
+        list.forEach(function(t) { ol += '<li>' + esc(t.name || 'Unknown') + '</li>'; });
+        ol += '</ol>';
+        setlistEl.innerHTML = ol;
+        setlistEl.style.display = '';
+      });
     }
 
     var actions = document.getElementById('sdActions');
     actions.innerHTML = '';
 
     // Play button
-    if (g.tracks && g.tracks.length) {
+    if (g.trackCount) {
       var playBtn = document.createElement('button');
       playBtn.className = 'sd-play';
       playBtn.textContent = '🎧 Play this show';
@@ -621,7 +633,7 @@ function esc(v) {
     }
 
     // Download button
-    if (g.archiveUrl && (!g.tracks || !g.tracks.length)) {
+    if (g.archiveUrl && !g.trackCount) {
       var dlBtn = document.createElement('a');
       dlBtn.className = 'sd-download';
       dlBtn.href = g.archiveUrl;
@@ -757,7 +769,7 @@ function esc(v) {
     var slActions = document.getElementById('slActions');
     slActions.innerHTML = '';
 
-    if (g.tracks && g.tracks.length) {
+    if (g.trackCount) {
       var playBtn = document.createElement('button');
       playBtn.className = 'setlist-play-btn';
       playBtn.textContent = '\uD83C\uDFA7 Play this show';

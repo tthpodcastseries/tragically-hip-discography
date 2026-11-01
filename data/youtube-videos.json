@@ -13,7 +13,7 @@
       "id": "early",
       "era": "1984 - 1988",
       "label": "The Early Years",
-      "imagePath": "assets-optimized/Untitled 6.jpg",
+      "imagePath": "assets-optimized/Untitled 6.webp",
       "count": 8,
       "videos": [
         {
@@ -181,7 +181,7 @@
       "id": "up-to-here",
       "era": "1989 - 1994",
       "label": "Up To Here - Fully Completely",
-      "imagePath": "assets-optimized/89.jpg",
+      "imagePath": "assets-optimized/89.webp",
       "count": 33,
       "videos": [
         {
@@ -832,7 +832,7 @@
       "id": "day-for-night",
       "era": "1995 - 1999",
       "label": "Day For Night - Phantom Power",
-      "imagePath": "assets-optimized/95.jpg",
+      "imagePath": "assets-optimized/95.webp",
       "count": 72,
       "videos": [
         {
@@ -2190,7 +2190,7 @@
       "id": "in-violet-light",
       "era": "2000 - 2006",
       "label": "Music @ Work - In Between Evolution",
-      "imagePath": "assets-optimized/2000.jpg",
+      "imagePath": "assets-optimized/2000.webp",
       "count": 97,
       "videos": [
         {
@@ -4083,7 +4083,7 @@
       "id": "world-container",
       "era": "2007 - 2010",
       "label": "World Container - We Are The Same",
-      "imagePath": "assets-optimized/2007.jpg",
+      "imagePath": "assets-optimized/2007.webp",
       "count": 57,
       "videos": [
         {
@@ -5204,7 +5204,7 @@
       "id": "man-machine-poem",
       "era": "2011 - 2016",
       "label": "Now For Plan A - Man Machine Poem",
-      "imagePath": "assets-optimized/2011.jpg",
+      "imagePath": "assets-optimized/2011.webp",
       "count": 12,
       "videos": [
         {
@@ -5437,7 +5437,7 @@
       "id": "rarities",
       "era": "Compilations & Rarities",
       "label": "Soundboard compilations and the undated curiosities",
-      "imagePath": "assets-optimized/Rare.jpg",
+      "imagePath": "assets-optimized/Rare.webp",
       "count": 101,
       "videos": [
         {

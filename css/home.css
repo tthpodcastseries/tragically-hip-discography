@@ -32,6 +32,7 @@ header h1 {
 .hero-img {
   max-width: 600px;
   width: 100%;
+  height: auto;
   aspect-ratio: 2.3 / 1;
   object-fit: cover;
   object-position: 50% 28%;
@@ -57,7 +58,10 @@ header h1 {
 .explore-link:hover { border-color: var(--red); color: var(--text); }
 
 /* ON THIS DAY */
-.on-this-day { max-width: 600px; margin: 24px auto 0; padding: 16px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; display: none; }
+.on-this-day { max-width: 600px; margin: 24px auto 0; padding: 16px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; }
+.on-this-day[hidden] { display: none; }
+/* Room for a typical day's events while they load, so the page below doesn't jump (audit PERF-06) */
+.otd-loading #onThisDayEvents { min-height: 220px; }
 .on-this-day-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; font-size: 0.82rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 1.5px; }
 .on-this-day-header svg { flex-shrink: 0; }
 .otd-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; }

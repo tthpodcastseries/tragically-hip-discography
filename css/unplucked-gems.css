@@ -100,6 +100,7 @@ header h1 {
 }
 .flip-card-front img {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;

@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://unpkg.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" integrity="sha256-YU3qCpj/P06tdPBJGPax0bm6Q1wltfwjsho5TR4+TYc=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" integrity="sha256-YSWCMtmNZNwqex4CEw1nQhvFub2lmU7vcCKP+XVwwXA=" crossorigin="anonymous" />
@@ -47,8 +47,8 @@
 <main id="main-content">
 
 <div class="otd-banner" id="otdBanner">
-  <div class="otd-title" id="otdTitle"></div>
-  <div class="otd-detail" id="otdDetail">Click to zoom to today's gigs</div>
+  <div class="otd-title" id="otdTitle">On This Day</div>
+  <div class="otd-detail" id="otdDetail">Checking the tour data...</div>
 </div>
 
 <nav aria-label="Map filters" class="controls">
@@ -131,44 +131,34 @@
 <script>
 (async function() {
 
-  // Load data
+  // Load data. data/tour-map.json is tth-tour-data.json without the track lists
+  // (scripts/build-light-data.js, audit PERF-04); tracks load on first Play.
+  // Setlists and the video map start downloading now, alongside it, but the map
+  // doesn't wait for them; the setlist and show cards do.
+  let setlistLookup = {};
+  let showVideosMap = {};
+  const extrasReady = Promise.all([
+    fetch('data/setlists.min.json').then(r => r.ok ? r.json() : null).then(slData => {
+      if (slData && slData.setlists) slData.setlists.forEach(s => { setlistLookup[s.id] = s; });
+    }).catch(e => console.warn('Setlist data load failed:', e)),
+    // Show ↔ video map (v3.6 Long Time Running). Hide silently on failure.
+    fetch('data/show-videos.json').then(r => r.ok ? r.json() : null).then(svData => {
+      showVideosMap = (svData && svData.byShow) || {};
+    }).catch(e => console.warn('Show-videos map load failed:', e))
+  ]);
+
   let allGigs;
   try {
-    const res = await fetch('data/tth-tour-data.json');
+    const res = await fetch('data/tour-map.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allGigs = await res.json();
     allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
   } catch (e) {
     document.getElementById('statsPill').textContent = "Couldn't load the tour data";
+    document.getElementById('otdBanner').hidden = true;
     document.getElementById('map').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Couldn\'t load the tour data.</p><p style="font-size:0.85rem;">Check yer connection and refresh.</p></div></div>';
     console.error('Tour data load failed:', e);
     return;
-  }
-
-  // Load setlist data
-  let setlistLookup = {};
-  try {
-    const slRes = await fetch('data/setlists.min.json');
-    if (slRes.ok) {
-      const slData = await slRes.json();
-      if (slData.setlists) {
-        slData.setlists.forEach(s => { setlistLookup[s.id] = s; });
-      }
-    }
-  } catch (e) {
-    console.warn('Setlist data load failed:', e);
-  }
-
-  // Load show ↔ video map (v3.6 Long Time Running). Hide silently on failure.
-  let showVideosMap = {};
-  try {
-    const svRes = await fetch('data/show-videos.json');
-    if (svRes.ok) {
-      const svData = await svRes.json();
-      showVideosMap = svData.byShow || {};
-    }
-  } catch (e) {
-    console.warn('Show-videos map load failed:', e);
   }
 
   // Map setup - dark tiles
@@ -300,7 +290,7 @@
     if (g.tour) html += `<div class="popup-tour">${g.tour}</div>`;
     if (g.dateNote) html += `<div class="popup-date-note">Date unconfirmed</div>`;
     if (g.songCount > 0) html += `<div class="popup-songs">${g.songCount} songs in setlist</div>`;
-    if (g.tracks && g.tracks.length) {
+    if (g.trackCount) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
       html += `<button onclick="window.playGig('${g.id}')" style="display:block;width:100%;margin-top:6px;padding:5px 0;background:none;border:none;color:#fff;text-decoration:underline;text-decoration-color:#CCA23C;text-underline-offset:3px;font-family:Poppins,sans-serif;font-size:0.7rem;font-weight:600;cursor:pointer;text-align:left;">🎧 Play this show</button>`;
@@ -702,7 +692,8 @@
   }
 
   // Show detail card (from search results)
-  function showDetailCard(g) {
+  async function showDetailCard(g) {
+    await extrasReady;
     document.getElementById('sdDate').textContent = formatDate(g.isoDate);
     document.getElementById('sdVenue').textContent = g.venue || 'Unknown venue';
     document.getElementById('sdCity').textContent = (g.city || '') + (g.state ? ', ' + g.state : '') + (g.countryName ? ' - ' + g.countryName : '');
@@ -747,7 +738,7 @@
       actions.appendChild(strip);
     }
 
-    if (g.tracks && g.tracks.length) {
+    if (g.trackCount) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
       const playBtn = document.createElement('button');
@@ -804,7 +795,8 @@
   });
 
   // Setlist overlay logic
-  window.showSetlist = function(gigId) {
+  window.showSetlist = async function(gigId) {
+    await extrasReady;
     const sl = setlistLookup[gigId];
     const g = allGigs.find(x => x.id === gigId);
     const overlay = document.getElementById('setlistOverlay');
@@ -893,7 +885,7 @@
     const actions = document.getElementById('slActions');
     actions.innerHTML = '';
 
-    if (g && g.tracks && g.tracks.length) {
+    if (g && g.trackCount) {
       window._gigLookup = window._gigLookup || {};
       window._gigLookup[g.id] = g;
       const playBtn = document.createElement('button');
@@ -942,9 +934,14 @@
   const todaySuffix = `-${mm}-${dd}`;
   const otdGigs = allGigs.filter(g => g.isoDate?.endsWith(todaySuffix) && !g.dateNote);
 
-  if (otdGigs.length > 0) {
-    const banner = document.getElementById('otdBanner');
-    const monthName = today.toLocaleDateString('en-CA', { month: 'long', day: 'numeric' });
+  // The strip shows from the first paint (so the filters below never jump, audit PERF-06)
+  // and says so on the days with no show
+  const banner = document.getElementById('otdBanner');
+  const monthName = today.toLocaleDateString('en-CA', { month: 'long', day: 'numeric' });
+  if (!otdGigs.length) {
+    document.getElementById('otdTitle').textContent = `On This Day (${monthName})`;
+    document.getElementById('otdDetail').textContent = 'No shows by The Hip on record for this date.';
+  } else {
     document.getElementById('otdTitle').textContent =
       `On This Day (${monthName}): The Hip played ${otdGigs.length} show${otdGigs.length > 1 ? 's' : ''}`;
 
@@ -1025,14 +1022,14 @@
     if (!m) return;
     let g = null;
     if (m[1] === 'random') {
-      const playable = allGigs.filter(x => x.tracks && x.tracks.length);
+      const playable = allGigs.filter(x => x.trackCount);
       if (!playable.length) { showMapNote('No recordings to play yet.'); return; }
       g = playable[Math.floor(Math.random() * playable.length)];
     } else {
       g = allGigs.find(x => String(x.id) === m[1]);
     }
     if (!g) { showMapNote("Couldn't find that show. Try the search box."); return; }
-    if (!g.tracks || !g.tracks.length) { showMapNote('No recording for that show yet.'); return; }
+    if (!g.trackCount) { showMapNote('No recording for that show yet.'); return; }
     if (g.lat && g.lng) {
       try { map.setView([g.lat, g.lng], 12, { animate: !REDUCE_MOTION }); } catch (_) { /* noop */ }
     }
@@ -1218,11 +1215,27 @@
 
   const AUDIO_BASE = 'https://f006.backblazeb2.com/file/tth-audio';
 
-  function loadShow(gig) {
+  // Track lists for every recording, fetched the first time a show is played (audit PERF-04)
+  let tracksPromise = null;
+  function loadTracks() {
+    if (!tracksPromise) tracksPromise = fetch('data/tour-tracks.json').then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    }).catch(e => { tracksPromise = null; throw e; });
+    return tracksPromise;
+  }
+
+  async function loadShow(gig) {
     if (!gig) return;
     currentShow = gig;
     player.classList.add('active');
     showTitle.textContent = `${gig.isoDate || ''} - ${gig.venue || 'Unknown'}, ${gig.city || ''}`;
+    if (!gig.tracks && gig.trackCount) {
+      trackTitle.textContent = 'Loading the recording...';
+      try { gig.tracks = (await loadTracks())[gig.id] || []; }
+      catch (e) { trackTitle.textContent = "Couldn't load this recording. Check yer connection and try again."; return; }
+      if (currentShow !== gig) return; // another show was picked while this one loaded
+    }
     if (gig.tracks && gig.tracks.length) {
       tracks = gig.tracks.map(t => ({
         name: t.name || 'Unknown track',

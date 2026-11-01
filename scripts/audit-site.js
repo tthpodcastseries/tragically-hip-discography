@@ -170,6 +170,18 @@ for (const page of pages) {
   if (/black-translucent/.test(html)) problems.push(`${page}: status bar style black-translucent puts the page under the iPhone clock in the home-screen app (use "black")`);
 }
 
+// ---- 8b. Light data files and WebP images (v5.4.16, audit PERF-03 to PERF-05) ----
+const staleLight = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-light-data.js'), '--check'], { encoding: 'utf8' });
+if (staleLight.status !== 0) problems.push(`data/on-this-day.json, tour-map.json or tour-tracks.json: ${(staleLight.stderr || staleLight.stdout || '').trim().split('\n').slice(-1)[0]}`);
+const staleWebp = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-webp.js'), '--check'], { encoding: 'utf8' });
+if (staleWebp.status !== 0) problems.push(`assets-optimized: ${(staleWebp.stderr || staleWebp.stdout || '').trim().split('\n')[0]}`);
+// Pages show the WebP copies; JPEGs are only for link-preview tags
+for (const page of fs.readdirSync(ROOT).filter(f => f.endsWith('.html'))) {
+  const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+  const jpgImgs = (html.match(/<img [^>]*src="[^"]*assets-optimized\/[^"]+\.jpe?g"/g) || []).length;
+  if (jpgImgs) problems.push(`${page}: ${jpgImgs} <img> still shows a JPEG from assets-optimized (use the .webp)`);
+}
+
 // ---- 9. Link previews and search (v5.4.12) ----
 // Preview robots read the raw HTML, so each route needs its own file with its own tags.
 const stalePages = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-seo-pages.js'), '--check'], { encoding: 'utf8' });

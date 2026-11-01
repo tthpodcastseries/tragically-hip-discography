@@ -167,13 +167,13 @@ function getEraId(year, tags) {
 }
 
 const ERA_DEFS = [
-  { id: 'early',            era: '1984 - 1988', label: 'The Early Years',                     imagePath: 'assets-optimized/Untitled 6.jpg' },
-  { id: 'up-to-here',       era: '1989 - 1994', label: 'Up To Here - Fully Completely',       imagePath: 'assets-optimized/89.jpg' },
-  { id: 'day-for-night',    era: '1995 - 1999', label: 'Day For Night - Phantom Power',       imagePath: 'assets-optimized/95.jpg' },
-  { id: 'in-violet-light',  era: '2000 - 2006', label: 'Music @ Work - In Between Evolution', imagePath: 'assets-optimized/2000.jpg' },
-  { id: 'world-container',  era: '2007 - 2010', label: 'World Container - We Are The Same',   imagePath: 'assets-optimized/2007.jpg' },
-  { id: 'man-machine-poem', era: '2011 - 2016', label: 'Now For Plan A - Man Machine Poem',   imagePath: 'assets-optimized/2011.jpg' },
-  { id: 'rarities',         era: 'Compilations & Rarities', label: 'Soundboard compilations and the undated curiosities', imagePath: 'assets-optimized/Rare.jpg' },
+  { id: 'early',            era: '1984 - 1988', label: 'The Early Years',                     imagePath: 'assets-optimized/Untitled 6.webp' },
+  { id: 'up-to-here',       era: '1989 - 1994', label: 'Up To Here - Fully Completely',       imagePath: 'assets-optimized/89.webp' },
+  { id: 'day-for-night',    era: '1995 - 1999', label: 'Day For Night - Phantom Power',       imagePath: 'assets-optimized/95.webp' },
+  { id: 'in-violet-light',  era: '2000 - 2006', label: 'Music @ Work - In Between Evolution', imagePath: 'assets-optimized/2000.webp' },
+  { id: 'world-container',  era: '2007 - 2010', label: 'World Container - We Are The Same',   imagePath: 'assets-optimized/2007.webp' },
+  { id: 'man-machine-poem', era: '2011 - 2016', label: 'Now For Plan A - Man Machine Poem',   imagePath: 'assets-optimized/2011.webp' },
+  { id: 'rarities',         era: 'Compilations & Rarities', label: 'Soundboard compilations and the undated curiosities', imagePath: 'assets-optimized/Rare.webp' },
 ];
 
 // -------------- Main --------------

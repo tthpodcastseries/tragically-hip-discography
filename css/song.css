@@ -2,6 +2,8 @@
 [hidden] { display: none !important; }
 
 .sp { max-width: 640px; margin: 0 auto; padding: 20px 16px 56px; }
+/* Holds the footer below the screen while the song loads, so it doesn't jump (audit PERF-06) */
+.sp { min-height: 100vh; }
 .sp-note { text-align: center; color: var(--muted2); padding: 40px 12px; font-size: 0.88rem; }
 .sp-error { color: #fff; }
 

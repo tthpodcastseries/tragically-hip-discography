@@ -1,26 +1,24 @@
 // /js/tth-member-gate.js
 //
-// Member gate for The Hip Handbook.
+// Guest pass and membersHIP sign-in for The Hip Handbook.
 //
-// Behavior:
-//   - Before any page content renders, checks localStorage for a valid member session.
-//   - If no session, injects a full-screen opaque overlay with a first-name + membersHIP
-//     number form. On successful unlock via Supabase RPC, persists session and reloads
-//     so the rest of the page scripts boot with TTHMember fully hydrated.
-//   - If session exists, exposes window.TTHMember and lets the page render normally.
+// Behavior (v5.4.16, audit PERF-01 / SEO-03 - no more full-screen wall):
+//   - Reads the session from localStorage before the page renders.
+//   - A first visit gets the same guest pass "Start exploring" used to give, silently,
+//     so every page shows straight away with no reload.
+//   - Guests see a slim sign-in bar at the top (closed for good with its X).
+//     "Sign in" opens a pop-up with the first-name + membersHIP number form; a
+//     successful unlock saves the session and reloads so the page boots as the member.
 //
-// Skipped on localhost / file:// for dev convenience.
-//
-// Load with a plain <script> tag at the very top of <body>, after tth-launch-gate.js:
-//   <script src="/js/tth-launch-gate.js"></script>
+// Load with a plain <script> tag at the very top of <body>:
 //   <script src="/js/tth-member-gate.js"></script>
 //
 // Public API (window.TTHMember):
 //   getSession()              -> { memberNumber, firstName, attendedShows, guest } | null
 //   isUnlocked()              -> boolean
-//   signOut()                 -> clears local session and reloads
-//   signInWithNumber()        -> like signOut, but a guest's shows wait in
-//                                'tth_guest_shows_pending' and merge in on unlock
+//   signOut()                 -> a member becomes a guest and the sign-in pop-up opens
+//                                after the reload; a guest just gets the pop-up
+//   signInWithNumber()        -> opens the sign-in pop-up; a guest's shows merge in on unlock
 //   hasShow(id)               -> boolean
 //   addShow(id)               -> Promise<void>
 //   removeShow(id)            -> Promise<void>
@@ -29,7 +27,7 @@
 //
 // Session persistence:
 //   localStorage key: 'tth_member_session'
-//   Shape: { memberNumber: number, firstName: string, attendedShows: string[], unlockedAt: number }
+//   Shape: { memberNumber: number, firstName: string, attendedShows: string[], unlockedAt: number, guest?: true }
 
 // Album and tour names in the data files use "Day For Night" casing. The Brand & Style Guide
 // writes the five albums with lowercase prepositions, so pages show them through this
@@ -50,17 +48,15 @@ window.tthAlbumCase = function (text) {
   var SUPABASE_URL = 'https://deqslacywpwnjjckdygp.supabase.co';
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcXNsYWN5d3B3bmpqY2tkeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxNTQyNjEsImV4cCI6MjA5MDczMDI2MX0.rrawa18owCmKbmryWRi6ROJX146FTqis2OGVT68K7jM';
 
-  // Guest bypass for press / external reviewers. These credentials never hit
-  // Supabase; the session is local-only. Any attended-show toggles a guest
-  // makes stay in their own device's localStorage and never touch a real
-  // member row. Safe to share publicly.
+  // Guest pass for every visitor, and the public press credential. These never hit
+  // Supabase; the session is local-only. Any attended-show toggles a guest makes
+  // stay in their own device's localStorage and never touch a real member row.
   var GUEST_FIRST_NAME = 'TheHip';
   var GUEST_NUMBER = 1984;
 
-  // Skip on local dev
-  var isLocal = location.protocol === 'file:'
-             || location.hostname === 'localhost'
-             || location.hostname === '127.0.0.1';
+  var BAR_CLOSED_KEY = 'tth_signin_bar_closed'; // the fan closed the sign-in bar on this device
+  var BAR_SEEN_KEY = 'tth_signin_bar_seen';     // 'Sign-in bar - Shown' counts devices, not page views
+  var OPEN_KEY = 'tth_open_signin';             // sessionStorage: open the pop-up after "Switch member"
 
   // Load any existing session immediately (sync, from localStorage)
   var session = null;
@@ -90,8 +86,8 @@ window.tthAlbumCase = function (text) {
     } catch (e) {}
   }
 
-  // Guest shows wait here while a guest goes to the sign-in gate, then get
-  // merged into the member's list (or handed back if they stay a guest)
+  // Guest shows left waiting by the old sign-in flow (before v5.4.16) or by the claim
+  // page get merged into the member's list on unlock (audit FUNC-02)
   var PENDING_KEY = 'tth_guest_shows_pending';
   function readPending() {
     try {
@@ -101,6 +97,10 @@ window.tthAlbumCase = function (text) {
   }
   function clearPending() {
     try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
+  }
+
+  function guestSession(shows) {
+    return { memberNumber: GUEST_NUMBER, firstName: GUEST_FIRST_NAME, attendedShows: shows, unlockedAt: Date.now(), guest: true };
   }
 
   // Database errors arrive as codes; turn them into something a fan can act on
@@ -153,6 +153,13 @@ window.tthAlbumCase = function (text) {
     });
   }
 
+  // No wall (v5.4.16): a first visit gets the guest pass straight away
+  if (!session) {
+    session = guestSession(readPending());
+    persistLocal();
+    clearPending();
+  }
+
   // Public API
   var TTHMember = {
     getSession: function () {
@@ -167,20 +174,14 @@ window.tthAlbumCase = function (text) {
     },
     isUnlocked: function () { return !!session; },
     // Guest -> member sign-in without losing the guest's shows (audit FUNC-02)
-    signInWithNumber: function () {
-      if (session && session.guest && session.attendedShows.length) {
-        try { localStorage.setItem(PENDING_KEY, JSON.stringify(session.attendedShows)); } catch (e) {}
-      }
-      session = null;
-      persistLocal();
-      notify();
-      location.reload();
-    },
+    signInWithNumber: function () { openSignIn('Sign-in - Opened'); },
     friendlyError: friendlyError,
     signOut: function () {
-      session = null;
+      if (session && session.guest) { openSignIn('Sign-in - Opened'); return; }
+      session = guestSession([]);
       persistLocal();
       notify();
+      try { sessionStorage.setItem(OPEN_KEY, '1'); } catch (e) {}
       location.reload();
     },
     hasShow: function (id) {
@@ -217,98 +218,9 @@ window.tthAlbumCase = function (text) {
   };
   window.TTHMember = TTHMember;
 
-  // On local dev, inject a stub session so pages work without hitting Supabase.
-  // Marked guest so persistRemote() stays local-only — otherwise every toggle
-  // fires an RPC as ('dev', 0), which the function rejects with
-  // invalid_credentials and the caller silently rolls back.
-  if (isLocal && !session) {
-    session = { memberNumber: 0, firstName: 'dev', attendedShows: [], unlockedAt: Date.now(), guest: true };
-  }
-
-  // If we have a session, we're done. Page renders normally.
-  if (session) return;
-
-  // If the pre-launch gate is showing, bail out. The launch gate reloads on
-  // unlock, at which point this script runs fresh and takes over cleanly.
-  if (document.getElementById('passGate')) return;
-
-  // No session: hide page content and render the gate.
-  // Anti-flash: insert a style that keeps body hidden until we mount the overlay.
-  var hideStyle = document.createElement('style');
-  hideStyle.id = 'tth-member-gate-hide';
-  hideStyle.textContent = 'body > *:not(#tth-member-gate) { visibility: hidden !important; }';
-  (document.head || document.documentElement).appendChild(hideStyle);
-
-  var gateCss = [
-    '#tth-member-gate { position:fixed; inset:0; z-index:2147483647; background:#0e0b16; display:flex; align-items:flex-start; justify-content:center; padding:2rem 1rem; font-family:Poppins,sans-serif; overflow-y:auto; visibility:visible !important; }',
-    '#tth-member-gate::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,16,46,0.22) 0%, transparent 70%); pointer-events:none; }',
-    '#tth-member-gate .mg-card { position:relative; max-width:440px; width:100%; text-align:center; margin:auto 0; }',
-    '#tth-member-gate .mg-maple { font-size:2rem; display:block; margin-bottom:12px; }',
-    '#tth-member-gate .mg-eyebrow { text-transform:uppercase; font-size:0.7rem; font-weight:600; letter-spacing:3px; color:#d9d9d9; margin-bottom:0.6rem; }',
-    '#tth-member-gate .mg-title { font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; color:#fff; line-height:1.15; margin:0 0 0.6rem; }',
-    '#tth-member-gate .mg-title span { color:#fff; }',
-    '#tth-member-gate .mg-sub { font-size:0.92rem; line-height:1.6; color:#d9d9d9; margin:0 0 1.4rem; }',
-    '#tth-member-gate a { color:#fff; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; font-weight:600; }',
-    '#tth-member-gate a:hover { text-decoration:underline; }',
-    '#tth-member-gate button { width:100%; padding:1rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; transition:background 0.15s, border-color 0.15s, color 0.15s; }',
-    '#tth-member-gate button:hover:not(:disabled) { background:#a60d26; }',
-    '#tth-member-gate button:disabled { opacity:0.6; cursor:not-allowed; }',
-    '#tth-member-gate button:focus-visible, #tth-member-gate a:focus-visible { outline:2px solid #fff; outline-offset:3px; }',
-    '#tth-member-gate .mg-start { font-size:1.05rem; padding:1.1rem; }',
-    '#tth-member-gate .mg-member { margin-top:1.75rem; padding-top:1.4rem; border-top:1px solid #2a2a2a; text-align:left; }',
-    // No uppercase on these - it would flatten the membersHIP brand casing
-    '#tth-member-gate .mg-member-title { font-size:0.95rem; font-weight:700; color:#fff; margin:0 0 0.85rem; text-align:center; }',
-    '#tth-member-gate form { display:flex; flex-direction:column; gap:0.75rem; }',
-    '#tth-member-gate .mg-fields { display:flex; gap:0.6rem; }',
-    '#tth-member-gate .mg-fields > div { flex:1; min-width:0; }',
-    '#tth-member-gate label { font-size:0.72rem; font-weight:500; letter-spacing:0.5px; color:#d9d9d9; margin-bottom:0.35rem; display:block; }',
-    '#tth-member-gate input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
-    '#tth-member-gate input:focus { outline:2px solid #CCA23C; outline-offset:2px; border-color:#CCA23C; }',
-    '#tth-member-gate .mg-unlock { background:transparent; color:#fff; border:1px solid rgba(204,162,60,0.6); font-size:0.85rem; padding:0.85rem; }',
-    '#tth-member-gate .mg-unlock:hover:not(:disabled) { background:rgba(204,162,60,0.1); border-color:#CCA23C; }',
-    '#tth-member-gate .mg-err { color:#fff; font-size:0.85rem; min-height:1.2em; text-align:center; }',
-    '#tth-member-gate .mg-claim { font-size:0.85rem; color:#b0b0b0; text-align:center; margin:0.25rem 0 0; }',
-    '#tth-member-gate .mg-why { font-size:0.8rem; line-height:1.55; color:#b0b0b0; background:#141414; border:1px solid #2a2a2a; border-radius:10px; padding:0.85rem 1rem; margin:1rem 0 0; }',
-    '#tth-member-gate .mg-why b { color:#fff; font-weight:600; }',
-    '#tth-member-gate .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1.25rem; text-align:center; }'
-  ].join('\n');
-
-  // Guest-first layout (v4.8): the big button lets anyone straight in; the
-  // membersHIP sign-in sits below it as an option, never a wall.
-  var gateHtml =
-    '<style>' + gateCss + '</style>' +
-    '<div class="mg-card">' +
-      '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
-      '<div class="mg-eyebrow">Free for every fan of The Hip</div>' +
-      '<h2 id="mg-title" class="mg-title">Yer <span>Handbook</span></h2>' +
-      '<p class="mg-sub">Every release, 1,355 live shows and appearances, lyrics, and rare recordings. No account needed.</p>' +
-      '<button id="mg-guest-btn" class="mg-start" type="button">Start exploring</button>' +
-      '<div class="mg-member">' +
-        '<p class="mg-member-title">Got a membersHIP number?</p>' +
-        '<form id="mg-form" novalidate autocomplete="on">' +
-          '<div class="mg-fields">' +
-            '<div>' +
-              '<label for="mg-first">First name</label>' +
-              '<input id="mg-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required>' +
-            '</div>' +
-            '<div>' +
-              '<label for="mg-num">membersHIP number</label>' +
-              '<input id="mg-num" name="member_number" type="text" inputmode="numeric" pattern="[0-9]{1,7}" maxlength="7" autocomplete="off" required>' +
-            '</div>' +
-          '</div>' +
-          '<div class="mg-err" id="mg-err" role="alert"></div>' +
-          '<button id="mg-btn" class="mg-unlock" type="submit">Unlock yer shows</button>' +
-        '</form>' +
-        '<p class="mg-claim">No number yet? <a id="mg-claim-link" href="/forum-invite.html">Get one free - takes 10 seconds.</a></p>' +
-        // Members' shows sync via update_attended_shows; guest shows never leave the device
-        '<p class="mg-why"><b>Why grab one?</b> Save the shows you were at and build yer own concert history, on any device. As a guest, yer shows stay on this one device.</p>' +
-      '</div>' +
-      '<p class="mg-privacy">No email. No password. Nothing to buy.</p>' +
-    '</div>';
-
-  // Anonymous Umami events (v4.8) so we can see where visitors drop off at the
-  // gate. Event names only - never names or numbers. Umami loads deferred, so
-  // wait for it briefly; resolves within 800ms either way so redirects never hang.
+  // Anonymous Umami events (v4.8) so we can see how sign-in is used. Event names
+  // only - never names or numbers. Umami loads deferred, so wait for it briefly;
+  // resolves within 800ms either way so redirects never hang.
   function track(name) {
     return new Promise(function (resolve) {
       var done = false;
@@ -329,21 +241,113 @@ window.tthAlbumCase = function (text) {
     });
   }
 
-  function mountGate() {
-    if (!document.body) {
-      requestAnimationFrame(mountGate);
-      return;
-    }
-    if (document.getElementById('tth-member-gate')) return;
+  function stored(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+  function store(key) { try { localStorage.setItem(key, '1'); } catch (e) {} }
 
-    var gate = document.createElement('div');
-    gate.id = 'tth-member-gate';
-    // Named dialog so screen readers announce it and stay inside it (audit A11Y-10)
-    gate.setAttribute('role', 'dialog');
-    gate.setAttribute('aria-modal', 'true');
-    gate.setAttribute('aria-labelledby', 'mg-title');
-    gate.innerHTML = gateHtml;
-    document.body.insertBefore(gate, document.body.firstChild);
+  var css = [
+    '#tth-signin-bar { display:flex; align-items:center; gap:10px; padding:8px 12px 8px 16px; background:#141414; border-bottom:1px solid #2a2a2a; font-family:Poppins,sans-serif; font-size:0.8rem; line-height:1.4; color:#d9d9d9; }',
+    '#tth-signin-bar p { flex:1; min-width:0; margin:0; }',
+    '#tth-signin-bar b { color:#fff; font-weight:600; }',
+    '#tth-signin-bar button { font-family:Poppins,sans-serif; cursor:pointer; min-height:44px; }',
+    '#tth-signin-bar .sb-open { flex-shrink:0; padding:0 14px; background:transparent; color:#fff; border:1px solid rgba(204,162,60,0.6); border-radius:8px; font-size:0.78rem; font-weight:600; }',
+    '#tth-signin-bar .sb-open:hover { background:rgba(204,162,60,0.1); border-color:#CCA23C; }',
+    '#tth-signin-bar .sb-close { flex-shrink:0; width:44px; background:none; border:none; color:#d9d9d9; font-size:1.3rem; line-height:1; }',
+    '#tth-signin-bar button:focus-visible { outline:2px solid #CCA23C; outline-offset:2px; }',
+    '@media (max-width: 480px) { #tth-signin-bar .sb-more { display:none; } }',
+    '#tth-signin { border:none; padding:0; margin:auto; background:transparent; width:calc(100% - 32px); max-width:440px; max-height:calc(100% - 32px); overflow:auto; color:#d9d9d9; }',
+    '#tth-signin::backdrop { background:rgba(0,0,0,0.78); }',
+    '#tth-signin .mg-card { position:relative; background:#0e0b16; border:1px solid #2a2a2a; border-radius:14px; padding:2rem 1.25rem 1.5rem; text-align:center; font-family:Poppins,sans-serif; }',
+    '#tth-signin .mg-x { position:absolute; top:6px; right:6px; width:44px; height:44px; background:none; border:none; color:#d9d9d9; font-size:1.4rem; line-height:1; cursor:pointer; }',
+    '#tth-signin .mg-maple { font-size:2rem; display:block; margin-bottom:10px; }',
+    // No uppercase on these - it would flatten the membersHIP brand casing
+    '#tth-signin .mg-title { font-size:1.35rem; font-weight:800; color:#fff; line-height:1.2; margin:0 0 0.6rem; }',
+    '#tth-signin .mg-sub { font-size:0.88rem; line-height:1.6; color:#d9d9d9; margin:0 0 1.2rem; }',
+    '#tth-signin a { color:#fff; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; font-weight:600; }',
+    '#tth-signin button:focus-visible, #tth-signin a:focus-visible { outline:2px solid #fff; outline-offset:3px; }',
+    '#tth-signin form { display:flex; flex-direction:column; gap:0.75rem; text-align:left; }',
+    '#tth-signin .mg-fields { display:flex; gap:0.6rem; }',
+    '#tth-signin .mg-fields > div { flex:1; min-width:0; }',
+    '#tth-signin label { font-size:0.72rem; font-weight:500; letter-spacing:0.5px; color:#d9d9d9; margin-bottom:0.35rem; display:block; }',
+    '#tth-signin input { width:100%; padding:0.8rem 0.9rem; background:#141414; border:1px solid #2a2a2a; border-radius:8px; color:#fff; font-family:Poppins,sans-serif; font-size:1rem; transition:border-color 0.15s; }',
+    '#tth-signin input:focus { outline:2px solid #CCA23C; outline-offset:2px; border-color:#CCA23C; }',
+    '#tth-signin .mg-unlock { width:100%; padding:0.95rem; background:#C8102E; color:#fff; border:none; border-radius:8px; font-family:Poppins,sans-serif; font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; }',
+    '#tth-signin .mg-unlock:hover:not(:disabled) { background:#a60d26; }',
+    '#tth-signin .mg-unlock:disabled { opacity:0.6; cursor:not-allowed; }',
+    '#tth-signin .mg-err { color:#fff; font-size:0.85rem; min-height:1.2em; text-align:center; }',
+    '#tth-signin .mg-claim { font-size:0.85rem; color:#b0b0b0; margin:1rem 0 0; }',
+    '#tth-signin .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1rem; }'
+  ].join('\n');
+  var styleEl = document.createElement('style');
+  styleEl.id = 'tth-member-gate-css';
+  styleEl.textContent = css;
+  (document.head || document.documentElement).appendChild(styleEl);
+
+  // ─── Sign-in bar ───
+  // Written in before the rest of the page is parsed, so it never pushes content down
+  // after the first paint. Not on the claim page, which has its own form.
+  var onClaimPage = /forum-invite/.test(location.pathname);
+  if (session.guest && !onClaimPage && !stored(BAR_CLOSED_KEY)) {
+    var bar = document.createElement('div');
+    bar.id = 'tth-signin-bar';
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', 'membersHIP sign-in');
+    bar.innerHTML =
+      '<p><b>Got a membersHIP number?</b> <span class="sb-more">Sign in to keep yer shows on any device.</span></p>' +
+      '<button type="button" class="sb-open">Sign in</button>' +
+      '<button type="button" class="sb-close" aria-label="Close the sign-in bar for good">&times;</button>';
+    var here = document.currentScript;
+    if (here && here.parentNode === document.body) here.insertAdjacentElement('afterend', bar);
+    else if (document.body) document.body.insertBefore(bar, document.body.firstChild);
+    // Keep "Skip to content" first in the Tab order (it sits off-screen, so nothing moves)
+    document.addEventListener('DOMContentLoaded', function () {
+      var skip = document.querySelector('body > .skip-link');
+      if (skip && bar.parentNode === document.body && (skip.compareDocumentPosition(bar) & Node.DOCUMENT_POSITION_PRECEDING)) {
+        skip.insertAdjacentElement('afterend', bar);
+      }
+    });
+    bar.querySelector('.sb-open').addEventListener('click', function () { openSignIn('Sign-in bar - Open'); });
+    bar.querySelector('.sb-close').addEventListener('click', function () {
+      store(BAR_CLOSED_KEY);
+      if (bar.parentNode) bar.parentNode.removeChild(bar);
+      track('Sign-in bar - Closed');
+    });
+    if (!stored(BAR_SEEN_KEY)) { store(BAR_SEEN_KEY); track('Sign-in bar - Shown'); }
+  }
+
+  // ─── Sign-in pop-up ───
+  var dialogHtml =
+    '<div class="mg-card">' +
+      '<button type="button" class="mg-x" id="mg-x" aria-label="Close">&times;</button>' +
+      '<span class="mg-maple" aria-hidden="true">&#127809;</span>' +
+      '<h2 id="mg-title" class="mg-title">Got a membersHIP number?</h2>' +
+      // Members' shows sync via update_attended_shows; guest shows never leave the device
+      '<p class="mg-sub">Sign in to save the shows you were at and build yer own concert history, on any device. As a guest, yer shows stay on this one device.</p>' +
+      '<form id="mg-form" novalidate autocomplete="on">' +
+        '<div class="mg-fields">' +
+          '<div>' +
+            '<label for="mg-first">First name</label>' +
+            '<input id="mg-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required>' +
+          '</div>' +
+          '<div>' +
+            '<label for="mg-num">membersHIP number</label>' +
+            '<input id="mg-num" name="member_number" type="text" inputmode="numeric" pattern="[0-9]{1,7}" maxlength="7" autocomplete="off" required>' +
+          '</div>' +
+        '</div>' +
+        '<div class="mg-err" id="mg-err" role="alert"></div>' +
+        '<button id="mg-btn" class="mg-unlock" type="submit">Unlock yer shows</button>' +
+      '</form>' +
+      '<p class="mg-claim">No number yet? <a id="mg-claim-link" href="/forum-invite.html">Get one free - takes 10 seconds.</a></p>' +
+      '<p class="mg-privacy">No email. No password. Nothing to buy.</p>' +
+    '</div>';
+
+  var dialog = null;
+
+  function buildDialog() {
+    dialog = document.createElement('dialog');
+    dialog.id = 'tth-signin';
+    dialog.setAttribute('aria-labelledby', 'mg-title');
+    dialog.innerHTML = dialogHtml;
+    document.body.appendChild(dialog);
 
     var firstEl = document.getElementById('mg-first');
     var numEl = document.getElementById('mg-num');
@@ -351,47 +355,9 @@ window.tthAlbumCase = function (text) {
     var btn = document.getElementById('mg-btn');
     var form = document.getElementById('mg-form');
 
-    // If we arrived from the invite reveal screen, pre-fill the first name and
-    // jump focus straight to the number field. Strip the param so it doesn't
-    // linger in the address bar.
-    var prefillFirst = '';
-    try {
-      var params = new URLSearchParams(location.search);
-      prefillFirst = (params.get('first') || '').trim();
-      if (prefillFirst) {
-        params.delete('first');
-        var qs = params.toString();
-        history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
-      }
-    } catch (e) { /* ignore */ }
-
-    // Only jump into the form for someone arriving with a name to finish -
-    // auto-focusing it for everyone popped the phone keyboard over the
-    // Start exploring button (v4.8)
-    if (prefillFirst) {
-      firstEl.value = prefillFirst;
-      setTimeout(function () { try { numEl.focus(); } catch (e) {} }, 60);
-    } else {
-      // A button, so no phone keyboard pops; keyboard and screen reader users start inside the gate
-      setTimeout(function () { try { document.getElementById('mg-guest-btn').focus(); } catch (e) {} }, 60);
-    }
-
-    track('Gate - Shown');
-
-    var guestBtn = document.getElementById('mg-guest-btn');
-    guestBtn.addEventListener('click', function () {
-      guestBtn.disabled = true;
-      session = {
-        memberNumber: GUEST_NUMBER,
-        firstName: GUEST_FIRST_NAME,
-        attendedShows: readPending(),
-        unlockedAt: Date.now(),
-        guest: true
-      };
-      persistLocal();
-      clearPending();
-      track('Gate - Start exploring').then(function () { location.reload(); });
-    });
+    document.getElementById('mg-x').addEventListener('click', function () { dialog.close(); });
+    // A tap on the dark area around the card closes it too
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
 
     document.getElementById('mg-claim-link').addEventListener('click', function (e) {
       e.preventDefault();
@@ -412,18 +378,17 @@ window.tthAlbumCase = function (text) {
       }
       var num = parseInt(numStr, 10);
 
-      // Guest bypass: match the public press credential without hitting Supabase.
+      // Shows marked as a guest on this device come along
+      var guestShows = (session && session.guest ? session.attendedShows : []).slice();
+      readPending().forEach(function (id) { if (guestShows.indexOf(id) === -1) guestShows.push(id); });
+
+      // Press credential: the same guest pass everyone already has, without hitting Supabase.
       if (first.toLowerCase() === GUEST_FIRST_NAME.toLowerCase() && num === GUEST_NUMBER) {
-        session = {
-          memberNumber: GUEST_NUMBER,
-          firstName: GUEST_FIRST_NAME,
-          attendedShows: readPending(),
-          unlockedAt: Date.now(),
-          guest: true
-        };
+        session = guestSession(guestShows);
         persistLocal();
         clearPending();
-        location.reload();
+        notify();
+        dialog.close();
         return;
       }
 
@@ -439,9 +404,8 @@ window.tthAlbumCase = function (text) {
         var data = res && res.data;
         if (!data) throw new Error('No match. Check yer name and number.');
 
-        // Fold in any shows marked as a guest on this device
         var shows = (data.attended_shows || []).map(String);
-        var added = readPending().filter(function (id) { return shows.indexOf(id) === -1; });
+        var added = guestShows.filter(function (id) { return shows.indexOf(id) === -1; });
         session = {
           memberNumber: data.membership_number,
           firstName: data.first_name,
@@ -450,16 +414,17 @@ window.tthAlbumCase = function (text) {
         };
         persistLocal();
         if (!added.length) { clearPending(); return; }
+        // Keep the guest copy until the merge is saved, so a failed save can try again next sign-in
+        try { localStorage.setItem(PENDING_KEY, JSON.stringify(added)); } catch (e2) {}
         return sbRef.rpc('update_attended_shows', {
           p_first_name: session.firstName,
           p_number: session.memberNumber,
           p_shows: session.attendedShows
         }).then(function (r) {
-          // Saved: done with the guest copy. If not, it stays for the next sign-in.
           if (!(r && r.error)) clearPending();
         }, function () {});
       }).then(function () {
-        // Reload so the rest of the page boots with the session in place.
+        // Reload so the rest of the page boots with the member's session in place.
         track('Gate - Member unlock').then(function () { location.reload(); });
       }).catch(function (err) {
         errEl.textContent = friendlyError(err);
@@ -470,5 +435,36 @@ window.tthAlbumCase = function (text) {
     });
   }
 
-  mountGate();
+  function openSignIn(eventName, prefillFirst) {
+    if (!document.body) {
+      document.addEventListener('DOMContentLoaded', function () { openSignIn(eventName, prefillFirst); });
+      return;
+    }
+    if (!dialog) buildDialog();
+    if (dialog.open) return;
+    document.getElementById('mg-err').textContent = '';
+    if (prefillFirst) document.getElementById('mg-first').value = prefillFirst;
+    dialog.showModal();
+    // The fan asked to sign in, so going straight to the form is fine (keyboard included)
+    try { document.getElementById(prefillFirst ? 'mg-num' : 'mg-first').focus(); } catch (e) {}
+    if (eventName) track(eventName);
+  }
+
+  // Arrived from the invite reveal screen with ?first=: open the pop-up with the
+  // name filled in. Strip the param so it doesn't linger in the address bar.
+  var prefill = '';
+  try {
+    var params = new URLSearchParams(location.search);
+    prefill = (params.get('first') || '').trim();
+    if (prefill) {
+      params.delete('first');
+      var qs = params.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    }
+  } catch (e) { /* ignore */ }
+
+  var reopen = false;
+  try { reopen = sessionStorage.getItem(OPEN_KEY) === '1'; sessionStorage.removeItem(OPEN_KEY); } catch (e) {}
+
+  if (session.guest && (prefill || reopen)) openSignIn(prefill ? 'Sign-in - Opened from invite' : 'Sign-in - Opened', prefill);
 })();
