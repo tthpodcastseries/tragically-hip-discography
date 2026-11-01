@@ -16,6 +16,7 @@ Copy and brand pass on the words fans read (pre-relaunch audit Batch 9: BRAND-02
 - **Not changed, on purpose:** the Unplucked Gems notes (third-party text, jD's ruling: keep as the tracker wrote them), music-video notes, tour date notes and venue names in the data files, and "landmark"/"distinctly dreamy" wording. `scripts/build-seo-pages.js` and the 192 generated pages were rebuilt (`song.html` and `discography.html` copy changed).
 - **jD's answers, same day:** the countdown is "the 2025 fan countdown" (was "2024-25"), and the live series is "From the Vault" (was "From The Vault"; "Live from the Vault" in the Halifax note). The titles changed in the album list, both streaming-link lookups, `data/discography.json` and `data/song-index.json` together, so song pages and the album window agree.
 - **Also jD's call:** the Long Time Running note ends "Originally aired on CTV." (the "moved up after Gord's passing" half is gone; nobody could say what moved). "Pierre and Francois Lamoureux" stays as written.
+- **Two "#" signs missed:** the claim page now says "You're membersHIP No. 123." after a fan claims a number, and the 'Introduce Yerself' note reads "First number one solo album." Tape names on Unplucked Gems ("Comp #5", "New Stuff #1") are third-party labels and stay as written, like 'Toronto #4'.
 - Cache bumped to `hh-v5.4.15`; footer label bumped to v5.4.15
 
 ## v5.4.14
