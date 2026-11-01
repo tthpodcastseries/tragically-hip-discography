@@ -1,5 +1,19 @@
 # Changelog
 
+## v5.5
+**Fire in the Hole** - November 1, 2026
+The relaunch release: every fix from the October 2026 pre-relaunch audit that was saved as v5.4.8 to v5.4.18 goes live together in this one deploy. Details are in each entry below.
+- **Member safety** (v5.4.8): guests keep their Passport shows when they sign in with a number, plain-words sign-in errors, and limits on guessing sign-ins.
+- **Games protected** (v5.4.9): the puzzle builders only add to the end, so no scheduled puzzle can move.
+- **Data and links** (v5.4.10): play counts agree across pages, the "never played live" list is fixed, and the Apple Music and Yer Letter links are corrected.
+- **Fans get every new version** (v5.4.11): pages, styles and scripts check for a fresh copy first, and old installs move over with one reload.
+- **Link previews** (v5.4.12): every song page, /lyrics, /setlists, /top-40 and /my-shows has its own preview card.
+- **Search and everyday fixes** (v5.4.13), **accessibility and colour** (v5.4.14), **copy and brand pass** (v5.4.15).
+- **Speed on phones** (v5.4.16): no more full-screen welcome gate, lighter homepage and tour map, and smaller images.
+- **Security and privacy** (v5.4.17): stricter security rules, Poppins served from the Handbook, and a new /privacy page.
+- **Safety net** (v5.4.18): a repo CLAUDE.md, homepage counts built from the data, and one pre-push check.
+- Cache bumped to `hh-v5.5`; footer label bumped to v5.5 (Fire in the Hole)
+
 ## v5.4.18
 **Yawning or Snarling - Patch** - November 1, 2026
 A safety net so future Claude Code sessions can change the site without breaking it (pre-relaunch audit Batch 12: CODE-03, CODE-05, CODE-06, CODE-07, CODE-08, DATA-04, MAP-02, REL-03, REL-05). jD approved the plan and the CLAUDE.md wording on 2026-11-01. Nothing fans see changes, apart from two clearer error messages.
