@@ -275,7 +275,8 @@ window.tthAlbumCase = function (text) {
     '#tth-signin .mg-unlock:disabled { opacity:0.6; cursor:not-allowed; }',
     '#tth-signin .mg-err { color:#fff; font-size:0.85rem; min-height:1.2em; text-align:center; }',
     '#tth-signin .mg-claim { font-size:0.85rem; color:#b0b0b0; margin:1rem 0 0; }',
-    '#tth-signin .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1rem; }'
+    '#tth-signin .mg-privacy { font-size:0.75rem; color:#909090; margin-top:1rem; }',
+    '#tth-signin .mg-privacy a { color:#d9d9d9; text-decoration:underline; text-decoration-color:#CCA23C; text-underline-offset:3px; }'
   ].join('\n');
   var styleEl = document.createElement('style');
   styleEl.id = 'tth-member-gate-css';
@@ -337,7 +338,7 @@ window.tthAlbumCase = function (text) {
         '<button id="mg-btn" class="mg-unlock" type="submit">Unlock yer shows</button>' +
       '</form>' +
       '<p class="mg-claim">No number yet? <a id="mg-claim-link" href="/forum-invite.html">Get one free - takes 10 seconds.</a></p>' +
-      '<p class="mg-privacy">No email. No password. Nothing to buy.</p>' +
+      '<p class="mg-privacy">No email. No password. Nothing to buy. <a href="/privacy.html">Privacy</a></p>' +
     '</div>';
 
   var dialog = null;

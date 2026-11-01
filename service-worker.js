@@ -1,6 +1,6 @@
 // Bump with each release (matches the footer version). Fans get new pages, CSS, JS
 // and data even if this is forgotten: those are all fetched network-first below.
-const CACHE_NAME = 'hh-v5.4.16';
+const CACHE_NAME = 'hh-v5.4.17';
 // The small shell only. Big data files (setlists, tour data, lyrics, song index...)
 // are cached the first time a page asks for them.
 const CORE_ASSETS = [
@@ -19,6 +19,7 @@ const CORE_ASSETS = [
   '/unlocked.html',
   '/song.html',
   '/forum-invite.html',
+  '/privacy.html',
   '/404.html',
   // CSS
   '/css/shared.css',
@@ -41,6 +42,17 @@ const CORE_ASSETS = [
   '/js/unlocked.js',
   '/js/song.js',
   '/js/tth-member-gate.js',
+  '/js/home.js',
+  '/js/dialog-a11y.js',
+  '/js/tour-map.js',
+  '/js/tour-map-player.js',
+  '/js/forum-invite.js',
+  '/js/music-videos.js',
+  '/js/unplucked-gems.js',
+  '/js/video-for-new-recruits.js',
+  // Fonts (the two every page preloads; the other weights are cached when first used)
+  '/fonts/poppins-400-latin.woff2',
+  '/fonts/poppins-600-latin.woff2',
   // Data
   '/data/discography.json',
   '/data/missing-lyrics.json',

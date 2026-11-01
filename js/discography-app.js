@@ -735,164 +735,9 @@ studioAlbums.forEach(album => {
   });
 });
 
-// ─── Spotify Playback Integration (PKCE Auth Flow) ───
-const SPOTIFY_CLIENT_ID = '4510e47736264ad79f30ac3966a6d825';
-const SPOTIFY_REDIRECT_URI = 'https://thehiphandbook.tthpods.com/';
-const SPOTIFY_SCOPES = 'streaming user-read-email user-read-private user-modify-playback-state';
-
-let spotifyToken = null;
-let spotifyPlayer = null;
-let spotifyDeviceId = null;
-
-// PKCE helpers
-function generateRandomString(length) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const arr = new Uint8Array(length);
-  crypto.getRandomValues(arr);
-  return Array.from(arr, b => chars[b % chars.length]).join('');
-}
-
-async function generateCodeChallenge(verifier) {
-  const data = new TextEncoder().encode(verifier);
-  const digest = await crypto.subtle.digest('SHA-256', data);
-  return btoa(String.fromCharCode(...new Uint8Array(digest)))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-// Check for auth code in URL (PKCE callback)
-(async function checkSpotifyCallback() {
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-  if (!code) return;
-  const savedState = localStorage.getItem('spotify_oauth_state');
-  const returnedState = params.get('state');
-  localStorage.removeItem('spotify_oauth_state');
-  if (!savedState || savedState !== returnedState) { console.error('Spotify callback: state mismatch (CSRF protection)'); history.replaceState(null, '', window.location.pathname); return; }
-  const verifier = localStorage.getItem('spotify_code_verifier');
-  if (!verifier) { console.error('Spotify callback: no code verifier found'); return; }
-  localStorage.removeItem('spotify_code_verifier');
-  // Exchange code for token
-  try {
-    const res = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        client_id: SPOTIFY_CLIENT_ID,
-        grant_type: 'authorization_code',
-        code,
-        redirect_uri: SPOTIFY_REDIRECT_URI,
-        code_verifier: verifier
-      })
-    });
-    const data = await res.json();
-    if (data.access_token) {
-      spotifyToken = data.access_token;
-      sessionStorage.setItem('spotify_token', spotifyToken);
-      // Clean up URL
-      history.replaceState(null, '', window.location.pathname);
-      // Init SDK if ready
-      if (window.Spotify) window.onSpotifyWebPlaybackSDKReady();
-    }
-  } catch (e) { console.error('Spotify token exchange failed', e); }
-})();
-
-// Restore token from session
-if (!spotifyToken) {
-  spotifyToken = sessionStorage.getItem('spotify_token');
-}
-
-// Initialize Spotify Web Playback SDK when ready
-window.onSpotifyWebPlaybackSDKReady = () => {
-  if (!spotifyToken) return;
-  spotifyPlayer = new Spotify.Player({
-    name: 'The Hip Handbook',
-    getOAuthToken: cb => cb(spotifyToken),
-    volume: 0.8
-  });
-  spotifyPlayer.addListener('ready', ({ device_id }) => {
-    spotifyDeviceId = device_id;
-    updateSpotifyBtn(true);
-  });
-  spotifyPlayer.addListener('authentication_error', () => {
-    spotifyToken = null;
-    spotifyDeviceId = null;
-    sessionStorage.removeItem('spotify_token');
-    updateSpotifyBtn('error');
-  });
-  spotifyPlayer.connect();
-};
-
-// If we have a token, load SDK and init
-if (spotifyToken) {
-  loadSpotifySDK();
-  if (window.Spotify) window.onSpotifyWebPlaybackSDKReady();
-}
-
-function loadSpotifySDK() {
-  if (document.querySelector('script[src*="spotify-player"]')) return;
-  const s = document.createElement('script');
-  s.src = 'https://sdk.scdn.co/spotify-player.js';
-  s.integrity = 'sha384-RlISz5deLXfNCb6tPN3XASQ4jgQW9TIVvgXSCAyvW36hgYDWh4VYMQnPW4BRGoG/';
-  s.crossOrigin = 'anonymous';
-  s.defer = true;
-  s.onerror = function() { console.warn('Spotify SDK failed to load (SRI mismatch or network error). Streaming playback unavailable.'); };
-  document.head.appendChild(s);
-}
-
-async function connectSpotify() {
-  loadSpotifySDK();
-  const verifier = generateRandomString(128);
-  const state = generateRandomString(32);
-  localStorage.setItem('spotify_code_verifier', verifier);
-  localStorage.setItem('spotify_oauth_state', state);
-  const challenge = await generateCodeChallenge(verifier);
-  const authUrl = 'https://accounts.spotify.com/authorize' +
-    `?client_id=${SPOTIFY_CLIENT_ID}` +
-    `&response_type=code` +
-    `&redirect_uri=${encodeURIComponent(SPOTIFY_REDIRECT_URI)}` +
-    `&scope=${encodeURIComponent(SPOTIFY_SCOPES)}` +
-    `&code_challenge_method=S256` +
-    `&code_challenge=${challenge}` +
-    `&state=${state}` +
-    `&show_dialog=false`;
-  window.location.href = authUrl;
-}
-
-function updateSpotifyBtn(state) {
-  const btn = document.getElementById('spotifyConnectBtn');
-  if (!btn) return;
-  btn.classList.remove('connected', 'error');
-  if (state === true) {
-    btn.textContent = '● Spotify Connected';
-    btn.classList.add('connected');
-    btn.onclick = null;
-  } else if (state === 'error') {
-    btn.textContent = 'Connection Failed - Retry';
-    btn.classList.add('error');
-    btn.onclick = connectSpotify;
-  } else {
-    btn.textContent = 'Connect Spotify';
-    btn.onclick = connectSpotify;
-  }
-}
-
-function extractSpotifyTrackId(url) {
-  if (!url) return null;
-  const m = url.match(/track\/([a-zA-Z0-9]+)/);
-  return m ? m[1] : null;
-}
-
-async function playSpotifyTrack(trackId) {
-  if (!spotifyToken || !spotifyDeviceId) return false;
-  try {
-    const res = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`, {
-      method: 'PUT',
-      headers: { 'Authorization': `Bearer ${spotifyToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ uris: [`spotify:track:${trackId}`] })
-    });
-    return res.ok;
-  } catch { return false; }
-}
+// The old Spotify sign-in and in-page player were removed in v5.4.17 (audit CODE-02);
+// clear what they could have left on a fan's device
+try { localStorage.removeItem('spotify_code_verifier'); localStorage.removeItem('spotify_oauth_state'); } catch (e) { /* storage blocked */ }
 
 // ─── STICKY STREAMING PREFERENCE ───
 function getPreferredStream() { return sessionStorage.getItem('tth_preferred_stream') || ''; }
@@ -1657,7 +1502,7 @@ async function initSetlistExplorer() {
           if (v.partialTracklist) metaParts.push('partial');
           const safeTitle = (v.title || 'recording').replace(/"/g, '&quot;');
           return `<a class="setlist-video-thumb" href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${safeTitle} on YouTube">` +
-                   `<img src="${v.thumbnail || ''}" alt="" loading="lazy" onerror="this.style.display='none'">` +
+                   `<img src="${v.thumbnail || ''}" alt="" loading="lazy" data-onerror="hide">` +
                    `<span class="setlist-video-thumb-tag">${primaryTag}</span>` +
                    (metaParts.length ? `<div class="setlist-video-thumb-meta">${metaParts.join(' · ')}</div>` : '') +
                  `</a>`;
@@ -1791,19 +1636,6 @@ function getAllSongsForLyrics() {
   return songs;
 }
 
-async function fetchLyrics(artist, song) {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
-    const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(song)}`;
-    const resp = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeout);
-    if (!resp.ok) return null;
-    const data = await resp.json();
-    return data.lyrics || null;
-  } catch { return null; }
-}
-
 async function loadLyricsFromStatic(onProgress) {
   try {
     const resp = await fetch('data/lyrics.json');
@@ -1828,34 +1660,6 @@ async function loadLyricsFromStatic(onProgress) {
     console.warn('Static lyrics load failed:', e);
     return null;
   }
-}
-
-async function buildLyricsIndexFromAPI(onProgress) {
-  const cache = getLyricsCache();
-  const allSongs = getAllSongsForLyrics();
-  const total = allSongs.length;
-  let fetched = 0;
-  let newFetches = 0;
-
-  for (const s of allSongs) {
-    const key = `${s.album}|||${s.song}`;
-    if (cache[key] !== undefined) { fetched++; onProgress(fetched, total, s.song, false); continue; }
-
-    // Rate-limit: small delay between requests
-    if (newFetches > 0) await new Promise(r => setTimeout(r, 200));
-
-    const lyrics = await fetchLyrics('The Tragically Hip', s.song);
-    cache[key] = lyrics || ''; // empty string = tried but not found
-    newFetches++;
-    fetched++;
-    onProgress(fetched, total, s.song, true);
-
-    // Save periodically
-    if (newFetches % 10 === 0) saveLyricsCache(cache);
-  }
-
-  saveLyricsCache(cache);
-  return cache;
 }
 
 function escapeHtml(str) {
@@ -2235,16 +2039,11 @@ async function startBuildIndex() {
     statusEl.innerHTML = `Loading: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
   });
 
-  // Fall back to API if static file unavailable
-  if (!cache) {
-    cache = await buildLyricsIndexFromAPI((done, total, songName, wasFetched) => {
-      const pct = Math.round((done / total) * 100);
-      fill.style.width = pct + '%';
-      statusEl.innerHTML = `${wasFetched ? 'Fetching' : 'Cached'}: ${songName} (${done}/${total})<div class="lyrics-status-bar"><div class="lyrics-status-fill" style="width:${pct}%"></div></div>`;
-    });
-  }
-
   btn.disabled = false;
+  if (!cache) {
+    statusEl.textContent = "Lyrics couldn't load - check yer connection and try again.";
+    return;
+  }
   const allSongs = getAllSongsForLyrics();
   const found = allSongs.filter(s => { const v = (cache || {})[`${s.album}|||${s.song}`]; return v && v.length > 0; }).length;
   statusEl.innerHTML = `Index complete - ${found} songs with lyrics found`;

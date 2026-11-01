@@ -1,3 +1,5 @@
+# The old Netlify address forwards to the real one (audit SEC-11)
+https://discography-web-app.netlify.app/*  https://thehiphandbook.tthpods.com/:splat  301!
 https://yerletter.tthpods.com/* https://subscribe.tthpods.com/ 301!
 https://forum-portal.tthpods.com/  /forum-invite.html  200!
 /my-shows  /passport.html  200

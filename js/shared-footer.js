@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.4.16 (Yawning or Snarling - Patch)';
+  var version = 'v5.4.17 (Yawning or Snarling - Patch)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -58,8 +58,27 @@
       '<strong style="color:#aaa">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://home.tthpods.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
       '<span style="color:#929292;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
+      '<a href="/privacy.html">Privacy</a><br>' +
       '<span style="color:#929292;font-size:0.7rem;">' + version + '</span>';
   }
+
+  // Pictures that fail to load (inline onerror until v5.4.17, audit SEC-03):
+  // data-onerror="hide" hides the picture, "placeholder" swaps in its data-placeholder text.
+  // Error events don't bubble, so this listens in the capture phase.
+  function imageFailed(img) {
+    var mode = img.getAttribute('data-onerror');
+    if (mode === 'hide') img.style.display = 'none';
+    else if (mode === 'placeholder' && img.parentNode) {
+      var box = document.createElement('div');
+      box.className = 'mv-thumb-placeholder';
+      box.textContent = img.getAttribute('data-placeholder') || '';
+      img.parentNode.replaceChild(box, img);
+    }
+  }
+  document.addEventListener('error', function(e) {
+    var t = e.target;
+    if (t && t.tagName === 'IMG' && t.hasAttribute('data-onerror')) imageFailed(t);
+  }, true);
 
   // Service worker registration
   if ('serviceWorker' in navigator) {

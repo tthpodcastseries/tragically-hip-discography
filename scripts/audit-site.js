@@ -16,6 +16,8 @@
 //      missing host only breaks on the live site)
 //   8. Every page has the home-screen tags (mobile-web-app-capable, and a
 //      status bar that doesn't draw the page under the iPhone clock)
+//   9. The CSP stays strict: no 'unsafe-inline' scripts, no inline <script> or
+//      on...= handlers in pages or built HTML, outside script hosts allowed, no Google Fonts
 //
 // Usage: node scripts/audit-site.js [--no-network]
 // Exit code 0 = clean, 1 = problems found.
@@ -63,7 +65,11 @@ for (const page of pages) {
     const tagStart = src.lastIndexOf('<', m.index);
     const tag = src.slice(tagStart, src.indexOf('>', m.index) + 1);
     if (/rel=["'](?:preconnect|dns-prefetch)["']/.test(tag)) continue;
-    if (/^https?:\/\//.test(r)) externals.add(r);
+    // The site's own canonical/og addresses are checked against the local files, so a new
+    // page doesn't fail the audit before it has been pushed (v5.4.17)
+    const own = r.match(/^https:\/\/thehiphandbook\.tthpods\.com(\/[^#?]*)?/);
+    if (own) { if (!existsLocal(own[1] || '/')) problems.push(`${page}: own-site address has no local file -> ${r}`); }
+    else if (/^https?:\/\//.test(r)) externals.add(r);
     else if (/^(mailto:|data:|#|javascript:|tel:|\$\{)/.test(r)) continue;
     else if (!existsLocal(r)) problems.push(`${page}: missing internal ref -> ${r}`);
   }
@@ -227,6 +233,37 @@ for (const loc of sitemapLocs) {
   if (canonicalOf(hit) !== loc) problems.push(`sitemap.xml: ${loc} is not the canonical address of ${hit} (${canonicalOf(hit)})`);
 }
 notes.push(`link previews: ${pageFiles.length} pages checked for canonical, og tags and brand naming; sitemap has ${sitemapLocs.size} addresses`);
+
+// ---- 9. Content-Security-Policy (v5.4.17, audit SEC-03) ----
+// The CSP blocks inline scripts, so pages may only load code from files: no <script>
+// without src (JSON-LD data blocks are fine) and no onclick=/onerror= style handlers,
+// in pages or in HTML that scripts build. Every outside script host must be in script-src.
+const cspLine = (headersSrc.match(/Content-Security-Policy:([^\n]*)/) || [])[1] || '';
+const cspDirective = name => ((cspLine.match(new RegExp('\\b' + name + '([^;]*)')) || [])[1] || '').trim().split(/\s+/).filter(Boolean);
+const scriptSrc = cspDirective('script-src');
+if (scriptSrc.includes("'unsafe-inline'")) problems.push("_headers: script-src allows 'unsafe-inline' - move inline code into /js/ files");
+const HANDLER = /\son[a-z]+\s*=\s*["'\\]/;
+let inlineChecked = 0;
+for (const f of pageFiles) {
+  const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  inlineChecked++;
+  for (const m of html.matchAll(/<script\b([^>]*)>/g)) {
+    const attrs = m[1];
+    if (/\bsrc=/.test(attrs) || /type="application\/ld\+json"/.test(attrs)) {
+      const host = (attrs.match(/src="https:\/\/([^/"]+)/) || [])[1];
+      if (host && !scriptSrc.includes('https://' + host)) problems.push(`${f}: script from ${host} is not allowed by the CSP script-src`);
+      continue;
+    }
+    problems.push(`${f}: inline <script> - the CSP blocks it; move it into a /js/ file`);
+  }
+  for (const line of html.split('\n')) if (HANDLER.test(line.replace(/<script[^>]*src=[^>]*>/g, ''))) { problems.push(`${f}: inline event handler (on...=) - the CSP blocks it: ${line.trim().slice(0, 80)}`); break; }
+  if (/fonts\.(googleapis|gstatic)\.com/.test(html)) problems.push(`${f}: loads Google Fonts - Poppins is served from /fonts/`);
+}
+for (const f of fs.readdirSync(path.join(ROOT, 'js')).filter(n => n.endsWith('.js') && n !== 'supabase.min.js')) {
+  const lines = fs.readFileSync(path.join(ROOT, 'js', f), 'utf8').split('\n');
+  lines.forEach((line, i) => { if (/<[a-z][^>]*\son[a-z]+\s*=\s*["'\\]/i.test(line)) problems.push(`js/${f}:${i + 1}: builds HTML with an on...= handler - the CSP blocks it`); });
+}
+notes.push(`security policy: ${inlineChecked} pages and the /js/ files checked for inline scripts and handlers`);
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {
