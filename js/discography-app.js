@@ -376,7 +376,7 @@ const videoAlbums = [
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Gold (Canada)', bestRank: null, singles: [], tracks: [] },
   { num: '04', title: 'Long Time Running', year: '2017', releaseDate: 'September 14, 2017', type: 'Video', img: 'assets-optimized/video-albums/Long-Time-Running.jpg',
     gradient: 'linear-gradient(145deg, #1A0D00 0%, #3D2200 50%, #0F0700 100%)',
-    desc: 'Feature documentary by Jennifer Baichwal and Nicholas de Pencier following the band during their final 2016 Man Machine Poem Tour after Gord Downie\'s terminal brain cancer diagnosis. Premiered at TIFF 2017, named First Runner-Up for the People\'s Choice Documentary Award. Originally aired on CTV; moved up after Gord\'s passing.',
+    desc: 'Feature documentary by Jennifer Baichwal and Nicholas de Pencier following the band during their final 2016 Man Machine Poem Tour after Gord Downie\'s terminal brain cancer diagnosis. Premiered at TIFF 2017, named First Runner-Up for the People\'s Choice Documentary Award. Originally aired on CTV.',
     label: 'Universal Music Canada', producer: '', chart: '', units: 'Platinum (Canada)', bestRank: null, singles: [], tracks: [] },
   { num: '05', title: 'A National Celebration', year: '2017', releaseDate: 'December 8, 2017', type: 'Video', img: 'assets-optimized/video-albums/A-National-Celebration.jpg',
     gradient: 'linear-gradient(145deg, #2A0000 0%, #5A0A0A 50%, #1A0000 100%)',
