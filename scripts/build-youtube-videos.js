@@ -108,6 +108,8 @@ function parseTitleTags(rawTitle, sourceCol) {
   clean = clean
     .replace(/\s*-\s*\((SBD|Upgraded STU\/SBD|FM Radio Simulcast|Pro-Shot Video|Complete Video|Complete Bootleg|Studio Rehearsal)\)\s*/gi, '')
     .replace(/\s{2,}/g, ' ')
+    // "Soundboard Compilation #1" reads "No. 1" (brand guide; jD, 2026-11-01, audit BRAND-14)
+    .replace(/#(\d+)/g, 'No. $1')
     .trim();
 
   return { cleanTitle: clean, tags: Array.from(tags) };

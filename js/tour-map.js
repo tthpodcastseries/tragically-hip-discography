@@ -935,7 +935,7 @@
       setOrder.forEach(setName => {
         const header = document.createElement('div');
         header.className = 'setlist-set-header';
-        header.textContent = setName;
+        header.textContent = window.tthSetLabel ? window.tthSetLabel(setName) : setName;
         songsWrap.appendChild(header);
 
         sets[setName].forEach(song => {

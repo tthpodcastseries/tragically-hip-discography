@@ -159,3 +159,6 @@ const output = {
 
 fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
 console.log(`Wrote ${output.summary.totalSessions} sessions across ${output.summary.totalEras} eras to ${outPath}`);
+
+// Put jD's spelling fixes back on top (data/unplucked-corrections.json, audit BRAND-13)
+require('./apply-unplucked-corrections.js').applyUnpluckedCorrections();

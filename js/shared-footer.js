@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.6 (So Hard Done By)';
+  var version = 'v5.6.1 (So Hard Done By - Patch)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -55,6 +55,20 @@
     if (t.indexOf(q) !== -1) return true;
     var qb = bare(q);
     return qb !== '' && bare(t).indexOf(qb) !== -1;
+  };
+
+  // Set headings as setlist.fm writes them come in about 20 spellings ("Set #1", "1st Set",
+  // "First Set", "Set  I", "Set 1:"). Show one clean form; the data stays as it is
+  // (jD, 2026-11-01, audit BRAND-14).
+  var SET_WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, first: 1, second: 2, third: 3, fourth: 4, fifth: 5, i: 1, ii: 2, iii: 3, iv: 4, v: 5 };
+  var setNum = function(w) { w = String(w).toLowerCase(); if (SET_WORDS[w]) return SET_WORDS[w]; w = w.replace(/(st|nd|rd|th)$/, ''); return /^\d+$/.test(w) ? +w : undefined; };
+  window.tthSetLabel = function(name) {
+    var t = String(name == null ? '' : name).replace(/\s+/g, ' ').replace(/:\s*$/, '').trim();
+    var m = t.match(/^(?:main )?set #?(\w+)$/i) || t.match(/^(\w+) set$/i);
+    if (m && setNum(m[1])) return 'Set ' + setNum(m[1]);
+    m = t.match(/^encore #?(\w+)$/i) || t.match(/^(\w+) encore$/i);
+    if (m && setNum(m[1])) return 'Encore ' + setNum(m[1]);
+    return t;
   };
 
   var footerEl = document.getElementById('site-footer');

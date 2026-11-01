@@ -265,11 +265,6 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
   overflow: hidden;
   background: var(--bg);
 }
-.album-art::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.72));
-}
 .album-art-img {
   position: absolute; inset: -2%;
   width: 104%; height: 104%;

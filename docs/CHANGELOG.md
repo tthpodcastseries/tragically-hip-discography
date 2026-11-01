@@ -1,5 +1,16 @@
 # Changelog
 
+## v5.6.1
+**So Hard Done By - Patch** - November 1, 2026
+jD's rulings on the audit items v5.6 left open (2026-11-01). Everything else jD ruled on stays as it is: the privacy page lines, the Links card, the album-note titles, the streaming-button, tag, and game colours, the hover shades, adjectival "Hip", "audience" and "visitors", and one shared link-preview picture.
+- **No gradients (BRAND-06):** the dark fade over every album cover is gone, so covers show as released. A cover that won't load, and the music video placeholder, are flat Dark Purple.
+- **'Fireworks' lyrics (BRAND-07):** the leftover "Tragically Hip Fireworks lyrics" header line is gone. The words themselves are unchanged.
+- **Unplucked Gems spelling (BRAND-13):** 50 plain misspellings in the notes are fixed ("unfortunately", "completely", "Gord", "Paul's" and the rest). Wording, style, and session names stay as the tracker wrote them. The fixes live in `data/unplucked-corrections.json`, and new `scripts/apply-unplucked-corrections.js` applies them. `parse-sessions-csv.js` runs it after any rebuild, so a fresh tracker import keeps them.
+- **"No." not "#" (BRAND-14):** video titles read "Soundboard Compilation No. 1" (in the `build-youtube-videos.js` clean step). Set headings from setlist.fm show one form everywhere: "Set #1", "1st set", "First Set" and "Set  I" all read "Set 1", and "First Encore" reads "Encore 1". The data stays as setlist.fm has it.
+- **The Hip (BRAND-15):** jD's own date note for Quidi Vidi Park, St. John's (July 1, 1992) now reads "The Hip played". setlist.fm's own notes are left as written.
+- **Unused images (PERF-09, LINK-03):** 74 image files no page used (7.4 MB) are deleted: the old JPG originals of the WebP covers and photos, three uncredited band photos, and one icon. They're still in Git history.
+- Cache bumped to `hh-v5.6.1`; footer label bumped to v5.6.1 (So Hard Done By - Patch)
+
 ## v5.6
 **So Hard Done By** - November 1, 2026
 Fixes from the second pre-relaunch audit (2026-11-01), made in eleven batches at once and merged on top of v5.5.1. The report is `AUDIT_REPORT.md` on jD's Mac; finding IDs are in brackets.

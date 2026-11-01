@@ -3,8 +3,8 @@
 document.addEventListener('error', function(e) {
   if (e.target.tagName === 'IMG' && e.target.closest('.album-art, .modal-art')) {
     e.target.style.display = 'none';
-    const grad = e.target.dataset.gradient;
-    if (grad) e.target.parentElement.style.background = grad;
+    // A cover that won't load shows flat Dark Purple: no gradients (brand guide, audit BRAND-06)
+    e.target.parentElement.style.background = '#140038';
   }
 }, true);
 
@@ -550,8 +550,8 @@ const categoryStats = {
     { num: '20', lbl: 'Albums Indexed' },
     { num: '188', lbl: 'Songs Searchable' },
     // Counted again from the lyrics once they load (updateLyricsCacheStatus)
-    { num: '4,476', lbl: 'Different Words' },
-    { num: '36,368', lbl: 'Words of Lyrics' },
+    { num: '4,474', lbl: 'Different Words' },
+    { num: '36,364', lbl: 'Words of Lyrics' },
   ],
   setlists: [
     { num: '1,364', lbl: 'Shows & Appearances' },
@@ -1349,7 +1349,7 @@ async function renderMyShows() {
       if (sg.set !== currentSet) {
         currentSet = sg.set;
         if (currentSet !== 'Main Set') {
-          songsHtml += `<span class="encore-label">${escapeHtml(currentSet)}</span>`;
+          songsHtml += `<span class="encore-label">${escapeHtml((window.tthSetLabel ? window.tthSetLabel(currentSet) : currentSet))}</span>`;
         }
       }
       const coverNote = sg.cover ? ` <span class="song-cover">(${escapeHtml(sg.cover)} cover)</span>` : '';
@@ -1604,7 +1604,7 @@ async function initSetlistExplorer() {
         if (sg.set !== currentSet) {
           currentSet = sg.set;
           if (currentSet !== 'Main Set') {
-            songsHtml += `<span class="encore-label">${escapeHtml(currentSet)}</span>`;
+            songsHtml += `<span class="encore-label">${escapeHtml((window.tthSetLabel ? window.tthSetLabel(currentSet) : currentSet))}</span>`;
           }
         }
         const coverNote = sg.cover ? ` <span class="song-cover">(${escapeHtml(sg.cover)} cover)</span>` : '';
@@ -2790,8 +2790,8 @@ function renderCategory(category) {
     card.className = 'album-card';
     card.dataset.type = a.type;
     card.innerHTML = `
-      <div class="album-art"${a.img ? '' : ` style="background:${a.gradient}"`}>
-        ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" width="600" height="600" loading="lazy" data-gradient="${a.gradient}">` : ''}
+      <div class="album-art"${a.img ? '' : ' style="background:#140038"'}>
+        ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" width="600" height="600" loading="lazy">` : ''}
       </div>
       <div class="album-info">
         <span class="album-info-hint">Details</span>
@@ -3013,8 +3013,8 @@ document.querySelectorAll('.solo-member-btn').forEach(btn => {
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
         card.innerHTML = `
-        <div class="album-art"${a.img ? '' : ` style="background:${a.gradient}"`}>
-          ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" width="600" height="600" loading="lazy" data-gradient="${a.gradient}">` : ''}
+        <div class="album-art"${a.img ? '' : ' style="background:#140038"'}>
+          ${a.img ? `<img src="${a.img}" alt="" class="album-art-img" width="600" height="600" loading="lazy">` : ''}
         </div>
         <div class="album-info">
           <span class="album-info-hint">Details</span>
@@ -3183,9 +3183,9 @@ function openModal(i) {
   const mArt = document.getElementById('mArt');
   if (a.img) {
     mArt.style.background = '';
-    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${escapeHtml(a.gradient)}">`;
+    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;">`;
   } else {
-    mArt.style.background = a.gradient;
+    mArt.style.background = '#140038';
     mArt.innerHTML = '';
   }
   const mTitleEl = document.getElementById('mTitle');
@@ -3318,9 +3318,9 @@ function openSoloModal(album) {
   const mArt = document.getElementById('mArt');
   if (a.img) {
     mArt.style.background = '';
-    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;" data-gradient="${escapeHtml(a.gradient)}">`;
+    mArt.innerHTML = `<img src="${escapeHtml(a.img)}" alt="${escapeHtml(a.title)}" width="600" height="600" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;">`;
   } else {
-    mArt.style.background = a.gradient;
+    mArt.style.background = '#140038';
     mArt.innerHTML = '';
   }
   document.getElementById('mTitle').textContent = a.title;
