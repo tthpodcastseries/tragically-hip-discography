@@ -1,10 +1,8 @@
-spotify-url-report.json
 .DS_Store
 .claude/
 *.pdf
-Web_App_Project_Plan_v2.5_Updated.pdf
 
-# Dev-only data files (not needed in production)
+# Dev-only data files written by the fetch and scrape scripts (not used by the site)
 data/setlists.json
 data/hip-archive-index.json
 data/tth-tour-stats.json
@@ -18,13 +16,17 @@ node_modules/
 # Local Netlify folder
 .netlify
 
+# The October 2026 pre-relaunch audit - stays on jD's Mac, never in the public repo
+AUDIT_*.md
+SYSTEM_MAP.md
+
 # Personal context files - never commit these to the public repo
 _MANIFEST.md
 about-me.md
 brand-voice.md
 working-style.md
 
-# Internal state from local upload scripts
+# Internal state from the old upload scripts (scripts/archive/)
 scripts/.upload-progress.json
 scripts/.track-results/
 

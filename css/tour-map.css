@@ -675,7 +675,7 @@ input[type="range"]::-moz-range-track {
 }
 .show-detail-map-btn:hover { background: rgba(255,255,255,0.05); }
 
-/* SHOW VIDEOS STRIP — YouTube recordings tied to this show */
+/* SHOW VIDEOS STRIP - YouTube recordings tied to this show */
 .show-videos-strip {
   margin: 10px 0 4px;
   padding-top: 10px;

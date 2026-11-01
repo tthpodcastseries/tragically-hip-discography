@@ -32,7 +32,7 @@ Cost model: free to every visitor. No account is needed. No email, no password, 
 |---|---|
 | Site | Static HTML, CSS and plain JavaScript. No framework, no build step. The repo root is the publish root. |
 | Hosting | Netlify, auto-deployed from GitHub `main` (public repo `tthpodcastseries/tragically-hip-discography`). Pushing `main` publishes the live site within seconds. |
-| Config | `_headers` (security headers and the CSP), `_redirects` and `netlify.toml` (rewrites and blocks; both are kept in step). |
+| Config | `_headers` (security headers and the CSP), `_redirects` (rewrites and blocks; since v5.4.18 the only place for them, `netlify.toml` just sets the publish folder). |
 | Type and colour | Poppins only. Background `#0e0b16`, text `#d9d9d9`, gold `#CCA23C`, red `#C8102E`. No gradients except the approved soft red glow behind the home header. |
 | Maps | Leaflet with marker clustering (tour map) and Leaflet in the Passport. Basemap tiles from CARTO (needs a free non-commercial API key, which lives in the tile URL in code). |
 | Audio | 614 show recordings hosted on Backblaze B2 (`AUDIO_BASE` in `tour-map.html`), played by a custom player on the tour map. |
@@ -43,7 +43,7 @@ Cost model: free to every visitor. No account is needed. No email, no password, 
 
 Security headers set for every page: `nosniff`, `X-Frame-Options: SAMEORIGIN`, a strict referrer policy, camera/microphone/geolocation/payment/USB disabled, HSTS with `includeSubDomains`, and a Content-Security-Policy that whitelists each external host the site uses. **Since v5.4.17 the CSP blocks inline scripts:** every script lives in a `/js/` file, and no page or script-built HTML may use `onclick=`, `onerror=` or any other `on...=` attribute (use `addEventListener`; for pictures that may fail, `data-onerror="hide"` or `data-onerror="placeholder"`, handled in `js/shared-footer.js`). `scripts/audit-site.js` fails on any of these. Poppins is served from `/fonts/` (weights 400 to 900, `@font-face` at the top of `css/shared.css`), not Google Fonts. `discography-web-app.netlify.app` forwards to the real address (`_redirects`). **Any new external host (images, scripts, APIs, audio) must be added to the CSP or it is blocked on the live site only** - the local preview server ignores `_headers`. This has bitten the site before (YouTube thumbnails in October 2026) and again with the share card (section 11).
 
-Blocked on purpose (404 via `netlify.toml` and `_redirects`): `/scripts/*`, `/audits/*`, `/docs/*`, `/data/live-play-counts-unmatched.txt`. Personal context files (`about-me.md`, `working-style.md`, `brand-voice.md`, `_MANIFEST.md`) are gitignored and are not on the live site (checked).
+Blocked on purpose (404 via `_redirects`): `/scripts/*`, `/audits/*`, `/docs/*`, `/supabase/*`, `/data/source/*`, `/data/live-play-counts-unmatched.txt`, `/CLAUDE.md`. Personal context files (`about-me.md`, `working-style.md`, `brand-voice.md`, `_MANIFEST.md`) are gitignored and are not on the live site (checked).
 
 ---
 
@@ -139,15 +139,7 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 
 **Sources** (credit them on the site): setlist.fm (setlists), Hipbase.com by Lance Robinson (gig data and play counts), The Hip Archive by Darrin Cappe (recordings), CARTO and OpenStreetMap (map), Alonx via TrackerHub (the Unplucked Gems sessions tracker).
 
-**Refresh scripts** (each is Node or Python with no dependencies beyond the standard library; the order below is **(inferred)** from their inputs and outputs):
-
-1. `fetch-setlist-data.js` -> `tth-tour-data.json` (**do not run without jD**: it would wipe the recordings, so it refuses unless given `--force`); `fetch-setlists.js` -> `setlists.json` (full copy, gitignored; the minified `setlists.min.json` is made from it, but the minify step is not in `scripts/`)
-2. `fetch-setlistfm.js` + `scrape-hipbase.js` -> play counts, then `merge-live-counts.js` -> `live-play-counts-merged.json`
-3. `scrape-archive.js`, `upload-audio-to-b2.py`, `run-upload-workers.sh`, `fix-track-names.py` -> recordings and track lists
-4. `build-lyrics.js`, `build-missing-lyrics-doc.js` -> lyrics (`build-lyrics.js` is retired: `lyrics.json` is now edited by hand, so it refuses unless given `--force`)
-5. `parse-sessions-csv.js` (reads the TrackerHub sessions CSV) -> `unplucked-gems.json`; `build-youtube-videos.js` then `build-show-video-map.js` -> video data
-6. v5, run in this order when setlist data changes: `build-canonical-songs.js` (needs network, reads the Google Form), `build-show-index.js`, `build-light-data.js` (the small On This Day and tour-map files, v5.4.16), `build-game-pool.js`, `build-song-index.js` (also rewrites the song block in `sitemap.xml`), `build-seo-pages.js` (the per-song and per-route files link previews read, v5.4.12), then `build-trunk-pool.js`. Both game builders are append-only: scheduled puzzles never move (v5.4.9). Check with `node scripts/check-game-schedule.js` before committing
-7. Always finish with `node scripts/audit-site.js`
+**Refresh scripts:** the order to run them, and the ones never to run without jD, are in `CLAUDE.md` at the repo root (Data pipeline), since v5.4.18. In short: `apply-setlist-corrections.js`, `build-canonical-songs.js`, `build-show-index.js`, `build-show-video-map.js`, `build-light-data.js`, `build-game-pool.js`, `build-song-index.js`, `build-site-stats.js` (the headline counts on the pages), `build-seo-pages.js`, `build-trunk-pool.js`, then `check-game-schedule.js` and `audit-site.js`. The play-count scripts (`fetch-setlistfm.js`, `scrape-hipbase.js`, `merge-live-counts.js`) and their files are no longer used by the site (since v5.4.10, play counts come from `song-index.json`). Old one-off scripts (the Backblaze upload, track renaming, PDF builders) are in `scripts/archive/`.
 
 Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.
 
@@ -167,7 +159,7 @@ Needs a `SETLIST_FM_API_KEY` for the fetch scripts, kept in a gitignored `.env`.
 
 `service-worker.js` precaches the small shell (`CORE_ASSETS`): pages, CSS, page scripts, `discography.json`, `missing-lyrics.json` and the manifest. Big data files and `supabase.min.js` are cached the first time a page uses them (`scripts/audit-site.js` fails on any precached file over 250 KB). HTML pages, `/css/`, `/js/`, `/data/*.json` and the manifest are network-first with a cache fallback, so every release reaches people on their next page load. Images and other files are stale-while-revalidate (saved copy first, refreshed in the background). An unvisited `/song/<slug>` offline falls back to `song.html`. The worker file itself is served `no-cache`. Since v5.4.11.
 
-Bump `CACHE_NAME` (`hh-v5.4.11` today) with the footer version each release; `scripts/audit-site.js` checks they match. Forgetting it no longer strands fans on old code: saved files are refreshed one by one as pages use them. New pages, scripts and styles should be added to `CORE_ASSETS` so they work offline. Never rename the cache prefix back to `thc-`: a `thc-` cache tells the worker it is moving a phone off the old cache-first worker, and it reloads open pages once. When testing, unregister the worker and delete all caches between checks.
+Bump `CACHE_NAME` (`hh-v` plus the release number) with the footer version each release; `scripts/audit-site.js` checks they match. Forgetting it no longer strands fans on old code: saved files are refreshed one by one as pages use them. New pages, scripts and styles should be added to `CORE_ASSETS` so they work offline. Never rename the cache prefix back to `thc-`: a `thc-` cache tells the worker it is moving a phone off the old cache-first worker, and it reloads open pages once. When testing, unregister the worker and delete all caches between checks.
 
 Browser caching (`_headers`): images and icons keep for a week, so replace an image under a new file name rather than overwriting it. Everything else is checked every time.
 
@@ -180,7 +172,7 @@ Lyrics: the copy saved in browser storage (`tth_lyrics_cache_v4`) carries a fing
 - **Naming:** major releases are Hip albums, minor releases are that album's tracks in order. v5 is "Day for Night"; v5.1 'Grace, Too'; v5.2 'Daredevil'; v5.3 'Greasy Jungle'; v5.4 'Yawning or Snarling'; v5.5 'Fire in the Hole'; and so on. Check the order against `data/discography.json`. Patches add a third digit. Older versions (v2 to v4) followed the same idea less strictly.
 - **Where it is recorded:** the footer label (`js/shared-footer.js`), the cache name, and `docs/CHANGELOG.md` (newest first, one entry per release).
 - **Branches:** work on a branch, merge to `main` to publish. `main` pushes go live automatically.
-- **Before shipping:** run `node scripts/audit-site.js`, load every page at phone width (375x812) and laptop width, check the console, and test with the live headers in mind (see below).
+- **Before shipping:** run `node scripts/audit-site.js --no-network` (since v5.4.18 it also checks the page counts, the game schedules, setlist song names, dashes and the changelog version), load every page at phone width (375x812) and laptop width, check the console, and test with the live headers in mind (see below).
 - **Local preview quirks:** the preview server (`npx serve`, port 8765, `hip-webapp` in `.claude/launch.json`) ignores `_headers` and `_redirects` and strips query strings when it redirects `.html` to the clean URL. Use `/page?x=1`, not `/page.html?x=1`. The gate is skipped on localhost; open `http://[::1]:8765/` to see it.
 - **Testing members:** use guest sessions (`guest: true`). A non-guest test session sends real writes to the live database.
 - **Git on this Mac:** `git push` works from the shell only with the sandbox off (macOS keychain). (A pair of stray `main 2` refs that broke `git fetch` was removed on 2026-10-28.)
@@ -253,5 +245,6 @@ Fixed on 2026-10-28 and live in v5.1.1: the Passport share card being blocked by
 | Rewrite `data/on-this-day.json`, `data/tour-map.json`, `data/tour-tracks.json` (homepage and tour map read these instead of the big setlist and tour files). Run after any setlist or tour data change | `node scripts/build-light-data.js` (`--check` only reports) |
 | Make WebP copies of new or changed images in `assets-optimized/` (pages show the .webp; JPEGs stay for link previews). Needs ffmpeg | `node scripts/build-webp.js` (`--check` only reports) |
 | Rebuild the official song list | `node scripts/build-canonical-songs.js` |
+| Rewrite the headline counts in the pages (1,355 shows, 614 recordings and the rest) from the data, then rebuild the generated pages | `node scripts/build-site-stats.js` (`--check` only reports) |
 | Local preview | `hip-webapp` in `.claude/launch.json` (`npx serve`, port 8765) |
 | Publish | Merge to `main` and push. Bump `CACHE_NAME` and the footer version first (`scripts/audit-site.js` checks they match). |

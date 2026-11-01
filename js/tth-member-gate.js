@@ -109,6 +109,11 @@ window.tthAlbumCase = function (text) {
     if (msg.indexOf('too_many_attempts') !== -1) return 'Too many tries from here. Give it an hour and try again.';
     if (msg.indexOf('invalid_credentials') !== -1) return 'No match. Check yer name and number.';
     if (msg.indexOf('too_many_removed') !== -1) return 'That would remove a lot of shows at once, so it wasn\'t saved.';
+    // The database is asleep or out of reach (audit REL-05): browsers word this
+    // "Failed to fetch" (Chrome), "Load failed" (Safari) or "NetworkError" (Firefox)
+    if (/failed to (?:fetch|load supabase)|load failed|networkerror|network request failed|timed? ?out/i.test(msg) || (err && err.status >= 500)) {
+      return 'Member sign-in is down right now. Keep exploring as a guest and try again later.';
+    }
     return msg || 'Something went wrong. Try again.';
   }
 
@@ -139,7 +144,7 @@ window.tthAlbumCase = function (text) {
     persistLocal();
     notify();
     if (!session) return Promise.resolve();
-    // Guest sessions are local-only — never write to Supabase.
+    // Guest sessions are local-only - never write to Supabase.
     if (session.guest) return Promise.resolve();
     return getSupabase().then(function (sb) {
       return sb.rpc('update_attended_shows', {

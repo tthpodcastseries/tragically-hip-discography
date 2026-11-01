@@ -115,14 +115,6 @@ header h1 {
   transition: color 0.2s ease;
 }
 .flip-card:not(.flipped):hover .flip-card-label { color: var(--text); }
-.flip-card-sublabel {
-  text-align: center;
-  font-size: 0.6rem;
-  color: var(--muted2);
-  margin-top: 2px;
-  line-height: 1.3;
-  padding: 0 4px;
-}
 .flip-card-count {
   text-align: center;
   font-size: 0.58rem;

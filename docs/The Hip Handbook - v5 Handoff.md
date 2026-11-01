@@ -1,5 +1,7 @@
 # The Hip Handbook - v5 "Day for Night" Handoff
 
+> **Historical (marked in v5.4.18).** Written before v5 went live; its version numbers and "not pushed" notes are out of date. For how the site works now, read `CLAUDE.md` at the repo root, then `docs/The Hip Handbook - Overview.md` and `docs/CHANGELOG.md`.
+
 Written 2026-10-28. Pick this up in a new session by reading this file first, then `docs/CHANGELOG.md`.
 
 > Internal notes. `/docs/*` returns 404 on the live site, but this repo is public on GitHub, so keep secrets out of it.

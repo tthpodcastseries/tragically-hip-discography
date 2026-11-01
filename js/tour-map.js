@@ -18,6 +18,20 @@
     }).catch(e => console.warn('Show-videos map load failed:', e))
   ]);
 
+  function showMapError(what) {
+    document.getElementById('statsPill').textContent = `Couldn't load the ${what}`;
+    document.getElementById('otdBanner').hidden = true;
+    document.getElementById('map').innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Couldn't load the ${what}.</p><p style="font-size:0.85rem;">Check yer connection and refresh.</p></div></div>`;
+  }
+
+  // Leaflet comes from unpkg.com; if that is down or blocked, say so instead of
+  // stopping with a blank page (audit REL-05)
+  if (typeof L === 'undefined' || typeof L.markerClusterGroup !== 'function') {
+    showMapError('map');
+    console.error('Leaflet did not load');
+    return;
+  }
+
   let allGigs;
   try {
     const res = await fetch('data/tour-map.json');
@@ -25,9 +39,7 @@
     allGigs = await res.json();
     allGigs.forEach(g => { g.tour = window.tthAlbumCase(g.tour); });
   } catch (e) {
-    document.getElementById('statsPill').textContent = "Couldn't load the tour data";
-    document.getElementById('otdBanner').hidden = true;
-    document.getElementById('map').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-family:Poppins,sans-serif;text-align:center;padding:40px;"><div><p style="font-size:1.1rem;margin-bottom:8px;">Couldn\'t load the tour data.</p><p style="font-size:0.85rem;">Check yer connection and refresh.</p></div></div>';
+    showMapError('tour data');
     console.error('Tour data load failed:', e);
     return;
   }

@@ -1,5 +1,37 @@
 # Changelog
 
+## v5.4.18
+**Yawning or Snarling - Patch** - November 1, 2026
+A safety net so future Claude Code sessions can change the site without breaking it (pre-relaunch audit Batch 12: CODE-03, CODE-05, CODE-06, CODE-07, CODE-08, DATA-04, MAP-02, REL-03, REL-05). jD approved the plan and the CLAUDE.md wording on 2026-11-01. Nothing fans see changes, apart from two clearer error messages.
+- **New `CLAUDE.md` at the repo root:** what the site is, how deploys work (every push to `main` goes live and costs Netlify credits, so commit locally and only push when jD says), the release steps, the brand rules, the data pipeline in order, the scripts never to run without jD, the append-only games, Supabase and where its setup lives in `docs/`, the iCloud warning, and which files stay out of Git. `/CLAUDE.md` returns 404 on the live site (it's public on GitHub anyway; no secrets in it).
+- **The homepage counts come from the data now (DATA-04).** New `scripts/build-site-stats.js` works out 14 counts from `data/` (36 releases, 1,355 shows to 2022, 1,089 setlists, 614 recordings, 302 cities, 23 tours, 188 lyrics, 4,476 different words and 36,368 words of lyrics, 545 unreleased recordings, 380 concert videos, 36 official videos, rankings to No. 169) and rewrites them wherever the pages say them: `index.html`, `discography.html`, `live-stats.html`, `js/discography-app.js` and `js/song.js`, then rebuilds the generated pages. They stay plain text, so link previews and search engines still see them. If a page's wording changes so a count can't be found, the script stops and says which phrase. Every number already matched, so no page changed.
+- **One command before every push:** `node scripts/audit-site.js --no-network` (about a second). On top of what it checked already, it now fails if:
+  - a page count doesn't match the data
+  - a song in a setlist matches nothing on the official song list (24 songs The Hip played but never released, and setlist.fm's "New Song" and "Past...", are known and allowed)
+  - a scheduled puzzle moved, compared with the last commit and with the last push (what is live)
+  - an em or en dash shows in a page or in text a script puts on screen, or an em dash in a data file (third-party text stays as written: the Unplucked Gems notes and setlist.fm venue names)
+  - the footer, the cache name and the newest changelog entry name different releases
+  - a data file doesn't parse, a script has a syntax error, or a script fetches a data file that doesn't exist
+  - the recordings, setlists or lyrics drop below 614, 1,089 or 188 (a data refresh that loses them fails here)
+  Tested by breaking four things on purpose (a broken JSON file, a misspelled 'Bobcaygeon' in a setlist, an em dash in a page and one in a script): each was caught.
+- **`scripts/check-game-schedule.js` takes jD-approved puzzle changes:** an `APPROVED` list at the top. It holds the three (Un)Locked puzzles from v5.4.10 (No. 116, 249 and 343, where "chorus" was swapped for a real lyric word), which aren't pushed yet and would otherwise block every push. They're listed, not failed.
+- **GitHub runs the quick check after every push to `main`** as well as the weekly full audit, and emails jD if it fails. Netlify has already published by then, so it's an alarm, not a gate. The YouTube check stays weekly only.
+- **Supabase keepalive (REL-03):** tries three times, 20 seconds apart, before it reports a failure, and prints curl's own error so a failure shows whether the project is paused or GitHub's runner couldn't reach it. Its notes (and CLAUDE.md) explain that GitHub switches scheduled workflows off after 60 days with no commits: if the repo goes quiet that long, re-enable them under GitHub > Actions.
+- **Clearer errors (REL-05):** if the map library from unpkg doesn't load, the tour map says "Couldn't load the map. Check yer connection and refresh." instead of a blank page. If the membersHIP database is asleep or out of reach, sign-in says "Member sign-in is down right now. Keep exploring as a guest and try again later." instead of "Failed to fetch".
+- **`scripts/parse-sessions-csv.js` refuses to overwrite `data/unplucked-gems.json` without `--force`:** a rebuild from the tracker CSV would undo the hand edits since (the removed XXL link in v5.4.10, the WebP images in v5.4.16).
+- **Cleanup:**
+  - `netlify.toml` lost its 10 redirect rules (`_redirects` already had every one, and Netlify reads it first, so they never did anything); it only sets the publish folder now (MAP-02)
+  - six old scripts moved to `scripts/archive/` with a note on each: the Backblaze upload and its runner, the track renamer, the missing-lyrics Word doc, and two old PDF builders (CODE-03)
+  - `package-lock.json` deleted: left over from sign-in functions removed in v3.4.8
+  - `.gitignore` drops three dead lines and now keeps `AUDIT_*.md` and `SYSTEM_MAP.md` out of Git
+  - `.nvmrc` says Node 22, matching GitHub's checks (CODE-07)
+  - 31 CSS rules for 17 classes nothing uses removed from the discography, home and video pages (CODE-08). Classes built while the page runs (share-card sizes, On This Day tags, the (Un)Locked play buttons) were checked and kept
+  - the four em dashes left in code comments are hyphens now
+- **Not changed, on purpose (CODE-04):** song-name matching is still written in six places that differ a little. Merging them could move Passport and Live Stats counts, so `CLAUDE.md` lists the six instead. Leaflet still loads from unpkg.
+- `docs/The Hip Handbook - Overview.md` points to CLAUDE.md for the refresh order and no longer says the redirects are kept in two files; `docs/The Hip Handbook - v5 Handoff.md` is marked historical.
+- No scheduled puzzle changed: `scripts/check-game-schedule.js` OK.
+- Cache bumped to `hh-v5.4.18`; footer label bumped to v5.4.18
+
 ## v5.4.17
 **Yawning or Snarling - Patch** - November 1, 2026
 Security hardening and a privacy page (pre-relaunch audit Batch 11: SEC-03, CODE-02, SEC-09, SEC-10, SEC-11, PRIV-01, PRIV-02, PRIV-04, PRIV-06, PRIV-07). jD approved the plan and the privacy wording on 2026-11-01.

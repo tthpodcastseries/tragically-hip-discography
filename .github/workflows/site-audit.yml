@@ -1,6 +1,12 @@
 name: Weekly site audit
 
+# Weekly: the full audit, outside links included, plus the YouTube check.
+# Every push to main: the quick pre-push check (no outside links), so a push that
+# skipped it still raises a failure email within a minute or two (v5.4.18, audit
+# CODE-06). Netlify has already published by then: fix forward and push again.
 on:
+  push:
+    branches: [main]
   schedule:
     # Mondays 9am Toronto (13:00 UTC)
     - cron: '0 13 * * 1'
@@ -15,9 +21,10 @@ jobs:
         with:
           node-version: '22'
       - name: Run site audit (links, assets, data integrity)
-        run: node scripts/audit-site.js
+        run: node scripts/audit-site.js ${{ github.event_name == 'push' && '--no-network' || '' }}
 
   youtube:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

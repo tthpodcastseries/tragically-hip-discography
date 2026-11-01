@@ -1,6 +1,6 @@
 // Bump with each release (matches the footer version). Fans get new pages, CSS, JS
 // and data even if this is forgotten: those are all fetched network-first below.
-const CACHE_NAME = 'hh-v5.4.17';
+const CACHE_NAME = 'hh-v5.4.18';
 // The small shell only. Big data files (setlists, tour data, lyrics, song index...)
 // are cached the first time a page asks for them.
 const CORE_ASSETS = [

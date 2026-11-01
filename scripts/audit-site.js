@@ -18,8 +18,15 @@
 //      status bar that doesn't draw the page under the iPhone clock)
 //   9. The CSP stays strict: no 'unsafe-inline' scripts, no inline <script> or
 //      on...= handlers in pages or built HTML, outside script hosts allowed, no Google Fonts
+//  10. Pre-push safety net (v5.4.18): every data file parses and every script passes
+//      node --check; fetched data files exist; recordings, setlists and lyrics never
+//      shrink; page counts match the data (build-site-stats.js); every setlist song is
+//      on the song list; no scheduled puzzle moved (vs the last commit and the last
+//      push); no em or en dashes fans can read; footer, cache name and changelog agree
 //
-// Usage: node scripts/audit-site.js [--no-network]
+// Run before every push (Node 22):
+//   node scripts/audit-site.js --no-network     (the pre-push check, about 30 seconds)
+//   node scripts/audit-site.js                  (also tests outside links; the weekly job)
 // Exit code 0 = clean, 1 = problems found.
 
 const fs = require('fs');
@@ -264,6 +271,122 @@ for (const f of fs.readdirSync(path.join(ROOT, 'js')).filter(n => n.endsWith('.j
   lines.forEach((line, i) => { if (/<[a-z][^>]*\son[a-z]+\s*=\s*["'\\]/i.test(line)) problems.push(`js/${f}:${i + 1}: builds HTML with an on...= handler - the CSP blocks it`); });
 }
 notes.push(`security policy: ${inlineChecked} pages and the /js/ files checked for inline scripts and handlers`);
+
+// ---- 10. Pre-push safety net (v5.4.18, audit CODE-06, DATA-04, REL-06) ----
+const { spawnSync, execFileSync } = require('child_process');
+const runScript = (name, args = []) => spawnSync(process.execPath, [path.join(__dirname, name), ...args], { encoding: 'utf8', cwd: ROOT });
+const lastLine = r => (r.stderr || r.stdout || '').trim().split('\n').slice(-1)[0];
+
+// Every data file parses (a broken JSON file blanks whole pages)
+const dataFiles = fs.readdirSync(path.join(ROOT, 'data')).filter(f => f.endsWith('.json'));
+for (const f of dataFiles) {
+  try { JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f), 'utf8')); }
+  catch (e) { problems.push(`data/${f}: not valid JSON (${e.message})`); }
+}
+
+// Every script is valid JavaScript (a typo stops the whole page's script)
+const jsFiles = [
+  ...fs.readdirSync(path.join(ROOT, 'js')).filter(f => f.endsWith('.js') && f !== 'supabase.min.js').map(f => 'js/' + f),
+  ...fs.readdirSync(__dirname).filter(f => f.endsWith('.js')).map(f => 'scripts/' + f),
+  'service-worker.js',
+];
+for (const f of jsFiles) {
+  const r = spawnSync(process.execPath, ['--check', path.join(ROOT, f)], { encoding: 'utf8' });
+  if (r.status !== 0) problems.push(`${f}: syntax error - ${(r.stderr || '').split('\n').find(l => /Error/.test(l)) || 'node --check failed'}`);
+}
+
+// Every data file a script fetches exists
+for (const f of jsFiles.filter(n => n.startsWith('js/'))) {
+  for (const m of fs.readFileSync(path.join(ROOT, f), 'utf8').matchAll(/fetch\(\s*['"`]\/?(data\/[^'"`?]+)/g)) {
+    if (!fs.existsSync(path.join(ROOT, m[1]))) problems.push(`${f}: fetches ${m[1]}, which doesn't exist`);
+  }
+}
+notes.push(`${dataFiles.length} data files parsed, ${jsFiles.length} scripts syntax-checked`);
+
+// The data must never shrink by accident: a refresh that drops recordings or setlists fails
+// here (REL-06). Raise a floor when the data grows on purpose.
+const FLOORS = { recordings: 614, setlists: 1089, lyrics: 188 };
+const slData = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/setlists.min.json'), 'utf8')).setlists;
+const have = {
+  recordings: tour.filter(g => (g.tracks || []).length).length,
+  setlists: slData.filter(s => (s.songs || []).length).length,
+  lyrics: Object.values(lyrics.songs).filter(v => v && v.trim()).length,
+};
+for (const [k, floor] of Object.entries(FLOORS)) {
+  if (have[k] < floor) problems.push(`data: only ${have[k]} ${k}, down from ${floor}. Something removed data - check git diff data/ before going further`);
+}
+
+// Headline counts on the pages match the data (DATA-04)
+const stats = runScript('build-site-stats.js', ['--check']);
+if (stats.status !== 0) problems.push(`page counts: ${(stats.stderr || stats.stdout).trim().split('\n').join(' | ')}`);
+
+// Every song in a setlist is on the official song list (or is a known song never released),
+// so no page quietly loses plays to a new spelling (DATA-01). Same matching as
+// scripts/build-canonical-songs.js.
+const KNOWN_NOT_ON_LIST = [
+  // Songs played live but never on an official release, plus setlist.fm placeholders
+  'Heart Attack Love', 'Hiccups', 'Times Are Passing Us By', 'Fighter fighter', 'Waltz for Juliette',
+  'Blonde Solid', 'Running for Your Life', 'Baby Blueblood', 'Psychedelic Ramblings of Rich Kids',
+  "It's Snowing", "Haven't You Heard", "Old Wive's Tale", 'We Are the Next Us', 'Elaborate',
+  'The Never-Ending Present', "If You're Freaked", "If You're Freaked, I'm Fucked", 'Lofty Pines',
+  'Blackflies', 'Win', 'You See Details', "I'm For Real", 'New Song', 'Past...',
+];
+const normSong = s => s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+const canonical = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/canonical-songs.json'), 'utf8'));
+const onList = new Set([...canonical.songs.flatMap(so => so.setlistKeys), ...KNOWN_NOT_ON_LIST.map(normSong)]);
+const offList = new Map();
+for (const show of slData) {
+  for (const so of show.songs || []) {
+    if (so.tape || so.cover || !so.name || !so.name.trim()) continue;
+    for (const part of so.name.split(' / ')) {
+      const k = canonical.aliases[normSong(part)] || normSong(part);
+      if (!k || /^\s*(interview|introduction|intro|outro)\b/i.test(part) || onList.has(k)) continue;
+      if (!offList.has(part.trim())) offList.set(part.trim(), show.id);
+    }
+  }
+}
+for (const [name, id] of offList) problems.push(`setlists: '${name}' (show ${id}) matches no song on the official list. A new spelling? Fix it in data/setlist-corrections.json (renameSongs), or add it to KNOWN_NOT_ON_LIST in scripts/audit-site.js if it really is an unreleased song`);
+if (canonical.songs.length !== songSlugs.size) problems.push(`canonical-songs.json has ${canonical.songs.length} songs but song-index.json has ${songSlugs.size}: run scripts/build-song-index.js`);
+
+// No scheduled puzzle moved: against the last commit, and against the last push (what is live)
+let gitOk = false;
+try { execFileSync('git', ['rev-parse', '--verify', 'HEAD'], { cwd: ROOT, stdio: 'ignore' }); gitOk = true; } catch (e) { /* not a git checkout */ }
+if (gitOk) {
+  const refs = ['HEAD'];
+  try {
+    execFileSync('git', ['rev-parse', '--verify', 'origin/main'], { cwd: ROOT, stdio: 'ignore' });
+    refs.push('origin/main');
+  } catch (e) { warnings.push('no origin/main ref, so the game schedule was only checked against the last commit'); }
+  for (const ref of refs) {
+    const r = runScript('check-game-schedule.js', ['--ref', ref]);
+    if (r.status !== 0) problems.push(`game schedule vs ${ref}: a scheduled puzzle moved or changed. Run node scripts/check-game-schedule.js --ref ${ref} for the list`);
+  }
+  notes.push(`game schedules checked against ${refs.join(' and ')}`);
+} else warnings.push('not a git checkout, so the game schedule check was skipped');
+
+// No em or en dashes in anything fans read (Brand & Style Guide: use " - ")
+const DASH_RE = /[—–]/;
+const stripJsComments = src => src.replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.replace(/(^|\s)\/\/.*$/, '$1'));
+for (const f of pageFiles) {
+  fs.readFileSync(path.join(ROOT, f), 'utf8').split('\n').forEach((line, i) => {
+    if (DASH_RE.test(line.replace(/<!--.*?-->/g, ''))) problems.push(`${f}:${i + 1}: em or en dash in page text - use " - "`);
+  });
+}
+for (const f of jsFiles.filter(n => n.startsWith('js/'))) {
+  stripJsComments(fs.readFileSync(path.join(ROOT, f), 'utf8')).forEach((line, i) => {
+    if (DASH_RE.test(line)) problems.push(`${f}: em or en dash in text the script shows: ${line.trim().slice(0, 80)}`);
+  });
+}
+// Data: em dashes only. Third-party text stays as written: the Unplucked Gems tracker's
+// notes (jD's ruling, v5.4.15) and setlist.fm venue names (en dashes).
+for (const f of dataFiles.filter(n => n !== 'unplucked-gems.json')) {
+  if (fs.readFileSync(path.join(ROOT, 'data', f), 'utf8').includes('—')) problems.push(`data/${f}: has an em dash in text fans read - use " - "`);
+}
+
+// The footer, the cache name and the newest changelog entry name the same release
+const changelogVersion = (fs.readFileSync(path.join(ROOT, 'docs/CHANGELOG.md'), 'utf8').match(/^## (v[\d.]+)/m) || [])[1];
+if (changelogVersion !== footerVersion) problems.push(`docs/CHANGELOG.md newest entry is ${changelogVersion}, but the footer says ${footerVersion}: add the changelog entry`);
+notes.push(`release ${footerVersion}: footer, cache name and changelog checked`);
 
 // ---- 6. External links (page chrome only) ----
 async function checkExternals() {

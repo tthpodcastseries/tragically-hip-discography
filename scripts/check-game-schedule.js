@@ -45,6 +45,13 @@ function epochOf(jsFile) {
 }
 const dateOf = n => new Date(n * 86400000).toLocaleDateString('en-CA', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' });
 
+// Puzzle changes jD approved by name. They are listed but don't fail the check. Only add a
+// puzzle here when jD says so; entries can go once the change has been pushed.
+const APPROVED = {
+  // v5.4.10 (audit DATA-06, jD 2026-10-31): "chorus" swapped for a real lyric word
+  'trunk-pool.json': [116, 249, 343],
+};
+
 let failed = false;
 function check(name, file, jsFile, listKey, keyOf, label) {
   const before = oldText(file);
@@ -56,17 +63,19 @@ function check(name, file, jsFile, listKey, keyOf, label) {
   const lockedThrough = todayNo + LOCK_AHEAD_DAYS;
   const day = i => `#${i + 1} (${dateOf(epoch + i)})`;
 
-  const moved = [], lockedChanged = [], refreshed = [];
+  const moved = [], lockedChanged = [], refreshed = [], approved = [];
+  const ok = APPROVED[file] || [];
   for (let i = 0; i < a.length; i++) {
     if (i >= b.length) { moved.push(`${day(i)} ${label(a[i])} is gone`); continue; }
-    if (keyOf(a[i]) !== keyOf(b[i])) moved.push(`${day(i)} was ${label(a[i])}, now ${label(b[i])}`);
+    if (keyOf(a[i]) !== keyOf(b[i])) (ok.includes(i + 1) ? approved : moved).push(`${day(i)} was ${label(a[i])}, now ${label(b[i])}`);
     else if (JSON.stringify(a[i]) !== JSON.stringify(b[i])) (i + 1 <= lockedThrough ? lockedChanged : refreshed).push(`${day(i)} ${label(b[i])}`);
   }
   const added = Math.max(0, b.length - a.length);
 
   console.log(`\n${name} (${file})`);
   console.log(`  ${todayNo >= 1 ? `today is puzzle #${todayNo}` : `opens ${dateOf(epoch)}, so every puzzle is still upcoming`}; checked ${a.length} scheduled days`);
-  console.log(`  file ${before === after ? 'byte-identical' : 'differs'}; ${a.length - moved.length} days kept their puzzle, ${added} added on the end`);
+  console.log(`  file ${before === after ? 'byte-identical' : 'differs'}; ${a.length - moved.length - approved.length} days kept their puzzle, ${added} added on the end`);
+  if (approved.length) { console.log(`  changed with jD's approval (${approved.length}):`); approved.forEach(m => console.log('    ' + m)); }
   if (moved.length) { failed = true; console.log(`  MOVED (${moved.length}):`); moved.slice(0, 30).forEach(m => console.log('    ' + m)); }
   if (lockedChanged.length) { failed = true; console.log(`  CHANGED on a day that may already be in play (${lockedChanged.length}):`); lockedChanged.forEach(m => console.log('    ' + m)); }
   if (refreshed.length) { console.log(`  details refreshed on ${refreshed.length} later days (same puzzle):`); refreshed.slice(0, 30).forEach(m => console.log('    ' + m)); }

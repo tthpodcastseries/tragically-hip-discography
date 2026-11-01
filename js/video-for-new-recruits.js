@@ -8,7 +8,7 @@
   }
   var data = await resp.json();
 
-  // Show ↔ video map (v3.6 Long Time Running). Silent failure ok — back-links just won't render.
+  // Show ↔ video map (v3.6 Long Time Running). Silent failure ok - back-links just won't render.
   var videoToShow = {};
   try {
     var svResp = await fetch('data/show-videos.json');

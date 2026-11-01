@@ -1,12 +1,26 @@
 #!/usr/bin/env node
 // parse-sessions-csv.js
 // Parses "The Tragically Hip Tracker - Sessions.csv" into data/unplucked-gems.json
+//
+// data/unplucked-gems.json has hand edits since it was last built from the CSV (the
+// dead XXL "Listen" link removed in v5.4.10, the WebP images in v5.4.16), and a rebuild
+// would undo them. It refuses to overwrite the file unless given --force (v5.4.18).
+//
+// Usage: node scripts/parse-sessions-csv.js [path/to/Sessions.csv] [--force]
 
 const fs = require('fs');
 const path = require('path');
 
-const csvPath = process.argv[2] || path.join(__dirname, '..', '..', '..', '..', 'Desktop', 'The Tragically Hip Tracker - Sessions.csv');
+const args = process.argv.slice(2).filter(a => a !== '--force');
+const csvPath = args[0] || path.join(__dirname, '..', '..', '..', '..', 'Desktop', 'The Tragically Hip Tracker - Sessions.csv');
 const outPath = path.join(__dirname, '..', 'data', 'unplucked-gems.json');
+if (fs.existsSync(outPath) && !process.argv.includes('--force')) {
+  console.error('STOPPED - nothing read, nothing saved.');
+  console.error('data/unplucked-gems.json has hand edits that a rebuild from the CSV would undo.');
+  console.error('Ask jD first. To rebuild anyway, run: node scripts/parse-sessions-csv.js [csv] --force,');
+  console.error('then compare with git diff data/unplucked-gems.json and put the hand edits back.');
+  process.exit(1);
+}
 
 const raw = fs.readFileSync(csvPath, 'utf-8');
 
