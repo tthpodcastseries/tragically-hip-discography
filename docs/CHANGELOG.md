@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.6.3
+**So Hard Done By - Patch** - November 2, 2026
+- **Share cards:** on the Facebook-size score card for (Un)Locked and Bring It All Back, the grey line about the game ran past the right edge of the card. It now breaks onto two lines inside the right-hand column. The Instagram and Story cards were already fine.
+- Cache bumped to `hh-v5.6.3`; footer label bumped to v5.6.3 (So Hard Done By - Patch)
+
 ## v5.6.2
 **So Hard Done By - Patch** - November 2, 2026
 - **(Un)Locked opens today:** jD moved the start from Wednesday, November 4 to Monday, November 2, a soft launch before the public one on November 3. Puzzle No. 1 is today's. No puzzle changed or moved in the schedule: every day shifts two days earlier, so the 407-puzzle run ends December 13, 2027.

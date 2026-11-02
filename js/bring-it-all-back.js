@@ -419,6 +419,19 @@
       x.fillStyle = color;
       x.fillText(str, cx, y);
     };
+    // Left-aligned text that breaks onto more lines rather than running past maxW
+    const putWrapped = (str, left, y, weight, size, color, maxW, lineH) => {
+      x.font = weight + ' ' + size + 'px Poppins, sans-serif';
+      if ('letterSpacing' in x) x.letterSpacing = '0px';
+      const lines = [];
+      let line = '';
+      str.split(' ').forEach(w => {
+        const next = line ? line + ' ' + w : w;
+        if (line && x.measureText(next).width > maxW) { lines.push(line); line = w; } else line = next;
+      });
+      lines.push(line);
+      lines.forEach((l, i) => put(l, left, y + i * lineH, weight, size, color, '0px', maxW, 'left'));
+    };
     // One tile per guess; unused tries show as empty outlines
     const tiles = (left, top, size, gap) => {
       for (let i = 0; i < MAX_GUESSES; i++) {
@@ -454,7 +467,7 @@
       tiles(690, 255, 76, 16);
       put(totalLine, 690, 395, '700', 34, '#ffffff', '0px', 460, 'left');
       put(statLine, 690, 445, '600', 28, '#d9d9d9', '0px', 460, 'left');
-      put('Guess the month and year of a real setlist from The Hip', 690, 492, '600', 24, '#929292', '0px', 460, 'left');
+      putWrapped('Guess the month and year of a real setlist from The Hip', 690, 486, '600', 24, '#929292', 460, 30);
       put(siteText, W / 2, 585, '600', 24, '#929292', '2px', W - 120);
     } else {
       // Portrait. Stories keep content inside the safe zone (Instagram covers
