@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Little Bones - Clip Picker</title>
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/bring-it-all-back.css">
+  <link rel="stylesheet" href="/scripts/clip-picker.css">
+</head>
+<body>
+<!-- jD's tool for the 'Little Bones' clip start points. Local preview only: scripts/ is never
+     published (scripts/netlify-publish.js) and is blocked in _redirects. -->
+<main class="bia cp">
+  <h1>Little Bones - Clip Picker</h1>
+  <p class="cp-help">Listen to upcoming clips. Nudge a start point, or press <b>Start here</b> while it plays. Mark a rough tape <b>Skip</b> and the builder swaps in another recording of the song (only before the game opens). When you're done, copy the result into <code>data/clip-starts.json</code> and run <code>node scripts/build-clip-pool.js</code>.</p>
+  <div class="cp-top">
+    <label>From puzzle No. <input id="cpFrom" type="number" min="1" value="1"></label>
+    <button id="cpPrev" class="bia-btn bia-btn-alt" type="button">Previous 20</button>
+    <button id="cpNext" class="bia-btn bia-btn-alt" type="button">Next 20</button>
+    <span id="cpCount" class="cp-count"></span>
+  </div>
+  <ol id="cpList" class="cp-list"></ol>
+  <h2 class="bia-h2">data/clip-starts.json</h2>
+  <p class="cp-help" id="cpChanged"></p>
+  <pre id="cpOut" class="bia-sharetext cp-out"></pre>
+  <div class="bia-actions">
+    <button id="cpCopy" class="bia-btn" type="button">Copy</button>
+    <button id="cpSave" class="bia-btn bia-btn-alt" type="button">Download</button>
+  </div>
+</main>
+<script src="/scripts/clip-picker.js"></script>
+</body>
+</html>

@@ -86,7 +86,7 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
 - `netlify.toml`: Netlify skips the deploy (no credits) when only `docs/`, `scripts/`, `audits/`, `supabase/`, `.github/` or `CLAUDE.md` changed since the last deploy. Otherwise it runs `audit-site.js --no-network` as the build command: a failure stops the deploy and the live site stays as it was. Then `scripts/netlify-publish.js` copies the site into `_site/` (gitignored) without the working folders, and Netlify publishes that. A new root page or folder is published automatically; add it to `LEAVE_OUT` in that script only if fans must never download it.
 - Before every push, and before every commit that changes data or pages, run `node scripts/audit-site.js --no-network`. It must end "All checks passed." Drop `--no-network` to also test outside links. Netlify runs it before publishing and GitHub after every push (`.github/workflows/site-audit.yml`, emails jD on a failure), but a failed deploy still wastes a push, so run it first.
 - Scripts expect Node 22 (`.nvmrc`). Most need no packages; the Python ones in `scripts/archive/` need `reportlab` or `boto3`.
-- Local preview: `hip-webapp` in `.claude/launch.json` (port 8765).
+- Local preview: `hip-webapp` in `.claude/launch.json` (port 8765). The games take `?day=N` (`?week=N` for 'Are We Family') and `?reset=1` on localhost; use the address without `.html`, or the preview server drops the query. The 'Little Bones' clip picker is `/scripts/clip-picker.html` (local only).
 - `git push` from this Mac needs the sandbox off (macOS keychain).
 
 ## Releases
@@ -126,12 +126,12 @@ When setlist or show data changes, run in this order:
 7. `build-song-index.js` -> `song-index.json` and the song block in `sitemap.xml`
 8. `build-site-stats.js` -> rewrites the headline counts (shows, setlists, recordings, lyrics and the rest) in the pages
 9. `build-seo-pages.js` -> `song/*.html`, `lyrics.html`, `setlists.html`, `top-40.html` (run after any change to songs, `song.html`, `discography.html` or `FEATURE_VIEWS`)
-10. `build-trunk-pool.js` -> `trunk-pool.json` ('(Un)Locked'; uses the macOS word list)
+10. `build-trunk-pool.js` -> `trunk-pool.json` ('(Un)Locked'; uses the macOS word list), then `build-clip-pool.js` -> `clip-pool.json` ('Little Bones'; reads jD's start points and skipped tapes in `data/clip-starts.json`)
 11. `check-game-schedule.js`, then `audit-site.js`
 
 Also: `build-youtube-videos.js` (from `data/source/youtube-videos.csv`, then step 4), `build-webp.js` for new images (needs ffmpeg). `build-site-stats.js`, `build-seo-pages.js`, `build-light-data.js` and `build-webp.js` take `--check`, which only reports.
 
-**The daily games are append-only.** Never change, reorder or remove a scheduled puzzle, or change a game's start date (`EPOCH`) once it has opened. `node scripts/check-game-schedule.js` proves nothing moved: against `data/game-schedule-lock.json` (a fingerprint of every scheduled day plus the start dates; never edit it by hand) and against git (`audit-site.js` uses the last commit, the last push and, on Netlify, the last deploy). The builders add new days to the lock (`check-game-schedule.js --update-lock`). A change jD approves by puzzle number goes in `APPROVED` at the top of that script, and only then; run `--update-lock` to lock it in, and empty `APPROVED` once it is pushed.
+**The daily games are append-only** (and the weekly one, 'Are We Family', whose puzzles jD edits by hand in `data/family-puzzles.json`). Until a game opens its puzzles may still change; the checker lists them and `--update-lock` records them. Never change, reorder or remove a scheduled puzzle, or change a game's start date (`EPOCH`) once it has opened. `node scripts/check-game-schedule.js` proves nothing moved: against `data/game-schedule-lock.json` (a fingerprint of every scheduled day plus the start dates; never edit it by hand) and against git (`audit-site.js` uses the last commit, the last push and, on Netlify, the last deploy). The builders add new days to the lock (`check-game-schedule.js --update-lock`). A change jD approves by puzzle number goes in `APPROVED` at the top of that script, and only then; run `--update-lock` to lock it in, and empty `APPROVED` once it is pushed.
 
 **Song names:** `audit-site.js` fails when a setlist song matches nothing on the official song list. Fix a misspelling in `data/setlist-corrections.json` (`renameSongs`), then rerun from step 1. Only a song The Hip played but never released goes on `KNOWN_NOT_ON_LIST` in `audit-site.js`, and only with jD's say-so.
 
@@ -139,7 +139,7 @@ Also: `build-youtube-videos.js` (from `data/source/youtube-videos.csv`, then ste
 - `fetch-setlist-data.js` - would wipe all 614 recordings from `tth-tour-data.json`
 - `build-lyrics.js` - would replace the hand-corrected lyrics
 - `parse-sessions-csv.js` - would undo hand edits in `unplucked-gems.json`
-- `build-game-pool.js --force` / `build-trunk-pool.js --force` - would start a new puzzle schedule
+- `build-game-pool.js --force` / `build-trunk-pool.js --force` / `build-clip-pool.js --force` - would start a new puzzle schedule
 
 Fetch scripts read `SETLIST_FM_API_KEY` from the gitignored `.env`: `node --env-file=.env scripts/<name>.js`. The step that turns `data/setlists.json` into `setlists.min.json` is not in `scripts/`. Old one-off scripts are in `scripts/archive/`; don't run them.
 

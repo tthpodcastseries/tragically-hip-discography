@@ -64,6 +64,8 @@ Blocked on purpose (404 via `_redirects`): `/scripts/*`, `/audits/*`, `/docs/*`,
 | `/music-videos` | `music-videos.html` | Official Music Videos / They Shot A Movie Once | 36 official videos |
 | `/links` | `links.html` | Fan Community Links / Yer Hip Links | Fan sites, podcasts, community |
 | `/bring-it-all-back` | `bring-it-all-back.html` | Daily Setlist Game / Bring It All Back | Daily year-guessing game (opens 2026-10-30) |
+| `/little-bones` | `little-bones.html` | Daily Live Clip Game / Little Bones | Name the song from a live clip (not open yet) |
+| `/are-we-family` | `are-we-family.html` | Weekly Grouping Game / Are We Family | Sort 16 songs into 4 groups, every Sunday (not open yet) |
 | `/song/<slug>` | `song.html` | Song | One page per song (191). `/song` lists them all. |
 | `/forum-invite.html` | `forum-invite.html` | Claim Yer membersHIP | Free membersHIP number signup |
 | anything else | `404.html` | Page Not Found | Branded 404 |
@@ -106,6 +108,13 @@ One page per song on jD's official list (191). Shows times played live, live deb
 ### 4.7 Bring It All Back (daily game)
 One real setlist a day, the same for everyone, from a pool of 967 shows (1985-2016, 10+ songs, fixed-seed order). Guess the month and year in five tries; both must be right to win. Each miss says only whether the year and the month are right (no Earlier or Later), adds a coloured square (month and year, right year only, within 2 years, farther) and unlocks a hint in order: country, tour, then city and state. Result screen reveals the show, links to play it or see it on the map, and shows the game's points (100 for the first guess, then 80, 60, 40, 20; a miss is 0), played, win %, streak, best, total points, and the guess distribution, with a no-spoiler share text, a no-spoiler score card image (Facebook, Instagram post, Instagram story), and a countdown to the next puzzle. State lives only in the visitor's `localStorage` (`tth_bia_v2`). Puzzle #1 is **2026-10-30**; before that the page says when it opens. `?day=N` and `?reset=1` work on localhost only.
 
+### 4.7b Little Bones (daily) and Are We Family (weekly)
+Built on the `new-games` branch (November 2026) to ship once there is Umami data on the first two games. Both start dates (`EPOCH`) are placeholders until jD picks launch days; Are We Family's must be a Sunday.
+
+**Little Bones:** one song a day as a live clip from a Hip Archive recording (Backblaze, loaded only when Play is pressed). Clips of 2, 4, 8, 15 and 30 seconds, worth 100, 80, 60, 40, 20; a right answer opens a bonus guess at the show's year (+20 bang on, +10 within two years). The clip starts 30% into the track unless jD set a start point in `data/clip-starts.json` (by hand or with the local clip picker, `/scripts/clip-picker.html`), which also lists rough tapes to skip. Pool: `data/clip-pool.json` from `scripts/build-clip-pool.js` (412 days, 165 songs with recordings, up to 3 recordings each from different years, 90 days apart). The lock screen shows the game's name, not the track's. State in `localStorage` (`tth_littlebones_v1`); `?day=N` and `?reset=1` on localhost.
+
+**Are We Family:** sixteen songs, four hidden groups of four, a new puzzle every Sunday. Four mistakes allowed, "one away" at three of four, a repeated guess costs nothing. Points 100, 80, 60, 40 by mistakes; groups colour Light Grey, Gold, Red, Dark Purple, easiest first. Puzzles are hand-edited in `data/family-puzzles.json` (jD vets the drafts in `docs/The Hip Handbook - Are We Family - Puzzle Drafts.md`); `hl` marks a hidden word in a title. State in `localStorage` (`tth_family_v1`); `?week=N` and `?reset=1` on localhost.
+
 ### 4.8 Live Show Stats, Unplucked Gems, videos, links
 - **38 Years Old**: most-played songs, openers and closers, one-timers, longest shelvings, songs never played live, all from setlist data.
 - **Unplucked Gems**: every known unreleased recording, demo, outtake and alternate version by era, with availability and quality. Compiled by Alonx via TrackerHub; loaded from a sessions CSV by `parse-sessions-csv.js`.
@@ -132,6 +141,8 @@ All data is static JSON in `data/`, loaded by the browser. Shows are keyed by th
 | `canonical-songs.json` | jD's official song list (191 songs, versions folded in), with each song's setlist spellings and live-play count | Passport, song index |
 | `song-index.json` | Per-song debut, last, plays, recordings, albums, ranking | song pages |
 | `game-pool.json` | The 967 puzzle shows in fixed order | game |
+| `clip-pool.json`, `clip-starts.json` | Little Bones clips in fixed order; jD's hand-set start points and skipped tapes | Little Bones |
+| `family-puzzles.json` | Are We Family puzzles, edited by hand | Are We Family |
 
 **The official song list** is the 214 options in jD's public Google Form, plus 'Apartment Song' (jD confirmed it belongs). Demos, outtakes and alternate versions fold into their parent song, giving 191. 168 have been played live per setlist.fm; 23 have never appeared in a setlist.
 
@@ -181,7 +192,7 @@ Lyrics: the copy saved in browser storage (`tth_lyrics_cache_v4`) carries a fing
 
 ## 9. Analytics
 
-Umami, cookieless, events by name only. Current events: `Gate - Shown`, `Gate - Start exploring`, `Gate - Member unlock`, `Gate - Unlock failed`, `Gate - Claim click`, `Claim - Number claimed`, `Passport - Card made - <size>`, `Passport - Card saved`, `Passport - Card shared`, `Song - Play recording`, `Game - Started`, `Game - Won`, `Game - Lost`, `Game - Shared`. Visits from the live domain count, including test visits.
+Umami, cookieless, events by name only. Current events: `Gate - Shown`, `Gate - Start exploring`, `Gate - Member unlock`, `Gate - Unlock failed`, `Gate - Claim click`, `Claim - Number claimed`, `Passport - Card made - <size>`, `Passport - Card saved`, `Passport - Card shared`, `Song - Play recording`, `Game - Started`, `Game - Won`, `Game - Lost`, `Game - Shared`, and once they open `Little Bones - ...` (Started, Clip played, Song named, Won, Lost, Shared, Card made) and `Family - ...` (Started, Won, Lost, Shared, Card made, Song page). Visits from the live domain count, including test visits.
 
 ---
 

@@ -151,6 +151,33 @@ for (const [p, i] of unwinnable) problems.push(`trunk-pool.json: puzzle #${i + 1
 const unguessable = trunk.puzzles.filter(p => !trunk.titles.some(([s]) => s === p.s));
 if (unguessable.length) problems.push(`trunk-pool.json: ${unguessable.length} puzzles whose answer is missing from the guess list`);
 
+// Little Bones: same checks, plus every clip has an audio file
+const clips = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/clip-pool.json'), 'utf8'));
+clips.puzzles.forEach((p, i) => {
+  if (!songSlugs.has(p.s)) problems.push(`clip-pool.json: puzzle #${i + 1} '${p.t}' has slug ${p.s}, which is not in song-index.json (unwinnable)`);
+  if (!clips.titles.some(([s]) => s === p.s)) problems.push(`clip-pool.json: puzzle #${i + 1} '${p.t}' is missing from the guess list`);
+  if (!p.u || !/^\d{4}-\d{2}-\d{2}$/.test(p.d || '')) problems.push(`clip-pool.json: puzzle #${i + 1} '${p.t}' has no audio file or show date`);
+});
+
+// Are We Family (edited by hand): four groups of four, sixteen different songs, every title
+// exactly as on the official song list, and a hidden word that really is in its title
+{
+  const songTitles = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/song-index.json'), 'utf8')).songs.map(so => so.t));
+  const fam = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/family-puzzles.json'), 'utf8'));
+  fam.puzzles.forEach((p, i) => {
+    const at = `family-puzzles.json: puzzle #${i + 1}`;
+    if (!Array.isArray(p.groups) || p.groups.length !== 4 || p.groups.some(g => !g.label || !Array.isArray(g.songs) || g.songs.length !== 4)) { problems.push(`${at} needs 4 groups, each with a label and 4 songs`); return; }
+    const all = p.groups.flatMap(g => g.songs);
+    if (new Set(all).size !== 16) problems.push(`${at} uses a song twice`);
+    all.filter(t => !songTitles.has(t)).forEach(t => problems.push(`${at}: '${t}' is not a title on the official song list (check the spelling)`));
+    p.groups.forEach(g => Object.entries(g.hl || {}).forEach(([t, w]) => {
+      if (!g.songs.includes(t)) problems.push(`${at}: hl names '${t}', which isn't in the group "${g.label}"`);
+      else if (!t.toLowerCase().replace(/[^a-z]/g, '').includes(String(w).toLowerCase())) problems.push(`${at}: '${w}' isn't hidden in '${t}'`);
+    }));
+  });
+  notes.push(`games: ${clips.puzzles.length} Little Bones clips, ${fam.puzzles.length} Are We Family puzzles checked`);
+}
+
 // ---- 7. CSP img-src covers every external image host ----
 const SITE_HOST = 'thehiphandbook.tthpods.com';
 const headersSrc = fs.readFileSync(path.join(ROOT, '_headers'), 'utf8');
@@ -424,11 +451,15 @@ notes.push(`release ${footerVersion}: footer, cache name and changelog checked`)
   new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', year: 'numeric', month: 'numeric', day: 'numeric' })
     .formatToParts(new Date()).forEach(x => { tp[x.type] = +x.value; });
   const torontoToday = Math.floor(Date.UTC(tp.year, tp.month - 1, tp.day) / 86400000);
-  for (const [name, js, file, key] of [["'Bring It All Back'", 'bring-it-all-back.js', 'game-pool.json', 'shows'], ["'(Un)Locked'", 'unlocked.js', 'trunk-pool.json', 'puzzles']]) {
+  // [name, script, data file, list key, days between puzzles]
+  for (const [name, js, file, key, step = 1] of [["'Bring It All Back'", 'bring-it-all-back.js', 'game-pool.json', 'shows'], ["'(Un)Locked'", 'unlocked.js', 'trunk-pool.json', 'puzzles'], ["'Little Bones'", 'little-bones.js', 'clip-pool.json', 'puzzles'], ["'Are We Family'", 'are-we-family.js', 'family-puzzles.json', 'puzzles', 7]]) {
     const m = fs.readFileSync(path.join(ROOT, 'js', js), 'utf8').match(/const EPOCH = '(\d{4})-(\d{2})-(\d{2})'/);
     if (!m) { problems.push(`js/${js}: could not find EPOCH, so the game schedule run-out check was skipped`); continue; }
     const count = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', file), 'utf8'))[key].length;
-    const lastDay = Math.floor(Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000) + count - 1;
+    const firstDay = Math.floor(Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000);
+    // Not open yet: nothing to run out (the placeholder start date sits far in the future)
+    if (firstDay - torontoToday > 365) { notes.push(`${name} not open yet (start date ${m[1]}-${m[2]}-${m[3]} is a placeholder); ${count} puzzles ready`); continue; }
+    const lastDay = firstDay + (count - 1) * step;
     const lastDate = new Date(lastDay * 86400000).toLocaleDateString('en-CA', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' });
     const left = lastDay - torontoToday;
     if (left < 0) warnings.push(`${name} ran out of new puzzles after No. ${count} on ${lastDate} and is repeating from No. 1. Append more puzzles`);

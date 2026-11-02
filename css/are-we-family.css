@@ -1,0 +1,48 @@
+/* are-we-family.html - 'Are We Family', the weekly grouping game.
+   Builds on bring-it-all-back.css (loaded first); only what's new lives here.
+   Group colours, easiest first: Light Grey, Gold, Red, Dark Purple (fills only, never words). */
+
+.aw-lives { display: flex; align-items: center; gap: 6px; font-size: 0.74rem; color: var(--muted2); }
+.aw-lives-h { margin-right: 2px; }
+.aw-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--red); }
+.aw-dot.used { background: transparent; border: 1px solid #929292; }
+
+/* The tiles */
+.aw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.aw-tile { min-height: 72px; padding: 8px 5px; border-radius: 10px; background: #1d1a26; border: 1px solid #2a2a2a; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 700; line-height: 1.25; cursor: pointer; overflow-wrap: break-word; hyphens: auto; transition: background 0.12s, border-color 0.12s; }
+.aw-tile.long { font-size: 0.68rem; }
+/* One long word ('Membership', 'Impossibilium'): smaller, so it breaks with a hyphen at most */
+.aw-tile.wide { font-size: 0.7rem; }
+.aw-tile:hover { border-color: rgba(204, 162, 60, 0.6); }
+.aw-tile:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.aw-tile.on { background: #d9d9d9; border-color: #d9d9d9; color: #0e0b16; }
+
+.aw-controls { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.aw-controls .bia-btn { padding: 11px 16px; }
+.aw-msg { text-align: center; }
+
+/* Solved groups */
+.aw-solved { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.aw-group { border-radius: 10px; padding: 12px 14px; text-align: center; border: 1px solid transparent; }
+.aw-group-label { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.aw-group-songs { margin-top: 4px; font-size: 0.86rem; font-weight: 600; line-height: 1.45; }
+.aw-group-note { margin-top: 4px; font-size: 0.74rem; font-weight: 600; opacity: 0.85; }
+.aw-hl { font-weight: 900; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-transform: uppercase; }
+.aw-song { color: inherit; text-decoration: none; }
+.aw-song:hover .aw-title, .aw-song:focus-visible .aw-title { text-decoration: underline; text-underline-offset: 3px; }
+.aw-song:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; border-radius: 3px; }
+.aw-tier0 { background: #d9d9d9; color: #0e0b16; }
+.aw-tier1 { background: var(--gold); color: #0e0b16; }
+.aw-tier2 { background: var(--red); color: #fff; }
+.aw-tier3 { background: #140038; color: #fff; border-color: rgba(204, 162, 60, 0.7); }
+/* Groups the player didn't find show once the game ends, dimmed */
+.aw-group.aw-missed { opacity: 0.6; }
+
+.aw-endnote { margin-top: 6px; font-size: 0.78rem; color: var(--muted2); }
+.aw-dist-h { margin-top: 14px; font-size: 0.72rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 380px) {
+  .aw-grid { gap: 6px; }
+  .aw-tile { min-height: 66px; padding: 6px 3px; font-size: 0.72rem; }
+  .aw-tile.long { font-size: 0.62rem; }
+}

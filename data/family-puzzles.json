@@ -1,0 +1,69 @@
+{
+  "about": "'Are We Family', the weekly grouping game (are-we-family.html). Edited by hand, like lyrics.json: one puzzle a week, four groups of four songs, easiest group first. Titles must match the official song list (data/song-index.json) exactly. hl gives the word hidden in a title, letters only (it may run across a space) (shown once the group is solved); note is an optional line under the group. Once the game opens, only add puzzles to the end: never change, reorder or remove one that is scheduled (node scripts/check-game-schedule.js). Drafts and the reasoning for each group: docs/The Hip Handbook - Are We Family - Puzzle Drafts.md.",
+  "puzzles": [
+    {
+      "groups": [
+        { "label": "Songs from \"Road Apples\"", "songs": ["Cordelia", "The Luxury", "Three Pistols", "Fiddler's Green"] },
+        { "label": "A city or town in the title", "songs": ["It Can't Be Nashville Every Night", "Montreal", "In Sarnia", "Springtime in Vienna"] },
+        { "label": "Share a name with an album by The Hip", "songs": ["Fully Completely", "World Container", "Now for Plan A", "Man Machine Poem"], "note": "The song 'Man Machine Poem' is on \"Now for Plan A\"." },
+        { "label": "Hidden body parts", "songs": ["Streets Ahead", "Machine", "Membership", "38 Years Old"], "hl": { "Streets Ahead": "head", "Machine": "chin", "Membership": "hip", "38 Years Old": "ear" } }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Phantom Power\"", "songs": ["Poets", "Save the Planet", "Fireworks", "Vapour Trails"] },
+        { "label": "One-word orders", "songs": ["Stay", "Leave", "Fly", "Fight"] },
+        { "label": "The top 4 on the TTHTop40 Countdown", "songs": ["Grace, Too", "Ahead by a Century", "38 Years Old", "Bobcaygeon"] },
+        { "label": "Hidden numbers", "songs": ["Pretend", "When the Weight Comes Down", "My Music at Work", "Little Bones"], "hl": { "Pretend": "ten", "When the Weight Comes Down": "eight", "My Music at Work": "two", "Little Bones": "one" } }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Up to Here\"", "songs": ["Blow at High Dough", "Boots or Hearts", "Trickle Down", "Opiated"] },
+        { "label": "A number in the title", "songs": ["700 Ft. Ceiling", "Fifty Mission Cap", "Three Pistols", "Toronto #4"] },
+        { "label": "The 4 most-played songs live", "songs": ["New Orleans Is Sinking", "At the Hundredth Meridian", "Grace, Too", "Ahead by a Century"], "note": "In the Handbook's setlists." },
+        { "label": "Midnight, overnight, goodnight", "songs": ["Another Midnight", "Train Overnight", "Goodnight Josephine", "Goodnight Attawapiskat"], "hl": { "Another Midnight": "night", "Train Overnight": "night", "Goodnight Josephine": "night", "Goodnight Attawapiskat": "night" } }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Day for Night\"", "songs": ["Greasy Jungle", "Thugs", "Emergency", "Titanic Terrarium"] },
+        { "label": "An animal in the title", "songs": ["Emperor Penguin", "Tiger the Lion", "The Dire Wolf", "Sharks"] },
+        { "label": "The 4 songs played most in encores", "songs": ["Blow at High Dough", "Little Bones", "New Orleans Is Sinking", "Bobcaygeon"], "note": "In the Handbook's setlists." },
+        { "label": "Hidden RED", "songs": ["Daredevil", "Scared", "Tired as Fuck", "At the Hundredth Meridian"], "hl": { "Daredevil": "red", "Scared": "red", "Tired as Fuck": "red", "At the Hundredth Meridian": "red" } }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"World Container\"", "songs": ["Yer Not the Ocean", "In View", "Family Band", "The Drop-Off"] },
+        { "label": "Someone's name in the title", "songs": ["Cordelia", "Evelyn", "Gus: The Polar Bear from Central Park", "Courage (For Hugh MacLennan)"] },
+        { "label": "The 4 songs that opened the most shows", "songs": ["Grace, Too", "The Lonely End of the Rink", "At Transformation", "Gift Shop"], "note": "In the Handbook's setlists." },
+        { "label": "Hidden animals", "songs": ["Lionized", "The Exact Feeling", "Escape Is at Hand for the Travellin' Man", "Are We Family"], "hl": { "Lionized": "lion", "The Exact Feeling": "eel", "Escape Is at Hand for the Travellin' Man": "ape", "Are We Family": "ewe" } }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Trouble at the Henhouse\"", "songs": ["Springtime in Vienna", "Flamenco", "Sherpa", "Coconut Cream"] },
+        { "label": "LAST in the title", "songs": ["The Last of the Unplucked Gems", "The Last Recluse", "Last American Exit", "Last Night I Dreamed You Didn't Love Me"] },
+        { "label": "IT in the title", "songs": ["Use It Up", "Bring It All Back", "We Want to Be It", "The Kids Don't Get It"] },
+        { "label": "The last track on their album", "songs": ["Opiated", "Eldorado", "Emperor Penguin", "The Dark Canuck"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"In Violet Light\"", "songs": ["Are You Ready", "Silver Jet", "Throwing Off Glass", "A Beautiful Thing"] },
+        { "label": "A body part in the title", "songs": ["Little Bones", "Twist My Arm", "Crack My Spine Like a Whip", "Hailstone Hands of God"] },
+        { "label": "Snow in the lyrics", "songs": ["Greasy Jungle", "Montreal", "One Night in Copenhagen", "The Modern Spirit"] },
+        { "label": "The first track on their album", "songs": ["Small Town Bringdown", "Heaven Is a Better Place Today", "Morning Moon", "Ouch"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"We Are the Same\"", "songs": ["Honey, Please", "Coffee Girl", "Speed River", "Queen of the Furrows"] },
+        { "label": "Songs from \"Saskadelphia\"", "songs": ["Not Necessary", "Crack My Spine Like a Whip", "Just As Well", "Reformed Baptist Blues"] },
+        { "label": "Canada in the lyrics", "songs": ["Summer's Killing Us", "The Dire Wolf", "The Last Recluse", "Train Overnight"] },
+        { "label": "The song opens with its own title", "songs": ["Use It Up", "Done and Done", "Country Day", "The Exact Feeling"] }
+      ]
+    }
+  ]
+}

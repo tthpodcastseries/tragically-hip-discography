@@ -1,0 +1,20 @@
+/* little-bones.html - 'Little Bones', the daily live-clip game.
+   Builds on bring-it-all-back.css and unlocked.css (loaded first); only what's new lives here. */
+
+/* The clip bar: 30 seconds wide, the open part lit, ticks where each clip ends */
+.lb-bar { position: relative; height: 16px; border-radius: 8px; background: #141414; border: 1px solid #2a2a2a; overflow: hidden; }
+.lb-bar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: var(--open, 0%); background: rgba(204, 162, 60, 0.18); transition: width 0.3s; }
+.lb-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--gold); }
+.lb-marks { position: absolute; inset: 0; }
+.lb-mark { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #0e0b16; }
+
+.lb-row { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+.lb-play { min-width: 120px; }
+.lb-len { font-size: 0.84rem; font-weight: 600; color: var(--text); }
+
+.lb-year { margin-top: 16px; }
+.lb-year-help { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+.lb-year .bia-row select { flex: 1; width: auto; }
+.lb-year .ul-link { margin-top: 10px; }
+/* The year box's label is for screen readers; the heading says it on screen */
+.lb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

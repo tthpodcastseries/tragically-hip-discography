@@ -1,0 +1,5 @@
+{
+  "about": "Hand-set clip start points for 'Little Bones' (data/clip-pool.json is built from this by scripts/build-clip-pool.js). starts: \"song-slug@showId\" (the setlist.fm show id): seconds into the track where the clip starts; without one the clip starts 30% of the way in. skip: recordings never to use (a rough tape). Edit by hand or with the clip picker (scripts/clip-picker.html, local preview only), then re-run the builder.",
+  "starts": {},
+  "skip": []
+}

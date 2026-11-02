@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little Bones - Daily Live Clip Game - The Hip Handbook</title>
+  <meta name="description" content="A few seconds of The Tragically Hip live, from a real show in the Hip Archive. Name the song from the shortest clip you can, guess the year for a bonus, then share yer score.">
+  <meta property="og:title" content="Little Bones - Daily Live Clip Game">
+  <meta property="og:description" content="Two seconds of The Hip live. Can you name the song?">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/little-bones">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/little-bones">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="The Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/bring-it-all-back.css">
+  <link rel="stylesheet" href="/css/unlocked.css">
+  <link rel="stylesheet" href="/css/little-bones.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="page-header">
+  <div class="subtitle">Daily Live Clip Game</div>
+  <h1>Little Bones</h1>
+  <p class="header-desc">A few seconds of The Hip live, from a real show in the Hip Archive. Name the song from the shortest clip you can, then guess the year for a bonus.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+</header>
+
+<main id="main-content" class="bia ul lb">
+  <div id="lbLoading" class="bia-note">Cueing up the tape...</div>
+  <div id="lbError" class="bia-note bia-error" hidden>Couldn't load today's clip. Check yer connection and refresh.</div>
+
+  <div id="lbGame" hidden>
+    <div class="bia-top">
+      <span id="lbNo" class="bia-no"></span>
+      <span class="ul-points"><b id="lbPoints">100</b> points</span>
+    </div>
+
+    <section class="bia-card lb-player" aria-labelledby="lbClipTitle">
+      <h2 class="bia-h2" id="lbClipTitle">Today's clip</h2>
+      <div class="lb-bar" aria-hidden="true">
+        <div id="lbFill" class="lb-fill"></div>
+        <div id="lbMarks" class="lb-marks"></div>
+      </div>
+      <div class="lb-row">
+        <button id="lbPlay" class="bia-btn lb-play" type="button">&#9654; Play</button>
+        <span id="lbLen" class="lb-len"></span>
+      </div>
+      <p id="lbAudioMsg" class="bia-msg" role="status" aria-live="polite"></p>
+    </section>
+
+    <form id="lbGuessForm" class="bia-form" novalidate autocomplete="off">
+      <label for="lbGuessInput" id="lbGuessLabel">Name the song</label>
+      <div class="bia-row">
+        <input id="lbGuessInput" type="text" placeholder="Start typing a title..." role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="lbSuggest">
+        <button id="lbGuess" class="bia-btn" type="submit">Guess</button>
+      </div>
+      <button id="lbSkip" class="ul-link ul-pass" type="button">Skip - play me more</button>
+      <ul id="lbSuggest" class="ul-suggest" role="listbox" aria-label="Matching songs" hidden></ul>
+    </form>
+    <div id="lbMsg" class="bia-msg" role="status" aria-live="polite"></div>
+    <ul id="lbWrong" class="ul-wrong" aria-label="Wrong guesses"></ul>
+
+    <form id="lbYearForm" class="bia-card lb-year" novalidate hidden>
+      <h2 class="bia-h2">Bonus: what year was this show?</h2>
+      <p class="lb-year-help">Bang on is +20, within two years is +10.</p>
+      <div class="bia-row">
+        <label for="lbYear" class="lb-vh">Year of the show</label>
+        <select id="lbYear"></select>
+        <button id="lbYearGo" class="bia-btn" type="submit">Lock it in</button>
+      </div>
+      <button id="lbYearSkip" class="ul-link" type="button">No idea - skip the bonus</button>
+    </form>
+
+    <section id="lbEnd" class="bia-card bia-end" hidden aria-labelledby="lbResult">
+      <h2 class="bia-result" id="lbResult"></h2>
+      <p id="lbTotal" class="bia-total"></p>
+      <div id="lbReveal" class="bia-reveal"></div>
+      <div id="lbLinks" class="bia-links"></div>
+      <pre id="lbShareText" class="bia-sharetext"></pre>
+      <div class="bia-actions">
+        <button id="lbCopy" class="bia-btn" type="button">Copy my score</button>
+        <button id="lbShare" class="bia-btn bia-btn-alt" type="button" hidden>Share</button>
+      </div>
+      <div class="bia-cardshare">
+        <h3 class="bia-h2">Share a card</h3>
+        <div class="bia-formats" role="group" aria-label="Card size">
+          <button class="bia-fmt" type="button" data-format="facebook" aria-pressed="true">Facebook<small>1200 x 630</small></button>
+          <button class="bia-fmt" type="button" data-format="instagram" aria-pressed="false">Instagram post<small>1080 x 1350</small></button>
+          <button class="bia-fmt" type="button" data-format="story" aria-pressed="false">Instagram story<small>1080 x 1920</small></button>
+        </div>
+        <button id="lbMakeCard" class="bia-btn" type="button">Make my card</button>
+        <div id="lbCardWrap" hidden>
+          <img id="lbCardImg" class="bia-card-img" alt="Little Bones score card">
+          <div class="bia-actions">
+            <button id="lbCardShare" class="bia-btn" type="button" hidden>Share card</button>
+            <button id="lbCardSave" class="bia-btn bia-btn-alt" type="button">Save image</button>
+          </div>
+        </div>
+      </div>
+      <div id="lbStats" class="bia-stats"></div>
+      <p class="bia-next">Next clip in <b id="lbCountdown">--:--:--</b></p>
+    </section>
+
+    <details class="bia-how">
+      <summary>How it works</summary>
+      <ul>
+        <li>A new clip drops every day at midnight Toronto time (Eastern), at the same moment for everyone, wherever you are.</li>
+        <li>Everyone gets the same song by The Hip each day, played live at a real show in the Hip Archive. Some tapes are soundboards, some were taped from the crowd.</li>
+        <li>You start with 2 seconds. Each wrong guess or skip plays you more: 4, 8, 15, then 30 seconds. Play each clip as often as you like.</li>
+        <li>Name it on the first clip for 100 points, then 80, 60, 40 and 20. Miss the last one and it's 0 for the day.</li>
+        <li>Get the song and you can guess the year of the show for a bonus: +20 bang on, +10 within two years.</li>
+        <li>Squares: &#129001; got it, &#128997; missed or skipped, &#11035; never needed, &#128197; the year bonus.</li>
+        <li>Yer stats are saved on this device only.</li>
+      </ul>
+    </details>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/little-bones.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>
