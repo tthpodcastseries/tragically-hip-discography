@@ -167,22 +167,21 @@
       if (how || today.done) {
         li.appendChild(el('span', 'ul-answer', word.toUpperCase()));
         li.appendChild(el('span', 'ul-tag', how === 'revealed' ? 'Revealed -10' : how ? 'Unlocked' : 'Never needed'));
-      } else {
+      } else if (i === active) {
         const tiles = el('span', 'ul-tiles');
         [...scrambles[i]].forEach((ch, t) => {
-          if (i === active) {
-            const b = el('button', 'ul-tile' + (used.includes(t) ? ' used' : ''), ch);
-            b.type = 'button';
-            b.disabled = used.includes(t);
-            b.setAttribute('aria-label', 'Letter ' + ch);
-            b.addEventListener('click', () => tapTile(t));
-            tiles.appendChild(b);
-          } else {
-            tiles.appendChild(el('span', 'ul-tile', ch));
-          }
+          const b = el('button', 'ul-tile' + (used.includes(t) ? ' used' : ''), ch);
+          b.type = 'button';
+          b.disabled = used.includes(t);
+          b.setAttribute('aria-label', 'Letter ' + ch);
+          b.addEventListener('click', () => tapTile(t));
+          tiles.appendChild(b);
         });
         li.appendChild(tiles);
-        if (i !== active) li.appendChild(el('span', 'ul-lock', '\u{1F512}'));
+      } else {
+        // No letters until the word opens, so nobody can solve ahead of their guesses (v5.6.4)
+        li.appendChild(el('span', 'ul-wait', 'Still locked'));
+        li.appendChild(el('span', 'ul-lock', '\u{1F512}'));
       }
       list.appendChild(li);
     });

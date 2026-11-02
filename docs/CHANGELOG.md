@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.6.4
+**So Hard Done By - Patch** - November 2, 2026
+- **(Un)Locked, one word at a time:** only the word you're working on shows its scrambled letters. The words still to come read "Still locked" with no letters, so nobody can unscramble all five in their head and name the song on the free first guess. Each word opens the same way as before: unlock the one before it, then guess or pass. Scoring and the puzzles are unchanged. "How it works" says so.
+- Cache bumped to `hh-v5.6.4`; footer label bumped to v5.6.4 (So Hard Done By - Patch)
+
 ## v5.6.3
 **So Hard Done By - Patch** - November 2, 2026
 - **Share cards:** on the Facebook-size score card for (Un)Locked and Bring It All Back, the grey line about the game ran past the right edge of the card. It now breaks onto two lines inside the right-hand column. The Instagram and Story cards were already fine.

@@ -12,9 +12,8 @@
 .ul-tile { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 34px; border-radius: 6px; background: #141414; border: 1px solid #2a2a2a; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 800; padding: 0; }
 .ul-lock { flex: 0 0 auto; font-size: 0.85rem; opacity: 0.6; }
 .ul-word.locked { opacity: 0.75; min-height: 40px; padding: 6px 10px; }
-/* Locked words stay compact so a 10-letter word fits one line on a phone; the active word gets big tap targets */
-.ul-word.locked .ul-tiles { gap: 3px; }
-.ul-word.locked .ul-tile { width: 21px; height: 26px; font-size: 0.78rem; border-radius: 5px; }
+/* Locked words show no letters until they open (v5.6.4), just a faint line and the lock */
+.ul-wait { flex: 1; min-width: 0; font-size: 0.78rem; color: var(--muted2); }
 .ul-word.active { border-color: rgba(204, 162, 60, 0.6); background: rgba(204, 162, 60, 0.06); }
 .ul-word.active .ul-tile { background: #1d1a26; border-color: rgba(204, 162, 60, 0.5); color: #fff; cursor: pointer; }
 .ul-word.active .ul-tile:hover:not(:disabled) { border-color: var(--gold); }
