@@ -600,7 +600,8 @@ commit;
 -- ---------------------------------------------------------------------------
 -- The live project had a private bucket "hipstories-recordings" (empty on
 -- 2026-10-31) with a rule "Allow public uploads" letting anyone upload into it
--- (audit DB-03 / SEC-06). The Handbook doesn't use it. Only if Yer Hipstories
+-- (audit DB-03 / SEC-06). jD deleted that rule on 2026-11-02 (bucket still
+-- empty). The Handbook doesn't use it. Only if Yer Hipstories
 -- turns out to need it, make the bucket private and WITHOUT the public rule:
 --   insert into storage.buckets (id, name, public)
 --   values ('hipstories-recordings', 'hipstories-recordings', false)
