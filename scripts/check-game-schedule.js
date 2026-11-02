@@ -64,7 +64,7 @@ const APPROVED = {};
 // A start-date move jD approved, per file, e.g. 'trunk-pool.json': ['2026-11-04', '2026-11-02'].
 // Only for a game nobody has played yet: it lets that exact move through both checks once
 // the game is within a day of opening. Only add one when jD says so; take it out once pushed.
-const APPROVED_START = { 'trunk-pool.json': ['2026-11-04', '2026-11-02'] };
+const APPROVED_START = {};
 const startApproved = (file, from, to) => { const a = APPROVED_START[file]; return !!a && a[0] === from && a[1] === to; };
 
 const GAMES = [
