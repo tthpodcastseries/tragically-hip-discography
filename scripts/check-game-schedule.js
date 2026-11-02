@@ -61,6 +61,12 @@ const USE_LOCK = !flag('--no-lock') || UPDATE_LOCK;
 // fingerprint. Only add a puzzle here when jD says so; take it out once pushed.
 const APPROVED = {};
 
+// A start-date move jD approved, per file, e.g. 'trunk-pool.json': ['2026-11-04', '2026-11-02'].
+// Only for a game nobody has played yet: it lets that exact move through both checks once
+// the game is within a day of opening. Only add one when jD says so; take it out once pushed.
+const APPROVED_START = { 'trunk-pool.json': ['2026-11-04', '2026-11-02'] };
+const startApproved = (file, from, to) => { const a = APPROVED_START[file]; return !!a && a[0] === from && a[1] === to; };
+
 const GAMES = [
   {
     name: "'Bring It All Back'", file: 'game-pool.json', jsFile: 'bring-it-all-back.js', listKey: 'shows',
@@ -121,7 +127,7 @@ function updateLock() {
     }
     const ok = APPROVED[g.file] || [];
     const problems = [];
-    if (old.epoch !== cur.epoch && (hasOpened(old.epoch) || hasOpened(cur.epoch))) problems.push(`start date changed from ${old.epoch} to ${cur.epoch}, and the game has opened`);
+    if (old.epoch !== cur.epoch && (hasOpened(old.epoch) || hasOpened(cur.epoch)) && !startApproved(g.file, old.epoch, cur.epoch)) problems.push(`start date changed from ${old.epoch} to ${cur.epoch}, and the game has opened`);
     if (cur.list.length < old.days.length) problems.push(`the schedule got shorter (${old.days.length} -> ${cur.list.length} days)`);
     const relocked = [];
     old.days.forEach((fp, i) => {
@@ -137,7 +143,7 @@ function updateLock() {
     }
     const added = fresh.days.length - old.days.length;
     lock.games[g.file] = fresh;
-    console.log(`${g.name}: lock has ${fresh.days.length} days from ${cur.epoch}; ${added} added${relocked.length ? `; re-locked with jD's approval: No. ${relocked.join(', ')}` : ''}${old.epoch !== cur.epoch ? `; start date moved from ${old.epoch} (not opened yet)` : ''}`);
+    console.log(`${g.name}: lock has ${fresh.days.length} days from ${cur.epoch}; ${added} added${relocked.length ? `; re-locked with jD's approval: No. ${relocked.join(', ')}` : ''}${old.epoch !== cur.epoch ? `; start date moved from ${old.epoch} (${startApproved(g.file, old.epoch, cur.epoch) ? "with jD's approval" : 'not opened yet'})` : ''}`);
   }
   if (refused) {
     console.error('\nFAILED - the lock was not changed. A scheduled puzzle moved; put it back (git checkout data/<file>).');
@@ -227,7 +233,8 @@ function checkAgainst(g) {
   console.log(`  ${todayNo >= 1 ? `today is puzzle No. ${todayNo}` : `opens ${dateOf(epoch)}, so every puzzle is still upcoming`}; checked ${a.length} scheduled days`);
   console.log(`  file ${old.text === cur.text ? 'byte-identical' : 'differs'}; ${a.length - moved.length - approved.length} days kept their puzzle, ${added} added on the end`);
   if (old.epoch && old.epoch !== cur.epoch) {
-    if (hasOpened(old.epoch) || hasOpened(cur.epoch)) { failed = true; console.log(`  START DATE CHANGED from ${old.epoch} to ${cur.epoch} after the game opened: every fan's puzzle shifts. Put the old date back.`); }
+    if (startApproved(g.file, old.epoch, cur.epoch)) console.log(`  start date moved from ${old.epoch} to ${cur.epoch} with jD's approval`);
+    else if (hasOpened(old.epoch) || hasOpened(cur.epoch)) { failed = true; console.log(`  START DATE CHANGED from ${old.epoch} to ${cur.epoch} after the game opened: every fan's puzzle shifts. Put the old date back.`); }
     else console.log(`  start date moved from ${old.epoch} to ${cur.epoch} (the game has not opened on either date)`);
   }
   if (approved.length) { console.log(`  changed with jD's approval (${approved.length}):`); approved.forEach(m => console.log('    ' + m)); }

@@ -10,7 +10,7 @@
 
   // Date of puzzle #1 - the game opens at midnight Toronto time on this day. Before it the
   // page says when the game opens instead of showing a puzzle.
-  const EPOCH = '2026-11-04';
+  const EPOCH = '2026-11-02';
   const WORDS = 5;
   // Points ladder: the score depends on when you name the song. Rung 0 is before any
   // word (a free first shot), rungs 1-5 come after each word, and rung 6 is the album

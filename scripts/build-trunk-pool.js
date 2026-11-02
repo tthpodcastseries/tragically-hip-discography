@@ -30,7 +30,7 @@
 // existing puzzle kept its place, song, words and scrambles, and refuses to save
 // if not. If data/trunk-pool.json is missing it refuses to start a new schedule
 // unless given --force (get the old one back with git checkout data/trunk-pool.json;
-// never start over after launch, November 4, 2026). Check with
+// never start over after launch, November 2, 2026). Check with
 // node scripts/check-game-schedule.js after.
 //
 // It also stops without saving if a scheduled puzzle's song is no longer in

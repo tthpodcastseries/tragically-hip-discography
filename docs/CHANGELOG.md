@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.6.2
+**So Hard Done By - Patch** - November 2, 2026
+- **(Un)Locked opens today:** jD moved the start from Wednesday, November 4 to Monday, November 2, a soft launch before the public one on November 3. Puzzle No. 1 is today's. No puzzle changed or moved in the schedule: every day shifts two days earlier, so the 407-puzzle run ends December 13, 2027.
+- `scripts/check-game-schedule.js` takes a start-date move jD approved (`APPROVED_START`), since the guard refuses any move once a game is a day from opening. The lock is re-recorded from November 2.
+- Cache bumped to `hh-v5.6.2`; footer label bumped to v5.6.2 (So Hard Done By - Patch)
+
 ## v5.6.1
 **So Hard Done By - Patch** - November 1, 2026
 jD's rulings on the audit items v5.6 left open (2026-11-01). Everything else jD ruled on stays as it is: the privacy page lines, the Links card, the album-note titles, the streaming-button, tag, and game colours, the hover shades, adjectival "Hip", "audience" and "visitors", and one shared link-preview picture.
