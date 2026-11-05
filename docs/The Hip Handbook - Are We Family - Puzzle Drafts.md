@@ -91,6 +91,81 @@ Red herrings: 'The Last Recluse', 'Country Day' and 'The Exact Feeling' are all 
 
 ---
 
+# Batch two - Number Nine to Number Fifteen
+
+Drafted 2026-11-05: seven more, enough to reach the last Saturday in February. Same rules: every group from the Handbook's own data or the titles, a script checked each one has exactly one answer, and a group type comes back only after a gap of five weeks or more (the countdown came back after five: Number Seven, then Number Twelve). Album groups repeat as a type every week, but no album repeats within five weeks.
+
+## Check these first (batch two)
+
+1. **'Titanic Terrarium' in "Something you ride in" (Number Ten).** It counts the Titanic as the ship. If that's a stretch, swap in a different puzzle song and I'll recheck.
+2. **"Played live only once" and "50 times or more, never in an encore" (Numbers Nine and Ten)** are the Handbook's setlists only, like the other live-stat groups. Both carry the "In the Handbook's setlists." note. 'She's Got What It Takes' is the fifth song played once; it's left out.
+3. **Lyric groups (TV, honey, kiss, hockey, radio)** depend on the hand-corrected lyrics. The matched lines are below each puzzle.
+4. **'The Heart of the Melt' in hockey (Number Fourteen)** is there on one word: "And I could dance with the puck". Your call whether that's enough.
+5. **Repeat songs across the batch:** 'I'll Believe In You (Or I'll Be Leaving You Tonight)' (Eleven and Fifteen), 'Silver Jet' (Ten and Fifteen), 'Yawning or Snarling' (Ten and Twelve), 'Thompson Girl' (Ten and Fourteen).
+
+## Number Nine - Saturday, January 16, 2027
+
+1. **Songs from "Fully Completely"** - Looking for a Place to Happen, Lionized, The Wherewithal, Wheat Kings
+2. **A road in the title** - Cemetery Sideroad, Last American Exit, Vegas Strip, Streets Ahead
+3. **Food in the title** - Coconut Cream, Wild Mountain Honey, Honey, Please, Blow at High Dough
+4. **Played live only once** - Done and Done, Emergency, Wait So Long, Rain, Hearts and Fire
+
+Red herring: 'Wheat Kings' has food in its title, but "Fully Completely" needs it.
+
+## Number Ten - Saturday, January 23, 2027
+
+1. **Songs from "Music @ Work"** - Putting Down, The Completists, Freak Turbulence, The Bastard
+2. **WE in the title** - We Want to Be It, We'll Go Too, Are We Family, As Makeshift as We Are
+3. **Something you ride in, in the title** - Silver Jet, Train Overnight, Locked in the Trunk of a Car, Titanic Terrarium
+4. **Played live 50 times or more, never in an encore** - Coffee Girl (78 plays), Thompson Girl (90), The Depression Suite (86), Yawning or Snarling (56). These are the only four in the Handbook.
+
+Red herring: 'Train Overnight' is on "Music @ Work" too. 'Are We Family' gets its own puzzle.
+
+## Number Eleven - Saturday, January 30, 2027
+
+1. **Songs from "In Between Evolution"** - Vaccination Scar, Mean Streak, You're Everywhere, If New Orleans Is Beat
+2. **YOU in the title** - Are You Ready, Everytime You Go, If You Lived Here, I'll Believe In You (Or I'll Be Leaving You Tonight)
+3. **An Ontario place in the title** - Bobcaygeon, In Sarnia, Toronto #4, Goodnight Attawapiskat
+4. **Track Two on their album** - Springtime in Vienna ("Trouble at the Henhouse"), Something On ("Phantom Power"), Daredevil ("Day for Night"), In a World Possessed by the Human Mind ("Man Machine Poem")
+
+Red herrings: 'You're Everywhere' has "you" in it but goes with "In Between Evolution". 'I'll Believe In You' is Track Two on "Up to Here", but it has to go with YOU. 'If New Orleans Is Beat' and 'Springtime in Vienna' are places, just not in Ontario.
+
+## Number Twelve - Saturday, February 6, 2027
+
+1. **Songs from "Now for Plan A"** - About This Map, The Modern Spirit, Take Forever, Now for Plan A
+2. **Making music in the title** - Radio Show, Hot Mic, Songwriters Cabal, Family Band
+3. **Numbers Nine to Twelve on the Top Forty Countdown** - Fiddler's Green (Nine), Courage (For Hugh MacLennan) (Ten), New Orleans Is Sinking (Eleven), Gift Shop (Twelve)
+4. **TV in the lyrics** - Sherpa ("Staring into the fire before TV"), The Luxury ("Soft water and a color TV"), It Can't Be Nashville Every Night ("the glare of the TV lights"), Yawning or Snarling ("the tourists turn their TV's off")
+
+## Number Thirteen - Saturday, February 13, 2027 (Valentine's weekend)
+
+1. **Songs from "Man Machine Poem"** - Man, What Blue, Here, in the Dark, Great Soul
+2. **Love, or an engagement, in the title** - Love Is a First, Luv (Sic), Last Night I Dreamed You Didn't Love Me, Let's Stay Engaged
+3. **Someone gets called "honey" in the lyrics** - Goodnight Josephine ("But, honey, I'd walk into your painting"), The Lookahead ("Come on, honey"), The Kids Don't Get It ("I said, 'Honey, is that your question?'"), Thugs ("Ruby, honey are you mad at your man?")
+4. **A kiss in the lyrics** - 38 Years Old ("never kissed a girl"), Montreal ("Kissing girls on New Year's Eve"), So Hard Done By ("a monumental big screen kiss"), Another Midnight ("kissing all the babies")
+
+Red herring: 'Last Night I Dreamed You Didn't Love Me' fits all three of the last groups (it has "honey" and "kissed" in it too), but the title group needs it.
+
+## Number Fourteen - Saturday, February 20, 2027 (hockey week)
+
+1. **Songs from "Road Apples"** - Born in the Water, On the Verge, Long Time Running, Twist My Arm
+2. **SHE or a girl in the title** - She Didn't Know, She's Got What It Takes, Highway Girl, Thompson Girl
+3. **Hockey in the lyrics** - Fifty Mission Cap ("Won the Leafs the cup"), Fireworks ("didn't give a fuck about hockey"), The Lonely End of the Rink ("At the lonely end of the rink"), The Heart of the Melt ("dance with the puck")
+4. **The first track on their album** - Little Bones ("Road Apples"), Poets ("Phantom Power"), My Music at Work ("Music @ Work"), Yer Not the Ocean ("World Container")
+
+Red herring: 'Little Bones' is on "Road Apples", but it has to go with the first tracks.
+
+## Number Fifteen - Saturday, February 27, 2027
+
+1. **Songs from "The Tragically Hip" EP** - I'm a Werewolf, Baby, All Canadian Surf Club, Evelyn, Killing Time
+2. **A number in the title** - One Night in Copenhagen, Three Pistols, At the Hundredth Meridian, 700 Ft. Ceiling
+3. **An animal in the title** - Pigeon Camera, The Bear, Bumblebee, Sharks
+4. **Radio in the lyrics** - I'll Believe In You (Or I'll Be Leaving You Tonight) ("she awoke by the radio"), Silver Jet ("The radio dopplering"), Tiger the Lion ("The two-way radio"), Emperor Penguin ("on a radio wave breeze")
+
+Red herrings: seven titles have an animal in them. 'I'm a Werewolf, Baby' goes with the EP, and 'Tiger the Lion' and 'Emperor Penguin' go with radio.
+
+---
+
 ## Your call on each
 
 Mark each puzzle **OK**, **swap** (name the song or group) or **cut**. They're already in the game's puzzle file, `data/family-puzzles.json`, so tell Claude Code what to change and both get updated (and rechecked for a single answer). Until the game opens they can still change; after that they're locked like the daily games.

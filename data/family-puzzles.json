@@ -64,6 +64,62 @@
         { "label": "Canada in the lyrics", "songs": ["Summer's Killing Us", "The Dire Wolf", "The Last Recluse", "Train Overnight"] },
         { "label": "The song opens with its own title", "songs": ["Use It Up", "Done and Done", "Country Day", "The Exact Feeling"] }
       ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Fully Completely\"", "songs": ["Looking for a Place to Happen", "Lionized", "The Wherewithal", "Wheat Kings"] },
+        { "label": "A road in the title", "songs": ["Cemetery Sideroad", "Last American Exit", "Vegas Strip", "Streets Ahead"] },
+        { "label": "Food in the title", "songs": ["Coconut Cream", "Wild Mountain Honey", "Honey, Please", "Blow at High Dough"] },
+        { "label": "Played live only once", "songs": ["Done and Done", "Emergency", "Wait So Long", "Rain, Hearts and Fire"], "note": "In the Handbook's setlists." }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Music @ Work\"", "songs": ["Putting Down", "The Completists", "Freak Turbulence", "The Bastard"] },
+        { "label": "WE in the title", "songs": ["We Want to Be It", "We'll Go Too", "Are We Family", "As Makeshift as We Are"] },
+        { "label": "Something you ride in, in the title", "songs": ["Silver Jet", "Train Overnight", "Locked in the Trunk of a Car", "Titanic Terrarium"] },
+        { "label": "Played live 50 times or more, never in an encore", "songs": ["Coffee Girl", "Thompson Girl", "The Depression Suite", "Yawning or Snarling"], "note": "In the Handbook's setlists." }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"In Between Evolution\"", "songs": ["Vaccination Scar", "Mean Streak", "You're Everywhere", "If New Orleans Is Beat"] },
+        { "label": "YOU in the title", "songs": ["Are You Ready", "Everytime You Go", "If You Lived Here", "I'll Believe In You (Or I'll Be Leaving You Tonight)"] },
+        { "label": "An Ontario place in the title", "songs": ["Bobcaygeon", "In Sarnia", "Toronto #4", "Goodnight Attawapiskat"] },
+        { "label": "Track Two on their album", "songs": ["Springtime in Vienna", "Something On", "Daredevil", "In a World Possessed by the Human Mind"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Now for Plan A\"", "songs": ["About This Map", "The Modern Spirit", "Take Forever", "Now for Plan A"] },
+        { "label": "Making music in the title", "songs": ["Radio Show", "Hot Mic", "Songwriters Cabal", "Family Band"] },
+        { "label": "Numbers Nine to Twelve on the Top Forty Countdown", "songs": ["Fiddler's Green", "Courage (For Hugh MacLennan)", "New Orleans Is Sinking", "Gift Shop"] },
+        { "label": "TV in the lyrics", "songs": ["Sherpa", "The Luxury", "It Can't Be Nashville Every Night", "Yawning or Snarling"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Man Machine Poem\"", "songs": ["Man", "What Blue", "Here, in the Dark", "Great Soul"] },
+        { "label": "Love, or an engagement, in the title", "songs": ["Love Is a First", "Luv (Sic)", "Last Night I Dreamed You Didn't Love Me", "Let's Stay Engaged"] },
+        { "label": "Someone gets called \"honey\" in the lyrics", "songs": ["Goodnight Josephine", "The Lookahead", "The Kids Don't Get It", "Thugs"] },
+        { "label": "A kiss in the lyrics", "songs": ["38 Years Old", "Montreal", "So Hard Done By", "Another Midnight"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"Road Apples\"", "songs": ["Born in the Water", "On the Verge", "Long Time Running", "Twist My Arm"] },
+        { "label": "SHE or a girl in the title", "songs": ["She Didn't Know", "She's Got What It Takes", "Highway Girl", "Thompson Girl"] },
+        { "label": "Hockey in the lyrics", "songs": ["Fifty Mission Cap", "Fireworks", "The Lonely End of the Rink", "The Heart of the Melt"] },
+        { "label": "The first track on their album", "songs": ["Little Bones", "Poets", "My Music at Work", "Yer Not the Ocean"] }
+      ]
+    },
+    {
+      "groups": [
+        { "label": "Songs from \"The Tragically Hip\" EP", "songs": ["I'm a Werewolf, Baby", "All Canadian Surf Club", "Evelyn", "Killing Time"] },
+        { "label": "A number in the title", "songs": ["One Night in Copenhagen", "Three Pistols", "At the Hundredth Meridian", "700 Ft. Ceiling"] },
+        { "label": "An animal in the title", "songs": ["Pigeon Camera", "The Bear", "Bumblebee", "Sharks"] },
+        { "label": "Radio in the lyrics", "songs": ["I'll Believe In You (Or I'll Be Leaving You Tonight)", "Silver Jet", "Tiger the Lion", "Emperor Penguin"] }
+      ]
     }
   ]
 }
