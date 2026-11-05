@@ -178,6 +178,62 @@ clips.puzzles.forEach((p, i) => {
   notes.push(`games: ${clips.puzzles.length} Little Bones clips, ${fam.puzzles.length} Are We Family puzzles checked`);
 }
 
+// Words Into Birds (edited by hand, grids from scripts/build-bird-grids.js): exactly 20 clues,
+// answers in capital letters, word lengths that add up, and a grid that really holds together:
+// every answer fits, crossing letters agree, nothing touches side by side by accident, the whole
+// grid is joined up, and it is at most 15 squares wide so it fits a phone
+{
+  const birds = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/bird-puzzles.json'), 'utf8'));
+  const seen = new Map(); // answer -> first puzzle number
+  birds.puzzles.forEach((p, i) => {
+    const at = `bird-puzzles.json: puzzle ${i + 1}`;
+    const cl = Array.isArray(p.clues) ? p.clues : [];
+    if (cl.length !== 20) { problems.push(`${at} has ${cl.length} clues; every puzzle has exactly 20`); return; }
+    if (!p.rows || !p.cols) { problems.push(`${at} has no grid yet: run node scripts/build-bird-grids.js`); return; }
+    if (p.cols > 15) problems.push(`${at} is ${p.cols} squares wide; 15 is the most that fits a phone`);
+    const grid = new Map(); // "r,c" -> { ch, across, down }
+    let broken = false;
+    cl.forEach(c => {
+      const who = `${at}, ${c.num} ${c.dir === 'across' ? 'Across' : 'Down'}`;
+      if (!/^[A-Z]{3,}$/.test(c.answer || '')) { problems.push(`${who}: answer "${c.answer}" must be capital letters only, 3 or more`); broken = true; return; }
+      const lens = String(c.enum || '').split(/\s*,\s*/).map(Number);
+      if (lens.some(n => !n) || lens.reduce((a, b) => a + b, 0) !== c.answer.length) problems.push(`${who}: word lengths (${c.enum}) don't add up to ${c.answer.length} letters`);
+      if (!c.clue || /[#<\u2013\u2014]/.test(c.clue)) problems.push(`${who}: clue is missing, or has a "#", a "<", or a long dash`);
+      if (seen.has(c.answer) && seen.get(c.answer) !== i + 1) warnings.push(`${who}: ${c.answer} was already an answer in puzzle ${seen.get(c.answer)}`);
+      else seen.set(c.answer, i + 1);
+      if (c.dir !== 'across' && c.dir !== 'down') { problems.push(`${who}: dir must be across or down`); broken = true; return; }
+      for (let k = 0; k < c.answer.length; k++) {
+        const r = c.row + (c.dir === 'down' ? k : 0), col = c.col + (c.dir === 'across' ? k : 0);
+        if (r < 0 || col < 0 || r >= p.rows || col >= p.cols) { problems.push(`${who}: runs off the grid`); broken = true; return; }
+        const id = r + ',' + col, g = grid.get(id) || {};
+        if (g.ch && g.ch !== c.answer[k]) { problems.push(`${who}: letter ${k + 1} (${c.answer[k]}) clashes with ${g.ch} where it crosses`); broken = true; }
+        if (g[c.dir]) { problems.push(`${who}: overlaps another ${c.dir} answer`); broken = true; }
+        g.ch = c.answer[k]; g[c.dir] = c;
+        grid.set(id, g);
+      }
+    });
+    if (broken) return;
+    // Any two squares next to each other must be part of one answer running that way
+    for (const [id, g] of grid) {
+      const [r, c] = id.split(',').map(Number);
+      const right = grid.get(r + ',' + (c + 1)), below = grid.get((r + 1) + ',' + c);
+      if (right && (!g.across || g.across !== right.across)) problems.push(`${at}: squares at row ${r + 1}, columns ${c + 1}-${c + 2} touch but aren't one answer (a stray word in the grid)`);
+      if (below && (!g.down || g.down !== below.down)) problems.push(`${at}: squares at column ${c + 1}, rows ${r + 1}-${r + 2} touch but aren't one answer (a stray word in the grid)`);
+    }
+    // Joined up: every answer can be reached from the first one through crossings
+    const reach = new Set([cl[0]]), todo = [cl[0]];
+    while (todo.length) {
+      const c = todo.pop();
+      for (const g of grid.values()) if (g.across === c || g.down === c) for (const o of [g.across, g.down]) if (o && !reach.has(o)) { reach.add(o); todo.push(o); }
+    }
+    if (reach.size !== cl.length) problems.push(`${at}: the grid is in pieces (${cl.length - reach.size} answers don't connect to the rest)`);
+    // Numbers in reading order, one per starting square
+    const starts = [...new Set(cl.map(c => c.row * 1000 + c.col))].sort((a, b) => a - b);
+    cl.forEach(c => { if (starts.indexOf(c.row * 1000 + c.col) + 1 !== c.num) problems.push(`${at}: ${c.answer} is numbered ${c.num}, but its square is number ${starts.indexOf(c.row * 1000 + c.col) + 1} in reading order`); });
+  });
+  notes.push(`games: ${birds.puzzles.length} Words Into Birds crossword(s) checked`);
+}
+
 // ---- 7. CSP img-src covers every external image host ----
 const SITE_HOST = 'thehiphandbook.tthpods.com';
 const headersSrc = fs.readFileSync(path.join(ROOT, '_headers'), 'utf8');
@@ -452,7 +508,7 @@ notes.push(`release ${footerVersion}: footer, cache name and changelog checked`)
     .formatToParts(new Date()).forEach(x => { tp[x.type] = +x.value; });
   const torontoToday = Math.floor(Date.UTC(tp.year, tp.month - 1, tp.day) / 86400000);
   // [name, script, data file, list key, days between puzzles]
-  for (const [name, js, file, key, step = 1] of [["'Bring It All Back'", 'bring-it-all-back.js', 'game-pool.json', 'shows'], ["'(Un)Locked'", 'unlocked.js', 'trunk-pool.json', 'puzzles'], ["'Little Bones'", 'little-bones.js', 'clip-pool.json', 'puzzles'], ["'Are We Family'", 'are-we-family.js', 'family-puzzles.json', 'puzzles', 7]]) {
+  for (const [name, js, file, key, step = 1] of [["'Bring It All Back'", 'bring-it-all-back.js', 'game-pool.json', 'shows'], ["'(Un)Locked'", 'unlocked.js', 'trunk-pool.json', 'puzzles'], ["'Little Bones'", 'little-bones.js', 'clip-pool.json', 'puzzles'], ["'Are We Family'", 'are-we-family.js', 'family-puzzles.json', 'puzzles', 7], ["'Words Into Birds'", 'words-into-birds.js', 'bird-puzzles.json', 'puzzles', 7]]) {
     const m = fs.readFileSync(path.join(ROOT, 'js', js), 'utf8').match(/const EPOCH = '(\d{4})-(\d{2})-(\d{2})'/);
     if (!m) { problems.push(`js/${js}: could not find EPOCH, so the game schedule run-out check was skipped`); continue; }
     const count = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', file), 'utf8'))[key].length;

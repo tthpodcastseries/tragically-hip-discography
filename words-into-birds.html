@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words Into Birds - Weekly Crossword - The Hip Handbook</title>
+  <meta name="description" content="A weekly crossword about The Tragically Hip: twenty clues on songs, records, rooms, roads, and the people around the band. A new grid every Wednesday.">
+  <meta property="og:title" content="Words Into Birds - Weekly Crossword">
+  <meta property="og:description" content="Twenty clues about The Hip, a new grid every Wednesday. How fast can you fill it?">
+  <meta property="og:image" content="https://thehiphandbook.tthpods.com/assets-optimized/band/link-preview-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Tragically Hip - The Final Show, Kingston 2016">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehiphandbook.tthpods.com/words-into-birds">
+  <meta property="og:site_name" content="The Hip Handbook">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thehiphandbook.tthpods.com/words-into-birds">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-exclude-search="true"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="The Handbook">
+  <meta name="theme-color" content="#0e0b16">
+  <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/bring-it-all-back.css">
+  <link rel="stylesheet" href="/css/words-into-birds.css">
+</head>
+<body>
+<script src="/js/tth-member-gate.js"></script>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="page-header">
+  <div class="subtitle">Weekly Crossword</div>
+  <h1>Words Into Birds</h1>
+  <p class="header-desc">Twenty clues about The Hip: songs, records, rooms, roads, and the people around the band. A new grid every Wednesday.</p>
+  <a href="index.html" class="back-link">&larr; Home</a>
+</header>
+
+<main id="main-content" class="bia wb">
+  <div id="wbLoading" class="bia-note">Turning words into birds...</div>
+  <div id="wbError" class="bia-note bia-error" hidden>Couldn't load this week's crossword. Check yer connection and refresh.</div>
+
+  <div id="wbGame" hidden>
+    <div class="bia-top">
+      <span id="wbNo" class="bia-no"></span>
+      <span class="wb-meta"><span id="wbPoints"></span> <span aria-hidden="true">|</span> <span id="wbTime" aria-label="Time">0:00</span></span>
+    </div>
+
+    <div class="wb-cluebar" id="wbClueBar">
+      <button class="wb-nav" id="wbPrev" type="button" aria-label="Previous clue">&lsaquo;</button>
+      <p class="wb-cluebar-text" id="wbClueText" aria-live="polite"></p>
+      <button class="wb-nav" id="wbNext" type="button" aria-label="Next clue">&rsaquo;</button>
+    </div>
+
+    <div class="wb-board-wrap" id="wbBoardWrap">
+      <div class="wb-board" id="wbBoard" role="grid" aria-label="Crossword grid. Tap a square, then type."></div>
+      <input id="wbKeys" class="wb-keys" type="text" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" aria-label="Type a letter into the selected square">
+    </div>
+
+    <div id="wbControls" class="wb-controls">
+      <button id="wbCheckWord" class="bia-btn bia-btn-alt" type="button">Check word</button>
+      <button id="wbCheckAll" class="bia-btn bia-btn-alt" type="button">Check grid</button>
+      <button id="wbReveal" class="bia-btn bia-btn-alt" type="button">Show letter</button>
+      <button id="wbGiveUp" class="bia-btn bia-btn-alt" type="button">Give up</button>
+    </div>
+    <div id="wbMsg" class="bia-msg wb-msg" role="status" aria-live="polite"></div>
+
+    <section id="wbEnd" class="bia-card bia-end" hidden aria-labelledby="wbResult">
+      <h2 class="bia-result" id="wbResult"></h2>
+      <p id="wbTotal" class="bia-total"></p>
+      <pre id="wbShareText" class="bia-sharetext"></pre>
+      <div class="bia-actions">
+        <button id="wbCopy" class="bia-btn" type="button">Copy my score</button>
+        <button id="wbShare" class="bia-btn bia-btn-alt" type="button" hidden>Share</button>
+      </div>
+      <div class="bia-cardshare">
+        <h3 class="bia-h2">Share a card</h3>
+        <div class="bia-formats" role="group" aria-label="Card size">
+          <button class="bia-fmt" type="button" data-format="facebook" aria-pressed="true">Facebook<small>1200 x 630</small></button>
+          <button class="bia-fmt" type="button" data-format="instagram" aria-pressed="false">Instagram post<small>1080 x 1350</small></button>
+          <button class="bia-fmt" type="button" data-format="story" aria-pressed="false">Instagram story<small>1080 x 1920</small></button>
+        </div>
+        <button id="wbMakeCard" class="bia-btn" type="button">Make my card</button>
+        <div id="wbCardWrap" hidden>
+          <img id="wbCardImg" class="bia-card-img" alt="Words Into Birds score card">
+          <div class="bia-actions">
+            <button id="wbCardShare" class="bia-btn" type="button" hidden>Share card</button>
+            <button id="wbCardSave" class="bia-btn bia-btn-alt" type="button">Save image</button>
+          </div>
+        </div>
+      </div>
+      <div id="wbStats" class="bia-stats"></div>
+      <p class="bia-next">Next crossword in <b id="wbCountdown">--:--:--</b></p>
+    </section>
+
+    <div class="wb-clues">
+      <section aria-labelledby="wbAcrossH"><h2 class="wb-clues-h" id="wbAcrossH">Across</h2><ol id="wbAcross" class="wb-list"></ol></section>
+      <section aria-labelledby="wbDownH"><h2 class="wb-clues-h" id="wbDownH">Down</h2><ol id="wbDown" class="wb-list"></ol></section>
+    </div>
+
+    <details class="bia-how">
+      <summary>How it works</summary>
+      <ul>
+        <li>A new crossword drops every Wednesday at midnight Toronto time (Eastern), at the same moment for everyone, wherever you are.</li>
+        <li>Twenty clues, every one about The Hip: songs, records, release dates, rooms they played, tours, the band, the people around them, and the podcasts.</li>
+        <li>Tap a square and type. Tap it again to switch between across and down. The arrows by the clue move to the next clue. On a keyboard, Enter does too.</li>
+        <li>The numbers after a clue are its word lengths: (5, 3) is two words, five letters then three.</li>
+        <li>Points: start at 100. Check word or Check grid costs 5 each time, Show letter costs 10. Finish and you keep at least 10. Give up and it's 0 for the week.</li>
+        <li>The clock only runs while the page is open in front of you.</li>
+        <li>Yer progress and stats are saved on this device only.</li>
+      </ul>
+    </details>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/js/words-into-birds.js"></script>
+<script src="/js/shared-footer.js"></script>
+</body>
+</html>

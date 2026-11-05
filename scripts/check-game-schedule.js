@@ -4,8 +4,9 @@
 // start dates since the relaunch fixes, audit GAME-01 and GAME-02).
 //
 // Two checks on data/game-pool.json ('Bring It All Back'), data/trunk-pool.json
-// ('(Un)Locked'), data/clip-pool.json ('Little Bones') and data/family-puzzles.json
-// ('Are We Family', weekly: one puzzle every 7 days). Until a game opens its puzzles may
+// ('(Un)Locked'), data/clip-pool.json ('Little Bones'), data/family-puzzles.json
+// ('Are We Family', weekly: one puzzle every 7 days) and data/bird-puzzles.json
+// ('Words Into Birds', weekly). Until a game opens its puzzles may
 // still change (nobody has played one); they're listed, and the lock just needs updating.
 //
 // 1. The lock (data/game-schedule-lock.json, committed). It holds each game's start
@@ -95,6 +96,13 @@ const GAMES = [
     // are refreshed details
     name: "'Are We Family'", file: 'family-puzzles.json', jsFile: 'are-we-family.js', listKey: 'puzzles', step: 7,
     keyOf: p => JSON.stringify(p.groups.map(g => [g.label, g.songs])), label: p => `"${p.groups[0].label}" and 3 more groups`,
+    detailNote: () => '',
+  },
+  {
+    // Weekly. The puzzle is the grid: every answer, its clue and where it sits. The word
+    // lengths shown after a clue (enum) are a refreshed detail
+    name: "'Words Into Birds'", file: 'bird-puzzles.json', jsFile: 'words-into-birds.js', listKey: 'puzzles', step: 7,
+    keyOf: p => JSON.stringify([p.rows, p.cols, p.clues.map(c => [c.answer, c.clue, c.row, c.col, c.dir])]), label: p => `the grid with ${p.clues.length} clues, ${p.clues[0].answer} first`,
     detailNote: () => '',
   },
 ];

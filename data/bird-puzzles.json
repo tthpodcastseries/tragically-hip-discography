@@ -1,0 +1,105 @@
+{
+  "about": "'Words Into Birds', the weekly crossword (words-into-birds.html). Edited by hand, like lyrics.json: one puzzle a week, exactly 20 clues, each { answer, enum, clue }. answer is capital letters only; enum is the word lengths shown after the clue. node scripts/build-bird-grids.js adds the grid (rows, cols, and row, col, dir, num on each clue) to new puzzles and never touches one that has a grid. Once the game opens, only add puzzles to the end: never change, reorder or remove one that is scheduled (node scripts/check-game-schedule.js). Where each clue's fact comes from: docs/The Hip Handbook - Crossword Clue Bank.md.",
+  "puzzles": [
+    {
+      "rows": 20, "cols": 15,
+      "clues": [
+        {"answer":"SINCLAIR","enum":"8","clue":"Gord who released \"Taxi Dancers\" in 2020","row":1,"col":6,"dir":"across","num":3},
+        {"answer":"ROADSIDE","enum":"8","clue":"Another ___ Attraction: the festival tour of 1993, 1995, and 1997","row":3,"col":2,"dir":"across","num":4},
+        {"answer":"BAKER","enum":"5","clue":"Rob who formed Stripper's Union with Craig Northey","row":4,"col":10,"dir":"across","num":7},
+        {"answer":"SIRIUSXM","enum":"8","clue":"Picked up The Tragically Hip Top Forty Countdown for The Tragically Hip Radio","row":5,"col":0,"dir":"across","num":8},
+        {"answer":"LEGROS","enum":"6","clue":"Greg ___, jD's co-host on Fully & Completely","row":6,"col":9,"dir":"across","num":9},
+        {"answer":"BOBCAYGEON","enum":"10","clue":"Number Four in The Tragically Hip Top Forty Countdown","row":8,"col":3,"dir":"across","num":11},
+        {"answer":"BATHOUSE","enum":"8","clue":"The studio where \"Music @ Work\" was made","row":10,"col":0,"dir":"across","num":13},
+        {"answer":"PHANTOMPOWER","enum":"7, 5","clue":"Album released July 14, 1998","row":12,"col":2,"dir":"across","num":15},
+        {"answer":"DONSMITH","enum":"3, 5","clue":"Producer of \"Up to Here\" and \"Road Apples\"","row":14,"col":7,"dir":"across","num":17},
+        {"answer":"ROADAPPLES","enum":"4, 6","clue":"Album released February 19, 1991","row":16,"col":1,"dir":"across","num":18},
+        {"answer":"FAY","enum":"3","clue":"Johnny behind the 2025 EP \"Mercury Sea\"","row":16,"col":12,"dir":"across","num":19},
+        {"answer":"KINGSTON","enum":"8","clue":"Home of The Final Show, August 20, 2016","row":18,"col":4,"dir":"across","num":20},
+        {"answer":"GRACETOO","enum":"5, 3","clue":"Number One in The Tragically Hip Top Forty Countdown","row":0,"col":13,"dir":"down","num":1},
+        {"answer":"ABACUS","enum":"6","clue":"How The Tragically Hip Top Forty Countdown was tabulated","row":1,"col":4,"dir":"down","num":2},
+        {"answer":"LANGLOIS","enum":"8","clue":"Paul whose \"Smooth Rock Falls\" was a surprise release in February 2026","row":3,"col":11,"dir":"down","num":5},
+        {"answer":"BILLYRAY","enum":"5, 3","clue":"Road nickname of Dave Koster, The Hip's stage manager","row":4,"col":1,"dir":"down","num":6},
+        {"answer":"JAKEGOLD","enum":"4, 4","clue":"Longtime manager of The Hip, heard on The Tragically Hip Interview Series","row":7,"col":7,"dir":"down","num":10},
+        {"answer":"SECRETPATH","enum":"6, 4","clue":"Gord Downie's project telling Chanie Wenjack's story","row":9,"col":13,"dir":"down","num":12},
+        {"answer":"HORSESHOE","enum":"9","clue":"Toronto tavern The Hip played 14 times by the Handbook's count, and home of GEDfest Toronto 2026","row":11,"col":10,"dir":"down","num":14},
+        {"answer":"BOBROCK","enum":"3, 4","clue":"Producer of \"World Container\" and \"We Are the Same\"","row":13,"col":1,"dir":"down","num":16}
+      ]
+    },
+    {
+      "rows": 22, "cols": 14,
+      "clues": [
+        {"answer":"HALIFAX","enum":"7","clue":"City of \"From the Vault: Vol. 1\", recorded at the Metro Centre on February 2, 1995","row":0,"col":7,"dir":"across","num":2},
+        {"answer":"UPTOHERE","enum":"2, 2, 4","clue":"Album released September 5, 1989","row":2,"col":6,"dir":"across","num":5},
+        {"answer":"BAHAMAS","enum":"7","clue":"Islands where \"In Violet Light\" was recorded, at Compass Point Studios","row":4,"col":0,"dir":"across","num":6},
+        {"answer":"OPIATED","enum":"7","clue":"Closing track on The Hip's first full-length album","row":7,"col":3,"dir":"across","num":9},
+        {"answer":"MARCHICA","enum":"8","clue":"Pete ___, hearing The Hip for the first time on Getting Hip to The Hip","row":9,"col":6,"dir":"across","num":12},
+        {"answer":"ALS","enum":"3","clue":"The ___ Society of Canada, fundraising partner of The Tragically Hip Top Forty Countdown","row":13,"col":0,"dir":"across","num":15},
+        {"answer":"ADAMKASPER","enum":"4, 6","clue":"Producer of \"In Between Evolution\"","row":13,"col":4,"dir":"across","num":16},
+        {"answer":"AWAYISMINE","enum":"4, 2, 4","clue":"Gord Downie record released in 2020","row":15,"col":2,"dir":"across","num":17},
+        {"answer":"LITTLEBONES","enum":"6, 5","clue":"Opening track on \"Road Apples\", and Number Five in The Tragically Hip Top Forty Countdown","row":17,"col":3,"dir":"across","num":18},
+        {"answer":"FIREWORKS","enum":"9","clue":"Number Fifteen in The Tragically Hip Top Forty Countdown","row":19,"col":4,"dir":"across","num":19},
+        {"answer":"DAYFORNIGHT","enum":"3, 3, 5","clue":"The tour with the most shows in the Handbook's show list: 101","row":21,"col":3,"dir":"across","num":20},
+        {"answer":"NORTHEY","enum":"7","clue":"Craig ___ of The Odds, Rob Baker's partner in Stripper's Union","row":0,"col":2,"dir":"down","num":1},
+        {"answer":"LIONIZED","enum":"8","clue":"Fifth track on \"Fully Completely\"","row":0,"col":9,"dir":"down","num":3},
+        {"answer":"COBOARENA","enum":"4, 5","clue":"Detroit arena where \"Live Between Us\" was recorded, November 23, 1996","row":2,"col":0,"dir":"down","num":4},
+        {"answer":"MEMPHIS","enum":"7","clue":"City where The Hip recorded their first full-length album","row":4,"col":4,"dir":"down","num":7},
+        {"answer":"HARMER","enum":"6","clue":"Sarah ___, who duets on 'The Lookahead'","row":6,"col":6,"dir":"down","num":8},
+        {"answer":"TSANGARIDES","enum":"11","clue":"Chris ___, producer of \"Fully Completely\"","row":7,"col":13,"dir":"down","num":10},
+        {"answer":"KINGSWAY","enum":"8","clue":"New Orleans studio where \"Road Apples\" was recorded","row":9,"col":2,"dir":"down","num":11},
+        {"answer":"MASSEYHALL","enum":"6, 4","clue":"Toronto hall The Hip played twelve times, by the Handbook's count","row":12,"col":0,"dir":"down","num":13},
+        {"answer":"GAVINBROWN","enum":"5, 5","clue":"Producer of \"Now for Plan A\"","row":12,"col":9,"dir":"down","num":14}
+      ]
+    },
+    {
+      "rows": 21, "cols": 15,
+      "clues": [
+        {"answer":"CLEVELAND","enum":"9","clue":"City of \"From the Vault: Vol. 6\", recorded in 1996","row":0,"col":5,"dir":"across","num":2},
+        {"answer":"HENHOUSE","enum":"8","clue":"\"Trouble at the ___\", released May 7, 1996","row":2,"col":0,"dir":"across","num":3},
+        {"answer":"CBC","enum":"3","clue":"Network that broadcast The Final Show to 11.7 million Canadians","row":2,"col":12,"dir":"across","num":5},
+        {"answer":"GIFTSHOP","enum":"4, 4","clue":"Number Twelve in The Tragically Hip Top Forty Countdown","row":5,"col":5,"dir":"across","num":6},
+        {"answer":"ROXY","enum":"4","clue":"Live at the ___: recorded May 3, 1991, in Hollywood","row":7,"col":7,"dir":"across","num":10},
+        {"answer":"AUSTIN","enum":"6","clue":"City of Stubb's BBQ, where \"From the Vault: Vol. 2\" was recorded on October 26, 2002","row":11,"col":9,"dir":"across","num":15},
+        {"answer":"WORLDCONTAINER","enum":"5, 9","clue":"Album released October 17, 2006","row":13,"col":0,"dir":"across","num":16},
+        {"answer":"FLAMENCO","enum":"8","clue":"Number Twenty-Seven in The Tragically Hip Top Forty Countdown","row":17,"col":1,"dir":"across","num":17},
+        {"answer":"STEVEBERLIN","enum":"5, 6","clue":"Los Lobos member who co-produced \"Phantom Power\"","row":19,"col":3,"dir":"across","num":18},
+        {"answer":"POETS","enum":"5","clue":"Number Twenty-Three in The Tragically Hip Top Forty Countdown","row":0,"col":1,"dir":"down","num":1},
+        {"answer":"COURAGE","enum":"7","clue":"Number Ten in The Tragically Hip Top Forty Countdown, written for Hugh MacLennan","row":0,"col":5,"dir":"down","num":2},
+        {"answer":"BATH","enum":"4","clue":"Ontario town that's home to The Bathouse","row":2,"col":10,"dir":"down","num":4},
+        {"answer":"COPPS","enum":"5","clue":"___ Coliseum, the Hamilton arena of \"From the Vault: Vol. 3\", February 6, 2007","row":2,"col":12,"dir":"down","num":5},
+        {"answer":"FIRSTAVENUE","enum":"5, 6","clue":"Minneapolis club The Hip played seven times, by the Handbook's count","row":5,"col":7,"dir":"down","num":7},
+        {"answer":"KEVINDREW","enum":"5, 4","clue":"Co-producer of \"Man Machine Poem\" with Dave Hamelin","row":7,"col":2,"dir":"down","num":8},
+        {"answer":"HUGHPADGHAM","enum":"4, 7","clue":"Co-producer of \"In Violet Light\" with Terry Manning","row":7,"col":4,"dir":"down","num":9},
+        {"answer":"LYDEN","enum":"5","clue":"Tim ___, hearing The Hip for the first time on Getting Hip to The Hip","row":7,"col":14,"dir":"down","num":11},
+        {"answer":"GUESSWHAT","enum":"5, 4","clue":"2023 album from the Paul Langlois Band","row":8,"col":0,"dir":"down","num":12},
+        {"answer":"LUSTREPARFAIT","enum":"6, 7","clue":"2023 record from Gord Downie and Bob Rock","row":8,"col":12,"dir":"down","num":13},
+        {"answer":"MUSICATWORK","enum":"5, 2, 4","clue":"Album released June 6, 2000, written with an at-sign","row":10,"col":10,"dir":"down","num":14}
+      ]
+    },
+    {
+      "rows": 22, "cols": 15,
+      "clues": [
+        {"answer":"HAMILTON","enum":"8","clue":"City where \"It's a Good Life If You Don't Weaken\" premiered, at Theatre Aquarius","row":0,"col":1,"dir":"across","num":1},
+        {"answer":"LAKEFEVER","enum":"4, 5","clue":"Number Twenty-Four in The Tragically Hip Top Forty Countdown","row":2,"col":0,"dir":"across","num":3},
+        {"answer":"JUNO","enum":"4","clue":"\"Trouble at the Henhouse\" won this for Album of the Year in 1997","row":4,"col":0,"dir":"across","num":6},
+        {"answer":"ELDORADO","enum":"8","clue":"Closing track on \"Fully Completely\"","row":4,"col":5,"dir":"across","num":7},
+        {"answer":"METRO","enum":"5","clue":"Chicago club The Hip played seven times, by the Handbook's count","row":7,"col":1,"dir":"across","num":9},
+        {"answer":"THREEPISTOLS","enum":"5, 7","clue":"Number Twenty-One in The Tragically Hip Top Forty Countdown","row":9,"col":0,"dir":"across","num":11},
+        {"answer":"WHEATKINGS","enum":"5, 5","clue":"Tenth track on \"Fully Completely\"","row":11,"col":2,"dir":"across","num":14},
+        {"answer":"COMMODORE","enum":"9","clue":"Vancouver ballroom The Hip played eleven times, by the Handbook's count","row":14,"col":6,"dir":"across","num":17},
+        {"answer":"CORDELIA","enum":"8","clue":"Third track on \"Road Apples\"","row":16,"col":1,"dir":"across","num":19},
+        {"answer":"NOWFORPLANA","enum":"3, 3, 4, 1","clue":"Album released October 2, 2012","row":20,"col":3,"dir":"across","num":20},
+        {"answer":"TIVOLI","enum":"6","clue":"Utrecht room The Hip played eight times, by the Handbook's count","row":0,"col":6,"dir":"down","num":2},
+        {"answer":"KENGREER","enum":"3, 5","clue":"Producer of the 1987 EP, from Red Rider","row":2,"col":2,"dir":"down","num":4},
+        {"answer":"PHOENIX","enum":"7","clue":"The ___ Concert Theatre, a Toronto room The Hip played seven times by the Handbook's count","row":2,"col":12,"dir":"down","num":5},
+        {"answer":"VREEKEN","enum":"7","clue":"Mark ___, co-producer of \"Trouble at the Henhouse\", \"Phantom Power\", and \"Music @ Work\"","row":6,"col":4,"dir":"down","num":8},
+        {"answer":"STLOUIS","enum":"2, 5","clue":"Justin ___, on the Discovering Downie panel","row":8,"col":0,"dir":"down","num":10},
+        {"answer":"TWISTMYARM","enum":"5, 2, 3","clue":"Second track on \"Road Apples\"","row":9,"col":8,"dir":"down","num":12},
+        {"answer":"SASKADELPHIA","enum":"12","clue":"EP released May 21, 2021","row":9,"col":11,"dir":"down","num":13},
+        {"answer":"DAREDEVIL","enum":"9","clue":"Second track on \"Day for Night\"","row":11,"col":14,"dir":"down","num":15},
+        {"answer":"KIRKLANE","enum":"4, 4","clue":"Discovering Downie panelist alongside Craig Rogers","row":14,"col":3,"dir":"down","num":16},
+        {"answer":"SCARED","enum":"6","clue":"Number Twenty-Eight in The Tragically Hip Top Forty Countdown","row":15,"col":1,"dir":"down","num":18}
+      ]
+    }
+  ]
+}

@@ -1820,6 +1820,16 @@
         "22b692c1639392e6",
         "de9b59986c50b6be"
       ]
+    },
+    "bird-puzzles.json": {
+      "name": "Words Into Birds",
+      "epoch": "2099-01-07",
+      "days": [
+        "5b243533b9c869c9",
+        "361c2dc4c1d8d38b",
+        "eacd4c90fc2620a7",
+        "99fbec763f531563"
+      ]
     }
   }
 }
