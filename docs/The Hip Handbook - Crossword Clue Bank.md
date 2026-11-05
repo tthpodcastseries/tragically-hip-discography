@@ -8,18 +8,20 @@ Size: a puzzle's 20 answers need to add up to about 170 letters or fewer, or the
 
 ## Puzzles drafted (not open yet, so all of these can still change)
 
+**Approved by jD on November 5, 2026: Puzzles 1, 2 and 3.** Puzzles 4 to 15 are still waiting on his read-through (the vetting PDF is `docs/The Hip Handbook - New Games Puzzle Vetting.pdf`, on jD's Mac only).
+
 Every clue below is from the site data unless it says otherwise. Sources: Top 40 ranks, producers, studios, Junos and solo records from `js/discography-app.js`; release dates, track lists and milestones from `data/discography.json`; tours and venue counts ("by the Handbook's count") from `data/tth-tour-data.json`; podcast facts from `data/podcast-shows.json`.
 
-**Puzzle 1** (the mockup grid): GRACETOO, BOBCAYGEON, ABACUS, SIRIUSXM, LEGROS, ROADAPPLES, PHANTOMPOWER, BOBROCK, DONSMITH, BATHOUSE, JAKEGOLD, BILLYRAY, SINCLAIR, LANGLOIS, BAKER, FAY, SECRETPATH, KINGSTON, HORSESHOE, ROADSIDE.
+**Puzzle 1** (approved, the mockup grid): GRACETOO, BOBCAYGEON, ABACUS, SIRIUSXM, LEGROS, ROADAPPLES, PHANTOMPOWER, BOBROCK, DONSMITH, BATHOUSE, JAKEGOLD, BILLYRAY, SINCLAIR, LANGLOIS, BAKER, FAY, SECRETPATH, KINGSTON, HORSESHOE, ROADSIDE.
 - jD: JAKEGOLD ("Longtime manager of The Hip"), confirmed by jD on November 5, 2026. The site data only has him on The Tragically Hip Interview Series.
 - jD: BILLYRAY (Dave Koster, stage manager, title from Jake Gold via jD, November 5, 2026).
 - HORSESHOE also names GEDfest Toronto 2026, from the shared rules.
 
-**Puzzle 2** (167 letters, 14 wide): LIONIZED, UPTOHERE, MEMPHIS, OPIATED, TSANGARIDES, BAHAMAS, ADAMKASPER, GAVINBROWN, HARMER, COBOARENA, MASSEYHALL, HALIFAX, DAYFORNIGHT, AWAYISMINE, NORTHEY, MARCHICA, ALS, FIREWORKS, LITTLEBONES, KINGSWAY.
+**Puzzle 2** (approved, 167 letters, 14 wide): LIONIZED, UPTOHERE, MEMPHIS, OPIATED, TSANGARIDES, BAHAMAS, ADAMKASPER, GAVINBROWN, HARMER, COBOARENA, MASSEYHALL, HALIFAX, DAYFORNIGHT, AWAYISMINE, NORTHEY, MARCHICA, ALS, FIREWORKS, LITTLEBONES, KINGSWAY.
 - DAYFORNIGHT is clued as the tour (101 shows in the show list), not the album.
 - MEMPHIS and OPIATED dodge naming "Up to Here", since UPTOHERE is in the same grid.
 
-**Puzzle 3** (161 letters, 15 wide): COURAGE, GIFTSHOP, POETS, FLAMENCO, HENHOUSE, MUSICATWORK, WORLDCONTAINER, HUGHPADGHAM, BATH, STEVEBERLIN, KEVINDREW, ROXY, CLEVELAND, AUSTIN, COPPS, LUSTREPARFAIT, LYDEN, CBC, GUESSWHAT, FIRSTAVENUE.
+**Puzzle 3** (approved, 161 letters, 15 wide): COURAGE, GIFTSHOP, POETS, FLAMENCO, HENHOUSE, MUSICATWORK, WORLDCONTAINER, HUGHPADGHAM, BATH, STEVEBERLIN, KEVINDREW, ROXY, CLEVELAND, AUSTIN, COPPS, LUSTREPARFAIT, LYDEN, CBC, GUESSWHAT, FIRSTAVENUE.
 - MUSICATWORK: the clue says the title is written with an at-sign.
 
 **Puzzle 4** (164 letters, 15 wide): WHEATKINGS, CORDELIA, THREEPISTOLS, LAKEFEVER, SCARED, TWISTMYARM, DAREDEVIL, ELDORADO, SASKADELPHIA, METRO, NOWFORPLANA, KENGREER, VREEKEN, COMMODORE, TIVOLI, PHOENIX, KIRKLANE, STLOUIS, JUNO, HAMILTON.

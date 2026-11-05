@@ -1,5 +1,7 @@
 # The Hip Handbook - Are We Family - Puzzle Drafts
 
+**Approved: jD vetted all fifteen puzzles (Numbers One to Fifteen, November 21, 2026 to February 27, 2027) and signed them off on November 5, 2026, from the vetting PDF. They are good to go as they stand in `data/family-puzzles.json`.**
+
 Drafted 2026-11-02 for jD to vet. Revised 2026-11-05: the hidden-word groups in No. 1, 2, 4 and 7 (numbered as now) are swapped for groups a fan can reason out from the songs (jD found them too hard). Eight weekly puzzles, one a Saturday from the opening day, Saturday, November 21, 2026, to Saturday, January 9, 2027 (jD moved the game from Sundays to Saturdays on 2026-11-05, and swapped the old No. 5 and No. 7 so snow week stays the week before Christmas).
 
 Every group comes from the Handbook's own data (album track lists in `data/discography.json`, live stats and Countdown ranks in `data/song-index.json`, lyrics in `data/lyrics.json`), or from the song titles themselves. Nothing here is from memory. A script checked each puzzle: all 16 songs fit their group, and there is exactly one way to sort them.
@@ -168,4 +170,4 @@ Red herrings: seven titles have an animal in them. 'I'm a Werewolf, Baby' goes w
 
 ## Your call on each
 
-Mark each puzzle **OK**, **swap** (name the song or group) or **cut**. They're already in the game's puzzle file, `data/family-puzzles.json`, so tell Claude Code what to change and both get updated (and rechecked for a single answer). Until the game opens they can still change; after that they're locked like the daily games.
+All fifteen approved by jD, November 5, 2026. Any later change goes through jD by puzzle number. Until the game opens on November 21 a puzzle can still change; after that they're locked like the daily games.
