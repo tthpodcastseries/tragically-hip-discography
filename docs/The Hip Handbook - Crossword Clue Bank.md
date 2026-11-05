@@ -1,6 +1,6 @@
 # The Hip Handbook - Crossword Clue Bank (Words Into Birds)
 
-Answers and clues for the weekly crossword. Each puzzle uses exactly 20. The puzzles themselves live in `data/bird-puzzles.json`; this file says where each clue's fact comes from and what is waiting in the bank. When a banked clue goes into a puzzle, move it to that puzzle's list so it isn't repeated (`audit-site.js` warns if an answer comes back).
+Answers and clues for the weekly crossword. Each puzzle uses exactly 20. The puzzles themselves live in `data/bird-puzzles.json`; this file says where each clue's fact comes from and what is waiting in the bank. When a banked clue goes into a puzzle, move it to that puzzle's list so you can see when it was last used. Answers can be recycled, but not within a month: an answer can come back 5 or more puzzles after its last use (jD, November 5, 2026). `audit-site.js` and the grid builder both stop anything sooner.
 
 Status: "Site data" means the fact is in the Handbook's own data files. "jD" means it came from jD. "Needs jD" means don't ship it until he confirms.
 

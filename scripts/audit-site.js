@@ -184,7 +184,10 @@ clips.puzzles.forEach((p, i) => {
 // grid is joined up, and it is at most 15 squares wide so it fits a phone
 {
   const birds = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/bird-puzzles.json'), 'utf8'));
-  const seen = new Map(); // answer -> first puzzle number
+  // An answer can come back, but not within a month: at least 5 puzzles (35 days) after its
+  // last use (jD, 2026-11-05)
+  const REPEAT_GAP = 5;
+  const seen = new Map(); // answer -> last puzzle number it was in
   birds.puzzles.forEach((p, i) => {
     const at = `bird-puzzles.json: puzzle ${i + 1}`;
     const cl = Array.isArray(p.clues) ? p.clues : [];
@@ -199,8 +202,8 @@ clips.puzzles.forEach((p, i) => {
       const lens = String(c.enum || '').split(/\s*,\s*/).map(Number);
       if (lens.some(n => !n) || lens.reduce((a, b) => a + b, 0) !== c.answer.length) problems.push(`${who}: word lengths (${c.enum}) don't add up to ${c.answer.length} letters`);
       if (!c.clue || /[#<\u2013\u2014]/.test(c.clue)) problems.push(`${who}: clue is missing, or has a "#", a "<", or a long dash`);
-      if (seen.has(c.answer) && seen.get(c.answer) !== i + 1) warnings.push(`${who}: ${c.answer} was already an answer in puzzle ${seen.get(c.answer)}`);
-      else seen.set(c.answer, i + 1);
+      if (seen.has(c.answer) && i + 1 - seen.get(c.answer) < REPEAT_GAP) problems.push(`${who}: ${c.answer} was an answer in puzzle ${seen.get(c.answer)}; an answer can only come back ${REPEAT_GAP} or more puzzles later (more than a month)`);
+      seen.set(c.answer, i + 1);
       if (c.dir !== 'across' && c.dir !== 'down') { problems.push(`${who}: dir must be across or down`); broken = true; return; }
       for (let k = 0; k < c.answer.length; k++) {
         const r = c.row + (c.dir === 'down' ? k : 0), col = c.col + (c.dir === 'across' ? k : 0);

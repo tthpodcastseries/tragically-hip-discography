@@ -153,6 +153,9 @@ function layout(puzzle, seedBase) {
 const text = fs.readFileSync(FILE, 'utf8');
 const data = JSON.parse(text);
 let problems = 0, built = 0;
+// An answer can come back, but not within a month: at least 5 puzzles after its last use
+const REPEAT_GAP = 5;
+const lastUse = new Map();
 data.puzzles.forEach((p, i) => {
   const at = `Puzzle ${i + 1}`;
   const answers = (p.clues || []).map(c => c.answer);
@@ -160,6 +163,9 @@ data.puzzles.forEach((p, i) => {
   const bad = answers.filter(a => !/^[A-Z]{3,}$/.test(a));
   if (bad.length) { console.error(`${at}: answers must be capital letters only, 3 or more: ${bad.join(', ')}`); problems++; return; }
   if (new Set(answers).size !== answers.length) { console.error(`${at}: an answer is used twice`); problems++; return; }
+  const soon = answers.filter(a => lastUse.has(a) && i + 1 - lastUse.get(a) < REPEAT_GAP);
+  answers.forEach(a => lastUse.set(a, i + 1));
+  if (soon.length) { console.error(`${at}: ${soon.join(', ')} came up too recently; an answer can only come back ${REPEAT_GAP} or more puzzles later (more than a month)`); problems++; return; }
   if (p.rows && p.cols) { console.log(`${at}: grid already set (${p.cols} wide, ${p.rows} tall), left alone`); return; }
   const g = layout(p, i + 1);
   if (!g) { console.error(`${at}: no grid fits all ${CLUES} answers within ${MAX_COLS} wide and ${MAX_ROWS} tall. The answers add up to ${answers.join('').length} letters; puzzles that fit usually have about 170 or fewer. Swap a long answer for a shorter one, or one with more common letters`); problems++; return; }
