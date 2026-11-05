@@ -1,6 +1,6 @@
 # The Hip Handbook - Are We Family - Puzzle Drafts
 
-Drafted 2026-11-02 for jD to vet. Eight weekly puzzles, one for each Sunday left in 2026 (November 8 to December 27). If the game opens later, they keep this order and just start on the first Sunday it's live.
+Drafted 2026-11-02 for jD to vet. Revised 2026-11-05: the hidden-word groups in No. 1, 2, 4 and 5 are swapped for groups a fan can reason out from the songs (jD found them too hard). Eight weekly puzzles, one for each Sunday left in 2026 (November 8 to December 27). If the game opens later, they keep this order and just start on the first Sunday it's live.
 
 Every group comes from the Handbook's own data (album track lists in `data/discography.json`, live stats and Countdown ranks in `data/song-index.json`, lyrics in `data/lyrics.json`), or from the song titles themselves. Nothing here is from memory. A script checked each puzzle: all 16 songs fit their group, and there is exactly one way to sort them.
 
@@ -9,10 +9,10 @@ Groups run easiest (1) to hardest (4), the way the game will colour them.
 ## Check these first
 
 1. **Live stats are documented shows only.** "Most played", "most encores" and "opened the most shows" count the setlists in the Handbook (setlist.fm plus the hand fixes). The early years are thin. If you'd rather the labels said "in the Handbook's setlists", say so.
-2. **The TTHTop40 Countdown group (No. 2)** uses ranks 1-4 as stored on the site. Check that they match the final Countdown.
+2. **The Countdown groups (No. 2 top four, No. 5 Numbers Five to Eight)** use the ranks as stored on the site. Check that they match the final Countdown. The No. 2 label no longer says TTHTop40, which is the hashtag and internal short form only.
 3. **Lyric groups (No. 7 snow, No. 8 Canada and "opens with its own title")** depend on the hand-corrected lyrics. The matched words are listed so you can check each one against the recording.
-4. **'Tired as Fuck' is a tile in No. 4.** It's the real title, but it'll show up in share cards and screenshots. Swap it if you'd rather keep the game clean.
-5. **Some big songs come back.** 'Grace, Too' and 'Little Bones' each appear 3 times, mostly in the live-stat groups, because the top 4 are always the same big songs. 105 different songs are used across the 8 puzzles.
+4. **The box-set group (No. 4)** comes from the Handbook's discography: those four songs appear nowhere else in it. Singles and B-sides aren't tracked there, so check none came out earlier.
+5. **Some big songs come back.** 'Grace, Too', 'Little Bones' and 'Blow at High Dough' each appear 3 times, mostly in the live-stat and Countdown groups, because the top songs are always the same big ones. 105 different songs are used across the 8 puzzles.
 6. **Titles use the official song list spelling** ('Fifty Mission Cap', 'Courage (For Hugh MacLennan)'), not the album sleeve spellings in `discography.json`.
 
 ---
@@ -22,18 +22,18 @@ Groups run easiest (1) to hardest (4), the way the game will colour them.
 1. **Songs from "Road Apples"** - Cordelia, The Luxury, Three Pistols, Fiddler's Green
 2. **A city or town in the title** - It Can't Be Nashville Every Night, Montreal, In Sarnia, Springtime in Vienna
 3. **Share a name with an album by The Hip** - Fully Completely, World Container, Now for Plan A, Man Machine Poem
-4. **Hidden body parts** - Streets A**HEAD**, Ma**CHIN**e, Member**SHIP** (hip), 38 Y**EAR**s Old
+4. **Time in the title** - Killing Time, Long Time Running, An Inch an Hour, Take Forever
 
-Red herrings: 'Man Machine Poem' also hides CHIN, and 'Machine' looks like it belongs with the album names. Note 'Man Machine Poem' the song is on "Now for Plan A", not on the album of the same name.
+Red herrings: 'It Can't Be Nashville Every Night' and 'Springtime in Vienna' have time in their titles too, but they're the only way to make four cities. 'Long Time Running' is on "Road Apples". Note 'Man Machine Poem' the song is on "Now for Plan A", not on the album of the same name.
 
 ## No. 2 - Sunday, November 15
 
 1. **Songs from "Phantom Power"** - Poets, Save the Planet, Fireworks, Vapour Trails
 2. **One-word orders** - Stay, Leave, Fly, Fight
-3. **The top 4 on the TTHTop40 Countdown** - Grace, Too (No. 1), Ahead by a Century (No. 2), 38 Years Old (No. 3), Bobcaygeon (No. 4)
-4. **Hidden numbers** - Pre**TEN**d, When the W**EIGHT** Comes Down, My Music a**T WO**rk, Little B**ONE**s
+3. **An ocean, a lake, or a river in the title** - Ocean Next, Lake Fever, Yer Not the Ocean, Speed River
+4. **The top four on the Top Forty Countdown** - Grace, Too (No. 1), Ahead by a Century (No. 2), 38 Years Old (No. 3), Bobcaygeon (No. 4)
 
-Red herrings: 'Bobcaygeon' is on "Phantom Power" too. 'Pretend' is also a one-word order.
+Red herrings: 'Bobcaygeon' is on "Phantom Power" too. 'Vapour Trails' sounds watery but has no ocean, lake, or river in it.
 
 ## No. 3 - Sunday, November 22
 
@@ -49,18 +49,18 @@ Red herrings: 'New Orleans Is Sinking' and 'Another Midnight' are both on "Up to
 1. **Songs from "Day for Night"** - Greasy Jungle, Thugs, Emergency, Titanic Terrarium
 2. **An animal in the title** - Emperor Penguin, Tiger the Lion, The Dire Wolf, Sharks
 3. **The 4 songs played most in encores** - Blow at High Dough (135), Little Bones (130), New Orleans Is Sinking (84), Bobcaygeon (72)
-4. **Hidden RED** - Da**RED**evil, Sca**RED**, Ti**RED** as Fuck, At the Hund**RED**th Meridian
+4. **Only on the "Phantom Power" box set** - Bumblebee, Insomniacs, Mystery, Songwriters Cabal (the fifth is 'Vegas Strip')
 
-Red herrings: 'Daredevil' and 'Scared' are both on "Day for Night". No. 5 in encores is 'Wheat Kings' (68), close behind 'Bobcaygeon', so check the count.
+Red herrings: 'Bumblebee' has an animal in its title, but the animals already make four without it. No. 5 in encores is 'Wheat Kings' (68), close behind 'Bobcaygeon', so check the count.
 
 ## No. 5 - Sunday, December 6
 
 1. **Songs from "World Container"** - Yer Not the Ocean, In View, Family Band, The Drop-Off
 2. **Someone's name in the title** - Cordelia, Evelyn, Gus: The Polar Bear from Central Park, Courage (For Hugh MacLennan)
 3. **The 4 songs that opened the most shows** - Grace, Too (191), The Lonely End of the Rink (70), At Transformation (67), Gift Shop (54)
-4. **Hidden animals** - **LION**ized, The Exact F**EEL**ing, Esc**APE** Is at Hand for the Travellin' Man, Are **WE** Family (ewe: ar**E WE**)
+4. **Numbers Five to Eight on the Top Forty Countdown** - Little Bones (No. 5), Blow at High Dough (No. 6), Nautical Disaster (No. 7), Locked in the Trunk of a Car (No. 8)
 
-Red herrings: 'The Lonely End of the Rink' is on "World Container". 'Family Band' and 'Are We Family' split up. 'Gus' has a bear in it but goes with the names. No. 5 in openers is 'Use It Up' (52), close behind 'Gift Shop'.
+Red herrings: 'The Lonely End of the Rink' is on "World Container". 'Gus' has a bear in it but goes with the names. 'Courage (For Hugh MacLennan)' and 'Gift Shop' are just outside, at No. 10 and No. 12 on the Countdown. No. 5 in openers is 'Use It Up' (52), close behind 'Gift Shop'.
 
 ## No. 6 - Sunday, December 13
 

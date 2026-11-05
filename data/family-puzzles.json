@@ -6,15 +6,15 @@
         { "label": "Songs from \"Road Apples\"", "songs": ["Cordelia", "The Luxury", "Three Pistols", "Fiddler's Green"] },
         { "label": "A city or town in the title", "songs": ["It Can't Be Nashville Every Night", "Montreal", "In Sarnia", "Springtime in Vienna"] },
         { "label": "Share a name with an album by The Hip", "songs": ["Fully Completely", "World Container", "Now for Plan A", "Man Machine Poem"], "note": "The song 'Man Machine Poem' is on \"Now for Plan A\"." },
-        { "label": "Hidden body parts", "songs": ["Streets Ahead", "Machine", "Membership", "38 Years Old"], "hl": { "Streets Ahead": "head", "Machine": "chin", "Membership": "hip", "38 Years Old": "ear" } }
+        { "label": "Time in the title", "songs": ["Killing Time", "Long Time Running", "An Inch an Hour", "Take Forever"] }
       ]
     },
     {
       "groups": [
         { "label": "Songs from \"Phantom Power\"", "songs": ["Poets", "Save the Planet", "Fireworks", "Vapour Trails"] },
         { "label": "One-word orders", "songs": ["Stay", "Leave", "Fly", "Fight"] },
-        { "label": "The top 4 on the TTHTop40 Countdown", "songs": ["Grace, Too", "Ahead by a Century", "38 Years Old", "Bobcaygeon"] },
-        { "label": "Hidden numbers", "songs": ["Pretend", "When the Weight Comes Down", "My Music at Work", "Little Bones"], "hl": { "Pretend": "ten", "When the Weight Comes Down": "eight", "My Music at Work": "two", "Little Bones": "one" } }
+        { "label": "An ocean, a lake, or a river in the title", "songs": ["Ocean Next", "Lake Fever", "Yer Not the Ocean", "Speed River"] },
+        { "label": "The top four on the Top Forty Countdown", "songs": ["Grace, Too", "Ahead by a Century", "38 Years Old", "Bobcaygeon"] }
       ]
     },
     {
@@ -30,7 +30,7 @@
         { "label": "Songs from \"Day for Night\"", "songs": ["Greasy Jungle", "Thugs", "Emergency", "Titanic Terrarium"] },
         { "label": "An animal in the title", "songs": ["Emperor Penguin", "Tiger the Lion", "The Dire Wolf", "Sharks"] },
         { "label": "The 4 songs played most in encores", "songs": ["Blow at High Dough", "Little Bones", "New Orleans Is Sinking", "Bobcaygeon"], "note": "In the Handbook's setlists." },
-        { "label": "Hidden RED", "songs": ["Daredevil", "Scared", "Tired as Fuck", "At the Hundredth Meridian"], "hl": { "Daredevil": "red", "Scared": "red", "Tired as Fuck": "red", "At the Hundredth Meridian": "red" } }
+        { "label": "Only on the \"Phantom Power\" box set", "songs": ["Bumblebee", "Insomniacs", "Mystery", "Songwriters Cabal"], "note": "None of the four is on the original album." }
       ]
     },
     {
@@ -38,7 +38,7 @@
         { "label": "Songs from \"World Container\"", "songs": ["Yer Not the Ocean", "In View", "Family Band", "The Drop-Off"] },
         { "label": "Someone's name in the title", "songs": ["Cordelia", "Evelyn", "Gus: The Polar Bear from Central Park", "Courage (For Hugh MacLennan)"] },
         { "label": "The 4 songs that opened the most shows", "songs": ["Grace, Too", "The Lonely End of the Rink", "At Transformation", "Gift Shop"], "note": "In the Handbook's setlists." },
-        { "label": "Hidden animals", "songs": ["Lionized", "The Exact Feeling", "Escape Is at Hand for the Travellin' Man", "Are We Family"], "hl": { "Lionized": "lion", "The Exact Feeling": "eel", "Escape Is at Hand for the Travellin' Man": "ape", "Are We Family": "ewe" } }
+        { "label": "Numbers Five to Eight on the Top Forty Countdown", "songs": ["Little Bones", "Blow at High Dough", "Nautical Disaster", "Locked in the Trunk of a Car"] }
       ]
     },
     {
