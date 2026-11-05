@@ -1,6 +1,6 @@
 # The Hip Handbook - Are We Family - Puzzle Drafts
 
-Drafted 2026-11-02 for jD to vet. Revised 2026-11-05: the hidden-word groups in No. 1, 2, 4 and 5 are swapped for groups a fan can reason out from the songs (jD found them too hard). Eight weekly puzzles, one for each Sunday left in 2026 (November 8 to December 27). If the game opens later, they keep this order and just start on the first Sunday it's live.
+Drafted 2026-11-02 for jD to vet. Revised 2026-11-05: the hidden-word groups in No. 1, 2, 4 and 5 are swapped for groups a fan can reason out from the songs (jD found them too hard). Eight weekly puzzles, one a Saturday from the opening day, Saturday, November 21, 2026, to Saturday, January 9, 2027 (jD moved the game from Sundays to Saturdays on 2026-11-05).
 
 Every group comes from the Handbook's own data (album track lists in `data/discography.json`, live stats and Countdown ranks in `data/song-index.json`, lyrics in `data/lyrics.json`), or from the song titles themselves. Nothing here is from memory. A script checked each puzzle: all 16 songs fit their group, and there is exactly one way to sort them.
 
@@ -17,7 +17,7 @@ Groups run easiest (1) to hardest (4), the way the game will colour them.
 
 ---
 
-## No. 1 - Sunday, November 8
+## No. 1 - Saturday, November 21
 
 1. **Songs from "Road Apples"** - Cordelia, The Luxury, Three Pistols, Fiddler's Green
 2. **A city or town in the title** - It Can't Be Nashville Every Night, Montreal, In Sarnia, Springtime in Vienna
@@ -26,7 +26,7 @@ Groups run easiest (1) to hardest (4), the way the game will colour them.
 
 Red herrings: 'It Can't Be Nashville Every Night' and 'Springtime in Vienna' have time in their titles too, but they're the only way to make four cities. 'Long Time Running' is on "Road Apples". Note 'Man Machine Poem' the song is on "Now for Plan A", not on the album of the same name.
 
-## No. 2 - Sunday, November 15
+## No. 2 - Saturday, November 28
 
 1. **Songs from "Phantom Power"** - Poets, Save the Planet, Fireworks, Vapour Trails
 2. **One-word orders** - Stay, Leave, Fly, Fight
@@ -35,7 +35,7 @@ Red herrings: 'It Can't Be Nashville Every Night' and 'Springtime in Vienna' hav
 
 Red herrings: 'Bobcaygeon' is on "Phantom Power" too. 'Vapour Trails' sounds watery but has no ocean, lake, or river in it.
 
-## No. 3 - Sunday, November 22
+## No. 3 - Saturday, December 5
 
 1. **Songs from "Up to Here"** - Blow at High Dough, Boots or Hearts, Trickle Down, Opiated
 2. **A number in the title** - 700 Ft. Ceiling, Fifty Mission Cap, Three Pistols, Toronto #4
@@ -44,7 +44,7 @@ Red herrings: 'Bobcaygeon' is on "Phantom Power" too. 'Vapour Trails' sounds wat
 
 Red herrings: 'New Orleans Is Sinking' and 'Another Midnight' are both on "Up to Here". 'At the Hundredth Meridian' has a number in it. No. 5 on the most-played list is 'Courage (For Hugh MacLennan)' (650), so the top 4 are clear.
 
-## No. 4 - Sunday, November 29
+## No. 4 - Saturday, December 12
 
 1. **Songs from "Day for Night"** - Greasy Jungle, Thugs, Emergency, Titanic Terrarium
 2. **An animal in the title** - Emperor Penguin, Tiger the Lion, The Dire Wolf, Sharks
@@ -53,7 +53,7 @@ Red herrings: 'New Orleans Is Sinking' and 'Another Midnight' are both on "Up to
 
 Red herrings: 'Bumblebee' has an animal in its title, but the animals already make four without it. No. 5 in encores is 'Wheat Kings' (68), close behind 'Bobcaygeon', so check the count.
 
-## No. 5 - Sunday, December 6
+## No. 5 - Saturday, December 19
 
 1. **Songs from "World Container"** - Yer Not the Ocean, In View, Family Band, The Drop-Off
 2. **Someone's name in the title** - Cordelia, Evelyn, Gus: The Polar Bear from Central Park, Courage (For Hugh MacLennan)
@@ -62,7 +62,7 @@ Red herrings: 'Bumblebee' has an animal in its title, but the animals already ma
 
 Red herrings: 'The Lonely End of the Rink' is on "World Container". 'Gus' has a bear in it but goes with the names. 'Courage (For Hugh MacLennan)' and 'Gift Shop' are just outside, at No. 10 and No. 12 on the Countdown. No. 5 in openers is 'Use It Up' (52), close behind 'Gift Shop'.
 
-## No. 6 - Sunday, December 13
+## No. 6 - Saturday, December 26
 
 1. **Songs from "Trouble at the Henhouse"** - Springtime in Vienna, Flamenco, Sherpa, Coconut Cream
 2. **LAST in the title** - The Last of the Unplucked Gems, The Last Recluse, Last American Exit, Last Night I Dreamed You Didn't Love Me
@@ -71,7 +71,7 @@ Red herrings: 'The Lonely End of the Rink' is on "World Container". 'Gus' has a 
 
 Red herring: 'The Last of the Unplucked Gems' is the last track on "Road Apples", but it has to go with LAST.
 
-## No. 7 - Sunday, December 20
+## No. 7 - Saturday, January 2, 2027
 
 1. **Songs from "In Violet Light"** - Are You Ready, Silver Jet, Throwing Off Glass, A Beautiful Thing
 2. **A body part in the title** - Little Bones, Twist My Arm, Crack My Spine Like a Whip, Hailstone Hands of God
@@ -80,7 +80,7 @@ Red herring: 'The Last of the Unplucked Gems' is the last track on "Road Apples"
 
 Red herrings: 'Are You Ready' opens "In Violet Light" and 'Little Bones' opens "Road Apples". Snow week for the week before Christmas.
 
-## No. 8 - Sunday, December 27
+## No. 8 - Saturday, January 9, 2027
 
 1. **Songs from "We Are the Same"** - Honey, Please, Coffee Girl, Speed River, Queen of the Furrows
 2. **Songs from "Saskadelphia"** - Not Necessary, Crack My Spine Like a Whip, Just As Well, Reformed Baptist Blues

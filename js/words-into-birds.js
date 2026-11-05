@@ -1,5 +1,5 @@
 // words-into-birds.js - 'Words Into Birds', the weekly crossword
-// Twenty clues about The Hip on one grid, the same for everyone. A new grid every Wednesday at
+// Twenty clues about The Hip on one grid, the same for everyone. A new grid every Saturday at
 // midnight Toronto time. The name is from 'About This Map': "turn words into birds".
 // Everything runs in the browser from data/bird-puzzles.json, which jD edits by hand (grids
 // laid out by scripts/build-bird-grids.js); there is no server and nothing is sent anywhere
@@ -9,10 +9,10 @@
   const $ = id => document.getElementById(id);
   const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
-  // Date of puzzle 1, a Wednesday - the game opens at midnight Toronto time on this day. Before
-  // it the page says when the game opens instead of showing a grid.
-  // PLACEHOLDER until launch: jD picks the real first Wednesday when the game ships.
-  const EPOCH = '2099-01-07';
+  // Date of puzzle 1, a Saturday - the game opens at midnight Toronto time on this day. Before
+  // it the page says when the game opens instead of showing a grid. Saturday, November 21, 2026
+  // (jD, 2026-11-05). Never change it once the game has opened.
+  const EPOCH = '2026-11-21';
   const STEP_DAYS = 7; // one puzzle a week
   const START_POINTS = 100;
   const CHECK_COST = 5;
@@ -83,7 +83,7 @@
 
   if (!forcedNo && dayNumber() < epochDay) {
     const opens = new Date(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]));
-    $('wbLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + ', at midnight Toronto time (Eastern). A new crossword every Wednesday - come back then.';
+    $('wbLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + ', at midnight Toronto time (Eastern). A new crossword every Saturday - come back then.';
     setTimeout(() => location.reload(), Math.min(msUntilDay(dayNumber() + 1) + 1000, 2147483647));
     return;
   }
@@ -623,7 +623,7 @@
     } catch (e) { /* cancelled */ }
   });
 
-  // ─── Countdown to next Wednesday's grid (midnight Toronto time) ───
+  // ─── Countdown to next Saturday's grid (midnight Toronto time) ───
   let timer = null;
   const behind = () => !forcedNo && naturalPuzzleNo() > puzzleNo;
   function startCountdown() {

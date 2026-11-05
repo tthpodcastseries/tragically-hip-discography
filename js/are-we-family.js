@@ -1,6 +1,6 @@
 // are-we-family.js - 'Are We Family', the weekly grouping game
 // Sixteen songs by The Hip, four hidden groups of four, the same for everyone. A new puzzle
-// every Sunday at midnight Toronto time. Four mistakes and the week is over.
+// every Saturday at midnight Toronto time. Four mistakes and the week is over.
 // Everything runs in the browser from data/family-puzzles.json, which jD edits by hand;
 // there is no server and nothing is sent anywhere except anonymous Umami event names.
 // Shares its frame and styles with bring-it-all-back.js / unlocked.js.
@@ -8,10 +8,10 @@
   const $ = id => document.getElementById(id);
   const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
-  // Date of puzzle #1, a Sunday - the game opens at midnight Toronto time on this day. Before it
-  // the page says when the game opens instead of showing a puzzle.
-  // PLACEHOLDER until launch: jD picks the real first Sunday when the game ships.
-  const EPOCH = '2099-01-04';
+  // Date of puzzle 1, a Saturday - the game opens at midnight Toronto time on this day. Before it
+  // the page says when the game opens instead of showing a puzzle. Saturday, November 21, 2026
+  // (jD, 2026-11-05). Never change it once the game has opened.
+  const EPOCH = '2026-11-21';
   const STEP_DAYS = 7; // one puzzle a week
   const MISTAKES = 4;
   // Points for a win by mistakes made (0-3); losing scores 0
@@ -93,7 +93,7 @@
   // Not open yet: say when, and open itself when the day arrives
   if (!forcedNo && dayNumber() < epochDay) {
     const opens = new Date(Date.UTC(+epochParts[0], +epochParts[1] - 1, +epochParts[2]));
-    $('awLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + ', at midnight Toronto time (Eastern). A new puzzle every Sunday - come back then.';
+    $('awLoading').textContent = NAME + ' opens ' + DAYS[opens.getUTCDay()] + ', ' + MONTHS[+epochParts[1] - 1] + ' ' + (+epochParts[2]) + ', at midnight Toronto time (Eastern). A new puzzle every Saturday - come back then.';
     setTimeout(() => location.reload(), Math.min(msUntilDay(dayNumber() + 1) + 1000, 2147483647));
     return;
   }
@@ -551,7 +551,7 @@
     } catch (e) { /* cancelled */ }
   });
 
-  // ─── Countdown to next Sunday's puzzle (midnight Toronto time) ───
+  // ─── Countdown to next Saturday's puzzle (midnight Toronto time) ───
   let timer = null;
   const behind = () => !forcedNo && naturalPuzzleNo() > puzzleNo;
   function startCountdown() {

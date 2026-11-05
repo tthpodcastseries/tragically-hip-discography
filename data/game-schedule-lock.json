@@ -1391,7 +1391,7 @@
     },
     "clip-pool.json": {
       "name": "Little Bones",
-      "epoch": "2099-01-01",
+      "epoch": "2026-11-18",
       "days": [
         "58169fd68c40a935",
         "4bf3d125705e598f",
@@ -1809,7 +1809,7 @@
     },
     "family-puzzles.json": {
       "name": "Are We Family",
-      "epoch": "2099-01-04",
+      "epoch": "2026-11-21",
       "days": [
         "0beb8c727033c9ac",
         "504255be45d88e74",
@@ -1823,7 +1823,7 @@
     },
     "bird-puzzles.json": {
       "name": "Words Into Birds",
-      "epoch": "2099-01-07",
+      "epoch": "2026-11-21",
       "days": [
         "5b243533b9c869c9",
         "361c2dc4c1d8d38b",
