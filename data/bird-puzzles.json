@@ -100,6 +100,106 @@
         {"answer":"KIRKLANE","enum":"4, 4","clue":"Discovering Downie panelist alongside Craig Rogers","row":14,"col":3,"dir":"down","num":16},
         {"answer":"SCARED","enum":"6","clue":"Number Twenty-Eight in The Tragically Hip Top Forty Countdown","row":15,"col":1,"dir":"down","num":18}
       ]
+    },
+    {
+      "rows": 21, "cols": 15,
+      "clues": [
+        {"answer":"COPPERPENNY","enum":"6, 5","clue":"Kingston restaurant of the earliest show in the Handbook's list, February 27, 1985","row":0,"col":0,"dir":"across","num":1},
+        {"answer":"AHEADBYACENTURY","enum":"5, 2, 1, 7","clue":"Number Two in The Tragically Hip Top Forty Countdown","row":2,"col":0,"dir":"across","num":3},
+        {"answer":"LOSLOBOS","enum":"3, 5","clue":"Band of Steve Berlin, who co-produced \"Phantom Power\"","row":5,"col":7,"dir":"across","num":6},
+        {"answer":"STAY","enum":"4","clue":"Fifth track on \"Music @ Work\"","row":7,"col":11,"dir":"across","num":9},
+        {"answer":"AREWEFAMILY","enum":"3, 2, 6","clue":"\"In Between Evolution\" song that names the Handbook's weekly grouping game","row":8,"col":0,"dir":"across","num":10},
+        {"answer":"FILLMORE","enum":"8","clue":"The ___, the San Francisco hall The Hip played twelve times, by the Handbook's count","row":11,"col":7,"dir":"across","num":11},
+        {"answer":"SHERPA","enum":"6","clue":"Eleventh track on \"Trouble at the Henhouse\"","row":13,"col":0,"dir":"across","num":14},
+        {"answer":"CHING","enum":"5","clue":"___ Music, the label behind Paul Langlois' solo debut \"Fix This Head\"","row":17,"col":3,"dir":"across","num":16},
+        {"answer":"ARTPARK","enum":"7","clue":"Lewiston stage The Hip played seven times, by the Handbook's count","row":19,"col":6,"dir":"across","num":18},
+        {"answer":"CHAGRINFALLS","enum":"7, 5","clue":"Tenth track on \"Phantom Power\"","row":0,"col":0,"dir":"down","num":1},
+        {"answer":"MARKHOWARD","enum":"4, 6","clue":"Co-producer of \"Day for Night\" with The Hip","row":0,"col":13,"dir":"down","num":2},
+        {"answer":"MEMBERSHIP","enum":"10","clue":"Sixth track on \"Phantom Power\"","row":4,"col":4,"dir":"down","num":4},
+        {"answer":"WAREHOUSE","enum":"9","clue":"The ___ Studio, in Vancouver, where part of \"In Between Evolution\" was recorded","row":5,"col":2,"dir":"down","num":5},
+        {"answer":"LEAVE","enum":"5","clue":"Eighth track on \"In Violet Light\"","row":6,"col":6,"dir":"down","num":7},
+        {"answer":"WINNIPEG","enum":"8","clue":"City where The Hip went into the Canadian Music Hall of Fame, April 3, 2005","row":7,"col":8,"dir":"down","num":8},
+        {"answer":"MOLSONPARK","enum":"6, 4","clue":"Barrie grounds The Hip played seven times, by the Handbook's count","row":11,"col":11,"dir":"down","num":12},
+        {"answer":"EMERGENCY","enum":"9","clue":"Twelfth track on \"Day for Night\"","row":11,"col":14,"dir":"down","num":13},
+        {"answer":"SADIES","enum":"6","clue":"The ___, on Gord Downie's 2014 record \"And the Conquering Sun\"","row":13,"col":0,"dir":"down","num":14},
+        {"answer":"MONDAY","enum":"6","clue":"Day The Tragically Hip Album Countdown goes live on YouTube","row":15,"col":6,"dir":"down","num":15},
+        {"answer":"HUSH","enum":"4","clue":"Thirteenth track on \"We Are the Same\"","row":17,"col":4,"dir":"down","num":17}
+      ]
+    },
+    {
+      "rows": 21, "cols": 15,
+      "clues": [
+        {"answer":"SYRACUSE","enum":"8","clue":"City of the Landmark Theatre, eight shows by The Hip by the Handbook's count","row":0,"col":7,"dir":"across","num":1},
+        {"answer":"GRANDBOUNCE","enum":"5, 6","clue":"The ___ (2010), from Gord Downie and the Country of Miracles","row":2,"col":4,"dir":"across","num":4},
+        {"answer":"MAUI","enum":"4","clue":"Island where part of \"World Container\" was recorded, along with Toronto and Vancouver","row":4,"col":2,"dir":"across","num":5},
+        {"answer":"ABOUTTHISMAP","enum":"5, 4, 3","clue":"\"Now for Plan A\" song that names the Handbook's tour map","row":7,"col":3,"dir":"across","num":10},
+        {"answer":"DETROIT","enum":"7","clue":"City where \"Live Between Us\" was recorded, November 23, 1996","row":9,"col":4,"dir":"across","num":11},
+        {"answer":"PANEL","enum":"5","clue":"Rotating ___ of three on The Tragically Hip On Shuffle - Live Stream","row":13,"col":0,"dir":"across","num":15},
+        {"answer":"NOTGUILTY","enum":"3, 6","clue":"Paul Langlois' second solo record, 2013","row":14,"col":5,"dir":"across","num":16},
+        {"answer":"DEUCE","enum":"5","clue":"The ___ (2011), from Stripper's Union","row":16,"col":2,"dir":"across","num":17},
+        {"answer":"MACHINE","enum":"7","clue":"Closing track on The Hip's final studio album","row":18,"col":5,"dir":"across","num":18},
+        {"answer":"BILLBOARD","enum":"9","clue":"US chart where \"Now for Plan A\" went higher than any other album by The Hip","row":20,"col":3,"dir":"across","num":19},
+        {"answer":"SONGWRITERS","enum":"11","clue":"The Hip went into the Canadian ___ Hall of Fame in Toronto, September 26, 2026","row":0,"col":7,"dir":"down","num":1},
+        {"answer":"HOTMIC","enum":"3, 3","clue":"Eighth track on The Hip's final studio album","row":1,"col":2,"dir":"down","num":2},
+        {"answer":"CRAIGROGERS","enum":"5, 6","clue":"Discovering Downie panelist, with Justin St. Louis and Kirk Lane","row":1,"col":5,"dir":"down","num":3},
+        {"answer":"SKELETONPARK","enum":"8, 4","clue":"Closing track on \"We Are the Same\"","row":5,"col":0,"dir":"down","num":6},
+        {"answer":"THIRTEEN","enum":"8","clue":"How many studio albums are in The Tragically Hip Album Countdown","row":5,"col":10,"dir":"down","num":7},
+        {"answer":"COMPLETISTS","enum":"11","clue":"The ___: a \"Music @ Work\" song, and the network's feed of specials","row":5,"col":12,"dir":"down","num":8},
+        {"answer":"ORPHEUM","enum":"7","clue":"The ___, a Vancouver theatre The Hip played six times, by the Handbook's count","row":5,"col":14,"dir":"down","num":9},
+        {"answer":"JENSEN","enum":"6","clue":"Ted ___, who remastered \"Live at the Roxy\" at Sterling Sound","row":12,"col":3,"dir":"down","num":12},
+        {"answer":"GROTEZAAL","enum":"5, 4","clue":"Amsterdam hall The Hip played thirteen times, by the Handbook's count","row":12,"col":6,"dir":"down","num":13},
+        {"answer":"FIGHT","enum":"5","clue":"Ninth track on \"Road Apples\"","row":12,"col":8,"dir":"down","num":14}
+      ]
+    },
+    {
+      "rows": 21, "cols": 15,
+      "clues": [
+        {"answer":"SEATTLE","enum":"7","clue":"City of the Moore Theatre, seven shows by The Hip by the Handbook's count","row":0,"col":8,"dir":"across","num":2},
+        {"answer":"STRATFORD","enum":"9","clue":"City of the Ovation Music Festival show, September 9, 2006","row":2,"col":5,"dir":"across","num":3},
+        {"answer":"HEKSENKETEL","enum":"11","clue":"Video album released in 1993","row":4,"col":2,"dir":"across","num":6},
+        {"answer":"HORDE","enum":"5","clue":"___ Festival, written with dots: The Hip's 1996 stop at Saratoga Springs","row":6,"col":0,"dir":"across","num":7},
+        {"answer":"WASHINGTON","enum":"10","clue":"City of the 9:30 Club, sixteen shows by The Hip by the Handbook's count","row":7,"col":5,"dir":"across","num":8},
+        {"answer":"TIGERTHELION","enum":"5, 3, 4","clue":"Second track on \"Music @ Work\"","row":9,"col":3,"dir":"across","num":11},
+        {"answer":"GREASYJUNGLE","enum":"6, 6","clue":"Third track on \"Day for Night\"","row":11,"col":2,"dir":"across","num":12},
+        {"answer":"INVIOLETLIGHT","enum":"2, 6, 5","clue":"Album released June 11, 2002","row":13,"col":0,"dir":"across","num":14},
+        {"answer":"FLY","enum":"3","clue":"Fourth track on \"World Container\"","row":15,"col":2,"dir":"across","num":15},
+        {"answer":"GEDFEST","enum":"7","clue":"Charity concert honouring Gord Downie, at the Horseshoe Tavern on October 17, 2026","row":15,"col":8,"dir":"across","num":16},
+        {"answer":"LOSANGELES","enum":"3, 7","clue":"City of \"From the Vault: Vol. 5\", recorded in 2004","row":17,"col":3,"dir":"across","num":18},
+        {"answer":"BRUSSELS","enum":"8","clue":"City of \"From the Vault: Vol. 4\", recorded December 5, 1994","row":19,"col":0,"dir":"across","num":19},
+        {"answer":"PRETEND","enum":"7","clue":"Seventh track on \"World Container\"","row":0,"col":3,"dir":"down","num":1},
+        {"answer":"SHARKS","enum":"6","clue":"Ninth track on \"Music @ Work\"","row":0,"col":8,"dir":"down","num":2},
+        {"answer":"THEPLAYERS","enum":"3, 7","clue":"Part two of It's A Good Life","row":2,"col":6,"dir":"down","num":4},
+        {"answer":"OUCH","enum":"4","clue":"Opening track on \"Saskadelphia\"","row":3,"col":0,"dir":"down","num":5},
+        {"answer":"HIPEPONYMOUS","enum":"12","clue":"Box set released November 1, 2005","row":8,"col":4,"dir":"down","num":9},
+        {"answer":"PODLIST","enum":"7","clue":"The network's listener-built playlists","row":9,"col":0,"dir":"down","num":10},
+        {"answer":"MONTREAL","enum":"8","clue":"City of Le Spectrum, six shows by The Hip by the Handbook's count","row":12,"col":14,"dir":"down","num":13},
+        {"answer":"EVELYN","enum":"6","clue":"Fourth track on the 1987 EP","row":15,"col":9,"dir":"down","num":17}
+      ]
+    },
+    {
+      "rows": 22, "cols": 15,
+      "clues": [
+        {"answer":"EDMONTON","enum":"8","clue":"City of Rexall Place, six shows by The Hip by the Handbook's count","row":1,"col":0,"dir":"across","num":3},
+        {"answer":"LUXURY","enum":"6","clue":"The ___, fourth track on \"Road Apples\"","row":1,"col":9,"dir":"across","num":4},
+        {"answer":"TORONTO","enum":"7","clue":"City of the Air Canada Centre, sixteen shows by The Hip by the Handbook's count","row":5,"col":2,"dir":"across","num":7},
+        {"answer":"USEITUP","enum":"3, 2, 2","clue":"Second track on \"In Violet Light\"","row":8,"col":6,"dir":"across","num":11},
+        {"answer":"GREATSOUL","enum":"5, 4","clue":"Sixth track on The Hip's final studio album","row":12,"col":0,"dir":"across","num":16},
+        {"answer":"MANMACHINEPOEM","enum":"3, 7, 4","clue":"Album released June 17, 2016","row":19,"col":1,"dir":"across","num":19},
+        {"answer":"LONDON","enum":"6","clue":"City of Shepherd's Bush Empire, six shows by The Hip by the Handbook's count","row":0,"col":6,"dir":"down","num":1},
+        {"answer":"CURTAINUP","enum":"7, 2","clue":"Part five of It's A Good Life","row":0,"col":12,"dir":"down","num":2},
+        {"answer":"YOUTUBE","enum":"7","clue":"Where The Tragically Hip Album Countdown goes live on Mondays","row":1,"col":14,"dir":"down","num":5},
+        {"answer":"HOUSEOFBLUES","enum":"5, 2, 5","clue":"Venue name that turns up most in the Handbook's show list: 48 shows in 12 cities","row":4,"col":8,"dir":"down","num":6},
+        {"answer":"THUGS","enum":"5","clue":"Eighth track on \"Day for Night\"","row":5,"col":2,"dir":"down","num":7},
+        {"answer":"NOTHREAT","enum":"2, 6","clue":"Opening track on \"Yer Favourites\"","row":6,"col":10,"dir":"down","num":8},
+        {"answer":"PUTITOFF","enum":"3, 2, 3","clue":"Closing track on \"Trouble at the Henhouse\"","row":7,"col":6,"dir":"down","num":9},
+        {"answer":"COUNTRYDAY","enum":"7, 3","clue":"Twelfth track on \"We Are the Same\"","row":8,"col":4,"dir":"down","num":10},
+        {"answer":"BELGIQUE","enum":"8","clue":"Ancienne ___, the Brussels hall The Hip played six times, by the Handbook's count","row":9,"col":0,"dir":"down","num":12},
+        {"answer":"MEANSTREAK","enum":"4, 6","clue":"Ninth track on \"In Between Evolution\"","row":11,"col":2,"dir":"down","num":13},
+        {"answer":"WELLINGTON","enum":"10","clue":"Ricky ___, head of security for The Hip","row":11,"col":12,"dir":"down","num":14},
+        {"answer":"HALLOFFAME","enum":"4, 2, 4","clue":"The Hip went into the Canadian Music ___ at the Juno Awards in Winnipeg, April 3, 2005","row":11,"col":14,"dir":"down","num":15},
+        {"answer":"FIFTEEN","enum":"7","clue":"How many releases fans rate in The Tragically Hip Album Countdown","row":15,"col":10,"dir":"down","num":17},
+        {"answer":"ABACUS","enum":"6","clue":"What jD holds on The Tragically Hip Album Countdown, by the show's own telling","row":16,"col":6,"dir":"down","num":18}
+      ]
     }
   ]
 }

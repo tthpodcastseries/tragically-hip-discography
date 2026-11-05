@@ -25,22 +25,31 @@ Every clue below is from the site data unless it says otherwise. Sources: Top 40
 **Puzzle 4** (164 letters, 15 wide): WHEATKINGS, CORDELIA, THREEPISTOLS, LAKEFEVER, SCARED, TWISTMYARM, DAREDEVIL, ELDORADO, SASKADELPHIA, METRO, NOWFORPLANA, KENGREER, VREEKEN, COMMODORE, TIVOLI, PHOENIX, KIRKLANE, STLOUIS, JUNO, HAMILTON.
 - HAMILTON names Theatre Aquarius, from the shared rules (the musical's premiere).
 
+**Puzzle 5** (164 letters, Saturday, December 19, 2026): AHEADBYACENTURY, MEMBERSHIP, CHAGRINFALLS, HUSH, SHERPA, LEAVE, EMERGENCY, STAY, LOSLOBOS, MARKHOWARD, WAREHOUSE, FILLMORE, MOLSONPARK, COPPERPENNY, SADIES, CHING, MONDAY, AREWEFAMILY, ARTPARK, WINNIPEG.
+- AREWEFAMILY is the song on "In Between Evolution", clued as the name of the Handbook's other weekly game (both drop the same Saturday).
+- COPPERPENNY: the earliest show in `data/tth-tour-data.json`, February 27, 1985, Kingston.
+
+**Puzzle 6** (163 letters, December 26): FIGHT, HOTMIC, MACHINE, MAUI, JENSEN, BILLBOARD, DETROIT, ABOUTTHISMAP, COMPLETISTS, SKELETONPARK, GRANDBOUNCE, DEUCE, NOTGUILTY, ORPHEUM, GROTEZAAL, SYRACUSE, PANEL, SONGWRITERS, THIRTEEN, CRAIGROGERS.
+- HOTMIC and MACHINE say "The Hip's final studio album" instead of naming "Man Machine Poem", which would give MACHINE away.
+- ABOUTTHISMAP: the Handbook's tour map page is named for it (`docs/The Hip Handbook - Overview.md`).
+- MAUI calls it an island; the site data only says "Recorded in Toronto, Vancouver, and Maui".
+
+**Puzzle 7** (167 letters, January 2, 2027): GREASYJUNGLE, INVIOLETLIGHT, WASHINGTON, BRUSSELS, LOSANGELES, HEKSENKETEL, FLY, PRETEND, HIPEPONYMOUS, TIGERTHELION, SHARKS, OUCH, EVELYN, MONTREAL, SEATTLE, HORDE, STRATFORD, THEPLAYERS, PODLIST, GEDFEST.
+- HORDE is the H.O.R.D.E. festival (1996, Saratoga Springs), from the tour names. GEDFEST is from the shared rules (October 17, 2026, Horseshoe Tavern) and the network's specials feed.
+
+**Puzzle 8** (167 letters, January 9, 2027): MANMACHINEPOEM, HALLOFFAME, HOUSEOFBLUES, WELLINGTON, CURTAINUP, GREATSOUL, PUTITOFF, COUNTRYDAY, THUGS, LUXURY, EDMONTON, LONDON, TORONTO, MEANSTREAK, USEITUP, NOTHREAT, BELGIQUE, YOUTUBE, FIFTEEN, ABACUS.
+- jD: WELLINGTON (Ricky Wellington, head of security, jD, November 5, 2026).
+- ABACUS comes back from Puzzle 1, seven weeks later: the first recycled answer, and allowed by the five-week rule.
+
 ## Banked
 
 | Answer | Letters | Clue | Type | Status | Source |
 |---|---|---|---|---|---|
-| WELLINGTON | 10 | Ricky ___, head of security for The Hip | Crew | jD | jD, November 5, 2026 |
-| RICKY | 5 | First name of The Hip's head of security, Mr. Wellington | Crew | jD | jD, November 5, 2026 (use one of RICKY or WELLINGTON per puzzle, not both) |
-| HOUSEOFBLUES | 5, 2, 5 | Venue name that turns up most in the Handbook's show list: 48 shows in 12 cities | Venue | Site data | data/tth-tour-data.json |
-| AHEADBYACENTURY | 5, 2, 1, 7 | Number Two in The Tragically Hip Top Forty Countdown | Top 40 | Site data | js/discography-app.js (15 letters: hard to fit) |
+| RICKY | 5 | First name of The Hip's head of security, Mr. Wellington | Crew | jD | jD, November 5, 2026 (WELLINGTON is in Puzzle 8, so not before Puzzle 13) |
 | BLOWATHIGHDOUGH | 4, 2, 4, 5 | Number Six in The Tragically Hip Top Forty Countdown, and the opening track on "Up to Here" | Top 40 | Site data | js/discography-app.js (15 letters: hard to fit) |
 | COMPASSPOINT | 7, 5 | ___ Studios, in the Bahamas, where "In Violet Light" was recorded | Studio | Site data | js/discography-app.js (not with BAHAMAS) |
-| GREASYJUNGLE | 6, 6 | Third track on "Day for Night" | Song | Site data | data/discography.json |
-| INVIOLETLIGHT | 2, 6, 5 | Album released June 11, 2002 | Release date | Site data | data/discography.json |
-| MANMACHINEPOEM | 3, 7, 4 | Album released June 17, 2016 | Release date | Site data | data/discography.json |
-| HALLOFFAME | 4, 2, 4 | The Hip went into the Canadian Music ___ at the Juno Awards in Winnipeg, April 3, 2005 | Milestone | Site data | data/discography.json |
 | THEATREAQUARIUS | 7, 8 | Hamilton theatre where "It's a Good Life If You Don't Weaken" premiered | Podcast | Site data | data/podcast-shows.json and the shared rules (not with HAMILTON) |
-
+| SOHARDDONEBY | 2, 4, 4, 2 | Sixth track on "Day for Night" | Song | Site data | data/discography.json (cut from Puzzle 8 for size) |
 ## Clue types to draw from
 
 Release dates, venues, songs, album titles, band members, people around the band (managers, producers, crew), tour names, Top 40 and podcast clues, musical instruments, and music ephemera (tickets, passes, setlists, posters).
