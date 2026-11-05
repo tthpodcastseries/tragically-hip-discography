@@ -4,7 +4,7 @@
 // there is no server and nothing is sent anywhere except anonymous Umami event names.
 (async function () {
   const $ = id => document.getElementById(id);
-  const track = name => { try { if (window.umami && window.umami.track) window.umami.track(name); } catch (e) { /* analytics optional */ } };
+  const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
   // Date of puzzle #1 - the game opens at midnight Toronto time on this day. Before it the
   // page says when the game opens instead of showing a puzzle.
@@ -199,13 +199,27 @@
   const todayPoints = () => today.won ? pointsFor(today.guesses.length) : 0;
   // Worked out from the guess distribution, so games played before points existed still count
   const totalPoints = () => store.stats.dist.reduce((sum, wins, i) => sum + wins * pointsFor(i + 1), 0);
+  // Sent with the Started event so Umami can count real return players. Umami's visitor count
+  // resets when a phone changes network; these numbers live on the device (jD, 2026-11-05).
+  // Nothing personal: a band of games played here before and how long since the last one.
+  const startInfo = () => {
+    const s = store.stats, n = s.played || 0;
+    const last = Math.max(s.lastPlayed || 0, s.lastSolved || 0);
+    const gap = puzzleNo - last;
+    const info = {
+      game: n === 0 ? 'First game' : n < 3 ? '2nd or 3rd' : n < 7 ? '4th to 7th' : n < 15 ? '8th to 15th' : '16th or more',
+      last: !last ? (n ? 'Not known' : 'First game') : gap <= 1 ? 'Yesterday' : gap <= 7 ? '2-7 days ago' : 'Over a week ago'
+    };
+    s.lastPlayed = puzzleNo;
+    return info;
+  };
 
   // The score as words as well as squares, so it reads without colour; the link starts with
   // https:// so every app turns it into a tap (audit GAME-10)
   const shareText = () =>
     '\u{1F341} Bring It All Back No. ' + puzzleNo + ' - ' + todayPoints() + ' points (' +
     (today.won ? today.guesses.length + ' of ' + MAX_GUESSES : 'missed') + ')\n' +
-    today.guesses.map(squareFor).join('') + '\nhttps://' + SHARE_URL;
+    today.guesses.map(squareFor).join('') + '\nhttps://' + SHARE_URL + '\n';
 
   // A win on this puzzle keeps the streak going (see the switch note at the top)
   const continues = () => store.stats.lastSolved === puzzleNo - 1 || (!!store.tzGrace && store.stats.lastSolved === puzzleNo - 2);
@@ -325,7 +339,7 @@
     if (isNaN(y) || y < minYear || y > maxYear) { msg.textContent = 'Pick a year from ' + minYear + ' to ' + maxYear + '.'; return; }
     if (today.guesses.some(g => g.y === y && g.m === m)) { msg.textContent = 'Already guessed ' + MONTHS[m - 1] + ' ' + y + '. Try another.'; return; }
     msg.textContent = '';
-    if (!today.guesses.length) track('Game - Started');
+    if (!today.guesses.length) track('Game - Started', startInfo());
     const g = { y, m };
     today.guesses.push(g);
     // Both fields stay filled, so a player can change just the part that was wrong

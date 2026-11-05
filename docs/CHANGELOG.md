@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.7.1
+**Nautical Disaster - Patch** - November 5, 2026
+Fixes from the first week of Umami numbers after the October 29 promo.
+- **Shared game links stop breaking:** the Bring It All Back and (Un)Locked share text now ends with a line break, so when a fan pastes it and keeps typing, their words start on a new line instead of sticking to the link. Six visitors last week landed on addresses like /bring-it-all-backHey.
+- **The "page not found" page rescues those links:** new `js/not-found.js` sends any dead address that starts with a game, the tour map, the discography, setlists, or podcasts to that page.
+- **Return players:** "Game - Started" and "Unlocked - Started" now carry two rough numbers from the device: which game this is for them (`game`: First game, 2nd or 3rd, 4th to 7th, 8th to 15th, 16th or more) and when they last played (`last`: Yesterday, 2-7 days ago, Over a week ago). Umami's visitor count resets when a phone changes network, so its retention report undercounts; these don't. See them under Events, the Started event, Properties. The privacy page says so (updated November 5, 2026).
+- **Fewer false "JS Error" reports:** when a browser refuses the offline helper (private windows, some in-app browsers, a dropped connection), the refusal was logged as a "JS Error". It now fails quietly; the site works without it.
+- CLAUDE.md picks up the shared rules block (v2026-11-03.3) and the November 3 brand rulings.
+- Cache bumped to `hh-v5.7.1`; footer label bumped to v5.7.1 (Nautical Disaster - Patch)
+
 ## v5.7
 **Nautical Disaster** - November 5, 2026
 - **Radio Show (new page, /podcasts):** a button for each of the nine shows from The Tragically Hip Podcast Series, plus The Completists (podList, the podUMENTARYs, and GEDfest Past, Present, & Future). Each show has its own page at /podcasts/<show> with its artwork, a description drafted from jD's show cards, and an episode guide, oldest first, where every episode opens on RedCircle. The home page's Listen group has a Podcasts card.

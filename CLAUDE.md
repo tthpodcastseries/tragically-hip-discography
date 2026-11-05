@@ -1,3 +1,66 @@
+<!-- SHARED-RULES-BEGIN v2026-11-03.3 -->
+## Shared rules (identical in every project folder)
+
+Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. If the guide PDF disagrees with this block, the guide PDF wins: say so, and ask jD.
+
+### Network facts (as of 2026-11-03)
+
+- The Tragically Hip Podcast Series (est. 2018) is a nine-show fan network: Fully & Completely (2018-2022, redux 2026), Getting Hip to The Hip (2023), Discovering Downie (2024), The Tragically Hip Top Forty Countdown (2025), The Tragically Hip On Shuffle - Live Stream (2026), Yer Hipstories: Reflections From The Final Tour (2026), It's A Good Life (2026), The Tragically Hip Interview Series, and The Tragically Hip Album Countdown (launches Monday, January 4, 2027).
+- "redux" is always lowercase. TTHTop40 is the hashtag and internal short form only. The first four runs are complete: say "complete", never ended, over, finished, former, retired, or cancelled, and keep the show in the present tense.
+- The Facebook group passed 9,000 members on November 1, 2026. Any hard number needs an as-of date.
+- jD has seen The Hip 15 times (jD, November 3, 2026, counted from his Yer Hip Passport on The Hip Handbook; the first show was in 1993). The earlier counts of 16 and 17 are retired. Name no specific show he attended unless he names it in the chat.
+- The Hip Handbook is the only name. The Hip Compendium and compendium.tthpods.com are retired and dead.
+- Over: The Gathering (Kingston, August 20 to 23, 2026) and GEDfest Toronto 2026 (October 17, Horseshoe Tavern). An event's ticket link comes down when the event ends and never reappears.
+- It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton and is at the Kingston Grand Theatre through Sunday, November 8, 2026.
+
+### Formatting
+
+- Single hyphen with spaces ( - ) for clauses. Never em dashes or en dashes, anywhere, in any file, public or internal.
+- Oxford comma, always. Round brackets for asides. Round bullets in branded output. No orphan headers.
+- Song titles go in single quotes, whichever band wrote the song: 'Bobcaygeon'. Albums, films, and books go in double quotes: "Phantom Power". (jD, November 3, 2026.)
+- No italics, anywhere: not on titles, not for emphasis, and not in document typography (subheads, captions, decks, subtitles). The guide PDF's Bold Italic and Italic specs are superseded (jD, November 3, 2026): use Bold or Regular instead, and flag the conflict. Unicode italic is out too.
+- Album casing keeps lowercase prepositions: "Up to Here", "Day for Night", "Trouble at the Henhouse", "We Are the Same", "Now for Plan A", and "Music @ Work" with the at-sign.
+- The number sign (#) is for hashtags and hex colour codes only. Song and record numbers are spelled out in titles and copy: 'Song Eleven', 'Number Eleven', never '#11' or 'No. 11'. Going forward only: published titles are not retitled. (jD, November 3, 2026.)
+- Timestamps go on YouTube descriptions only (jD, November 3, 2026). Shownotes, RedCircle, Facebook, Instagram, and Yer Letter carry none. YouTube turns a timestamp list into chapters on its own and that is accepted there; no chapters are built any other way.
+
+### Words to avoid in copy
+
+genuinely, honestly, frankly, amazing, incredible, legendary, iconic, perfect, flawless, breathtaking, unforgettable, elevated, basically, truly, transcendent, majestic, undoubtedly, impactful, innovative, game-changing, and "journey" as a metaphor. Borrowed shorthand: "vibes" as a noun, "next-level", "chef's kiss". Podcast cliches: "deep dive", "at the end of the day", and "content" for the work. No corporate or PR-speak, no formal transitions (Furthermore, In conclusion, To summarize). Never call jD's conversations "interviews": a conversation, or a sit-down (the show name The Tragically Hip Interview Series is the only exception).
+
+Cleared, so do not avoid or flag them: compelling, unpack, sublime, exquisite, stunning, epic, timeless, masterpiece, definitive, seminal, essential, killer, unreal, literally, obviously, phenomenal, magical, stellar, arguably, certainly, super, peak.
+
+Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pile (jD, November 3, 2026; the guide has said "permitted, like seasoning" since v6.1). Other surfaces keep the guide's limits: newsletter one at most, social one at most and never gratuitous, mic when earned.
+
+### The locks
+
+- Opener: always "Hey, it's jD here." Never "Hey, it's jD." The word "here" is not optional. No opener on Instagram captions, Instagram stories, or YouTube descriptions. On a Facebook group post the bold Cold Open comes first, then the opener.
+- Yer Letter closer: "Until next month, yer pal. -jD." Exact punctuation. Yer Letter only.
+- "Pick up yer shit." is mic only. Never print, newsletter, shownotes, or social (unless quoting it as said on an episode).
+- "So there's that." maximum twice per piece.
+- jD: lowercase j, uppercase D. Never JD. Never Jamie in podcast contexts.
+- The band: always The Tragically Hip, The Hip, or TTH. Never "Hip" or "Tragically Hip" without "The." Event surfaces use "The Hip" only.
+- Gord: "Gord" or "Gord Downie" ("Gordie" and "the captain" are in bounds). Never "Downie" alone.
+- It's A Good Life is always the full title, in public copy and in planning notes alike, with no subtitle. No shorthand exists. "AFOWS" is retired and never appears anywhere. The musical keeps its own casing: "It's a Good Life If You Don't Weaken".
+- The Tragically Hip Album Countdown is always the full title. No shorthand exists.
+- The Tragically Hip On Shuffle keeps "Live Stream" in public copy. "Shuffle" alone is internal.
+- Getting Hip to The Hip takes a capital T on "The". podList: lowercase "pod", capital "L", no number. Now In Stereo: capital N, I, and S.
+- Red and Gold together only on The Hip Handbook. Never together elsewhere, never on document interior pages, and never as text colours.
+- No gold on the Year Ten (10-year) logo mark or its graphics.
+- The two countdown shows never name the upcoming song or record before its episode drops (titles, hooks, thumbnails, promo posts, hashtags).
+
+### Facebook group posts
+
+Group posts follow the guide's 05.1 format:
+
+- Open with a Cold Open: one or two bold sentences carrying the specific (a date, a time, a number, a count). Never a thesis.
+- Blank line, then "Hey, it's jD here." when the post is in his voice.
+- Long posts break into blocks with short bold all-caps headers, one emoji marker each.
+- Unicode bold goes on the Cold Open and the block headers only. Song and album titles stay in plain quotes.
+- One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
+- Bare labelled URLs are allowed in the group (Web:, Social:, Booking:).
+- Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
+<!-- SHARED-RULES-END v2026-11-03.3 -->
+
 # The Hip Handbook - notes for Claude Code
 
 A free fan archive for The Tragically Hip, built and run by jD (Jamie Dew, TTH Podcast Series). Live at https://thehiphandbook.tthpods.com. This repo (`tthpodcastseries/tragically-hip-discography`) is public, and so is this file: never put a key, password or member detail in it or anywhere in the repo.
@@ -43,8 +106,8 @@ The guide PDF sits in `docs/` on jD's Mac only (`*.pdf` is gitignored). Where th
 
 - **Poppins only**, served from `/fonts/`. No other font, ever.
 - **Colours:** Deep Black `#0e0b16` background, Light Grey `#d9d9d9` text, White, Mid Grey `#929292` for faint text. Gold `#CCA23C` and Red `#C8102E` are for fills, borders, bars and underlines only, never for words (jD, 2026-10-31). No gradients, except the approved red glow behind the home header.
-- **No em dashes** in anything a fan reads: use " - ". No "#" for numbers: "No. 12". Oxford comma.
-- **Titles:** song titles in single quotes ('Ahead by a Century'), album titles in double quotes ("Fully Completely") in sentences. Track lists and setlists stay plain.
+- **No em dashes** in anything a fan reads: use " - ". No "#" for numbers. Song and record numbers are spelled out going forward ('Song Twelve', not "No. 12"; jD, 2026-11-03), and older "No. 12" text stays until it is next edited. Oxford comma.
+- **Titles:** song titles in single quotes ('Ahead by a Century'), whichever band wrote the song; album, film, and book titles in double quotes ("Fully Completely") in sentences. No italics on titles. Track lists and setlists stay plain.
 - **The band:** "The Tragically Hip" or "The Hip", capital T. Never "Tragically Hip" alone, and don't use "Hip" as an adjective: "Hip song" becomes "song by The Hip".
 - "membersHIP" is the right name for Handbook member numbers. Voice: warm, direct, "yer" where it fits, never corporate.
 

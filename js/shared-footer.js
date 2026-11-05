@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.7 (Nautical Disaster)';
+  var version = 'v5.7.1 (Nautical Disaster - Patch)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -110,7 +110,9 @@
   // Service worker registration
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js');
+      // Offline copies are a bonus: some browsers (private windows, in-app browsers, a dropped
+      // connection) refuse the worker, and an uncaught refusal was being logged as a "JS Error"
+      navigator.serviceWorker.register('/service-worker.js').catch(function () { /* the site works without it */ });
     });
   }
 

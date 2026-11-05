@@ -6,7 +6,7 @@
 // Shares its frame and styles with bring-it-all-back.js / css.
 (async function () {
   const $ = id => document.getElementById(id);
-  const track = name => { try { if (window.umami && window.umami.track) window.umami.track(name); } catch (e) { /* analytics optional */ } };
+  const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
   // Date of puzzle #1 - the game opens at midnight Toronto time on this day. Before it the
   // page says when the game opens instead of showing a puzzle.
@@ -152,7 +152,7 @@
   const todayPoints = () => today.won ? worth(today.wonAt) : 0;
   const shownPoints = () => today.done ? todayPoints() : worth(canGuess() ? rung() : Math.min(rung() + 1, HINT_RUNG));
   const squares = () => words.map((w, i) => SQ[today.unlocked[i] || 'locked']).join('') + (today.hint ? ' ' + SQ.hint : '');
-  const markStarted = () => { if (!today.started) { today.started = true; track('Unlocked - Started'); } };
+  const markStarted = () => { if (!today.started) { today.started = true; track('Unlocked - Started', startInfo()); } };
 
   // ─── The words ───
   let used = []; // which tiles of the active word are spent, by index
@@ -444,6 +444,20 @@
     delete store.tzGrace;
     track(won ? 'Unlocked - Won' : 'Unlocked - Lost');
   }
+  // Sent with the Started event so Umami can count real return players. Umami's visitor count
+  // resets when a phone changes network; these numbers live on the device (jD, 2026-11-05).
+  // Nothing personal: a band of games played here before and how long since the last one.
+  const startInfo = () => {
+    const s = store.stats, n = s.played || 0;
+    const last = Math.max(s.lastPlayed || 0, s.lastSolved || 0);
+    const gap = puzzleNo - last;
+    const info = {
+      game: n === 0 ? 'First game' : n < 3 ? '2nd or 3rd' : n < 7 ? '4th to 7th' : n < 15 ? '8th to 15th' : '16th or more',
+      last: !last ? (n ? 'Not known' : 'First game') : gap <= 1 ? 'Yesterday' : gap <= 7 ? '2-7 days ago' : 'Over a week ago'
+    };
+    s.lastPlayed = puzzleNo;
+    return info;
+  };
 
   // Naming the song before any word opens shows as its own line: five black squares read as a fail
   // (audit GAME-10). The link starts with https:// so every app turns it into a tap.
@@ -458,7 +472,7 @@
   };
   const shareText = () =>
     (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
-    (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL;
+    (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL + '\n';
 
   // A win on this puzzle keeps the streak going (see the switch note at the top)
   const continues = () => store.stats.lastSolved === puzzleNo - 1 || (!!store.tzGrace && store.stats.lastSolved === puzzleNo - 2);
