@@ -550,7 +550,7 @@ const categoryStats = {
     { num: '20', lbl: 'Albums Indexed' },
     { num: '188', lbl: 'Songs Searchable' },
     // Counted again from the lyrics once they load (updateLyricsCacheStatus)
-    { num: '4,474', lbl: 'Different Words' },
+    { num: '4,473', lbl: 'Different Words' },
     { num: '36,364', lbl: 'Words of Lyrics' },
   ],
   setlists: [
