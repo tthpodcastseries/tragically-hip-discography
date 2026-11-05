@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.7
+**Nautical Disaster** - November 5, 2026
+- **Radio Show (new page, /podcasts):** a button for each of the nine shows from The Tragically Hip Podcast Series, plus The Completists (podList, the podUMENTARYs, and GEDfest Past, Present, & Future). Each show has its own page at /podcasts/<show> with its artwork, a description drafted from jD's show cards, and an episode guide, oldest first, where every episode opens on RedCircle. The home page's Listen group has a Podcasts card.
+- **What's left out (jD, 2026-11-05):** the Sunday Evening Jams, the In Memoriams, the Christmas episodes, An Evening For Sara J, the two episodes under a retired name, the Gord tribute, 'Remember Montreal', and every trailer, call for submissions, announcement, and update. Only one copy of each episode shows: the corrected or latest upload, and the anniversary re-releases stay on their original episode.
+- **The Interview Series** page holds every conversation recorded on the other shows, which come off those shows' pages: the Hipstories and the Strippers Union conversation from Fully & Completely, the "Talking with" episodes from Getting Hip to The Hip, the Introduce Yerself bonus conversations from Discovering Downie, and the Matt Merritt Gord Downie addendum from the Top Forty Countdown.
+- New `scripts/build-podcasts.js` reads the network's one RedCircle feed (`--fetch`), saves it to `data/podcast-feed.json`, and sorts each episode onto its show. Names, years, artwork and descriptions are in `data/podcast-shows.json`. `audit-site.js` checks the pages are up to date and now also checks pages in `podcasts/`.
+- Show artwork is in `assets-optimized/podcasts/`, served from the Handbook itself, so no new outside host and no privacy page change.
+- Cache bumped to `hh-v5.7`; footer label bumped to v5.7 (Nautical Disaster)
+
 ## v5.6.4
 **So Hard Done By - Patch** - November 2, 2026
 - **(Un)Locked, one word at a time:** only the word you're working on shows its scrambled letters. The words still to come read "Still locked" with no letters, so nobody can unscramble all five in their head and name the song on the free first guess. Each word opens the same way as before: unlock the one before it, then guess or pass. Scoring and the puzzles are unchanged. "How it works" says so.

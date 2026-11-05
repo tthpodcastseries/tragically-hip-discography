@@ -85,6 +85,52 @@
     <lastmod>2026-10-31</lastmod>
     <priority>0.6</priority>
   </url>
+  <!-- podcasts:start -->
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/fully-and-completely</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/getting-hip-to-the-hip</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/discovering-downie</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/top-forty-countdown</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/on-shuffle</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/yer-hipstories</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/its-a-good-life</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/interview-series</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/album-countdown</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thehiphandbook.tthpods.com/podcasts/the-completists</loc>
+    <priority>0.6</priority>
+  </url>
+  <!-- podcasts:end -->
   <!-- songs:start -->
   <url>
     <loc>https://thehiphandbook.tthpods.com/song/38-years-old</loc>

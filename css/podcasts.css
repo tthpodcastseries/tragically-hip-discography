@@ -1,0 +1,64 @@
+/* podcasts.css - Radio Show: the podcast hub and the show pages (v5.7).
+   The pages are written by scripts/build-podcasts.js. Gold and red are borders only. */
+
+.pod-main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
+
+.pod-intro { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 28px; text-align: center; }
+
+.pod-heading {
+  font-size: 0.82rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 1.5px;
+  margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+section + section .pod-heading, .pod-guide .pod-heading { margin-top: 32px; }
+
+/* Hub: one button per show */
+.pod-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.pod-card {
+  display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 10px 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.pod-card:hover { border-color: var(--red); background: rgba(200, 16, 46, 0.07); }
+.pod-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pod-card img { width: 100%; height: auto; aspect-ratio: 1; border-radius: 10px; margin-bottom: 6px; background: var(--bg3); }
+.pod-card-name { font-size: 0.85rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+.pod-card-meta { font-size: 0.72rem; color: var(--muted2); }
+
+.pod-note { margin-top: 32px; font-size: 0.78rem; color: var(--muted2); text-align: center; }
+.pod-note a { color: var(--muted); }
+
+/* Show page: artwork and description */
+.pod-about { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+.pod-art { width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.12); }
+.pod-about-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
+.pod-link {
+  display: inline-block; color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700;
+  padding: 6px 16px; border: 1px solid rgba(204, 162, 60, 0.45); border-radius: 30px;
+}
+.pod-link:hover { border-color: var(--gold); background: rgba(204, 162, 60, 0.08); }
+
+/* Episode guide */
+.pod-count, .pod-empty { font-size: 0.8rem; color: var(--muted2); margin-bottom: 16px; }
+.pod-empty { font-size: 0.88rem; color: var(--muted); }
+.pod-section {
+  display: flex; align-items: baseline; gap: 8px; font-size: 0.9rem; font-weight: 700; color: var(--text);
+  margin: 26px 0 10px; padding-left: 10px; border-left: 3px solid var(--red);
+}
+.pod-section span { font-size: 0.72rem; font-weight: 400; color: var(--muted2); }
+.pod-eps { list-style: none; }
+.pod-eps a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; margin-bottom: 6px; text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.pod-eps a:hover { border-color: var(--red); background: rgba(200, 16, 46, 0.06); }
+.pod-eps a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ep-title { font-size: 0.86rem; font-weight: 600; color: var(--text); line-height: 1.35; }
+.ep-meta { flex-shrink: 0; font-size: 0.72rem; color: var(--muted2); white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .pod-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pod-about { grid-template-columns: 1fr; gap: 16px; }
+  .pod-art { max-width: 220px; margin: 0 auto; display: block; }
+  .pod-eps a { flex-direction: column; gap: 2px; padding: 10px 12px; }
+}

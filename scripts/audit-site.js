@@ -67,7 +67,9 @@ function existsLocal(ref) {
 }
 
 // ---- 1. Internal refs in HTML pages ----
-const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
+// The Radio Show show pages live in podcasts/ (v5.7, scripts/build-podcasts.js)
+const pages = [...fs.readdirSync(ROOT).filter(f => f.endsWith('.html')),
+  ...(fs.existsSync(path.join(ROOT, 'podcasts')) ? fs.readdirSync(path.join(ROOT, 'podcasts')).filter(f => f.endsWith('.html')).map(f => 'podcasts/' + f) : [])];
 const externals = new Set();
 for (const page of pages) {
   const src = fs.readFileSync(path.join(ROOT, page), 'utf8');
@@ -204,6 +206,8 @@ for (const page of fs.readdirSync(ROOT).filter(f => f.endsWith('.html'))) {
 // Preview robots read the raw HTML, so each route needs its own file with its own tags.
 const stalePages = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-seo-pages.js'), '--check'], { encoding: 'utf8' });
 if (stalePages.status !== 0) problems.push(`generated pages (song/*.html, lyrics.html, setlists.html, top-40.html) are out of date: ${(stalePages.stderr || stalePages.stdout || '').trim().split('\n').slice(-1)[0]}`);
+const stalePods = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-podcasts.js'), '--check'], { encoding: 'utf8' });
+if (stalePods.status !== 0) problems.push(`podcast pages (podcasts.html, podcasts/*.html) are out of date: ${(stalePods.stderr || stalePods.stdout || '').trim().split('\n').slice(-1)[0]}`);
 
 // song.html is served at /song/<slug>, so a relative link in it points inside /song/
 {

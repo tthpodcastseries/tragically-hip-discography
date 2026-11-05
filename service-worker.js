@@ -1,7 +1,7 @@
 // Bump with each release (matches the footer version). Fans get new pages, CSS, JS
 // and data even if this is forgotten: those are all fetched network-first below
 // (pages and data fall back to a saved copy after a few seconds on a weak signal).
-const CACHE_NAME = 'hh-v5.6.4';
+const CACHE_NAME = 'hh-v5.7';
 // The small shell only. Big data files (setlists, tour data, lyrics, song index...)
 // are cached the first time a page asks for them.
 const CORE_ASSETS = [
@@ -24,6 +24,17 @@ const CORE_ASSETS = [
   '/lyrics.html',
   '/setlists.html',
   '/top-40.html',
+  '/podcasts.html',
+  '/podcasts/fully-and-completely.html',
+  '/podcasts/getting-hip-to-the-hip.html',
+  '/podcasts/discovering-downie.html',
+  '/podcasts/top-forty-countdown.html',
+  '/podcasts/on-shuffle.html',
+  '/podcasts/yer-hipstories.html',
+  '/podcasts/its-a-good-life.html',
+  '/podcasts/interview-series.html',
+  '/podcasts/album-countdown.html',
+  '/podcasts/the-completists.html',
   '/404.html',
   '/offline.html',
   // CSS
@@ -39,6 +50,7 @@ const CORE_ASSETS = [
   '/css/video-for-new-recruits.css',
   '/css/live-stats.css',
   '/css/offline.css',
+  '/css/podcasts.css',
   // JS
   '/js/shared-footer.js',
   '/js/discography-app.js',

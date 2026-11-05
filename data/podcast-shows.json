@@ -1,0 +1,120 @@
+{
+  "_about": "Hand-edited. The shows on the Radio Show pages (/podcasts): name, years, artwork and the description fans read. Which episode goes on which page is decided in scripts/build-podcasts.js (RULES). After any change here run: node scripts/build-podcasts.js",
+  "feed": "https://feeds.redcircle.com/a01e8de3-1a04-4a44-ab9c-8fc6e3cb7474",
+  "showPage": "https://redcircle.com/shows/tthtop40",
+  "episodePage": "https://redcircle.com/shows/tthtop40/ep/",
+  "hub": {
+    "intro": [
+      "The Tragically Hip Podcast Series (est. 2018) is a nine-show fan network. Pick a show for its story and its full episode guide, with every episode a tap away on RedCircle."
+    ]
+  },
+  "shows": [
+    {
+      "slug": "fully-and-completely",
+      "name": "Fully & Completely",
+      "years": "2018-2022, redux 2026",
+      "imageAlt": "Fully & Completely show artwork: the words fully completely in white over a dark blue background",
+      "about": [
+        "A chronological run through The Tragically Hip's discography, from the first record to the last. jD and Greg LeGros take it track by track and album by album, with the cultural and historical context around each one. Reverent, irreverent, funny, and nostalgic, it's the show the whole network is built on, made for diehards and newcomers both.",
+        "Two runs, one show. The original (2018-2022) covers every studio record in order, with the story around each one. Fully & Completely: redux (2026) runs the whole studio catalogue again. Same DNA. Not a sequel - a reunion. Every episode is still up and still free."
+      ],
+      "sections": ["The Original (2018-2022)", "Fully & Completely: redux (2026)"]
+    },
+    {
+      "slug": "getting-hip-to-the-hip",
+      "name": "Getting Hip to The Hip",
+      "years": "2023",
+      "imageAlt": "Getting Hip to The Hip show artwork: the title in white over a crowd silhouette on dark purple",
+      "about": [
+        "A first-timers series into The Hip's catalogue. Each episode, Pete Marchica and Tim Lyden hear an album for the first time while jD fills in the backstory, the history, the lyrics, and the context. The fun is watching people fall in love.",
+        "The one rule: never spoil the moment of discovery. The reaction is the show. Made in support of The Downie Wenjack Fund. The run is complete, and every episode is still up and still free."
+      ]
+    },
+    {
+      "slug": "discovering-downie",
+      "name": "Discovering Downie",
+      "years": "2024",
+      "imageAlt": "Discovering Downie show artwork: a hat with a feather over a microphone, ringed by the words Discovering Downie and Hey man, thanks.",
+      "about": [
+        "A ten-part series on Gord Downie's solo discography, from \"Coke Machine Glow\" to \"Introduce Yerself\". jD, Craig Rogers, Justin St. Louis, and Kirk Lane take one solo record an episode, always connected back to Gord's larger legacy, including \"Secret Path\" and Chanie Wenjack's story, told with the care it carries.",
+        "Reflective, reverent, and emotionally rich: grief and celebration at the same time. The run closed with a fundraiser for The Gord Downie Fund for Brain Cancer Research. The run is complete, and every episode is still up and still free."
+      ]
+    },
+    {
+      "slug": "top-forty-countdown",
+      "name": "The Tragically Hip Top Forty Countdown",
+      "years": "2025",
+      "imageAlt": "The Tragically Hip Top Forty Countdown show artwork: the title in white over a wall of song titles by The Hip",
+      "about": [
+        "A fan-sourced, abacus-tabulated countdown of The Hip's top forty songs. Every week jD counts down from Forty to One with a fan guest from somewhere in the world, each episode built around their Hipstory and the song that carries it. Part love letter, part therapy session, part fandom archive.",
+        "Picked up by SiriusXM The Tragically Hip Radio, with The ALS Society of Canada as the countdown's fundraising partner. The Road to the Top 40, the Flashbacks, the Round Tables, and the specials are all here too. The run is complete, and every episode is still up and still free."
+      ],
+      "link": { "href": "/top-40", "text": "See the full fan ranking" },
+      "sections": ["The Countdown", "The Road to the Top 40", "Flashbacks", "Round Tables and Specials"]
+    },
+    {
+      "slug": "on-shuffle",
+      "name": "The Tragically Hip On Shuffle - Live Stream",
+      "years": "2026",
+      "imageAlt": "The Tragically Hip On Shuffle - Live Stream show artwork: the title in dark purple block letters on light grey",
+      "about": [
+        "A weekly live stream through The Tragically Hip's catalogue: one song pulled at random and taken apart in real time. jD hosts a rotating panel of three (fans, musicians, writers, and fellow obsessives), and viewers join live through chat, comments, and reactions.",
+        "Conversational, curious, funny, and unscripted. Equal parts close listening and bar-room hang. Deep cuts, forgotten tracks, and the big ones all get the same hour."
+      ]
+    },
+    {
+      "slug": "yer-hipstories",
+      "name": "Yer Hipstories: Reflections From The Final Tour",
+      "years": "2026",
+      "imageAlt": "Yer Hipstories: Reflections From The Final Tour show artwork: the title in white typewriter letters on dark purple",
+      "about": [
+        "An oral history of The Tragically Hip's final Man Machine Poem Tour, told by the people who were there, ten years on. City by city and night by night, jD gathers voices from across the community (concertgoers, crew, journalists, musicians, and diehards), right through to the August 20th finale in Kingston.",
+        "Raw, reverent, and deeply human. Equal parts documentary and elegy, balancing heartbreak with humour and gratitude. Every memory is told the way the guest lived it. No one talks over it."
+      ]
+    },
+    {
+      "slug": "its-a-good-life",
+      "name": "It's A Good Life",
+      "years": "2026",
+      "imageAlt": "It's A Good Life show artwork: the title in tall white letters on dark purple",
+      "about": [
+        "A five-episode oral history of the Theatre Aquarius world premiere of \"It's a Good Life If You Don't Weaken\", the musical built on the songs of The Tragically Hip. jD talks with the creative team, the cast, and the producers, before, during, and after the run.",
+        "Intimate and behind the scenes: the people who made it, in their own words. Five episodes, one a day, October 19 to 23, 2026: Setting the Scene, The Players, The Craft, The Music, and Curtain Up."
+      ]
+    },
+    {
+      "slug": "interview-series",
+      "name": "The Tragically Hip Interview Series",
+      "years": "",
+      "imageAlt": "The Tragically Hip Interview Series show artwork: the title in grey block letters on black",
+      "about": [
+        "Conversations with the people who made the records and ran the band, gathered from across the network's shows into one series: Jake Gold, Paul Langlois, Gord Sinclair, Johnny Fay, and Robby Baker with Craig Northey. Road stories, the making of the records, and life with The Hip. Reverent, careful, and a little awestruck: the crown jewels of the archive.",
+        "Alongside them are the conversations recorded across the network: the Hipstories from Fully & Completely (Stephen Brunt, Michael Barclay, Alan Cross, Dave Bidini, and more), Robby Baker and Craig Northey on Strippers Union, the Getting Hip to The Hip sit-downs, the Introduce Yerself bonus conversations from Discovering Downie, and Matt Merritt's 2013 conversation with Gord Downie."
+      ],
+      "sections": ["The Interview Series", "From Fully & Completely", "From Getting Hip to The Hip", "From Discovering Downie", "From The Tragically Hip Top Forty Countdown"]
+    },
+    {
+      "slug": "album-countdown",
+      "name": "The Tragically Hip Album Countdown",
+      "years": "2027",
+      "imageAlt": "The Tragically Hip Album Countdown show artwork: the title above fifteen vinyl records on dark purple",
+      "about": [
+        "A fan-voted countdown of all fifteen releases by The Tragically Hip: the thirteen studio albums, the 1987 self-titled EP, and \"Saskadelphia\". The community rates every record out of 10, and the averages set the order. jD moderates a rotating panel of three to five.",
+        "Argumentative, warm, and fan-first: the community is the authority and jD is holding the abacus. Live on YouTube Mondays at 8pm ET, then on the podcast feed every Wednesday."
+      ],
+      "empty": "The Tragically Hip Album Countdown launches Monday, January 4, 2027. The episodes will be listed here as they come out."
+    },
+    {
+      "slug": "the-completists",
+      "name": "The Completists",
+      "eyebrow": "Odds and Ends",
+      "years": "",
+      "extra": true,
+      "imageAlt": "The Tragically Hip Podcast Series logo: a record and a microphone inside a dark purple circle",
+      "about": [
+        "For the completists: the specials that live on the network's feed outside the nine shows. Every podList, the listener-built playlists, plus the podUMENTARYs and GEDfest Past, Present, & Future."
+      ],
+      "sections": ["podList", "podUMENTARY", "GEDfest Past, Present, & Future"]
+    }
+  ]
+}
