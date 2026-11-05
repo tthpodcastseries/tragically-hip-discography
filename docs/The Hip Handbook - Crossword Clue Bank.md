@@ -41,14 +41,32 @@ Every clue below is from the site data unless it says otherwise. Sources: Top 40
 - jD: WELLINGTON (Ricky Wellington, head of security, jD, November 5, 2026).
 - ABACUS comes back from Puzzle 1, seven weeks later: the first recycled answer, and allowed by the five-week rule.
 
+**Puzzle 9** (165 letters, January 16, 2027): CAULDRON, LANOIS, CASSETTE, LAMOUREUX, BIGMUSICFEST, METROPOL, MISTYMOON, FAMILYBAND, PROMISING, THUNDERBAY, SAINTJOHN, LOUIS, REDUX, FLASHBACKS, DOBA, TAXIDANCERS, RADIOSHOW, WHATBLUE, KILLINGTIME, TIFF.
+- Box sets, films and Junos come from the album notes in `js/discography-app.js` ("Heksenketel" is Dutch for "witch's cauldron"; the 1987 EP had seven tracks on cassette, eight on CD).
+- FAMILYBAND names the Handbook's setlist explorer (`docs/The Hip Handbook - Overview.md`).
+
+**Puzzle 10** (162 letters, January 23): BAICHWAL, DAVERUSSELL, PRIMEVIDEO, MACROSCOPIC, HOOFHEARTED, BUMBLEBEE, NEWRECRUITS, INVIEW, DESIGN, COREL, WETLANDS, SPOKANE, ODDS, BOTTRILL, WENJACK, AVERAGES, NEWORLEANS, SILVERJET, COFFEEGIRL, MAN.
+- NEWRECRUITS and INVIEW name Handbook pages (the videos page and the Passport).
+
+**Puzzle 11** (165 letters, January 30): FIREINTHEHOLE, SOMETHINGON, RULES, TRICKLEDOWN, ONTHEVERGE, DIREWOLF, OCEANNEXT, JUSTASWELL, NEWMAYBE, LUV, SASKATOON, TILBURG, RENFREW, ROTTERDAM, MIKEDOWNIE, CONQUERING, MERCURYSEA, TEN, RANDOM, THIRTY.
+
+**Puzzle 12** (165 letters, February 6): BLOWATHIGHDOUGH, COMPASSPOINT, COCONUTCREAM, HONEYPLEASE, INSARNIA, MYSTERY, GROUP, VICTORIA, ROCHESTER, MARTYRS, AVALON, SADDLEDOME, PODUMENTARY, DISCOVERY, KINGSTON, ORBITROOM, BEAR, DUTCH, EIGHTH, SIX.
+- KINGSTON comes back from Puzzle 1 with a new clue (Alfie's Pub).
+
+**Puzzle 13** (162 letters, February 13, the day before Valentine's Day): LOVEISAFIRST, LETSSTAYENGAGED, BOOTSORHEARTS, FORUM, TOADS, ATLANTA, COLUMBUS, BARRYMORES, PITTSBURGH, INSOMNIACS, GETBACKAGAIN, WAITSOLONG, ROBBY, ONETHIRD, FOUR, HORSESHOE, ENCORES, CBC, ROXY, KAYAK.
+- Recycled with new clues: HORSESHOE (the "Fully Completely" box set's live disc), CBC ("A National Celebration"), ROXY (the "Road Apples" box set).
+
+**Puzzle 14** (167 letters, February 20): THEATREAQUARIUS, DARKESTONE, LASTRECLUSE, DONEANDDONE, NOTNECESSARY, CALGARY, OTTAWA, DEPENCIER, ANDYKEEN, SAMCOYLE, BANGERFILMS, KENGREER, PASSPORT, PILGRIMAGE, SECRETPATH, GUS, TIFF, PIERRE, DIAMOND, ALS.
+- Recycled with new clues: KENGREER (the $5,000 EP), SECRETPATH, TIFF (five weeks after Puzzle 9, the shortest gap allowed), ALS.
+
+**Puzzle 15** (161 letters, February 27): YERNOTTHEOCEAN, POETS, MORNINGMOON, WEWANTTOBEIT, PUTTINGDOWN, HIGHWAYGIRL, HALIFAX, VEGASSTRIP, WORKINGTITLE, LABEL, CHICAGO, PORTLAND, CHARLESTON, AMAZON, OVERDUBS, ROADSIDE, TOURBUS, DVD, INN, PUB.
+- Recycled with new clues: POETS (names the lyrics search), HALIFAX (the Misty Moon), ROADSIDE (the tour "Heksenketel" follows).
+
 ## Banked
 
 | Answer | Letters | Clue | Type | Status | Source |
 |---|---|---|---|---|---|
 | RICKY | 5 | First name of The Hip's head of security, Mr. Wellington | Crew | jD | jD, November 5, 2026 (WELLINGTON is in Puzzle 8, so not before Puzzle 13) |
-| BLOWATHIGHDOUGH | 4, 2, 4, 5 | Number Six in The Tragically Hip Top Forty Countdown, and the opening track on "Up to Here" | Top 40 | Site data | js/discography-app.js (15 letters: hard to fit) |
-| COMPASSPOINT | 7, 5 | ___ Studios, in the Bahamas, where "In Violet Light" was recorded | Studio | Site data | js/discography-app.js (not with BAHAMAS) |
-| THEATREAQUARIUS | 7, 8 | Hamilton theatre where "It's a Good Life If You Don't Weaken" premiered | Podcast | Site data | data/podcast-shows.json and the shared rules (not with HAMILTON) |
 | SOHARDDONEBY | 2, 4, 4, 2 | Sixth track on "Day for Night" | Song | Site data | data/discography.json (cut from Puzzle 8 for size) |
 ## Clue types to draw from
 
