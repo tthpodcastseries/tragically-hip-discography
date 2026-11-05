@@ -4,7 +4,7 @@
 // If the dead address starts with one of these pages, go to that page instead.
 // Loaded in the <head> so it moves on before the page draws.
 (function () {
-  var PAGES = ['bring-it-all-back', 'unlocked', 'tour-map', 'discography', 'setlists', 'podcasts'];
+  var PAGES = ['bring-it-all-back', 'are-we-family', 'little-bones', 'unlocked', 'tour-map', 'discography', 'setlists', 'podcasts'];
   var path = location.pathname.replace(/^\//, '');
   for (var i = 0; i < PAGES.length; i++) {
     var page = PAGES[i];

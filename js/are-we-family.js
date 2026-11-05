@@ -6,7 +6,7 @@
 // Shares its frame and styles with bring-it-all-back.js / unlocked.js.
 (async function () {
   const $ = id => document.getElementById(id);
-  const track = name => { try { if (window.umami && window.umami.track) window.umami.track(name); } catch (e) { /* analytics optional */ } };
+  const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
   // Date of puzzle #1, a Sunday - the game opens at midnight Toronto time on this day. Before it
   // the page says when the game opens instead of showing a puzzle.
@@ -146,7 +146,7 @@
     if (text != null) n.textContent = text;
     return n;
   };
-  const markStarted = () => { if (!today.started) { today.started = true; track('Family - Started'); } };
+  const markStarted = () => { if (!today.started) { today.started = true; track('Family - Started', startInfo()); } };
   const left = () => today.order.filter(t => !today.solved.includes(groupOf(t)));
   const todayPoints = () => today.won ? LADDER[today.mistakes] : 0;
 
@@ -299,6 +299,20 @@
   // A win on this puzzle keeps the streak going: the streak counts weeks in a row
   const continues = () => store.stats.lastSolved === puzzleNo - 1;
   const shownStreak = () => store.stats.lastSolved === puzzleNo || continues() ? store.stats.streak : 0;
+  // Sent with the Started event so Umami can count real return players. Umami's visitor count
+  // resets when a phone changes network; these numbers live on the device (jD, 2026-11-05).
+  // Nothing personal: a band of games played here before and how long since the last one.
+  const startInfo = () => {
+    const s = store.stats, n = s.played || 0;
+    const last = Math.max(s.lastPlayed || 0, s.lastSolved || 0);
+    const gap = puzzleNo - last;
+    const info = {
+      game: n === 0 ? 'First game' : n < 3 ? '2nd or 3rd' : n < 7 ? '4th to 7th' : n < 15 ? '8th to 15th' : '16th or more',
+      last: !last ? (n ? 'Not known' : 'First game') : gap <= 1 ? 'Last week' : gap <= 4 ? '2-4 weeks ago' : 'Over a month ago'
+    };
+    s.lastPlayed = puzzleNo;
+    return info;
+  };
 
   // One row of squares per guess, coloured by each song's real group. No song names.
   // The tier in words too, so the colours don't have to carry it alone.
@@ -308,7 +322,7 @@
     : ' (' + today.solved.length + ' of 4 groups)';
   const shareText = () =>
     '\u{1F3B8} ' + NAME + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
-    guessRows().join('\n') + '\nhttps://' + SHARE_URL;
+    guessRows().join('\n') + '\nhttps://' + SHARE_URL + '\n';
 
   function renderStats() {
     const s = store.stats;
