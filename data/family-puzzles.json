@@ -35,10 +35,10 @@
     },
     {
       "groups": [
-        { "label": "Songs from \"World Container\"", "songs": ["Yer Not the Ocean", "In View", "Family Band", "The Drop-Off"] },
-        { "label": "Someone's name in the title", "songs": ["Cordelia", "Evelyn", "Gus: The Polar Bear from Central Park", "Courage (For Hugh MacLennan)"] },
-        { "label": "The 4 songs that opened the most shows", "songs": ["Grace, Too", "The Lonely End of the Rink", "At Transformation", "Gift Shop"], "note": "In the Handbook's setlists." },
-        { "label": "Numbers Five to Eight on the Top Forty Countdown", "songs": ["Little Bones", "Blow at High Dough", "Nautical Disaster", "Locked in the Trunk of a Car"] }
+        { "label": "Songs from \"In Violet Light\"", "songs": ["Are You Ready", "Silver Jet", "Throwing Off Glass", "A Beautiful Thing"] },
+        { "label": "A body part in the title", "songs": ["Little Bones", "Twist My Arm", "Crack My Spine Like a Whip", "Hailstone Hands of God"] },
+        { "label": "Snow in the lyrics", "songs": ["Greasy Jungle", "Montreal", "One Night in Copenhagen", "The Modern Spirit"] },
+        { "label": "The first track on their album", "songs": ["Small Town Bringdown", "Heaven Is a Better Place Today", "Morning Moon", "Ouch"] }
       ]
     },
     {
@@ -51,10 +51,10 @@
     },
     {
       "groups": [
-        { "label": "Songs from \"In Violet Light\"", "songs": ["Are You Ready", "Silver Jet", "Throwing Off Glass", "A Beautiful Thing"] },
-        { "label": "A body part in the title", "songs": ["Little Bones", "Twist My Arm", "Crack My Spine Like a Whip", "Hailstone Hands of God"] },
-        { "label": "Snow in the lyrics", "songs": ["Greasy Jungle", "Montreal", "One Night in Copenhagen", "The Modern Spirit"] },
-        { "label": "The first track on their album", "songs": ["Small Town Bringdown", "Heaven Is a Better Place Today", "Morning Moon", "Ouch"] }
+        { "label": "Songs from \"World Container\"", "songs": ["Yer Not the Ocean", "In View", "Family Band", "The Drop-Off"] },
+        { "label": "Someone's name in the title", "songs": ["Cordelia", "Evelyn", "Gus: The Polar Bear from Central Park", "Courage (For Hugh MacLennan)"] },
+        { "label": "The 4 songs that opened the most shows", "songs": ["Grace, Too", "The Lonely End of the Rink", "At Transformation", "Gift Shop"], "note": "In the Handbook's setlists." },
+        { "label": "Numbers Five to Eight on the Top Forty Countdown", "songs": ["Little Bones", "Blow at High Dough", "Nautical Disaster", "Locked in the Trunk of a Car"] }
       ]
     },
     {
