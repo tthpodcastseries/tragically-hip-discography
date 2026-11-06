@@ -179,19 +179,23 @@ clips.puzzles.forEach((p, i) => {
 }
 
 // Words Into Birds (edited by hand, grids from scripts/build-bird-grids.js): exactly 20 clues,
-// answers in capital letters, word lengths that add up, and a grid that really holds together:
+// 15 about The Hip and 5 linking words (jD, 2026-11-06), answers in capital letters, word lengths that add up, and a grid that really holds together:
 // every answer fits, crossing letters agree, nothing touches side by side by accident, the whole
 // grid is joined up, and it is at most 15 squares wide so it fits a phone
 {
   const birds = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/bird-puzzles.json'), 'utf8'));
   // An answer can come back, but not within a month: at least 5 puzzles (35 days) after its
-  // last use (jD, 2026-11-05)
-  const REPEAT_GAP = 5;
+  // last use (jD, 2026-11-05). Linking words can come back sooner, never two weeks running
+  // (jD, 2026-11-06).
+  const REPEAT_GAP = 5, LINK_GAP = 2;
+  const linkWords = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/bird-links.json'), 'utf8')).words.map(w => w.answer));
   const seen = new Map(); // answer -> last puzzle number it was in
   birds.puzzles.forEach((p, i) => {
     const at = `bird-puzzles.json: puzzle ${i + 1}`;
     const cl = Array.isArray(p.clues) ? p.clues : [];
     if (cl.length !== 20) { problems.push(`${at} has ${cl.length} clues; every puzzle has exactly 20`); return; }
+    const nLinks = cl.filter(c => c.link).length;
+    if (nLinks !== 5) problems.push(`${at} has ${nLinks} linking words; every puzzle has 15 Hip clues and 5 linking words`);
     if (!p.rows || !p.cols) { problems.push(`${at} has no grid yet: run node scripts/build-bird-grids.js`); return; }
     if (p.cols > 15) problems.push(`${at} is ${p.cols} squares wide; 15 is the most that fits a phone`);
     const grid = new Map(); // "r,c" -> { ch, across, down }
@@ -202,7 +206,10 @@ clips.puzzles.forEach((p, i) => {
       const lens = String(c.enum || '').split(/\s*,\s*/).map(Number);
       if (lens.some(n => !n) || lens.reduce((a, b) => a + b, 0) !== c.answer.length) problems.push(`${who}: word lengths (${c.enum}) don't add up to ${c.answer.length} letters`);
       if (!c.clue || /[#<\u2013\u2014]/.test(c.clue)) problems.push(`${who}: clue is missing, or has a "#", a "<", or a long dash`);
-      if (seen.has(c.answer) && i + 1 - seen.get(c.answer) < REPEAT_GAP) problems.push(`${who}: ${c.answer} was an answer in puzzle ${seen.get(c.answer)}; an answer can only come back ${REPEAT_GAP} or more puzzles later (more than a month)`);
+      if (c.link && !linkWords.has(c.answer)) problems.push(`${who}: linking word ${c.answer} isn't in data/bird-links.json`);
+      if (!c.link && linkWords.has(c.answer)) problems.push(`${who}: ${c.answer} is on the linking list (data/bird-links.json) and a Hip answer; take it off the list`);
+      const gap = c.link ? LINK_GAP : REPEAT_GAP;
+      if (seen.has(c.answer) && i + 1 - seen.get(c.answer) < gap) problems.push(`${who}: ${c.answer} was an answer in puzzle ${seen.get(c.answer)}; ${c.link ? 'a linking word' : 'an answer'} can only come back ${gap} or more puzzles later`);
       seen.set(c.answer, i + 1);
       if (c.dir !== 'across' && c.dir !== 'down') { problems.push(`${who}: dir must be across or down`); broken = true; return; }
       for (let k = 0; k < c.answer.length; k++) {
