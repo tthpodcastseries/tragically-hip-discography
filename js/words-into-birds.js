@@ -1,5 +1,5 @@
 // words-into-birds.js - 'Words Into Birds', the weekly crossword
-// Twenty clues about The Hip on one grid, the same for everyone. A new grid every Saturday at
+// Twenty clues on one grid (15 about The Hip, 5 music linking words), the same for everyone. A new grid every Saturday at
 // midnight Toronto time. The name is from 'About This Map': "turn words into birds".
 // Everything runs in the browser from data/bird-puzzles.json, which jD edits by hand (grids
 // laid out by scripts/build-bird-grids.js); there is no server and nothing is sent anywhere
