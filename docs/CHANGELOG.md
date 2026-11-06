@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.8.1
+**Thugs - Patch** - November 6, 2026
+- **Home page:** the two band photos at the bottom are gone (jD, November 5, 2026), with their credit lines: the red curtain photo (Anthony Pidgeon) and the overpass photo (Gordon Hawkins). The image files stay in `assets-optimized/band/`.
+- Cache bumped to `hh-v5.8.1`; footer label bumped to v5.8.1 (Thugs - Patch)
+
 ## v5.8
 **Thugs** - November 6, 2026
 Three new games, a share card for every song, and five lyric fixes. The games open on their own dates, after this goes live.
