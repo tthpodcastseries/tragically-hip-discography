@@ -85,6 +85,26 @@
       <div id="spAllBody"></div>
     </details>
 
+    <section class="sp-card sp-share" aria-labelledby="spShareH">
+      <h2 class="sp-h2" id="spShareH">Share this song</h2>
+      <p class="sp-sub">A card for Facebook or Instagram with this song's live history.</p>
+      <div class="sp-formats" role="group" aria-label="Card size">
+        <button class="sp-fmt" type="button" data-format="facebook" aria-pressed="true">Facebook<small>1200 x 630</small></button>
+        <button class="sp-fmt" type="button" data-format="instagram" aria-pressed="false">Instagram post<small>1080 x 1350</small></button>
+        <button class="sp-fmt" type="button" data-format="story" aria-pressed="false">Instagram story<small>1080 x 1920</small></button>
+      </div>
+      <div class="sp-card-actions">
+        <button id="spMakeCard" class="sp-btn" type="button">Make the card</button>
+      </div>
+      <div id="spCardWrap" hidden>
+        <img id="spCardImg" class="sp-card-img" alt="Song share card">
+        <div class="sp-card-actions">
+          <button id="spCardShare" class="sp-btn" type="button" hidden>Share card</button>
+          <button id="spCardSave" class="sp-btn sp-btn-alt" type="button">Save image</button>
+        </div>
+      </div>
+    </section>
+
     <div class="sp-actions">
       <button id="spCopy" class="sp-btn" type="button">Copy link to this song</button>
       <a class="sp-btn sp-btn-alt" href="/song">All songs</a>

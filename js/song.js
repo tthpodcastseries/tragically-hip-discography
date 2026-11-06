@@ -132,6 +132,7 @@
     renderRank();
     renderRecordings(recs);
     renderAll(plays);
+    initCard(plays, origin, url);
 
     $('spCopy').addEventListener('click', async () => {
       const btn = $('spCopy');
@@ -346,6 +347,230 @@
         li.appendChild(x.rec ? link('▶ Play', '/tour-map.html#play=' + x.id) : link('Map', '/tour-map.html#show=' + x.id));
         list.appendChild(li);
       });
+    });
+  }
+
+  // ─── Share card (v5.8) ───
+  // Same sizes, frame and buttons as the Passport and game cards: Facebook link-card size,
+  // Instagram feed portrait (4:5), Instagram Story (9:16). Red and Gold are bar fills only.
+  const FORMATS = {
+    facebook: { w: 1200, h: 630, file: 'facebook' },
+    instagram: { w: 1080, h: 1350, file: 'instagram' },
+    story: { w: 1080, h: 1920, file: 'instagram-story' },
+  };
+  // Rank numbers are spelled out (jD, 2026-11-03): 12 -> "Twelve", 142 -> "One Hundred Forty-Two"
+  const ONES = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve',
+    'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const words = n => {
+    if (n < 20) return ONES[n];
+    if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? '-' + ONES[n % 10] : '');
+    if (n < 1000) return ONES[Math.floor(n / 100)] + ' Hundred' + (n % 100 ? ' ' + words(n % 100) : '');
+    return n.toLocaleString('en-CA');
+  };
+
+  function initCard(plays, origin, url) {
+    let cardFormat = 'facebook';
+    let currentCard = null; // { blob, url, format }
+    const cardFile = () => 'hip-song-' + song.s + '-' + FORMATS[cardFormat].file + '.png';
+    const siteText = url.replace(/^https:\/\//, '');
+    const title = "'" + song.t + "'";
+    const fromLine = origin ? 'From "' + origin[0] + '" (' + origin[1] + ')' : '';
+    const first = plays[0], last = plays[plays.length - 1];
+    const counts = {};
+    plays.forEach(p => { const y = +p.iso.slice(0, 4); counts[y] = (counts[y] || 0) + 1; });
+    const k = song.k;
+    const rankLine = k ? 'Fan-ranked Number ' + words(k.rank) : '';
+    const rankShow = k ? (k.rank <= 40 ? 'The Tragically Hip Top Forty Countdown' : 'Full 169 Fan Vote') : '';
+
+    async function makeCard() {
+      const fmt = FORMATS[cardFormat];
+      const W = fmt.w, H = fmt.h, landscape = W > H, story = H > 1500;
+      try {
+        // Every weight the card uses, or the canvas quietly draws in another font
+        await Promise.all(['900 300px Poppins', '800 56px Poppins', '700 48px Poppins', '600 40px Poppins'].map(f => document.fonts.load(f)));
+      } catch (e) { /* fall back to the default sans-serif */ }
+
+      const c = document.createElement('canvas');
+      c.width = W; c.height = H;
+      const x = c.getContext('2d');
+      x.fillStyle = '#0e0b16';
+      x.fillRect(0, 0, W, H);
+      x.strokeStyle = 'rgba(204,162,60,0.45)';
+      x.lineWidth = landscape ? 4 : 6;
+      const inset = landscape ? 24 : 36;
+      x.strokeRect(inset, inset, W - inset * 2, H - inset * 2);
+      x.textBaseline = 'alphabetic';
+
+      // A dry run measures the layout without drawing (the tall cards use it to fit)
+      let dry = false;
+      // Draw text at (cx, y); align 'center' or 'left'. Shrinks to fit maxW.
+      const put = (str, cx, y, weight, size, color, spacing, maxW, align) => {
+        let px = size;
+        x.textAlign = align || 'center';
+        x.font = weight + ' ' + px + 'px Poppins, sans-serif';
+        if ('letterSpacing' in x) x.letterSpacing = spacing || '0px';
+        while (maxW && x.measureText(str).width > maxW && px > 20) { px -= 2; x.font = weight + ' ' + px + 'px Poppins, sans-serif'; }
+        if (dry) return;
+        x.fillStyle = color;
+        x.fillText(str, cx, y);
+      };
+      // Breaks text into at most maxLines lines, shrinking the size until it fits.
+      // Draws them from y down and returns where the last line sits.
+      const putLines = (str, cx, y, weight, size, color, maxW, maxLines, align) => {
+        let px = size, lines;
+        if ('letterSpacing' in x) x.letterSpacing = '0px';
+        for (;;) {
+          x.font = weight + ' ' + px + 'px Poppins, sans-serif';
+          lines = [];
+          let line = '';
+          str.split(' ').forEach(w => {
+            const next = line ? line + ' ' + w : w;
+            if (line && x.measureText(next).width > maxW) { lines.push(line); line = w; } else line = next;
+          });
+          lines.push(line);
+          if (lines.length <= maxLines || px <= 24) break;
+          px -= 4;
+        }
+        const lineH = Math.round(px * 1.18);
+        lines.forEach((l, i) => put(l, cx, y + i * lineH, weight, px, color, '0px', maxW, align));
+        return y + (lines.length - 1) * lineH;
+      };
+      // Plays by year, 1985 to 2016 at least: red bars, the busiest year in gold
+      const bars = (left, top, w, h, labelSize) => {
+        if (dry) return;
+        const ys = Object.keys(counts).map(Number);
+        const lo = Math.min(1985, ...ys), hi = Math.max(2016, ...ys);
+        const max = Math.max(...Object.values(counts));
+        const n = hi - lo + 1, gap = Math.max(2, Math.round(w / n * 0.18)), bw = (w - gap * (n - 1)) / n;
+        let busiest = null;
+        for (let y = lo; y <= hi; y++) if (counts[y] === max && busiest == null) busiest = y;
+        for (let y = lo; y <= hi; y++) {
+          const v = counts[y] || 0, bx = left + (y - lo) * (bw + gap);
+          if (v) {
+            const bh = Math.max(4, Math.round(h * v / max));
+            x.fillStyle = y === busiest ? '#CCA23C' : '#C8102E';
+            x.fillRect(bx, top + h - bh, bw, bh);
+          } else {
+            x.fillStyle = '#2a2a2a';
+            x.fillRect(bx, top + h - 2, bw, 2);
+          }
+        }
+        put(String(lo), left, top + h + labelSize + 8, '600', labelSize, '#929292', '1px', 0, 'left');
+        put(String(hi), left + w, top + h + labelSize + 8, '600', labelSize, '#929292', '1px', 0, 'right');
+      };
+
+      const big = plays.length.toLocaleString('en-CA');
+      const bigLabel = plays.length === 1 ? 'TIME PLAYED LIVE' : 'TIMES PLAYED LIVE';
+      const details = [];
+      if (plays.length) {
+        if (plays.length === 1) details.push('Played on ' + fmtDate(first.iso));
+        else details.push('Live debut: ' + fmtDate(first.iso), 'Latest: ' + fmtDate(last.iso));
+      }
+
+      if (landscape) {
+        // The live count and the bars on the left, the song on the right
+        put('\u{1F341}', 330, 120, '700', 56, '#ffffff');
+        put('THE HIP HANDBOOK', 330, 172, '700', 26, '#ffffff', '8px', 520);
+        if (plays.length) {
+          put(big, 330, 330, '900', 150, '#ffffff', '0px', 520);
+          put(bigLabel, 330, 382, '700', 30, '#ffffff', '8px', 520);
+          bars(90, 412, 480, 92, 20);
+        } else {
+          putLines('No live performances on record', 330, 320, '700', 44, '#d9d9d9', 460, 2, 'center');
+        }
+        x.strokeStyle = 'rgba(204,162,60,0.3)';
+        x.lineWidth = 2;
+        x.beginPath(); x.moveTo(650, 90); x.lineTo(650, 540); x.stroke();
+        let y = putLines(title, 690, 170, '800', 56, '#ffffff', 450, 3, 'left');
+        if (fromLine) { y += 50; y = putLines(fromLine, 690, y, '600', 28, '#d9d9d9', 450, 2, 'left'); }
+        y += 22;
+        details.forEach(d => { y += 44; put(d, 690, y, '600', 28, '#d9d9d9', '0px', 450, 'left'); });
+        if (k) {
+          y += 56;
+          y = putLines(rankLine, 690, y, '700', 28, '#ffffff', 450, 2, 'left');
+          y += 34;
+          put(rankShow, 690, y, '600', 22, '#929292', '0px', 450, 'left');
+        }
+        put(siteText, W / 2, 590, '600', 22, '#929292', '2px', W - 120);
+      } else {
+        // Portrait. Stories keep everything inside the safe zone (Instagram covers
+        // roughly the top and bottom 250px with its own interface). A long title takes
+        // up to three lines, so measure first: shrink until it fits, then centre it.
+        const top = story ? 300 : 130, limit = story ? 1560 : 1180;
+        const layout = (s, y) => {
+          put('\u{1F341}', W / 2, y, '700', 90 * s, '#ffffff');
+          y += 74 * s;
+          put('THE HIP HANDBOOK', W / 2, y, '700', 36, '#ffffff', '10px', W - 160);
+          y += 110 * s;
+          y = putLines(title, W / 2, y, '800', 78 * s, '#ffffff', W - 180, 3, 'center');
+          if (fromLine) { y += 64 * s; y = putLines(fromLine, W / 2, y, '600', 38 * s, '#d9d9d9', W - 180, 2, 'center'); }
+          if (plays.length) {
+            y += 250 * s;
+            put(big, W / 2, y, '900', 230 * s, '#ffffff', '0px', W - 160);
+            y += 70 * s;
+            put(bigLabel, W / 2, y, '700', 44 * s, '#ffffff', '10px', W - 160);
+            y += 44 * s;
+            bars(150, y, W - 300, 130 * s, 26);
+            y += 130 * s + 34;
+            details.forEach(d => { y += 62 * s; put(d, W / 2, y, '600', 40 * s, '#d9d9d9', '0px', W - 180); });
+          } else {
+            y += 120 * s;
+            y = putLines('No live performances on record', W / 2, y, '700', 52 * s, '#d9d9d9', W - 200, 2, 'center');
+          }
+          if (k) {
+            y += 84 * s;
+            y = putLines(rankLine, W / 2, y, '700', 42 * s, '#ffffff', W - 180, 2, 'center');
+            y += 48 * s;
+            put(rankShow, W / 2, y, '600', 30 * s, '#929292', '0px', W - 180);
+          }
+          return y;
+        };
+        let s = story ? 1.12 : 1, end;
+        dry = true;
+        while ((end = layout(s, top)) > limit && s > 0.6) s -= 0.04;
+        dry = false;
+        layout(s, top + Math.max(0, Math.round((limit - end) / 2)));
+        put(siteText, W / 2, story ? 1650 : 1270, '600', 30, '#929292', '2px', W - 140);
+      }
+
+      const blob = await new Promise(res => c.toBlob(res, 'image/png'));
+      if (currentCard) URL.revokeObjectURL(currentCard.url);
+      currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
+      const img = $('spCardImg');
+      img.src = currentCard.url;
+      // The card's own words, for people who can't see it (audit BRAND-15)
+      img.alt = title + ' share card. ' + (fromLine ? fromLine + '. ' : '') +
+        (plays.length ? big + ' ' + bigLabel.toLowerCase() + ', with a chart of plays by year. ' + details.join('. ') + '.' : 'No live performances on record.') +
+        (k ? ' ' + rankLine + ', ' + rankShow + '.' : '');
+      img.className = 'sp-card-img sp-card-' + cardFormat;
+      $('spCardWrap').hidden = false;
+      const file = new File([blob], cardFile(), { type: 'image/png' });
+      $('spCardShare').hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+      track('Song - Card made - ' + cardFormat);
+    }
+
+    $('spMakeCard').addEventListener('click', makeCard);
+    document.querySelectorAll('.sp-fmt').forEach(btn => btn.addEventListener('click', () => {
+      cardFormat = btn.dataset.format;
+      document.querySelectorAll('.sp-fmt').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      if (currentCard) makeCard(); // already showing a card: redraw in the new size
+    }));
+    $('spCardSave').addEventListener('click', () => {
+      if (!currentCard) return;
+      const a = el('a');
+      a.href = currentCard.url;
+      a.download = cardFile();
+      document.body.appendChild(a); a.click(); a.remove();
+      track('Song - Card saved');
+    });
+    $('spCardShare').addEventListener('click', async () => {
+      if (!currentCard) return;
+      const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
+      try {
+        await navigator.share({ files: [file], title: title + ' - The Hip Handbook', text: title + ' by The Tragically Hip, live history on The Hip Handbook: ' + url });
+        track('Song - Card shared');
+      } catch (e) { /* cancelled */ }
     });
   }
 

@@ -73,6 +73,20 @@
 
 .sp-year-h { margin: 14px 0 2px; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; color: #fff; }
 
+/* Share card (same sizes and look as the Passport and game cards) */
+.sp-share { text-align: center; }
+.sp-formats { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.sp-fmt { background: none; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: var(--muted); font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 600; padding: 8px 14px; cursor: pointer; line-height: 1.3; }
+.sp-fmt small { display: block; font-size: 0.64rem; font-weight: 400; color: var(--muted2); }
+.sp-fmt:hover { border-color: var(--gold); color: var(--text); }
+.sp-fmt[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.sp-fmt[aria-pressed="true"] small { color: var(--bg); }
+.sp-card-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.sp-card-img { display: block; width: 100%; margin: 16px auto 0; border-radius: 12px; border: 1px solid #2a2a2a; }
+.sp-card-facebook { max-width: 520px; }
+.sp-card-instagram { max-width: 340px; }
+.sp-card-story { max-width: 250px; }
+
 .sp-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
 .sp-btn { display: inline-block; padding: 11px 20px; background: var(--red); border: 1px solid var(--red); border-radius: 10px; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; cursor: pointer; }
 .sp-btn:hover { background: #a00d24; }
