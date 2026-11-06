@@ -1,5 +1,18 @@
 # Changelog
 
+## v5.8
+**Thugs** - November 6, 2026
+Three new games, a share card for every song, and five lyric fixes. The games open on their own dates, after this goes live.
+- **Little Bones (new daily game, /little-bones):** a few seconds of The Hip live from a real show in The Tragically Hip Archive. Name the song from the shortest clip you can: 2 seconds, then 4, 8, 15 and 30 with each wrong guess or skip. Then guess the year of the show for a bonus. Opens Wednesday, November 18, 2026, with 412 days scheduled (through January 3, 2028). New `scripts/build-clip-pool.js` builds `data/clip-pool.json` from jD's start points and skipped tapes in `data/clip-starts.json`, set with the local clip picker (`scripts/clip-picker.html`, never published). The audio comes from the Archive's Backblaze host, already in the CSP and on the privacy page.
+- **Are We Family (new weekly game, /are-we-family):** sixteen songs by The Hip, four hidden groups of four. 100 points with no mistakes, then 80, 60 and 40. A new puzzle every Saturday from November 21, 2026. jD signed off all 15 puzzles (through February 27, 2027), hand-made in `data/family-puzzles.json`.
+- **Words Into Birds (new weekly crossword, /words-into-birds):** 20 clues a week, 15 about The Hip and 5 music linking words (picked by `scripts/build-bird-grids.js` from `data/bird-links.json`), on a grid at most 15 squares wide so it fits a phone. Start at 100 points: Check word or Check grid costs 5, Show letter costs 10, finish and you keep at least 10, give up and it's 0. A new grid every Saturday from November 21, 2026. 15 puzzles scheduled (through February 27, 2027). A Hip answer can come back only 5 or more puzzles after its last use, a linking word after 2.
+- All three save progress, stats and streaks on the device, share a no-spoiler score in text, and make a score card in the three sizes. Each has a home page card, a sitemap entry, and a place in the offline cache.
+- **Song pages share card:** every song page gets a Share this song section with the same three sizes and buttons as the Passport and game cards (Facebook 1200 x 630, Instagram post 1080 x 1350, Instagram story 1080 x 1920). The card shows the times played live, plays by year (red bars, the busiest year in gold), the live debut and latest dates, the fan ranking spelled out ("Fan-ranked Number Four"), and the song's address. A song never played live says so. Tall cards shrink to fit long titles. `song/*.html` rebuilt with `build-seo-pages.js`.
+- **Lyrics:** five typos fixed (jD, November 5, 2026): Millhaven ('38 Years Old'), Northumberland and Clayoquot ('Silver Jet'), "forsake" ('New Orleans Is Sinking'), and "Coastline" ('Fly'). The discography page's word count drops by one (4,474 to 4,473).
+- `scripts/check-game-schedule.js` now covers the weekly games and lets a game's puzzles change until it opens. `scripts/audit-site.js` checks all three games' data and run-out dates, every crossword grid (20 clues, crossings agree, no stray words, joined up, 15 wide at most), and the Hip and linking-word gaps.
+- CLAUDE.md and the Overview cover the new games, their test addresses (`?day=N`, `?week=N`, `?reset=1`), and `build-clip-pool.js --force` on the never-run list.
+- Cache bumped to `hh-v5.8`; footer label bumped to v5.8 (Thugs)
+
 ## v5.7.1
 **Nautical Disaster - Patch** - November 5, 2026
 Fixes from the first week of Umami numbers after the October 29 promo.
