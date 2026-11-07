@@ -1,5 +1,16 @@
 # Changelog
 
+## v5.8.2
+**Thugs - Patch** - November 7, 2026
+New scoring for (Un)Locked in the Trunk of a Car (jD, November 7, 2026). Guesses on the song now cost points.
+- **Start on 100, and everything costs 10:** the first guess is blind (no words show until one is opened). Opening a word costs 10. Every wrong guess costs 10 and opens the next word, which costs its own 10. Revealing a word instead of unscrambling it costs 10 more. After word 5 a wrong guess opens the album hint (or the year, for a title track) for 10, then one last guess.
+- **Pass is gone:** with every open word unscrambled, a player can guess, or open the next word themselves with the new "Open word N (-10)" button ("Skip it - open word 1 (-10)" before the blind guess). Each word has to be unscrambled or revealed before the next guess.
+- **No minimum win:** reaching 0 locks the trunk for the day. Reveal and Open word hide when only 10 points are left, so only a miss can take a player to 0.
+- **Share squares:** a red square for each wrong guess, in the order it happened, and the miss count in the share line and on the score card.
+- **Games carried over the update:** a game finished under the old ladder keeps its score. A half-played one carries on under the new rules, but its wrong guesses stay free and it keeps at least 10 points. Points totals from November 2 to 7 stay as they were.
+- The How it works box on /unlocked is rewritten for the new rules. The puzzle schedule is untouched.
+- Cache bumped to `hh-v5.8.2`; footer label bumped to v5.8.2 (Thugs - Patch)
+
 ## v5.8.1
 **Thugs - Patch** - November 6, 2026
 - **Home page:** the two band photos at the bottom are gone (jD, November 5, 2026), with their credit lines: the red curtain photo (Anthony Pidgeon) and the overpass photo (Gordon Hawkins). The image files stay in `assets-optimized/band/`.
