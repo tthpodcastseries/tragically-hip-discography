@@ -1,5 +1,10 @@
 # Changelog
 
+## v5.8.3
+**Thugs - Patch** - November 7, 2026
+- **Home page:** the games section header reads "Games" instead of "Play" (jD, November 7, 2026), so fans know what they'll find there.
+- Cache bumped to `hh-v5.8.3`; footer label bumped to v5.8.3 (Thugs - Patch)
+
 ## v5.8.2
 **Thugs - Patch** - November 7, 2026
 New scoring for (Un)Locked in the Trunk of a Car (jD, November 7, 2026). Guesses on the song now cost points.
