@@ -161,11 +161,12 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 .nav-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .nav-card-name { font-size: 0.88rem; font-weight: 700; color: var(--text); letter-spacing: 0.01em; }
 /* Hip-song name as a small gold eyebrow above the plain name (v4.6) */
-.nav-card-sub { font-size: 0.68rem; font-weight: 600; font-style: italic; color: var(--text); letter-spacing: 0.02em; }
+.nav-card-sub { font-size: 0.68rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
 .nav-card-desc { font-size: 0.74rem; color: var(--muted2); line-height: 1.45; margin-top: 2px; }
 /* Readable on phones: 12px or more (audit DEV-05) */
 @media (max-width: 600px) { .nav-card-desc { font-size: 0.8rem; } }
 .nav-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.nav-cards + .nav-cards { margin-top: 12px; }
 .shuffle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .nav-card-cta { background: var(--red); border-color: var(--red); }
 .nav-card-cta:hover { background: #a00d24; border-color: #a00d24; }
@@ -175,6 +176,7 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
 /* Phones: one card per row so the descriptions have room to breathe */
 @media (max-width: 500px) {
   .nav-cards { grid-template-columns: 1fr; gap: 10px; }
+  .nav-cards + .nav-cards { margin-top: 10px; }
   .shuffle-row { gap: 10px; }
   .nav-card { padding: 14px 16px; min-height: 56px; }
   .nav-card-name { font-size: 0.86rem; }

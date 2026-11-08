@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.8.4
+**Thugs - Patch** - November 8, 2026
+- **Home page games:** the daily and weekly games sit apart (jD, November 8, 2026). Bring It All Back and (Un)Locked in the Trunk of a Car share the first row, Little Bones runs the full width under them, and Are We Family and Words Into Birds have their own row below. Phones still show one card per row.
+- **Home page cards:** the small titles above each card ("Little Bones", "Music @ Work" and the rest) are no longer italic, to match the no-italics rule (jD, November 8, 2026).
+- Cache bumped to `hh-v5.8.4`; footer label bumped to v5.8.4 (Thugs - Patch)
+
 ## v5.8.3
 **Thugs - Patch** - November 7, 2026
 - **Home page:** the games section header reads "Games" instead of "Play" (jD, November 7, 2026), so fans know what they'll find there.
