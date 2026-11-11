@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.8.5
+**Thugs - Patch** - November 11, 2026
+Gentler scoring for (Un)Locked in the Trunk of a Car (jD, November 11, 2026). The v5.8.2 rules cost 20 for a miss (the miss, plus the word it opened) and doubled a revealed word's cost, so one revealed word could leave a fan on 70.
+- **The words set the score:** 100 for a blind guess, then 90, 80, 70, 60, and 50 after words 1 to 5, and 30 with the album hint.
+- **Slips cost 5:** a wrong guess, or a word revealed instead of unscrambled. Wrong unscrambles stay free.
+- **A wrong guess still opens the next word** (after word 5, the album hint, then one last guess). Opening the next word yourself is still allowed.
+- **A win scores at least 10.** The out-of-points lockout is gone; missing the last guess or giving up scores 0.
+- The guess box says what a miss leads to ("A miss opens word 1, worth 85"), and the next-word button says what the next word is worth.
+- **Games carried over the update:** a finished game keeps its score. A game half played under the v5.8.2 rules scores whichever rules give it more.
+- How it works on /unlocked is rewritten. The puzzle schedule is untouched.
+- Cache bumped to `hh-v5.8.5`; footer label bumped to v5.8.5 (Thugs - Patch)
+
 ## v5.8.4
 **Thugs - Patch** - November 8, 2026
 - **Home page games:** the daily and weekly games sit apart (jD, November 8, 2026). Bring It All Back and (Un)Locked in the Trunk of a Car share the first row, Little Bones runs the full width under them, and Are We Family and Words Into Birds have their own row below. Phones still show one card per row.

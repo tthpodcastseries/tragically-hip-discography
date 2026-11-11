@@ -63,7 +63,7 @@
         </div>
         <div class="ul-wordtools">
           <button id="ulClear" class="ul-link" type="button">Clear</button>
-          <button id="ulRevealWord" class="ul-link" type="button">Reveal it (-10)</button>
+          <button id="ulRevealWord" class="ul-link" type="button">Reveal it (-5)</button>
         </div>
       </form>
       <div id="ulWordMsg" class="bia-msg" role="status" aria-live="polite"></div>
@@ -75,7 +75,7 @@
         <input id="ulGuessInput" type="text" placeholder="Start typing a title..." role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ulSuggest">
         <button id="ulGuess" class="bia-btn" type="submit">Guess</button>
       </div>
-      <button id="ulNext" class="ul-link ul-pass" type="button" hidden>Open word 1 (-10)</button>
+      <button id="ulNext" class="ul-link ul-pass" type="button" hidden>Skip it - open word 1, worth 90</button>
       <ul id="ulSuggest" class="ul-suggest" role="listbox" aria-label="Matching songs" hidden></ul>
     </form>
     <div id="ulMsg" class="bia-msg" role="status" aria-live="polite"></div>
@@ -123,11 +123,11 @@
       <ul>
         <li>A new puzzle drops every day at midnight Toronto time (Eastern), at the same moment for everyone, wherever you are.</li>
         <li>Everyone gets the same song by The Hip each day, locked behind five scrambled words from its lyrics. The words run from the vaguest at the top to the biggest giveaway at the bottom.</li>
-        <li>You start on 100 points. Know it straight away? Name it before any words show for 100 points. A miss costs 10 and opens word 1.</li>
-        <li>Every word you open costs 10. Every wrong guess costs 10 and opens the next word.</li>
-        <li>Unscramble each word before you guess again. Wrong unscrambles are free. Stuck on a scramble? Reveal it for 10 more.</li>
-        <li>Miss after word 5 and you get the album (or the year it came out, when the song is the title track) for 10, then one last guess.</li>
-        <li>Run out of points, miss the last guess, or give up, and the trunk stays locked for the day. Yer points add up over every game you play.</li>
+        <li>The words you open set yer score: 100 for a blind guess with no words showing, then 90, 80, 70, 60, and 50 after words 1 to 5.</li>
+        <li>Every slip costs 5: a wrong guess, or revealing a word instead of unscrambling it. Wrong unscrambles are free.</li>
+        <li>A wrong guess opens the next word. You can also open it yourself. Unscramble each word before you guess again.</li>
+        <li>Miss after word 5 and you get the album (or the year it came out, when the song is the title track) for one last guess, worth 30 less yer slips.</li>
+        <li>Get it at all and you score at least 10. Miss the last guess (or give up) and the trunk stays locked for the day. Yer points add up over every game you play.</li>
         <li>Squares: &#129001; unscrambled, &#129000; revealed, &#11035; never needed, &#128997; wrong guess, &#128191; album hint.</li>
         <li>Yer stats are saved on this device only.</li>
       </ul>
