@@ -33,6 +33,19 @@
 .ul-link { background: none; border: 0; padding: 4px 0; color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .ul-link:hover { text-decoration: underline; }
 
+/* The clock on the open word (v5.8.6): a gold bar that drains over 100 seconds */
+.ul-clock { margin-top: 10px; }
+.ul-clock-track { height: 6px; border-radius: 999px; background: #2a2a2a; overflow: hidden; }
+.ul-clock-bar { display: block; height: 100%; width: 100%; background: var(--gold); border-radius: 999px; transition: width 0.5s linear; }
+.ul-clock-text { margin: 6px 0 0; font-size: 0.74rem; color: var(--muted2); font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .ul-clock-bar { transition: none; } }
+
+/* The start card (v5.8.6): the two ways in, before the first move */
+.ul-start-lead { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--text); }
+.ul-start-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.ul-start-row .bia-btn { flex: 1 1 200px; }
+.ul-start-note { margin: 12px 0 0; font-size: 0.78rem; line-height: 1.5; color: var(--muted2); }
+
 /* Song guess */
 .ul .bia-row input[type="text"] { font-size: 1rem; }
 .ul-suggest { list-style: none; margin-top: 6px; background: #141414; border: 1px solid #2a2a2a; border-radius: 10px; overflow: hidden; }

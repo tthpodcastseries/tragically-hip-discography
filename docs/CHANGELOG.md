@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.8.6
+**Thugs - Patch** - November 12, 2026
+New scoring, a clock, and a start card for (Un)Locked in the Trunk of a Car (jD, November 12, 2026). Under the v5.8.5 rules a revealed word cost only 5 more than one a fan unscrambled, every clean game landed between 50 and 100, and the first screen led with the blind guess instead of the move most fans need.
+- **Start on 100, and three things take points away:** opening a word (10), the clock on that word, and a wrong guess (5, and it opens the next word). A blind guess with no words showing is still the only way to 100.
+- **The clock:** each open word has 10 more points on it, and 1 goes every 10 seconds the word stays scrambled. Revealing the word takes whatever is left of the 10, so a reveal never beats unscrambling, and it is free once the clock has run out. The clock starts when the word's tiles show, runs through a reload, and can never cost more than 10 a word. A gold bar and a line under the word box show what is left, and the points at the top tick down with it.
+- **The album hint costs 10** (after a miss with all five words open), then one last guess.
+- **A win scores at least 10. A loss keeps 1 point for each word unscrambled without a reveal,** so 0 means no words and no song. Losses used to score 0 whatever the fan had unscrambled.
+- **Start card:** before the first move the page shows a big "Open word 1" button with "Guess blind for 100" beside it and one line on the costs. Give up stays hidden until the first move. On a fan's first game on a device, How it works sits open.
+- **Games carried over the update:** a finished game keeps its score. A game half played under the v5.8.5 rules finishes on them, with no clock. One with no move made yet starts under the new rules.
+- How it works on /unlocked is rewritten. The puzzle schedule is untouched, and nothing new is collected: the clock's times stay in the browser with the rest of the saved game.
+- Cache bumped to `hh-v5.8.6`; footer label bumped to v5.8.6 (Thugs - Patch)
+
 ## v5.8.5
 **Thugs - Patch** - November 11, 2026
 Gentler scoring for (Un)Locked in the Trunk of a Car (jD, November 11, 2026). The v5.8.2 rules cost 20 for a miss (the miss, plus the word it opened) and doubled a revealed word's cost, so one revealed word could leave a fan on 70.

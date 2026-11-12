@@ -12,22 +12,26 @@
   // page says when the game opens instead of showing a puzzle.
   const EPOCH = '2026-11-02';
   const WORDS = 5;
-  // Scoring (jD, 2026-11-11, v5.8.5): the words set the score, slips nibble at it.
-  //  - The words you open set the score: 100 for a blind guess (no words show until you
-  //    open one), then 90, 80, 70, 60, and 50 after words 1 to 5, and 30 with the album hint.
-  //  - Every slip costs 5: a wrong guess, or a word revealed instead of unscrambled.
-  //    Wrong unscrambles are free.
-  //  - With every open word unscrambled you can guess, or open the next word yourself.
-  //  - A wrong guess opens the next word. After word 5 it opens the album hint instead,
-  //    then one last guess.
-  //  - A win scores at least 10. Missing the last guess (or giving up) scores 0.
+  // Scoring (jD, 2026-11-12, v5.8.6): start on 100, and three things take points away.
+  //  - Opening a word costs 10. No words show until one is opened, so a blind guess is the
+  //    only way to 100.
+  //  - Each open word has 10 more points on a clock: 1 goes every 10 seconds the word stays
+  //    scrambled. Revealing it takes whatever is left of the 10, so a reveal never beats
+  //    unscrambling. The clock starts when the tiles show (not on the first letter typed,
+  //    or the word could be solved in the head first) and runs on the wall clock, so a
+  //    reload or a hidden tab can't stop it. It can never cost more than 10 a word.
+  //  - A wrong guess costs 5 and opens the next word. After word 5 it opens the album hint
+  //    instead (10), then one last guess.
+  //  - A win scores at least 10. A loss keeps 1 point for each word unscrambled without a
+  //    reveal, so 0 means no words and no song.
   // "Rung" is how far in a guess was made: 0-5 words, or 6 with the hint.
+  const OPEN_COST = 10, POT = 10, TICK = 10000, MISS = 5, HINT_COST = 10, MIN_WIN = 10, HINT_RUNG = 6;
+  // Older rules, kept only to score games saved under them: rules 1 was the first ladder
+  // (v5.4.4 to v5.8.1), rules 2 cost 10 a move (v5.8.2 to v5.8.4), and rules 3 was the
+  // ladder below less 5 a slip (v5.8.5). A game half played under rules 3 finishes on them.
   const LADDER = [100, 90, 80, 70, 60, 50, 30];
-  const SLIP = 5, MIN_WIN = 10, HINT_RUNG = 6;
-  // Rules 1 was the old ladder (v5.4.4 to v5.8.1) and rules 2 cost 10 a move (v5.8.2 to
-  // v5.8.4). Kept only to score games saved under them.
-  const OLD_COST = 10;
-  const RULES = 3;
+  const SLIP = 5, OLD_COST = 10;
+  const RULES = 4;
   const STORE_KEY = 'tth_unlocked_v1';
   const SHARE_URL = 'thehiphandbook.tthpods.com/unlocked';
   const NAME = '(Un)Locked in the Trunk of a Car';
@@ -138,25 +142,38 @@
   // 'revealed'), so one word at most is open and still scrambled.
   // guesses: { r: rung, s: song slug } ('' was a pass under the old rules)
   if (!store.today || store.today.no !== puzzleNo || !Array.isArray(store.today.unlocked) || !Array.isArray(store.today.guesses)) {
-    store.today = { no: puzzleNo, rules: RULES, opened: 0, unlocked: [], guesses: [], hint: false, done: false, won: false, started: false };
+    // lost: points the clock (or a reveal) took from each cleared word; openedAt: when the
+    // word that is open and still scrambled showed its tiles
+    store.today = { no: puzzleNo, rules: RULES, opened: 0, unlocked: [], lost: [], openedAt: null, guesses: [], hint: false, done: false, won: false, started: false };
   }
   const today = store.today;
-  // A game saved under older rules, carried over the update. A finished game keeps the
-  // score it got. A half-played one carries on under these rules:
+  // A game saved under older rules, carried over the update. One with no move made yet
+  // simply starts under these rules. A finished game keeps the score it got. A half-played
+  // one finishes on rules 3, with no clock:
   //  - from rules 1 (before v5.8.2): its wrong guesses were free when made, so they stay free
-  //  - from rules 2 (v5.8.2 to v5.8.4): a win scores whichever rules give it more
+  //  - from rules 2 (v5.8.2 to v5.8.4): a win scores whichever of rules 2 and 3 gives it more
   if (today.rules !== RULES) {
-    const oldWrong = today.guesses.filter(g => g.s && g.s !== puzzle.s).length;
-    const oldReveals = today.unlocked.filter(how => how === 'revealed').length;
-    if (!today.rules) {
-      today.opened = today.unlocked.length;
-      if (today.done) today.final = today.won ? Math.max(10, LADDER[today.wonAt] - oldReveals * OLD_COST) : 0;
-      else today.credit = oldWrong * SLIP;
-    } else if (today.rules === 2 && !today.done) {
-      today.rules2 = true;
+    const untouched = !today.done && !today.opened && !today.unlocked.length && !today.guesses.length && !today.hint;
+    if (untouched) {
+      today.rules = RULES;
+      today.opened = 0;
+      today.lost = [];
+      today.openedAt = null;
+    } else if (today.rules !== 3) {
+      const oldWrong = today.guesses.filter(g => g.s && g.s !== puzzle.s).length;
+      const oldReveals = today.unlocked.filter(how => how === 'revealed').length;
+      if (!today.rules) {
+        today.opened = today.unlocked.length;
+        if (today.done) today.final = today.won ? Math.max(10, LADDER[today.wonAt] - oldReveals * OLD_COST) : 0;
+        else today.credit = oldWrong * SLIP;
+      } else if (today.rules === 2 && !today.done) {
+        today.rules2 = true;
+      }
+      today.rules = 3;
     }
-    today.rules = RULES;
   }
+  const legacy = today.rules !== RULES;
+  if (!legacy && !Array.isArray(today.lost)) today.lost = [];
 
   // ─── Pieces ───
   const el = (tag, cls, text) => {
@@ -172,27 +189,41 @@
   const wrongGuesses = () => today.guesses.filter(g => g.s && g.s !== puzzle.s);
   const wrongSlugs = () => wrongGuesses().map(g => g.s);
   const misses = () => wrongGuesses().length;
-  // What a right answer is worth right now: the rung for the words opened, less 5 a slip
+  const solvedCount = () => today.unlocked.filter(how => how === 'solved').length;
+  // A word is open and still scrambled: unscramble it (or reveal it) before guessing
+  const wordOpen = () => !today.done && today.opened > today.unlocked.length;
+  // The clock: points gone from the open word so far (1 every 10 seconds, 10 at most), and
+  // the points it took from the words already cleared
+  const activeLost = () => !legacy && wordOpen()
+    ? Math.min(POT, Math.max(0, Math.floor((Date.now() - (today.openedAt || Date.now())) / TICK))) : 0;
+  const clockLost = () => (today.lost || []).reduce((a, b) => a + b, 0);
+  // What a right answer is worth right now: 100, less the words opened, the clock, the
+  // misses, and the hint. extra = what one more step would add (a miss, then what it opens).
+  const rawScore = extra => 100 - OPEN_COST * today.opened - clockLost() - activeLost() - MISS * misses() - (today.hint ? HINT_COST : 0) - (extra || 0);
+  // Games half played under the older rules (see RULES): the rung for the words opened, less 5 a slip
   const opened = () => today.hint ? HINT_RUNG : today.opened;
   const slips = () => reveals() + misses();
   const ruleScore = () => Math.max(MIN_WIN, Math.min(LADDER[opened()], LADDER[opened()] - SLIP * slips() + (today.credit || 0)));
-  // A game half played under rules 2 when this update landed scores whichever is more
   const rules2Score = () => 100 - OLD_COST * (today.opened + reveals() + misses() + (today.hint ? 1 : 0)) + (today.credit || 0);
-  const points = () => today.rules2 ? Math.max(ruleScore(), rules2Score()) : ruleScore();
-  // A word is open and still scrambled: unscramble it (or reveal it) before guessing
-  const wordOpen = () => !today.done && today.opened > today.unlocked.length;
+  const legacyPoints = () => today.rules2 ? Math.max(ruleScore(), rules2Score()) : ruleScore();
+  const points = () => legacy ? legacyPoints() : Math.max(MIN_WIN, rawScore());
+  // A loss keeps 1 point for each word unscrambled without a reveal (nothing under the older rules)
+  const lossPoints = () => legacy ? 0 : solvedCount();
   const canGuess = () => !today.done && !wordOpen();
   const canOpen = () => canGuess() && !today.hint && today.opened < WORDS;
   const canReveal = () => wordOpen();
-  const todayPoints = () => today.won ? (today.final != null ? today.final : points()) : 0;
+  const todayPoints = () => today.final != null ? today.final : today.won ? points() : 0;
   const shownPoints = () => today.done ? todayPoints() : points();
+  const pts = n => n + (n === 1 ? ' point' : ' points');
+  // Nothing done yet, and the fan hasn't asked for the blind guess: show the start card
+  let blindMode = false;
+  const atStart = () => !today.done && !today.opened && !today.guesses.length && !today.hint && !blindMode;
   // Squares in the order things happened: a red one for each wrong guess, then the word it opened
   const missSquares = r => wrongGuesses().filter(g => g.r === r).map(() => SQ.miss).join('');
   const squares = () => words.map((w, i) => missSquares(i) + SQ[today.unlocked[i] || 'locked']).join('') +
     missSquares(WORDS) + (today.hint ? ' ' + SQ.hint + missSquares(HINT_RUNG) : '');
   const missText = n => n + (n === 1 ? ' miss' : ' misses');
   const markStarted = () => { if (!today.started) { today.started = true; track('Unlocked - Started', startInfo()); } };
-  // A half-played game carried over from the old rules never starts below the old minimum
 
   // ─── The words ───
   let used = []; // which tiles of the active word are spent, by index
@@ -206,7 +237,9 @@
       li.appendChild(el('span', 'ul-num', i + 1));
       if (how || today.done) {
         li.appendChild(el('span', 'ul-answer', word.toUpperCase()));
-        li.appendChild(el('span', 'ul-tag', how === 'revealed' ? 'Revealed -5' : how ? 'Unlocked' : 'Never needed'));
+        // What the word cost on top of opening it: the clock's share, or the whole 10 for a reveal
+        const took = legacy ? (how === 'revealed' ? SLIP : 0) : ((today.lost || [])[i] || 0);
+        li.appendChild(el('span', 'ul-tag', (how === 'revealed' ? 'Revealed' : how ? 'Unlocked' : 'Never needed') + (how && took ? ' -' + took : '')));
       } else if (i === active) {
         const tiles = el('span', 'ul-tiles');
         [...scrambles[i]].forEach((ch, t) => {
@@ -230,9 +263,33 @@
     if (!form.hidden) {
       $('ulWordLabel').textContent = 'Unscramble word ' + (active + 1) + ' (' + words[active].length + ' letters)';
       $('ulWordInput').maxLength = words[active].length;
-      // Revealing never takes the points to 0: with 10 left, unscramble it
       $('ulRevealWord').hidden = !canReveal();
     }
+  }
+
+  // ─── The clock on the open word ───
+  // Only the bar, its line, the Reveal label, and the points move on a tick. The tiles are
+  // left alone so the keyboard never loses its place, and none of it sits in a live
+  // region, so a screen reader isn't told about every point.
+  const stepped = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  let clockTimer = null;
+  function renderClock() {
+    const on = !legacy && wordOpen();
+    $('ulClock').hidden = !on;
+    if (!on) {
+      if (clockTimer) { clearInterval(clockTimer); clockTimer = null; }
+      if (legacy) $('ulRevealWord').textContent = 'Reveal it (-' + SLIP + ')';
+      return;
+    }
+    const left = POT - activeLost();
+    const run = Math.min(1, Math.max(0, (Date.now() - (today.openedAt || Date.now())) / (POT * TICK)));
+    $('ulClockBar').style.width = (stepped ? left * 10 : Math.round((1 - run) * 1000) / 10) + '%';
+    $('ulClockText').textContent = left
+      ? pts(left) + ' left on this word. The clock takes 1 every 10 seconds.'
+      : 'The clock has run out on this word. Nothing more to lose - take yer time.';
+    $('ulRevealWord').textContent = left ? 'Reveal it (-' + left + ')' : 'Reveal it (free now)';
+    $('ulPoints').textContent = shownPoints();
+    if (!clockTimer) clockTimer = setInterval(renderClock, 500);
   }
 
   // Tiles and the text box stay in step: tapping types the letter, typing spends tiles
@@ -271,6 +328,11 @@
 
   function unlock(how) {
     markStarted();
+    // Bank what the clock took (all 10 for a reveal) before the word stops being the open one
+    if (!legacy) {
+      today.lost.push(how === 'revealed' ? POT : activeLost());
+      today.openedAt = null;
+    }
     today.unlocked.push(how);
     $('ulWordInput').value = '';
     used = [];
@@ -283,10 +345,14 @@
       (canOpen() ? ', or open word ' + (n + 1) + '.' : '.');
     $('ulGuessInput').focus();
   }
-  // Open the next word: the score drops a rung and its scramble shows
+  // The next word's tiles show: 10 points go, and its clock starts
+  function openNext() {
+    today.opened++;
+    if (!legacy) today.openedAt = Date.now();
+  }
   function openWord() {
     markStarted();
-    today.opened++;
+    openNext();
     $('ulWordInput').value = '';
     used = [];
     $('ulWordMsg').textContent = '';
@@ -300,7 +366,7 @@
     const raw = $('ulWordInput').value.trim().toLowerCase();
     const msg = $('ulWordMsg');
     if (raw.length !== words[active].length) { msg.textContent = 'Use all ' + words[active].length + ' letters.'; return; }
-    if (raw !== words[active]) { msg.textContent = 'Not quite. Try again - wrong unscrambles are free.'; return; }
+    if (raw !== words[active]) { msg.textContent = legacy ? 'Not quite. Try again - wrong unscrambles are free.' : 'Not quite. Try again - a wrong try costs nothing but time.'; return; }
     msg.textContent = '';
     unlock('solved');
   });
@@ -390,7 +456,7 @@
   const yearHint = () => !!(puzzle.al && puzzle.ay && (flat(puzzle.al).includes(flat(puzzle.t)) ||
     bigWords(puzzle.t).filter((w, i, all) => all.indexOf(w) === i && bigWords(puzzle.al).includes(w)).length >= 2));
 
-  // A guess on the current rung. A miss is a slip (5) and opens what comes next: the next
+  // A guess on the current rung. A miss costs 5 and opens what comes next: the next
   // word, or after word 5 the album hint. A miss on the last guess ends it.
   function answer(slug, title) {
     const r = rung();
@@ -408,7 +474,7 @@
         today.hint = true;
         track('Unlocked - Album hint');
       } else {
-        today.opened++;
+        openNext();
         $('ulWordInput').value = '';
         used = [];
       }
@@ -427,8 +493,28 @@
     $('ulGuessInput').value = '';
     $('ulSuggest').hidden = true;
     openWord();
-    $('ulMsg').textContent = 'Word ' + today.opened + ' is open. Unscramble it - wrong tries are free.';
+    $('ulMsg').textContent = openMsg();
     focusNext();
+  });
+  const openMsg = () => 'Word ' + today.opened + ' is open. Unscramble it - ' + (legacy ? 'wrong tries are free.' : 'the clock is running.');
+
+  // ─── The start card ───
+  // Before the first move the page offers the two ways in, with the usual one (open word 1)
+  // as the big button. The blind guess used to be the only box on show (jD, 2026-11-12).
+  function renderStart() {
+    $('ulStart').hidden = !atStart();
+  }
+  $('ulStartOpen').addEventListener('click', () => {
+    if (!atStart()) return;
+    openWord();
+    $('ulMsg').textContent = openMsg();
+    focusNext();
+  });
+  $('ulStartBlind').addEventListener('click', () => {
+    if (!atStart()) return;
+    blindMode = true;
+    renderAll();
+    $('ulGuessInput').focus();
   });
 
   function renderWrong() {
@@ -439,25 +525,28 @@
 
   // The guess box: what a right answer is worth now, and where a miss or the next word
   // would leave you, so every step down is in plain sight
+  // A new word is worth "up to" its number, because its clock starts as it opens.
   const worthAt = (rungNo, extraSlips) => Math.max(MIN_WIN, LADDER[rungNo] - SLIP * (slips() + extraSlips) + (today.credit || 0));
+  const afterMiss = r => legacy ? worthAt(r + 1, 1) : Math.max(MIN_WIN, rawScore(MISS + (r === WORDS ? HINT_COST : OPEN_COST)));
+  const afterOpen = r => legacy ? worthAt(r + 1, 0) : Math.max(MIN_WIN, rawScore(OPEN_COST));
   function renderGuess() {
     const form = $('ulGuessForm');
-    form.hidden = !canGuess();
+    form.hidden = !canGuess() || atStart();
     if (form.hidden) return;
-    const r = rung(), p = points();
+    const r = rung(), p = points(), upTo = legacy ? '' : 'up to ';
     $('ulGuessLabel').textContent = r === HINT_RUNG
       ? 'Last guess, with the ' + (yearHint() ? 'year' : 'album') + ' hint - worth ' + p + ' points'
       : (r === 0 ? 'Know it blind? ' : '') + 'Name the song for ' + p + ' points. A miss opens ' +
-        (r === WORDS ? 'the ' + (yearHint() ? 'year it came out' : 'album') : 'word ' + (r + 1)) + ', worth ' + worthAt(r + 1, 1) + '.';
+        (r === WORDS ? 'the ' + (yearHint() ? 'year it came out' : 'album') + ', worth ' : 'word ' + (r + 1) + ', worth ' + upTo) + afterMiss(r) + '.';
     $('ulNext').hidden = !canOpen();
-    $('ulNext').textContent = (r === 0 ? 'Skip it - open word 1' : 'Open word ' + (r + 1)) + ', worth ' + worthAt(r + 1, 0);
+    $('ulNext').textContent = (r === 0 ? 'Open word 1 instead' : 'Open word ' + (r + 1)) + ', worth ' + upTo + afterOpen(r);
   }
 
   // ─── Album hint and giving up ───
   function renderTools() {
     const tools = $('ulTools');
-    tools.hidden = today.done;
-    if (today.done) return;
+    tools.hidden = today.done || atStart();
+    if (tools.hidden) return;
     const shown = $('ulHintShown');
     shown.hidden = !today.hint;
     if (today.hint) {
@@ -490,13 +579,17 @@
 
   // ─── Finishing a game ───
   function finish(won) {
+    // A loss banks its points here; a win's were set as the right answer landed. lossPoints
+    // counts the words before done is set, while the game still knows which were solved.
+    if (!won) today.final = lossPoints();
     today.done = true;
     today.won = won;
+    today.openedAt = null;
     const s = store.stats;
     s.played++;
+    s.points += todayPoints();
     if (won) {
       s.won++;
-      s.points += todayPoints();
       s.dist[today.wonAt]++;
       s.streak = continues() ? s.streak + 1 : 1;
       s.lastSolved = puzzleNo;
@@ -534,7 +627,7 @@
     return ' (' + n + (n === 1 ? ' word' : ' words') + (rev ? ', ' + rev + ' revealed' : '') + (m ? ', ' + missText(m) : '') + (today.wonAt === HINT_RUNG ? ', plus the hint' : '') + ')';
   };
   const shareText = () =>
-    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
+    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + pts(todayPoints()) + shareWords() + '\n' +
     (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL + '\n';
 
   // A win on this puzzle keeps the streak going (see the switch note at the top)
@@ -578,7 +671,12 @@
 
   const resultLine = () => {
     const r = today.wonAt;
-    if (!today.won) return today.gaveUp ? 'You gave up - here it is. 0 points.' : today.outOfPoints ? 'Out of points - the trunk stays locked.' : 'The trunk stays locked. 0 points.';
+    if (!today.won) {
+      if (today.outOfPoints) return 'Out of points - the trunk stays locked.';
+      const kept = todayPoints();
+      return (today.gaveUp ? 'You gave up - here it is. ' : 'The trunk stays locked. ') +
+        (kept ? pts(kept) + ' for the ' + (kept === 1 ? 'word' : 'words') + ' you unscrambled.' : '0 points.');
+    }
     if (r === 0) return 'Straight guess. Bang on. 100 points!';
     const m = misses() ? ' and ' + missText(misses()) : '';
     if (r === HINT_RUNG) return 'Got it with the album hint' + m + ' - ' + todayPoints() + ' points!';
@@ -646,7 +744,9 @@
   function renderAll() {
     $('ulNo').textContent = 'Puzzle No. ' + puzzleNo + (yesterdays ? " (yesterday's)" : '');
     $('ulPoints').textContent = shownPoints();
+    renderStart();
     renderWords();
+    renderClock();
     renderGuess();
     renderWrong();
     renderTools();
@@ -750,6 +850,7 @@
 
     const n = today.wonAt;
     const score = String(todayPoints());
+    const pointsLabel = todayPoints() === 1 ? 'POINT' : 'POINTS';
     const m = misses() ? ', ' + missText(misses()) : '';
     const result = !today.won
       ? (today.gaveUp ? (name ? name + ' gave up today' : 'Gave up today') : (name ? name + ' stayed locked out today' : 'Locked out today'))
@@ -768,7 +869,7 @@
       put(NAME.toUpperCase(), 330, 186, '700', 28, '#ffffff', '4px', 540);
       put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
-      put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
+      put(pointsLabel, 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
       x.lineWidth = 2;
       x.beginPath(); x.moveTo(650, 120); x.lineTo(650, 520); x.stroke();
@@ -788,7 +889,7 @@
       put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#ffffff', '4px', W - 160);
       put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
-      put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
+      put(pointsLabel, W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
       tiles((W - rowW) / 2, y.tiles, y.size, gap);
       put(totalLine, W / 2, y.total, '700', story ? 52 : 48, '#ffffff', '0px', W - 160);
@@ -803,7 +904,7 @@
     const img = $('ulCardImg');
     img.src = currentCard.url;
     // The card's own words, for people who can't see it (audit BRAND-15)
-    img.alt = '(Un)Locked in the Trunk of a Car, puzzle ' + puzzleNo + ': ' + result + '. ' + score + ' points today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = '(Un)Locked in the Trunk of a Car, puzzle ' + puzzleNo + ': ' + result + '. ' + pts(todayPoints()) + ' today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('ulCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -871,6 +972,8 @@
     if (!document.hidden && behind() && (today.done || !today.started)) location.reload();
   });
 
+  // First game on this device: the rules sit open under the start card
+  if (!store.stats.played && !today.started) $('ulHow').open = true;
   renderAll();
   if (yesterdays) $('ulMsg').textContent = "Yesterday's puzzle is still open - finish it, then today's is waiting.";
   $('ulLoading').hidden = true;
