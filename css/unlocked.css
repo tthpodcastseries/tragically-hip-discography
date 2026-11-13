@@ -13,7 +13,8 @@
 .ul-lock { flex: 0 0 auto; font-size: 0.85rem; opacity: 0.6; }
 .ul-word.locked { opacity: 0.75; min-height: 40px; padding: 6px 10px; }
 /* Locked words show no letters until they open (v5.6.4), just a faint line and the lock */
-.ul-wait { flex: 1; min-width: 0; font-size: 0.78rem; color: var(--muted2); }
+/* Light Grey, not Mid Grey: the locked row is at 75%, which took Mid Grey down to 3.97 to 1 */
+.ul-wait { flex: 1; min-width: 0; font-size: 0.78rem; color: var(--muted); }
 .ul-word.active { border-color: rgba(204, 162, 60, 0.6); background: rgba(204, 162, 60, 0.06); }
 .ul-word.active .ul-tile { background: #1d1a26; border-color: rgba(204, 162, 60, 0.5); color: #fff; cursor: pointer; }
 .ul-word.active .ul-tile:hover:not(:disabled) { border-color: var(--gold); }

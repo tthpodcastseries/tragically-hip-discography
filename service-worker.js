@@ -60,6 +60,7 @@ const CORE_ASSETS = [
   '/css/podcasts.css',
   // JS
   '/js/shared-footer.js',
+  '/js/clean-address.js',
   '/js/discography-app.js',
   '/js/live-stats.js',
   '/js/map-key.js',

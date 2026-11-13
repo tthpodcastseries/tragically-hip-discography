@@ -109,6 +109,12 @@
     return;
   }
   const puzzle = pool.puzzles[(puzzleNo - 1) % pool.puzzles.length];
+  // Past the last puzzle the game starts again from the first one, and says so: the
+  // heading, the share text and the card all get a "rerun" label (jD, 2026-11-13). Add
+  // puzzles on the end of the pool before the run ends and no rerun is ever shown.
+  const rerunOf = puzzleNo > pool.puzzles.length ? ((puzzleNo - 1) % pool.puzzles.length) + 1 : 0;
+  const puzzleNote = late => { const tags = [late, rerunOf ? 'rerun' : ''].filter(Boolean); return tags.length ? ' (' + tags.join(', ') + ')' : ''; };
+  const rerunTag = puzzleNote('');
   const groups = puzzle.groups;
   const groupOf = title => groups.findIndex(g => g.songs.includes(title));
   const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
@@ -321,7 +327,7 @@
     ? ' (' + (today.mistakes ? today.mistakes + (today.mistakes === 1 ? ' mistake' : ' mistakes') : 'no mistakes') + ')'
     : ' (' + today.solved.length + ' of 4 groups)';
   const shareText = () =>
-    '\u{1F3B8} ' + NAME + ' No. ' + puzzleNo + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
+    '\u{1F3B8} ' + NAME + ' No. ' + puzzleNo + rerunTag + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
     guessRows().join('\n') + '\nhttps://' + SHARE_URL + '\n';
 
   function renderStats() {
@@ -379,7 +385,7 @@
   }
 
   function renderAll() {
-    $('awNo').textContent = 'Puzzle No. ' + puzzleNo + (lastWeeks ? " (last week's)" : '');
+    $('awNo').textContent = 'Puzzle No. ' + puzzleNo + puzzleNote(lastWeeks ? "last week's" : '');
     renderLives();
     renderSolved();
     renderGrid();
@@ -484,7 +490,7 @@
     if (landscape) {
       put('\u{1F3B8}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 30, '#ffffff', '4px', 540);
-      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', rerunOf ? 540 : 0);
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -504,7 +510,7 @@
       const gap = 14, size = Math.min(90, Math.floor((y.room - (rows - 1) * gap) / rows)), rowW = 4 * size + 3 * gap;
       put('\u{1F3B8}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 44, '#ffffff', '4px', W - 160);
-      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', rerunOf ? W - 160 : 0);
       put(score, W / 2, y.score, '900', story ? 300 : 260, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 60 : 52, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 56 : 50, '#ffffff', '0px', W - 160);
@@ -520,7 +526,7 @@
     const img = $('awCardImg');
     img.src = currentCard.url;
     // The card's own words, for people who can't see it
-    img.alt = NAME + ', puzzle ' + puzzleNo + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = NAME + ', puzzle ' + puzzleNo + (rerunOf ? ' (a rerun of puzzle ' + rerunOf + ')' : '') + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('awCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -546,7 +552,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: NAME + ' No. ' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: NAME + ' No. ' + puzzleNo + rerunTag, text: shareText() });
       track('Family - Card shared');
     } catch (e) { /* cancelled */ }
   });

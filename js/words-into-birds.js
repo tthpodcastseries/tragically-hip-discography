@@ -99,6 +99,12 @@
     return;
   }
   const puzzle = pool.puzzles[(puzzleNo - 1) % pool.puzzles.length];
+  // Past the last puzzle the game starts again from the first one, and says so: the
+  // heading, the share text and the card all get a "rerun" label (jD, 2026-11-13). Add
+  // puzzles on the end of the pool before the run ends and no rerun is ever shown.
+  const rerunOf = puzzleNo > pool.puzzles.length ? ((puzzleNo - 1) % pool.puzzles.length) + 1 : 0;
+  const puzzleNote = late => { const tags = [late, rerunOf ? 'rerun' : ''].filter(Boolean); return tags.length ? ' (' + tags.join(', ') + ')' : ''; };
+  const rerunTag = puzzleNote('');
   const R = puzzle.rows, C = puzzle.cols;
 
   // ─── The grid ───
@@ -142,17 +148,27 @@
     board.style.setProperty('--cs', cs + 'px');
     board.style.gridTemplateColumns = 'repeat(' + C + ', ' + cs + 'px)';
   }
-  for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) {
-    const s = sq[r + ',' + c];
-    const d = el('div', 'wb-sq' + (s ? ' on' : ''));
-    if (s) {
-      d.setAttribute('role', 'gridcell');
-      if (s.num) d.appendChild(el('span', 'wb-n', s.num));
-      s.lEl = d.appendChild(el('span', 'wb-l'));
-      s.el = d;
-      d.addEventListener('click', () => tap(s));
-    } else d.setAttribute('aria-hidden', 'true');
-    board.appendChild(d);
+  // A grid's squares must sit inside rows for a screen reader to count them. The row
+  // boxes take no space of their own (display: contents in the CSS), so the squares are
+  // laid out exactly as before. A row that is all black squares is hidden instead.
+  for (let r = 0; r < R; r++) {
+    const row = el('div', 'wb-row');
+    let open = 0;
+    for (let c = 0; c < C; c++) {
+      const s = sq[r + ',' + c];
+      const d = el('div', 'wb-sq' + (s ? ' on' : ''));
+      if (s) {
+        open++;
+        d.setAttribute('role', 'gridcell');
+        if (s.num) d.appendChild(el('span', 'wb-n', s.num));
+        s.lEl = d.appendChild(el('span', 'wb-l'));
+        s.el = d;
+        d.addEventListener('click', () => tap(s));
+      } else d.setAttribute('aria-hidden', 'true');
+      row.appendChild(d);
+    }
+    if (open) row.setAttribute('role', 'row'); else row.setAttribute('aria-hidden', 'true');
+    board.appendChild(row);
   }
   sizeBoard();
   window.addEventListener('resize', sizeBoard);
@@ -197,7 +213,7 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden) lastTick = Date.now(); else save(); });
 
   function renderMeta() {
-    $('wbNo').textContent = 'Puzzle ' + puzzleNo + (lastWeeks ? " (last week's)" : '');
+    $('wbNo').textContent = 'Puzzle ' + puzzleNo + puzzleNote(lastWeeks ? "last week's" : '');
     $('wbPoints').textContent = points() + ' points';
     $('wbTime').textContent = clock(today.secs);
   }
@@ -411,7 +427,7 @@
     : 'Gave up after ' + clock(today.secs) + '. 0 points this week.';
   // No answers in the share: the time, the points and the help only
   const shareText = () =>
-    '\u{1F426} ' + NAME + ', Puzzle ' + puzzleNo + ' - ' + points() + ' points\n' +
+    '\u{1F426} ' + NAME + ', Puzzle ' + puzzleNo + rerunTag + ' - ' + points() + ' points\n' +
     (today.won ? 'Filled in ' + clock(today.secs) + ' (' + helpWords() + ')' : 'Gave up after ' + clock(today.secs)) +
     '\nhttps://' + SHARE_URL + '\n';
 
@@ -559,7 +575,7 @@
     if (landscape) {
       put('\u{1F426}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 30, '#ffffff', '4px', 540);
-      put('PUZZLE ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
+      put('PUZZLE ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', rerunOf ? 540 : 0);
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -577,7 +593,7 @@
         : { icon: 150, label: 222, no: 280, score: 520, pts: 595, result: 690, grid: 725, room: 380, total: 1170, stats: 1230, site: 1285 };
       put('\u{1F426}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 44, '#ffffff', '4px', W - 160);
-      put('PUZZLE ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
+      put('PUZZLE ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', rerunOf ? W - 160 : 0);
       put(score, W / 2, y.score, '900', story ? 300 : 260, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 60 : 52, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 56 : 50, '#ffffff', '0px', W - 160);
@@ -592,7 +608,7 @@
     currentCard = { blob, url: URL.createObjectURL(blob), format: cardFormat };
     const img = $('wbCardImg');
     img.src = currentCard.url;
-    img.alt = NAME + ', puzzle ' + puzzleNo + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = NAME + ', puzzle ' + puzzleNo + (rerunOf ? ' (a rerun of puzzle ' + rerunOf + ')' : '') + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('wbCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -618,7 +634,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: NAME + ', Puzzle ' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: NAME + ', Puzzle ' + puzzleNo + rerunTag, text: shareText() });
       track('Birds - Card shared');
     } catch (e) { /* cancelled */ }
   });

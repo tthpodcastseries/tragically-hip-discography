@@ -352,7 +352,7 @@ const cspDirective = name => ((cspLine.match(new RegExp('\\b' + name + '([^;]*)'
 const scriptSrc = cspDirective('script-src');
 if (scriptSrc.includes("'unsafe-inline'")) problems.push("_headers: script-src allows 'unsafe-inline' - move inline code into /js/ files");
 const HANDLER = /\son[a-z]+\s*=\s*["'\\]/;
-let inlineChecked = 0;
+let inlineChecked = 0, umamiPages = 0;
 for (const f of pageFiles) {
   const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
   inlineChecked++;
@@ -370,7 +370,21 @@ for (const f of pageFiles) {
   }
   for (const line of html.split('\n')) if (HANDLER.test(line.replace(/<script[^>]*src=[^>]*>/g, ''))) { problems.push(`${f}: inline event handler (on...=) - the CSP blocks it: ${line.trim().slice(0, 80)}`); break; }
   if (/fonts\.(googleapis|gstatic)\.com/.test(html)) problems.push(`${f}: loads Google Fonts - Poppins is served from /fonts/`);
+  // Privacy (November 2026): Umami only sees the address after js/clean-address.js has cut
+  // it down to jD's three link tags. A page with the Umami tag but without that script
+  // ahead of it would send search words and invite names, which the privacy page rules out.
+  const umamiAt = html.indexOf('cloud.umami.is/script.js');
+  if (umamiAt !== -1) {
+    umamiPages++;
+    const tag = html.slice(html.lastIndexOf('<script', umamiAt), html.indexOf('>', umamiAt) + 1);
+    const cleanerAt = html.indexOf('<script src="/js/clean-address.js"></script>');
+    if (cleanerAt === -1 || cleanerAt > umamiAt) problems.push(`${f}: the Umami tag needs <script src="/js/clean-address.js"></script> before it (privacy: it strips search words from what Umami sees)`);
+    if (!tag.includes('data-before-send="tthCleanAddress"')) problems.push(`${f}: the Umami tag must say data-before-send="tthCleanAddress" (privacy: without it Umami sees the whole address)`);
+    if (!tag.includes('data-do-not-track="true"')) problems.push(`${f}: the Umami tag must say data-do-not-track="true" (the privacy page promises it)`);
+  }
 }
+if (!/window\.tthCleanAddress = function/.test(fs.readFileSync(path.join(ROOT, 'js/clean-address.js'), 'utf8'))) problems.push('js/clean-address.js no longer defines window.tthCleanAddress - Umami would see the whole address');
+notes.push(`privacy: ${umamiPages} pages with the Umami tag all clean the address first`);
 for (const f of fs.readdirSync(path.join(ROOT, 'js')).filter(n => n.endsWith('.js') && n !== 'supabase.min.js')) {
   const lines = fs.readFileSync(path.join(ROOT, 'js', f), 'utf8').split('\n');
   lines.forEach((line, i) => { if (/<[a-z][^>]*\son[a-z]+\s*=\s*["'\\]/i.test(line)) problems.push(`js/${f}:${i + 1}: builds HTML with an on...= handler - the CSP blocks it`); });

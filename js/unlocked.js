@@ -134,6 +134,12 @@
     return;
   }
   const puzzle = pool.puzzles[(puzzleNo - 1) % pool.puzzles.length];
+  // Past the last puzzle the game starts again from the first one, and says so: the
+  // heading, the share text and the card all get a "rerun" label (jD, 2026-11-13). Add
+  // puzzles on the end of the pool before the run ends and no rerun is ever shown.
+  const rerunOf = puzzleNo > pool.puzzles.length ? ((puzzleNo - 1) % pool.puzzles.length) + 1 : 0;
+  const puzzleNote = late => { const tags = [late, rerunOf ? 'rerun' : ''].filter(Boolean); return tags.length ? ' (' + tags.join(', ') + ')' : ''; };
+  const rerunTag = puzzleNote('');
   const words = puzzle.w.map(w => w[0]);
   const scrambles = puzzle.w.map(w => w[1]);
 
@@ -627,7 +633,7 @@
     return ' (' + n + (n === 1 ? ' word' : ' words') + (rev ? ', ' + rev + ' revealed' : '') + (m ? ', ' + missText(m) : '') + (today.wonAt === HINT_RUNG ? ', plus the hint' : '') + ')';
   };
   const shareText = () =>
-    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + ' - ' + pts(todayPoints()) + shareWords() + '\n' +
+    (today.won ? '\u{1F513} ' : '\u{1F512} ') + SHORT + ' No. ' + puzzleNo + rerunTag + ' - ' + pts(todayPoints()) + shareWords() + '\n' +
     (straightGuess() ? '\u{1F513} Straight guess - no words needed' : squares()) + '\nhttps://' + SHARE_URL + '\n';
 
   // A win on this puzzle keeps the streak going (see the switch note at the top)
@@ -742,7 +748,7 @@
   }
 
   function renderAll() {
-    $('ulNo').textContent = 'Puzzle No. ' + puzzleNo + (yesterdays ? " (yesterday's)" : '');
+    $('ulNo').textContent = 'Puzzle No. ' + puzzleNo + puzzleNote(yesterdays ? "yesterday's" : '');
     $('ulPoints').textContent = shownPoints();
     renderStart();
     renderWords();
@@ -867,7 +873,7 @@
     if (landscape) {
       put(today.won ? '\u{1F513}' : '\u{1F512}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 28, '#ffffff', '4px', 540);
-      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', rerunOf ? 540 : 0);
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put(pointsLabel, 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -887,7 +893,7 @@
       const gap = 24, rowW = WORDS * y.size + (WORDS - 1) * gap;
       put(today.won ? '\u{1F513}' : '\u{1F512}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 40, '#ffffff', '4px', W - 160);
-      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', rerunOf ? W - 160 : 0);
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
       put(pointsLabel, W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
@@ -904,7 +910,7 @@
     const img = $('ulCardImg');
     img.src = currentCard.url;
     // The card's own words, for people who can't see it (audit BRAND-15)
-    img.alt = '(Un)Locked in the Trunk of a Car, puzzle ' + puzzleNo + ': ' + result + '. ' + pts(todayPoints()) + ' today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = '(Un)Locked in the Trunk of a Car, puzzle ' + puzzleNo + (rerunOf ? ' (a rerun of puzzle ' + rerunOf + ')' : '') + ': ' + result + '. ' + pts(todayPoints()) + ' today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('ulCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -930,7 +936,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: SHORT + ' No. ' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: SHORT + ' No. ' + puzzleNo + rerunTag, text: shareText() });
       track('Unlocked - Card shared');
     } catch (e) { /* cancelled */ }
   });

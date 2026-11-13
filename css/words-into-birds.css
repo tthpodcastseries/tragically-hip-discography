@@ -18,6 +18,8 @@
 /* The grid. --cs (square size) is set by the script to fit the screen. */
 .wb-board-wrap { position: relative; margin-top: 12px; }
 .wb-board { display: grid; width: max-content; max-width: 100%; margin: 0 auto; }
+/* Rows are for screen readers only: no box of their own, so the squares stay grid items */
+.wb-row { display: contents; }
 .wb-sq { position: relative; width: var(--cs); height: var(--cs); }
 .wb-sq.on { background: #16121f; border: 1px solid rgba(217, 217, 217, 0.35); margin: -0.5px; cursor: pointer; }
 .wb-sq.on.word { background: #2a2338; }

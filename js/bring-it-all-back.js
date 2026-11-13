@@ -105,6 +105,12 @@
     return;
   }
   const show = pool.shows[(puzzleNo - 1) % pool.shows.length];
+  // Past the last puzzle the game starts again from the first one, and says so: the
+  // heading, the share text and the card all get a "rerun" label (jD, 2026-11-13). Add
+  // puzzles on the end of the pool before the run ends and no rerun is ever shown.
+  const rerunOf = puzzleNo > pool.shows.length ? ((puzzleNo - 1) % pool.shows.length) + 1 : 0;
+  const puzzleNote = late => { const tags = [late, rerunOf ? 'rerun' : ''].filter(Boolean); return tags.length ? ' (' + tags.join(', ') + ')' : ''; };
+  const rerunTag = puzzleNote('');
   const parts = show.d.split('-'); // dd-mm-yyyy
   const answer = +parts[2];
   const answerMonth = +parts[1];
@@ -217,7 +223,7 @@
   // The score as words as well as squares, so it reads without colour; the link starts with
   // https:// so every app turns it into a tap (audit GAME-10)
   const shareText = () =>
-    '\u{1F341} Bring It All Back No. ' + puzzleNo + ' - ' + todayPoints() + ' points (' +
+    '\u{1F341} Bring It All Back No. ' + puzzleNo + rerunTag + ' - ' + todayPoints() + ' points (' +
     (today.won ? today.guesses.length + ' of ' + MAX_GUESSES : 'missed') + ')\n' +
     today.guesses.map(squareFor).join('') + '\nhttps://' + SHARE_URL + '\n';
 
@@ -300,7 +306,7 @@
   }
 
   function renderAll() {
-    $('biaNo').textContent = 'Puzzle No. ' + puzzleNo + (yesterdays ? " (yesterday's)" : '');
+    $('biaNo').textContent = 'Puzzle No. ' + puzzleNo + puzzleNote(yesterdays ? "yesterday's" : '');
     renderSetlist();
     renderGuesses();
     renderHints();
@@ -471,7 +477,7 @@
       // Score on the left, the details on the right
       put('\u{1F341}', 330, 130, '700', 60, '#ffffff');
       put('BRING IT ALL BACK', 330, 186, '700', 28, '#ffffff', '8px', 520);
-      put('PUZZLE NO. ' + puzzleNo, 330, 232, '700', 26, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', rerunOf ? 540 : 0);
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -492,7 +498,7 @@
       const gap = 24, rowW = MAX_GUESSES * y.size + (MAX_GUESSES - 1) * gap;
       put('\u{1F341}', W / 2, y.maple, '700', story ? 110 : 96, '#ffffff');
       put('BRING IT ALL BACK', W / 2, y.label, '700', 40, '#ffffff', '10px', W - 160);
-      put('PUZZLE NO. ' + puzzleNo, W / 2, y.no, '700', 36, '#929292', '6px');
+      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', rerunOf ? W - 160 : 0);
       put(score, W / 2, y.score, '900', story ? 330 : 290, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 64 : 56, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 62 : 56, '#ffffff', '0px', W - 160);
@@ -509,7 +515,7 @@
     const img = $('biaCardImg');
     img.src = currentCard.url;
     // The card's own words, for people who can't see it (audit BRAND-15)
-    img.alt = 'Bring It All Back, puzzle ' + puzzleNo + ': ' + result + '. ' + score + ' points today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = 'Bring It All Back, puzzle ' + puzzleNo + (rerunOf ? ' (a rerun of puzzle ' + rerunOf + ')' : '') + ': ' + result + '. ' + score + ' points today. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('biaCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -535,7 +541,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: 'Bring It All Back No. ' + puzzleNo, text: shareText() });
+      await navigator.share({ files: [file], title: 'Bring It All Back No. ' + puzzleNo + rerunTag, text: shareText() });
       track('Game - Card shared');
     } catch (e) { /* cancelled */ }
   });
