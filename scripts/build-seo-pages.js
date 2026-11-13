@@ -89,8 +89,11 @@ function songSummary(song, plays, recs, rows) {
 
 // Structured data for the song (audit SEO-03): the composition, recorded by The Hip,
 // first released on its origin album
+// The band's own site, as linked on links.html. It was the Handbook's home page until
+// November 2026, which told search engines the Handbook was the band.
+const BAND_SITE = 'https://thehip.com';
 function songJsonLd(song, origin) {
-  const rec = { '@type': 'MusicRecording', name: song.t, byArtist: { '@type': 'MusicGroup', name: 'The Tragically Hip', url: SITE + '/' } };
+  const rec = { '@type': 'MusicRecording', name: song.t, byArtist: { '@type': 'MusicGroup', name: 'The Tragically Hip', url: BAND_SITE } };
   if (origin) rec.inAlbum = { '@type': 'MusicAlbum', name: origin[0], datePublished: String(origin[1]) };
   const ld = { '@context': 'https://schema.org', '@type': 'MusicComposition', name: song.t, url: SITE + '/song/' + song.s, recordedAs: rec };
   return '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>';

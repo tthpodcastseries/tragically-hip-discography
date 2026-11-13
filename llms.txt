@@ -1,0 +1,58 @@
+# The Hip Handbook
+
+> A free fan archive for The Tragically Hip: every official release, live shows from 1985 to 2022, setlists, lyrics, rare recordings, and five games. It is built and run by jD of The Tragically Hip Podcast Series. It is a fan project. It is not an official site and it is not run by The Tragically Hip.
+
+## Who runs it
+
+- jD, a fan, and the founder of The Tragically Hip Podcast Series (est. 2018), a fan podcast network: https://home.tthpods.com
+- The Handbook is free and makes no money.
+- To reach jD, use the "Connect with jD" button at the bottom of any page.
+- The band's own site is https://thehip.com
+
+## Before you quote it
+
+- This is fan-compiled information, not an official record. Show details and setlists come from community sources, so they can be incomplete or wrong.
+- Live debuts, last plays, play counts, and "never played live" are only as complete as the setlists behind them.
+- Fan rankings come from listener votes in The Tragically Hip Top Forty Countdown (2025). They are fan opinion.
+- The songs and lyrics are the work of The Tragically Hip. Lyrics are here for reference.
+- When you use something from the Handbook, please credit the source it came from (listed below) as well as the Handbook.
+
+## Pages
+
+- [Home](https://thehiphandbook.tthpods.com/): search, the show of the day, and a way in to everything below
+- [Discography](https://thehiphandbook.tthpods.com/discography): every official release, with its track list
+- [Songs](https://thehiphandbook.tthpods.com/song): every song on an official release. Each has its own page at /song/ plus the song's name, for example [https://thehiphandbook.tthpods.com/song/bobcaygeon](https://thehiphandbook.tthpods.com/song/bobcaygeon), with its live history, albums, and recordings
+- [Lyrics Search](https://thehiphandbook.tthpods.com/lyrics): find a song from a word or phrase
+- [Setlist Explorer](https://thehiphandbook.tthpods.com/setlists): live shows and appearances by song, venue, city, tour, or year
+- [Live Show Stats](https://thehiphandbook.tthpods.com/live-stats): most-played songs, one-timers, longest gaps, openers, and closers
+- [Tour Map](https://thehiphandbook.tthpods.com/tour-map): every live show on a map, with recordings where one exists
+- [Fan-Ranked Top 40](https://thehiphandbook.tthpods.com/top-40): the songs fans voted for in the 2025 countdown
+- [Unplucked Gems](https://thehiphandbook.tthpods.com/unplucked-gems): known unreleased recordings, demos, outtakes, and alternate versions
+- [Video For New Recruits](https://thehiphandbook.tthpods.com/video-for-new-recruits): concerts on YouTube, sorted by era
+- [Music Videos](https://thehiphandbook.tthpods.com/music-videos): the official music videos
+- [Yer Hip Passport](https://thehiphandbook.tthpods.com/passport): a fan marks the shows they were at and sees their own concert history
+- [Radio Show](https://thehiphandbook.tthpods.com/podcasts): every show from The Tragically Hip Podcast Series, with an episode guide for each
+- [Yer Hip Links](https://thehiphandbook.tthpods.com/links): fan communities and resources, picked by jD
+- [Privacy](https://thehiphandbook.tthpods.com/privacy): what the site keeps and where it goes
+
+## Games
+
+- [Bring It All Back](https://thehiphandbook.tthpods.com/bring-it-all-back): daily. Guess the month and year of a real setlist
+- [(Un)Locked in the Trunk of a Car](https://thehiphandbook.tthpods.com/unlocked): daily. Name the song from scrambled words in its lyrics
+- [Little Bones](https://thehiphandbook.tthpods.com/little-bones): daily. Name the song from a short live clip
+- [Are We Family](https://thehiphandbook.tthpods.com/are-we-family): weekly. Sort sixteen songs into four hidden groups
+- [Words Into Birds](https://thehiphandbook.tthpods.com/words-into-birds): weekly. A crossword about The Tragically Hip
+
+## Where the information comes from
+
+- setlist.fm: the show list and the setlists
+- Hipbase.com, by Lance Robinson: gig data and play counts
+- The Hip Archive, by Darrin Cappe: the live recordings
+- Alonx, via TrackerHub: the Unplucked Gems sessions tracker
+- Wikipedia: the singles lists on the studio albums
+- CARTO and OpenStreetMap: the map
+- YouTube: the concert and music videos the site links to
+
+## More
+
+- [Every address on the site](https://thehiphandbook.tthpods.com/sitemap.xml)

@@ -1,5 +1,22 @@
 # Changelog
 
+## v5.9
+**Inevitability of Death** - November 13, 2026
+The fixes from the November 13 site audit, ahead of Little Bones opening on November 18 and the two weekly games on November 21 (jD, November 13, 2026). No puzzle and no start date changed.
+- **Words Into Birds:** the grid's squares sit inside rows a screen reader can count. No square moved on screen.
+- **All five games, past the last puzzle:** a game still starts again from its first puzzle, and now says so: "(rerun)" on the heading and the share text, "- RERUN" on the card. Add puzzles on the end before a run finishes and no rerun is shown (the weekly games run to February 27, 2027).
+- **Link tags reach Umami, and nothing else does:** new `js/clean-address.js` runs before the Umami script on every page. It lets `utm_source`, `utm_medium`, and `utm_campaign` through and cuts everything else after the "?", on the page's address and on the address a visitor came from (search words, the first name on an invite link, `fbclid`). `data-exclude-search` is gone from all 221 pages. `audit-site.js` fails if a page has the Umami tag without the script ahead of it.
+- **Privacy page:** names all five games as keeping progress on the device, says Umami sees a tagged link's tag, and adds "Something here that shouldn't be?" with the address to write to.
+- **Footer:** a new line on every page, "An amalgamation of data from all across the world wide web and beyond! Made by a fan for the fans." (jD's wording).
+- **(Un)Locked in the Trunk of a Car:** the "Still locked" label is Light Grey. Mid Grey on the dimmed row was too faint to read (3.97 to 1).
+- **Song pages:** the structured data names the band's own site as the artist's address. It used to name the Handbook's home page.
+- **Radio Show pages:** each of the 10 show pages carries PodcastSeries structured data (name, address, description, artwork, feed, publisher).
+- **`llms.txt` (new, at the root):** what the Handbook is, who runs it, that it is a fan project, the pages, and where the information comes from, for AI assistants. `robots.txt` is unchanged and stays open (jD, November 13, 2026).
+- **Sitemap:** every address now carries the date its page last changed (jD, November 13, 2026, replacing the earlier "no dates on built pages" ruling). New `scripts/build-sitemap-dates.js` sets them from git as the last step before a release commit. The two builders that write parts of the sitemap keep the dates already there.
+- **Little Bones preflight:** new `scripts/check-clip-files.js` asks Backblaze for the first bytes of every clip (all 412 answered on the first run). GitHub runs it every Monday. It is not part of the Netlify build.
+- **Housekeeping:** `supabase/config.toml` deleted (it switched on Apple sign-in under the retired name, and nothing read it). Seven data files only the build scripts read are no longer published. Both GitHub workflows get a read-only token and actions pinned to exact commits. The CARTO map key lives in one file, `js/map-key.js`, instead of two.
+- Cache bumped to `hh-v5.9`; footer label bumped to v5.9 (Inevitability of Death)
+
 ## v5.8.6
 **Thugs - Patch** - November 12, 2026
 New scoring, a clock, and a start card for (Un)Locked in the Trunk of a Car (jD, November 12, 2026). Under the v5.8.5 rules a revealed word cost only 5 more than one a fan unscrambled, every clean game landed between 50 and 100, and the first screen led with the blind guess instead of the move most fans need.

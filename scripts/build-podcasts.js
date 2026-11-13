@@ -142,6 +142,23 @@ async function fetchFeed(url) {
 
 // ---- Pages ----
 
+// Structured data for a show page, so search engines and assistants can tell it is a
+// podcast, who makes it, and where its feed is. Every show is in the network's one feed.
+function showJsonLd(cfg, show) {
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'PodcastSeries',
+    name: show.name,
+    url: SITE + '/podcasts/' + show.slug,
+    description: shortDesc(show.name + ': ' + firstSentence(show.about[0])),
+    image: SITE + '/assets-optimized/podcasts/' + show.slug + '.jpg',
+    inLanguage: 'en-CA',
+    webFeed: cfg.feed,
+    publisher: { '@type': 'Organization', name: 'The Tragically Hip Podcast Series', url: 'https://home.tthpods.com' },
+  };
+  return '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>';
+}
+
 function head(h) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -160,7 +177,7 @@ function head(h) {
   <meta property="og:url" content="${h.url}">
   <meta property="og:site_name" content="The Hip Handbook">
   <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="${h.url}">
+  <link rel="canonical" href="${h.url}">${h.jsonLd ? '\n  ' + h.jsonLd : ''}
   <script src="/js/clean-address.js"></script>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-before-send="tthCleanAddress"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
@@ -257,6 +274,7 @@ ${g.eps.map(row).join('\n')}
     url: SITE + '/podcasts/' + show.slug,
     image: show.slug,
     imageAlt: show.imageAlt,
+    jsonLd: showJsonLd(cfg, show),
   }) + `
 <header class="page-header">
   <div class="subtitle">${esc(show.eyebrow || show.years || 'Podcast')}</div>
@@ -280,8 +298,10 @@ ${guide}
 ` + FOOT;
 }
 
-function sitemapBlock(cfg) {
-  const url = (loc, pr) => `  <url>\n    <loc>${loc}</loc>\n    <priority>${pr}</priority>\n  </url>`;
+// Dates already in the sitemap are kept; a new page is left undated for build-sitemap-dates.js
+function sitemapBlock(cfg, sm) {
+  const lastmods = Object.fromEntries([...sm.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map(m => [m[1], m[2]]));
+  const url = (loc, pr) => `  <url>\n    <loc>${loc}</loc>\n${lastmods[loc] ? `    <lastmod>${lastmods[loc]}</lastmod>\n` : ''}    <priority>${pr}</priority>\n  </url>`;
   return ['  <!-- podcasts:start -->', url(SITE + '/podcasts', '0.7'), ...cfg.shows.map(s => url(SITE + '/podcasts/' + s.slug, '0.6')), '  <!-- podcasts:end -->'].join('\n');
 }
 
@@ -323,7 +343,7 @@ function sitemapBlock(cfg) {
 
   const smPath = path.join(ROOT, 'sitemap.xml');
   const sm = fs.readFileSync(smPath, 'utf8');
-  const block = sitemapBlock(cfg);
+  const block = sitemapBlock(cfg, sm);
   const smNew = /  <!-- podcasts:start -->[\s\S]*?<!-- podcasts:end -->/.test(sm)
     ? sm.replace(/  <!-- podcasts:start -->[\s\S]*?<!-- podcasts:end -->/, () => block)
     : sm.replace('  <!-- songs:start -->', () => block + '\n  <!-- songs:start -->');

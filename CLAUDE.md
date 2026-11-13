@@ -74,6 +74,8 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
 - Data: static JSON in `data/`, loaded by the browser. Shows are keyed by their setlist.fm id everywhere.
 - Album facts are in two places: `data/discography.json` and the album lists at the top of `js/discography-app.js`. Change both; `audit-site.js` fails if they disagree.
 - Members (membersHIP): Supabase, called from the browser with the public anon key in `js/tth-member-gate.js`. The `forum_members` table is closed; the site only calls three database functions: `claim_member`, `unlock_member` and `update_attended_shows`. The full database setup, in run order, is `docs/The Hip Handbook - Database Rebuild.sql` (never run it against the live project); the other `.sql` files in `docs/` are the changes that got the live project there. Keep the Rebuild file in step with any database change. Database changes are SQL that jD runs by hand in the Supabase SQL Editor. Never write to the live database from a test: use guest sessions.
+- Analytics: every page loads `js/clean-address.js` before the Umami tag, and the tag names it (`data-before-send="tthCleanAddress"`). It lets only jD's three link tags (`utm_source`, `utm_medium`, `utm_campaign`) reach Umami and cuts everything else after the "?". A new page needs both lines; `audit-site.js` fails without them.
+- `llms.txt` at the root tells AI assistants what the site is. Update its page list when a page is added or removed.
 - Privacy: `privacy.html` says what the site keeps and where it goes (Supabase, Umami, Backblaze and the rest). If a change collects anything new or adds an outside service, update that page in the same release and show jD the wording.
 - Outside hosts: any new one (scripts, images, audio, APIs) must be added to the CSP in `_headers`, or it works locally and breaks live. The local preview ignores `_headers` and `_redirects`.
 - Redirects and blocked paths live in `_redirects` only. `netlify.toml` holds the deploy steps (see Deploying).
@@ -91,13 +93,14 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
 
 ## Releases
 
-- Version names follow The Hip's albums: the major number is an album, each minor is that album's next track, in order (check `data/discography.json`). v5 is "Day for Night": v5.6 is 'So Hard Done By', so the next minor is v5.7 'Nautical Disaster'. Fixes add a third digit: `v5.6.1 (So Hard Done By - Patch)`. jD decides when a minor or major starts.
+- Version names follow The Hip's albums: the major number is an album, each minor is that album's next track, in order (check `data/discography.json`). v5 is "Day for Night": v5.9 is 'Inevitability of Death', so the next minor is v5.10 'Scared'. Fixes add a third digit: `v5.6.1 (So Hard Done By - Patch)`. jD decides when a minor or major starts.
 - Every release, in one commit:
   1. `var version` in `js/shared-footer.js` (the footer label)
   2. `CACHE_NAME` in `service-worker.js`: `hh-v` plus the number. Keep the `hh-` prefix, never `thc-`.
   3. A new entry at the top of `docs/CHANGELOG.md` in the existing style, ending with the cache and footer bump line
   4. New pages, scripts and styles added to `CORE_ASSETS` (nothing over 250 KB)
-  5. Commit message: `v5.6.1 (So Hard Done By - Patch) - Short summary`
+  5. `node scripts/build-sitemap-dates.js` last, once every page is built: it dates each sitemap address from git (jD's Mac only)
+  6. Commit message: `v5.6.1 (So Hard Done By - Patch) - Short summary`
 - `scripts/audit-site.js` fails if the footer, the cache name and the newest changelog entry disagree.
 
 ## Brand rules (TTH Podcast Series Brand & Style Guide v7.1)

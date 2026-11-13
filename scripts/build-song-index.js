@@ -21,9 +21,9 @@
 //   l is the song's key in data/lyrics.json ('Album|||Song'). The song page fetches
 //   the lyrics only when someone opens its Lyrics card.
 //
-// Also rewrites the song block between the markers in sitemap.xml. No <lastmod> there:
-// the only date this script knows is the day it ran, which tells search engines nothing
-// (audit SEO-04).
+// Also rewrites the song block between the markers in sitemap.xml. It keeps the dates
+// already there and leaves a new song undated: scripts/build-sitemap-dates.js sets the
+// dates from git at release time (jD, 2026-11-13, replacing audit SEO-04's "no dates").
 //
 // When lyrics.json gains songs, re-run this script too, and bump LYRICS_CACHE_KEY
 // and the lyrics counts in js/discography-app.js and discography.html.
@@ -172,9 +172,12 @@ fs.writeFileSync(path.join(ROOT, 'data', 'song-index.json'), JSON.stringify(out)
 const smPath = path.join(ROOT, 'sitemap.xml');
 let sm = fs.readFileSync(smPath, 'utf8');
 const START = '<!-- songs:start -->', END = '<!-- songs:end -->';
-const block = START + '\n' + songs.map(so =>
-  `  <url>\n    <loc>https://thehiphandbook.tthpods.com/song/${so.s}</loc>\n    <priority>0.5</priority>\n  </url>`
-).join('\n') + '\n  ' + END;
+// Dates already in the sitemap are kept; a new song is left undated for build-sitemap-dates.js
+const lastmods = Object.fromEntries([...sm.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map(m => [m[1], m[2]]));
+const block = START + '\n' + songs.map(so => {
+  const loc = 'https://thehiphandbook.tthpods.com/song/' + so.s;
+  return `  <url>\n    <loc>${loc}</loc>\n${lastmods[loc] ? `    <lastmod>${lastmods[loc]}</lastmod>\n` : ''}    <priority>0.5</priority>\n  </url>`;
+}).join('\n') + '\n  ' + END;
 if (sm.includes(START)) sm = sm.replace(new RegExp(START + '[\\s\\S]*?' + END), () => block);
 else sm = sm.replace('</urlset>', () => '  ' + block + '\n</urlset>');
 fs.writeFileSync(smPath, sm);

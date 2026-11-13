@@ -1,7 +1,7 @@
 // shared-footer.js - The Hip Handbook
 // Injects site footer and registers service worker
 (function() {
-  var version = 'v5.8.6 (Thugs - Patch)';
+  var version = 'v5.9 (Inevitability of Death)';
 
   // Search folding (audit FUNC-05): searches compare folded text on both sides, so a curly
   // apostrophe matches a straight one and "Montreal" finds "Montréal". Used by the setlist,
@@ -85,6 +85,9 @@
       '<strong style="color:#d9d9d9">The Tragically Hip</strong> - Gord Downie (1964-2017)<br>' +
       'Designed by <a href="https://home.tthpods.com" target="_blank" rel="noopener noreferrer">The Tragically Hip Podcast Series</a> - Coded by Claude<br>' +
       '<span style="color:#929292;font-size:0.72rem;">Unplucked Gems curated by Alonx</span><br>' +
+      // Where the data comes from and who made the site (jD's wording, 2026-11-13)
+      'An amalgamation of data from all across the world wide web and beyond!<br>' +
+      'Made by a fan for the fans.<br>' +
       '<a href="/privacy.html">Privacy</a><br>' +
       '<span style="color:#929292;font-size:0.7rem;">' + version + '</span>';
   }

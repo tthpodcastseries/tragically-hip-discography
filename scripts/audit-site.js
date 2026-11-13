@@ -342,6 +342,20 @@ for (const loc of sitemapLocs) {
   if (canonicalOf(hit) !== loc) problems.push(`sitemap.xml: ${loc} is not the canonical address of ${hit} (${canonicalOf(hit)})`);
 }
 notes.push(`link previews: ${pageFiles.length} pages checked for canonical, og tags and brand naming; sitemap has ${sitemapLocs.size} addresses`);
+// Every address carries the date its page last changed (jD, 2026-11-13). The dates come
+// from git, so only scripts/build-sitemap-dates.js sets them; here they just have to be
+// there, be real dates, and not be ahead of today (a day's grace for time zones).
+{
+  const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+  let undated = 0;
+  for (const m of sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g)) {
+    const d = (m[2].match(/<lastmod>([^<]*)<\/lastmod>/) || [])[1];
+    if (!d) { undated++; continue; }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || isNaN(Date.parse(d))) problems.push(`sitemap.xml: ${m[1]} has a date that is not yyyy-mm-dd (${d})`);
+    else if (d > tomorrow) problems.push(`sitemap.xml: ${m[1]} is dated in the future (${d})`);
+  }
+  if (undated) problems.push(`sitemap.xml: ${undated} address(es) have no date - run node scripts/build-sitemap-dates.js`);
+}
 
 // ---- 9. Content-Security-Policy (v5.4.17, audit SEC-03) ----
 // The CSP blocks inline scripts, so pages may only load code from files: no <script>
