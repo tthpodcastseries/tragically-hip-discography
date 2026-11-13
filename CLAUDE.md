@@ -1,7 +1,7 @@
-<!-- SHARED-RULES-BEGIN v2026-11-13.7 -->
+<!-- SHARED-RULES-BEGIN v2026-11-13.8 -->
 ## Shared rules (identical in every project folder)
 
-Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. If the guide PDF disagrees with this block, a dated ruling in this block wins until v8 ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
+Synced to Brand & Style Guide v8.0 on 2026-11-13 ("TTH Podcast Series - Style Guide 8.0.pdf"; what changed is in "TTH Podcast Series - Style Guide 8.0 - What's New.md"). This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. v8.0 carries every ruling in this block. If the guide PDF disagrees with this block, a dated ruling here that is newer than the guide wins until the next version ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
 
 ### Network facts (as of 2026-11-13)
 
@@ -18,7 +18,7 @@ Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word th
 - Single hyphen with spaces ( - ) for clauses. Never em dashes or en dashes, anywhere, in any file, public or internal.
 - Oxford comma, always. Round brackets for asides. Round bullets in branded output. No orphan headers.
 - Song titles go in single quotes, whichever band wrote the song: 'Bobcaygeon'. Albums, films, and books go in double quotes: "Phantom Power". (jD, November 3, 2026.) Going forward, a title inside an episode title or a YouTube title keeps its quotes (November 13, 2026).
-- No italics, anywhere: not on titles, not for emphasis, and not in document typography (subheads, captions, decks, subtitles). The guide PDF's Bold Italic and Italic specs are superseded (jD, November 3 and 13, 2026): subheads are Poppins Bold; captions and credit lines are Poppins Regular; pull quotes are Poppins Regular with a Dark Purple left rule, and the lines-above-and-below frame is retired. Flag the conflict. Unicode italic is out too.
+- No italics, anywhere: not on titles, not for emphasis, and not in document typography (subheads, captions, decks, subtitles). Subheads are Poppins Bold; captions and credit lines are Poppins Regular; pull quotes are Poppins Regular with a Dark Purple left rule (jD, November 3 and 13, 2026). Unicode italic is out too.
 - Album casing keeps lowercase prepositions: "Up to Here", "Day for Night", "Trouble at the Henhouse", "We Are the Same", "Now for Plan A", and "Music @ Work" with the at-sign. Song titles follow the same casing: articles, conjunctions, and short prepositions are lowercase unless they open or close the title ('As Makeshift as We Are'). A band's own name prints as the band styles it (November 13, 2026).
 - The number sign (#) is for hashtags and hex colour codes only. Song and record numbers are spelled out in titles and copy: 'Song Eleven', 'Number Eleven', never '#11' or 'No. 11'. Going forward only: published titles are not retitled. (jD, November 3, 2026.) Two exceptions (jD, November 13, 2026): The Tragically Hip Interview Series keeps 'Paul Langlois No. 1' and 'No. 2', because those are episode numbers; and 'Toronto #4' keeps its number sign, because it is the song's own title.
 - Timestamps go on YouTube descriptions only (jD, November 3, 2026). Shownotes, RedCircle, Facebook, Instagram, and Yer Letter carry none. YouTube turns a timestamp list into chapters on its own and that is accepted there; no chapters are built any other way. That includes On Shuffle live stream archives (jD, November 13, 2026).
@@ -59,7 +59,7 @@ Group posts follow the guide's 05.1 format:
 - One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
 - Bare labelled URLs are allowed in the group, and in shownotes and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
 - Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
-<!-- SHARED-RULES-END v2026-11-13.7 -->
+<!-- SHARED-RULES-END v2026-11-13.8 -->
 
 # The Hip Handbook - notes for Claude Code
 
@@ -103,7 +103,7 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
   6. Commit message: `v5.6.1 (So Hard Done By - Patch) - Short summary`
 - `scripts/audit-site.js` fails if the footer, the cache name and the newest changelog entry disagree.
 
-## Brand rules (TTH Podcast Series Brand & Style Guide v7.1)
+## Brand rules (TTH Podcast Series Brand & Style Guide v8.0)
 
 The guide PDF sits in `docs/` on jD's Mac only (`*.pdf` is gitignored). Where this list and the guide differ, the guide wins.
 
