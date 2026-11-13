@@ -1,4 +1,4 @@
-<!-- SHARED-RULES-BEGIN v2026-11-13.6 -->
+<!-- SHARED-RULES-BEGIN v2026-11-13.7 -->
 ## Shared rules (identical in every project folder)
 
 Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. If the guide PDF disagrees with this block, a dated ruling in this block wins until v8 ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
@@ -10,8 +10,8 @@ Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word th
 - The Facebook group passed 9,000 members on November 1, 2026. Any hard number needs an as-of date.
 - jD has seen The Hip 15 times (jD, November 3, 2026, counted from his Yer Hip Passport on The Hip Handbook; the first show was in 1993). The earlier counts of 16 and 17 are retired. Copy may name a show he attended only if it is on his written list, "TTH Podcast Series - jD's Hip Shows.md" (jD, November 13, 2026). Barrie, August 2, 1997 is not one of his shows (jD, November 13, 2026); the list and the Passport now hold the same fifteen. The guide's model opener stands: July 24, 1993, Markham Fairgrounds, and he turned nineteen that day (jD confirmed both, November 13, 2026).
 - The Hip Handbook is the only name. The Hip Compendium and compendium.tthpods.com are retired and dead.
-- Over: The Gathering (Kingston, August 20 to 23, 2026) and GEDfest Toronto 2026 (October 17, Horseshoe Tavern). An event's ticket link comes down when the event ends and never reappears.
-- It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton, then ran at the Kingston Grand Theatre (Thousand Islands Playhouse, in association with Theatre Aquarius) from October 22 to November 8, 2026. The Kingston run is over: past tense, with the dates, and no ticket link.
+- Over: The Gathering (Kingston, August 20 to 23, 2026) and GEDfest Toronto 2026 (October 17, Horseshoe Tavern). Once an event ends, new copy carries no ticket link for it. Links already published stay where they are: nobody edits old posts or descriptions to remove them (jD, November 13, 2026).
+- It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton, then ran at the Kingston Grand Theatre (Thousand Islands Playhouse, in association with Theatre Aquarius) from October 22 to November 8, 2026. The Kingston run is over: new copy puts it in the past tense, with the dates, and no ticket link. The published episode descriptions keep theirs (jD, November 13, 2026).
 
 ### Formatting
 
@@ -59,7 +59,7 @@ Group posts follow the guide's 05.1 format:
 - One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
 - Bare labelled URLs are allowed in the group, and in shownotes and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
 - Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
-<!-- SHARED-RULES-END v2026-11-13.6 -->
+<!-- SHARED-RULES-END v2026-11-13.7 -->
 
 # The Hip Handbook - notes for Claude Code
 
