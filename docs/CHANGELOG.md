@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.9.1
+**Inevitability of Death - Patch** - November 13, 2026
+Two wording fixes from the v8 brand audit decisions (jD, November 13, 2026).
+- **Are We Family:** the button reads "Lock it in", matching Little Bones. Fan copy never says "submit". The how-to-play line says the same.
+- **"Every show on record":** the tour map's description, its card on the home page, and the setlist.fm card on the Links page now say "on record", because setlist.fm is not a complete list of every show. `build-site-stats.js` reads the new home page wording.
+- Cache bumped to `hh-v5.9.1`; footer label bumped to v5.9.1 (Inevitability of Death - Patch)
+
 ## v5.9
 **Inevitability of Death** - November 13, 2026
 The fixes from the November 13 site audit, ahead of Little Bones opening on November 18 and the two weekly games on November 21 (jD, November 13, 2026). No puzzle and no start date changed.
