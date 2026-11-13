@@ -62,6 +62,7 @@ const CORE_ASSETS = [
   '/js/shared-footer.js',
   '/js/discography-app.js',
   '/js/live-stats.js',
+  '/js/map-key.js',
   '/js/passport.js',
   '/js/bring-it-all-back.js',
   '/js/unlocked.js',

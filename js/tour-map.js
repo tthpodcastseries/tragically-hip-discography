@@ -101,10 +101,8 @@
     markerZoomAnimation: !REDUCE_MOTION
   });
 
-  // CARTO basemaps need a key since Sept 2026 (free non-commercial tier, 5M tiles/month).
-  // Public by design - it ships in every tile URL. Without it every tile reads "API KEY
-  // REQUIRED" (checked 2026-11-01). Manage at dashboard.basemaps.carto.com (jd@tthpods.com).
-  const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
+  // The CARTO map key lives in js/map-key.js (one copy, shared with the Passport map)
+  const CARTO_KEY = window.TTH_CARTO_KEY;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=' + CARTO_KEY, {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a> | Setlist data: <a href="https://www.setlist.fm" target="_blank">setlist.fm</a> | Gig data: <a href="https://www.hipbase.com" target="_blank">Hipbase</a> (Lance Robinson) | Live recordings: <a href="https://www.thehiparchive.com" target="_blank">The Tragically Hip Archive</a> (Darrin Cappe)',
     subdomains: 'abcd',

@@ -22,6 +22,10 @@ on:
     - cron: '0 13 * * 0,1,3,5'
   workflow_dispatch: {}
 
+# This job never touches the repo (one curl), so its token gets read-only access.
+permissions:
+  contents: read
+
 jobs:
   ping:
     runs-on: ubuntu-latest

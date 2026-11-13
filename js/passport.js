@@ -17,9 +17,8 @@
   const RARE_UNDER = 10;
   const SHOWS_VISIBLE = 8;
 
-  // CARTO map tiles need this key: without it every tile reads "API KEY REQUIRED"
-  // (checked 2026-11-01). Public by design, like the Tour Map's - see js/tour-map.js
-  const CARTO_KEY = 'cb1_4wzs_1_6486b4aebf6d574862008dc4';
+  // The CARTO map key lives in js/map-key.js (one copy, shared with the Tour Map)
+  const CARTO_KEY = window.TTH_CARTO_KEY;
 
   const M = window.TTHMember;
   if (!M || !M.getSession || !M.getSession()) return; // member gate is showing

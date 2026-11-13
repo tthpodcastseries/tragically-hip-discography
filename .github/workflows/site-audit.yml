@@ -15,14 +15,20 @@ on:
     - cron: '0 13 * * 1'
   workflow_dispatch: {}
 
+# The jobs only read the repo, so the token GitHub hands them can only read it.
+permissions:
+  contents: read
+
+# Actions are pinned to an exact commit (the version is in the comment), so a changed
+# tag can't swap in different code. To update one, look up the new version's commit.
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22'
       - name: Quick audit, games compared with the commit before the push
@@ -40,8 +46,8 @@ jobs:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22'
       - name: Check every 'Little Bones' clip is still on Backblaze
@@ -51,15 +57,15 @@ jobs:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: '22'
       - name: Check YouTube video liveness (archive, show videos, music videos, Road episodes)
         run: node scripts/check-youtube-videos.js --json youtube-report.json
       - name: Upload dead-video report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: youtube-report
           path: youtube-report.json

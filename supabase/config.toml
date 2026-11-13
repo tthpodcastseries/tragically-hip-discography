@@ -1,4 +1,0 @@
-[auth.external.apple]
-enabled = true
-client_id = "com.tthpods.compendium.web"
-secret = "env(APPLE_SECRET)"

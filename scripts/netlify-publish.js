@@ -27,6 +27,10 @@ const LEAVE_OUT = new Set([
   'data/source', 'data/live-play-counts-unmatched.txt',
   // the game schedule lock is only for scripts/check-game-schedule.js
   'data/game-schedule-lock.json',
+  // data only the build scripts read: no page or script in js/ loads these (checked 2026-11-13).
+  // Take one off this list before a page fetches it, or it works locally and 404s live.
+  'data/live-play-counts-merged.json', 'data/hipbase-play-counts.json', 'data/setlistfm-play-counts.json',
+  'data/podcast-feed.json', 'data/podcast-shows.json', 'data/bird-links.json', 'data/unplucked-corrections.json',
   // build and repo files
   'netlify.toml', 'package.json', 'package-lock.json', 'node_modules', '_site',
   // gitignored files that only exist on jD's Mac (never on Netlify, but this keeps a local run clean)
