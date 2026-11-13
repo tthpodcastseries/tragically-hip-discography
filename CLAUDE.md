@@ -1,27 +1,27 @@
-<!-- SHARED-RULES-BEGIN v2026-11-03.3 -->
+<!-- SHARED-RULES-BEGIN v2026-11-13.6 -->
 ## Shared rules (identical in every project folder)
 
-Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. If the guide PDF disagrees with this block, the guide PDF wins: say so, and ask jD.
+Synced to Brand & Style Guide v7.1 on 2026-11-03. This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. If the guide PDF disagrees with this block, a dated ruling in this block wins until v8 ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
 
-### Network facts (as of 2026-11-03)
+### Network facts (as of 2026-11-13)
 
 - The Tragically Hip Podcast Series (est. 2018) is a nine-show fan network: Fully & Completely (2018-2022, redux 2026), Getting Hip to The Hip (2023), Discovering Downie (2024), The Tragically Hip Top Forty Countdown (2025), The Tragically Hip On Shuffle - Live Stream (2026), Yer Hipstories: Reflections From The Final Tour (2026), It's A Good Life (2026), The Tragically Hip Interview Series, and The Tragically Hip Album Countdown (launches Monday, January 4, 2027).
-- "redux" is always lowercase. TTHTop40 is the hashtag and internal short form only. The first four runs are complete: say "complete", never ended, over, finished, former, retired, or cancelled, and keep the show in the present tense.
+- "redux" is always lowercase. TTHTop40 is the hashtag and internal short form only. The first four runs, and It's A Good Life, are complete (It's A Good Life added November 13, 2026): say "complete", never ended, over, finished, former, retired, or cancelled, and keep the show in the present tense.
 - The Facebook group passed 9,000 members on November 1, 2026. Any hard number needs an as-of date.
-- jD has seen The Hip 15 times (jD, November 3, 2026, counted from his Yer Hip Passport on The Hip Handbook; the first show was in 1993). The earlier counts of 16 and 17 are retired. Name no specific show he attended unless he names it in the chat.
+- jD has seen The Hip 15 times (jD, November 3, 2026, counted from his Yer Hip Passport on The Hip Handbook; the first show was in 1993). The earlier counts of 16 and 17 are retired. Copy may name a show he attended only if it is on his written list, "TTH Podcast Series - jD's Hip Shows.md" (jD, November 13, 2026). Barrie, August 2, 1997 is not one of his shows (jD, November 13, 2026); the list and the Passport now hold the same fifteen. The guide's model opener stands: July 24, 1993, Markham Fairgrounds, and he turned nineteen that day (jD confirmed both, November 13, 2026).
 - The Hip Handbook is the only name. The Hip Compendium and compendium.tthpods.com are retired and dead.
 - Over: The Gathering (Kingston, August 20 to 23, 2026) and GEDfest Toronto 2026 (October 17, Horseshoe Tavern). An event's ticket link comes down when the event ends and never reappears.
-- It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton and is at the Kingston Grand Theatre through Sunday, November 8, 2026.
+- It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton, then ran at the Kingston Grand Theatre (Thousand Islands Playhouse, in association with Theatre Aquarius) from October 22 to November 8, 2026. The Kingston run is over: past tense, with the dates, and no ticket link.
 
 ### Formatting
 
 - Single hyphen with spaces ( - ) for clauses. Never em dashes or en dashes, anywhere, in any file, public or internal.
 - Oxford comma, always. Round brackets for asides. Round bullets in branded output. No orphan headers.
-- Song titles go in single quotes, whichever band wrote the song: 'Bobcaygeon'. Albums, films, and books go in double quotes: "Phantom Power". (jD, November 3, 2026.)
-- No italics, anywhere: not on titles, not for emphasis, and not in document typography (subheads, captions, decks, subtitles). The guide PDF's Bold Italic and Italic specs are superseded (jD, November 3, 2026): use Bold or Regular instead, and flag the conflict. Unicode italic is out too.
-- Album casing keeps lowercase prepositions: "Up to Here", "Day for Night", "Trouble at the Henhouse", "We Are the Same", "Now for Plan A", and "Music @ Work" with the at-sign.
-- The number sign (#) is for hashtags and hex colour codes only. Song and record numbers are spelled out in titles and copy: 'Song Eleven', 'Number Eleven', never '#11' or 'No. 11'. Going forward only: published titles are not retitled. (jD, November 3, 2026.)
-- Timestamps go on YouTube descriptions only (jD, November 3, 2026). Shownotes, RedCircle, Facebook, Instagram, and Yer Letter carry none. YouTube turns a timestamp list into chapters on its own and that is accepted there; no chapters are built any other way.
+- Song titles go in single quotes, whichever band wrote the song: 'Bobcaygeon'. Albums, films, and books go in double quotes: "Phantom Power". (jD, November 3, 2026.) Going forward, a title inside an episode title or a YouTube title keeps its quotes (November 13, 2026).
+- No italics, anywhere: not on titles, not for emphasis, and not in document typography (subheads, captions, decks, subtitles). The guide PDF's Bold Italic and Italic specs are superseded (jD, November 3 and 13, 2026): subheads are Poppins Bold; captions and credit lines are Poppins Regular; pull quotes are Poppins Regular with a Dark Purple left rule, and the lines-above-and-below frame is retired. Flag the conflict. Unicode italic is out too.
+- Album casing keeps lowercase prepositions: "Up to Here", "Day for Night", "Trouble at the Henhouse", "We Are the Same", "Now for Plan A", and "Music @ Work" with the at-sign. Song titles follow the same casing: articles, conjunctions, and short prepositions are lowercase unless they open or close the title ('As Makeshift as We Are'). A band's own name prints as the band styles it (November 13, 2026).
+- The number sign (#) is for hashtags and hex colour codes only. Song and record numbers are spelled out in titles and copy: 'Song Eleven', 'Number Eleven', never '#11' or 'No. 11'. Going forward only: published titles are not retitled. (jD, November 3, 2026.) Two exceptions (jD, November 13, 2026): The Tragically Hip Interview Series keeps 'Paul Langlois No. 1' and 'No. 2', because those are episode numbers; and 'Toronto #4' keeps its number sign, because it is the song's own title.
+- Timestamps go on YouTube descriptions only (jD, November 3, 2026). Shownotes, RedCircle, Facebook, Instagram, and Yer Letter carry none. YouTube turns a timestamp list into chapters on its own and that is accepted there; no chapters are built any other way. That includes On Shuffle live stream archives (jD, November 13, 2026).
 
 ### Words to avoid in copy
 
@@ -33,7 +33,7 @@ Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pil
 
 ### The locks
 
-- Opener: always "Hey, it's jD here." Never "Hey, it's jD." The word "here" is not optional. No opener on Instagram captions, Instagram stories, or YouTube descriptions. On a Facebook group post the bold Cold Open comes first, then the opener.
+- Opener: always "Hey, it's jD here." Never "Hey, it's jD." The word "here" is not optional. It is a standalone sentence ending in a period, never run on with a comma. No opener in the text of Instagram captions, Instagram stories, or YouTube descriptions; a spoken opener in video is fine on every surface (jD, November 8, 2026). On a Facebook group post the bold Cold Open comes first, then the opener.
 - Yer Letter closer: "Until next month, yer pal. -jD." Exact punctuation. Yer Letter only.
 - "Pick up yer shit." is mic only. Never print, newsletter, shownotes, or social (unless quoting it as said on an episode).
 - "So there's that." maximum twice per piece.
@@ -41,12 +41,12 @@ Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pil
 - The band: always The Tragically Hip, The Hip, or TTH. Never "Hip" or "Tragically Hip" without "The." Event surfaces use "The Hip" only.
 - Gord: "Gord" or "Gord Downie" ("Gordie" and "the captain" are in bounds). Never "Downie" alone.
 - It's A Good Life is always the full title, in public copy and in planning notes alike, with no subtitle. No shorthand exists. "AFOWS" is retired and never appears anywhere. The musical keeps its own casing: "It's a Good Life If You Don't Weaken".
-- The Tragically Hip Album Countdown is always the full title. No shorthand exists.
+- The Tragically Hip Album Countdown is always the full title. No shorthand exists, link labels included: "The Tragically Hip Album Countdown ballot:".
 - The Tragically Hip On Shuffle keeps "Live Stream" in public copy. "Shuffle" alone is internal.
 - Getting Hip to The Hip takes a capital T on "The". podList: lowercase "pod", capital "L", no number. Now In Stereo: capital N, I, and S.
 - Red and Gold together only on The Hip Handbook. Never together elsewhere, never on document interior pages, and never as text colours.
-- No gold on the Year Ten (10-year) logo mark or its graphics.
-- The two countdown shows never name the upcoming song or record before its episode drops (titles, hooks, thumbnails, promo posts, hashtags).
+- No gold on the Year Ten (10-year) logo mark or its graphics. Year Ten runs May 21, 2027 to May 21, 2028 (the first episode dropped May 21, 2018).
+- The two countdown shows never name the song or record in an episode title, before or after it airs, and never name the upcoming one anywhere before its reveal (hooks, thumbnails, promo posts, hashtags). For The Tragically Hip Album Countdown the reveal is the Monday live stream; the score is never shown before it (November 13, 2026).
 
 ### Facebook group posts
 
@@ -57,9 +57,9 @@ Group posts follow the guide's 05.1 format:
 - Long posts break into blocks with short bold all-caps headers, one emoji marker each.
 - Unicode bold goes on the Cold Open and the block headers only. Song and album titles stay in plain quotes.
 - One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
-- Bare labelled URLs are allowed in the group (Web:, Social:, Booking:).
+- Bare labelled URLs are allowed in the group, and in shownotes and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
 - Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
-<!-- SHARED-RULES-END v2026-11-03.3 -->
+<!-- SHARED-RULES-END v2026-11-13.6 -->
 
 # The Hip Handbook - notes for Claude Code
 
