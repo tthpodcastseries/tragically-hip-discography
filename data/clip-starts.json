@@ -1,5 +1,28 @@
 {
   "about": "Hand-set clip start points for 'Little Bones' (data/clip-pool.json is built from this by scripts/build-clip-pool.js). starts: \"song-slug@showId\" (the setlist.fm show id): seconds into the track where the clip starts; without one the clip starts 30% of the way in. skip: recordings never to use (a rough tape). Edit by hand or with the clip picker (scripts/clip-picker.html, local preview only), then re-run the builder.",
-  "starts": {},
-  "skip": []
+  "starts": {
+    "pigeon-camera@1bff2dcc": 121.7,
+    "fire-in-the-hole@23dd5c97": 66.3,
+    "vapour-trails@4bff0b26": 130.5,
+    "poets@53ca6331": 124.8,
+    "the-luxury@1bff0d3c": 124.9,
+    "everytime-you-go@53fc0721": 151.2,
+    "apartment-song@23ca74fb": 146.9,
+    "opiated@3ff0dd3": 147.4,
+    "fly@53f12b15": 137.8,
+    "sharks@23c34043": 196.5,
+    "the-exact-feeling@7bd5eadc": 30.1,
+    "38-years-old@43fe73bf": 174.3,
+    "scared@5bff0398": 225.7,
+    "she-didnt-know@7bcf82d0": 102.2,
+    "membership@3ccbd2f": 155.6,
+    "greasy-jungle@4bd53386": 100.8,
+    "love-is-a-first@53cbf3c1": 120.2
+  },
+  "skip": [
+    "38-years-old@43fe73bf",
+    "greasy-jungle@4bd53386",
+    "poets@53ca6331",
+    "the-last-of-the-unplucked-gems@6bd762e6"
+  ]
 }
