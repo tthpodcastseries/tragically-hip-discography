@@ -1,6 +1,7 @@
 name: Weekly site audit
 
-# Weekly: the full audit, outside links included, plus the YouTube check.
+# Weekly: the full audit, outside links included, plus the YouTube check and the
+# 'Little Bones' clip check.
 # Every push to main: the quick pre-push check (no outside links), so a push that
 # skipped it still raises a failure email within a minute or two (v5.4.18, audit
 # CODE-06). Netlify runs the same check before it publishes, so a push that fails
@@ -32,6 +33,19 @@ jobs:
       - name: Full site audit (links, assets, data integrity)
         if: github.event_name != 'push'
         run: node scripts/audit-site.js
+
+  # Weekly only, and never part of the Netlify build: asks Backblaze for the first bytes of
+  # every 'Little Bones' clip, so a missing file raises an email before its day comes up.
+  clips:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Check every 'Little Bones' clip is still on Backblaze
+        run: node scripts/check-clip-files.js
 
   youtube:
     if: github.event_name != 'push'

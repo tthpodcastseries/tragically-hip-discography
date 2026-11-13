@@ -39,7 +39,7 @@ Cost model: free to every visitor. No account is needed. No email, no password, 
 | Members | Supabase (Postgres). Called straight from the browser with the public anon key. See section 6. |
 | Analytics | Umami Cloud, cookieless. Events are names only, never names or numbers. See section 9. |
 | Offline | A service worker (`service-worker.js`) makes the site installable and mostly usable offline. See section 7. |
-| Checks | `scripts/audit-site.js` (links, assets, data cross-references, CSP image hosts, sitemap) runs locally and weekly in GitHub Actions. `scripts/check-youtube-videos.js` checks that linked videos are alive. |
+| Checks | `scripts/audit-site.js` (links, assets, data cross-references, CSP image hosts, sitemap) runs locally and weekly in GitHub Actions. `scripts/check-youtube-videos.js` checks that linked videos are alive. `scripts/check-clip-files.js` checks that every 'Little Bones' clip is still on Backblaze (weekly on GitHub, never in the Netlify build). |
 
 Security headers set for every page: `nosniff`, `X-Frame-Options: SAMEORIGIN`, a strict referrer policy, camera/microphone/geolocation/payment/USB disabled, HSTS with `includeSubDomains`, and a Content-Security-Policy that whitelists each external host the site uses. **Since v5.4.17 the CSP blocks inline scripts:** every script lives in a `/js/` file, and no page or script-built HTML may use `onclick=`, `onerror=` or any other `on...=` attribute (use `addEventListener`; for pictures that may fail, `data-onerror="hide"` or `data-onerror="placeholder"`, handled in `js/shared-footer.js`). `scripts/audit-site.js` fails on any of these. Poppins is served from `/fonts/` (weights 400 to 900, `@font-face` at the top of `css/shared.css`), not Google Fonts. `discography-web-app.netlify.app` forwards to the real address (`_redirects`). **Any new external host (images, scripts, APIs, audio) must be added to the CSP or it is blocked on the live site only** - the local preview server ignores `_headers`. This has bitten the site before (YouTube thumbnails in October 2026) and again with the share card (section 11).
 
@@ -255,6 +255,7 @@ Fixed on 2026-10-28 and live in v5.1.1: the Passport share card being blocked by
 |---|---|
 | Check the whole site's links, assets, data and CSP | `node scripts/audit-site.js` (add `--no-network` to skip external checks) |
 | Check linked YouTube videos are alive | `node scripts/check-youtube-videos.js` |
+| Check every 'Little Bones' clip is still on Backblaze | `node scripts/check-clip-files.js` (about three minutes; `--from 1 --to 14` for a few) |
 | Rebuild song pages and sitemap song block | `node scripts/build-song-index.js` |
 | Rewrite `song/<slug>.html`, `lyrics.html`, `setlists.html`, `top-40.html` (own title, description and tags for link previews). Never edit them by hand; run after any song, `song.html`, `discography.html` or `FEATURE_VIEWS` change | `node scripts/build-seo-pages.js` (`--check` only reports) |
 | Rewrite `data/on-this-day.json`, `data/tour-map.json`, `data/tour-tracks.json` (homepage and tour map read these instead of the big setlist and tour files). Run after any setlist or tour data change | `node scripts/build-light-data.js` (`--check` only reports) |
