@@ -236,7 +236,7 @@
     $('awControls').hidden = today.done;
     $('awSubmit').disabled = picked.length !== 4;
     $('awClear').disabled = !picked.length;
-    $('awSubmit').textContent = picked.length === 4 ? 'Submit' : 'Pick ' + (4 - picked.length) + ' more';
+    $('awSubmit').textContent = picked.length === 4 ? 'Lock it in' : 'Pick ' + (4 - picked.length) + ' more';
   }
 
   function renderLives() {

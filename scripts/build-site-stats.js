@@ -78,7 +78,7 @@ const PHRASES = [
   ['shows', /(?<=num: ')\d[\d,]*(?=', lbl: 'Shows & Appearances')/g, ['js/discography-app.js']],
   ['lastYear', /(?<=live shows and appearances from 1985 to\s+)\d{4}/g, ['discography.html', 'js/discography-app.js']],
   // The tour map's span: Home's card, the map's description, and its year slider (audit DATA-04)
-  ['lastYear', /(?<=Every gig from 1985 to )\d{4}(?= on one map)|(?<=The Tragically Hip, from 1985 to )\d{4}/g, ['index.html', 'tour-map.html']],
+  ['lastYear', /(?<=Every gig on record from 1985 to )\d{4}(?= on one map)|(?<=The Tragically Hip, from 1985 to )\d{4}/g, ['index.html', 'tour-map.html']],
   ['lastYear', /(?<=id="year(?:Min|Max)" min="1985" max=")\d{4}|(?<=id="yearMax" min="1985" max="\d{4}" value=")\d{4}|(?<=id="yearDisplay">1985 - )\d{4}|(?<=class="year-labels" style="--max:)\d{4}|(?<=class="yl-max">)\d{4}/g, ['tour-map.html']],
   ['setlists', /\b\d[\d,]*(?= (?:with )?setlists\b)/g, ['index.html', 'live-stats.html', 'js/discography-app.js']],
   ['recordings', /\b\d[\d,]*(?= live recordings| shows you can play)/g, ['index.html']],
