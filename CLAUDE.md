@@ -1,7 +1,7 @@
-<!-- SHARED-RULES-BEGIN v2026-11-13.8 -->
+<!-- SHARED-RULES-BEGIN v2026-11-13.9 -->
 ## Shared rules (identical in every project folder)
 
-Synced to Brand & Style Guide v8.0 on 2026-11-13 ("TTH Podcast Series - Style Guide 8.0.pdf"; what changed is in "TTH Podcast Series - Style Guide 8.0 - What's New.md"). This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. v8.0 carries every ruling in this block. If the guide PDF disagrees with this block, a dated ruling here that is newer than the guide wins until the next version ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
+Synced to Brand & Style Guide v8.1 on 2026-11-13 ("TTH Podcast Series - Style Guide 8.1.pdf"; what changed is in "TTH Podcast Series - Style Guide 8.1 - What's New.md"). This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. v8.1 carries every ruling in this block. If the guide PDF disagrees with this block, a dated ruling here that is newer than the guide wins until the next version ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
 
 ### Network facts (as of 2026-11-13)
 
@@ -45,7 +45,7 @@ Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pil
 - The Tragically Hip On Shuffle keeps "Live Stream" in public copy. "Shuffle" alone is internal.
 - Getting Hip to The Hip takes a capital T on "The". podList: lowercase "pod", capital "L", no number. Now In Stereo: capital N, I, and S.
 - Red and Gold together only on The Hip Handbook. Never together elsewhere, never on document interior pages, and never as text colours.
-- No gold on the Year Ten (10-year) logo mark or its graphics. Year Ten runs May 21, 2027 to May 21, 2028 (the first episode dropped May 21, 2018).
+- No gold on the Year Ten (10-year) logo mark or its graphics. Year Ten runs May 21, 2027 to May 21, 2028 (the first episode dropped May 21, 2018). The mark goes on social graphics, the feed cover art, and branded documents, not on a show's own cover art (jD, November 13, 2026).
 - The two countdown shows never name the song or record in an episode title, before or after it airs, and never name the upcoming one anywhere before its reveal (hooks, thumbnails, promo posts, hashtags). For The Tragically Hip Album Countdown the reveal is the Monday live stream; the score is never shown before it (November 13, 2026).
 
 ### Facebook group posts
@@ -59,7 +59,7 @@ Group posts follow the guide's 05.1 format:
 - One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
 - Bare labelled URLs are allowed in the group, and in shownotes and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
 - Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
-<!-- SHARED-RULES-END v2026-11-13.8 -->
+<!-- SHARED-RULES-END v2026-11-13.9 -->
 
 # The Hip Handbook - notes for Claude Code
 
@@ -103,7 +103,7 @@ jD is not a developer. Explain in plain words, lead with problems, show a plan b
   6. Commit message: `v5.6.1 (So Hard Done By - Patch) - Short summary`
 - `scripts/audit-site.js` fails if the footer, the cache name and the newest changelog entry disagree.
 
-## Brand rules (TTH Podcast Series Brand & Style Guide v8.0)
+## Brand rules (TTH Podcast Series Brand & Style Guide v8.1)
 
 The guide PDF sits in `docs/` on jD's Mac only (`*.pdf` is gitignored). Where this list and the guide differ, the guide wins.
 
