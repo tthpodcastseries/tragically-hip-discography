@@ -10,9 +10,10 @@
   const track = (name, data) => { try { if (window.umami && window.umami.track) window.umami.track(name, data); } catch (e) { /* analytics optional */ } };
 
   // Date of puzzle #1 - the game opens at midnight Toronto time on this day. Before it the
-  // page says when the game opens instead of showing a puzzle. Wednesday, November 18, 2026
-  // (jD, 2026-11-05). Never change it once the game has opened.
-  const EPOCH = '2026-11-18';
+  // page says when the game opens instead of showing a puzzle. Monday, November 16, 2026
+  // (jD, 2026-11-16: opened two days early; it was Wednesday, November 18). The game has
+  // opened, so never change it.
+  const EPOCH = '2026-11-16';
   // Clip lengths in seconds, one per try, and what a right answer is worth on each
   const CLIPS = [2, 4, 8, 15, 30];
   const LADDER = [100, 80, 60, 40, 20];

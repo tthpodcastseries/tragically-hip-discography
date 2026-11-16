@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.9.2
+**Inevitability of Death - Patch** - November 16, 2026
+Little Bones opens two days early (jD, November 16, 2026).
+- **Little Bones:** the start date moves from Wednesday, November 18 to Monday, November 16, 2026. Nobody had played a puzzle. No puzzle changed and none moved in the order: Puzzle One is still Puzzle One, and each of jD's hand-set start points stays on its clip. Every clip lands two days earlier, so the 412 scheduled days now run to January 1, 2028 (it was January 3). The v5.9 and v5.8 entries below still say November 18: they are the record of that day.
+- **Are We Family and Words Into Birds:** unchanged. Both open Saturday, November 21, 2026.
+- **Schedule lock:** the move is recorded in `data/game-schedule-lock.json`, let through by jD's approval in `scripts/check-game-schedule.js` (`APPROVED_START`), which is emptied once this is pushed.
+- Cache bumped to `hh-v5.9.2`; footer label bumped to v5.9.2 (Inevitability of Death - Patch)
+
 ## v5.9.1
 **Inevitability of Death - Patch** - November 13, 2026
 Two wording fixes from the v8 brand audit decisions (jD, November 13, 2026).
