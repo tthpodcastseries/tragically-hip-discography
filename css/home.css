@@ -184,3 +184,26 @@ a.otd-event:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px;
   .shuffle-row .nav-card-name { font-size: 0.8rem; }
   .welcome { font-size: 0.9rem; }
 }
+
+/* DESKTOP (1100px and wider): Today sits side by side and the doors run four across.
+   Every rule is inside this one block, so phones and tablets never see any of it. */
+@media (min-width: 1100px) {
+  .today { max-width: 1160px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; }
+  .today .on-this-day, .today .sotd { max-width: none; margin: 0; }
+  .today .sotd:not([hidden]) { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  /* If one of the two is hidden, the other takes the middle of the row at its old width */
+  .today:has(.sotd[hidden]) .on-this-day, .today .on-this-day[hidden] + .sotd { grid-column: 1 / -1; justify-self: center; width: 100%; max-width: 640px; }
+
+  .nav-groups { max-width: 1160px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .nav-group { grid-column: 1 / -1; }
+  /* Every card in a row shares the row equally: four doors make quarters, two make halves */
+  .nav-cards { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+  .nav-card:last-child:nth-child(odd) { grid-column: auto; }
+  /* A group with one row of two doors (Watch, Dig Deeper) takes half the width, so two of them sit side by side */
+  .nav-group:has(> .nav-cards:only-of-type > .nav-card:nth-child(2):last-child) { grid-column: auto; }
+  /* A group with two rows of doors (Games) runs them as one row */
+  .nav-group:has(> .nav-cards + .nav-cards) { display: flex; flex-wrap: wrap; column-gap: 12px; }
+  .nav-group:has(> .nav-cards + .nav-cards) > .nav-group-title { flex: 0 0 100%; }
+  .nav-group:has(> .nav-cards + .nav-cards) > .nav-cards { display: contents; }
+  .nav-group:has(> .nav-cards + .nav-cards) .nav-card { flex: 1 1 0; min-width: 0; }
+}

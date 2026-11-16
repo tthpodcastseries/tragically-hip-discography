@@ -143,3 +143,12 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
 }
 .show-more-btn:hover { border-color: var(--red); color: var(--text); }
 .show-more-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+/* DESKTOP (1100px and wider): the lists pair up, two across.
+   Every rule is inside this one block, so phones and tablets never see any of it. */
+@media (min-width: 1100px) {
+  main { max-width: 1160px; }
+  #statsContent { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; align-items: start; }
+  /* Openers above Closers, so together they stand as tall as the Top 20 beside them */
+  .two-col { grid-template-columns: 1fr; }
+}
