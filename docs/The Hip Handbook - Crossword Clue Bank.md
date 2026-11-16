@@ -10,11 +10,11 @@ Size: a puzzle's 15 Hip answers need to add up to about 130 letters or fewer, or
 
 ## Puzzles drafted (not open yet, so all of these can still change)
 
-**Reworked November 6, 2026 for linking words: all 15 need jD's read-through, including 1, 2 and 3** (approved November 5 as all-Hip grids, then 5 Hip answers each moved to the bank below). Linking words are listed after each puzzle's Hip answers (the vetting PDF is `docs/The Hip Handbook - New Games Puzzle Vetting.pdf`, on jD's Mac only).
+**Reworked November 6, 2026 for linking words: all 15 needed jD's read-through again, including 1, 2 and 3** (approved November 5 as all-Hip grids, then 5 Hip answers each moved to the bank below). **Read through since: Puzzle 1 (jD, November 16, 2026). Still to read: 2 to 15.** Linking words are listed after each puzzle's Hip answers (the vetting PDF is `docs/The Hip Handbook - New Games Puzzle Vetting.pdf`, on jD's Mac only).
 
 Every clue below is from the site data unless it says otherwise. Sources: Top 40 ranks, producers, studios, Junos and solo records from `js/discography-app.js`; release dates, track lists and milestones from `data/discography.json`; tours and venue counts ("by the Handbook's count") from `data/tth-tour-data.json`; podcast facts from `data/podcast-shows.json`.
 
-**Puzzle 1** (122 Hip letters, 13 wide): BOBCAYGEON, DONSMITH, FAY, BILLYRAY, GRACETOO, SINCLAIR, PHANTOMPOWER, KINGSTON, ROADAPPLES, HORSESHOE, SECRETPATH, JAKEGOLD, SIRIUSXM, LEGROS, ABACUS. Linking words: REST, SHARP, HOOK, CYMBAL, NEAR.
+**Puzzle 1** (122 Hip letters, 13 wide; jD read it through on November 16, 2026, linking words included): BOBCAYGEON, DONSMITH, FAY, BILLYRAY, GRACETOO, SINCLAIR, PHANTOMPOWER, KINGSTON, ROADAPPLES, HORSESHOE, SECRETPATH, JAKEGOLD, SIRIUSXM, LEGROS, ABACUS. Linking words: REST, SHARP, HOOK, CYMBAL, NEAR.
 - jD: JAKEGOLD ("Longtime manager of The Hip"), confirmed by jD on November 5, 2026. The site data only has him on The Tragically Hip Interview Series.
 - jD: BILLYRAY (Dave Koster, stage manager, title from Jake Gold via jD, November 5, 2026).
 - HORSESHOE also names GEDfest Toronto 2026, from the shared rules.
