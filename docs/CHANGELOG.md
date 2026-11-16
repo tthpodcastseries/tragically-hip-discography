@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.9.3
+**Inevitability of Death - Patch** - November 16, 2026
+Three pages use a wide screen (jD, November 16, 2026). Phones and tablets are unchanged.
+- **Desktop layouts:** on a screen 1100 pixels wide or wider, the home page, the song pages, and Live Show Stats spread out instead of sitting in one narrow column. The other pages are as they were.
+- **Home:** On This Day sits beside Show of the Day. The five games run in one row, Listen and Live Shows run four across, and Watch and Dig Deeper sit side by side. The header is unchanged. The page is about a quarter shorter at 1440 pixels wide.
+- **Song pages:** the four stat tiles run across the top, with Plays by year, On record, Lyrics, and Fan ranking on the left and the Archive recordings on the right. A song with no recordings gets the share card on the right. The opened list of every live performance runs two across under each year, and the all-songs list at `/song` runs three across.
+- **Live Show Stats:** the lists pair up two across, with Openers above Closers beside the Top 20. The page is about 30 percent shorter at 1440 pixels wide.
+- **How:** CSS only, in `css/home.css`, `css/song.css`, and `css/live-stats.css`. Every new rule sits inside one `min-width: 1100px` block per file, so a narrower screen never reads it. Measured before and after at 375, 768, 1024, and 1099 pixels wide on six pages: no element moved. No page, script, or data file changed, and the 189 song pages were not rebuilt.
+- Cache bumped to `hh-v5.9.3`; footer label bumped to v5.9.3 (Inevitability of Death - Patch)
+
 ## v5.9.2
 **Inevitability of Death - Patch** - November 16, 2026
 Little Bones opens two days early (jD, November 16, 2026).
