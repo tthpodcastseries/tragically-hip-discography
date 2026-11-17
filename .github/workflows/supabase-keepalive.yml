@@ -2,7 +2,11 @@ name: Supabase keepalive
 
 # Supabase pauses free-tier projects after 7 days without API activity,
 # which locks members out of the gate until someone restores it by hand.
-# This pings the database four times a week so the project never counts as idle.
+# This pings the database six times a day so the project never counts as idle.
+# Four times a week was not enough: Supabase sent a pause warning on November 17,
+# 2026 with that schedule running. Its docs say "a few user requests to the
+# database each day" keeps a project awake, and GitHub often starts scheduled
+# jobs hours late, so the pings go out every day, spread across it.
 #
 # The anon key below is NOT a secret - it ships in the site's public JS
 # (js/tth-member-gate.js) and is safe by design; row-level security and
@@ -18,8 +22,9 @@ name: Supabase keepalive
 
 on:
   schedule:
-    # Mon/Wed/Fri/Sun 9am Toronto (13:00 UTC) - never more than 2 days between pings
-    - cron: '0 13 * * 0,1,3,5'
+    # Every 4 hours, every day, at 23 minutes past (UTC). Off the top of the hour,
+    # when GitHub is busiest and most likely to delay or drop a scheduled run.
+    - cron: '23 */4 * * *'
   workflow_dispatch: {}
 
 # This job never touches the repo (one curl), so its token gets read-only access.
