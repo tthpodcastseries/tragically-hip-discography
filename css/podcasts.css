@@ -62,3 +62,18 @@ section + section .pod-heading, .pod-guide .pod-heading { margin-top: 32px; }
   .pod-art { max-width: 220px; margin: 0 auto; display: block; }
   .pod-eps a { flex-direction: column; gap: 2px; padding: 10px 12px; }
 }
+
+/* DESKTOP (1100px and wider): five shows across on the hub; on a show page the artwork and
+   story sit on the left and the episode guide runs down the right.
+   Every rule is inside these blocks, so phones and tablets never see any of it. */
+@media (min-width: 1100px) {
+  .pod-main { max-width: 1160px; }
+  .pod-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .pod-main:has(> .pod-about) { display: grid; grid-template-columns: 320px minmax(0, 1fr); column-gap: 48px; align-items: start; }
+  .pod-main > .pod-about { grid-template-columns: 1fr; gap: 20px; }
+  .pod-main > .pod-guide .pod-heading { margin-top: 0; }
+}
+/* The artwork and story stay in view while a long episode guide scrolls, on a window tall enough to hold them */
+@media (min-width: 1100px) and (min-height: 800px) {
+  .pod-main > .pod-about { position: sticky; top: 24px; }
+}

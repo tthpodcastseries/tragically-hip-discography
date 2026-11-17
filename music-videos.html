@@ -307,6 +307,13 @@
     @media (max-width: 480px) {
       .mv-grid { grid-template-columns: 1fr; }
     }
+
+    /* DESKTOP (1100px and wider): the video grid uses the full screen, up to five across.
+       Every rule is inside this one block, so phones and tablets never see any of it. */
+    @media (min-width: 1100px) {
+      .filter-bar, .mv-grid { max-width: 1440px; }
+      .mv-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    }
   </style>
 </head>
 <body>

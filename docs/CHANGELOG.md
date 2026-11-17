@@ -1,5 +1,19 @@
 # Changelog
 
+## v5.9.4
+**Inevitability of Death - Patch** - November 17, 2026
+Six more pages use a wide screen, the second pass after v5.9.3 (jD, November 16, 2026). Phones and tablets are unchanged.
+- **Radio Show:** the hub runs five shows across instead of three. On each of the 10 show pages the artwork and the story sit on the left, and stay in view on a window 800 pixels tall or taller, while the episode guide runs down the right.
+- **Yer Hip Passport:** Rarities you caught sits beside Songs you heard most, the checklist runs the full width, the map sits beside the share card, and Yer shows runs two across. The order on screen is the order in the page. About 30 percent shorter at 1440 pixels wide with 14 shows stamped.
+- **Unplucked Gems:** five eras across instead of four. An opened era is wider and lists its sessions two across.
+- **Video For New Recruits:** the eras spread across the screen, all seven in one row at 1440 pixels wide. An opened era is wider and lists its videos two across.
+- **Yer Hip Links:** three links across in each section.
+- **Official Music Videos:** the grid uses the full screen, five videos across at 1440 pixels wide where it was three. About a third shorter.
+- **Left as they were:** the five games and the Privacy page stay narrow on purpose. Discography, Top 40, Tour Map, Lyrics Search, and the Setlist Explorer already use the width.
+- **How:** the same pattern as v5.9.3. Every new rule sits inside a `min-width: 1100px` block, in `css/podcasts.css`, `css/passport.css`, `css/unplucked-gems.css`, `css/video-for-new-recruits.css`, and the in-page styles of `links.html` and `music-videos.html`. Measured before and after at 375, 768, 1024, and 1099 pixels wide on nine pages: no element moved. The Passport was checked as a guest with sample shows on the preview only, never the live database.
+- **Sitemap:** the Links and Music Videos addresses carry today's date, because those two pages changed.
+- Cache bumped to `hh-v5.9.4`; footer label bumped to v5.9.4 (Inevitability of Death - Patch)
+
 ## v5.9.3
 **Inevitability of Death - Patch** - November 16, 2026
 Three pages use a wide screen (jD, November 16, 2026). Phones and tablets are unchanged.

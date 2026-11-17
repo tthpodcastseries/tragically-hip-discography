@@ -391,3 +391,11 @@ header h1 {
   .flip-card-label { font-size: 0.6rem; }
   .expanded-panel { padding: 14px; }
 }
+
+/* DESKTOP (1100px and wider): five eras across, and an opened era lists its sessions two across.
+   Every rule is inside this one block, so phones and tablets never see any of it. */
+@media (min-width: 1100px) {
+  .album-grid { max-width: 1160px; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .expanded-panel { width: min(1120px, 92vw); }
+  .panel-sessions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 10px; align-items: start; align-content: start; }
+}
