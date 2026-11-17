@@ -1,15 +1,16 @@
-<!-- SHARED-RULES-BEGIN v2026-11-13.9 -->
+<!-- SHARED-RULES-BEGIN v2026-11-17.1 -->
 ## Shared rules (identical in every project folder)
 
 Synced to Brand & Style Guide v8.1 on 2026-11-13 ("TTH Podcast Series - Style Guide 8.1.pdf"; what changed is in "TTH Podcast Series - Style Guide 8.1 - What's New.md"). This block is word for word the same in every project's CLAUDE.md and instruction-pane file. The master copy is `shared-rules.md` in `Documents/TTH Project Template`. Never edit it in one folder: change the master, then run `python3 sync_shared_rules.py` from that folder. If a line elsewhere in this file disagrees with this block, this block wins: say so, and fix the line. v8.1 carries every ruling in this block. If the guide PDF disagrees with this block, a dated ruling here that is newer than the guide wins until the next version ships (jD, November 13, 2026): follow the ruling, and say so. On an undated line, the guide PDF wins: say so, and ask jD.
 
 ### Network facts (as of 2026-11-13)
 
-- The Tragically Hip Podcast Series (est. 2018) is a nine-show fan network: Fully & Completely (2018-2022, redux 2026), Getting Hip to The Hip (2023), Discovering Downie (2024), The Tragically Hip Top Forty Countdown (2025), The Tragically Hip On Shuffle - Live Stream (2026), Yer Hipstories: Reflections From The Final Tour (2026), It's A Good Life (2026), The Tragically Hip Interview Series, and The Tragically Hip Album Countdown (launches Monday, January 4, 2027).
+- The Tragically Hip Podcast Series (est. 2018) is a nine-show fan network: Fully & Completely (2018-2022, redux 2026), Getting Hip to The Hip (2023), Discovering Downie (2024), The Tragically Hip Top Forty Countdown (2025), The Tragically Hip On Shuffle - Live Stream (2026), Yer Hipstories: Reflections From The Final Tour (2026), It's A Good Life (2026), The Tragically Hip Interview Series, and The Tragically Hip Album Countdown (launches Monday, January 4, 2027). A tenth show, Yer Hipstories: Another Roadside Attraction, launches Monday, June 14, 2027: nine shows until that day, ten from it.
 - "redux" is always lowercase. TTHTop40 is the hashtag and internal short form only. The first four runs, and It's A Good Life, are complete (It's A Good Life added November 13, 2026): say "complete", never ended, over, finished, former, retired, or cancelled, and keep the show in the present tense.
 - The Facebook group passed 9,000 members on November 1, 2026. Any hard number needs an as-of date.
 - jD has seen The Hip 15 times (jD, November 3, 2026, counted from his Yer Hip Passport on The Hip Handbook; the first show was in 1993). The earlier counts of 16 and 17 are retired. Copy may name a show he attended only if it is on his written list, "TTH Podcast Series - jD's Hip Shows.md" (jD, November 13, 2026). Barrie, August 2, 1997 is not one of his shows (jD, November 13, 2026); the list and the Passport now hold the same fifteen. The guide's model opener stands: July 24, 1993, Markham Fairgrounds, and he turned nineteen that day (jD confirmed both, November 13, 2026).
 - The Hip Handbook is the only name. The Hip Compendium and compendium.tthpods.com are retired and dead.
+- The Gord Downie & Chanie Wenjack Fund in full on first reference, the Downie Wenjack Fund after. Always connect it to Chanie Wenjack and reconciliation, never just "a charity" (November 13, 2026).
 - Over: The Gathering (Kingston, August 20 to 23, 2026) and GEDfest Toronto 2026 (October 17, Horseshoe Tavern). Once an event ends, new copy carries no ticket link for it. Links already published stay where they are: nobody edits old posts or descriptions to remove them (jD, November 13, 2026).
 - It's A Good Life has five parts, in order: Setting the Scene, The Players, The Craft, The Music, Curtain Up. All five shipped on consecutive days, October 19 to 23, 2026. The musical, "It's a Good Life If You Don't Weaken", premiered at Theatre Aquarius in Hamilton, then ran at the Kingston Grand Theatre (Thousand Islands Playhouse, in association with Theatre Aquarius) from October 22 to November 8, 2026. The Kingston run is over: new copy puts it in the past tense, with the dates, and no ticket link. The published episode descriptions keep theirs (jD, November 13, 2026).
 
@@ -25,7 +26,7 @@ Synced to Brand & Style Guide v8.1 on 2026-11-13 ("TTH Podcast Series - Style Gu
 
 ### Words to avoid in copy
 
-genuinely, honestly, frankly, amazing, incredible, legendary, iconic, perfect, flawless, breathtaking, unforgettable, elevated, basically, truly, transcendent, majestic, undoubtedly, impactful, innovative, game-changing, and "journey" as a metaphor. Borrowed shorthand: "vibes" as a noun, "next-level", "chef's kiss". Podcast cliches: "deep dive", "at the end of the day", and "content" for the work. No corporate or PR-speak, no formal transitions (Furthermore, In conclusion, To summarize). Never call jD's conversations "interviews": a conversation, or a sit-down (the show name The Tragically Hip Interview Series is the only exception).
+genuinely, honestly, frankly, amazing, incredible, legendary, iconic, perfect, flawless, breathtaking, unforgettable, elevated, basically, truly, transcendent, majestic, undoubtedly, impactful, innovative, game-changing, and "journey" as a metaphor. Borrowed shorthand: "vibes" as a noun, "next-level", "chef's kiss". Podcast cliches: "deep dive", "at the end of the day", and "content" for the work. Gatekeeping and marketing words: "level up", "tribe", and "exclusive content" (November 13, 2026). The singular "vibe" is fine. No corporate or PR-speak, no formal transitions (Furthermore, In conclusion, To summarize). Never call jD's conversations "interviews": a conversation, or a sit-down (the show name The Tragically Hip Interview Series is the only exception).
 
 Cleared, so do not avoid or flag them: compelling, unpack, sublime, exquisite, stunning, epic, timeless, masterpiece, definitive, seminal, essential, killer, unreal, literally, obviously, phenomenal, magical, stellar, arguably, certainly, super, peak.
 
@@ -34,7 +35,7 @@ Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pil
 ### The locks
 
 - Opener: always "Hey, it's jD here." Never "Hey, it's jD." The word "here" is not optional. It is a standalone sentence ending in a period, never run on with a comma. No opener in the text of Instagram captions, Instagram stories, or YouTube descriptions; a spoken opener in video is fine on every surface (jD, November 8, 2026). On a Facebook group post the bold Cold Open comes first, then the opener.
-- Yer Letter closer: "Until next month, yer pal. -jD." Exact punctuation. Yer Letter only.
+- Yer Letter closer: "Until next month, yer pal. -jD." Exact punctuation. Yer Letter only. A Yer Letter: Special Edition closes "Yer pal. -jD." (jD, November 13, 2026).
 - "Pick up yer shit." is mic only. Never print, newsletter, shownotes, or social (unless quoting it as said on an episode).
 - "So there's that." maximum twice per piece.
 - jD: lowercase j, uppercase D. Never JD. Never Jamie in podcast contexts.
@@ -43,6 +44,7 @@ Swearing in shownotes is allowed, used like seasoning: rare, earned, never a pil
 - It's A Good Life is always the full title, in public copy and in planning notes alike, with no subtitle. No shorthand exists. "AFOWS" is retired and never appears anywhere. The musical keeps its own casing: "It's a Good Life If You Don't Weaken".
 - The Tragically Hip Album Countdown is always the full title. No shorthand exists, link labels included: "The Tragically Hip Album Countdown ballot:".
 - The Tragically Hip On Shuffle keeps "Live Stream" in public copy. "Shuffle" alone is internal.
+- Yer Hipstories: Another Roadside Attraction is always the full name in public copy. "Yer Hipstories", "Another Roadside Attraction", and "Roadside" alone are internal. The festival is always named in full with its year: Another Roadside Attraction 1993.
 - Getting Hip to The Hip takes a capital T on "The". podList: lowercase "pod", capital "L", no number. Now In Stereo: capital N, I, and S.
 - Red and Gold together only on The Hip Handbook. Never together elsewhere, never on document interior pages, and never as text colours.
 - No gold on the Year Ten (10-year) logo mark or its graphics. Year Ten runs May 21, 2027 to May 21, 2028 (the first episode dropped May 21, 2018). The mark goes on social graphics, the feed cover art, and branded documents, not on a show's own cover art (jD, November 13, 2026).
@@ -57,9 +59,9 @@ Group posts follow the guide's 05.1 format:
 - Long posts break into blocks with short bold all-caps headers, one emoji marker each.
 - Unicode bold goes on the Cold Open and the block headers only. Song and album titles stay in plain quotes.
 - One CTA. An engagement prompt to close. Six hashtags maximum from the approved bank.
-- Bare labelled URLs are allowed in the group, and in shownotes and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
+- Bare labelled URLs are allowed in the group, and in YouTube descriptions, shownotes, and RedCircle descriptions (Web:, Social:, Booking:, Support:, Listen:, Community:, Ballot:, Give:, Email:). RedCircle descriptions stay under 4,000 characters, because Apple pulls from them (November 13, 2026).
 - Deliver the finished post inside one plain code block so it pastes straight into Facebook. Notes and flags go outside the box.
-<!-- SHARED-RULES-END v2026-11-13.9 -->
+<!-- SHARED-RULES-END v2026-11-17.1 -->
 
 # The Hip Handbook - notes for Claude Code
 
