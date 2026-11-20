@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.11.3
+**An Inch an Hour - Patch** - November 20, 2026
+The shuffle machines no longer squeeze on mid-size screens.
+- **Fix:** v5.11.2 put the two machines side by side from 900 pixels wide, but below 1100 the home page's column is only 640 pixels, so each machine shrank to 290 and reel text like "Saskadelphia" and "Amsterdam, Netherlands" spilled out of its reel (found on the live site at 1024 pixels). They now sit side by side only from 1100 pixels up, and stack at the full 400 below that.
+- **Checked** after a spin at 1024 and 1100 pixels wide, with the site's real security headers: 400 pixels each, no reel text spilling, no sideways scroll.
+- Cache bumped to `hh-v5.11.3`; footer label bumped to v5.11.3 (An Inch an Hour - Patch)
+
 ## v5.11.2
 **An Inch an Hour - Patch** - November 20, 2026
 The shuffle machines sit in proportion with the rest of the home page (jD, November 20, 2026: everything else looked undersized next to them).
