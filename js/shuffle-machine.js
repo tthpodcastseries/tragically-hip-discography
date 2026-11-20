@@ -1,7 +1,8 @@
 // shuffle-machine.js - the two shuffle machines on the home page (v5.10, 'Scared'):
 // Song Shuffle (decade, album, song) and Live Show Shuffle (year, place, venue).
-// Each lands on its pick about 8 seconds after the press, with a drum roll that starts on the
-// press and stops the moment the pick is revealed. The pick is made before anything moves:
+// Each lands on its pick about 8 seconds after the press, with a tick as the reels pass, a clunk
+// as each one lands, and a bell on the reveal (no drum roll here: jD, Nov 20 2026; the drums
+// stay in the On Shuffle stream app). The pick is made before anything moves:
 // every song (or every show with a recording) has the same chance.
 // Data: data/shuffle-pool.json (scripts/build-shuffle-pool.js). Styles: css/shuffle-machine.css.
 // Kept on the device only: the sound on/off choice and the last pick (so it never comes up
@@ -60,7 +61,7 @@
   }
 
   /* ---------- sound (made in the browser, no audio files) ---------- */
-  var ctx = null, out = null, noiseBuf = null;
+  var ctx = null, out = null;
   var soundOn = store.get('hh_shuffle_sound') !== 'off';
   function audio() {
     if (!soundOn) return null;
@@ -70,9 +71,6 @@
       ctx = new AC({ latencyHint: 'interactive' });
       var squash = ctx.createDynamicsCompressor(); squash.connect(ctx.destination);
       out = ctx.createGain(); out.gain.value = 0.8; out.connect(squash);
-      noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
-      var data = noiseBuf.getChannelData(0);
-      for (var i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
     }
     if (ctx.state === 'suspended') ctx.resume();
     return ctx;
@@ -85,13 +83,6 @@
     o.connect(g); g.connect(dest || out); o.start(t); o.stop(t + dur + 0.02);
   }
   function tone(freq, dur, type, vol, when) { if (ctx && soundOn) toneAt(ctx.currentTime + (when || 0), freq, dur, type, vol); }
-  function noiseAt(t, dur, vol, highpass, dest) {
-    var s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
-    s.buffer = noiseBuf; s.loop = true; f.type = 'highpass'; f.frequency.value = highpass;
-    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-    s.connect(f); f.connect(g); g.connect(dest || out); s.start(t, Math.random() * 0.5); s.stop(t + dur + 0.02);
-  }
-  function snareAt(t, vol, dest) { noiseAt(t, 0.075, vol, 900, dest); toneAt(t, 190, 0.05, 'triangle', vol * 0.5, 150, dest); }
   var lastTick = 0;
   function tick() {
     var now = performance.now();
@@ -106,35 +97,6 @@
       tone(i % 2 ? 2637 : 2093, 0.3, 'sine', 0.05, t);
     });
   }
-  // The drum roll: starts on the press, builds, and is cut the moment the pick is revealed.
-  function Roll(seconds) {
-    if (!ctx || !soundOn || calm) return;
-    var self = this, t0 = ctx.currentTime + 0.01;
-    this.t0 = t0; this.end = t0 + seconds; this.n = 0;
-    this.bus = ctx.createGain(); this.bus.connect(out);
-    snareAt(t0, 0.34, this.bus); toneAt(t0, 110, 0.18, 'sine', 0.45, 60, this.bus); // the opening hit
-    this.next = t0 + 0.05;
-    this.timer = setInterval(function () { self.pump(); }, 25); this.pump();
-  }
-  Roll.prototype.pump = function () {
-    if (!this.bus) return;
-    var horizon = ctx.currentTime + 0.08;
-    while (this.next < horizon) {
-      var u = Math.min(1, (this.next - this.t0) / (this.end - this.t0));
-      var vol = 0.18 + 0.1 * u * u + (this.n % 2 ? 0 : 0.02);
-      snareAt(this.next, vol * (0.85 + Math.random() * 0.3), this.bus);
-      this.next += (1 / (20 + 12 * u)) * (0.94 + Math.random() * 0.12);
-      this.n++;
-    }
-  };
-  Roll.prototype.stop = function () {
-    if (!this.bus) return;
-    clearInterval(this.timer);
-    var bus = this.bus, t = ctx.currentTime; this.bus = null;
-    bus.gain.cancelScheduledValues(t); bus.gain.setValueAtTime(1, t); bus.gain.linearRampToValueAtTime(0.0001, t + 0.03);
-    setTimeout(function () { bus.disconnect(); }, 200);
-  };
-
   /* ---------- streaming links (same services and preference as the album pages) ---------- */
   var SERVICES = [
     ['apple', 'Apple Music', function (q) { return 'https://music.apple.com/search?term=' + q; }],
@@ -203,15 +165,10 @@
 
     var body = el('div', 'sm-body');
     var cab = el('div', 'sm-cab');
-    var bulbs = el('div', 'sm-bulbs'); bulbs.setAttribute('aria-hidden', 'true');
-    this.bulbs = [];
-    for (var i = 0; i < 9; i++) { var b = el('i'); bulbs.appendChild(b); this.bulbs.push(b); }
-    cab.appendChild(bulbs);
     var h = el('h3', 'sm-title', K.title); cab.appendChild(h);
     cab.appendChild(el('p', 'sm-sub', K.count(items.length)));
 
     var win = el('div', 'sm-window'); win.setAttribute('aria-hidden', 'true');
-    win.appendChild(el('div', 'sm-pointer l'));
     this.reels = K.labels.map(function (label) {
       var col = el('div', 'sm-col');
       col.appendChild(el('div', 'sm-label', label));
@@ -219,7 +176,6 @@
       wrap.appendChild(strip); reel.appendChild(wrap); col.appendChild(reel); win.appendChild(col);
       return { el: reel, strip: strip, shown: ['?', '?', '?'] };
     });
-    win.appendChild(el('div', 'sm-pointer r'));
     cab.appendChild(win);
 
     var res = el('div', 'sm-result idle'); res.setAttribute('aria-live', 'polite');
@@ -239,10 +195,6 @@
     cab.appendChild(controls);
     body.appendChild(cab);
 
-    this.lever = el('div', 'sm-lever'); this.lever.setAttribute('aria-hidden', 'true');
-    this.lever.appendChild(el('div', 'mount')); this.lever.appendChild(el('div', 'arm')); this.lever.appendChild(el('div', 'knob'));
-    body.appendChild(this.lever);
-
     var fallback = root.querySelector('.sm-fallback');
     root.appendChild(body);
     if (fallback) fallback.hidden = true;
@@ -253,31 +205,16 @@
     // The press itself starts everything (a click fires on release, a beat late).
     var press = function (e) { if (e.button === 0) { e.preventDefault(); self.spin(); } };
     this.go.addEventListener('pointerdown', press);
-    this.lever.addEventListener('pointerdown', press);
     this.go.addEventListener('click', function (e) { if (e.detail === 0) self.spin(); }); // Enter or Space
     this.sound.addEventListener('click', function () {
       soundOn = !soundOn; store.set('hh_shuffle_sound', soundOn ? 'on' : 'off');
       machines.forEach(function (m) { m.drawSound(); });
     });
-    this.lightMode = 'idle'; this.lightStep = 0;
-    setInterval(function () { self.lights(); }, 110);
   }
 
   Machine.prototype.drawSound = function () {
     this.sound.textContent = soundOn ? 'Sound on' : 'Sound off';
     this.sound.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
-  };
-  Machine.prototype.lights = function () {
-    var mode = this.lightMode, step = ++this.lightStep;
-    if (calm && mode !== 'idle') mode = 'still';
-    this.bulbs.forEach(function (b, i) {
-      var on;
-      if (mode === 'spin') on = (i + step) % 3 === 0;
-      else if (mode === 'win') on = step % 2 === 0;
-      else if (mode === 'still') on = true;
-      else on = (i + Math.floor(step / 6)) % 2 === 0;
-      b.classList.toggle('on', on);
-    });
   };
   Machine.prototype.cellPx = function (reel) { return reel.el.clientHeight / 3 || 54; };
   Machine.prototype.paint = function (reel, cells) {
@@ -327,15 +264,11 @@
     var self = this;
     this.spinning = true; this.go.disabled = true;
     audio();
-    this.roll = new Roll(STOPS[2]);
     ratchet();
-    this.lever.classList.remove('back'); this.lever.style.setProperty('--pull', 1);
-    setTimeout(function () { self.lever.classList.add('back'); self.lever.style.setProperty('--pull', 0); }, 260);
     this.res.classList.add('idle'); this.res.classList.remove('pop');
     this.kickerEl.textContent = this.K.kicker;
     this.mainEl.textContent = '. . .'; this.detailEl.textContent = ''; this.actionsEl.textContent = '';
     this.reels.forEach(function (r) { r.el.classList.remove('win'); });
-    this.lightMode = 'spin';
 
     // The pick is made here, before anything moves. Never the same one twice in a row.
     var pool = this.items.filter(function (it) { return it.key !== self.lastKey; });
@@ -366,16 +299,14 @@
   };
   Machine.prototype.finish = function (pick) {
     var self = this;
-    // The pick shows first; on the same beat the drums stop and the bell rings
+    // The pick shows first; the bell rings on the same beat
     this.actionsEl.textContent = '';
     this.K.show(pick, this.mainEl, this.detailEl, this.actionsEl);
     this.res.classList.remove('idle'); void this.res.offsetWidth; this.res.classList.add('pop');
-    if (this.roll) { this.roll.stop(); this.roll = null; }
     bell();
-    this.lightMode = 'win';
     this.reels.forEach(function (r) { r.el.classList.add('win'); });
     this.lastKey = pick.key; store.set('hh_shuffle_last_' + this.kind, pick.key);
-    setTimeout(function () { self.lightMode = 'idle'; self.spinning = false; self.go.disabled = false; }, calm ? 400 : 1800);
+    setTimeout(function () { self.spinning = false; self.go.disabled = false; }, calm ? 400 : 1800);
   };
 
   /* ---------- start ---------- */

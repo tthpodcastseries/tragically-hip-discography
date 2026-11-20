@@ -1,5 +1,16 @@
 # Changelog
 
+## v5.11.4
+**An Inch an Hour - Patch** - November 20, 2026
+The shuffle machines match the rest of the Handbook (jD, November 20, 2026: they looked off next to the more refined look of the site).
+- **New look:** each machine is now a card like On This Day, with a small caps label like Show of the Day. The red cabinet, bulbs, lever, gold arrows, and 3D title are gone. The reels are three dark wells with the middle row between two thin Gold lines, in place of the white windows. The Shuffle button is the same red pill as "Play this show" and sits straight under the reels, with the pick under it. Two greys that are not on the brand list (`#5a5a5a`, `#6e6e6e`) are gone with the cabinet.
+- **Same height:** on wide screens the two machines now stay the same height after a spin. Before, the Song Shuffle machine grew to fit its links and the pair went uneven.
+- **No drum roll** on the Handbook (jD, November 20, 2026). The ticks as the reels pass, the clunk as each one lands, and the bell on the reveal stay. The reels still take 8 seconds. The drums stay in the On Shuffle stream app.
+- **Headings:** the section headings (Shuffle, Games, Listen, and the rest) are header-sized now, with more room above each group (jD, November 20, 2026). The same headings on the Discography, Lyrics, Setlists, and Top 40 pages grow with them.
+- **No italics:** the photo credit under the band photo and the "Today's pick" line in Show of the Day are upright now (guide v8.1: no italics anywhere).
+- **How:** `css/shuffle-machine.css` rewritten, `js/shuffle-machine.js` no longer builds the bulbs, lever, or arrows and has no drum roll, `.nav-group-title` in `css/shared.css`, `css/home.css`, and `index.html`.
+- Cache bumped to `hh-v5.11.4`; footer label bumped to v5.11.4 (An Inch an Hour - Patch)
+
 ## v5.11.3
 **An Inch an Hour - Patch** - November 20, 2026
 The shuffle machines no longer squeeze on mid-size screens.

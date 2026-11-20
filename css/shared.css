@@ -146,15 +146,17 @@ body {
   margin: 0 auto 16px;
 }
 
-/* Gold uppercase group heading used by grouped navigation (home + discography) */
+/* Uppercase group heading used by grouped navigation (home, discography and the song-list pages).
+   Header-sized since v5.11.4 (jD, November 20, 2026: they have to look like actual headers). */
 .nav-group-title {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-right: -0.14em;
   text-transform: uppercase;
   color: var(--text);
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 /* Stats row */
@@ -240,6 +242,7 @@ body {
   text-decoration-thickness: 2px;
   text-underline-offset: 7px;
 }
+.nav-group-title { text-decoration-thickness: 3px; text-underline-offset: 10px; }
 .sp-h2, .bia-h2, .on-this-day-header, .two-col h3, .panel-title {
   text-decoration: underline;
   text-decoration-color: var(--gold);
