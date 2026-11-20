@@ -602,6 +602,8 @@ notes.push(`release ${footerVersion}: footer, cache name and changelog checked`)
       if (String(a[field] || '') !== String(j[field] || '')) problems.push(`album "${a.title}": ${field} is "${a[field]}" in js/discography-app.js but "${j[field]}" in data/discography.json - change both`);
     }
     if (JSON.stringify(a.tracks || []) !== JSON.stringify(j.tracks || [])) problems.push(`album "${a.title}": track list differs between js/discography-app.js and data/discography.json - change both`);
+    if (JSON.stringify(a.bonusTracks || []) !== JSON.stringify(j.bonusTracks || [])) problems.push(`album "${a.title}": bonus tracks differ between js/discography-app.js and data/discography.json - change both`);
+    if (String(a.bonusNote || '') !== String(j.bonusNote || '')) problems.push(`album "${a.title}": bonusNote is "${a.bonusNote || ''}" in js/discography-app.js but "${j.bonusNote || ''}" in data/discography.json - change both`);
   }
   for (const [k, j] of jsonByKey) if (!appByKey.has(k)) problems.push(`album "${j.title}" (${j.category}) is in data/discography.json but not js/discography-app.js - album facts must match in both`);
   notes.push(`album facts: ${appAlbums.length} albums in js/discography-app.js compared with data/discography.json`);

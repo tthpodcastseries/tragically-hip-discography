@@ -154,6 +154,9 @@ const studioAlbums = [
       { title: 'The Darkest One', rank: 'Top 40 No. 30' },
     ],
     tracks: ['Are You Ready', 'Use It Up', 'The Darkest One', 'It\'s a Good Life If You Don\'t Weaken', 'Silver Jet', 'Throwing Off Glass', 'All Tore Up', 'Leave', 'A Beautiful Thing', 'The Dire Wolf', 'The Dark Canuck'],
+    // Bonus tracks (jD, 2026-11-20): on a release of the album, not among its eleven tracks.
+    // Kept out of `tracks` so track counts, the Top Forty breakdown and Random Hip Song don't move.
+    bonusTracks: ['Ultra Mundane', 'Problem Bears', 'Forest Edge'],
   },
   {
     num: '09', title: 'In Between Evolution', year: '2004', releaseDate: 'June 29, 2004', type: 'Studio', img: 'assets-optimized/studio-albums/In-Between-Evolution.webp',
@@ -3238,15 +3241,13 @@ function openModal(i) {
     </ul>
   ` : '';
 
-  const tracksHtml = a.tracks && a.tracks.length ? `
-    <div class="modal-section-title">Tracks</div>
-    <ul class="tracks-list" id="modalTracksList">
-      ${a.tracks.map((t, idx) => `
+  // One row per track. Bonus tracks (a.bonusTracks) get the same row with no track number.
+  const trackRow = (t, num) => `
         <li class="track-flip-container">
           <div class="track-flip-inner">
             <div class="track-flip-front track-item clickable" data-album="${a.title.replace(/"/g, '&quot;')}" data-track="${t.replace(/"/g, '&quot;')}">
               <button type="button" class="track-flip-open" aria-expanded="false">
-              <span class="track-num">${idx + 1}</span>
+              <span class="track-num">${num}</span>
               <span class="track-name">${t}</span>
               ${singleTitles.has(t) ? '<span class="track-single-dot" title="Released as single"></span>' : ''}
               ${top40Ranks.has(t) ? `<span class="track-top40-badge${top40Ranks.get(t) > 40 ? ' beyond' : ''}" title="The Tragically Hip Top Forty Countdown - No. ${top40Ranks.get(t)}">No. ${top40Ranks.get(t)}</span>` : '<span class="track-top40-badge" style="visibility:hidden">No. 00</span>'}
@@ -3257,8 +3258,21 @@ function openModal(i) {
             <div class="track-flip-back" role="region" aria-label="Live stats: ${t.replace(/"/g, '&quot;')}" inert><div class="track-flip-data"></div><button type="button" class="track-flip-close">Back</button></div>
           </div>
         </li>
-      `).join('')}
+      `;
+  const bonus = Array.isArray(a.bonusTracks) ? a.bonusTracks : [];
+  // Both lists sit in one #modalTracksList box, so opening a card in one closes a card in the other
+  const tracksHtml = a.tracks && a.tracks.length ? `
+    <div id="modalTracksList">
+    <div class="modal-section-title">Tracks</div>
+    <ul class="tracks-list">
+      ${a.tracks.map((t, idx) => trackRow(t, idx + 1)).join('')}
     </ul>
+    ${bonus.length ? `
+    <div class="modal-section-title" style="margin-top:24px">${escapeHtml(a.bonusNote ? 'Bonus tracks - ' + a.bonusNote : 'Bonus tracks')}</div>
+    <ul class="tracks-list">
+      ${bonus.map(t => trackRow(t, '')).join('')}
+    </ul>` : ''}
+    </div>
   ` : '';
 
   const descHtml = a.desc ? `<p class="modal-desc">${escapeHtml(a.desc)}</p>` : '';

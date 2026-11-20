@@ -9,6 +9,7 @@
 //   { built, shows: [ [id, 'yyyy-mm-dd', venue, city, state, country, tour, hasRecording] ... ],
 //     songs: [ { s: slug, t: title, p: [showIdx ...], r: [[showIdx, trackNo] ...],
 //                a: [[album, year, category, trackNo, versionNote] ...],
+//                   (a bonus track has trackNo 0 and the note 'Bonus track')
 //                k: { rank, pts, url, ep } | null, o: opened, e: encores, l: lyricsKey (only if it has lyrics) } ... ] }
 //   shows are sorted oldest first, so p[0] is the live debut and p[p.length - 1] the
 //   latest performance. p matches livePlays in canonical-songs.json (medleys count
@@ -113,6 +114,14 @@ for (const a of disc.albums) {
     const so = byTitle.get(norm(t)) || byTitle.get(norm(base));
     if (so) so.a.push([a.title, +a.year, a.category, n + 1, m ? m[1] : '']);
   });
+  // Bonus tracks (jD, 2026-11-20): on a release of the album but not among its tracks.
+  // No track number (0), and the note says what it is; bonusNote names the release.
+  const bonusNote = a.bonusNote ? 'Bonus track, ' + a.bonusNote : 'Bonus track';
+  for (const t of Array.isArray(a.bonusTracks) ? a.bonusTracks : []) {
+    const so = byTitle.get(norm(t));
+    if (!so) throw new Error(`Bonus track '${t}' on "${a.title}" is not on the official song list`);
+    so.a.push([a.title, +a.year, a.category, 0, bonusNote]);
+  }
 }
 
 // Fan rankings and podcast episodes: lifted from the inline data in discography-app.js

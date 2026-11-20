@@ -55,7 +55,8 @@
     const line = el('div', 'sp-line');
     line.appendChild(document.createTextNode('"' + a[0] + '" (' + a[1] + ')'));
     const tag = albumTag(a);
-    const bits = [tag, 'track ' + a[3]].filter(Boolean).join(' - ');
+    // A bonus track has no track number (0): the line says "Bonus track" alone
+    const bits = [tag, a[3] ? 'track ' + a[3] : ''].filter(Boolean).join(' - ');
     line.appendChild(el('small', '', ' ' + bits));
     return line;
   };
