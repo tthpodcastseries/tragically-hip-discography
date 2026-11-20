@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.9.5
+**Inevitability of Death - Patch** - November 20, 2026
+Three songs get their album (jD, November 20, 2026).
+- **Bonus tracks on "In Violet Light":** 'Ultra Mundane', 'Problem Bears', and 'Forest Edge' were on the official song list but in no track list, so their song pages showed no album. They now sit on "In Violet Light" as bonus tracks, in that order. Each song page reads From "In Violet Light" (2002), with "Bonus track" on the album line and no track number.
+- **Album pop-up:** "In Violet Light" lists the three under a new Bonus tracks heading, below its eleven tracks. Each has the same live stats card and stream button as any track.
+- **Nothing else moved:** the album still counts eleven tracks, so the Top 40 album breakdown, Random Hip Song, and the headline counts are as they were. The song index before and after: 189 songs, 1,364 shows, and 20,124 plays, with songs that have an album going from 185 to 188. 'Dare Devil (Reprise)' is the one song still without an album.
+- **How:** a new `bonusTracks` list on the album, in both places album facts live (`data/discography.json` and `js/discography-app.js`). `build-song-index.js` gives a bonus track its album with the note "Bonus track", `js/song.js` leaves the track number off, and `audit-site.js` fails if the two places disagree. An optional `bonusNote` names the release that carries them; it is not set yet.
+- **Sitemap:** the three song addresses carry today's date.
+- Cache bumped to `hh-v5.9.5`; footer label bumped to v5.9.5 (Inevitability of Death - Patch)
+
 ## v5.9.4
 **Inevitability of Death - Patch** - November 17, 2026
 Six more pages use a wide screen, the second pass after v5.9.3 (jD, November 16, 2026). Phones and tablets are unchanged.
