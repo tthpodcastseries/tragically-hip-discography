@@ -37,6 +37,7 @@
 
 ## Games
 
+- [The Games](https://thehiphandbook.tthpods.com/games): all five games on one page, one tab each, to play in a row
 - [Bring It All Back](https://thehiphandbook.tthpods.com/bring-it-all-back): daily. Guess the month and year of a real setlist
 - [(Un)Locked in the Trunk of a Car](https://thehiphandbook.tthpods.com/unlocked): daily. Name the song from scrambled words in its lyrics
 - [Little Bones](https://thehiphandbook.tthpods.com/little-bones): daily. Name the song from a short live clip

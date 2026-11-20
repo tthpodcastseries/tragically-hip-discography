@@ -283,6 +283,24 @@ for (const page of pages) {
   if (/black-translucent/.test(html)) problems.push(`${page}: status bar style black-translucent puts the page under the iPhone clock in the home-screen app (use "black")`);
 }
 
+// ---- 8a. The Games page (v5.11): its start dates and saved-game keys match each game's own ----
+{
+  const arcade = fs.readFileSync(path.join(ROOT, 'js/games.js'), 'utf8');
+  let listed = 0;
+  for (const m of arcade.matchAll(/\{ id: '([a-z-]+)',[^}]*key: '([^']+)', epoch: '(\d{4}-\d{2}-\d{2})'/g)) {
+    const [, id, key, epoch] = m;
+    listed++;
+    const file = path.join(ROOT, 'js', id + '.js');
+    if (!fs.existsSync(file)) { problems.push(`js/games.js: lists ${id}, but js/${id}.js doesn't exist`); continue; }
+    const game = fs.readFileSync(file, 'utf8');
+    const ownEpoch = (game.match(/const EPOCH = '([^']+)'/) || [])[1];
+    const ownKey = (game.match(/const STORE_KEY = '([^']+)'/) || [])[1];
+    if (ownEpoch !== epoch) problems.push(`js/games.js: ${id} starts on ${epoch}, but js/${id}.js says ${ownEpoch}`);
+    if (ownKey !== key) problems.push(`js/games.js: ${id} reads ${key}, but js/${id}.js saves to ${ownKey}`);
+  }
+  if (listed !== 5) problems.push(`js/games.js: found ${listed} games in its list, expected 5`);
+}
+
 // ---- 8b. Light data files and WebP images (v5.4.16, audit PERF-03 to PERF-05) ----
 const staleLight = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-light-data.js'), '--check'], { encoding: 'utf8' });
 if (staleLight.status !== 0) problems.push(`data/on-this-day.json, tour-map.json or tour-tracks.json: ${(staleLight.stderr || staleLight.stdout || '').trim().split('\n').slice(-1)[0]}`);
