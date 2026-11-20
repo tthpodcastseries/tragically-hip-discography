@@ -1,5 +1,18 @@
 # Changelog
 
+## v5.10
+**Scared** - November 20, 2026
+Two shuffle machines replace the red Shuffle buttons on the home page (jD, November 20, 2026), built from the slot machine jD uses to pick the song on The Tragically Hip On Shuffle - Live Stream.
+- **Song Shuffle:** three reels, Decade, Album, and Song, spin through the 188 official songs that have an album ('Dare Devil (Reprise)' has none, so it sits out). It lands on the song with its album and year, a link to the song page, and the five streaming services, with a fan's chosen service first.
+- **Live Show Shuffle:** three reels, Year, Place, and Venue, spin through the 628 shows with a Hip Archive recording. It lands on the venue, date, and city, with a Play this show button that opens the tour map and plays it. Four shows have no venue on record and say so.
+- **Both:** the pick is made on the press, every song or show with the same chance, and the reels land about 8 seconds later. A drum roll runs from the press to the reveal, then a bell. A sound switch turns both machines quiet, and the same pick never comes up twice in a row on one device. Fans whose device asks for less motion get a one-second reveal.
+- **Look:** Handbook colours: a Deep Black cabinet with Red trim and a Red button, Gold lights, pointers, and payline, white reels with Deep Black text, and Poppins. Depth comes from solid shadows only. Side by side at 1100 pixels wide and up, one above the other on phones; checked at 320, 375, and 1280 pixels wide with nothing cut off and no sideways scroll.
+- **Fallback:** until the machines load, or if they can't, the two old red buttons show and work as before. The Random Song button on the Discography, Lyrics, Setlists, and Top 40 pages is unchanged.
+- **Privacy:** the page says the machines keep their sound choice and last pick on yer device.
+- **How:** `js/shuffle-machine.js` and `css/shuffle-machine.css`, with no inline scripts. The machines read `data/shuffle-pool.json` (49 KB), built by the new `scripts/build-shuffle-pool.js` from `song-index.json` and `tour-map.json`; it is step 7 of the data pipeline, takes `--check`, and `audit-site.js` fails if it is out of date. The album each song lands on follows the song page's rule (the earliest studio album or EP, else the earliest release). The three new files are in the offline list.
+- **Sitemap:** the home and Privacy addresses carry today's date, because those two pages changed.
+- Cache bumped to `hh-v5.10`; footer label bumped to v5.10 (Scared)
+
 ## v5.9.5
 **Inevitability of Death - Patch** - November 20, 2026
 Three songs get their album (jD, November 20, 2026).
