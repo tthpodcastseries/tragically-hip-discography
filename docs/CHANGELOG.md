@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.11
+**An Inch an Hour** - November 20, 2026
+All five games on one page, so fans can play them in a row without going home in between (jD, November 20, 2026).
+- **The Games page:** `/games` has five tabs: Bring It All Back, (Un)Locked, Little Bones, Are We Family, and Words Into Birds. Each tab shows where the fan stands today: Done, Started, New today (or New this week), or when it opens. It reads each game's saved game on the fan's device and never changes it, and it updates the moment a game saves.
+- **Playing:** the game sits under the tabs at its full height, so the whole page scrolls as one, and the tabs stay at the top of the screen. A game loads the first time its tab opens and keeps its place when you switch away and back. The page opens on the game in the address (`/games#little-bones`), or else the first one not done today. On phones the tabs slide sideways.
+- **Inside the Games page,** each game keeps its title and instructions and drops the Home link, footer, and sign-in bar. A link inside a game opens in the whole window. Played on its own page, every game is exactly as it was, and no game or puzzle schedule changed.
+- **Home page:** the five game cards open their tab on the Games page.
+- **How:** `games.html`, `js/games.js`, and `css/games.css`. Each game page loads the new `js/embed-mode.js` in its head, which does nothing unless the page is inside the Games page. `audit-site.js` fails if the Games page's start dates or saved-game keys stop matching the games. The new page is in the sitemap, `llms.txt`, and the offline list.
+- **Visit counts:** a game opened on the Games page counts as a visit to the Games page and to that game's page.
+- **Sitemap:** the new Games address, and the five game addresses, carry today's date.
+- Cache bumped to `hh-v5.11`; footer label bumped to v5.11 (An Inch an Hour)
+
 ## v5.10
 **Scared** - November 20, 2026
 Two shuffle machines replace the red Shuffle buttons on the home page (jD, November 20, 2026), built from the slot machine jD uses to pick the song on The Tragically Hip On Shuffle - Live Stream.
