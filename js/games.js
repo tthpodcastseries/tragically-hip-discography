@@ -101,9 +101,12 @@
     if (!f || g.panel.hidden) return;
     try {
       var doc = f.contentDocument;
-      if (!doc || !doc.body) return;
-      var h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
-      if (h && Math.abs(h - f.offsetHeight) > 2) f.style.height = h + 'px';
+      if (!doc || !doc.body || !doc.documentElement.classList.contains('in-arcade')) return; // wait for embed mode
+      // The game's own height: where its content ends. (The page's scroll height can't be used:
+      // it is never less than the frame, so a frame could grow but never shrink back.)
+      var cs = doc.defaultView.getComputedStyle(doc.body);
+      var h = Math.ceil(doc.body.getBoundingClientRect().bottom + (parseFloat(cs.marginBottom) || 0));
+      if (h > 0 && Math.abs(h - f.offsetHeight) > 2) f.style.height = h + 'px';
     } catch (e) { /* not ours to read: leave it at its default height */ }
   }
   function load(g) {

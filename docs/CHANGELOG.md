@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.11.1
+**An Inch an Hour - Patch** - November 20, 2026
+The Games page shows its games again.
+- **Fix:** in v5.11 every game on the Games page was a blank box on the live site. The site's security policy said `frame-src 'none'`, which stops any page being shown inside another, the site's own included. The local preview ignores that policy, so the testing missed it. It now says `frame-src 'self'`: the site can show its own pages inside itself, and outside sites are still blocked. `frame-ancestors 'self'` and `X-Frame-Options: SAMEORIGIN` are unchanged, so no other site can show the Handbook inside theirs.
+- **Game heights:** each game's box now follows where the game's content ends. Before, it used a measure that is never less than the box itself, so a box could grow while a game loaded but never shrink back, and the short "Opens Saturday" screens sat in an empty 900 pixel box. Checked: all five fit their content, and a box grows and shrinks as a game's content does.
+- **Guard:** `audit-site.js` now fails if the policy stops the site framing its own pages.
+- **Tested** this time on a local server that sends the site's real security headers, the step that would have caught it.
+- Cache bumped to `hh-v5.11.1`; footer label bumped to v5.11.1 (An Inch an Hour - Patch)
+
 ## v5.11
 **An Inch an Hour** - November 20, 2026
 All five games on one page, so fans can play them in a row without going home in between (jD, November 20, 2026).

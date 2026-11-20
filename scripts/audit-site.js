@@ -299,6 +299,11 @@ for (const page of pages) {
     if (ownKey !== key) problems.push(`js/games.js: ${id} reads ${key}, but js/${id}.js saves to ${ownKey}`);
   }
   if (listed !== 5) problems.push(`js/games.js: found ${listed} games in its list, expected 5`);
+  // The Games page shows each game inside itself, so the security policy must let the site
+  // frame its own pages (v5.11.1: frame-src 'none' blanked every game on the live site, while
+  // the local preview, which ignores _headers, looked fine)
+  const frameSrc = (fs.readFileSync(path.join(ROOT, '_headers'), 'utf8').match(/frame-src ([^;\n]*)/) || [])[1] || '';
+  if (!/'self'/.test(frameSrc)) problems.push(`_headers: the Content-Security-Policy frame-src is "${frameSrc.trim() || 'missing'}", so the Games page can't show its games. It needs 'self'`);
 }
 
 // ---- 8b. Light data files and WebP images (v5.4.16, audit PERF-03 to PERF-05) ----
