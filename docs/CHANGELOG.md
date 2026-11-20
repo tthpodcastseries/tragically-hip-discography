@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.11.2
+**An Inch an Hour - Patch** - November 20, 2026
+The shuffle machines sit in proportion with the rest of the home page (jD, November 20, 2026: everything else looked undersized next to them).
+- **Size:** each machine is capped at 400 pixels wide, and everything inside it shrinks with it. On a wide screen each was 552 by 596 pixels with a 42-pixel title; now 400 by 453 with a 28-pixel title, side by side in the middle of the row, from 900 pixels wide up. Phones were already narrower than 400, so they only lose a little title size.
+- **Checked** at 375, 768, and 1440 pixels wide after a spin: no reel text cut off and no sideways scroll.
+- **How:** `css/shuffle-machine.css` only.
+- Cache bumped to `hh-v5.11.2`; footer label bumped to v5.11.2 (An Inch an Hour - Patch)
+
 ## v5.11.1
 **An Inch an Hour - Patch** - November 20, 2026
 The Games page shows its games again.
