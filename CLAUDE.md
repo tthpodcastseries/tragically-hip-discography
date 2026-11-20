@@ -128,7 +128,7 @@ When setlist or show data changes, run in this order:
 4. `build-show-video-map.js` -> `show-videos.json`
 5. `build-light-data.js` -> `on-this-day.json`, `tour-map.json`, `tour-tracks.json`
 6. `build-game-pool.js` -> `game-pool.json` ('Bring It All Back')
-7. `build-song-index.js` -> `song-index.json` and the song block in `sitemap.xml`
+7. `build-song-index.js` -> `song-index.json` and the song block in `sitemap.xml`, then `build-shuffle-pool.js` -> `shuffle-pool.json` (the home page shuffle machines; takes `--check`)
 8. `build-site-stats.js` -> rewrites the headline counts (shows, setlists, recordings, lyrics and the rest) in the pages
 9. `build-seo-pages.js` -> `song/*.html`, `lyrics.html`, `setlists.html`, `top-40.html` (run after any change to songs, `song.html`, `discography.html` or `FEATURE_VIEWS`)
 10. `build-trunk-pool.js` -> `trunk-pool.json` ('(Un)Locked'; uses the macOS word list), then `build-clip-pool.js` -> `clip-pool.json` ('Little Bones'; reads jD's start points and skipped tapes in `data/clip-starts.json`)

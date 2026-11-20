@@ -286,6 +286,8 @@ for (const page of pages) {
 // ---- 8b. Light data files and WebP images (v5.4.16, audit PERF-03 to PERF-05) ----
 const staleLight = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-light-data.js'), '--check'], { encoding: 'utf8' });
 if (staleLight.status !== 0) problems.push(`data/on-this-day.json, tour-map.json or tour-tracks.json: ${(staleLight.stderr || staleLight.stdout || '').trim().split('\n').slice(-1)[0]}`);
+const staleShuffle = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-shuffle-pool.js'), '--check'], { encoding: 'utf8' });
+if (staleShuffle.status !== 0) problems.push(`data/shuffle-pool.json: ${(staleShuffle.stderr || staleShuffle.stdout || '').trim().split('\n').slice(-1)[0]}`);
 const staleWebp = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'build-webp.js'), '--check'], { encoding: 'utf8' });
 if (staleWebp.status !== 0) problems.push(`assets-optimized: ${(staleWebp.stderr || staleWebp.stdout || '').trim().split('\n')[0]}`);
 // Pages show the WebP copies; JPEGs are only for link-preview tags

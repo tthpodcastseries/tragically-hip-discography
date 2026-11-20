@@ -31,6 +31,7 @@
   <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/shared.css">
   <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/shuffle-machine.css">
 </head>
 <body>
 <script src="/js/tth-member-gate.js"></script>
@@ -70,9 +71,14 @@
   <nav aria-label="Main navigation" class="nav-groups">
     <section class="nav-group" aria-labelledby="navGroupShuffle">
       <h2 class="nav-group-title" id="navGroupShuffle">Shuffle</h2>
-      <div class="shuffle-row">
-        <a href="discography.html#randomSong" class="nav-card nav-card-cta"><span class="nav-card-name">Random Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
-        <a href="tour-map.html#play=random" class="nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 628 live recordings</span></a>
+      <!-- The two shuffle machines (js/shuffle-machine.js). Until they load, or if they can't, the plain links do the same job. -->
+      <div class="shuffle-machines">
+        <section class="sm" data-kind="song" aria-label="Song Shuffle">
+          <a href="discography.html#randomSong" class="sm-fallback nav-card nav-card-cta"><span class="nav-card-name">Random Song</span><span class="nav-card-desc">Spin one from the catalogue</span></a>
+        </section>
+        <section class="sm" data-kind="show" aria-label="Live Show Shuffle">
+          <a href="tour-map.html#play=random" class="sm-fallback nav-card nav-card-cta"><span class="nav-card-name">🎧 Random Live Show</span><span class="nav-card-desc">Play one of 628 live recordings</span></a>
+        </section>
       </div>
     </section>
     <section class="nav-group" aria-labelledby="navGroupPlay">
@@ -155,6 +161,7 @@
 
 <script src="/js/track-names.js"></script>
 <script src="/js/home.js"></script>
+<script src="/js/shuffle-machine.js"></script>
 <script src="/js/dialog-a11y.js"></script>
 <script src="/js/shared-footer.js"></script>
 </body>

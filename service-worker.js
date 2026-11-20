@@ -51,6 +51,7 @@ const CORE_ASSETS = [
   '/css/words-into-birds.css',
   '/css/song.css',
   '/css/home.css',
+  '/css/shuffle-machine.css',
   '/css/discography.css',
   '/css/tour-map.css',
   '/css/unplucked-gems.css',
@@ -73,6 +74,7 @@ const CORE_ASSETS = [
   '/js/song.js',
   '/js/tth-member-gate.js',
   '/js/home.js',
+  '/js/shuffle-machine.js',
   '/js/track-names.js',
   '/js/dialog-a11y.js',
   '/js/tour-map.js',
@@ -93,6 +95,7 @@ const CORE_ASSETS = [
   // Data
   '/data/discography.json',
   '/data/missing-lyrics.json',
+  '/data/shuffle-pool.json',
   // Other
   '/manifest.json'
 ];
