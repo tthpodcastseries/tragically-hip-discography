@@ -115,6 +115,17 @@
   const rerunOf = puzzleNo > pool.puzzles.length ? ((puzzleNo - 1) % pool.puzzles.length) + 1 : 0;
   const puzzleNote = late => { const tags = [late, rerunOf ? 'rerun' : ''].filter(Boolean); return tags.length ? ' (' + tags.join(', ') + ')' : ''; };
   const rerunTag = puzzleNote('');
+  // Puzzle numbers are spelled out (jD, 2026-11-03): 1 -> "One", 23 -> "Twenty-Three"
+  const ONES = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve',
+    'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const words = n => {
+    if (n < 20) return ONES[n];
+    if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? '-' + ONES[n % 10] : '');
+    if (n < 1000) return ONES[Math.floor(n / 100)] + ' Hundred' + (n % 100 ? ' ' + words(n % 100) : '');
+    return n.toLocaleString('en-CA');
+  };
+  const puzzleName = 'Puzzle ' + words(puzzleNo);
   const groups = puzzle.groups;
   const groupOf = title => groups.findIndex(g => g.songs.includes(title));
   const sameSet = (a, b) => a.length === b.length && a.every(x => b.includes(x));
@@ -230,7 +241,38 @@
       });
       grid.appendChild(b);
     });
+    fitTiles();
   }
+
+  // Song titles wrap between words, never inside one (jD, 2026-11-21: 'Long Time Run-ning').
+  // A word wider than its tile ('Bumblebee' on a small phone) shrinks that tile's text just
+  // enough to fit, down to 9px. Only a word that still won't fit ('Transformation' on the
+  // narrowest phones) may break, and then with a hyphen.
+  const measure = document.createElement('canvas').getContext('2d');
+  function fitTiles() {
+    [...$('awGrid').children].forEach(b => {
+      b.style.fontSize = '';
+      b.classList.remove('aw-hy');
+      const cs = getComputedStyle(b);
+      const room = b.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const start = parseFloat(cs.fontSize);
+      let px = start;
+      const widest = () => {
+        measure.font = cs.fontWeight + ' ' + px + 'px Poppins, sans-serif';
+        return Math.max(...b.textContent.split(/\s+/).map(w => measure.measureText(w).width));
+      };
+      while (px - 0.5 >= 9 && widest() > room) px -= 0.5;
+      if (px < start) b.style.fontSize = px + 'px';
+      if (widest() > room) b.classList.add('aw-hy');
+    });
+  }
+  let fitQueued = false;
+  addEventListener('resize', () => {
+    if (fitQueued) return;
+    fitQueued = true;
+    requestAnimationFrame(() => { fitQueued = false; fitTiles(); });
+  });
+  if (document.fonts) document.fonts.ready.then(fitTiles);
 
   function renderControls() {
     $('awControls').hidden = today.done;
@@ -327,7 +369,7 @@
     ? ' (' + (today.mistakes ? today.mistakes + (today.mistakes === 1 ? ' mistake' : ' mistakes') : 'no mistakes') + ')'
     : ' (' + today.solved.length + ' of 4 groups)';
   const shareText = () =>
-    '\u{1F3B8} ' + NAME + ' No. ' + puzzleNo + rerunTag + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
+    '\u{1F3B8} ' + NAME + ', ' + puzzleName + rerunTag + ' - ' + todayPoints() + ' points' + shareWords() + '\n' +
     guessRows().join('\n') + '\nhttps://' + SHARE_URL + '\n';
 
   function renderStats() {
@@ -385,7 +427,7 @@
   }
 
   function renderAll() {
-    $('awNo').textContent = 'Puzzle No. ' + puzzleNo + puzzleNote(lastWeeks ? "last week's" : '');
+    $('awNo').textContent = puzzleName + puzzleNote(lastWeeks ? "last week's" : '');
     renderLives();
     renderSolved();
     renderGrid();
@@ -490,7 +532,7 @@
     if (landscape) {
       put('\u{1F3B8}', 330, 130, '700', 60, '#ffffff');
       put(NAME.toUpperCase(), 330, 186, '700', 30, '#ffffff', '4px', 540);
-      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', rerunOf ? 540 : 0);
+      put(puzzleName.toUpperCase() + (rerunOf ? ' - RERUN' : ''), 330, 232, '700', 26, '#929292', '6px', 540);
       put(score, 330, 420, '900', 190, '#ffffff', '0px', 540);
       put('POINTS', 330, 492, '700', 40, '#ffffff', '10px');
       x.strokeStyle = 'rgba(204,162,60,0.3)';
@@ -510,7 +552,7 @@
       const gap = 14, size = Math.min(90, Math.floor((y.room - (rows - 1) * gap) / rows)), rowW = 4 * size + 3 * gap;
       put('\u{1F3B8}', W / 2, y.icon, '700', story ? 110 : 96, '#ffffff');
       put(NAME.toUpperCase(), W / 2, y.label, '700', 44, '#ffffff', '4px', W - 160);
-      put('PUZZLE NO. ' + puzzleNo + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', rerunOf ? W - 160 : 0);
+      put(puzzleName.toUpperCase() + (rerunOf ? ' - RERUN' : ''), W / 2, y.no, '700', 36, '#929292', '6px', W - 160);
       put(score, W / 2, y.score, '900', story ? 300 : 260, '#ffffff', '0px', W - 160);
       put('POINTS', W / 2, y.pts, '700', story ? 60 : 52, '#ffffff', '12px');
       put(result, W / 2, y.result, '700', story ? 56 : 50, '#ffffff', '0px', W - 160);
@@ -526,7 +568,7 @@
     const img = $('awCardImg');
     img.src = currentCard.url;
     // The card's own words, for people who can't see it
-    img.alt = NAME + ', puzzle ' + puzzleNo + (rerunOf ? ' (a rerun of puzzle ' + rerunOf + ')' : '') + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
+    img.alt = NAME + ', ' + puzzleName + (rerunOf ? ' (a rerun of Puzzle ' + words(rerunOf) + ')' : '') + ': ' + result + '. ' + score + ' points this week. ' + totalLine + '. ' + statLine.replace(/\s+\|\s+/, '. ') + '.';
     img.className = 'bia-card-img bia-card-' + cardFormat;
     $('awCardWrap').hidden = false;
     const file = new File([blob], cardFile(), { type: 'image/png' });
@@ -552,7 +594,7 @@
     if (!currentCard) return;
     const file = new File([currentCard.blob], cardFile(), { type: 'image/png' });
     try {
-      await navigator.share({ files: [file], title: NAME + ' No. ' + puzzleNo + rerunTag, text: shareText() });
+      await navigator.share({ files: [file], title: NAME + ', ' + puzzleName + rerunTag, text: shareText() });
       track('Family - Card shared');
     } catch (e) { /* cancelled */ }
   });

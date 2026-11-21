@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.11.5
+**An Inch an Hour - Patch** - November 21, 2026
+Two fixes to 'Are We Family', found in the launch screenshot on the day Puzzle One opened.
+- **No more split titles:** song titles on the tiles broke in the middle of a word ('Long Time Run-ning', 'Springtime in Vien-na'), because the tiles let the browser hyphenate anywhere. Titles now wrap between words only. On phones, a tile whose longest word won't fit ('Bumblebee', 'Attawapiskat') shrinks its own text just enough, never below 9 pixels. Only a word that still won't fit after that may break, with a hyphen: 'Transformation' on a 375-pixel phone, and five long words ('Attawapiskat', 'Copenhagen', 'MacLennan', 'Transformation', and 'Wherewithal') on the narrowest phones (320 pixels).
+- **Puzzle numbers spelled out** (jD, November 3, 2026): "Puzzle No. 1" is now "Puzzle One" in the heading, the share text, the share card, the card's alt text, and the share sheet title.
+- **Checked** with every song title in the puzzle pool at 320, 375, 390, and desktop widths: nothing spills out of a tile.
+- **How:** `fitTiles()` in `js/are-we-family.js`, `hyphens: manual` with an `.aw-hy` exception in `css/are-we-family.css`.
+- Cache bumped to `hh-v5.11.5`; footer label bumped to v5.11.5 (An Inch an Hour - Patch)
+
 ## v5.11.4
 **An Inch an Hour - Patch** - November 20, 2026
 The shuffle machines match the rest of the Handbook (jD, November 20, 2026: they looked off next to the more refined look of the site).

@@ -9,10 +9,13 @@
 
 /* The tiles */
 .aw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
-.aw-tile { min-height: 72px; padding: 8px 5px; border-radius: 10px; background: #1d1a26; border: 1px solid #2a2a2a; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 700; line-height: 1.25; cursor: pointer; overflow-wrap: break-word; hyphens: auto; transition: background 0.12s, border-color 0.12s; }
+.aw-tile { min-height: 72px; padding: 8px 5px; border-radius: 10px; background: #1d1a26; border: 1px solid #2a2a2a; color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 700; line-height: 1.25; cursor: pointer; overflow-wrap: break-word; hyphens: manual; transition: background 0.12s, border-color 0.12s; }
 .aw-tile.long { font-size: 0.68rem; }
-/* One long word ('Membership', 'Impossibilium'): smaller, so it breaks with a hyphen at most */
+/* One long word ('Membership', 'Impossibilium') starts smaller. Titles wrap between words only:
+   fitTiles() in js/are-we-family.js shrinks a tile whose longest word won't fit, and only a word
+   that still won't fit gets .aw-hy and may break with a hyphen. */
 .aw-tile.wide { font-size: 0.7rem; }
+.aw-tile.aw-hy { hyphens: auto; }
 .aw-tile:hover { border-color: rgba(204, 162, 60, 0.6); }
 .aw-tile:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .aw-tile.on { background: #d9d9d9; border-color: #d9d9d9; color: #0e0b16; }
