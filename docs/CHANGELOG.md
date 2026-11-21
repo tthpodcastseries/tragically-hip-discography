@@ -1,5 +1,19 @@
 # Changelog
 
+## v5.11.6
+**An Inch an Hour - Patch** - November 21, 2026
+Song pages get found. From the November 2026 SEO audit (`audits/The Hip Handbook - SEO Audit - November 2026.md`): nothing on the site linked to the 189 song pages except the Songs list, and nothing linked to the Songs list except the song pages, so search engines found them only through the sitemap (SEO-01).
+- **Songs on the home page:** a new card in Listen, "Every Song" over "Songs", opens the list of every song.
+- **Live Show Stats links to song pages:** the most-played, openers, closers, one-timers, longest gaps, and never-played lists now open `/song/<slug>`, not the old Discography address. Covers and anything not on the official song list stay as plain text.
+- **Song pages link to each other:** every song page has a "More from "<album>"" card with plain links to the other songs first released on that record, in track order (186 of 189 songs; three are alone on their record).
+- **The Songs list is in the page itself:** `/song` carries every song as a plain link in the HTML as sent, so search engines and AI assistants that don't run scripts see the whole list. The script redraws it with the filter as before.
+- **No more "no live performances" on played songs:** every song page had a hidden line saying "No live performances on record for this one", even 'Bobcaygeon'. Readers that ignore "hidden" could take it at face value. It is now in the page only for the 19 songs it's true for (SEO-05).
+- **New song page titles** (jD, November 21, 2026): `'Bobcaygeon' by The Tragically Hip - The Hip Handbook`, in place of `'Bobcaygeon' - Song - The Hip Handbook`, so the band's name is where people search for it. A title over 60 characters drops " - The Hip Handbook" (SEO-07).
+- **No jump on /setlists, /lyrics, and /top-40:** the page script hid the Discography's search, stats, and menu after loading, so everything below jumped up (layout shift 0.36 on /setlists). The three pages now start that way.
+- **No jump on the games:** each game page holds the footer below the screen while the game loads (layout shift 0.34 on 'Bring It All Back'). Not inside the Games page, whose frames grow to fit each game.
+- **How:** `index.html`, `js/live-stats.js`, `scripts/build-seo-pages.js` (titles, "More from", the never-played line, the Songs list, view mode), `song.html`, `js/song.js` (`songTitle` and `NEVER_TEXT`, in step with the build script), `css/song.css`, `css/bring-it-all-back.css`. `song/*.html`, `song.html`'s list, `lyrics.html`, `setlists.html`, and `top-40.html` rebuilt with `build-seo-pages.js`.
+- Cache bumped to `hh-v5.11.6`; footer label bumped to v5.11.6 (An Inch an Hour - Patch)
+
 ## v5.11.5
 **An Inch an Hour - Patch** - November 21, 2026
 Two fixes to 'Are We Family', found in the launch screenshot on the day Puzzle One opened.

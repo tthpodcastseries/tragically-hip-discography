@@ -7,10 +7,14 @@
 // every address. This writes one real file per address, each with its own title,
 // description, canonical and og tags, so Netlify serves it as-is:
 //
-//   song/<slug>.html   one per song in data/song-index.json (from song.html)
+//   song/<slug>.html   one per song in data/song-index.json (from song.html), each with
+//                      plain links to the other songs from its first record (v5.11.6)
+//   song.html          only the list inside <ul id="spIndexList">: every song, as plain
+//                      links, for the /song page (v5.11.6). The rest of song.html is
+//                      the hand-edited template.
 //   lyrics.html, setlists.html, top-40.html   (from discography.html)
 //
-// Do not edit those files by hand. Change song.html, discography.html, the
+// Do not edit those files (or that list) by hand. Change song.html, discography.html, the
 // FEATURE_VIEWS block in js/discography-app.js, or this script, then re-run:
 //
 //   node scripts/build-song-index.js     (only if the setlists changed)
@@ -99,17 +103,68 @@ function songJsonLd(song, origin) {
   return '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>';
 }
 
+// The song page title: the song and the band, then the site's name when it fits. Search
+// results show about 60 characters, so a long song title drops the site's name (Google
+// shows the site's name on its own line anyway). jD, 2026-11-21 (SEO audit SEO-07).
+// js/song.js (songTitle) writes the same text - keep them in step.
+const TITLE_MAX = 60;
+function songTitle(t) {
+  const full = "'" + t + "' by The Tragically Hip" + CATEGORY_NOTE;
+  return full.length <= TITLE_MAX ? full : "'" + t + "' by The Tragically Hip";
+}
+
+// Written into the page only for songs with no live plays, so the HTML as sent never says
+// "no live performances" about a song that was played (SEO audit SEO-05).
+// js/song.js (NEVER_TEXT) has the same words - keep them in step.
+const NEVER_TEXT = 'No live performances on record for this one. setlist.fm has no setlist with it, so it may never have been played live, or the setlists may be incomplete.';
+
+// The first release a song came out on: its studio album or EP, else its earliest release
+const originOf = song => {
+  const sorted = [...song.a].sort((x, y) => x[1] - y[1]);
+  return sorted.find(a => (a[2] === 'studio' || a[2] === 'eps') && !a[4]) || sorted[0];
+};
+
+// "More from <album>": plain links to the other songs first released on the same record,
+// in track order, so every song page links to its neighbours (SEO audit SEO-01)
+function moreFrom(song, origin, byOrigin) {
+  if (!origin) return '';
+  const others = (byOrigin.get(origin[0] + '|' + origin[1]) || []).filter(x => x.song.s !== song.s);
+  if (!others.length) return '';
+  const items = others.map(x => '<li><a href="/song/' + x.song.s + '">' + escText(x.song.t) + '</a></li>').join('');
+  return '<section id="spMore" class="sp-card" aria-labelledby="spMoreH">\n      <h2 class="sp-h2" id="spMoreH">More from "' + escText(origin[0]) + '"</h2>\n      <ul class="sp-index">' + items + '</ul>\n    </section>';
+}
+
+// The all-songs list on /song, in the HTML as sent (js/song.js redraws it with the filter)
+const playsLabel = n => n ? plural(n, 'play', 'plays') : 'no live plays on record';
+function indexList(songs) {
+  return songs.map(s => '<li><a href="/song/' + s.s + '">' + escText(s.t) + '<small>' + playsLabel(s.p.length) + '</small></a></li>').join('');
+}
+const INDEX_RE = /(<ul id="spIndexList" class="sp-index">)[\s\S]*?(<\/ul>)/;
+
 // ---- song pages ----
 function songPages() {
   const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/song-index.json'), 'utf8'));
   const template = fs.readFileSync(path.join(ROOT, 'song.html'), 'utf8');
   const shows = data.shows.map(r => ({ iso: r[1] }));
   const out = {};
+  // Songs grouped by the record they first came out on, in that record's track order
+  const byOrigin = new Map();
+  for (const song of data.songs) {
+    const origin = originOf(song);
+    if (!origin) continue;
+    const key = origin[0] + '|' + origin[1];
+    if (!byOrigin.has(key)) byOrigin.set(key, []);
+    byOrigin.get(key).push({ song, track: origin[3] || 999 });
+  }
+  for (const list of byOrigin.values()) list.sort((x, y) => x.track - y.track || x.song.t.localeCompare(y.song.t));
+
+  // /song itself (song.html) carries the full list; the song pages carry an empty one
+  out['song.html'] = swap(template, INDEX_RE, (m, a, b) => a + indexList(data.songs) + b, 'spIndexList');
+
   for (const song of data.songs) {
     const plays = song.p.map(i => shows[i]);
     const recs = song.r.map(r => r[0]).filter((x, i, all) => all.indexOf(x) === i);
-    const sorted = [...song.a].sort((x, y) => x[1] - y[1]);
-    const origin = sorted.find(a => (a[2] === 'studio' || a[2] === 'eps') && !a[4]) || sorted[0];
+    const origin = originOf(song);
 
     const bits = [];
     if (origin) bits.push('From "' + origin[0] + '" (' + origin[1] + ')');
@@ -118,10 +173,13 @@ function songPages() {
     bits.push(once || (plays.length ? 'played live ' + plural(plays.length, 'time', 'times') : 'no live performances on record'));
     const lead = bits.join(' - ') + '.';
 
-    const title = "'" + song.t + "' - Song" + CATEGORY_NOTE;
+    const title = songTitle(song.t);
     const desc = songDesc(song, plays, recs, origin);
 
     let html = setHead(template, { title, desc, url: SITE + '/song/' + song.s });
+    html = swap(html, INDEX_RE, (m, a, b) => a + b, 'spIndexList');
+    html = swap(html, /(<p id="spNever" class="sp-card sp-never" hidden>)[^<]*(<\/p>)/, (m, a, b) => a + (plays.length ? '' : escText(NEVER_TEXT)) + b, 'spNever');
+    html = swap(html, /<!-- spMore -->/, () => moreFrom(song, origin, byOrigin), 'spMore marker');
     html = swap(html, /(<h1 id="spTitle">)[^<]*(<\/h1>)/, (m, a, b) => a + escText(song.t) + b, 'spTitle');
     html = swap(html, /(<p class="header-desc" id="spDesc">)[^<]*(<\/p>)/, (m, a, b) => a + escText(lead) + b, 'spDesc');
     html = swap(html, /(<p id="spSummary" class="sp-summary">)[^<]*(<\/p>)/, (m, a, b) => a + escText(songSummary(song, plays, recs, data.shows)) + b, 'spSummary');
@@ -145,6 +203,11 @@ function featurePages() {
     if (!v) throw new Error('FEATURE_VIEWS has no ' + key);
     const title = v.label + ' (' + v.title + ')' + CATEGORY_NOTE;
     let html = setHead(template, { title, desc: v.desc, url: SITE + v.path });
+    // Start in view mode, so the Discography's search, stats and menu are hidden from the
+    // first paint instead of vanishing when the script runs (that jump scored 0.36 on
+    // /setlists in the November 2026 SEO audit, SEO-06). js/discography-app.js adds the
+    // same class, so nothing changes once it loads.
+    html = swap(html, /<body>/, '<body class="view-mode">', '<body>');
     html = swap(html, /(<div class="subtitle" id="pageSubtitle">)[^<]*(<\/div>)/, (m, a, b) => a + escText(v.label) + b, 'pageSubtitle');
     html = swap(html, /(<h1 id="pageTitle">)[^<]*(<\/h1>)/, (m, a, b) => a + escText(v.title) + b, 'pageTitle');
     html = swap(html, /(<p class="header-desc" id="pageDesc">)[^<]*(<\/p>)/, (m, a, b) => a + escText(v.desc) + b, 'pageDesc');
@@ -185,5 +248,5 @@ if (checkOnly) {
   }
   console.log('OK: ' + total + ' generated pages are current.');
 } else {
-  console.log(total + ' pages (' + (total - 3) + ' songs + 3 routes): ' + stale.length + ' written, ' + extra.length + ' removed.');
+  console.log(total + ' pages (' + (total - 4) + ' songs + the song list + 3 routes): ' + stale.length + ' written, ' + extra.length + ' removed.');
 }

@@ -49,6 +49,12 @@
     set('meta[property="og:url"]', 'content', url);
     set('link[rel="canonical"]', 'href', url);
   };
+  // Same text as scripts/build-seo-pages.js (songTitle, NEVER_TEXT) - keep them in step
+  const songTitle = t => {
+    const full = "'" + t + "' by The Tragically Hip - The Hip Handbook";
+    return full.length <= 60 ? full : "'" + t + "' by The Tragically Hip";
+  };
+  const NEVER_TEXT = 'No live performances on record for this one. setlist.fm has no setlist with it, so it may never have been played live, or the setlists may be incomplete.';
   const placeOf = x => [x.city, x.state].filter(Boolean).join(', ');
   const albumTag = a => (a[4] || CATEGORY_LABEL[a[2]] || '');
   const albumLine = a => {
@@ -101,7 +107,7 @@
     $('spDesc').textContent = bits.join(' - ') + '.';
 
     const url = SITE + '/song/' + song.s;
-    setMeta("'" + song.t + "' - Song - The Hip Handbook", songDesc(plays, recs, origin), url);
+    setMeta(songTitle(song.t), songDesc(plays, recs, origin), url);
     // The plain summary written into the page for search engines says what the stats
     // below now show (audit SEO-03)
     if ($('spSummary')) $('spSummary').hidden = true;
@@ -124,6 +130,8 @@
       cell('Latest', fmtDate(last.iso), showLine(last), '/tour-map.html#show=' + last.id);
       cell('Recordings', recs.length.toLocaleString('en-CA'), recs.length ? 'in the Archive' : 'none in the Archive');
     } else {
+      // The built page already says it; song.html on the local preview starts empty
+      if (!$('spNever').textContent.trim()) $('spNever').textContent = NEVER_TEXT;
       $('spNever').hidden = false;
     }
 

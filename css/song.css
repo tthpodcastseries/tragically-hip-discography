@@ -128,10 +128,11 @@
   #spRankCard { grid-column: 1; grid-row: 7; }
   #spRecCard { grid-column: 2; grid-row: 3 / 9; }
   #spAll { grid-column: 1 / -1; grid-row: 9; }
-  #spSong > .sp-share { grid-column: 1 / -1; grid-row: 10; justify-self: center; width: 100%; max-width: 640px; }
-  #spSong > .sp-actions { grid-column: 1 / -1; grid-row: 11; }
-  #spSong > .sp-links { grid-column: 1 / -1; grid-row: 12; }
-  #spSong > .sp-source { grid-column: 1 / -1; grid-row: 13; }
+  #spMore { grid-column: 1 / -1; grid-row: 10; }
+  #spSong > .sp-share { grid-column: 1 / -1; grid-row: 11; justify-self: center; width: 100%; max-width: 640px; }
+  #spSong > .sp-actions { grid-column: 1 / -1; grid-row: 12; }
+  #spSong > .sp-links { grid-column: 1 / -1; grid-row: 13; }
+  #spSong > .sp-source { grid-column: 1 / -1; grid-row: 14; }
   /* No recordings for this song: the share card takes the right side instead */
   #spSong:has(> #spRecCard[hidden]) > .sp-share { grid-column: 2; grid-row: 3 / 9; max-width: none; }
 

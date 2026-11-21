@@ -2,6 +2,10 @@
 [hidden] { display: none !important; }
 
 .bia { max-width: 560px; margin: 0 auto; padding: 20px 16px 56px; }
+/* Holds the footer below the screen while a game loads, so it doesn't jump (SEO audit SEO-06:
+   0.34 on 'Bring It All Back', November 2026). Every game's <main> is .bia. Not inside the
+   Games page, whose frames grow to fit the game (js/games.js): there it would stop them shrinking. */
+html:not(.in-arcade) .bia { min-height: 100vh; }
 .bia-note { text-align: center; color: var(--muted2); padding: 40px 12px; font-size: 0.88rem; }
 .bia-error { color: #fff; }
 

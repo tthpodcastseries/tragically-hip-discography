@@ -40,7 +40,16 @@
   const parseDate = d => { const p = d.split('-'); return new Date(+p[2], +p[1] - 1, +p[0]); };
   const fmtDate = d => d.toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  const songLink = title => '<a href="discography.html#song=' + encodeURIComponent(title) + '">' + esc(title) + '</a>';
+  // A song on the official list links to its own page (/song/<slug>, the same slug as
+  // scripts/build-song-index.js); covers and anything else stay plain text (SEO audit SEO-01)
+  const officialTitles = new Set(official.values());
+  const isLocal = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  const songSlug = t => t.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
+    .replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const songHref = t => isLocal ? '/song?s=' + songSlug(t) : '/song/' + songSlug(t);
+  const songLink = title => officialTitles.has(title)
+    ? '<a href="' + songHref(title) + '">' + esc(title) + '</a>'
+    : '<span>' + esc(title) + '</span>';
 
   // ─── Tally every performance ───
   const plays = new Map();   // song key -> { display, count, dates[], cover }
@@ -160,7 +169,7 @@
       $('neverSection').style.display = '';
       $('neverCount').textContent = never.length;
       $('neverPlayed').innerHTML = never.map(t =>
-        '<a class="never-chip" href="discography.html#song=' + encodeURIComponent(t) + '">' + esc(t) + '</a>'
+        '<a class="never-chip" href="' + songHref(t) + '">' + esc(t) + '</a>'
       ).join('');
     }
   }
