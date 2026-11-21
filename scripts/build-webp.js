@@ -21,7 +21,9 @@ const CHECK = process.argv.includes('--check');
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
     const p = path.join(dir, e.name);
-    if (e.isDirectory()) return walk(p);
+    // og/: the song preview cards (scripts/build-og-cards.js) are only for og:image, like
+    // link-preview-*.jpg: robots read the JPEG, and no page shows them, so they need no WebP
+    if (e.isDirectory()) return path.relative(DIR, p) === 'og' ? [] : walk(p);
     // link-preview-*.jpg is only for og:image (robots read the JPEG), so it needs no WebP
     return /\.(jpe?g|png)$/i.test(e.name) && !e.name.startsWith('._') && !e.name.startsWith('link-preview') ? [p] : [];
   });

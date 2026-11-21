@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.12.1
+**Emergency - Patch** - November 21, 2026
+Every song has its own link preview (jD, November 21, 2026; SEO audit SEO-16). Shared on Facebook, Messenger, or iMessage, a song link used to show the same band photo as every other song. It now shows that song's own card: the title, the record it came from, times played live, plays by year, debut and latest, and the fan ranking.
+- **One design:** the picture is the Facebook-size card the song page already makes with "Make the card", so the preview and a fan's own card match. Its alt text is the card's own words.
+- **How it's made:** `scripts/build-og-cards.js` (new) serves the site on jD's Mac, opens each song page in headless Google Chrome, presses "Make the card", and saves a JPEG in `assets-optimized/og/song/`, 189 in all (about 18 MB). Each file name carries a fingerprint of the song's data and the card code, so a changed card gets a new name (pictures keep for a week) and only changed cards are made again (all 189 take about 25 seconds). `--check` reports without Chrome. It runs before `build-seo-pages.js` in the data pipeline (`CLAUDE.md`, step 9).
+- **Kept JPEG, no WebP:** link-preview robots read JPEG, and no page shows these pictures, so `build-webp.js` skips the folder, as it does the band link-preview photo.
+- **Guard:** `audit-site.js` fails if a page's preview picture on this site has no file.
+- **How:** `scripts/build-og-cards.js`, `data/og-cards.json` (written by it, left out of the published site), `scripts/build-seo-pages.js` (each song's og:image and og:image:alt), `scripts/audit-site.js`, `scripts/build-webp.js`, `scripts/netlify-publish.js`, `CLAUDE.md`. `song/*.html` rebuilt.
+- Cache bumped to `hh-v5.12.1`; footer label bumped to v5.12.1 (Emergency - Patch)
+
 ## v5.12
 **Emergency** - November 21, 2026
 jD's rulings on the November 2026 SEO audit (`audits/The Hip Handbook - SEO Audit - November 2026.md`, section 6), and a fix for a jump v5.11.6 made worse.

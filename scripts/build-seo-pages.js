@@ -161,6 +161,11 @@ function songPages() {
   }
   for (const list of byOrigin.values()) list.sort((x, y) => x.track - y.track || x.song.t.localeCompare(y.song.t));
 
+  // Each song's own preview picture, made by scripts/build-og-cards.js (SEO audit SEO-16). A song
+  // without one keeps the band photo from song.html.
+  const cardsFile = path.join(ROOT, 'data/og-cards.json');
+  const cards = fs.existsSync(cardsFile) ? JSON.parse(fs.readFileSync(cardsFile, 'utf8')).cards : {};
+
   // /song itself (song.html) carries the full list; the song pages carry an empty one
   out['song.html'] = swap(template, INDEX_RE, (m, a, b) => a + indexList(data.songs) + b, 'spIndexList');
 
@@ -181,6 +186,11 @@ function songPages() {
 
     let html = setHead(template, { title, desc, url: SITE + '/song/' + song.s });
     html = swap(html, INDEX_RE, (m, a, b) => a + b, 'spIndexList');
+    const card = cards[song.s];
+    if (card && fs.existsSync(path.join(ROOT, card.file))) {
+      html = swap(html, /<meta property="og:image" content="[^"]*">/, '<meta property="og:image" content="' + SITE + '/' + card.file + '">', 'og:image');
+      html = swap(html, /<meta property="og:image:alt" content="[^"]*">/, '<meta property="og:image:alt" content="' + esc(card.alt) + '">', 'og:image:alt');
+    }
     html = swap(html, /(<p id="spNever" class="sp-card sp-never" hidden>)[^<]*(<\/p>)/, (m, a, b) => a + (plays.length ? '' : escText(NEVER_TEXT)) + b, 'spNever');
     html = swap(html, /<!-- spMore -->/, () => moreFrom(song, origin, byOrigin), 'spMore marker');
     html = swap(html, /(<h1 id="spTitle">)[^<]*(<\/h1>)/, (m, a, b) => a + escText(song.t) + b, 'spTitle');

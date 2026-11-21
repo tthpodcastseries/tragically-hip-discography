@@ -130,7 +130,7 @@ When setlist or show data changes, run in this order:
 6. `build-game-pool.js` -> `game-pool.json` ('Bring It All Back')
 7. `build-song-index.js` -> `song-index.json` and the song block in `sitemap.xml`, then `build-shuffle-pool.js` -> `shuffle-pool.json` (the home page shuffle machines; takes `--check`)
 8. `build-site-stats.js` -> rewrites the headline counts (shows, setlists, recordings, lyrics and the rest) in the pages
-9. `build-seo-pages.js` -> `song/*.html`, `lyrics.html`, `setlists.html`, `top-40.html` (run after any change to songs, `song.html`, `discography.html` or `FEATURE_VIEWS`)
+9. `build-og-cards.js` -> one preview picture per song in `assets-optimized/og/song/` and `data/og-cards.json` (jD's Mac only: needs Google Chrome; run after song data or the share card in `js/song.js` changes; `--check` only reports), then `build-seo-pages.js` -> `song/*.html`, the song list in `song.html`, `lyrics.html`, `setlists.html`, `top-40.html` (run after any change to songs, `song.html`, `discography.html` or `FEATURE_VIEWS`)
 10. `build-trunk-pool.js` -> `trunk-pool.json` ('(Un)Locked'; uses the macOS word list), then `build-clip-pool.js` -> `clip-pool.json` ('Little Bones'; reads jD's start points and skipped tapes in `data/clip-starts.json`)
 11. `check-game-schedule.js`, then `audit-site.js`
 

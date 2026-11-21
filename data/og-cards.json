@@ -1,0 +1,761 @@
+{
+ "note": "Written by scripts/build-og-cards.js - never edit by hand",
+ "cards": {
+  "38-years-old": {
+   "file": "assets-optimized/og/song/38-years-old-5b3de748a1.jpg",
+   "alt": "'38 Years Old' share card. From \"Up to Here\" (1989). 54 times played live, with a chart of plays by year. Live debut: May 20, 1988. Latest: Feb 23, 2008. Fan-ranked Number Three, The Tragically Hip Top Forty Countdown."
+  },
+  "700-ft-ceiling": {
+   "file": "assets-optimized/og/song/700-ft-ceiling-a4520005c1.jpg",
+   "alt": "'700 Ft. Ceiling' share card. From \"Trouble at the Henhouse\" (1996). 132 times played live, with a chart of plays by year. Live debut: Oct 21, 1995. Latest: Nov 27, 2004. Fan-ranked Number Seventy-Six, Full 169 Fan Vote."
+  },
+  "a-beautiful-thing": {
+   "file": "assets-optimized/og/song/a-beautiful-thing-622fa29f6f.jpg",
+   "alt": "'A Beautiful Thing' share card. From \"In Violet Light\" (2002). 24 times played live, with a chart of plays by year. Live debut: Nov 11, 2001. Latest: Nov 11, 2002. Fan-ranked Number Sixty-Two, Full 169 Fan Vote."
+  },
+  "about-this-map": {
+   "file": "assets-optimized/og/song/about-this-map-4a98332adb.jpg",
+   "alt": "'About This Map' share card. From \"Now for Plan A\" (2012). 2 times played live, with a chart of plays by year. Live debut: Nov 17, 2012. Latest: Dec 5, 2012. Fan-ranked Number Seventy-One, Full 169 Fan Vote."
+  },
+  "ahead-by-a-century": {
+   "file": "assets-optimized/og/song/ahead-by-a-century-608c146226.jpg",
+   "alt": "'Ahead by a Century' share card. From \"Trouble at the Henhouse\" (1996). 700 times played live, with a chart of plays by year. Live debut: Mar 31, 1995. Latest: Aug 20, 2016. Fan-ranked Number Two, The Tragically Hip Top Forty Countdown."
+  },
+  "all-canadian-surf-club": {
+   "file": "assets-optimized/og/song/all-canadian-surf-club-c5010df5f7.jpg",
+   "alt": "'All Canadian Surf Club' share card. From \"The Tragically Hip\" (1987). 26 times played live, with a chart of plays by year. Live debut: Feb 27, 1985. Latest: Aug 29, 1991. Fan-ranked Number Ninety-Six, Full 169 Fan Vote."
+  },
+  "all-tore-up": {
+   "file": "assets-optimized/og/song/all-tore-up-d6bbd35eb1.jpg",
+   "alt": "'All Tore Up' share card. From \"In Violet Light\" (2002). 44 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Nov 20, 2002. Fan-ranked Number One Hundred Eighteen, Full 169 Fan Vote."
+  },
+  "an-inch-an-hour": {
+   "file": "assets-optimized/og/song/an-inch-an-hour-fdf3ebd2b9.jpg",
+   "alt": "'An Inch an Hour' share card. From \"Day for Night\" (1994). 43 times played live, with a chart of plays by year. Live debut: Jul 1, 1994. Latest: Jan 20, 2013. Fan-ranked Number Fifty-Seven, Full 169 Fan Vote."
+  },
+  "another-midnight": {
+   "file": "assets-optimized/og/song/another-midnight-5f9b4942ed.jpg",
+   "alt": "'Another Midnight' share card. From \"Up to Here\" (1989). 9 times played live, with a chart of plays by year. Live debut: Aug 27, 1989. Latest: Nov 15, 1991. Fan-ranked Number Fifty-One, Full 169 Fan Vote."
+  },
+  "apartment-song": {
+   "file": "assets-optimized/og/song/apartment-song-fa13f132cd.jpg",
+   "alt": "'Apartment Song' share card. From \"Trouble at the Henhouse\" (1996). 25 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: Nov 19, 2000. Fan-ranked Number Eighty-Two, Full 169 Fan Vote."
+  },
+  "are-we-family": {
+   "file": "assets-optimized/og/song/are-we-family-aa36f0484e.jpg",
+   "alt": "'Are We Family' share card. From \"In Between Evolution\" (2004). 26 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: May 29, 2009. Fan-ranked Number Fifty, Full 169 Fan Vote."
+  },
+  "are-you-ready": {
+   "file": "assets-optimized/og/song/are-you-ready-b0cf32aea5.jpg",
+   "alt": "'Are You Ready' share card. From \"In Violet Light\" (2002). 72 times played live, with a chart of plays by year. Live debut: Nov 11, 2001. Latest: Jul 3, 2006. Fan-ranked Number One Hundred Seventeen, Full 169 Fan Vote."
+  },
+  "as-i-wind-down-the-pines": {
+   "file": "assets-optimized/og/song/as-i-wind-down-the-pines-d0902da218.jpg",
+   "alt": "'As I Wind Down the Pines' share card. From \"Music @ Work\" (2000). No live performances on record. Fan-ranked Number Ninety-Nine, Full 169 Fan Vote."
+  },
+  "as-makeshift-as-we-are": {
+   "file": "assets-optimized/og/song/as-makeshift-as-we-are-48f25f61d3.jpg",
+   "alt": "'As Makeshift as We Are' share card. From \"In Between Evolution\" (2004). 41 times played live, with a chart of plays by year. Live debut: Oct 27, 2003. Latest: Apr 27, 2009. Fan-ranked Number One Hundred Four, Full 169 Fan Vote."
+  },
+  "at-the-hundredth-meridian": {
+   "file": "assets-optimized/og/song/at-the-hundredth-meridian-e7f37f0fe2.jpg",
+   "alt": "'At the Hundredth Meridian' share card. From \"Fully Completely\" (1992). 785 times played live, with a chart of plays by year. Live debut: Aug 9, 1991. Latest: Aug 20, 2016. Fan-ranked Number Sixteen, The Tragically Hip Top Forty Countdown."
+  },
+  "at-transformation": {
+   "file": "assets-optimized/og/song/at-transformation-3158941bff.jpg",
+   "alt": "'At Transformation' share card. From \"Now for Plan A\" (2012). 130 times played live, with a chart of plays by year. Live debut: Jun 21, 2011. Latest: Aug 14, 2016. Fan-ranked Number Thirty-Three, The Tragically Hip Top Forty Countdown."
+  },
+  "blow-at-high-dough": {
+   "file": "assets-optimized/og/song/blow-at-high-dough-10788a23ee.jpg",
+   "alt": "'Blow at High Dough' share card. From \"Up to Here\" (1989). 504 times played live, with a chart of plays by year. Live debut: May 20, 1988. Latest: Aug 20, 2016. Fan-ranked Number Six, The Tragically Hip Top Forty Countdown."
+  },
+  "bobcaygeon": {
+   "file": "assets-optimized/og/song/bobcaygeon-0ca5b3a9ff.jpg",
+   "alt": "'Bobcaygeon' share card. From \"Phantom Power\" (1998). 562 times played live, with a chart of plays by year. Live debut: May 10, 1997. Latest: Aug 20, 2016. Fan-ranked Number Four, The Tragically Hip Top Forty Countdown."
+  },
+  "boots-or-hearts": {
+   "file": "assets-optimized/og/song/boots-or-hearts-3a1fedb14b.jpg",
+   "alt": "'Boots or Hearts' share card. From \"Up to Here\" (1989). 138 times played live, with a chart of plays by year. Live debut: Jun 30, 1989. Latest: Aug 20, 2016. Fan-ranked Number Twenty-Five, The Tragically Hip Top Forty Countdown."
+  },
+  "born-in-the-water": {
+   "file": "assets-optimized/og/song/born-in-the-water-556bd95871.jpg",
+   "alt": "'Born in the Water' share card. From \"Road Apples\" (1991). 2 times played live, with a chart of plays by year. Live debut: Apr 11, 1990. Latest: Jul 23, 1993. Fan-ranked Number Ninety-Eight, Full 169 Fan Vote."
+  },
+  "bring-it-all-back": {
+   "file": "assets-optimized/og/song/bring-it-all-back-902e3f75a4.jpg",
+   "alt": "'Bring It All Back' share card. From \"Road Apples\" (1991). 36 times played live, with a chart of plays by year. Live debut: Mar 1, 1991. Latest: Jul 17, 1993. Fan-ranked Number Eighty-One, Full 169 Fan Vote."
+  },
+  "bumblebee": {
+   "file": "assets-optimized/og/song/bumblebee-d960b7f919.jpg",
+   "alt": "'Bumblebee' share card. From \"Phantom Power Box Set\" (2023). No live performances on record. Fan-ranked Number One Hundred Thirty-Eight, Full 169 Fan Vote."
+  },
+  "butts-wigglin": {
+   "file": "assets-optimized/og/song/butts-wigglin-e49af4bb03.jpg",
+   "alt": "'Butts Wigglin'' share card. From \"Trouble at the Henhouse\" (1996). 60 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: May 11, 1997. Fan-ranked Number One Hundred Seven, Full 169 Fan Vote."
+  },
+  "cemetery-sideroad": {
+   "file": "assets-optimized/og/song/cemetery-sideroad-dc3d408867.jpg",
+   "alt": "'Cemetery Sideroad' share card. From \"The Tragically Hip\" (1987). 2 times played live, with a chart of plays by year. Live debut: Mar 2, 1988. Latest: Sep 8, 1988. Fan-ranked Number One Hundred Twelve, Full 169 Fan Vote."
+  },
+  "chagrin-falls": {
+   "file": "assets-optimized/og/song/chagrin-falls-05067c1eaf.jpg",
+   "alt": "'Chagrin Falls' share card. From \"Phantom Power\" (1998). 124 times played live, with a chart of plays by year. Live debut: May 29, 1996. Latest: Sep 19, 2009. Fan-ranked Number Fifty-Four, Full 169 Fan Vote."
+  },
+  "coconut-cream": {
+   "file": "assets-optimized/og/song/coconut-cream-3a54a65aeb.jpg",
+   "alt": "'Coconut Cream' share card. From \"Trouble at the Henhouse\" (1996). 53 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: Jul 30, 1997."
+  },
+  "coffee-girl": {
+   "file": "assets-optimized/og/song/coffee-girl-58661fb7f7.jpg",
+   "alt": "'Coffee Girl' share card. From \"We Are the Same\" (2009). 78 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Jul 30, 2016. Fan-ranked Number Fifty-Three, Full 169 Fan Vote."
+  },
+  "cordelia": {
+   "file": "assets-optimized/og/song/cordelia-c8bb8cd0d3.jpg",
+   "alt": "'Cordelia' share card. From \"Road Apples\" (1991). 76 times played live, with a chart of plays by year. Live debut: Jun 30, 1989. Latest: Jul 5, 2007. Fan-ranked Number Nineteen, The Tragically Hip Top Forty Countdown."
+  },
+  "country-day": {
+   "file": "assets-optimized/og/song/country-day-43280d9180.jpg",
+   "alt": "'Country Day' share card. From \"We Are the Same\" (2009). 8 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Nov 30, 2009. Fan-ranked Number One Hundred Eight, Full 169 Fan Vote."
+  },
+  "courage-for-hugh-maclennan": {
+   "file": "assets-optimized/og/song/courage-for-hugh-maclennan-32c256f3d1.jpg",
+   "alt": "'Courage (For Hugh MacLennan)' share card. From \"Fully Completely\" (1992). 650 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Aug 20, 2016. Fan-ranked Number Ten, The Tragically Hip Top Forty Countdown."
+  },
+  "crack-my-spine-like-a-whip": {
+   "file": "assets-optimized/og/song/crack-my-spine-like-a-whip-54b5ac461f.jpg",
+   "alt": "'Crack My Spine Like a Whip' share card. From \"Saskadelphia\" (2021). 15 times played live, with a chart of plays by year. Live debut: Jun 30, 1989. Latest: Nov 24, 1991."
+  },
+  "dare-devil-reprise": {
+   "file": "assets-optimized/og/song/dare-devil-reprise-53c342ff58.jpg",
+   "alt": "'Dare Devil (Reprise)' share card. No live performances on record."
+  },
+  "daredevil": {
+   "file": "assets-optimized/og/song/daredevil-d8e01e4280.jpg",
+   "alt": "'Daredevil' share card. From \"Day for Night\" (1994). 198 times played live, with a chart of plays by year. Live debut: Jul 1, 1994. Latest: Aug 16, 2016. Fan-ranked Number Eighty-Six, Full 169 Fan Vote."
+  },
+  "dont-wake-daddy": {
+   "file": "assets-optimized/og/song/dont-wake-daddy-6b69d4e14b.jpg",
+   "alt": "'Don't Wake Daddy' share card. From \"Trouble at the Henhouse\" (1996). 147 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: Aug 16, 2016. Fan-ranked Number Forty-One, Full 169 Fan Vote."
+  },
+  "done-and-done": {
+   "file": "assets-optimized/og/song/done-and-done-c2f95cd4be.jpg",
+   "alt": "'Done and Done' share card. From \"Now for Plan A\" (2012). 1 time played live, with a chart of plays by year. Played on Nov 6, 2012. Fan-ranked Number One Hundred Twenty-Seven, Full 169 Fan Vote."
+  },
+  "eldorado": {
+   "file": "assets-optimized/og/song/eldorado-4d4e66d1e7.jpg",
+   "alt": "'Eldorado' share card. From \"Fully Completely\" (1992). 126 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Aug 16, 2016. Fan-ranked Number Forty-Four, Full 169 Fan Vote."
+  },
+  "emergency": {
+   "file": "assets-optimized/og/song/emergency-6b72bb53fe.jpg",
+   "alt": "'Emergency' share card. From \"Day for Night\" (1994). 1 time played live, with a chart of plays by year. Played on Dec 9, 1993. Fan-ranked Number One Hundred Thirty-Seven, Full 169 Fan Vote."
+  },
+  "emperor-penguin": {
+   "file": "assets-optimized/og/song/emperor-penguin-b72af3ec8a.jpg",
+   "alt": "'Emperor Penguin' share card. From \"Phantom Power\" (1998). 69 times played live, with a chart of plays by year. Live debut: Jul 2, 1998. Latest: Sep 14, 2009. Fan-ranked Number Thirty-Two, The Tragically Hip Top Forty Countdown."
+  },
+  "escape-is-at-hand-for-the-travellin-man": {
+   "file": "assets-optimized/og/song/escape-is-at-hand-for-the-travellin-man-01efedb5b8.jpg",
+   "alt": "'Escape Is at Hand for the Travellin' Man' share card. From \"Phantom Power\" (1998). 279 times played live, with a chart of plays by year. Live debut: May 7, 1996. Latest: Aug 16, 2016. Fan-ranked Number Fourteen, The Tragically Hip Top Forty Countdown."
+  },
+  "evelyn": {
+   "file": "assets-optimized/og/song/evelyn-432554cb6e.jpg",
+   "alt": "'Evelyn' share card. From \"The Tragically Hip\" (1987). 12 times played live, with a chart of plays by year. Live debut: Feb 27, 1985. Latest: Sep 10, 1991. Fan-ranked Number One Hundred Forty-One, Full 169 Fan Vote."
+  },
+  "everytime-you-go": {
+   "file": "assets-optimized/og/song/everytime-you-go-7d7c66aa15.jpg",
+   "alt": "'Everytime You Go' share card. From \"Up to Here\" (1989). 60 times played live, with a chart of plays by year. Live debut: Jul 15, 1988. Latest: Jun 25, 2004. Fan-ranked Number Ninety-Four, Full 169 Fan Vote."
+  },
+  "family-band": {
+   "file": "assets-optimized/og/song/family-band-d82b061137.jpg",
+   "alt": "'Family Band' share card. From \"World Container\" (2006). 181 times played live, with a chart of plays by year. Live debut: Oct 15, 2006. Latest: Aug 16, 2016. Fan-ranked Number One Hundred Three, Full 169 Fan Vote."
+  },
+  "fiddlers-green": {
+   "file": "assets-optimized/og/song/fiddlers-green-fdf33d751b.jpg",
+   "alt": "'Fiddler's Green' share card. From \"Road Apples\" (1991). 93 times played live, with a chart of plays by year. Live debut: Oct 28, 2006. Latest: Aug 20, 2016. Fan-ranked Number Nine, The Tragically Hip Top Forty Countdown."
+  },
+  "fifty-mission-cap": {
+   "file": "assets-optimized/og/song/fifty-mission-cap-3c9c0aadcf.jpg",
+   "alt": "'Fifty Mission Cap' share card. From \"Fully Completely\" (1992). 227 times played live, with a chart of plays by year. Live debut: Dec 16, 1991. Latest: Aug 20, 2016. Fan-ranked Number Twenty, The Tragically Hip Top Forty Countdown."
+  },
+  "fight": {
+   "file": "assets-optimized/og/song/fight-39ceada28c.jpg",
+   "alt": "'Fight' share card. From \"Road Apples\" (1991). 51 times played live, with a chart of plays by year. Live debut: Jun 30, 1989. Latest: Aug 27, 1999. Fan-ranked Number Sixty-Eight, Full 169 Fan Vote."
+  },
+  "fire-in-the-hole": {
+   "file": "assets-optimized/og/song/fire-in-the-hole-e44a7a4219.jpg",
+   "alt": "'Fire in the Hole' share card. From \"Day for Night\" (1994). 347 times played live, with a chart of plays by year. Live debut: Jul 1, 1994. Latest: Oct 2, 2015. Fan-ranked Number Seventy-Eight, Full 169 Fan Vote."
+  },
+  "fireworks": {
+   "file": "assets-optimized/og/song/fireworks-012f467b9d.jpg",
+   "alt": "'Fireworks' share card. From \"Phantom Power\" (1998). 415 times played live, with a chart of plays by year. Live debut: May 1, 1997. Latest: Aug 20, 2016. Fan-ranked Number Fifteen, The Tragically Hip Top Forty Countdown."
+  },
+  "flamenco": {
+   "file": "assets-optimized/og/song/flamenco-7a0f7d1314.jpg",
+   "alt": "'Flamenco' share card. From \"Trouble at the Henhouse\" (1996). 187 times played live, with a chart of plays by year. Live debut: Jul 22, 1995. Latest: Aug 18, 2016. Fan-ranked Number Twenty-Seven, The Tragically Hip Top Forty Countdown."
+  },
+  "fly": {
+   "file": "assets-optimized/og/song/fly-026bce54ea.jpg",
+   "alt": "'Fly' share card. From \"World Container\" (2006). 34 times played live, with a chart of plays by year. Live debut: May 26, 2006. Latest: Oct 24, 2007. Fan-ranked Number One Hundred Fifteen, Full 169 Fan Vote."
+  },
+  "forest-edge": {
+   "file": "assets-optimized/og/song/forest-edge-d1425c960d.jpg",
+   "alt": "'Forest Edge' share card. From \"In Violet Light\" (2002). No live performances on record."
+  },
+  "freak-turbulence": {
+   "file": "assets-optimized/og/song/freak-turbulence-f6e0f01170.jpg",
+   "alt": "'Freak Turbulence' share card. From \"Music @ Work\" (2000). 52 times played live, with a chart of plays by year. Live debut: Jan 1, 2000. Latest: Oct 21, 2004. Fan-ranked Number One Hundred Twenty-Four, Full 169 Fan Vote."
+  },
+  "frozen-in-my-tracks": {
+   "file": "assets-optimized/og/song/frozen-in-my-tracks-9112dfe786.jpg",
+   "alt": "'Frozen in My Tracks' share card. From \"We Are the Same\" (2009). 48 times played live, with a chart of plays by year. Live debut: May 1, 2009. Latest: Dec 3, 2009. Fan-ranked Number One Hundred Sixty-Seven, Full 169 Fan Vote."
+  },
+  "fully-completely": {
+   "file": "assets-optimized/og/song/fully-completely-9f5d01652b.jpg",
+   "alt": "'Fully Completely' share card. From \"Fully Completely\" (1992). 588 times played live, with a chart of plays by year. Live debut: Dec 31, 1991. Latest: Aug 10, 2016. Fan-ranked Number Thirteen, The Tragically Hip Top Forty Countdown."
+  },
+  "get-back-again": {
+   "file": "assets-optimized/og/song/get-back-again-e7fc0d971d.jpg",
+   "alt": "'Get Back Again' share card. From \"Up to Here Box Set\" (2024). 10 times played live, with a chart of plays by year. Live debut: Mar 5, 1990. Latest: Feb 6, 1995. Fan-ranked Number Fifty-Nine, Full 169 Fan Vote."
+  },
+  "gift-shop": {
+   "file": "assets-optimized/og/song/gift-shop-0364a2e975.jpg",
+   "alt": "'Gift Shop' share card. From \"Trouble at the Henhouse\" (1996). 571 times played live, with a chart of plays by year. Live debut: Jun 24, 1995. Latest: Aug 20, 2016. Fan-ranked Number Twelve, The Tragically Hip Top Forty Countdown."
+  },
+  "goodnight-attawapiskat": {
+   "file": "assets-optimized/og/song/goodnight-attawapiskat-c2afc1c7a7.jpg",
+   "alt": "'Goodnight Attawapiskat' share card. From \"Now for Plan A\" (2012). 37 times played live, with a chart of plays by year. Live debut: Jun 28, 2012. Latest: Sep 10, 2013. Fan-ranked Number Eighty-Eight, Full 169 Fan Vote."
+  },
+  "goodnight-josephine": {
+   "file": "assets-optimized/og/song/goodnight-josephine-e57d72b1a8.jpg",
+   "alt": "'Goodnight Josephine' share card. From \"In Between Evolution\" (2004). 32 times played live, with a chart of plays by year. Live debut: Aug 1, 2003. Latest: May 15, 2009. Fan-ranked Number One Hundred Ten, Full 169 Fan Vote."
+  },
+  "grace-too": {
+   "file": "assets-optimized/og/song/grace-too-39caea05cd.jpg",
+   "alt": "'Grace, Too' share card. From \"Day for Night\" (1994). 719 times played live, with a chart of plays by year. Live debut: Dec 9, 1993. Latest: Aug 20, 2016. Fan-ranked Number One, The Tragically Hip Top Forty Countdown."
+  },
+  "greasy-jungle": {
+   "file": "assets-optimized/og/song/greasy-jungle-13eac24d43.jpg",
+   "alt": "'Greasy Jungle' share card. From \"Day for Night\" (1994). 152 times played live, with a chart of plays by year. Live debut: Jul 1, 1994. Latest: Aug 18, 2016. Fan-ranked Number Thirty-Six, The Tragically Hip Top Forty Countdown."
+  },
+  "great-soul": {
+   "file": "assets-optimized/og/song/great-soul-2c921b9cdc.jpg",
+   "alt": "'Great Soul' share card. From \"Man Machine Poem\" (2016). No live performances on record."
+  },
+  "gus-the-polar-bear-from-central-park": {
+   "file": "assets-optimized/og/song/gus-the-polar-bear-from-central-park-38fc071c10.jpg",
+   "alt": "'Gus: The Polar Bear from Central Park' share card. From \"In Between Evolution\" (2004). 126 times played live, with a chart of plays by year. Live debut: Oct 27, 2003. Latest: Aug 18, 2016. Fan-ranked Number Thirty-One, The Tragically Hip Top Forty Countdown."
+  },
+  "hailstone-hands-of-god": {
+   "file": "assets-optimized/og/song/hailstone-hands-of-god-71774e664d.jpg",
+   "alt": "'Hailstone Hands of God' share card. From \"Up to Here Box Set\" (2024). No live performances on record."
+  },
+  "heaven-is-a-better-place-today": {
+   "file": "assets-optimized/og/song/heaven-is-a-better-place-today-305152ec9c.jpg",
+   "alt": "'Heaven Is a Better Place Today' share card. From \"In Between Evolution\" (2004). 63 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Oct 8, 2014. Fan-ranked Number Ninety-Five, Full 169 Fan Vote."
+  },
+  "here-in-the-dark": {
+   "file": "assets-optimized/og/song/here-in-the-dark-60ce717207.jpg",
+   "alt": "'Here, in the Dark' share card. From \"Man Machine Poem\" (2016). No live performances on record. Fan-ranked Number One Hundred Forty-Eight, Full 169 Fan Vote."
+  },
+  "highway-girl": {
+   "file": "assets-optimized/og/song/highway-girl-e180137b85.jpg",
+   "alt": "'Highway Girl' share card. From \"The Tragically Hip\" (1987). 33 times played live, with a chart of plays by year. Live debut: Mar 4, 1987. Latest: Aug 4, 1991. Fan-ranked Number Sixty, Full 169 Fan Vote."
+  },
+  "honey-please": {
+   "file": "assets-optimized/og/song/honey-please-5d935f1e38.jpg",
+   "alt": "'Honey, Please' share card. From \"We Are the Same\" (2009). 7 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Oct 3, 2009. Fan-ranked Number One Hundred Sixty-Two, Full 169 Fan Vote."
+  },
+  "hot-mic": {
+   "file": "assets-optimized/og/song/hot-mic-801f7c6706.jpg",
+   "alt": "'Hot Mic' share card. From \"Man Machine Poem\" (2016). No live performances on record. Fan-ranked Number One Hundred Sixty, Full 169 Fan Vote."
+  },
+  "hush": {
+   "file": "assets-optimized/og/song/hush-dad0f4a8b1.jpg",
+   "alt": "'Hush' share card. From \"We Are the Same\" (2009). No live performances on record."
+  },
+  "ill-believe-in-you-or-ill-be-leaving-you-tonight": {
+   "file": "assets-optimized/og/song/ill-believe-in-you-or-ill-be-leaving-you-tonight-1aca91456f.jpg",
+   "alt": "'I'll Believe In You (Or I'll Be Leaving You Tonight)' share card. From \"Up to Here\" (1989). 43 times played live, with a chart of plays by year. Live debut: May 20, 1988. Latest: Jun 24, 1994. Fan-ranked Number Seventy, Full 169 Fan Vote."
+  },
+  "im-a-werewolf-baby": {
+   "file": "assets-optimized/og/song/im-a-werewolf-baby-93ec681d41.jpg",
+   "alt": "'I'm a Werewolf, Baby' share card. From \"The Tragically Hip\" (1987). 6 times played live, with a chart of plays by year. Live debut: Jul 2, 1987. Latest: Oct 30, 1991. Fan-ranked Number One Hundred Forty, Full 169 Fan Vote."
+  },
+  "if-new-orleans-is-beat": {
+   "file": "assets-optimized/og/song/if-new-orleans-is-beat-a7ee3ca95c.jpg",
+   "alt": "'If New Orleans Is Beat' share card. From \"In Between Evolution\" (2004). 16 times played live, with a chart of plays by year. Live debut: Oct 27, 2003. Latest: Aug 18, 2016. Fan-ranked Number One Hundred Nine, Full 169 Fan Vote."
+  },
+  "if-you-lived-here": {
+   "file": "assets-optimized/og/song/if-you-lived-here-a6396d1873.jpg",
+   "alt": "'If You Lived Here' share card. From \"Road Apples Box Set\" (2021). No live performances on record."
+  },
+  "impossibilium": {
+   "file": "assets-optimized/og/song/impossibilium-53e0ca9482.jpg",
+   "alt": "'Impossibilium' share card. From \"Day for Night\" (1994). 17 times played live, with a chart of plays by year. Live debut: Aug 4, 1994. Latest: Apr 29, 1995. Fan-ranked Number One Hundred Fifty-Six, Full 169 Fan Vote."
+  },
+  "in-a-world-possessed-by-the-human-mind": {
+   "file": "assets-optimized/og/song/in-a-world-possessed-by-the-human-mind-2fd74b2ad1.jpg",
+   "alt": "'In a World Possessed by the Human Mind' share card. From \"Man Machine Poem\" (2016). 15 times played live, with a chart of plays by year. Live debut: Jul 22, 2016. Latest: Aug 20, 2016. Fan-ranked Number Thirty-Seven, The Tragically Hip Top Forty Countdown."
+  },
+  "in-sarnia": {
+   "file": "assets-optimized/og/song/in-sarnia-2f93ee3a89.jpg",
+   "alt": "'In Sarnia' share card. From \"Man Machine Poem\" (2016). 4 times played live, with a chart of plays by year. Live debut: Jul 26, 2016. Latest: Aug 16, 2016. Fan-ranked Number One Hundred Two, Full 169 Fan Vote."
+  },
+  "in-view": {
+   "file": "assets-optimized/og/song/in-view-9dfaafa1e1.jpg",
+   "alt": "'In View' share card. From \"World Container\" (2006). 316 times played live, with a chart of plays by year. Live debut: Sep 9, 2006. Latest: Aug 16, 2016. Fan-ranked Number Forty-Six, Full 169 Fan Vote."
+  },
+  "inevitability-of-death": {
+   "file": "assets-optimized/og/song/inevitability-of-death-797283f89f.jpg",
+   "alt": "'Inevitability of Death' share card. From \"Day for Night\" (1994). 138 times played live, with a chart of plays by year. Live debut: Jun 24, 1994. Latest: Sep 11, 2009. Fan-ranked Number Sixty-Four, Full 169 Fan Vote."
+  },
+  "insomniacs": {
+   "file": "assets-optimized/og/song/insomniacs-c231909a1f.jpg",
+   "alt": "'Insomniacs' share card. From \"Phantom Power Box Set\" (2023). No live performances on record. Fan-ranked Number One Hundred Forty-Seven, Full 169 Fan Vote."
+  },
+  "it-cant-be-nashville-every-night": {
+   "file": "assets-optimized/og/song/it-cant-be-nashville-every-night-0f1383e633.jpg",
+   "alt": "'It Can't Be Nashville Every Night' share card. From \"In Between Evolution\" (2004). 90 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Aug 18, 2016. Fan-ranked Number Fifty-Two, Full 169 Fan Vote."
+  },
+  "its-a-good-life-if-you-dont-weaken": {
+   "file": "assets-optimized/og/song/its-a-good-life-if-you-dont-weaken-2d4ba659c2.jpg",
+   "alt": "'It's a Good Life If You Don't Weaken' share card. From \"In Violet Light\" (2002). 254 times played live, with a chart of plays by year. Live debut: Nov 11, 2001. Latest: Jun 6, 2021. Fan-ranked Number Eighteen, The Tragically Hip Top Forty Countdown."
+  },
+  "just-as-well": {
+   "file": "assets-optimized/og/song/just-as-well-6de7dcfb6e.jpg",
+   "alt": "'Just As Well' share card. From \"Saskadelphia\" (2021). 10 times played live, with a chart of plays by year. Live debut: Feb 23, 1990. Latest: Jun 30, 1990."
+  },
+  "killing-time": {
+   "file": "assets-optimized/og/song/killing-time-9b319bf965.jpg",
+   "alt": "'Killing Time' share card. From \"The Tragically Hip\" (1987). 4 times played live, with a chart of plays by year. Live debut: Mar 2, 1988. Latest: Jul 3, 1991. Fan-ranked Number One Hundred Forty-Nine, Full 169 Fan Vote."
+  },
+  "lake-fever": {
+   "file": "assets-optimized/og/song/lake-fever-926afc5b01.jpg",
+   "alt": "'Lake Fever' share card. From \"Music @ Work\" (2000). 152 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Aug 20, 2016. Fan-ranked Number Twenty-Four, The Tragically Hip Top Forty Countdown."
+  },
+  "last-american-exit": {
+   "file": "assets-optimized/og/song/last-american-exit-12a3f41f50.jpg",
+   "alt": "'Last American Exit' share card. From \"The Tragically Hip\" (1987). 17 times played live, with a chart of plays by year. Live debut: Mar 3, 1987. Latest: Dec 31, 1989. Fan-ranked Number Seventy-Four, Full 169 Fan Vote."
+  },
+  "last-night-i-dreamed-you-didnt-love-me": {
+   "file": "assets-optimized/og/song/last-night-i-dreamed-you-didnt-love-me-f389b61d5a.jpg",
+   "alt": "'Last Night I Dreamed You Didn't Love Me' share card. From \"World Container\" (2006). 12 times played live, with a chart of plays by year. Live debut: Oct 17, 2006. Latest: May 19, 2007. Fan-ranked Number One Hundred Forty-Four, Full 169 Fan Vote."
+  },
+  "leave": {
+   "file": "assets-optimized/og/song/leave-4819b57738.jpg",
+   "alt": "'Leave' share card. From \"In Violet Light\" (2002). 5 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Jun 27, 2002. Fan-ranked Number Seventy-Seven, Full 169 Fan Vote."
+  },
+  "lets-stay-engaged": {
+   "file": "assets-optimized/og/song/lets-stay-engaged-5d593a8584.jpg",
+   "alt": "'Let's Stay Engaged' share card. From \"Trouble at the Henhouse\" (1996). 25 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: Apr 16, 2007. Fan-ranked Number One Hundred Forty-Two, Full 169 Fan Vote."
+  },
+  "lionized": {
+   "file": "assets-optimized/og/song/lionized-3a101f77b3.jpg",
+   "alt": "'Lionized' share card. From \"Fully Completely\" (1992). 137 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Oct 10, 2015. Fan-ranked Number Ninety-Two, Full 169 Fan Vote."
+  },
+  "little-bones": {
+   "file": "assets-optimized/og/song/little-bones-3835afa00a.jpg",
+   "alt": "'Little Bones' share card. From \"Road Apples\" (1991). 450 times played live, with a chart of plays by year. Live debut: Nov 13, 1990. Latest: Aug 20, 2016. Fan-ranked Number Five, The Tragically Hip Top Forty Countdown."
+  },
+  "locked-in-the-trunk-of-a-car": {
+   "file": "assets-optimized/og/song/locked-in-the-trunk-of-a-car-f5be0da180.jpg",
+   "alt": "'Locked in the Trunk of a Car' share card. From \"Fully Completely\" (1992). 357 times played live, with a chart of plays by year. Live debut: Dec 31, 1991. Latest: Aug 20, 2016. Fan-ranked Number Eight, The Tragically Hip Top Forty Countdown."
+  },
+  "long-time-running": {
+   "file": "assets-optimized/og/song/long-time-running-5fc4a7f4ea.jpg",
+   "alt": "'Long Time Running' share card. From \"Road Apples\" (1991). 149 times played live, with a chart of plays by year. Live debut: May 23, 1990. Latest: Aug 14, 2016. Fan-ranked Number Twenty-Two, The Tragically Hip Top Forty Countdown."
+  },
+  "looking-for-a-place-to-happen": {
+   "file": "assets-optimized/og/song/looking-for-a-place-to-happen-d70fdf2b07.jpg",
+   "alt": "'Looking for a Place to Happen' share card. From \"Fully Completely\" (1992). 82 times played live, with a chart of plays by year. Live debut: May 24, 1991. Latest: Oct 10, 2015. Fan-ranked Number Thirty-Five, The Tragically Hip Top Forty Countdown."
+  },
+  "love-is-a-first": {
+   "file": "assets-optimized/og/song/love-is-a-first-d471f5932d.jpg",
+   "alt": "'Love Is a First' share card. From \"We Are the Same\" (2009). 121 times played live, with a chart of plays by year. Live debut: Apr 27, 2009. Latest: Sep 9, 2013. Fan-ranked Number One Hundred Forty-Five, Full 169 Fan Vote."
+  },
+  "luv-sic": {
+   "file": "assets-optimized/og/song/luv-sic-92409b291c.jpg",
+   "alt": "'Luv (Sic)' share card. From \"World Container\" (2006). 34 times played live, with a chart of plays by year. Live debut: Oct 17, 2006. Latest: Oct 19, 2007. Fan-ranked Number One Hundred Thirty-Four, Full 169 Fan Vote."
+  },
+  "machine": {
+   "file": "assets-optimized/og/song/machine-6c173cf293.jpg",
+   "alt": "'Machine' share card. From \"Man Machine Poem\" (2016). 15 times played live, with a chart of plays by year. Live debut: Jul 22, 2016. Latest: Aug 20, 2016. Fan-ranked Number Eighty, Full 169 Fan Vote."
+  },
+  "man": {
+   "file": "assets-optimized/og/song/man-bf8094f98f.jpg",
+   "alt": "'Man' share card. From \"Man Machine Poem\" (2016). No live performances on record. Fan-ranked Number One Hundred Fifty-Eight, Full 169 Fan Vote."
+  },
+  "man-machine-poem": {
+   "file": "assets-optimized/og/song/man-machine-poem-d727ae1707.jpg",
+   "alt": "'Man Machine Poem' share card. From \"Now for Plan A\" (2012). 91 times played live, with a chart of plays by year. Live debut: Feb 16, 2012. Latest: Aug 14, 2016. Fan-ranked Number One Hundred Six, Full 169 Fan Vote."
+  },
+  "mean-streak": {
+   "file": "assets-optimized/og/song/mean-streak-41ea667ad0.jpg",
+   "alt": "'Mean Streak' share card. From \"In Between Evolution\" (2004). 28 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Nov 20, 2004. Fan-ranked Number One Hundred Fifty-Three, Full 169 Fan Vote."
+  },
+  "membership": {
+   "file": "assets-optimized/og/song/membership-8034b9414c.jpg",
+   "alt": "'Membership' share card. From \"Phantom Power\" (1998). 115 times played live, with a chart of plays by year. Live debut: Apr 29, 1997. Latest: Aug 12, 2016. Fan-ranked Number Ninety-Seven, Full 169 Fan Vote."
+  },
+  "montreal": {
+   "file": "assets-optimized/og/song/montreal-195b68ba99.jpg",
+   "alt": "'Montreal' share card. From \"Saskadelphia\" (2021). 9 times played live, with a chart of plays by year. Live debut: Jul 6, 1991. Latest: Dec 7, 2000."
+  },
+  "morning-moon": {
+   "file": "assets-optimized/og/song/morning-moon-7ab2e3030d.jpg",
+   "alt": "'Morning Moon' share card. From \"We Are the Same\" (2009). 91 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Jul 30, 2016. Fan-ranked Number Seventy-Three, Full 169 Fan Vote."
+  },
+  "my-music-at-work": {
+   "file": "assets-optimized/og/song/my-music-at-work-5b1fa0d8e4.jpg",
+   "alt": "'My Music at Work' share card. From \"Music @ Work\" (2000). 458 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Aug 20, 2016. Fan-ranked Number Twenty-Six, The Tragically Hip Top Forty Countdown."
+  },
+  "mystery": {
+   "file": "assets-optimized/og/song/mystery-e1b9ca10fa.jpg",
+   "alt": "'Mystery' share card. From \"Phantom Power Box Set\" (2023). No live performances on record. Fan-ranked Number One Hundred Sixty-Three, Full 169 Fan Vote."
+  },
+  "nautical-disaster": {
+   "file": "assets-optimized/og/song/nautical-disaster-27c4393941.jpg",
+   "alt": "'Nautical Disaster' share card. From \"Day for Night\" (1994). 556 times played live, with a chart of plays by year. Live debut: Jul 16, 1993. Latest: Aug 20, 2016. Fan-ranked Number Seven, The Tragically Hip Top Forty Countdown."
+  },
+  "new-orleans-is-sinking": {
+   "file": "assets-optimized/og/song/new-orleans-is-sinking-bf9528075a.jpg",
+   "alt": "'New Orleans Is Sinking' share card. From \"Up to Here\" (1989). 880 times played live, with a chart of plays by year. Live debut: Mar 2, 1988. Latest: Aug 20, 2016. Fan-ranked Number Eleven, The Tragically Hip Top Forty Countdown."
+  },
+  "no-threat": {
+   "file": "assets-optimized/og/song/no-threat-839536b09b.jpg",
+   "alt": "'No Threat' share card. From \"Yer Favourites\" (2005). 10 times played live, with a chart of plays by year. Live debut: Nov 15, 1991. Latest: Jul 2, 2006. Fan-ranked Number Eighty-Five, Full 169 Fan Vote."
+  },
+  "not-necessary": {
+   "file": "assets-optimized/og/song/not-necessary-f7cc7dad2a.jpg",
+   "alt": "'Not Necessary' share card. From \"Saskadelphia\" (2021). No live performances on record."
+  },
+  "now-for-plan-a": {
+   "file": "assets-optimized/og/song/now-for-plan-a-edfd4ae367.jpg",
+   "alt": "'Now for Plan A' share card. From \"Now for Plan A\" (2012). 10 times played live, with a chart of plays by year. Live debut: Nov 3, 2012. Latest: Feb 14, 2013. Fan-ranked Number Fifty-Six, Full 169 Fan Vote."
+  },
+  "now-the-struggle-has-a-name": {
+   "file": "assets-optimized/og/song/now-the-struggle-has-a-name-b0e25536ac.jpg",
+   "alt": "'Now the Struggle Has a Name' share card. From \"We Are the Same\" (2009). 55 times played live, with a chart of plays by year. Live debut: Apr 27, 2009. Latest: Jul 30, 2016. Fan-ranked Number One Hundred Twenty-One, Full 169 Fan Vote."
+  },
+  "ocean-next": {
+   "file": "assets-optimized/og/song/ocean-next-6658b37afd.jpg",
+   "alt": "'Ocean Next' share card. From \"Man Machine Poem\" (2016). 6 times played live, with a chart of plays by year. Live debut: Feb 27, 2007. Latest: Aug 18, 2016. Fan-ranked Number One Hundred Thirty-Two, Full 169 Fan Vote."
+  },
+  "on-the-verge": {
+   "file": "assets-optimized/og/song/on-the-verge-7aebdc828c.jpg",
+   "alt": "'On the Verge' share card. From \"Road Apples\" (1991). 91 times played live, with a chart of plays by year. Live debut: Sep 30, 1988. Latest: Nov 17, 2012. Fan-ranked Number Ninety-One, Full 169 Fan Vote."
+  },
+  "one-night-in-copenhagen": {
+   "file": "assets-optimized/og/song/one-night-in-copenhagen-b3748fb165.jpg",
+   "alt": "'One Night in Copenhagen' share card. From \"In Between Evolution\" (2004). 18 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Dec 31, 2004. Fan-ranked Number One Hundred Sixty-Six, Full 169 Fan Vote."
+  },
+  "opiated": {
+   "file": "assets-optimized/og/song/opiated-ea8db714a1.jpg",
+   "alt": "'Opiated' share card. From \"Up to Here\" (1989). 69 times played live, with a chart of plays by year. Live debut: May 20, 1988. Latest: Aug 18, 2016. Fan-ranked Number Forty-Eight, Full 169 Fan Vote."
+  },
+  "ouch": {
+   "file": "assets-optimized/og/song/ouch-db751920b5.jpg",
+   "alt": "'Ouch' share card. From \"Saskadelphia\" (2021). 13 times played live, with a chart of plays by year. Live debut: May 23, 1990. Latest: Aug 29, 1991."
+  },
+  "pigeon-camera": {
+   "file": "assets-optimized/og/song/pigeon-camera-f555b271dc.jpg",
+   "alt": "'Pigeon Camera' share card. From \"Fully Completely\" (1992). 165 times played live, with a chart of plays by year. Live debut: Sep 13, 1992. Latest: Aug 8, 2016. Fan-ranked Number Twenty-Nine, The Tragically Hip Top Forty Countdown."
+  },
+  "poets": {
+   "file": "assets-optimized/og/song/poets-97569c1273.jpg",
+   "alt": "'Poets' share card. From \"Phantom Power\" (1998). 595 times played live, with a chart of plays by year. Live debut: May 29, 1996. Latest: Aug 20, 2016. Fan-ranked Number Twenty-Three, The Tragically Hip Top Forty Countdown."
+  },
+  "pretend": {
+   "file": "assets-optimized/og/song/pretend-71309a05d8.jpg",
+   "alt": "'Pretend' share card. From \"World Container\" (2006). 43 times played live, with a chart of plays by year. Live debut: May 24, 2006. Latest: Oct 27, 2007. Fan-ranked Number One Hundred Fifty, Full 169 Fan Vote."
+  },
+  "problem-bears": {
+   "file": "assets-optimized/og/song/problem-bears-fa365153a3.jpg",
+   "alt": "'Problem Bears' share card. From \"In Violet Light\" (2002). No live performances on record."
+  },
+  "put-it-off": {
+   "file": "assets-optimized/og/song/put-it-off-c505e749a8.jpg",
+   "alt": "'Put It Off' share card. From \"Trouble at the Henhouse\" (1996). 56 times played live, with a chart of plays by year. Live debut: May 6, 1996. Latest: Oct 10, 2007. Fan-ranked Number One Hundred Twenty-Nine, Full 169 Fan Vote."
+  },
+  "putting-down": {
+   "file": "assets-optimized/og/song/putting-down-1c6f79956f.jpg",
+   "alt": "'Putting Down' share card. From \"Music @ Work\" (2000). 136 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Aug 20, 2016. Fan-ranked Number One Hundred Forty-Three, Full 169 Fan Vote."
+  },
+  "queen-of-the-furrows": {
+   "file": "assets-optimized/og/song/queen-of-the-furrows-a062df1b1b.jpg",
+   "alt": "'Queen of the Furrows' share card. From \"We Are the Same\" (2009). 22 times played live, with a chart of plays by year. Live debut: Apr 28, 2009. Latest: Oct 28, 2009. Fan-ranked Number One Hundred Forty-Six, Full 169 Fan Vote."
+  },
+  "radio-show": {
+   "file": "assets-optimized/og/song/radio-show-16cf4a8ddb.jpg",
+   "alt": "'Radio Show' share card. From \"Fully Completely Box Set\" (2014). 2 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Apr 30, 1992. Fan-ranked Number One Hundred Twenty-Three, Full 169 Fan Vote."
+  },
+  "rain-hearts-and-fire": {
+   "file": "assets-optimized/og/song/rain-hearts-and-fire-ee9009dcce.jpg",
+   "alt": "'Rain, Hearts and Fire' share card. From \"Up to Here Box Set\" (2024). 1 time played live, with a chart of plays by year. Played on Jul 15, 1988."
+  },
+  "reformed-baptist-blues": {
+   "file": "assets-optimized/og/song/reformed-baptist-blues-d1036df275.jpg",
+   "alt": "'Reformed Baptist Blues' share card. From \"Saskadelphia\" (2021). 9 times played live, with a chart of plays by year. Live debut: Feb 27, 1985. Latest: Aug 9, 1991."
+  },
+  "save-the-planet": {
+   "file": "assets-optimized/og/song/save-the-planet-3d243f6163.jpg",
+   "alt": "'Save the Planet' share card. From \"Phantom Power\" (1998). 125 times played live, with a chart of plays by year. Live debut: May 10, 1997. Latest: Jun 10, 2009. Fan-ranked Number One Hundred Thirty-Six, Full 169 Fan Vote."
+  },
+  "scared": {
+   "file": "assets-optimized/og/song/scared-ce4b43a33e.jpg",
+   "alt": "'Scared' share card. From \"Day for Night\" (1994). 224 times played live, with a chart of plays by year. Live debut: Dec 9, 1993. Latest: Aug 20, 2016. Fan-ranked Number Twenty-Eight, The Tragically Hip Top Forty Countdown."
+  },
+  "sharks": {
+   "file": "assets-optimized/og/song/sharks-9054583d52.jpg",
+   "alt": "'Sharks' share card. From \"Music @ Work\" (2000). 16 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Oct 16, 2004. Fan-ranked Number One Hundred Twenty-Eight, Full 169 Fan Vote."
+  },
+  "she-didnt-know": {
+   "file": "assets-optimized/og/song/she-didnt-know-a9925e94f3.jpg",
+   "alt": "'She Didn't Know' share card. From \"Up to Here\" (1989). 41 times played live, with a chart of plays by year. Live debut: Mar 2, 1988. Latest: Aug 4, 1991. Fan-ranked Number One Hundred Five, Full 169 Fan Vote."
+  },
+  "shes-got-what-it-takes": {
+   "file": "assets-optimized/og/song/shes-got-what-it-takes-cf481ce5ff.jpg",
+   "alt": "'She's Got What It Takes' share card. From \"Up to Here Box Set\" (2024). 1 time played live, with a chart of plays by year. Played on Mar 24, 1988."
+  },
+  "sherpa": {
+   "file": "assets-optimized/og/song/sherpa-5e2d2dc7ef.jpg",
+   "alt": "'Sherpa' share card. From \"Trouble at the Henhouse\" (1996). 63 times played live, with a chart of plays by year. Live debut: Aug 10, 1995. Latest: Jun 30, 2007. Fan-ranked Number Eighty-Four, Full 169 Fan Vote."
+  },
+  "silver-jet": {
+   "file": "assets-optimized/og/song/silver-jet-261e212496.jpg",
+   "alt": "'Silver Jet' share card. From \"In Violet Light\" (2002). 97 times played live, with a chart of plays by year. Live debut: Nov 11, 2001. Latest: Nov 26, 2004. Fan-ranked Number Eighty-Three, Full 169 Fan Vote."
+  },
+  "skeleton-park": {
+   "file": "assets-optimized/og/song/skeleton-park-95e883a70c.jpg",
+   "alt": "'Skeleton Park' share card. From \"We Are the Same\" (2009). No live performances on record. Fan-ranked Number One Hundred Fifty-Seven, Full 169 Fan Vote."
+  },
+  "small-town-bringdown": {
+   "file": "assets-optimized/og/song/small-town-bringdown-1aa74f16fd.jpg",
+   "alt": "'Small Town Bringdown' share card. From \"The Tragically Hip\" (1987). 14 times played live, with a chart of plays by year. Live debut: Jul 1, 1985. Latest: Feb 23, 1990. Fan-ranked Number Ninety, Full 169 Fan Vote."
+  },
+  "so-hard-done-by": {
+   "file": "assets-optimized/og/song/so-hard-done-by-33f192e7b1.jpg",
+   "alt": "'So Hard Done By' share card. From \"Day for Night\" (1994). 93 times played live, with a chart of plays by year. Live debut: Dec 16, 1991. Latest: Aug 18, 2016. Fan-ranked Number Forty-Three, Full 169 Fan Vote."
+  },
+  "something-on": {
+   "file": "assets-optimized/og/song/something-on-f5210fd654.jpg",
+   "alt": "'Something On' share card. From \"Phantom Power\" (1998). 216 times played live, with a chart of plays by year. Live debut: Jul 2, 1998. Latest: Aug 20, 2016. Fan-ranked Number Sixty-One, Full 169 Fan Vote."
+  },
+  "songwriters-cabal": {
+   "file": "assets-optimized/og/song/songwriters-cabal-9069f97d65.jpg",
+   "alt": "'Songwriters Cabal' share card. From \"Phantom Power Box Set\" (2023). No live performances on record. Fan-ranked Number One Hundred Thirty-One, Full 169 Fan Vote."
+  },
+  "speed-river": {
+   "file": "assets-optimized/og/song/speed-river-473f3cc4ce.jpg",
+   "alt": "'Speed River' share card. From \"We Are the Same\" (2009). 11 times played live, with a chart of plays by year. Live debut: Apr 29, 2009. Latest: Jun 5, 2009. Fan-ranked Number One Hundred Sixty-One, Full 169 Fan Vote."
+  },
+  "springtime-in-vienna": {
+   "file": "assets-optimized/og/song/springtime-in-vienna-d8e90773e7.jpg",
+   "alt": "'Springtime in Vienna' share card. From \"Trouble at the Henhouse\" (1996). 457 times played live, with a chart of plays by year. Live debut: Jun 24, 1994. Latest: Aug 18, 2016. Fan-ranked Number Thirty-Eight, The Tragically Hip Top Forty Countdown."
+  },
+  "stay": {
+   "file": "assets-optimized/og/song/stay-a4af86c412.jpg",
+   "alt": "'Stay' share card. From \"Music @ Work\" (2000). 46 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Apr 24, 2009. Fan-ranked Number Sixty-Three, Full 169 Fan Vote."
+  },
+  "streets-ahead": {
+   "file": "assets-optimized/og/song/streets-ahead-6ce9224dfa.jpg",
+   "alt": "'Streets Ahead' share card. From \"Now for Plan A\" (2012). 82 times played live, with a chart of plays by year. Live debut: Jun 21, 2011. Latest: Aug 14, 2016."
+  },
+  "summers-killing-us": {
+   "file": "assets-optimized/og/song/summers-killing-us-ca252a6bbf.jpg",
+   "alt": "'Summer's Killing Us' share card. From \"In Between Evolution\" (2004). 74 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Aug 18, 2016. Fan-ranked Number One Hundred Twenty, Full 169 Fan Vote."
+  },
+  "take-forever": {
+   "file": "assets-optimized/og/song/take-forever-affde50f1f.jpg",
+   "alt": "'Take Forever' share card. From \"Now for Plan A\" (2012). 8 times played live, with a chart of plays by year. Live debut: Feb 16, 2012. Latest: Sep 7, 2013."
+  },
+  "the-bastard": {
+   "file": "assets-optimized/og/song/the-bastard-b009e8a443.jpg",
+   "alt": "'The Bastard' share card. From \"Music @ Work\" (2000). 14 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Oct 16, 2004. Fan-ranked Number One Hundred Nineteen, Full 169 Fan Vote."
+  },
+  "the-bear": {
+   "file": "assets-optimized/og/song/the-bear-d6fb8767c7.jpg",
+   "alt": "'The Bear' share card. From \"Music @ Work\" (2000). 4 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Jun 6, 2009. Fan-ranked Number One Hundred One, Full 169 Fan Vote."
+  },
+  "the-completists": {
+   "file": "assets-optimized/og/song/the-completists-ac773656ab.jpg",
+   "alt": "'The Completists' share card. From \"Music @ Work\" (2000). 51 times played live, with a chart of plays by year. Live debut: Jun 6, 2000. Latest: May 7, 2009. Fan-ranked Number One Hundred Sixteen, Full 169 Fan Vote."
+  },
+  "the-dark-canuck": {
+   "file": "assets-optimized/og/song/the-dark-canuck-84878309fe.jpg",
+   "alt": "'The Dark Canuck' share card. From \"In Violet Light\" (2002). 50 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Nov 30, 2009. Fan-ranked Number Forty-Nine, Full 169 Fan Vote."
+  },
+  "the-darkest-one": {
+   "file": "assets-optimized/og/song/the-darkest-one-ef9b07b9e2.jpg",
+   "alt": "'The Darkest One' share card. From \"In Violet Light\" (2002). 31 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Aug 1, 2003. Fan-ranked Number Thirty, The Tragically Hip Top Forty Countdown."
+  },
+  "the-depression-suite": {
+   "file": "assets-optimized/og/song/the-depression-suite-2e9b973e06.jpg",
+   "alt": "'The Depression Suite' share card. From \"We Are the Same\" (2009). 86 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Dec 4, 2009. Fan-ranked Number Thirty-Four, The Tragically Hip Top Forty Countdown."
+  },
+  "the-dire-wolf": {
+   "file": "assets-optimized/og/song/the-dire-wolf-0715c2d79f.jpg",
+   "alt": "'The Dire Wolf' share card. From \"In Violet Light\" (2002). 92 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Aug 12, 2016. Fan-ranked Number Forty-Two, Full 169 Fan Vote."
+  },
+  "the-drop-off": {
+   "file": "assets-optimized/og/song/the-drop-off-397c0c2b21.jpg",
+   "alt": "'The Drop-Off' share card. From \"World Container\" (2006). 93 times played live, with a chart of plays by year. Live debut: May 26, 2006. Latest: Dec 3, 2009. Fan-ranked Number One Hundred Fifty-Five, Full 169 Fan Vote."
+  },
+  "the-exact-feeling": {
+   "file": "assets-optimized/og/song/the-exact-feeling-105edaddd6.jpg",
+   "alt": "'The Exact Feeling' share card. From \"We Are the Same\" (2009). 20 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Jan 24, 2015. Fan-ranked Number One Hundred Sixty-Five, Full 169 Fan Vote."
+  },
+  "the-heart-of-the-melt": {
+   "file": "assets-optimized/og/song/the-heart-of-the-melt-fa23ae9b6b.jpg",
+   "alt": "'The Heart of the Melt' share card. From \"In Between Evolution\" (2004). 4 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Sep 26, 2004. Fan-ranked Number One Hundred Fifty-Nine, Full 169 Fan Vote."
+  },
+  "the-kids-dont-get-it": {
+   "file": "assets-optimized/og/song/the-kids-dont-get-it-abfe181c91.jpg",
+   "alt": "'The Kids Don't Get It' share card. From \"World Container\" (2006). 110 times played live, with a chart of plays by year. Live debut: Oct 15, 2006. Latest: Aug 1, 2016. Fan-ranked Number One Hundred Eleven, Full 169 Fan Vote."
+  },
+  "the-last-of-the-unplucked-gems": {
+   "file": "assets-optimized/og/song/the-last-of-the-unplucked-gems-3431e765be.jpg",
+   "alt": "'The Last of the Unplucked Gems' share card. From \"Road Apples\" (1991). 147 times played live, with a chart of plays by year. Live debut: Jul 30, 1991. Latest: Aug 20, 2016. Fan-ranked Number Sixty-Nine, Full 169 Fan Vote."
+  },
+  "the-last-recluse": {
+   "file": "assets-optimized/og/song/the-last-recluse-0fbef23fdc.jpg",
+   "alt": "'The Last Recluse' share card. From \"We Are the Same\" (2009). 69 times played live, with a chart of plays by year. Live debut: Apr 24, 2009. Latest: Jul 30, 2016. Fan-ranked Number One Hundred, Full 169 Fan Vote."
+  },
+  "the-lonely-end-of-the-rink": {
+   "file": "assets-optimized/og/song/the-lonely-end-of-the-rink-d277055a1b.jpg",
+   "alt": "'The Lonely End of the Rink' share card. From \"World Container\" (2006). 178 times played live, with a chart of plays by year. Live debut: Nov 17, 2004. Latest: Aug 16, 2016. Fan-ranked Number Seventy-Five, Full 169 Fan Vote."
+  },
+  "the-lookahead": {
+   "file": "assets-optimized/og/song/the-lookahead-4a76338167.jpg",
+   "alt": "'The Lookahead' share card. From \"Now for Plan A\" (2012). 35 times played live, with a chart of plays by year. Live debut: Feb 16, 2012. Latest: Aug 5, 2016. Fan-ranked Number One Hundred Thirteen, Full 169 Fan Vote."
+  },
+  "the-luxury": {
+   "file": "assets-optimized/og/song/the-luxury-478b9bc4ad.jpg",
+   "alt": "'The Luxury' share card. From \"Road Apples\" (1991). 71 times played live, with a chart of plays by year. Live debut: Mar 1, 1991. Latest: Aug 10, 2016. Fan-ranked Number Sixty-Seven, Full 169 Fan Vote."
+  },
+  "the-modern-spirit": {
+   "file": "assets-optimized/og/song/the-modern-spirit-a64aa3c0cb.jpg",
+   "alt": "'The Modern Spirit' share card. From \"Now for Plan A\" (2012). 12 times played live, with a chart of plays by year. Live debut: Sep 30, 2012. Latest: Jan 28, 2013. Fan-ranked Number One Hundred Fifty-Two, Full 169 Fan Vote."
+  },
+  "the-new-maybe": {
+   "file": "assets-optimized/og/song/the-new-maybe-3bdb1698df.jpg",
+   "alt": "'The New Maybe' share card. From \"Yer Favourites\" (2005). 2 times played live, with a chart of plays by year. Live debut: Dec 14, 2005. Latest: May 26, 2006. Fan-ranked Number One Hundred Twenty-Two, Full 169 Fan Vote."
+  },
+  "the-rules": {
+   "file": "assets-optimized/og/song/the-rules-e037eba4e6.jpg",
+   "alt": "'The Rules' share card. From \"Phantom Power\" (1998). 25 times played live, with a chart of plays by year. Live debut: Jul 21, 1998. Latest: Dec 7, 2012. Fan-ranked Number One Hundred Twenty-Six, Full 169 Fan Vote."
+  },
+  "the-wherewithal": {
+   "file": "assets-optimized/og/song/the-wherewithal-03d4f0f4ac.jpg",
+   "alt": "'The Wherewithal' share card. From \"Fully Completely\" (1992). 143 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Oct 10, 2015. Fan-ranked Number One Hundred Thirty-Nine, Full 169 Fan Vote."
+  },
+  "thompson-girl": {
+   "file": "assets-optimized/og/song/thompson-girl-5340afe674.jpg",
+   "alt": "'Thompson Girl' share card. From \"Phantom Power\" (1998). 90 times played live, with a chart of plays by year. Live debut: Jul 2, 1998. Latest: Feb 12, 2013. Fan-ranked Number Seventy-Nine, Full 169 Fan Vote."
+  },
+  "three-pistols": {
+   "file": "assets-optimized/og/song/three-pistols-d2d4e32e5d.jpg",
+   "alt": "'Three Pistols' share card. From \"Road Apples\" (1991). 131 times played live, with a chart of plays by year. Live debut: Jan 1, 1988. Latest: Aug 20, 2016. Fan-ranked Number Twenty-One, The Tragically Hip Top Forty Countdown."
+  },
+  "throwing-off-glass": {
+   "file": "assets-optimized/og/song/throwing-off-glass-2d2abcb4a6.jpg",
+   "alt": "'Throwing Off Glass' share card. From \"In Violet Light\" (2002). 26 times played live, with a chart of plays by year. Live debut: Dec 31, 2001. Latest: Aug 12, 2016. Fan-ranked Number Eighty-Seven, Full 169 Fan Vote."
+  },
+  "thugs": {
+   "file": "assets-optimized/og/song/thugs-ded23ef288.jpg",
+   "alt": "'Thugs' share card. From \"Day for Night\" (1994). 122 times played live, with a chart of plays by year. Live debut: Jul 16, 1993. Latest: Aug 3, 2016. Fan-ranked Number Forty-Seven, Full 169 Fan Vote."
+  },
+  "tiger-the-lion": {
+   "file": "assets-optimized/og/song/tiger-the-lion-b49d0ce5b6.jpg",
+   "alt": "'Tiger the Lion' share card. From \"Music @ Work\" (2000). 87 times played live, with a chart of plays by year. Live debut: Jun 16, 2000. Latest: Nov 25, 2009. Fan-ranked Number Sixty-Five, Full 169 Fan Vote."
+  },
+  "tired-as-fuck": {
+   "file": "assets-optimized/og/song/tired-as-fuck-5150dba156.jpg",
+   "alt": "'Tired as Fuck' share card. From \"Man Machine Poem\" (2016). 6 times played live, with a chart of plays by year. Live debut: Jul 22, 2016. Latest: Aug 20, 2016. Fan-ranked Number Fifty-Eight, Full 169 Fan Vote."
+  },
+  "titanic-terrarium": {
+   "file": "assets-optimized/og/song/titanic-terrarium-014371cd89.jpg",
+   "alt": "'Titanic Terrarium' share card. From \"Day for Night\" (1994). 52 times played live, with a chart of plays by year. Live debut: Oct 7, 1994. Latest: Apr 11, 2015. Fan-ranked Number One Hundred Thirty-Three, Full 169 Fan Vote."
+  },
+  "toronto-4": {
+   "file": "assets-optimized/og/song/toronto-4-3b9e4fc821.jpg",
+   "alt": "'Toronto #4' share card. From \"Music @ Work\" (2000). 30 times played live, with a chart of plays by year. Live debut: Jun 13, 2000. Latest: Aug 20, 2016. Fan-ranked Number One Hundred Fourteen, Full 169 Fan Vote."
+  },
+  "train-overnight": {
+   "file": "assets-optimized/og/song/train-overnight-5ce5c5c77e.jpg",
+   "alt": "'Train Overnight' share card. From \"Music @ Work\" (2000). 36 times played live, with a chart of plays by year. Live debut: Dec 29, 1999. Latest: Oct 21, 2004. Fan-ranked Number One Hundred Sixty-Four, Full 169 Fan Vote."
+  },
+  "trickle-down": {
+   "file": "assets-optimized/og/song/trickle-down-f803bd82ec.jpg",
+   "alt": "'Trickle Down' share card. From \"Up to Here\" (1989). 31 times played live, with a chart of plays by year. Live debut: Jun 30, 1989. Latest: Nov 14, 2002. Fan-ranked Number One Hundred Thirty, Full 169 Fan Vote."
+  },
+  "twist-my-arm": {
+   "file": "assets-optimized/og/song/twist-my-arm-7f7dd2b543.jpg",
+   "alt": "'Twist My Arm' share card. From \"Road Apples\" (1991). 226 times played live, with a chart of plays by year. Live debut: Nov 13, 1990. Latest: Aug 20, 2016. Fan-ranked Number Forty-Five, Full 169 Fan Vote."
+  },
+  "ultra-mundane": {
+   "file": "assets-optimized/og/song/ultra-mundane-638fb85942.jpg",
+   "alt": "'Ultra Mundane' share card. From \"In Violet Light\" (2002). No live performances on record."
+  },
+  "use-it-up": {
+   "file": "assets-optimized/og/song/use-it-up-e5e51dbed0.jpg",
+   "alt": "'Use It Up' share card. From \"In Violet Light\" (2002). 77 times played live, with a chart of plays by year. Live debut: Nov 11, 2001. Latest: Aug 12, 2016. Fan-ranked Number One Hundred Twenty-Five, Full 169 Fan Vote."
+  },
+  "vaccination-scar": {
+   "file": "assets-optimized/og/song/vaccination-scar-28bd017b2c.jpg",
+   "alt": "'Vaccination Scar' share card. From \"In Between Evolution\" (2004). 53 times played live, with a chart of plays by year. Live debut: Jun 22, 2004. Latest: Jul 16, 2005. Fan-ranked Number Sixty-Six, Full 169 Fan Vote."
+  },
+  "vapour-trails": {
+   "file": "assets-optimized/og/song/vapour-trails-a5f6e36dba.jpg",
+   "alt": "'Vapour Trails' share card. From \"Phantom Power\" (1998). 119 times played live, with a chart of plays by year. Live debut: May 3, 1997. Latest: Apr 10, 2015. Fan-ranked Number Seventy-Two, Full 169 Fan Vote."
+  },
+  "vegas-strip": {
+   "file": "assets-optimized/og/song/vegas-strip-974ae369ea.jpg",
+   "alt": "'Vegas Strip' share card. From \"Phantom Power Box Set\" (2023). No live performances on record. Fan-ranked Number One Hundred Sixty-Eight, Full 169 Fan Vote."
+  },
+  "wait-so-long": {
+   "file": "assets-optimized/og/song/wait-so-long-145a70e4df.jpg",
+   "alt": "'Wait So Long' share card. From \"Up to Here Box Set\" (2024). 1 time played live, with a chart of plays by year. Played on Sep 30, 1988."
+  },
+  "we-want-to-be-it": {
+   "file": "assets-optimized/og/song/we-want-to-be-it-101c79a3ba.jpg",
+   "alt": "'We Want to Be It' share card. From \"Now for Plan A\" (2012). 89 times played live, with a chart of plays by year. Live debut: Jun 21, 2011. Latest: Aug 14, 2016. Fan-ranked Number Forty, The Tragically Hip Top Forty Countdown."
+  },
+  "well-go-too": {
+   "file": "assets-optimized/og/song/well-go-too-a715713e80.jpg",
+   "alt": "'We'll Go Too' share card. From \"Fully Completely\" (1992). 110 times played live, with a chart of plays by year. Live debut: Apr 18, 1992. Latest: Jul 26, 2016. Fan-ranked Number One Hundred Fifty-Four, Full 169 Fan Vote."
+  },
+  "what-blue": {
+   "file": "assets-optimized/og/song/what-blue-ee625fef8f.jpg",
+   "alt": "'What Blue' share card. From \"Man Machine Poem\" (2016). 15 times played live, with a chart of plays by year. Live debut: Jul 22, 2016. Latest: Aug 20, 2016. Fan-ranked Number One Hundred Thirty-Five, Full 169 Fan Vote."
+  },
+  "wheat-kings": {
+   "file": "assets-optimized/og/song/wheat-kings-83ad8008ad.jpg",
+   "alt": "'Wheat Kings' share card. From \"Fully Completely\" (1992). 332 times played live, with a chart of plays by year. Live debut: Jul 27, 1991. Latest: Aug 20, 2016. Fan-ranked Number Seventeen, The Tragically Hip Top Forty Countdown."
+  },
+  "when-the-weight-comes-down": {
+   "file": "assets-optimized/og/song/when-the-weight-comes-down-e9efd92697.jpg",
+   "alt": "'When the Weight Comes Down' share card. From \"Up to Here\" (1989). 10 times played live, with a chart of plays by year. Live debut: Feb 19, 1988. Latest: Mar 30, 1990. Fan-ranked Number Ninety-Three, Full 169 Fan Vote."
+  },
+  "wild-mountain-honey": {
+   "file": "assets-optimized/og/song/wild-mountain-honey-24a6e359d2.jpg",
+   "alt": "'Wild Mountain Honey' share card. From \"Music @ Work\" (2000). 24 times played live, with a chart of plays by year. Live debut: Jun 13, 2000. Latest: Dec 23, 2000."
+  },
+  "world-container": {
+   "file": "assets-optimized/og/song/world-container-a9348c22db.jpg",
+   "alt": "'World Container' share card. From \"World Container\" (2006). 93 times played live, with a chart of plays by year. Live debut: Oct 15, 2006. Latest: Aug 1, 2016. Fan-ranked Number Eighty-Nine, Full 169 Fan Vote."
+  },
+  "yawning-or-snarling": {
+   "file": "assets-optimized/og/song/yawning-or-snarling-2e41f54f9f.jpg",
+   "alt": "'Yawning or Snarling' share card. From \"Day for Night\" (1994). 56 times played live, with a chart of plays by year. Live debut: Jul 1, 1994. Latest: Aug 1, 2016. Fan-ranked Number Fifty-Five, Full 169 Fan Vote."
+  },
+  "yer-not-the-ocean": {
+   "file": "assets-optimized/og/song/yer-not-the-ocean-e9349e22d0.jpg",
+   "alt": "'Yer Not the Ocean' share card. From \"World Container\" (2006). 187 times played live, with a chart of plays by year. Live debut: Jun 24, 2006. Latest: Aug 16, 2016. Fan-ranked Number Thirty-Nine, The Tragically Hip Top Forty Countdown."
+  },
+  "youre-everywhere": {
+   "file": "assets-optimized/og/song/youre-everywhere-4cc3f36536.jpg",
+   "alt": "'You're Everywhere' share card. From \"In Between Evolution\" (2004). 31 times played live, with a chart of plays by year. Live debut: Aug 1, 2003. Latest: Jun 17, 2006. Fan-ranked Number One Hundred Fifty-One, Full 169 Fan Vote."
+  }
+ }
+}

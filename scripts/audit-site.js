@@ -348,6 +348,13 @@ for (const f of pageFiles) {
     if (!html.includes(`property="${tag}"`)) problems.push(`${f}: missing ${tag}`);
   }
   if (!html.includes('name="twitter:card"')) problems.push(`${f}: missing twitter:card`);
+  // A preview picture on this site must exist, or the shared card shows a broken image
+  // (song cards come from scripts/build-og-cards.js and are renamed when they change)
+  {
+    const img = (html.match(/<meta property="og:image" content="([^"]+)">/) || [])[1] || '';
+    if (img.startsWith('https://thehiphandbook.tthpods.com/') && !fs.existsSync(path.join(ROOT, decodeURIComponent(img.slice('https://thehiphandbook.tthpods.com/'.length)))))
+      problems.push(`${f}: og:image ${img} has no file - run node scripts/build-og-cards.js, then build-seo-pages.js`);
+  }
   if (f.startsWith('song/') && !/<h1 id="spTitle">[^<$]+<\/h1>/.test(html)) problems.push(`${f}: song title missing from the page body`);
   if (canon !== (html.match(/<meta property="og:url" content="([^"]+)">/) || [])[1]) problems.push(`${f}: og:url differs from canonical`);
   // Brand guide: never 'Tragically Hip' without 'The' in the text a link preview shows

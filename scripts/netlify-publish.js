@@ -31,6 +31,7 @@ const LEAVE_OUT = new Set([
   // Take one off this list before a page fetches it, or it works locally and 404s live.
   'data/live-play-counts-merged.json', 'data/hipbase-play-counts.json', 'data/setlistfm-play-counts.json',
   'data/podcast-feed.json', 'data/podcast-shows.json', 'data/bird-links.json', 'data/unplucked-corrections.json',
+  'data/og-cards.json',
   // build and repo files
   'netlify.toml', 'package.json', 'package-lock.json', 'node_modules', '_site',
   // gitignored files that only exist on jD's Mac (never on Netlify, but this keeps a local run clean)
