@@ -2854,11 +2854,16 @@ catBtns.forEach((btn, idx) => {
 // rewrites of this page (see _redirects). On those paths - or with ?view=<key>
 // for local testing - the page shows only that feature under its own header.
 const FEATURE_VIEWS = {
+  // seo: the browser tab and search result title. The band's name leads; the song-title
+  // names (Poets, Family Band) stay as the page heading (jD, 2026-11-21, SEO audit SEO-08)
   'lyrics': { category: 'lyrics', path: '/lyrics', label: 'Lyrics Search', title: 'Poets',
+    seo: 'The Tragically Hip Lyrics Search - The Hip Handbook',
     desc: 'Search the lyrics of 188 songs by The Tragically Hip for a word or phrase you remember.' },
   'setlists': { category: 'setlists', path: '/setlists', label: 'Setlist Explorer', title: 'Family Band',
+    seo: 'The Tragically Hip Setlists, Every Live Show - The Hip Handbook',
     desc: 'Browse all 1,364 live shows and appearances from 1985 to 2022 - 1,092 with setlists - by song, venue, city, tour, or year. Setlists from setlist.fm.' },
   'top-40': { category: 'top40', path: '/top-40', label: 'Fan-Ranked Top 40', title: 'The Tragically Hip Top Forty Countdown',
+    seo: 'Fan-Ranked Top 40 Songs by The Tragically Hip',
     desc: 'The songs fans voted the best in the 2025 countdown, with every ranking from No. 1 to No. 169.' },
   'my-shows': { category: 'myshows', path: '/my-shows', label: 'My Concert History', title: 'In View',
     desc: 'Mark the shows by The Tragically Hip you were at and build yer own concert history.' },
@@ -2878,7 +2883,7 @@ if (activeView) {
   setText('pageSubtitle', activeView.label);
   setText('pageTitle', activeView.title);
   setText('pageDesc', activeView.desc);
-  document.title = activeView.label + ' (' + activeView.title + ') - The Hip Handbook';
+  document.title = activeView.seo || (activeView.label + ' (' + activeView.title + ') - The Hip Handbook');
   const canonical = document.querySelector('link[rel=canonical]');
   if (canonical) canonical.href = 'https://thehiphandbook.tthpods.com' + activeView.path;
 }

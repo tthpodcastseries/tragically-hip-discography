@@ -1,5 +1,21 @@
 # Changelog
 
+## v5.12
+**Emergency** - November 21, 2026
+jD's rulings on the November 2026 SEO audit (`audits/The Hip Handbook - SEO Audit - November 2026.md`, section 6), and a fix for a jump v5.11.6 made worse.
+- **No jump on /setlists, /lyrics, and /top-40:** v5.11.6 stopped the header shrinking, but that left the band photo at the foot of the page on screen while the list loaded, then pushed it down (layout shift 0.444 on /setlists, up from 0.362). Each of the three pages now names its view on the page, so its own section shows from the first paint and holds a screen's height while the list loads; the photo starts below the screen.
+- **Titles lead with the band** (jD, November 21, 2026; the song-title names stay as each page's heading): "The Hip Handbook - A Fan Archive for The Tragically Hip" (home), "The Tragically Hip Discography", "The Tragically Hip Lyrics Search", "The Tragically Hip Setlists, Every Live Show", "Fan-Ranked Top 40 Songs by The Tragically Hip", "The Tragically Hip Live Stats", "The Tragically Hip Tour Map, Every Live Show", and "Every Song by The Tragically Hip", each with " - The Hip Handbook" where it fits.
+- **Google Search Console:** the home page carries Google's verification line, so jD can verify the site and submit the sitemap.
+- **Maple leaf favicon as a file:** the 🍁 every page used was written inside the page, which Google can't use for search results. It is now `/favicon.svg`, linked from all 223 pages (jD, November 21, 2026: the maple leaf, not the TTH circle). `/favicon.ico` is unchanged.
+- **The membersHIP sign-up page is out of search** (jD): `/forum-invite` is marked noindex and left out of the sitemap (220 addresses). The Passport stays in.
+- **Band data:** the `dissolutionDate` is gone from the band's details on the Discography, Lyrics, Setlists, and Top 40 pages (jD: it should come out), and the band now points to its Wikipedia page there and on every song page.
+- **One name for the recordings:** "The Hip Archive", the archive's own title, on the song pages and their descriptions, the Songs list, Little Bones, the home page's Show of the Day, the tour map, and Yer Hip Links (it was "The Tragically Hip Archive" in some places and "the Hip Archive" in others).
+- **AI training crawlers blocked** in `robots.txt` (jD): GPTBot, ClaudeBot, CCBot, Google-Extended, Applebot-Extended, meta-externalagent, and Bytespider. Search engines, and assistants fetching a page because a person asked, are still welcome.
+- **No italics anywhere** (guide v8.1): photo credits on the Discography pages, the music video notes, and 14 smaller notes (no setlist yet, cover songs, date notes, empty On This Day, and the rest) are upright now.
+- **`llms.txt`:** the Passport is listed at `/my-shows`, its real address.
+- **How:** `scripts/build-seo-pages.js` (titles from `seo` in `FEATURE_VIEWS`, the view class on `<body>`, the band's Wikipedia link), `js/discography-app.js`, `css/discography.css`, the page titles in `index.html`, `discography.html`, `live-stats.html`, `tour-map.html`, and `song.html`, `forum-invite.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, `favicon.svg` (new, precached), every page's icon line and `scripts/build-podcasts.js`, the italic rules in five style sheets, `music-videos.html` and `js/home.js`. Generated pages rebuilt.
+- Cache bumped to `hh-v5.12`; footer label bumped to v5.12 (Emergency)
+
 ## v5.11.6
 **An Inch an Hour - Patch** - November 21, 2026
 Song pages get found. From the November 2026 SEO audit (`audits/The Hip Handbook - SEO Audit - November 2026.md`): nothing on the site linked to the 189 song pages except the Songs list, and nothing linked to the Songs list except the song pages, so search engines found them only through the sitemap (SEO-01).

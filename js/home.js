@@ -96,7 +96,7 @@ function httpsOnly(u) {
           const loc = [city, state, s.country].filter(Boolean).join(', ');
           const songCount = s.songCount;
           const tourInfo = s.tour ? ' (' + window.tthAlbumCase(s.tour) + ')' : '';
-          const noSetlist = !songCount ? ' <span style="color:var(--muted);font-style:italic;font-size:0.75rem;">(no setlist yet)</span>' : '';
+          const noSetlist = !songCount ? ' <span style="color:var(--muted);font-size:0.75rem;">(no setlist yet)</span>' : '';
           const hasVideo = !!s.video;
           // Only link when the tour map can actually show something (gigs span 1985 to 2022, audit DATA-04)
           const linkable = !!s.id && yr >= 1985 && yr <= 2022 && (songCount > 0 || hasVideo);
@@ -144,7 +144,7 @@ function httpsOnly(u) {
       const loc = [pick.city, pick.state, pick.country].filter(Boolean).join(', ');
       document.getElementById('sotdVenue').textContent = pick.venue || 'A show by The Hip';
       document.getElementById('sotdMeta').textContent = [new Date(+pp[2], +pp[1] - 1, +pp[0]).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' }), loc, pick.tour, songCount ? songCount + ' songs' : ''].filter(Boolean).join(' \u00b7 ');
-      document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from The Tragically Hip Archive.';
+      document.getElementById('sotdWhy').textContent = onThisDate.length ? 'Played on this day in ' + pp[2] + '.' : 'Today\'s pick from The Hip Archive.';
       document.getElementById('sotdPlay').href = 'tour-map.html#play=' + encodeURIComponent(pick.id);
     } else {
       document.getElementById('sotd').hidden = true;

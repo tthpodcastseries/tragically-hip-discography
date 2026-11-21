@@ -30,7 +30,7 @@
 - [Unplucked Gems](https://thehiphandbook.tthpods.com/unplucked-gems): known unreleased recordings, demos, outtakes, and alternate versions
 - [Video For New Recruits](https://thehiphandbook.tthpods.com/video-for-new-recruits): concerts on YouTube, sorted by era
 - [Music Videos](https://thehiphandbook.tthpods.com/music-videos): the official music videos
-- [Yer Hip Passport](https://thehiphandbook.tthpods.com/passport): a fan marks the shows they were at and sees their own concert history
+- [Yer Hip Passport](https://thehiphandbook.tthpods.com/my-shows): a fan marks the shows they were at and sees their own concert history
 - [Radio Show](https://thehiphandbook.tthpods.com/podcasts): every show from The Tragically Hip Podcast Series, with an episode guide for each
 - [Yer Hip Links](https://thehiphandbook.tthpods.com/links): fan communities and resources, picked by jD
 - [Privacy](https://thehiphandbook.tthpods.com/privacy): what the site keeps and where it goes

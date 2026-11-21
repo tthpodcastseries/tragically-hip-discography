@@ -234,7 +234,7 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
 .popup-venue { color: var(--white); font-weight: 500; margin: 2px 0; }
 .popup-city { color: var(--muted); font-size: 0.75rem; }
 .popup-tour { color: #d9d9d9; font-size: 0.7rem; font-weight: 500; margin-top: 4px; }
-.popup-date-note { color: var(--muted); font-size: 0.65rem; font-style: italic; margin-top: 2px; }
+.popup-date-note { color: var(--muted); font-size: 0.65rem; margin-top: 2px; }
 .popup-songs { color: var(--muted); font-size: 0.7rem; }
 .popup-link { display: inline-block; margin-top: 6px; color: var(--text); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; font-size: 0.7rem; font-weight: 500; }
 .popup-link:hover { text-decoration: underline; }
@@ -549,7 +549,7 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .ap-tracklist.open { display: block; }
-.ap-track-note { padding: 6px 16px; color: var(--muted); font-size: 0.7rem; font-style: italic; }
+.ap-track-note { padding: 6px 16px; color: var(--muted); font-size: 0.7rem; }
 .ap-track {
   display: flex;
   align-items: center;
@@ -885,7 +885,6 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
 .setlist-song-cover {
   color: var(--muted);
   font-size: 0.7rem;
-  font-style: italic;
 }
 .setlist-song-tape {
   opacity: 0.5;

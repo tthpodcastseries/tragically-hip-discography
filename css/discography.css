@@ -39,6 +39,16 @@ body.view-mode .section-line,
 body.view-mode #albumsGrid { display: none; }
 body.view-mode main { padding-top: 32px; }
 body.view-mode .section-header { margin-bottom: 0; }
+/* The generated /lyrics, /setlists and /top-40 pages name their view on <body>
+   (scripts/build-seo-pages.js): that section shows from the first paint and holds a
+   screen's height while its list loads, and the others stay hidden, so the band photo at
+   the foot of the page starts below the screen instead of jumping down (SEO audit SEO-06,
+   v5.12: layout shift 0.444 on /setlists). The script's inline styles say the same. */
+body.view-lyrics #lyricsSection,
+body.view-setlists #setlistSection,
+body.view-top-40 #top40Section { display: block; min-height: 100vh; }
+body.view-lyrics #top40Section,
+body.view-setlists #top40Section { display: none; }
 .stats-row { gap: 40px; margin-top: 32px; padding: 0; max-width: none; }
 .stat-num { font-size: 1.6rem; font-weight: 800; }
 .stat-lbl { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; }
@@ -154,7 +164,6 @@ body.view-mode .section-header { margin-bottom: 0; }
 .random-song-album {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   color: var(--muted);
-  font-style: italic;
   margin-bottom: 40px;
 }
 .random-song-streams {
@@ -541,11 +550,11 @@ main { max-width: 1440px; margin: 0 auto; padding: 56px 24px 80px; }
 .setlist-venue { font-size: 0.78rem; color: var(--text); }
 .setlist-city { font-size: 0.72rem; color: var(--muted); }
 .setlist-tour { display: inline-block; font-size: 0.62rem; color: var(--text); border: 1px solid var(--red); border-radius: 12px; padding: 1px 8px; margin-bottom: 6px; }
-.date-note { font-size: 0.68rem; font-style: italic; color: var(--muted2); margin-bottom: 6px; }
+.date-note { font-size: 0.68rem; color: var(--muted2); margin-bottom: 6px; }
 .setlist-songs { font-size: 0.75rem; color: var(--muted); line-height: 1.8; }
 .setlist-songs .encore-label { color: var(--text); font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 6px; }
 .setlist-songs .song-name { color: var(--text); }
-.setlist-songs .song-cover { color: var(--muted2); font-style: italic; }
+.setlist-songs .song-cover { color: var(--muted2); }
 .setlist-empty { text-align: center; color: var(--muted2); padding: 40px 20px; font-size: 0.85rem; }
 /* Only shown while the setlists load: hold a screen's worth of room so the photo at the
    bottom of the page doesn't sit in view and then jump away (audit PERF-02) */

@@ -63,7 +63,7 @@ function songDesc(song, plays, recs, origin) {
   if (plays.length) {
     const first = plays[0], last = plays[plays.length - 1];
     const live = plays.length === 1 ? 'played live once, on ' + fmtDate(first.iso) + '.' : 'played live ' + plural(plays.length, 'time', 'times') + ', ' + fmtDate(first.iso) + ' to ' + fmtDate(last.iso) + '.';
-    const recLong = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.' : ' Plays by year.';
+    const recLong = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + ' in The Hip Archive.' : ' Plays by year.';
     const recShort = recs.length ? ' Plays by year and ' + plural(recs.length, 'recording', 'recordings') + '.' : ' Plays by year.';
     return fit([t + ' by The Tragically Hip: ' + live + recLong, t + ': ' + live + recLong, t + ': ' + live + recShort, t + ': ' + live]);
   }
@@ -87,7 +87,7 @@ function songSummary(song, plays, recs, rows) {
   else bits.push('No live performances on record.');
   const releases = new Set(song.a.map(a => a[0])).size;
   if (releases) bits.push(releases === 1 ? 'On one official release.' : 'On ' + releases + ' official releases.');
-  if (recs.length) bits.push(plural(recs.length, 'recording', 'recordings') + ' in The Tragically Hip Archive.');
+  if (recs.length) bits.push(plural(recs.length, 'recording', 'recordings') + ' in The Hip Archive.');
   return bits.join(' ');
 }
 
@@ -96,8 +96,11 @@ function songSummary(song, plays, recs, rows) {
 // The band's own site, as linked on links.html. It was the Handbook's home page until
 // November 2026, which told search engines the Handbook was the band.
 const BAND_SITE = 'https://thehip.com';
+// The one outside page that says who the band is, so search engines tie the songs to the
+// right band (jD, 2026-11-21, SEO audit SEO-13). discography.html carries the same link.
+const BAND_WIKIPEDIA = 'https://en.wikipedia.org/wiki/The_Tragically_Hip';
 function songJsonLd(song, origin) {
-  const rec = { '@type': 'MusicRecording', name: song.t, byArtist: { '@type': 'MusicGroup', name: 'The Tragically Hip', url: BAND_SITE } };
+  const rec = { '@type': 'MusicRecording', name: song.t, byArtist: { '@type': 'MusicGroup', name: 'The Tragically Hip', url: BAND_SITE, sameAs: [BAND_WIKIPEDIA] } };
   if (origin) rec.inAlbum = { '@type': 'MusicAlbum', name: origin[0], datePublished: String(origin[1]) };
   const ld = { '@context': 'https://schema.org', '@type': 'MusicComposition', name: song.t, url: SITE + '/song/' + song.s, recordedAs: rec };
   return '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>';
@@ -201,13 +204,16 @@ function featurePages() {
   for (const key of ['lyrics', 'setlists', 'top-40']) {
     const v = views[key];
     if (!v) throw new Error('FEATURE_VIEWS has no ' + key);
-    const title = v.label + ' (' + v.title + ')' + CATEGORY_NOTE;
+    // FEATURE_VIEWS seo: the band's name first (jD, 2026-11-21, SEO audit SEO-08)
+    const title = v.seo || v.label + ' (' + v.title + ')' + CATEGORY_NOTE;
     let html = setHead(template, { title, desc: v.desc, url: SITE + v.path });
     // Start in view mode, so the Discography's search, stats and menu are hidden from the
-    // first paint instead of vanishing when the script runs (that jump scored 0.36 on
-    // /setlists in the November 2026 SEO audit, SEO-06). js/discography-app.js adds the
-    // same class, so nothing changes once it loads.
-    html = swap(html, /<body>/, '<body class="view-mode">', '<body>');
+    // first paint instead of vanishing when the script runs (SEO audit SEO-06). The second
+    // class (view-lyrics, view-setlists, view-top-40) shows this view's own section from the
+    // first paint and holds a screen's height open while it loads, so the photo at the foot
+    // of the page never starts on screen and then jumps (css/discography.css, v5.12).
+    // js/discography-app.js sets the same state, so nothing changes once it loads.
+    html = swap(html, /<body>/, '<body class="view-mode view-' + key + '">', '<body>');
     html = swap(html, /(<div class="subtitle" id="pageSubtitle">)[^<]*(<\/div>)/, (m, a, b) => a + escText(v.label) + b, 'pageSubtitle');
     html = swap(html, /(<h1 id="pageTitle">)[^<]*(<\/h1>)/, (m, a, b) => a + escText(v.title) + b, 'pageTitle');
     html = swap(html, /(<p class="header-desc" id="pageDesc">)[^<]*(<\/p>)/, (m, a, b) => a + escText(v.desc) + b, 'pageDesc');
