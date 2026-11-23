@@ -1,0 +1,28 @@
+name: Weekly Radio Show feed check
+
+# Weekly: compares the RedCircle feed with the saved copy in data/podcast-feed.json.
+# If an episode is new, gone, retitled, or redated, the run fails and GitHub emails jD,
+# with the list in the run's log. It changes nothing and commits nothing, so it costs no
+# Netlify credits. The fix is a refresh on jD's Mac: node scripts/build-podcasts.js --fetch,
+# then the next release (v5.12.2, November 23, 2026).
+on:
+  schedule:
+    # Mondays 10am Toronto (15:00 UTC), after the Monday On Shuffle episode goes up
+    - cron: '0 15 * * 1'
+  workflow_dispatch: {}
+
+# The job only reads the repo, so the token GitHub hands it can only read it.
+permissions:
+  contents: read
+
+# Actions are pinned to an exact commit (the version is in the comment), as in site-audit.yml.
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '22'
+      - name: Compare the RedCircle feed with the saved copy
+        run: node scripts/build-podcasts.js --fetch --check

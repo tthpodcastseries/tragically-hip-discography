@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.12.2
+**Emergency - Patch** - November 23, 2026
+The Radio Show catches up with RedCircle (jD, November 23, 2026). The pages had not been rebuilt since v5.7 (November 5), so the last three On Shuffle episodes were missing, and 23 listed episodes linked to RedCircle pages that no longer open them.
+- **Three new episodes:** The Tragically Hip On Shuffle - Live Stream for 'Thugs' (November 9), 'Locked in the Trunk of a Car' (November 16), and 'As Makeshift as We Are' (November 23). On Shuffle now lists 42.
+- **105 episodes are off the feed:** jD took them off RedCircle. 23 of them were on the pages (among them Interview Series 001 to 003, the Pete Van Dyk, 50 Mission, Dale Robertson, Nathan Astin, and Tribute Singers conversations, Yer Letters #1 to #3, three podLists, and the "March 25th 1995" podUMENTARY), and their links landed on RedCircle's show page, not the episode. They come off with the rest.
+- **168 titles follow RedCircle's new ones,** in house style ('Song Fifteen', quoted album titles, "It's A Good Life - Curtain Up").
+- **The conversations stay on the Interview Series:** jD retitled them "Introduce Yerself - <name>", which the sorting rules didn't know, so 12 would have gone back to their original shows. A new rule keeps every "Introduce Yerself - " episode on the Interview Series, filed by its RedCircle season under the show it was recorded on (jD's ruling, November 5). "Introduce Yerself: <name>" matches too (jD, November 23, 2026). The Interview Series now lists 15, and its About text calls the Fully & Completely ones "the Introduce Yerself conversations" (it said "the Hipstories").
+- **Weekly feed check:** `.github/workflows/podcast-feed-check.yml` (new) runs `build-podcasts.js --fetch --check` (new) every Monday at 10am Toronto. If an episode is new, gone, retitled, or redated, the run fails and GitHub emails jD with the list. It changes nothing and commits nothing.
+- **Feed guard:** `--fetch` refuses a feed with under 250 episodes (it was 300, and the feed now has 280).
+- **How:** `scripts/build-podcasts.js`, `data/podcast-feed.json` (fetched), `data/podcast-shows.json`, `.github/workflows/podcast-feed-check.yml`, `CLAUDE.md` (the 60-day note now names all three workflows). `podcasts.html` and `podcasts/*.html` rebuilt.
+- Cache bumped to `hh-v5.12.2`; footer label bumped to v5.12.2 (Emergency - Patch)
+
 ## v5.12.1
 **Emergency - Patch** - November 21, 2026
 Every song has its own link preview (jD, November 21, 2026; SEO audit SEO-16). Shared on Facebook, Messenger, or iMessage, a song link used to show the same band photo as every other song. It now shows that song's own card: the title, the record it came from, times played live, plays by year, debut and latest, and the fan ranking.

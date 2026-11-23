@@ -1,10 +1,10 @@
 {
  "source": "https://feeds.redcircle.com/a01e8de3-1a04-4a44-ab9c-8fc6e3cb7474",
- "fetched": "2026-11-05",
+ "fetched": "2026-11-23",
  "episodes": [
   {
    "id": "5d7b9757-9b2c-423a-a9a5-838ce9362590",
-   "title": "The Tragically Hip EP",
+   "title": "Fully & Completely - \"The Tragically Hip\" EP",
    "date": "2018-05-21",
    "seconds": 2293,
    "season": "1",
@@ -12,7 +12,7 @@
   },
   {
    "id": "ea688d22-3c65-4cbe-8992-90984c847135",
-   "title": "Up to Here",
+   "title": "Fully & Completely - \"Up to Here\"",
    "date": "2018-06-04",
    "seconds": 3582,
    "season": "1",
@@ -20,7 +20,7 @@
   },
   {
    "id": "281abdab-361b-4d98-bee8-b301d8df4116",
-   "title": "Road Apples",
+   "title": "Fully & Completely - \"Road Apples\"",
    "date": "2018-06-18",
    "seconds": 4082,
    "season": "1",
@@ -28,7 +28,7 @@
   },
   {
    "id": "e1e0cb88-517e-498b-a76d-9d6d3016cfa1",
-   "title": "Fully Completely",
+   "title": "Fully & Completely - \"Fully Completely\"",
    "date": "2018-07-02",
    "seconds": 5289,
    "season": "1",
@@ -36,7 +36,7 @@
   },
   {
    "id": "eb29cf5d-f5cd-436a-83f0-833433a4b8d0",
-   "title": "Day for Night",
+   "title": "Fully & Completely - \"Day for Night\"",
    "date": "2018-07-16",
    "seconds": 6519,
    "season": "1",
@@ -44,7 +44,7 @@
   },
   {
    "id": "297c045a-f522-4c2b-b991-67dffef387e6",
-   "title": "Trouble at the Henhouse",
+   "title": "Fully & Completely - \"Trouble at the Henhouse\"",
    "date": "2018-07-30",
    "seconds": 6619,
    "season": "1",
@@ -52,7 +52,7 @@
   },
   {
    "id": "3fe3f1ef-fc8b-4b78-970c-cf42a9415de2",
-   "title": "Hipstories - Eric Alper & Live Between Us",
+   "title": "Introduce Yerself - Eric Alper",
    "date": "2018-08-13",
    "seconds": 5440,
    "season": "1",
@@ -60,23 +60,15 @@
   },
   {
    "id": "7e5a1823-49a0-4c4d-9425-d28b21de8053",
-   "title": "Phantom Power",
+   "title": "Fully & Completely - \"Phantom Power\"",
    "date": "2018-08-27",
    "seconds": 5555,
    "season": "1",
    "type": "full"
   },
   {
-   "id": "f6fb6b0b-7992-4559-b6e0-2b9771dc2b16",
-   "title": "Yer Letters #1",
-   "date": "2018-09-01",
-   "seconds": 768,
-   "season": "1",
-   "type": "bonus"
-  },
-  {
    "id": "68d96d79-c75c-4442-9963-b3e37d7702c5",
-   "title": "Music @ Work",
+   "title": "Fully & Completely - \"Music @ Work\"",
    "date": "2018-09-10",
    "seconds": 6489,
    "season": "1",
@@ -84,23 +76,15 @@
   },
   {
    "id": "7c49bcf3-8f27-4367-b15f-62acf4e6c53f",
-   "title": "Coke Machine Glow",
+   "title": "Fully & Completely - \"Coke Machine Glow\"",
    "date": "2018-09-24",
    "seconds": 6834,
    "season": "1",
    "type": "full"
   },
   {
-   "id": "b2cdc6ac-125c-4405-8d95-611416afdd74",
-   "title": "Yer Letters #2",
-   "date": "2018-10-01",
-   "seconds": 1454,
-   "season": "1",
-   "type": "bonus"
-  },
-  {
    "id": "f1200a15-83f1-4694-a176-dd4fb73f3cdb",
-   "title": "In Violet Light",
+   "title": "Fully & Completely - \"In Violet Light\"",
    "date": "2018-10-08",
    "seconds": 7430,
    "season": "1",
@@ -116,23 +100,15 @@
   },
   {
    "id": "c9b77a46-0df7-4c32-a62c-20420a86cfd6",
-   "title": "Battle of the Nudes",
+   "title": "Fully & Completely - \"Battle of the Nudes\"",
    "date": "2018-10-22",
    "seconds": 4465,
    "season": "1",
    "type": "full"
   },
   {
-   "id": "ff7a36a1-b0cd-4703-a633-afadc590fb47",
-   "title": "Yer Letters #3",
-   "date": "2018-11-01",
-   "seconds": 1010,
-   "season": "1",
-   "type": "bonus"
-  },
-  {
    "id": "8d080ca8-a77e-4cc2-9bf9-c2a00b3d458c",
-   "title": "In Between Evolution",
+   "title": "Fully & Completely - \"In Between Evolution\"",
    "date": "2018-11-05",
    "seconds": 6503,
    "season": "1",
@@ -140,7 +116,7 @@
   },
   {
    "id": "49e9bf88-1605-4f82-8d34-a566e9f84919",
-   "title": "Hipstories - Stephen Brunt",
+   "title": "Introduce Yerself - Stephen Brunt",
    "date": "2018-12-03",
    "seconds": 4362,
    "season": "1",
@@ -148,7 +124,7 @@
   },
   {
    "id": "bc8cd8d9-0347-495b-bbed-3c02ded28317",
-   "title": "Hipstories - Michael Barclay",
+   "title": "Introduce Yerself - Michael Barclay",
    "date": "2018-12-17",
    "seconds": 4747,
    "season": "1",
@@ -164,7 +140,7 @@
   },
   {
    "id": "ab71b52e-022a-442e-bd70-d2880c52ea45",
-   "title": "Hipstories - Alan Cross",
+   "title": "Introduce Yerself - Alan Cross (Part One)",
    "date": "2019-01-02",
    "seconds": 4659,
    "season": "1",
@@ -172,23 +148,15 @@
   },
   {
    "id": "512bfe3f-62c8-4975-bac4-6778caaddae8",
-   "title": "Hipstories - Paul Langlois",
+   "title": "Introduce Yerself - Paul Langlois (Part One)",
    "date": "2019-01-15",
    "seconds": 5387,
    "season": "1",
    "type": "bonus"
   },
   {
-   "id": "70eeb4e1-8a39-49da-a348-94106b71716d",
-   "title": "Season Two Trailer",
-   "date": "2019-05-15",
-   "seconds": 32,
-   "season": "2",
-   "type": "full"
-  },
-  {
    "id": "60a8b238-61fb-45dc-9204-477df50501e3",
-   "title": "World Container",
+   "title": "Fully & Completely - \"World Container\"",
    "date": "2019-05-20",
    "seconds": 5245,
    "season": "2",
@@ -196,7 +164,7 @@
   },
   {
    "id": "fcdd1a23-3611-4cc7-94f9-9996111d0916",
-   "title": "We are the Same",
+   "title": "Fully & Completely - \"We Are the Same\"",
    "date": "2019-07-01",
    "seconds": 5915,
    "season": "2",
@@ -204,7 +172,7 @@
   },
   {
    "id": "e4515054-94d2-45c9-bd72-5583df36630a",
-   "title": "Hipstories - Jake Gold",
+   "title": "Introduce Yerself - Jake Gold",
    "date": "2019-08-01",
    "seconds": 6082,
    "season": "2",
@@ -212,7 +180,7 @@
   },
   {
    "id": "7b48d211-d287-42e8-947a-fa8912605658",
-   "title": "The Grand Bounce",
+   "title": "Fully & Completely - \"The Grand Bounce\"",
    "date": "2019-09-01",
    "seconds": 5592,
    "season": "2",
@@ -220,7 +188,7 @@
   },
   {
    "id": "e6330cb2-e94d-4ae0-81b6-431382adbe93",
-   "title": "Hipstories - Dave Bidini",
+   "title": "Introduce Yerself - Dave Bidini",
    "date": "2019-10-07",
    "seconds": 5095,
    "season": "2",
@@ -236,7 +204,7 @@
   },
   {
    "id": "d590b4a5-3418-45ec-a16b-2aca843e2be8",
-   "title": "Stripper's Union & CanCon",
+   "title": "Fully & Completely - Stripper's Union & CanCon",
    "date": "2020-01-06",
    "seconds": 6876,
    "season": "2",
@@ -244,23 +212,15 @@
   },
   {
    "id": "9db1c9d1-79bd-40c6-af7a-6d424b639247",
-   "title": "Now for Plan A",
+   "title": "Fully & Completely - \"Now for Plan A\"",
    "date": "2020-03-09",
    "seconds": 5251,
    "season": "2",
    "type": "full"
   },
   {
-   "id": "2c4537dc-bf4e-4935-8dfb-7926b86a706c",
-   "title": "Fully Update and More",
-   "date": "2020-05-04",
-   "seconds": 304,
-   "season": "2",
-   "type": "bonus"
-  },
-  {
    "id": "1c3f0b4e-cfd0-4498-bc32-07d7c6fd0b81",
-   "title": "And The Conquering Sun",
+   "title": "Fully & Completely - \"And the Conquering Sun\"",
    "date": "2020-07-01",
    "seconds": 3493,
    "season": "2",
@@ -268,57 +228,25 @@
   },
   {
    "id": "f8455b00-4201-4bfe-a4ff-12d3f98b036a",
-   "title": "Man, Machine, Poem",
+   "title": "Fully & Completely - \"Man Machine Poem\"",
    "date": "2020-09-24",
    "seconds": 4511,
    "season": "2",
    "type": "full"
   },
   {
-   "id": "ec03f6ee-a029-49ed-8a58-05a17db890ca",
-   "title": "Gordon Edgar Downie - February 6, 1964 - October 17, 2017",
-   "date": "2020-10-17",
-   "seconds": 201,
-   "season": "2",
-   "type": "full"
-  },
-  {
    "id": "4a9e50d1-7cdb-442a-95e4-1e4ff20a54c7",
-   "title": "Secret Path",
+   "title": "Fully & Completely - \"Secret Path\"",
    "date": "2021-01-19",
    "seconds": 3325,
    "season": "2",
    "type": "full"
   },
   {
-   "id": "75b8de8d-3cf1-49fe-8533-83db9d70f50a",
-   "title": "Strippers Union Announcement",
-   "date": "2021-04-03",
-   "seconds": 257,
-   "season": "2",
-   "type": "full"
-  },
-  {
    "id": "76481abb-0df0-43c3-bf2b-a8e347515151",
-   "title": "Strippers Union Interview",
+   "title": "Introduce Yerself - Craig Northey and Rob Baker",
    "date": "2021-04-12",
    "seconds": 2705,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "3bb4b824-5501-461f-8d29-759a4bde4e0c",
-   "title": "Survivor Pool Results and More!",
-   "date": "2021-11-11",
-   "seconds": 4189,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "2a4dd14d-f6f4-4a91-861c-69346af6ca6a",
-   "title": "Fully & Completely: Introducing Pod-List 3",
-   "date": "2022-02-18",
-   "seconds": 285,
    "season": "2",
    "type": "full"
   },
@@ -339,30 +267,6 @@
    "type": "full"
   },
   {
-   "id": "fe01ff02-fc4b-4ec0-8857-35108492a2bb",
-   "title": "Pod-List IV - Call for Submissions",
-   "date": "2023-02-14",
-   "seconds": 612,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "887f1277-079d-4d52-8f07-82969d27aa4c",
-   "title": "Pod List IV 911",
-   "date": "2023-03-30",
-   "seconds": 454,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "0d66b134-d353-4a53-9004-120a318a3ac6",
-   "title": "Pod List IV - 2000s and onward...",
-   "date": "2023-04-28",
-   "seconds": 3404,
-   "season": "2",
-   "type": "full"
-  },
-  {
    "id": "abcfe529-d43f-412b-b511-af441c8d8d28",
    "title": "In Memoriam - Gordon Lightfoot",
    "date": "2023-05-02",
@@ -371,16 +275,8 @@
    "type": "full"
   },
   {
-   "id": "67f17410-cb57-4938-ae97-9361f82c2a06",
-   "title": "Getting Hip to the Hip - Trailer",
-   "date": "2023-05-12",
-   "seconds": 56,
-   "season": "3",
-   "type": "trailer"
-  },
-  {
    "id": "e4342cef-dcdb-4e0f-b41a-21184edd13d3",
-   "title": "1. Straight outta Kingston!",
+   "title": "Getting Hip to The Hip - \"The Tragically Hip\" EP",
    "date": "2023-05-19",
    "seconds": 3302,
    "season": "3",
@@ -388,7 +284,7 @@
   },
   {
    "id": "2d7f734f-f960-4299-821c-868bf62de0c7",
-   "title": "2. That's Grammy shit!",
+   "title": "Getting Hip to The Hip - \"Up to Here\"",
    "date": "2023-05-22",
    "seconds": 4644,
    "season": "1",
@@ -396,7 +292,7 @@
   },
   {
    "id": "6a5c034b-0e8a-488b-b6b1-0e465a83ab45",
-   "title": "Talking with Gord Sinclair",
+   "title": "Introduce Yerself - Gord Sinclair",
    "date": "2023-05-26",
    "seconds": 4600,
    "season": "3",
@@ -404,7 +300,7 @@
   },
   {
    "id": "bb2d9334-a043-426f-a539-eeb52e51cc92",
-   "title": "3. Everyone wants to see the Lion Tamer!",
+   "title": "Getting Hip to The Hip - \"Road Apples\"",
    "date": "2023-05-30",
    "seconds": 5213,
    "season": "3",
@@ -412,23 +308,15 @@
   },
   {
    "id": "ec5974ae-d150-4102-94c9-4aefe2a3837e",
-   "title": "4. Equestrian Analogies!",
+   "title": "Getting Hip to The Hip - \"Fully Completely\"",
    "date": "2023-06-06",
    "seconds": 5553,
    "season": "3",
    "type": "full"
   },
   {
-   "id": "55ea65ea-9000-4bfa-bc35-d6931accc892",
-   "title": "Getting Hip to the Hip - An Evening for the Downie Wenjack Fund",
-   "date": "2023-06-09",
-   "seconds": 110,
-   "season": "",
-   "type": "trailer"
-  },
-  {
    "id": "aa883827-3276-4638-a5d4-3e164f2d62af",
-   "title": "5. The math works out!",
+   "title": "Getting Hip to The Hip - \"Day for Night\"",
    "date": "2023-06-13",
    "seconds": 6576,
    "season": "3",
@@ -436,7 +324,7 @@
   },
   {
    "id": "3794035b-d78a-4a47-ad76-09dd9874ffde",
-   "title": "Turn it up stupid; I'm on the fifteenth floor!",
+   "title": "Getting Hip to The Hip - \"Trouble at the Henhouse\"",
    "date": "2023-06-20",
    "seconds": 5434,
    "season": "3",
@@ -444,7 +332,7 @@
   },
   {
    "id": "02dc962b-28e7-46b9-8f94-36bdd5601a2a",
-   "title": "We've had the bases loaded, twice!",
+   "title": "Getting Hip to The Hip - \"Live Between Us\"",
    "date": "2023-06-27",
    "seconds": 4792,
    "season": "3",
@@ -452,39 +340,23 @@
   },
   {
    "id": "f0c944d7-1469-4589-889d-258c12cbe4d2",
-   "title": "Cougar or regular?",
+   "title": "Getting Hip to The Hip - \"Phantom Power\"",
    "date": "2023-07-04",
    "seconds": 6407,
    "season": "3",
    "type": "full"
   },
   {
-   "id": "0382dedf-daef-43a2-bbf7-2c988982a4a6",
-   "title": "Talking with Pete Van Dyk",
-   "date": "2023-07-07",
-   "seconds": 2354,
-   "season": "3",
-   "type": "full"
-  },
-  {
    "id": "4badea36-bb38-497b-9196-3ff9b07b5c68",
-   "title": "What did our car just turn into?",
+   "title": "Getting Hip to The Hip - \"Music @ Work\"",
    "date": "2023-07-11",
    "seconds": 6375,
    "season": "3",
    "type": "full"
   },
   {
-   "id": "8e2ebd86-1aed-4324-8d34-86c83207c21c",
-   "title": "Talking with 50 Mission",
-   "date": "2023-07-21",
-   "seconds": 2388,
-   "season": "3",
-   "type": "full"
-  },
-  {
    "id": "5beefeb2-124d-4650-a2c3-d3738c7c9685",
-   "title": "A complete and utter disregard for human life!",
+   "title": "Getting Hip to The Hip - \"In Between Evolution\"",
    "date": "2023-07-25",
    "seconds": 6403,
    "season": "3",
@@ -492,7 +364,7 @@
   },
   {
    "id": "f2a6e872-5fc2-4d49-86a4-6343bee2c8c7",
-   "title": "Like a pissed off buffalo!",
+   "title": "Getting Hip to The Hip - \"World Container\"",
    "date": "2023-08-01",
    "seconds": 6435,
    "season": "3",
@@ -500,7 +372,7 @@
   },
   {
    "id": "ebba9f31-af97-4a04-9666-6a49e8380c9b",
-   "title": "Talking with Paul Langlois",
+   "title": "Introduce Yerself - Paul Langlois (Part Two)",
    "date": "2023-08-06",
    "seconds": 3819,
    "season": "3",
@@ -508,7 +380,7 @@
   },
   {
    "id": "03e858d2-02b8-41e3-ba2c-76afcc123d66",
-   "title": "I didn't know that the crows in Portland spoke english!",
+   "title": "Getting Hip to The Hip - \"We Are the Same\"",
    "date": "2023-08-08",
    "seconds": 6488,
    "season": "3",
@@ -524,7 +396,7 @@
   },
   {
    "id": "2753a1b8-0c05-4203-88b7-58403c1cafc9",
-   "title": "Forged from something not of this earth",
+   "title": "Getting Hip to The Hip - \"Now for Plan A\"",
    "date": "2023-08-15",
    "seconds": 6034,
    "season": "3",
@@ -532,23 +404,15 @@
   },
   {
    "id": "10ca59db-9736-406e-843a-5365bb176b99",
-   "title": "You got a Bob Rock lock?",
+   "title": "Getting Hip to The Hip - \"Man Machine Poem\"",
    "date": "2023-08-22",
    "seconds": 4583,
    "season": "3",
    "type": "full"
   },
   {
-   "id": "48dfd302-966d-43fb-9ae9-a5876f49f24e",
-   "title": "Getting Hip to the Hip - Sean Cullen announcement",
-   "date": "2023-08-23",
-   "seconds": 457,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "de8a3c4c-2d18-4036-be6a-4be7fdc28654",
-   "title": "My brain was doing spirals!",
+   "title": "Getting Hip to The Hip - \"Saskadelphia\"",
    "date": "2023-08-29",
    "seconds": 3480,
    "season": "3",
@@ -556,7 +420,7 @@
   },
   {
    "id": "668eac73-6cdf-47b7-b88c-b6f44965c191",
-   "title": "Talking with Sarah Midanik from the DWF",
+   "title": "Introduce Yerself - Sarah Midanik",
    "date": "2023-08-30",
    "seconds": 2914,
    "season": "3",
@@ -564,7 +428,7 @@
   },
   {
    "id": "44de8fdc-0e6f-416f-b8f1-efa3cefe0df5",
-   "title": "The last hurrah!",
+   "title": "Getting Hip to The Hip - The Last Hurrah (Live)",
    "date": "2023-09-05",
    "seconds": 1992,
    "season": "3",
@@ -579,27 +443,11 @@
    "type": "bonus"
   },
   {
-   "id": "39c53cd4-62d3-488b-8aae-e75052e7753d",
-   "title": "For Gord...",
-   "date": "2023-10-17",
-   "seconds": 201,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "6c5ef06b-ec14-4f99-97ce-dc4f4eb43bd3",
    "title": "Phantom Power boxed set thoughts",
    "date": "2023-11-21",
    "seconds": 3527,
    "season": "3",
-   "type": "bonus"
-  },
-  {
-   "id": "64837767-8db5-4565-ab99-4afe563c356d",
-   "title": "Remember Montreal December 6th 1989",
-   "date": "2023-12-06",
-   "seconds": 228,
-   "season": "",
    "type": "bonus"
   },
   {
@@ -611,32 +459,8 @@
    "type": "full"
   },
   {
-   "id": "a37b4b37-380a-4f1b-94e2-e716c607ea30",
-   "title": "The R.E.M. Breakdown trailer",
-   "date": "2024-02-14",
-   "seconds": 46,
-   "season": "",
-   "type": "trailer"
-  },
-  {
-   "id": "b0f52375-5580-46f3-9eca-73ae85415a82",
-   "title": "Call for Submissions - Gord Downie Podcast Playlist",
-   "date": "2024-03-18",
-   "seconds": 100,
-   "season": "",
-   "type": "trailer"
-  },
-  {
-   "id": "3f3305fd-c444-420a-96b1-f005b7e48999",
-   "title": "Discovering Downie",
-   "date": "2024-04-18",
-   "seconds": 107,
-   "season": "4",
-   "type": "trailer"
-  },
-  {
    "id": "56dbd0c8-d5c6-4c0f-b422-64095cbe1e6b",
-   "title": "Coke Machine Glow part 1",
+   "title": "Discovering Downie - \"Coke Machine Glow\" Part One",
    "date": "2024-05-21",
    "seconds": 4351,
    "season": "4",
@@ -644,7 +468,7 @@
   },
   {
    "id": "7a9d2de7-efe8-460d-8d14-a69a92b445d8",
-   "title": "Coke Machine Glow part 2",
+   "title": "Discovering Downie - \"Coke Machine Glow\" Part Two",
    "date": "2024-05-28",
    "seconds": 3710,
    "season": "4",
@@ -652,7 +476,7 @@
   },
   {
    "id": "889d4f5d-f3b1-4c93-868a-844c0e77a78e",
-   "title": "Battle of the Nudes",
+   "title": "Discovering Downie - \"Battle of the Nudes\"",
    "date": "2024-06-04",
    "seconds": 5486,
    "season": "4",
@@ -660,7 +484,7 @@
   },
   {
    "id": "863477b9-2d73-43c5-a1cb-5293d02d9f4d",
-   "title": "The Grand Bounce",
+   "title": "Discovering Downie - \"The Grand Bounce\"",
    "date": "2024-06-11",
    "seconds": 6736,
    "season": "4",
@@ -668,23 +492,15 @@
   },
   {
    "id": "c7764cb5-e61c-4bd9-b94c-4cfb5abf1fcc",
-   "title": "And the Conquering Sun",
+   "title": "Discovering Downie - \"And the Conquering Sun\"",
    "date": "2024-06-18",
    "seconds": 4602,
    "season": "4",
    "type": "full"
   },
   {
-   "id": "acbe6ed1-17e7-4cdd-a188-3ebfcc7d033e",
-   "title": "PodList V - Odes to Gord",
-   "date": "2024-06-29",
-   "seconds": 2136,
-   "season": "4",
-   "type": "bonus"
-  },
-  {
    "id": "ea9f7174-809f-48ce-bb33-ce7468dda58a",
-   "title": "Introduce Yerself pt. 1",
+   "title": "Discovering Downie - \"Introduce Yerself\" Part One",
    "date": "2024-07-02",
    "seconds": 4257,
    "season": "4",
@@ -692,7 +508,7 @@
   },
   {
    "id": "2789c4bb-b353-4e3a-8131-2fa205eb711c",
-   "title": "Introduce Yerself pt. 2",
+   "title": "Discovering Downie - \"Introduce Yerself\" Part Two",
    "date": "2024-07-09",
    "seconds": 4710,
    "season": "4",
@@ -700,7 +516,7 @@
   },
   {
    "id": "38ff129e-9e03-47c0-89f8-451add8a8365",
-   "title": "Away is Mine",
+   "title": "Discovering Downie - \"Away Is Mine\"",
    "date": "2024-07-16",
    "seconds": 5225,
    "season": "4",
@@ -708,23 +524,15 @@
   },
   {
    "id": "20924c19-6c73-4138-8b43-4b70e0f62b21",
-   "title": "Lustre Parfait",
+   "title": "Discovering Downie - \"Lustre Parfait\"",
    "date": "2024-07-23",
    "seconds": 7506,
    "season": "4",
    "type": "full"
   },
   {
-   "id": "09b5219b-45e7-4297-923d-b5024bb8e41f",
-   "title": "Friday Bonus - Introduce Yerself: Dale Robertson",
-   "date": "2024-07-30",
-   "seconds": 1644,
-   "season": "4",
-   "type": "bonus"
-  },
-  {
    "id": "0920de0d-a61a-4b2b-8d84-46de6d8cae4d",
-   "title": "Friday Bonus - Introduce Yerself: Josh Finlayson",
+   "title": "Introduce Yerself - Josh Finlayson",
    "date": "2024-08-06",
    "seconds": 5532,
    "season": "4",
@@ -732,7 +540,7 @@
   },
   {
    "id": "2174f79e-2e80-49b2-83c9-368f320ebfe5",
-   "title": "Canadian Quiz",
+   "title": "Discovering Downie - Canadian Quiz",
    "date": "2024-08-13",
    "seconds": 1997,
    "season": "4",
@@ -740,31 +548,15 @@
   },
   {
    "id": "811a21c7-dd6e-4608-9cd9-9474d5718ed9",
-   "title": "Up to Here/Get Back Again",
+   "title": "Discovering Downie - \"Up to Here\" and 'Get Back Again'",
    "date": "2024-08-20",
    "seconds": 1854,
    "season": "4",
    "type": "bonus"
   },
   {
-   "id": "22d5c068-aeb1-4b7f-bf08-b38523805cef",
-   "title": "Introduce Yerself: Nathan Astin",
-   "date": "2024-08-27",
-   "seconds": 2139,
-   "season": "4",
-   "type": "bonus"
-  },
-  {
-   "id": "9386c5c5-c95a-4f4d-b902-d320f7849daa",
-   "title": "Introduce Yerself: Tribute Singers",
-   "date": "2024-09-03",
-   "seconds": 2336,
-   "season": "4",
-   "type": "bonus"
-  },
-  {
    "id": "53e6a180-1e20-49c1-a2aa-1489c9fc9573",
-   "title": "Introduce Yerself - Alan Cross",
+   "title": "Introduce Yerself - Alan Cross (Part Two)",
    "date": "2024-09-10",
    "seconds": 2712,
    "season": "4",
@@ -772,47 +564,23 @@
   },
   {
    "id": "f1e39272-73db-465b-87c8-c579da771878",
-   "title": "Epilogue",
+   "title": "Discovering Downie - Epilogue",
    "date": "2024-09-17",
    "seconds": 3575,
    "season": "4",
    "type": "full"
   },
   {
-   "id": "d34e95f0-d731-4c54-8eec-8ee90a19b782",
-   "title": "The Tragically Hip Top 40 Countdown",
-   "date": "2024-09-17",
-   "seconds": 343,
-   "season": "1",
-   "type": "trailer"
-  },
-  {
    "id": "9088fb64-f1b9-47b2-a0b8-758af2719b5c",
-   "title": "Bonus - No Dress Rehearsal",
+   "title": "Discovering Downie - Bonus: \"No Dress Rehearsal\"",
    "date": "2024-10-01",
    "seconds": 4317,
    "season": "4",
    "type": "full"
   },
   {
-   "id": "54d26cc4-d5da-4ccb-951d-a8b94811a3cf",
-   "title": "Gord",
-   "date": "2024-10-17",
-   "seconds": 201,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "14337a9f-021d-4de4-82a7-bf32f8a03cb3",
-   "title": "Call for Guests",
-   "date": "2024-10-21",
-   "seconds": 310,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "7a65abb0-72c1-46a9-8c48-127d058078d7",
-   "title": "The Road to the Top 40 - Episode Zero",
+   "title": "Road to The Top Forty - Episode Zero",
    "date": "2024-10-31",
    "seconds": 439,
    "season": "5",
@@ -820,7 +588,7 @@
   },
   {
    "id": "ac40e352-187f-41fe-95a4-08c811542ed3",
-   "title": "The Road to the Top 40 - Episode 1",
+   "title": "Road to The Top Forty - Episode One",
    "date": "2024-11-04",
    "seconds": 293,
    "season": "5",
@@ -828,7 +596,7 @@
   },
   {
    "id": "82436215-609b-494b-84b0-a0653217f46d",
-   "title": "The Road to the Top 40 - Episode 2",
+   "title": "Road to The Top Forty - Episode Two",
    "date": "2024-11-06",
    "seconds": 241,
    "season": "5",
@@ -836,7 +604,7 @@
   },
   {
    "id": "afef8652-e0d0-41e6-962f-f438b1198ae5",
-   "title": "The Road to the Top 40 - Episode 3",
+   "title": "Road to The Top Forty - Episode Three",
    "date": "2024-11-08",
    "seconds": 284,
    "season": "5",
@@ -844,7 +612,7 @@
   },
   {
    "id": "d846e518-ae76-4b1a-86dd-8acf703fb8bc",
-   "title": "The Road to the Top 40 - Episode 4",
+   "title": "Road to The Top Forty - Episode Four",
    "date": "2024-11-11",
    "seconds": 293,
    "season": "5",
@@ -852,7 +620,7 @@
   },
   {
    "id": "242716f7-4512-4eaa-b790-782b4d8c619a",
-   "title": "The Road to the Top 40 - Episode 5",
+   "title": "Road to The Top Forty - Episode Five",
    "date": "2024-11-13",
    "seconds": 360,
    "season": "5",
@@ -860,7 +628,7 @@
   },
   {
    "id": "27312d89-db8d-48af-b067-66c869cb3e51",
-   "title": "The Road to the Top 40 - Episode 6",
+   "title": "Road to The Top Forty - Episode Six",
    "date": "2024-11-15",
    "seconds": 340,
    "season": "5",
@@ -868,7 +636,7 @@
   },
   {
    "id": "b3fff4ca-8e31-4858-9662-d3697714562a",
-   "title": "The Road to the Top 40 - Episode 7",
+   "title": "Road to The Top Forty - Episode Seven",
    "date": "2024-11-18",
    "seconds": 311,
    "season": "5",
@@ -876,7 +644,7 @@
   },
   {
    "id": "0d7a5f8b-69b0-4ccc-9a73-b1c705a86b34",
-   "title": "The Road to the Top 40 - Episode 8",
+   "title": "Road to The Top Forty - Episode Eight",
    "date": "2024-11-20",
    "seconds": 347,
    "season": "5",
@@ -884,7 +652,7 @@
   },
   {
    "id": "c4a4c62c-f72e-4772-950b-f94c3f2272a9",
-   "title": "The Road to the Top 40 - Episode 9",
+   "title": "Road to The Top Forty - Episode Nine",
    "date": "2024-11-22",
    "seconds": 320,
    "season": "5",
@@ -892,7 +660,7 @@
   },
   {
    "id": "7d41afa7-285f-4415-b57d-bbf06435562e",
-   "title": "The Road to the Top 40 - Episode 10",
+   "title": "Road to The Top Forty - Episode Ten",
    "date": "2024-11-25",
    "seconds": 351,
    "season": "5",
@@ -900,7 +668,7 @@
   },
   {
    "id": "0d9596de-8f43-4400-ae74-60cd48ee3dde",
-   "title": "The Road to the Top 40 - Episode 11",
+   "title": "Road to The Top Forty - Episode Eleven",
    "date": "2024-11-27",
    "seconds": 381,
    "season": "5",
@@ -908,7 +676,7 @@
   },
   {
    "id": "dd5b5e6b-f49e-420a-865f-ee89a1e828db",
-   "title": "The Road to the Top 40 - Episode 12",
+   "title": "Road to The Top Forty - Episode Twelve",
    "date": "2024-11-29",
    "seconds": 410,
    "season": "5",
@@ -916,7 +684,7 @@
   },
   {
    "id": "f655ad48-df70-4626-9b09-b0e95b1fc5e6",
-   "title": "The Road to the Top 40 - Episode 13",
+   "title": "Road to The Top Forty - Episode Thirteen",
    "date": "2024-12-02",
    "seconds": 377,
    "season": "5",
@@ -924,7 +692,7 @@
   },
   {
    "id": "95a54fd0-4de0-432d-966d-b14fe13780e0",
-   "title": "The Road to the Top 40 - Episode 14",
+   "title": "Road to The Top Forty - Episode Fourteen",
    "date": "2024-12-04",
    "seconds": 363,
    "season": "5",
@@ -932,7 +700,7 @@
   },
   {
    "id": "517912f4-6cb0-4bd7-8895-d5d2591e2664",
-   "title": "The Road to the Top 40 - Episode 15",
+   "title": "Road to The Top Forty - Episode Fifteen",
    "date": "2024-12-06",
    "seconds": 373,
    "season": "15",
@@ -940,7 +708,7 @@
   },
   {
    "id": "75e65447-78b7-4079-bbc3-c4ce347a643f",
-   "title": "The Road to the Top 40 - Episode 16",
+   "title": "Road to The Top Forty - Episode Sixteen",
    "date": "2024-12-09",
    "seconds": 425,
    "season": "5",
@@ -948,7 +716,7 @@
   },
   {
    "id": "97da3ac7-41b3-4ab8-b7af-1d5de5de6a6e",
-   "title": "The Road to the Top 40 - Episode 17",
+   "title": "Road to The Top Forty - Episode Seventeen",
    "date": "2024-12-11",
    "seconds": 401,
    "season": "5",
@@ -956,7 +724,7 @@
   },
   {
    "id": "1ec6e9ff-6f09-42ef-989a-11169445fd68",
-   "title": "The Road to the Top 40 - Episode 18",
+   "title": "Road to The Top Forty - Episode Eighteen",
    "date": "2024-12-13",
    "seconds": 412,
    "season": "5",
@@ -964,7 +732,7 @@
   },
   {
    "id": "15519ff1-0bd3-44a0-a956-690a578c49ba",
-   "title": "The Road to the Top 40 - Episode 19",
+   "title": "Road to The Top Forty - Episode Nineteen",
    "date": "2024-12-16",
    "seconds": 401,
    "season": "5",
@@ -972,7 +740,7 @@
   },
   {
    "id": "427d03f5-dc7a-4bef-8327-1a7c0d937f3e",
-   "title": "The Road to the Top 40 - Episode 20",
+   "title": "Road to The Top Forty - Episode Twenty",
    "date": "2024-12-18",
    "seconds": 362,
    "season": "5",
@@ -980,7 +748,7 @@
   },
   {
    "id": "424785d6-1ba9-40f8-be1a-e5911eb02959",
-   "title": "The Road to the Top 40 - Episode 21",
+   "title": "Road to The Top Forty - Episode Twenty-One",
    "date": "2024-12-20",
    "seconds": 318,
    "season": "5",
@@ -988,7 +756,7 @@
   },
   {
    "id": "77041b0a-5f04-443b-9bb4-d2ec338839b8",
-   "title": "The Road to the Top 40 - Episode 22",
+   "title": "Road to The Top Forty - Episode Twenty-Two",
    "date": "2024-12-23",
    "seconds": 381,
    "season": "5",
@@ -996,7 +764,7 @@
   },
   {
    "id": "c582b98b-90ef-4ccc-8b98-6573f5e40d59",
-   "title": "The Road to the Top 40 - Episode 23",
+   "title": "Road to The Top Forty - Episode Twenty-Three",
    "date": "2024-12-25",
    "seconds": 420,
    "season": "5",
@@ -1004,7 +772,7 @@
   },
   {
    "id": "078ce7b2-f22a-4502-a336-13a699e81ae1",
-   "title": "The Road to the Top 40 - Episode 24",
+   "title": "Road to The Top Forty - Episode Twenty-Four",
    "date": "2024-12-27",
    "seconds": 416,
    "season": "5",
@@ -1012,7 +780,7 @@
   },
   {
    "id": "25d8e762-ec04-4e66-b4fb-06b002529c9b",
-   "title": "The Road to the Top 40 - Episode 25",
+   "title": "Road to The Top Forty - Episode Twenty-Five",
    "date": "2024-12-30",
    "seconds": 402,
    "season": "5",
@@ -1020,35 +788,11 @@
   },
   {
    "id": "f9f03802-fece-4406-9269-f9b61ef85404",
-   "title": "The Road to the Top 40 - Episode 26",
+   "title": "Road to The Top Forty - Episode Twenty-Six",
    "date": "2025-01-01",
    "seconds": 471,
    "season": "5",
    "type": "full"
-  },
-  {
-   "id": "18ee2c8f-fa58-4081-9588-37793432ef2f",
-   "title": "The Tragically Hip Top 40 Countdown is coming...",
-   "date": "2025-01-03",
-   "seconds": 47,
-   "season": "",
-   "type": "trailer"
-  },
-  {
-   "id": "6ff8b15b-faf2-4b73-9864-14dae730212e",
-   "title": "The Tragically Hip Top Forty Countdown - Round Table Kick Off!",
-   "date": "2025-01-04",
-   "seconds": 3394,
-   "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "c2ff7748-1ea0-4f7b-bca3-1630e13f1f95",
-   "title": "TTH Top 40 - Sneak Preview!",
-   "date": "2025-01-05",
-   "seconds": 317,
-   "season": "",
-   "type": "bonus"
   },
   {
    "id": "28be1bd4-c4ff-49e4-932c-deaf0fdff170",
@@ -1064,14 +808,6 @@
    "date": "2025-01-08",
    "seconds": 468,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "238fea05-66c3-4a63-aef5-08394ead4ab7",
-   "title": "The Tragically Hip Interview Series 001",
-   "date": "2025-01-10",
-   "seconds": 11295,
-   "season": "6",
    "type": "full"
   },
   {
@@ -1091,14 +827,6 @@
    "type": "full"
   },
   {
-   "id": "bc06fc18-7a7d-4b2f-a8e2-e9d6b2d48405",
-   "title": "The Tragically Hip Interview Series 002",
-   "date": "2025-01-17",
-   "seconds": 6929,
-   "season": "6",
-   "type": "full"
-  },
-  {
    "id": "680eab2e-9437-46a6-ad29-68ef8b035c62",
    "title": "The Tragically Hip Top Forty Countdown: Song Thirty-Eight - Lynn from Maine",
    "date": "2025-01-20",
@@ -1112,14 +840,6 @@
    "date": "2025-01-22",
    "seconds": 501,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "1a8595c7-f410-4e1b-b9a0-2a7bac3e19a8",
-   "title": "The Tragically Hip Interview Series 003",
-   "date": "2025-01-24",
-   "seconds": 7398,
-   "season": "6",
    "type": "full"
   },
   {
@@ -1139,14 +859,6 @@
    "type": "full"
   },
   {
-   "id": "f208c2a3-1777-4658-83b8-ab3c3531af76",
-   "title": "TTHTop40 - Update",
-   "date": "2025-01-31",
-   "seconds": 987,
-   "season": "",
-   "type": "bonus"
-  },
-  {
    "id": "7039feb7-a175-465a-b249-53742d565162",
    "title": "The Tragically Hip Top Forty Countdown: Song Thirty-Six - Dave from St. Louis",
    "date": "2025-02-03",
@@ -1160,22 +872,6 @@
    "date": "2025-02-05",
    "seconds": 371,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "0df895d0-1b83-4387-8277-9c924b8835c2",
-   "title": "Gord.",
-   "date": "2025-02-06",
-   "seconds": 201,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "7a16e6f4-61b8-4c12-9def-bd425e47b5f3",
-   "title": "Sunday, February 09",
-   "date": "2025-02-09",
-   "seconds": 466,
-   "season": "",
    "type": "full"
   },
   {
@@ -1195,28 +891,12 @@
    "type": "full"
   },
   {
-   "id": "40c58a15-699d-4bc3-ba3d-0f42af09dcdf",
-   "title": "Friday Upate - Sunday Evening Jam",
-   "date": "2025-02-14",
-   "seconds": 189,
-   "season": "",
-   "type": "trailer"
-  },
-  {
    "id": "bb57c673-7f83-4a98-9952-7cebf4c00555",
    "title": "Flashback #7",
    "date": "2025-02-19",
    "seconds": 613,
    "season": "7",
    "type": "full"
-  },
-  {
-   "id": "3c816447-86e2-4607-85a1-6217b111acb1",
-   "title": "Sunday Evening Jam - February 16th",
-   "date": "2025-02-21",
-   "seconds": 2475,
-   "season": "",
-   "type": "bonus"
   },
   {
    "id": "da42d432-71ee-4ee9-966b-86591df8ace0",
@@ -1259,14 +939,6 @@
    "type": "full"
   },
   {
-   "id": "ce9b2909-70a6-4245-bbb9-ac77f0d4dd36",
-   "title": "Sunday Evening Jam - Sunday March 9th",
-   "date": "2025-03-11",
-   "seconds": 2796,
-   "season": "",
-   "type": "bonus"
-  },
-  {
    "id": "eef9e7db-4844-4b43-b1c7-cda1ea0c9453",
    "title": "Flashback #10",
    "date": "2025-03-12",
@@ -1276,7 +948,7 @@
   },
   {
    "id": "8f1c138e-2e4d-4ff5-a6ac-9af1e5bb1f67",
-   "title": "podList - Holiday 2020",
+   "title": "podList: Holiday 2020",
    "date": "2025-03-14",
    "seconds": 4519,
    "season": "",
@@ -1284,7 +956,7 @@
   },
   {
    "id": "3fe7bbb2-6c97-4308-934e-0ea138a2a941",
-   "title": "The Tragically Hip Top Forty Countdown: Round Table #1 - Live Stream",
+   "title": "The Tragically Hip Top Forty Countdown: Round Table Three - Live Stream",
    "date": "2025-03-15",
    "seconds": 2843,
    "season": "",
@@ -1300,7 +972,7 @@
   },
   {
    "id": "4afe4ad7-9ea3-4ecb-becc-b17a84f2ee96",
-   "title": "TTHTop40 - 611 Addendum: The Gord Downie Interview",
+   "title": "The Tragically Hip Top Forty Countdown: Addendum - The Gord Downie Interview",
    "date": "2025-03-18",
    "seconds": 1706,
    "season": "7",
@@ -1316,19 +988,11 @@
   },
   {
    "id": "6a421410-ccc0-4e35-ac99-1eb95396657d",
-   "title": "podList II - May Long",
+   "title": "podList II: May Long",
    "date": "2025-03-21",
    "seconds": 3675,
    "season": "",
    "type": "bonus"
-  },
-  {
-   "id": "bafd728d-5823-4414-869e-8ab5ba597a3c",
-   "title": "Sunday Evening Jam - Live Stream March 16th",
-   "date": "2025-03-22",
-   "seconds": 4019,
-   "season": "7",
-   "type": "full"
   },
   {
    "id": "1d3eb36a-aad5-4682-b0a7-bb97f8f22087",
@@ -1363,14 +1027,6 @@
    "type": "bonus"
   },
   {
-   "id": "601481b4-f5b2-4635-b31a-44084b2c8670",
-   "title": "Sunday Evening Jam - Live Stream - March 23rd",
-   "date": "2025-03-29",
-   "seconds": 1967,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
    "id": "e1f0d6a3-1a6d-4cda-b0ff-e3e00a0a6ca1",
    "title": "The Tragically Hip Top Forty Countdown: Song Twenty-Eight - Terri from Nova Scotia",
    "date": "2025-03-31",
@@ -1385,14 +1041,6 @@
    "seconds": 353,
    "season": "7",
    "type": "full"
-  },
-  {
-   "id": "10582925-06c4-4726-a1e3-6f23c6ddd52c",
-   "title": "Sunday Evening Jam - March 30",
-   "date": "2025-04-05",
-   "seconds": 2611,
-   "season": "7",
-   "type": "bonus"
   },
   {
    "id": "6387e348-1b30-42db-872f-922a0e198aa9",
@@ -1411,14 +1059,6 @@
    "type": "full"
   },
   {
-   "id": "b3c4e014-560a-44e0-bb33-a7cd29dc050e",
-   "title": "Sunday Evening Jam - April 6th",
-   "date": "2025-04-12",
-   "seconds": 2366,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
    "id": "05476bdb-7ea2-4e2e-8f0a-b21427f6efa9",
    "title": "The Tragically Hip Top Forty Countdown: Song Twenty-Six - Alan from Federal Way",
    "date": "2025-04-14",
@@ -1427,34 +1067,10 @@
    "type": "full"
   },
   {
-   "id": "b4d7920c-39fa-4bec-839a-9fe3201b4232",
-   "title": "Flashback #15",
-   "date": "2025-04-16",
-   "seconds": 252,
-   "season": "7",
-   "type": "full"
-  },
-  {
    "id": "a6dab774-d7f9-4eac-babd-6cea5e2cbf9e",
    "title": "Flashback #15 *My Music at Work\"",
    "date": "2025-04-17",
    "seconds": 440,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "880e837c-3af0-45e3-a44f-00410649acfd",
-   "title": "podList SIX",
-   "date": "2025-04-18",
-   "seconds": 61,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "8dd9f6b9-734c-4899-a2cb-e2f635e399e4",
-   "title": "Sunday Evening Jam - Live Stream April 13th",
-   "date": "2025-04-19",
-   "seconds": 2067,
    "season": "",
    "type": "full"
   },
@@ -1475,14 +1091,6 @@
    "type": "full"
   },
   {
-   "id": "6c6a2373-2cb6-4c9c-b4da-b6e588a7015e",
-   "title": "Sunday Evening Jam - Live Stream April 20",
-   "date": "2025-04-25",
-   "seconds": 2169,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "276f7bc8-173f-4959-8884-0a768edc675e",
    "title": "The Tragically Hip Top Forty Countdown: Song Twenty-Four - Colin from Winnipeg",
    "date": "2025-04-28",
@@ -1496,14 +1104,6 @@
    "date": "2025-04-30",
    "seconds": 510,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "e5baeda7-b7ac-4c22-9e7f-0a3110c9b334",
-   "title": "Sunday Evening Jam - Live Stream April 27th",
-   "date": "2025-05-02",
-   "seconds": 2882,
-   "season": "",
    "type": "full"
   },
   {
@@ -1523,14 +1123,6 @@
    "type": "full"
   },
   {
-   "id": "69052005-5f9d-47f7-a039-ffdceb9e6368",
-   "title": "Sunday Evening Jam - Live Stream May 2nd",
-   "date": "2025-05-09",
-   "seconds": 1825,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "48dbbe68-b4dc-445d-a72a-ee24c8d72309",
    "title": "The Tragically Hip Top Forty Countdown: Song Twenty-Two - Sherry from Midland",
    "date": "2025-05-12",
@@ -1544,14 +1136,6 @@
    "date": "2025-05-14",
    "seconds": 392,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "ae382861-1f0b-4656-af65-d616f59c3700",
-   "title": "Music @ Work. Call for memories!",
-   "date": "2025-05-16",
-   "seconds": 117,
-   "season": "",
    "type": "full"
   },
   {
@@ -1571,26 +1155,10 @@
    "type": "full"
   },
   {
-   "id": "7fc1999d-98c1-4aff-8d58-8dc3bf0c7b30",
-   "title": "Sunday Evening Jam - Live Stream May 18th",
-   "date": "2025-05-23",
-   "seconds": 1926,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "6389aa1a-c5b3-4508-b6cb-eeca3eeb1187",
-   "title": "The Tragically Hip Top Forty Countdown: Round Table #2 - Live Stream",
+   "title": "The Tragically Hip Top Forty Countdown: Round Table Four - Live Stream",
    "date": "2025-05-28",
    "seconds": 3970,
-   "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "28f9edb9-bdfe-470c-8208-84734f25f8dd",
-   "title": "Sunday Evening Jam - Live Stream May 25th",
-   "date": "2025-05-30",
-   "seconds": 4658,
    "season": "7",
    "type": "full"
   },
@@ -1619,14 +1187,6 @@
    "type": "bonus"
   },
   {
-   "id": "15b7e13f-1670-43eb-9526-0ba83bc3bc2f",
-   "title": "Sunday Evening Jam - Live Stream Jake Gold AMA",
-   "date": "2025-06-07",
-   "seconds": 5440,
-   "season": "7",
-   "type": "full"
-  },
-  {
    "id": "7c7006a4-f9a9-439d-81ef-8e86cc5aa12f",
    "title": "The Tragically Hip Top Forty Countdown: Song Nineteen - Jeff from Belleville",
    "date": "2025-06-09",
@@ -1643,22 +1203,6 @@
    "type": "full"
   },
   {
-   "id": "5675febb-fb2e-4ac1-ba65-58e5d1f5b6b2",
-   "title": "Sunday Evening Jam - Live Stream June 8th",
-   "date": "2025-06-13",
-   "seconds": 3830,
-   "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "d66de112-685c-4d44-a1c3-82d1febc56ea",
-   "title": "The Tragically Hip Ultimate Superfan",
-   "date": "2025-06-15",
-   "seconds": 60,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
    "id": "3f40de48-db0b-4901-9655-136bb2147334",
    "title": "The Tragically Hip Top Forty Countdown: Song Eighteen - Claire from Ann Arbor",
    "date": "2025-06-16",
@@ -1671,14 +1215,6 @@
    "title": "Flashback #23",
    "date": "2025-06-18",
    "seconds": 612,
-   "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "2c89bbaa-6203-44a0-9867-13fb99bb904c",
-   "title": "Sunday Evening Jam - Live Stream June 15th",
-   "date": "2025-06-20",
-   "seconds": 2774,
    "season": "7",
    "type": "full"
   },
@@ -1699,30 +1235,6 @@
    "type": "full"
   },
   {
-   "id": "f882014b-a15c-4faf-be28-c1b2a4379e59",
-   "title": "Bonus Episode - Dante from Toronto",
-   "date": "2025-06-27",
-   "seconds": 2690,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
-   "id": "d7736695-57d4-4657-ab99-8b1bb32cf706",
-   "title": "Sunday Evening Jam - Live Stream June 22nd",
-   "date": "2025-06-28",
-   "seconds": 3339,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
-   "id": "0e366b7e-147d-40fe-8d77-fd33c4920838",
-   "title": "In Between Evolution turns 21",
-   "date": "2025-06-29",
-   "seconds": 6503,
-   "season": "7",
-   "type": "bonus"
-  },
-  {
    "id": "5a8763f4-d773-44b5-93a0-95d4e1e54d3b",
    "title": "The Tragically Hip Top Forty Countdown: Song Sixteen - Brent in Bakersfield",
    "date": "2025-06-30",
@@ -1739,24 +1251,8 @@
    "type": "full"
   },
   {
-   "id": "8a89670a-0eba-4081-b51b-909d0818ac69",
-   "title": "Coke Machine Glow - 24",
-   "date": "2025-07-03",
-   "seconds": 4351,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "edcad003-a416-45e3-9b70-b1fb59d248e8",
-   "title": "Sunday Evening Jam - Live Stream June 29th",
-   "date": "2025-07-04",
-   "seconds": 3988,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "61abccf3-e1b9-43de-8a38-f46f5c0ddddf",
-   "title": "The Tragically Hip Top Forty Countdown: Song 15 - Sara J from Buffalo",
+   "title": "The Tragically Hip Top Forty Countdown: Song Fifteen - Sara J from Buffalo",
    "date": "2025-07-07",
    "seconds": 2822,
    "season": "7",
@@ -1771,48 +1267,8 @@
    "type": "full"
   },
   {
-   "id": "ac037b7a-7697-4855-ae96-ccb3cfa58fe6",
-   "title": "Sunday Evening Jam - Live Stream July 6th",
-   "date": "2025-07-10",
-   "seconds": 2921,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "e3b2f925-3966-43fc-8fc8-125dc44157c0",
-   "title": "Sunday Evening Jam - Live Stream July 6h",
-   "date": "2025-07-11",
-   "seconds": 2921,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "13d1d071-0fe6-4655-881b-c61db632711b",
-   "title": "Sunday Evening Jam - Live Stream July 6h",
-   "date": "2025-07-11",
-   "seconds": 2921,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "34ae854d-2a37-4610-90b3-65aeb64bd097",
-   "title": "Sunday Evening Jam - Live Stream July 6h",
-   "date": "2025-07-11",
-   "seconds": 2921,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "77a3eb05-66c7-4354-b361-7064cedeaa53",
-   "title": "Sunday Evening Jam - Live Stream July 6th",
-   "date": "2025-07-11",
-   "seconds": 2921,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "f793d570-9d06-461e-afee-1f7fcaf9c67e",
-   "title": "The Tragically Hip Top Forty Countdown: Song 14 - Vish from Edmonton",
+   "title": "The Tragically Hip Top Forty Countdown: Song Fourteen - Vish from Edmonton",
    "date": "2025-07-14",
    "seconds": 3422,
    "season": "7",
@@ -1827,24 +1283,8 @@
    "type": "full"
   },
   {
-   "id": "01a00411-ed8b-43b0-80af-155372d8d6e1",
-   "title": "Sunday Evening Jam - Live Stream July 13th",
-   "date": "2025-07-18",
-   "seconds": 4338,
-   "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "2f356394-41f4-410a-bdc6-3be17bfd2fd0",
-   "title": "The Tragically Hip Top Forty Countdown: Special Update - The One Where jD Fucks Up (and Owns It)",
-   "date": "2025-07-20",
-   "seconds": 402,
-   "season": "",
-   "type": "bonus"
-  },
-  {
    "id": "5c441b89-a66c-4b35-b3b0-41468bb465f0",
-   "title": "The Tragically Hip Top Forty Countdown: Song 13 - Brad from Buffalo",
+   "title": "The Tragically Hip Top Forty Countdown: Song Thirteen - Brad from Buffalo",
    "date": "2025-07-21",
    "seconds": 1826,
    "season": "7",
@@ -1852,7 +1292,7 @@
   },
   {
    "id": "9d7a01b1-bd9e-445b-bc63-8aa80f1c705f",
-   "title": "The Tragically Hip Top Forty Countdown: Song 13 - Andrew from Tampa",
+   "title": "The Tragically Hip Top Forty Countdown: Song Thirteen - Andrew from Tampa",
    "date": "2025-07-23",
    "seconds": 2189,
    "season": "7",
@@ -1867,16 +1307,8 @@
    "type": "full"
   },
   {
-   "id": "98c33f0d-6675-4c25-a33d-3d9e40527859",
-   "title": "Sunday Evening Jam - Live Stream July 20th",
-   "date": "2025-07-25",
-   "seconds": 4262,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "9f26011d-1837-4f15-b177-b2d349245ae9",
-   "title": "The Tragically Hip Top Forty Countdown: Song 12 - John Paul from Toronto",
+   "title": "The Tragically Hip Top Forty Countdown: Song Twelve - John Paul from Toronto",
    "date": "2025-07-28",
    "seconds": 2711,
    "season": "",
@@ -1891,16 +1323,8 @@
    "type": "full"
   },
   {
-   "id": "191f3bc6-83c9-4ffe-ba2c-38eade659605",
-   "title": "Sunday Evening Jam - Live Stream July 27th",
-   "date": "2025-08-01",
-   "seconds": 2124,
-   "season": "7",
-   "type": "full"
-  },
-  {
    "id": "bb36a773-61e6-4e72-944a-aae235422d10",
-   "title": "The Tragically Hip Top Forty Countdown: Song 11 - Thomas from Belgium",
+   "title": "The Tragically Hip Top Forty Countdown: Song Eleven - Thomas from Belgium",
    "date": "2025-08-04",
    "seconds": 3167,
    "season": "7",
@@ -1916,7 +1340,7 @@
   },
   {
    "id": "0f158865-559c-45d3-9086-8a0d148cc480",
-   "title": "Round Table #3",
+   "title": "The Tragically Hip Top Forty Countdown: Round Table Five - Live Stream",
    "date": "2025-08-09",
    "seconds": 3113,
    "season": "7",
@@ -1924,7 +1348,7 @@
   },
   {
    "id": "f75833f2-2feb-440b-bda4-61adb7af58ab",
-   "title": "The Tragically Hip Top Forty Countdown: Song 10 - Mark from Michigan",
+   "title": "The Tragically Hip Top Forty Countdown: Song Ten - Mark from Michigan",
    "date": "2025-08-11",
    "seconds": 2339,
    "season": "7",
@@ -1936,14 +1360,6 @@
    "date": "2025-08-13",
    "seconds": 408,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "bd4678ae-4d2e-473c-b4d6-209032b76837",
-   "title": "Sunday Evening Jam - Live Stream August 10th",
-   "date": "2025-08-15",
-   "seconds": 3541,
-   "season": "",
    "type": "full"
   },
   {
@@ -1963,22 +1379,6 @@
    "type": "full"
   },
   {
-   "id": "cf053452-781f-43e2-914e-5ccd8a26b165",
-   "title": "That Night in Kingston: Nine Years Later - Live Stream",
-   "date": "2025-08-22",
-   "seconds": 3205,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "92e9e07a-09d8-4e24-85ea-b49910c1319e",
-   "title": "Sunday Evening Jam - Live Stream August 17th",
-   "date": "2025-08-23",
-   "seconds": 4379,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "bb02c79b-1ecf-4baa-ae84-7c32347bcb31",
    "title": "The Tragically Hip Top Forty Countdown: Song Eight - Pete from Toronto",
    "date": "2025-08-25",
@@ -1992,22 +1392,6 @@
    "date": "2025-08-27",
    "seconds": 334,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "545f19ac-379f-4bab-9e31-0b40b540443f",
-   "title": "Sunday Evening Jam - Live Stream August 24th",
-   "date": "2025-08-29",
-   "seconds": 1876,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "03496930-04b8-4d97-afd9-2c569f0ae37c",
-   "title": "Getting Hip to The Hip - Roundtable Reunion Live Stream",
-   "date": "2025-08-30",
-   "seconds": 4583,
-   "season": "",
    "type": "full"
   },
   {
@@ -2027,35 +1411,11 @@
    "type": "full"
   },
   {
-   "id": "bcf5d54e-1210-49fd-97c9-c6a6dfd89b03",
-   "title": "Up to Here @ Thirty-Six",
-   "date": "2025-09-05",
-   "seconds": 3582,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "64a2337a-05e9-48df-b5fa-904a4eadba74",
-   "title": "The Sunday Evening Jam - Live Stream August 31st",
-   "date": "2025-09-06",
-   "seconds": 3032,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "b90dd9aa-70e5-4716-9049-70834e9159d5",
-   "title": "The Tragically Hip Top Forty Countdown: Song 6 - Keith from Calgary",
+   "title": "The Tragically Hip Top Forty Countdown: Song Six - Keith from Calgary",
    "date": "2025-09-08",
    "seconds": 3574,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "f1cc4739-a44c-465b-a451-ff23362d6ac5",
-   "title": "A Celebration of The Hip for ALS",
-   "date": "2025-09-09",
-   "seconds": 200,
-   "season": "",
    "type": "full"
   },
   {
@@ -2067,16 +1427,8 @@
    "type": "full"
   },
   {
-   "id": "59f3d4fb-17c2-4f3a-b6b4-5f2ec096405e",
-   "title": "Sunday Evening Jam - Live Stream September 7th",
-   "date": "2025-09-12",
-   "seconds": 3253,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "9cf5458a-ddff-44fd-a8a9-d0a2b549673e",
-   "title": "The Tragically Hip Top Forty Countdown: Song Number 5 - Chris from Winnipeg",
+   "title": "The Tragically Hip Top Forty Countdown: Song Five - Chris from Winnipeg",
    "date": "2025-09-15",
    "seconds": 2777,
    "season": "7",
@@ -2091,35 +1443,11 @@
    "type": "full"
   },
   {
-   "id": "bdd44f92-db26-4bac-ac9c-4bb41193edb0",
-   "title": "Sunday Evening Jam - Live Stream September 14th",
-   "date": "2025-09-19",
-   "seconds": 4499,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "665fae61-6b7d-4081-9318-070c381c2a44",
-   "title": "The Tragically Hip Top Forty Countdown: Richard from Bright's Grove - Song 4",
+   "title": "The Tragically Hip Top Forty Countdown: Song Four - Richard from Bright's Grove",
    "date": "2025-09-22",
    "seconds": 4150,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "75396524-4d16-4fca-baf5-739cf8177f04",
-   "title": "And that's a wrap",
-   "date": "2025-09-23",
-   "seconds": 604,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "4c03b9e5-8741-49b0-8895-8116b7b42ab5",
-   "title": "Day for Night @ 31",
-   "date": "2025-09-24",
-   "seconds": 6510,
-   "season": "",
    "type": "full"
   },
   {
@@ -2131,16 +1459,8 @@
    "type": "full"
   },
   {
-   "id": "889f41b4-1b5b-4dec-937c-2ab6f6661c5c",
-   "title": "Sunday Evening Jam - Live Stream September 21",
-   "date": "2025-09-26",
-   "seconds": 3545,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "badd3ccd-9d9b-448a-8d5b-b433f389419f",
-   "title": "The Tragically Hip Top Forty Countdown: Song 3 - Mike from Kingston",
+   "title": "The Tragically Hip Top Forty Countdown: Song Three - Mike from Kingston",
    "date": "2025-09-29",
    "seconds": 4278,
    "season": "7",
@@ -2155,27 +1475,11 @@
    "type": "full"
   },
   {
-   "id": "54c83ab1-eecc-4319-a5ab-50a8d2d8979d",
-   "title": "Sunday Evening Jam - Live Stream September 28",
-   "date": "2025-10-03",
-   "seconds": 4083,
-   "season": "7",
-   "type": "full"
-  },
-  {
    "id": "512016af-f72b-4ae9-a94f-1c2e523054c4",
-   "title": "The Tragically Hip Top Forty Countdown: Song 2 - Will from Columbus",
+   "title": "The Tragically Hip Top Forty Countdown: Song Two - Will from Columbus",
    "date": "2025-10-06",
    "seconds": 4435,
    "season": "7",
-   "type": "full"
-  },
-  {
-   "id": "d36baa2c-45d5-440d-b93f-aa166c95bb30",
-   "title": "Fully Completely @ 33",
-   "date": "2025-10-07",
-   "seconds": 5289,
-   "season": "",
    "type": "full"
   },
   {
@@ -2196,7 +1500,7 @@
   },
   {
    "id": "eb47bf40-173a-400a-8811-283af0068383",
-   "title": "The Tragically Hip Top Forty Countdown: Song #1 - Tara from Halifax",
+   "title": "The Tragically Hip Top Forty Countdown: Song One - Tara from Halifax",
    "date": "2025-10-13",
    "seconds": 2386,
    "season": "7",
@@ -2211,60 +1515,12 @@
    "type": "full"
   },
   {
-   "id": "35c4076c-3ce0-4673-972c-cd60d9a0e073",
-   "title": "Away is Mine at 5",
-   "date": "2025-10-16",
-   "seconds": 5225,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "0bc82462-675b-4789-8e3c-3cdfd5f46e30",
-   "title": "World Container at 19",
-   "date": "2025-10-17",
-   "seconds": 5245,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "a482ca4c-d5e1-434e-a7be-970bc97bd4fd",
-   "title": "Secret Path at Twelve",
-   "date": "2025-10-18",
-   "seconds": 5054,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "2e010f45-d267-4a7c-b69a-e2ffd1e532d9",
    "title": "The Abacus Files",
    "date": "2025-10-20",
    "seconds": 501,
    "season": "7",
    "type": "bonus"
-  },
-  {
-   "id": "f007e1a8-ee29-45d4-b685-da4d67506a1b",
-   "title": "Sunday Evening Jam - Live Stream October 14th",
-   "date": "2025-10-22",
-   "seconds": 3411,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "0998dfb3-2428-4f84-a8ac-4600eb1d6751",
-   "title": "Introduce Yerself: Eight Years On.",
-   "date": "2025-10-27",
-   "seconds": 4313,
-   "season": "",
-   "type": "full"
-  },
-  {
-   "id": "1d3c527f-b387-4fb6-a318-296ed7ed8d59",
-   "title": "I Need Yer Hipstories",
-   "date": "2025-10-28",
-   "seconds": 199,
-   "season": "",
-   "type": "full"
   },
   {
    "id": "391574fe-5cc8-47ff-942e-1bbf59a4545d",
@@ -2276,7 +1532,7 @@
   },
   {
    "id": "f2dc7bbc-e2d2-45dd-a1ae-18862b4ce560",
-   "title": "Fully & Completely: redux - The Tragically Hip (EP)",
+   "title": "Fully & Completely: redux - \"The Tragically Hip\" EP",
    "date": "2026-01-05",
    "seconds": 2478,
    "season": "",
@@ -2284,7 +1540,7 @@
   },
   {
    "id": "4c3fa3ef-cd6a-4f62-a2e7-ec465dd29176",
-   "title": "Fully & Completely: redux - Up to Here",
+   "title": "Fully & Completely: redux - \"Up to Here\"",
    "date": "2026-01-12",
    "seconds": 3419,
    "season": "",
@@ -2292,7 +1548,7 @@
   },
   {
    "id": "f6f64055-ae7b-48e4-911d-dfc7f4ef29a0",
-   "title": "The Tragically Hip On Shuffle - You're Everywhere",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'You're Everywhere'",
    "date": "2026-01-16",
    "seconds": 3752,
    "season": "1",
@@ -2300,7 +1556,7 @@
   },
   {
    "id": "89c5c911-146c-4dc5-a7d4-07912a5d5e34",
-   "title": "Fully & Completely: redux - Road Apples",
+   "title": "Fully & Completely: redux - \"Road Apples\"",
    "date": "2026-01-19",
    "seconds": 4761,
    "season": "",
@@ -2308,7 +1564,7 @@
   },
   {
    "id": "c94cd338-d947-4f7d-8630-fa639ac2f92b",
-   "title": "The Tragically Hip On Shuffle - Leave",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Leave'",
    "date": "2026-01-23",
    "seconds": 3296,
    "season": "",
@@ -2316,7 +1572,7 @@
   },
   {
    "id": "15674ce9-fe13-4bc1-86be-53317e931c62",
-   "title": "Fully & Completely: redux - Fully Completely",
+   "title": "Fully & Completely: redux - \"Fully Completely\"",
    "date": "2026-01-26",
    "seconds": 6538,
    "season": "",
@@ -2324,23 +1580,15 @@
   },
   {
    "id": "f5c5e80d-a3ec-4275-8ce8-a46de6805f37",
-   "title": "The Tragically Hip On Shuffle - Wild Mountain Honey",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Wild Mountain Honey'",
    "date": "2026-01-30",
    "seconds": 3224,
    "season": "",
    "type": "full"
   },
   {
-   "id": "101959c8-6568-470a-9c58-d2707a1becfd",
-   "title": "Fully & Completely: redux - Day For Night",
-   "date": "2026-02-02",
-   "seconds": 6353,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "25e05c09-e59f-4414-a383-6468cf0e5c47",
-   "title": "Fully & Completely; redux - Day for Night (corrected)",
+   "title": "Fully & Completely: redux - \"Day for Night\"",
    "date": "2026-02-03",
    "seconds": 6296,
    "season": "",
@@ -2348,7 +1596,7 @@
   },
   {
    "id": "5b46d1ef-cb5f-4637-a57f-b8ee2941406e",
-   "title": "The Tragically Hip On Shuffle - Fire in the Hole",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Fire in the Hole'",
    "date": "2026-02-06",
    "seconds": 3746,
    "season": "",
@@ -2356,7 +1604,7 @@
   },
   {
    "id": "615d192e-37b8-47c4-be58-3352e9d93196",
-   "title": "Fully & Completely: redux - Trouble at the Henhouse",
+   "title": "Fully & Completely: redux - \"Trouble at the Henhouse\"",
    "date": "2026-02-09",
    "seconds": 7402,
    "season": "",
@@ -2364,7 +1612,7 @@
   },
   {
    "id": "57d4e785-aba6-4ebe-9b04-d6a9588dec1b",
-   "title": "The Tragically Hip On Shuffle - At Transformation",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'At Transformation'",
    "date": "2026-02-13",
    "seconds": 3322,
    "season": "",
@@ -2372,7 +1620,7 @@
   },
   {
    "id": "767648de-afb0-4565-91e7-8a9e57bf9c4e",
-   "title": "Fully & Completely: redux - Live Between Us",
+   "title": "Fully & Completely: redux - \"Live Between Us\"",
    "date": "2026-02-16",
    "seconds": 6010,
    "season": "",
@@ -2380,7 +1628,7 @@
   },
   {
    "id": "aacb6475-64b8-4866-b337-355edee17415",
-   "title": "The Tragically Hip On Shuffle - Nautical Disaster",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Nautical Disaster'",
    "date": "2026-02-20",
    "seconds": 3595,
    "season": "",
@@ -2388,7 +1636,7 @@
   },
   {
    "id": "78739be8-fd49-4c55-9ca1-8af758f7030f",
-   "title": "Fully & Completely: redux - Phantom Power",
+   "title": "Fully & Completely: redux - \"Phantom Power\"",
    "date": "2026-02-23",
    "seconds": 5373,
    "season": "",
@@ -2396,23 +1644,15 @@
   },
   {
    "id": "df2e892f-5a73-4d86-9653-a95cbaff74bc",
-   "title": "The Tragically Hip On Shuffle - Fully Completely",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Fully Completely'",
    "date": "2026-02-26",
    "seconds": 3550,
    "season": "",
    "type": "full"
   },
   {
-   "id": "1a50943e-e8cb-4363-aec4-8868b9b5fc55",
-   "title": "Gord Downie, The Sadies, and The Conquering Sun: LIve At SIx",
-   "date": "2026-02-27",
-   "seconds": 5758,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "c85430ec-d0f8-4c6a-a967-0124a0caa6e6",
-   "title": "Fully & Completely: redux - Music @ Work",
+   "title": "Fully & Completely: redux - \"Music @ Work\"",
    "date": "2026-03-02",
    "seconds": 7276,
    "season": "",
@@ -2420,7 +1660,7 @@
   },
   {
    "id": "e7218613-c2ec-414e-b6ff-48f7bd3b2c38",
-   "title": "The Tragically Hip On Shuffle - Honey, Please",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Honey, Please'",
    "date": "2026-03-06",
    "seconds": 3828,
    "season": "",
@@ -2428,7 +1668,7 @@
   },
   {
    "id": "6e34b2c3-bf81-4619-8264-a3d8a700fd19",
-   "title": "Fully & Completely: redux - In Violet Light",
+   "title": "Fully & Completely: redux - \"In Violet Light\"",
    "date": "2026-03-09",
    "seconds": 7098,
    "season": "",
@@ -2436,7 +1676,7 @@
   },
   {
    "id": "f9b46169-ce60-4d0d-b67f-d375947c35bf",
-   "title": "The Tragically Hip On Shuffle - Live Stream - 'We Want To Be It'",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'We Want to Be It'",
    "date": "2026-03-13",
    "seconds": 3226,
    "season": "",
@@ -2444,7 +1684,7 @@
   },
   {
    "id": "e207f914-a41e-4c26-accb-2531faa217f3",
-   "title": "Fully & Completely: redux - In Between Evolution.",
+   "title": "Fully & Completely: redux - \"In Between Evolution\"",
    "date": "2026-03-16",
    "seconds": 7098,
    "season": "",
@@ -2452,7 +1692,7 @@
   },
   {
    "id": "590bf308-f3d3-492c-bec0-4e608fe0b11d",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Vapour Trails",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Vapour Trails'",
    "date": "2026-03-20",
    "seconds": 3978,
    "season": "",
@@ -2460,39 +1700,23 @@
   },
   {
    "id": "fc580dc3-7ebf-4e9a-a09b-039da1236b7f",
-   "title": "Fully & Completely: redux - World Container",
+   "title": "Fully & Completely: redux - \"World Container\"",
    "date": "2026-03-23",
    "seconds": 5353,
    "season": "",
    "type": "full"
   },
   {
-   "id": "e32e704d-3347-4875-8e68-df5ccba487eb",
-   "title": "The Tragically Hip Podcast Series - \"March 25th 1995\" a podUMENTARY",
-   "date": "2026-03-25",
-   "seconds": 1423,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "7c8e9f99-f7e2-496c-8ce8-9f78790d70dc",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Train Overnight",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Train Overnight'",
    "date": "2026-03-27",
    "seconds": 3978,
    "season": "",
    "type": "full"
   },
   {
-   "id": "d3653a33-f718-485b-8c1f-2224c8837243",
-   "title": "House Keeping",
-   "date": "2026-03-30",
-   "seconds": 200,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "2923139b-7d24-49ce-9fd8-37170d367238",
-   "title": "The Tragically Hip On Shuffle - Live Stream: I'm A Werewolf Baby",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'I'm a Werewolf, Baby'",
    "date": "2026-04-03",
    "seconds": 3356,
    "season": "",
@@ -2500,23 +1724,15 @@
   },
   {
    "id": "46c9096f-6687-4e53-82fe-aa999d8045c7",
-   "title": "Fully & Completely: redux - We Are the Same",
+   "title": "Fully & Completely: redux - \"We Are the Same\"",
    "date": "2026-04-06",
    "seconds": 6082,
    "season": "",
    "type": "full"
   },
   {
-   "id": "89516531-f123-4df0-a662-60959c03497a",
-   "title": "We Are The Same At 17 - Getting Hip To The Hip",
-   "date": "2026-04-07",
-   "seconds": 6594,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "6b5ecff0-ab4b-4e8f-981a-109681d58084",
-   "title": "The Tragically Hip On Shuffle - Live Stream: The Luxury",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'The Luxury'",
    "date": "2026-04-10",
    "seconds": 3398,
    "season": "",
@@ -2524,63 +1740,23 @@
   },
   {
    "id": "47874bb0-6f5b-4ac7-bbd2-bfc1714d0007",
-   "title": "Fully & Completely: redux - Now For Plan A",
+   "title": "Fully & Completely: redux - \"Now for Plan A\"",
    "date": "2026-04-13",
    "seconds": 5632,
    "season": "",
    "type": "full"
   },
   {
-   "id": "35972fc9-9c61-41cb-9536-1b6fc9cc89be",
-   "title": "An Evening For Sara J - The Podcast",
-   "date": "2026-04-15",
-   "seconds": 2214,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "a5c273fe-992c-4c72-8668-762e6fc1e99e",
-   "title": "The Tragically Hip On Shuffle - Live Stream: An Inch An Hour",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'An Inch an Hour'",
    "date": "2026-04-17",
    "seconds": 3476,
    "season": "",
    "type": "full"
   },
   {
-   "id": "14631632-5e55-4f50-8273-8e7e47dcf8ae",
-   "title": "podList - Holiday 2020",
-   "date": "2026-04-22",
-   "seconds": 4415,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "fa3d8f74-c4e8-4fd5-aa93-6d82878f68cb",
-   "title": "podList II - May Long",
-   "date": "2026-04-27",
-   "seconds": 3571,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "742ba8d4-f625-4f07-9ba3-fc82d4a21101",
-   "title": "podList (trois)",
-   "date": "2026-04-29",
-   "seconds": 1908,
-   "season": "2",
-   "type": "full"
-  },
-  {
-   "id": "7b341acf-6938-424d-9522-85fcefb95531",
-   "title": "A Forest Of Whispering Speakers - The Idea",
-   "date": "2026-04-30",
-   "seconds": 1514,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "0d5aff4d-a4f6-4250-b0a4-86fae4aea110",
-   "title": "podList IV - 2000 and Beyond",
+   "title": "podList IV: 2000 and Beyond",
    "date": "2026-05-01",
    "seconds": 3538,
    "season": "",
@@ -2588,7 +1764,7 @@
   },
   {
    "id": "074d196f-a87b-42ba-8655-71ee48a9c232",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Throwing Off Glass",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Throwing Off Glass'",
    "date": "2026-05-04",
    "seconds": 2812,
    "season": "",
@@ -2596,7 +1772,7 @@
   },
   {
    "id": "c50ce781-d0b0-4f0b-909b-593f15575a2e",
-   "title": "podList 5 - Odes to Gord",
+   "title": "podList 5: Odes to Gord",
    "date": "2026-05-06",
    "seconds": 2268,
    "season": "",
@@ -2604,7 +1780,7 @@
   },
   {
    "id": "0d2877c8-77b3-42d8-9fef-5c83ddbef044",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Looking For A Place To Happen",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Looking for a Place to Happen'",
    "date": "2026-05-08",
    "seconds": 4190,
    "season": "",
@@ -2619,16 +1795,8 @@
    "type": "full"
   },
   {
-   "id": "c54374fc-f5db-424d-9ba9-f974bda59b0e",
-   "title": "A Forest Of Whispering Speakers - The Book",
-   "date": "2026-05-14",
-   "seconds": 1638,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "9163287d-f9e3-4232-b4bf-d2701b73ebb9",
-   "title": "podList 7 - The Classics",
+   "title": "podList 7: The Classics",
    "date": "2026-05-15",
    "seconds": 4968,
    "season": "",
@@ -2636,7 +1804,7 @@
   },
   {
    "id": "677134fd-7223-46b2-8ffd-131035c2f924",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Let's Stay Engaged.",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Let's Stay Engaged'",
    "date": "2026-05-18",
    "seconds": 3468,
    "season": "",
@@ -2644,7 +1812,7 @@
   },
   {
    "id": "aaa17e64-1978-48d3-b4a0-ecfa07740695",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Coffee Girl",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Coffee Girl'",
    "date": "2026-05-25",
    "seconds": 3888,
    "season": "",
@@ -2652,7 +1820,7 @@
   },
   {
    "id": "8ca41e9d-f6f9-4be2-8736-6078000c089b",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Wheat Kings",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Wheat Kings'",
    "date": "2026-06-01",
    "seconds": 3430,
    "season": "",
@@ -2660,7 +1828,7 @@
   },
   {
    "id": "451930c8-9ea4-4e90-a0b1-d3fbde21888f",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Country Day",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Country Day'",
    "date": "2026-06-08",
    "seconds": 3880,
    "season": "",
@@ -2668,7 +1836,7 @@
   },
   {
    "id": "04d3dd8c-2c47-492c-bf23-e6664c2a776b",
-   "title": "Are they big school buses? (In Violet Light)",
+   "title": "Getting Hip to The Hip - \"In Violet Light\"",
    "date": "2026-06-11",
    "seconds": 6090,
    "season": "3",
@@ -2676,7 +1844,7 @@
   },
   {
    "id": "45132278-a80e-4d83-a406-3104f13acbc1",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Yawning or Snarling",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Yawning or Snarling'",
    "date": "2026-06-15",
    "seconds": 3334,
    "season": "",
@@ -2684,7 +1852,7 @@
   },
   {
    "id": "6dffda50-024b-4a1a-a91b-538636c4d7e8",
-   "title": "Fully & Completely redux - Man Machine Poem",
+   "title": "Fully & Completely: redux - \"Man Machine Poem\"",
    "date": "2026-06-18",
    "seconds": 5202,
    "season": "",
@@ -2700,7 +1868,7 @@
   },
   {
    "id": "dca7d1f5-6dea-4df8-b8d1-33008aa46cbd",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Bobcaygeon",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Bobcaygeon'",
    "date": "2026-07-06",
    "seconds": 3530,
    "season": "",
@@ -2708,7 +1876,7 @@
   },
   {
    "id": "e61220cb-fe62-4709-8833-a1e37ccea261",
-   "title": "The Tragically Hip - Live Stream: The Darkest One",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'The Darkest One'",
    "date": "2026-07-13",
    "seconds": 3808,
    "season": "",
@@ -2716,7 +1884,7 @@
   },
   {
    "id": "fdb4ebd6-c3a6-421d-b241-46070aea1975",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Everytime You Go",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Everytime You Go'",
    "date": "2026-07-20",
    "seconds": 3993,
    "season": "",
@@ -2732,7 +1900,7 @@
   },
   {
    "id": "573fe04b-9e3a-4ab5-9b96-720ee33a03c0",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Vancouver Night 1",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Vancouver (Night One)",
    "date": "2026-07-24",
    "seconds": 3407,
    "season": "",
@@ -2740,7 +1908,7 @@
   },
   {
    "id": "7cc9891e-fafb-46fa-a7ec-acc492380800",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Vancouver Night 2",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Vancouver (Night Two)",
    "date": "2026-07-26",
    "seconds": 3686,
    "season": "",
@@ -2748,7 +1916,7 @@
   },
   {
    "id": "d278a4bc-8c0f-433d-9000-603a09757c07",
-   "title": "The Tragically Hip On Shuffle - Live Stream: 700 Ft. Ceiling",
+   "title": "The Tragically Hip On Shuffle - Live Stream: '700 Ft. Ceiling'",
    "date": "2026-07-27",
    "seconds": 3657,
    "season": "",
@@ -2756,7 +1924,7 @@
   },
   {
    "id": "918bd90d-0dfb-42d3-bb53-44d2596f8883",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Edmonton Night 1",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Edmonton (Night One)",
    "date": "2026-07-28",
    "seconds": 4182,
    "season": "",
@@ -2764,7 +1932,7 @@
   },
   {
    "id": "02241b34-372c-4ceb-9783-99fba9219eb0",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Edmonton Night 2",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Edmonton (Night Two)",
    "date": "2026-07-30",
    "seconds": 3861,
    "season": "",
@@ -2772,7 +1940,7 @@
   },
   {
    "id": "2937266e-6c5a-4435-87a8-dcc35b478f37",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Calgary Night 1",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Calgary (Night One)",
    "date": "2026-08-01",
    "seconds": 3800,
    "season": "",
@@ -2780,7 +1948,7 @@
   },
   {
    "id": "68d2991b-9074-43ef-bd71-aa832c59a787",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Gus: The Polar Bear From Central Park",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Gus: The Polar Bear from Central Park'",
    "date": "2026-08-03",
    "seconds": 4024,
    "season": "",
@@ -2788,7 +1956,7 @@
   },
   {
    "id": "98943c27-bdae-4f56-84d4-a57754be7719",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Calgary Night 2",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Calgary (Night Two)",
    "date": "2026-08-03",
    "seconds": 3954,
    "season": "",
@@ -2812,7 +1980,7 @@
   },
   {
    "id": "49a9167c-6f8d-4641-8306-959189b38ec8",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Pigeon Camera",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Pigeon Camera'",
    "date": "2026-08-10",
    "seconds": 3526,
    "season": "",
@@ -2820,7 +1988,7 @@
   },
   {
    "id": "ea8fa1cb-fca0-4ff6-9acf-91358a5883e6",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto Night 1",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto (Night One)",
    "date": "2026-08-10",
    "seconds": 3093,
    "season": "",
@@ -2828,7 +1996,7 @@
   },
   {
    "id": "dea3a0bd-59d1-4941-a666-46fa2241640e",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto Night 2",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto (Night Two)",
    "date": "2026-08-12",
    "seconds": 4280,
    "season": "",
@@ -2836,7 +2004,7 @@
   },
   {
    "id": "807c8d55-47ad-4099-8835-1f5918fc37da",
-   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto Night 3",
+   "title": "Yer Hipstories: Reflections From The Final Tour - Toronto (Night Three)",
    "date": "2026-08-14",
    "seconds": 3829,
    "season": "",
@@ -2852,7 +2020,7 @@
   },
   {
    "id": "a2f229b2-b5fc-41e4-8d78-632080d31a3b",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Emperor Penguin",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Emperor Penguin'",
    "date": "2026-08-17",
    "seconds": 3123,
    "season": "",
@@ -2876,7 +2044,7 @@
   },
   {
    "id": "05f8d5cd-8460-461f-9e6d-51bcfaa28822",
-   "title": "Yer Hipstories - Reflections From The Final Tour: August 20th Bathouse Finale",
+   "title": "Yer Hipstories: Reflections From The Final Tour - The Bathouse",
    "date": "2026-08-24",
    "seconds": 3890,
    "season": "",
@@ -2884,7 +2052,7 @@
   },
   {
    "id": "718fe20e-83d6-4c69-86eb-cc2b4af02834",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Tiger The Lion",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Tiger the Lion'",
    "date": "2026-08-25",
    "seconds": 3712,
    "season": "",
@@ -2892,7 +2060,7 @@
   },
   {
    "id": "46c0301d-0fa0-4cb4-8154-1836552e3a66",
-   "title": "The Tragically Hip On Shuffle - Live Stream: No Threat",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'No Threat'",
    "date": "2026-08-31",
    "seconds": 3462,
    "season": "",
@@ -2900,7 +2068,7 @@
   },
   {
    "id": "6cfb0a5e-5909-40ec-8559-62ca0acd580e",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Putting Down",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Putting Down'",
    "date": "2026-09-07",
    "seconds": 3970,
    "season": "",
@@ -2908,7 +2076,7 @@
   },
   {
    "id": "5fa3fc7c-f01b-4eae-a3de-5cadc658b9f9",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Vaccination Scar",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Vaccination Scar'",
    "date": "2026-09-14",
    "seconds": 3888,
    "season": "",
@@ -2924,7 +2092,7 @@
   },
   {
    "id": "ddf96225-1bd4-468b-881a-aa091a7e6148",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Just as Well",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Just as Well'",
    "date": "2026-09-25",
    "seconds": 4176,
    "season": "",
@@ -2932,7 +2100,7 @@
   },
   {
    "id": "11be433d-56cf-4213-8726-9fc7cec327f2",
-   "title": "The Tragically Hip On Shuffle - Live Stream: The Bastard",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'The Bastard'",
    "date": "2026-09-28",
    "seconds": 3963,
    "season": "",
@@ -2948,7 +2116,7 @@
   },
   {
    "id": "e086ade9-373f-4bd3-9d84-513b2097cac5",
-   "title": "Secret Path",
+   "title": "Discovering Downie - \"Secret Path\"",
    "date": "2026-09-30",
    "seconds": 5054,
    "season": "4",
@@ -2956,7 +2124,7 @@
   },
   {
    "id": "9cdeecdc-c69a-4e6a-b087-ce6effbb2fa2",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Radio Show",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Radio Show'",
    "date": "2026-10-05",
    "seconds": 4183,
    "season": "",
@@ -2972,7 +2140,7 @@
   },
   {
    "id": "339c232a-4700-404b-a533-779a14e1cf45",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Poets",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Poets'",
    "date": "2026-10-12",
    "seconds": 4188,
    "season": "",
@@ -2987,16 +2155,8 @@
    "type": "full"
   },
   {
-   "id": "1f95e1fa-57dd-4a8a-8eba-59ab277f823a",
-   "title": "It's A Good Life - Trailer",
-   "date": "2026-10-15",
-   "seconds": 59,
-   "season": "",
-   "type": "full"
-  },
-  {
    "id": "3fdf04e5-a7e5-4898-b26a-2924ba79fc1e",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Take Forever",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Take Forever'",
    "date": "2026-10-16",
    "seconds": 4151,
    "season": "",
@@ -3004,7 +2164,7 @@
   },
   {
    "id": "2cb8095f-d6b5-42e2-a555-4f0319735ea9",
-   "title": "Episode One - Setting the Scene",
+   "title": "It's A Good Life - Setting the Scene",
    "date": "2026-10-19",
    "seconds": 1867,
    "season": "",
@@ -3012,7 +2172,7 @@
   },
   {
    "id": "8d8a13e9-a9bc-4ef9-9eca-a762ca7a55e9",
-   "title": "Episode Two - The Players",
+   "title": "It's A Good Life - The Players",
    "date": "2026-10-20",
    "seconds": 2216,
    "season": "",
@@ -3020,7 +2180,7 @@
   },
   {
    "id": "d4d7dfbb-7e86-4469-bda2-b9f1c680bc35",
-   "title": "Episode Three - The Craft",
+   "title": "It's A Good Life - The Craft",
    "date": "2026-10-21",
    "seconds": 2072,
    "season": "",
@@ -3028,7 +2188,7 @@
   },
   {
    "id": "965df830-2468-4b36-afda-4f59fa928d0e",
-   "title": "Episode Four - The Music",
+   "title": "It's A Good Life - The Music",
    "date": "2026-10-22",
    "seconds": 2489,
    "season": "",
@@ -3036,7 +2196,7 @@
   },
   {
    "id": "a24c2018-03da-469d-bfc6-347414da3388",
-   "title": "Episode Five - Curtain Up",
+   "title": "It's A Good Life - Curtain Up",
    "date": "2026-10-23",
    "seconds": 2037,
    "season": "",
@@ -3044,7 +2204,7 @@
   },
   {
    "id": "f06d6430-a191-40c0-a48c-ea6e7876e15a",
-   "title": "The Tragically Hip On Shuffle - Live Stream: Sharks",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Sharks'",
    "date": "2026-10-26",
    "seconds": 3987,
    "season": "",
@@ -3052,9 +2212,33 @@
   },
   {
    "id": "75ac9742-37b9-450c-a126-8c681f8985e9",
-   "title": "The Tragically Hip On Shuffle - Live Stream: World Container",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'World Container'",
    "date": "2026-11-02",
    "seconds": 3896,
+   "season": "",
+   "type": "full"
+  },
+  {
+   "id": "73da1a8d-a890-4269-a104-a7f9d8e61595",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Thugs'",
+   "date": "2026-11-09",
+   "seconds": 3652,
+   "season": "",
+   "type": "full"
+  },
+  {
+   "id": "93e93a03-adae-4ce5-b0ca-a4747770a3d2",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'Locked in the Trunk of a Car'",
+   "date": "2026-11-16",
+   "seconds": 3747,
+   "season": "",
+   "type": "full"
+  },
+  {
+   "id": "239e7f4f-a2a0-4e68-81cf-26e4f2afed85",
+   "title": "The Tragically Hip On Shuffle - Live Stream: 'As Makeshift As We Are''",
+   "date": "2026-11-23",
+   "seconds": 4209,
    "season": "",
    "type": "full"
   }

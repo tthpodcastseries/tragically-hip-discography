@@ -15,6 +15,8 @@
 //   node scripts/build-podcasts.js --fetch   read the feed again (needs the internet), then build
 //   node scripts/build-podcasts.js           build from the saved feed (no internet)
 //   node scripts/build-podcasts.js --check   only report out-of-date files (audit-site.js runs this)
+//   node scripts/build-podcasts.js --fetch --check   only compare the live feed with the saved one
+//                                            (GitHub runs this weekly: podcast-feed-check.yml)
 //
 // After a --fetch, any new episode the rules can't place is listed as "not sorted": add a
 // rule (or a SKIP line) here and build again. Node 22, no packages.
@@ -83,6 +85,10 @@ function place(ep) {
   if (/^hipstories - |^strippers union interview$/i.test(t)) return [['interview-series', 'From Fully & Completely']];
   if (/^talking with /i.test(t)) return [['interview-series', 'From Getting Hip to The Hip']];
   if (/introduce yerself[:\s-]+(dale robertson|josh finlayson|nathan astin|tribute singers|alan cross)$/i.test(t)) return [['interview-series', 'From Discovering Downie']];
+  // In November 2026 jD retitled the conversations "Introduce Yerself - <name>" on RedCircle
+  // ("Introduce Yerself: <name>" is his name for them, jD, November 23, 2026: both forms match).
+  // They stay on the Interview Series (ruling above), filed by the show they were recorded on.
+  if (/^introduce yerself\s*[-:]\s+/i.test(t)) return [['interview-series', conversationSection(s, d)]];
   if (/the gord downie interview$/i.test(t)) return [['interview-series', 'From The Tragically Hip Top Forty Countdown']];
   if (/redux/i.test(t)) return [['fully-and-completely', 'Fully & Completely: redux (2026)']];
   if (d < '2023-05-01') return [['fully-and-completely', 'The Original (2018-2022)']];
@@ -90,6 +96,14 @@ function place(ep) {
   if (s === '4' || /introduce yerself|live at six/i.test(t) || (d >= '2024-01-01' && d < '2024-09-17')) return [['discovering-downie', null]];
   if (/top forty|top 40|tthtop40/i.test(t) || (d >= '2024-09-17' && d < '2026-01-01')) return [['top-forty-countdown', top40Section(t)]];
   return null;
+}
+
+// The RedCircle season says which show a conversation was recorded on; the date backs it up
+function conversationSection(s, d) {
+  if (s === '1' || s === '2' || (!s && d < '2023-05-01')) return 'From Fully & Completely';
+  if (s === '3' || (!s && d < '2024-01-01')) return 'From Getting Hip to The Hip';
+  if (s === '4' || (!s && d < '2024-09-17')) return 'From Discovering Downie';
+  return 'From The Tragically Hip Top Forty Countdown';
 }
 
 function top40Section(t) {
@@ -136,7 +150,9 @@ async function fetchFeed(url) {
       type: tag(item, 'itunes:episodeType'),
     };
   }).sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
-  if (episodes.length < 300) throw new Error('feed has only ' + episodes.length + ' episodes - not saving it');
+  // A guard against a half-sent feed. jD took 105 episodes off RedCircle in November 2026,
+  // leaving 280, so the floor is 250 (it was 300).
+  if (episodes.length < 250) throw new Error('feed has only ' + episodes.length + ' episodes - not saving it');
   return episodes;
 }
 
@@ -310,6 +326,24 @@ function sitemapBlock(cfg, sm) {
 (async () => {
   const cfg = JSON.parse(fs.readFileSync(SHOWS_FILE, 'utf8'));
   let feed;
+  if (FETCH && CHECK) {
+    // The weekly GitHub check: compare the live feed with the saved one, change nothing
+    const saved = JSON.parse(fs.readFileSync(FEED_FILE, 'utf8')).episodes;
+    const live = await fetchFeed(cfg.feed);
+    const savedById = new Map(saved.map(e => [e.id, e])), liveIds = new Set(live.map(e => e.id));
+    const added = live.filter(e => !savedById.has(e.id));
+    const gone = saved.filter(e => !liveIds.has(e.id));
+    const changed = live.filter(e => savedById.has(e.id) && (savedById.get(e.id).title !== e.title || savedById.get(e.id).date !== e.date));
+    if (!added.length && !gone.length && !changed.length) {
+      console.log(`the saved feed matches RedCircle (${live.length} episodes)`);
+      return;
+    }
+    console.error('The Radio Show pages are behind the RedCircle feed. Ask Claude to run: node scripts/build-podcasts.js --fetch');
+    if (added.length) { console.error(`\n${added.length} new on RedCircle:`); added.forEach(e => console.error(`  ${e.date}  ${e.title}`)); }
+    if (gone.length) { console.error(`\n${gone.length} gone from RedCircle (their links on the site no longer open the episode):`); gone.forEach(e => console.error(`  ${e.date}  ${e.title}`)); }
+    if (changed.length) { console.error(`\n${changed.length} retitled or redated:`); changed.forEach(e => { const o = savedById.get(e.id); console.error(`  ${o.date}  ${o.title}\n    now ${e.date}  ${e.title}`); }); }
+    process.exit(1);
+  }
   if (FETCH) {
     feed = { source: cfg.feed, fetched: torontoDate.format(new Date()), episodes: await fetchFeed(cfg.feed) };
     fs.writeFileSync(FEED_FILE, JSON.stringify(feed, null, 1) + '\n');
