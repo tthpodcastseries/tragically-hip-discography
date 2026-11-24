@@ -1,0 +1,38 @@
+{
+  "about": "Live show nights for the On This Day Mac widget. The widget reads this file once a day and shows 'live tonight' on each night listed. A run repeats every week from 'first' to 'last' on the same weekday; leave 'last' as null to keep it going. Put any week that is off in 'skip'. Dates are year-month-day.",
+  "updated": "2026-11-24",
+  "runs": [
+    {
+      "show": "The Tragically Hip Album Countdown",
+      "weekday": "Monday",
+      "time": "8pm ET",
+      "first": "2027-01-04",
+      "last": "2027-04-05",
+      "skip": []
+    },
+    {
+      "show": "The Tragically Hip On Shuffle - Live Stream",
+      "weekday": "Wednesday",
+      "time": "8pm ET",
+      "first": "2027-04-14",
+      "last": "2027-06-09",
+      "skip": []
+    },
+    {
+      "show": "Yer Hipstories: Another Roadside Attraction",
+      "weekday": "Monday",
+      "time": "8pm ET",
+      "first": "2027-06-14",
+      "last": "2027-08-23",
+      "skip": ["2027-07-05", "2027-08-02"]
+    },
+    {
+      "show": "The Tragically Hip On Shuffle - Live Stream",
+      "weekday": "Wednesday",
+      "time": "8pm ET",
+      "first": "2027-09-01",
+      "last": null,
+      "skip": []
+    }
+  ]
+}

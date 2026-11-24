@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.12.3
+**Emergency - Patch** - November 24, 2026
+The weekly live nights for The Hip Handbook - On This Day, the Mac widget that ships with the January Yer Letter (Friday, January 1, 2027).
+- `data/on-this-day-schedule.json` (new): the weekly live nights the On This Day Mac widget reads once a day. It shows "<show> is live tonight at 8pm ET." on each night (jD, November 24, 2026):
+  - The Tragically Hip Album Countdown: Mondays, January 4 to April 5, 2027 (14 nights)
+  - The Tragically Hip On Shuffle - Live Stream: Wednesdays, April 14 to June 9, 2027
+  - Yer Hipstories: Another Roadside Attraction: Mondays, June 14 to August 23, 2027, skipping July 5 and August 2 (nine nights)
+  - The Tragically Hip On Shuffle - Live Stream: Wednesdays from September 1, 2027, with no end date yet
+- To move, skip, or end a week after the widget is out, edit this file and push: the widget picks it up within a day. A file that doesn't read right is ignored, and the widget keeps its built-in copy.
+- No page changes and nothing new collected: the widget only reads this public file, so `privacy.html` is unchanged.
+- Cache bumped to `hh-v5.12.3`; footer label bumped to v5.12.3 (Emergency - Patch)
+
 ## v5.12.2
 **Emergency - Patch** - November 23, 2026
 The Radio Show catches up with RedCircle (jD, November 23, 2026). The pages had not been rebuilt since v5.7 (November 5), so the last three On Shuffle episodes were missing, and 23 listed episodes linked to RedCircle pages that no longer open them.
