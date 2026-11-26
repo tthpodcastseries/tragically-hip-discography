@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.13.1
+**Titanic Terrarium - Patch** - November 26, 2026
+Save image works in Safari (found by jD, November 26, 2026). On the Games page, pressing Save image under a share card did nothing in Safari, however many times it was pressed. Chrome saved it fine.
+- **Why:** each game on the Games page runs in a frame, and Safari counts saving the card (a picture the page makes itself, at a blob: address) as loading it in that frame. The site's security rules only let the site's own pages into frames, so Safari refused it. It had been that way since the Games page arrived in v5.11.
+- **Fix:** `frame-src` in `_headers` now allows `blob:` as well as the site's own pages. Only the Handbook's own code can make a blob: address, so nothing from outside gets in. This covers the cards in all five games, the song cards, and the Passport card.
+- **Guard:** `audit-site.js` fails if a script saves a card this way and `frame-src` doesn't allow `blob:`.
+- **How:** `_headers`, `scripts/audit-site.js`.
+- Cache bumped to `hh-v5.13.1`; footer label bumped to v5.13.1 (Titanic Terrarium - Patch)
+
 ## v5.13
 **Titanic Terrarium** - November 26, 2026
 A live show keeps playing while you browse (jD, November 26, 2026). A show played from the shuffle machine, Show of the Day, a setlist, or anywhere else opens the Tour Map player, and it stopped as soon as a fan went to another page, because the browser stops a page's sound when the page closes.

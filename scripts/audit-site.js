@@ -274,6 +274,14 @@ if (!imgSrc.includes('blob:')) {
   const blobUsers = imgScanFiles.filter(f => f.endsWith('.js') && /createObjectURL/.test(fs.readFileSync(path.join(ROOT, f), 'utf8')));
   if (blobUsers.length) problems.push(`_headers CSP img-src: blob: not allowed, but ${blobUsers.join(', ')} builds blob: image URLs (blocked live)`);
 }
+// Saving a share card hands the browser a blob: picture. Safari counts that as loading it in
+// a frame, so inside the Games page's frames Save image did nothing until frame-src allowed
+// blob: (v5.13.1, found by jD in Safari)
+{
+  const frameSrc = ((headersSrc.match(/Content-Security-Policy:[^\n]*?frame-src([^;]*)/) || [])[1] || '').trim().split(/\s+/);
+  const savers = imgScanFiles.filter(f => f.endsWith('.js') && /\.download\s*=/.test(fs.readFileSync(path.join(ROOT, f), 'utf8')) && /createObjectURL/.test(fs.readFileSync(path.join(ROOT, f), 'utf8')));
+  if (savers.length && !frameSrc.includes('blob:')) problems.push(`_headers CSP frame-src: blob: not allowed, but ${savers.join(', ')} save cards as blob: downloads (Save image does nothing in Safari)`);
+}
 notes.push(`CSP img-src: ${imgHosts.size} external image host(s) checked`);
 
 // ---- 8. Home-screen tags ----

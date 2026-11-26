@@ -6,12 +6,15 @@
 # played by the <audio> element, so media-src only). Fonts are our own.
 # scripts/audit-site.js checks there is no 'unsafe-inline' in script-src, and that every
 # outside script and image host a page uses is allowed here.
+# Frames also allow blob: (v5.13.1) because Safari counts saving a share card (a blob: picture
+# the page makes itself) as loading it in a frame. Without it, Save image does nothing in
+# Safari inside the Games page's frames. Only the site's own code can make a blob: address.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://cloud.umami.is/script.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://c.basemaps.cartocdn.com https://d.basemaps.cartocdn.com https://i.ytimg.com; connect-src 'self' https://deqslacywpwnjjckdygp.supabase.co https://gateway.umami.is; media-src 'self' https://f006.backblazeb2.com; manifest-src 'self'; worker-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cloud.umami.is/script.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://c.basemaps.cartocdn.com https://d.basemaps.cartocdn.com https://i.ytimg.com; connect-src 'self' https://deqslacywpwnjjckdygp.supabase.co https://gateway.umami.is; media-src 'self' https://f006.backblazeb2.com; manifest-src 'self'; worker-src 'self'; frame-src 'self' blob:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
