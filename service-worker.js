@@ -1,7 +1,7 @@
 // Bump with each release (matches the footer version). Fans get new pages, CSS, JS
 // and data even if this is forgotten: those are all fetched network-first below
 // (pages and data fall back to a saved copy after a few seconds on a weak signal).
-const CACHE_NAME = 'hh-v5.12.3';
+const CACHE_NAME = 'hh-v5.13';
 // The small shell only. Big data files (setlists, tour data, lyrics, song index...)
 // are cached the first time a page asks for them.
 const CORE_ASSETS = [
@@ -11,6 +11,7 @@ const CORE_ASSETS = [
   '/discography.html',
   '/links.html',
   '/tour-map.html',
+  '/player.html',
   '/unplucked-gems.html',
   '/video-for-new-recruits.html',
   '/music-videos.html',
@@ -56,6 +57,7 @@ const CORE_ASSETS = [
   '/css/shuffle-machine.css',
   '/css/discography.css',
   '/css/tour-map.css',
+  '/css/player.css',
   '/css/unplucked-gems.css',
   '/css/video-for-new-recruits.css',
   '/css/live-stats.css',
@@ -83,6 +85,7 @@ const CORE_ASSETS = [
   '/js/dialog-a11y.js',
   '/js/tour-map.js',
   '/js/tour-map-player.js',
+  '/js/player-page.js',
   '/js/forum-invite.js',
   '/js/music-videos.js',
   '/js/unplucked-gems.js',

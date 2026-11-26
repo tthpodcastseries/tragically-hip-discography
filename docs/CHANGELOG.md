@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.13
+**Titanic Terrarium** - November 26, 2026
+A live show keeps playing while you browse (jD, November 26, 2026). A show played from the shuffle machine, Show of the Day, a setlist, or anywhere else opens the Tour Map player, and it stopped as soon as a fan went to another page, because the browser stops a page's sound when the page closes.
+- **Pop-out player:** the Tour Map player has a new button, "Keep playing in its own window". It moves the show to a small window at the same track and second, and the map's player closes. The fan browses and plays the games in the main window while the show plays in the small one. On a phone the small window opens as a new tab.
+- **The small window** (`/player`, new) is the same player, laid out to fill the window, with the tracklist open. It has no site menu or footer on purpose: a link opening another page there would stop the show. Most browsers want a tap before a new window plays sound, so it may say "Tap play to keep the show going", and that tap picks up at the same second. The x stops the show and closes the window. Popping out again reuses the same window.
+- **One show at a time:** when a show starts in any Handbook window or tab, any other show that is playing pauses. A 'Little Bones' clip pauses the show too, and the show stays paused until the fan presses play (jD, November 26, 2026). The windows tell each other inside the fan's own browser, so nothing new is collected and `privacy.html` is unchanged.
+- **Kept out of search:** `/player` is marked noindex and left out of the sitemap. `llms.txt` lists it.
+- **How:** `player.html`, `js/player-page.js`, and `css/player.css` (new, precached), `js/tour-map-player.js` (starts partway through a show, the pop-out button, one show at a time, no bottom padding when the player sits in the page), `tour-map.html` and `css/tour-map.css` (the button, which says what it does: an icon alone wasn't clear, jD, November 26, 2026; on a phone it has its own row), `js/little-bones.js`, `llms.txt`.
+- Cache bumped to `hh-v5.13`; footer label bumped to v5.13 (Titanic Terrarium)
+
 ## v5.12.3
 **Emergency - Patch** - November 24, 2026
 The weekly live nights for The Hip Handbook - On This Day, the Mac widget that ships with the January Yer Letter (Friday, January 1, 2027).

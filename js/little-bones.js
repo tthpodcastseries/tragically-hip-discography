@@ -151,6 +151,12 @@
   // then stops itself at the end of the clip.
   const audio = new Audio();
   audio.preload = 'none';
+  // A live show playing in another window or tab (the Tour Map or the pop-out player,
+  // v5.13) pauses while a clip plays, and stays paused until the fan presses play there
+  try {
+    const showChannel = new BroadcastChannel('tth-audio');
+    audio.addEventListener('play', () => { try { showChannel.postMessage({ type: 'playing' }); } catch (e) { /* closed */ } });
+  } catch (e) { /* older browsers: the show just keeps playing */ }
   let startAt = null; // seconds into the track, once the length is known
   let stopAt = 0, playing = false, frame = 0;
   const audioUrl = AUDIO_BASE + '/' + puzzle.u.split('/').map(encodeURIComponent).join('/');

@@ -26,6 +26,7 @@
 - [Setlist Explorer](https://thehiphandbook.tthpods.com/setlists): live shows and appearances by song, venue, city, tour, or year
 - [Live Show Stats](https://thehiphandbook.tthpods.com/live-stats): most-played songs, one-timers, longest gaps, openers, and closers
 - [Tour Map](https://thehiphandbook.tthpods.com/tour-map): every live show on a map, with recordings where one exists
+- [Live Show Player](https://thehiphandbook.tthpods.com/player): the Tour Map's player in its own small window, so a recording keeps playing while you browse the rest of the site
 - [Fan-Ranked Top 40](https://thehiphandbook.tthpods.com/top-40): the songs fans voted for in the 2025 countdown
 - [Unplucked Gems](https://thehiphandbook.tthpods.com/unplucked-gems): known unreleased recordings, demos, outtakes, and alternate versions
 - [Video For New Recruits](https://thehiphandbook.tthpods.com/video-for-new-recruits): concerts on YouTube, sorted by era

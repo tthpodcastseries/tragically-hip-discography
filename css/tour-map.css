@@ -528,6 +528,27 @@ button.active { background: var(--red); border-color: var(--red); color: var(--w
   line-height: 1;
 }
 .ap-close:hover { color: var(--white); }
+/* Pop-out (v5.13): a button that says what it does, not just an icon (jD, November 26, 2026) */
+.ap-popout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.ap-popout:hover { background: rgba(255,255,255,0.08); }
+.ap-popout:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.ap-popout svg { width: 14px; height: 14px; flex-shrink: 0; }
 .ap-progress-wrap {
   position: relative;
   height: 4px;
@@ -1050,6 +1071,8 @@ main#main-content { display: flex; flex-direction: column; flex: 1 0 auto; }
     line-clamp: 2;
   }
   .ap-time { min-width: 0; margin-left: auto; }
+  /* The pop-out button gets its own full-width row under the buttons */
+  .ap-popout { order: 10; flex: 1 1 100%; justify-content: center; padding: 8px 12px; }
 }
 
 /* MAP CREDITS ON PHONES (audit A11Y-16): the full credit line covered a fifth of the

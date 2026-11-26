@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Show Player - The Hip Handbook</title>
+<meta name="description" content="The live show player from The Hip Handbook, in its own window, so the show keeps playing while you browse.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://thehiphandbook.tthpods.com/player">
+<script src="/js/clean-address.js"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="5a328248-7e6f-4440-aa23-1add33d46f33" data-domains="thehiphandbook.tthpods.com,forum-portal.tthpods.com" data-do-not-track="true" data-before-send="tthCleanAddress"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="The Handbook">
+<meta name="theme-color" content="#0e0b16">
+<link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/shared.css">
+<link rel="stylesheet" href="/css/player.css">
+</head>
+<body class="pp-body">
+<!-- The pop-out player (v5.13). No site menu or footer here on purpose: a link that
+     opened another page in this window would stop the show. -->
+<main class="pp-wrap" id="main-content">
+  <p class="pp-brand">The Hip Handbook</p>
+  <p class="pp-note" id="ppNote">Keep this window open and the show keeps playing while you browse The Hip Handbook.</p>
+  <p class="pp-note" id="ppEmpty" hidden>No show picked yet. Pick one on the <a href="/tour-map">Interactive Tour Map</a>.</p>
+
+  <div class="audio-player pp-player" id="audioPlayer" role="region" aria-label="Audio player" data-tap-text="Tap play to keep the show going">
+    <div class="ap-info">
+      <div class="ap-show-title" id="apShowTitle">Loading the show...</div>
+      <div class="ap-track-title" id="apTrackTitle" role="status" aria-live="polite">-</div>
+    </div>
+    <div class="ap-progress-wrap" id="apProgressWrap">
+      <div class="ap-progress-bar" id="apProgressBar"></div>
+      <input type="range" class="ap-seek" id="apSeek" min="0" max="100" step="0.1" value="0" aria-label="Seek" aria-valuetext="0:00 of 0:00">
+    </div>
+    <div class="ap-main">
+      <div class="ap-controls">
+        <button class="ap-btn" id="apPrev" title="Previous track" aria-label="Previous track">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
+        <button class="ap-btn ap-btn-play" id="apPlayPause" title="Play" aria-label="Play">
+          <svg viewBox="0 0 24 24" fill="currentColor" id="apPlayIcon" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="ap-btn" id="apNext" title="Next track" aria-label="Next track">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
+      </div>
+      <div class="ap-time" id="apTime">0:00 / 0:00</div>
+      <div class="ap-volume">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#929292" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        <input type="range" id="apVolume" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+      </div>
+      <button class="ap-btn" id="apListToggle" title="Hide tracklist" aria-label="Hide tracklist" aria-expanded="true" aria-controls="apTracklist">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+      </button>
+      <button class="ap-close" id="apClose" title="Stop and close" aria-label="Stop and close">&times;</button>
+    </div>
+    <div class="ap-tracklist open" id="apTracklist"></div>
+  </div>
+</main>
+
+<script src="/js/track-names.js"></script>
+<script src="/js/tour-map-player.js"></script>
+<script src="/js/player-page.js"></script>
+</body>
+</html>

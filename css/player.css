@@ -1,0 +1,102 @@
+/* player.css - the pop-out live show player (player.html, v5.13).
+   The same player as the Tour Map (css/tour-map.css, AUDIO PLAYER), laid out to fill a
+   small window instead of sitting along the bottom of the map. */
+
+:root { --white: #ffffff; }
+/* The window is the page: only the tracklist scrolls */
+.pp-body { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.pp-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 0;
+}
+.pp-brand {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+.pp-note { font-size: 0.75rem; color: var(--muted2); line-height: 1.5; }
+.pp-note a { color: var(--text); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+
+/* The player itself: in the page, not fixed to the bottom */
+.pp-player {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.ap-info { min-width: 0; padding-bottom: 12px; }
+.ap-show-title { font-size: 0.8rem; color: var(--muted); font-weight: 600; line-height: 1.4; }
+.ap-track-title { font-size: 1.05rem; color: var(--white); font-weight: 600; line-height: 1.4; margin-top: 2px; }
+
+.ap-progress-wrap { position: relative; height: 4px; background: var(--bg3); cursor: pointer; }
+.ap-progress-bar { height: 100%; background: var(--gold); width: 0%; transition: width 0.2s linear; border-radius: 0 2px 2px 0; }
+.ap-progress-wrap:hover { height: 6px; margin-top: -2px; }
+.ap-seek { position: absolute; left: 0; right: 0; top: -10px; width: 100%; height: 24px; margin: 0; opacity: 0; cursor: pointer; z-index: 2; }
+.ap-progress-wrap:has(.ap-seek:focus-visible) { outline: 2px solid var(--text); outline-offset: 3px; }
+
+.ap-main { display: flex; align-items: center; gap: 10px; padding: 10px 0; }
+.ap-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.ap-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.ap-btn:hover { background: rgba(255,255,255,0.1); }
+.ap-btn svg { width: 22px; height: 22px; }
+.ap-btn-play svg { width: 34px; height: 34px; }
+.ap-btn-play.ap-needs-tap { box-shadow: 0 0 0 2px var(--gold); animation: ap-tap-pulse 1.6s ease-in-out infinite; }
+@keyframes ap-tap-pulse { 50% { box-shadow: 0 0 0 6px rgba(204, 162, 60, 0.35); } }
+@media (prefers-reduced-motion: reduce) { .ap-btn-play.ap-needs-tap { animation: none; } }
+.ap-time { font-size: 0.7rem; color: var(--muted2); flex-shrink: 0; margin-left: auto; }
+.ap-close { background: none; border: none; color: var(--muted2); cursor: pointer; font-size: 1.4rem; padding: 4px 8px; flex-shrink: 0; line-height: 1; }
+.ap-close:hover { color: var(--white); }
+
+.ap-volume { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.ap-volume input[type="range"] {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg3);
+  border-radius: 2px;
+  margin: 0;
+}
+.ap-volume input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); cursor: pointer; margin-top: -4px; border: none; }
+.ap-volume input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: transparent; }
+.ap-volume input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); cursor: pointer; border: none; }
+.ap-volume input[type="range"]::-moz-range-track { height: 4px; background: transparent; }
+
+/* The tracklist fills the rest of the window and scrolls on its own */
+.ap-tracklist { display: none; flex: 1; min-height: 120px; overflow-y: auto; border-top: 1px solid rgba(255,255,255,0.08); }
+.ap-tracklist.open { display: block; }
+.ap-track-note { padding: 6px 4px; color: var(--muted2); font-size: 0.7rem; }
+.ap-track { display: flex; align-items: center; gap: 10px; padding: 7px 4px; cursor: pointer; font-size: 0.8rem; color: var(--muted); transition: background 0.15s; }
+.ap-track:hover { background: rgba(255,255,255,0.05); }
+.ap-track.active { color: var(--text); background: rgba(204,162,60,0.08); }
+.ap-track:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.ap-track-num { width: 22px; text-align: right; font-size: 0.7rem; flex-shrink: 0; }
+.ap-track-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ap-track-dur { font-size: 0.7rem; flex-shrink: 0; }
+
+/* Phones have their own volume buttons */
+@media (max-width: 400px) {
+  .ap-volume { display: none; }
+}

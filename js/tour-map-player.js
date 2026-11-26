@@ -1,6 +1,9 @@
-// tour-map-player.js - the tour map audio player (moved out of tour-map.html in v5.4.17)
+// tour-map-player.js - the live show audio player (moved out of tour-map.html in v5.4.17).
+// Runs on the Tour Map and on the pop-out player page (player.html, v5.13), which uses the
+// same element ids. The map page has a pop-out button (apPopOut); the player page doesn't.
 (function() {
   const player = document.getElementById('audioPlayer');
+  const popOutBtn = document.getElementById('apPopOut');
   const progressBar = document.getElementById('apProgressBar');
   const showTitle = document.getElementById('apShowTitle');
   const trackTitle = document.getElementById('apTrackTitle');
@@ -97,7 +100,7 @@
         // iPhones only play sound after a tap on this page, so a "Play" from Home lands
         // here: ring the play button so the next tap is obvious (audit DEV-04)
         updatePlayIcon(false);
-        showStatus('Tap play to start the show');
+        showStatus(player.dataset.tapText || 'Tap play to start the show');
         playPauseBtn.classList.add('ap-needs-tap');
       } else {
         trackFailed(currentTrackIndex);
@@ -105,9 +108,18 @@
     });
   }
 
-  function playTrack(index) {
+  // A show handed over from another window starts partway through a track: jump to that
+  // second once the browser knows how long the track is
+  let resumeAt = 0;
+  audio.addEventListener('loadedmetadata', () => {
+    if (resumeAt > 0 && resumeAt < audio.duration) audio.currentTime = resumeAt;
+    resumeAt = 0;
+  });
+
+  function playTrack(index, startAt) {
     if (index < 0 || index >= tracks.length) return;
     clearTimeout(skipTimer);
+    resumeAt = startAt > 0 ? startAt : 0;
     currentTrackIndex = index;
     failedIndex = -1;
     trackTitle.textContent = tracks[index].name;
@@ -136,7 +148,8 @@
     return tracksPromise;
   }
 
-  async function loadShow(gig) {
+  // start: { track, at } picks up a show partway through (the pop-out hand-off)
+  async function loadShow(gig, start) {
     if (!gig) return;
     currentShow = gig;
     failStreak = 0;
@@ -156,9 +169,12 @@
         url: t.url.startsWith('http') ? t.url : `${AUDIO_BASE}/${t.url.split('/').map(encodeURIComponent).join('/')}`,
         duration: t.duration || ''
       }));
-      currentTrackIndex = 0;
+      const startTrack = start && start.track >= 0 && start.track < tracks.length ? start.track : 0;
+      currentTrackIndex = startTrack;
       renderTracklist();
-      playTrack(0);
+      playTrack(startTrack, start && start.at);
+    } else {
+      trackTitle.textContent = 'No recording for this show yet.';
     }
   }
 
@@ -229,10 +245,37 @@
     closeBtn.addEventListener('click', () => { mediaSession.metadata = null; mediaSession.playbackState = 'none'; });
   }
 
+  // One show at a time across every Handbook window and tab (v5.13): when this player
+  // starts, it tells the others, and any that are playing pause. 'Little Bones' sends the
+  // same message when a clip plays. The message never leaves the fan's own browser.
+  const channel = ('BroadcastChannel' in window) ? new BroadcastChannel('tth-audio') : null;
+  if (channel) {
+    audio.addEventListener('play', () => { try { channel.postMessage({ type: 'playing' }); } catch (e) { /* closed */ } });
+    channel.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'playing' && !audio.paused) audio.pause();
+    });
+  }
+
+  // Pop-out (v5.13): the show moves to its own small window, at the same track and second,
+  // so it keeps playing while the fan browses the Handbook here. The window has a name, so
+  // popping out again reuses it. On a phone it opens as a new tab.
+  if (popOutBtn) {
+    popOutBtn.addEventListener('click', () => {
+      if (!currentShow || !tracks.length) return;
+      const at = Math.floor(audio.currentTime || 0);
+      const url = '/player#play=' + encodeURIComponent(currentShow.id) + '&track=' + currentTrackIndex + (at ? '&at=' + at : '');
+      const win = window.open(url, 'tthPlayer', 'popup,width=440,height=640');
+      if (!win) { showStatus("Yer browser blocked the new window. Allow pop-ups for The Hip Handbook and try again."); return; }
+      closeBtn.click();
+      try { win.focus(); } catch (e) { /* the browser decides */ }
+    });
+  }
+
   // While the player is open the page keeps room for it at the bottom, so the last
-  // footer links, and anything a fan Tabs to, never sit hidden under it (audit A11Y-16)
+  // footer links, and anything a fan Tabs to, never sit hidden under it (audit A11Y-16).
+  // On the pop-out page the player sits in the page itself, so it needs no room.
   function reservePlayerSpace() {
-    const open = player.classList.contains('active');
+    const open = player.classList.contains('active') && getComputedStyle(player).position === 'fixed';
     const h = open ? Math.max(0, Math.ceil(window.innerHeight - player.getBoundingClientRect().top)) : 0;
     document.body.style.paddingBottom = open ? h + 'px' : '';
     document.documentElement.style.scrollPaddingBottom = open ? h + 'px' : '';
