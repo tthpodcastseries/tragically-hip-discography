@@ -5,6 +5,11 @@ https://yerletter.tthpods.com/* https://subscribe.tthpods.com/ 301!
 # site, so a fan signs in once, on the address they will keep using (audit SEC-09)
 https://forum-portal.tthpods.com/*  https://thehiphandbook.tthpods.com/forum-invite.html  301!
 https://main--discography-web-app.netlify.app/*  https://thehiphandbook.tthpods.com/:splat  301!
+# The short address (bought at WHC, November 26, 2026) forwards every path to the real site
+http://thehiphandbook.com/*  https://thehiphandbook.tthpods.com/:splat  301!
+https://thehiphandbook.com/*  https://thehiphandbook.tthpods.com/:splat  301!
+http://www.thehiphandbook.com/*  https://thehiphandbook.tthpods.com/:splat  301!
+https://www.thehiphandbook.com/*  https://thehiphandbook.tthpods.com/:splat  301!
 /my-shows  /passport.html  200
 /song/just-another-midnight  /song/another-midnight  301!
 /song  /song.html  200
